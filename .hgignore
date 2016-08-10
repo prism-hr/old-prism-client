@@ -1,0 +1,4 @@
+syntax: glob
+mobile/node_modules
+mobile/plugins
+mobile/platforms
