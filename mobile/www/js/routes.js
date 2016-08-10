@@ -7,10 +7,7 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
-
-      .state('tabsController.browse', {
+    .state('tabsController.browse', {
     url: '/browse',
     views: {
       'tab1': {
@@ -58,11 +55,11 @@ angular.module('app.routes', [])
     controller: 'registerCtrl'
   })
 
-  .state('welcome', {
-    url: '/welcome',
-    templateUrl: 'templates/welcome.html',
-    controller: 'welcomeCtrl'
-  })
+    .state('password', {
+      url: '/password',
+      templateUrl: 'templates/password.html',
+      controller: 'passwordCtrl'
+    })
 
   .state('universityAndDepartment', {
     url: '/uni-department',
@@ -70,8 +67,14 @@ angular.module('app.routes', [])
     controller: 'universityAndDepartmentCtrl'
   })
 
-$urlRouterProvider.otherwise('/welcome')
+  .state('intro', {
+      url: '/',
+      templateUrl: 'templates/intro.html',
+      controller: 'IntroCtrl'
+  })
 
-  
+$urlRouterProvider.otherwise('/')
+
+
 
 });

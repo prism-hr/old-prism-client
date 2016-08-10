@@ -1,31 +1,34 @@
 <ion-view title="Register" hide-nav-bar="true" id="page6" class=" ">
     <ion-content padding="true" class=" manual-remove-top-padding">
         <form id="register-form2" class="list ">
-            <div class="spacer" style="width: 300px; height: 31px;"></div>
+            <div class="spacer" style="width: 300px; height: 30px;"></div>
             <div class="">
-                <img src="img/rVuOC4nOTnOFNodyjBYS_prism_blue.png" width="35%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+              <img src="img/CB64WQU7ROm3cEjjqWDa_prism_blue.png" width="140" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
             </div>
             <h4 id="register-heading4" style="color:#000000;text-align:center;" class=" ">Register</h4>
-            <div id="register-button-bar6" class=" button-bar ">
-                <button id="register-button18" class=" button button-positive  button-block icon ion-social-facebook fb-btn">Facebook</button>
-                <button id="register-button19" class=" button button-positive  button-block icon ion-social-linkedin ">Linkedin</button>
+            <div class="grid-content btn-content">
+              <div class="row">
+                <div class="col"><button id="register-button18" class=" button button-positive  button-block icon ion-social-facebook fb-btn"> Facebook</button></div>
+                <div class="col"><button id="register-button19" class=" button button-positive  button-block icon ion-social-linkedin ld-btn"> Linkedin</button></div>
+              </div>
             </div>
             <h4 id="register-heading5" style="color:#000000;text-align:center;" class=" ">or</h4>
             <ion-list id="register-list2" class=" ">
-                <label class="item item-input item-stacked-label " id="register-input3" name="name">
-                    <input type="text" placeholder="Email">
+                <label class="item item-input item-stacked-label " name="email">
+                    <input type="text" placeholder="Email" value="me@juanmingo.co.uk" disabled>
                 </label>
-                <label class="item item-input item-stacked-label " id="register-input8" name="name">
+                <label class="item item-input item-stacked-label " name="name">
                     <input type="text" placeholder="Name">
                 </label>
-                <label class="item item-input item-stacked-label " id="register-input4" name="surname">
+                <label class="item item-input item-stacked-label " name="surname">
                     <input type="text" placeholder="Surname">
                 </label>
-                <label class="item item-input item-stacked-label " id="register-input5" name="password">
+                <label class="item item-input item-stacked-label " name="password">
                     <input type="text" placeholder="Password">
                 </label>
             </ion-list>
             <a ui-sref="universityAndDepartment" id="register-button12" class=" button button-assertive  button-block ">Create an Account</a>
+          <button ui-sref="login" style="font-size:14px;text-align:right;" class=" button button-assertive button-small button-clear ">Back to Login</button>
         </form>
     </ion-content>
 </ion-view>
