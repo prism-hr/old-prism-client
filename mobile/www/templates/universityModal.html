@@ -1,0 +1,31 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header">
+    <h1 class="title">University</h1>
+    <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <input ng-model="university" type="text" placeholder="Search">
+      </label>
+    </div>
+    <div class="list">
+      <a class="item item-avatar" href="#">
+        <img src="/img/ucl-logo.jpg">
+        <h2>UCL</h2>
+        <p>London, UK</p>
+      </a>
+      <a class="item item-avatar" href="#">
+        <img src="/img/ucl-logo.jpg">
+        <h2>Birmingham</h2>
+        <p>Birmingham, UK.</p>
+      </a>
+      <a class="item item-avatar" href="#">
+        <img src="/img/ucl-logo.jpg">
+        <h2>Southampton</h2>
+        <p>Southampton, Uk</p>
+      </a>
+    </div>
+    <button class="button button-full button-positive" ng-click="selectUniversity()">Select</button>
+  </ion-content>
+</ion-modal-view>
