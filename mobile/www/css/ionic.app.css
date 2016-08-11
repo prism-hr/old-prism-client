@@ -7709,11 +7709,11 @@ input[type="color"] {
 textarea {
   padding-left: 0; }
   textarea::-moz-placeholder {
-    color: #aaaaaa; }
+    color: #777777; }
   textarea:-ms-input-placeholder {
-    color: #aaaaaa; }
+    color: #777777; }
   textarea::-webkit-input-placeholder {
-    color: #aaaaaa;
+    color: #777777;
     text-indent: -3px; }
 
 textarea {
@@ -7762,15 +7762,15 @@ input[type="file"] {
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-  color: #aaaaaa; }
+  color: #777777; }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-  color: #aaaaaa; }
+  color: #777777; }
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: #aaaaaa;
+  color: #777777;
   text-indent: 0; }
 
 input[disabled],
@@ -9761,6 +9761,50 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 -10px; }
   .grid-content.btn-content {
     margin: -10px; }
+
+.item-avatar.square, .item-avatar-left.square, .item.square {
+  padding: 10px;
+  padding-left: 60px;
+  min-height: 60px; }
+  .item-avatar.square > img:first-child,
+  .item-avatar.square .item-image,
+  .item-avatar.square .item-content, .item-avatar-left.square > img:first-child,
+  .item-avatar-left.square .item-image,
+  .item-avatar-left.square .item-content, .item.square > img:first-child,
+  .item.square .item-image,
+  .item.square .item-content {
+    border-radius: 0;
+    top: 5px;
+    left: 5px;
+    max-width: 50px;
+    max-height: 50px; }
+    .item-avatar.square > img:first-child > img:first-child,
+    .item-avatar.square > img:first-child .item-image,
+    .item-avatar.square .item-image > img:first-child,
+    .item-avatar.square .item-image .item-image,
+    .item-avatar.square .item-content > img:first-child,
+    .item-avatar.square .item-content .item-image, .item-avatar-left.square > img:first-child > img:first-child,
+    .item-avatar-left.square > img:first-child .item-image,
+    .item-avatar-left.square .item-image > img:first-child,
+    .item-avatar-left.square .item-image .item-image,
+    .item-avatar-left.square .item-content > img:first-child,
+    .item-avatar-left.square .item-content .item-image, .item.square > img:first-child > img:first-child,
+    .item.square > img:first-child .item-image,
+    .item.square .item-image > img:first-child,
+    .item.square .item-image .item-image,
+    .item.square .item-content > img:first-child,
+    .item.square .item-content .item-image {
+      border-radius: 0;
+      top: 5px;
+      left: 5px;
+      max-width: 50px;
+      max-height: 50px; }
+
+.list.search {
+  margin-bottom: 5px; }
+
+.ionic-select-modal .list > .item {
+  padding: 0; }
 
 .intro .slider-btn-holder {
   display: block;
