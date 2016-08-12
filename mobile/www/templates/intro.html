@@ -1,0 +1,52 @@
+<ion-view view-title="Intro" hide-nav-bar="true" class="intro">
+  <div class="slider-btn-holder left">
+    <button class="button button-positive button-clear no-animation"
+            ng-click="startApp()" ng-show="!slideIndex">
+      Skip Intro
+    </button>
+    <button class="button button-positive button-clear no-animation"
+            ng-click="previous()" ng-show="slideIndex > 0">
+      Previous Slide
+    </button>
+  </div>
+  <div class="slider-btn-holder right">
+    <button class="button button-positive button-clear no-animation"
+            ng-click="next()" ng-show="slideIndex != 3">
+      Next
+    </button>
+    <button class="button button-positive button-clear no-animation"
+            ng-click="startApp()" ng-show="slideIndex == 3">
+      Start using MyApp
+    </button>
+  </div>
+  <ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide>
+      <img src="img/ica-slidebox-img-1.png" class="slide-image">
+      <h3>Welcome to PRiSM for students</h3>
+      <p>
+        This application its been created to give you <b>a head start</b> on your carrer, notifying you about placements, jobs and events
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img src="img/ica-slidebox-img-2.png" class="slide-image">
+      <h3>Companion for your Career</h3>
+      <p>
+        This application its been created to give you <b>a head start</b> on your carrer, notifying you about placements, jobs and events
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img src="img/ica-slidebox-img-3.png" class="slide-image">
+      <h3>Always informed</h3>
+      <p>
+        This application its been created to give you <b>a head start</b> on your carrer, notifying you about placements, jobs and events
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img src="img/ica-slidebox-img-4.png" class="slide-image">
+      <h3>Ready to Join?</h3>
+      <div class="padding">
+        <a ui-sref="login" id="login-button4" class=" button button-assertive  button-block ">Log in</a>
+      </div>
+    </ion-slide>
+  </ion-slide-box>
+</ion-view>

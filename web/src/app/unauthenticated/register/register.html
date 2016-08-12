@@ -1,0 +1,60 @@
+<h1>Register</h1>
+
+<form novalidate name="registerForm" ng-submit="$ctrl.submit(registerForm)">
+
+    <div>
+        <md-input-container>
+            <label>First Name</label>
+            <input name="firstName" ng-model="$ctrl.activity.user.firstName" required>
+            <div ng-messages="registerForm.firstName.$error" role="alert">
+                <div ng-messages-include="my-custom-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div>
+        <md-input-container>
+            <label>Last Name</label>
+            <input name="lastName" ng-model="$ctrl.activity.user.lastName" required>
+            <div ng-messages="registerForm.lastName.$error" role="alert">
+                <div ng-messages-include="my-custom-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div>
+        <md-input-container>
+            <label>Email</label>
+            <input name="email" ng-model="$ctrl.activity.user.email" required type="email">
+            <div ng-messages="registerForm.email.$error" role="alert">
+                <div ng-messages-include="my-custom-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div>
+        <md-input-container>
+            <label>Password</label>
+            <input name="password" ng-model="$ctrl.activity.user.password" required minlength="8" md-maxlength="15" type="password">
+            <div ng-messages="registerForm.password.$error" role="alert">
+                <div ng-message="minlength">Password needs to have at least 8 characters</div>
+                <div ng-messages-include="my-custom-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <!--<div>-->
+        <!--<md-input-container>-->
+            <!--<label>Captcha</label>-->
+            <!--<div vc-recaptcha name="captcha"-->
+                 <!--ng-model="$ctrl.activity.captchaResponse"-->
+                 <!--key="'6LeUOSITAAAAAIO5MI65cRKwwk7NKIroHuIrbRlS'"-->
+                 <!--aa-val-msg required></div>-->
+            <!--<div ng-messages="registerForm.captcha.$error" role="alert">-->
+                <!--<div ng-message="required">You need to prove you're not a robot</div>-->
+            <!--</div>-->
+        <!--</md-input-container>-->
+    <!--</div>-->
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
