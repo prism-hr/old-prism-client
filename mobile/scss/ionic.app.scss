@@ -29,6 +29,10 @@ $uclgreen: #35C2A3;
 $uclred: #ea6651;
 $facebook-color: #3b5998;
 $linkedin-color: #4875B4;
+$dark:                            #444 !default;
+$input-color-placeholder:         lighten($dark, 20%) !default;
+
+
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
@@ -79,5 +83,40 @@ h1, h2, h3, h4, h5, h6 {
     margin: -10px;
   }
 }
-
+// square avatar
+.item-avatar, .item-avatar-left, .item {
+  &.square {
+    padding: 10px;
+    padding-left: 60px;
+    min-height: 60px;
+    > img:first-child,
+    .item-image,
+    .item-content {
+      border-radius: 0;
+      top: 5px;
+      left: 5px;
+      max-width: 50px;
+      max-height: 50px;
+      > img:first-child,
+      .item-image {
+        border-radius: 0;
+        top: 5px;
+        left: 5px;
+        max-width: 50px;
+        max-height: 50px;
+      }
+    }
+  }
+}
+.list {
+  &.search {
+    margin-bottom:5px;
+  }
+}
+// modal fix
+.ionic-select-modal {
+  .list > .item {
+    padding: 0;
+  }
+}
 @import "pages/intro";

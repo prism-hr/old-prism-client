@@ -66,6 +66,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/universityAndDepartment.html',
     controller: 'universityAndDepartmentCtrl'
   })
+    .state('profilePicture', {
+      url: '/profilePicture',
+      templateUrl: 'templates/profile-picture.html',
+      controller: 'profilePictureCtrl'
+    })
 
   .state('intro', {
       url: '/',
