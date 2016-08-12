@@ -1,6 +1,6 @@
 module.exports = {
     restangular: restangularConfig,
-    errorHook: errorHook
+    generalRun: generalRun
 };
 
 /** @ngInject */
@@ -9,8 +9,9 @@ function restangularConfig(RestangularProvider) {
     RestangularProvider.setBaseUrl(host + '/prism/api');
 }
 
-function errorHook($transitions) {
+function generalRun($rootScope, $transitions, $state) {
     $transitions.onError(null, function () {
         console.log('Transition error');
     });
+    $rootScope.$state = $state;
 }

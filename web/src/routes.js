@@ -13,11 +13,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('register', {
             url: '/register?accessCode&action',
             template: '<register activity="activity" action="{{action}}" access-code="{{accessCode}}"></register>',
-            controller: function($scope, $stateParams, activity){
+            controller: function ($scope, $stateParams, activity) {
                 $scope.activity = activity && activity.plain();
                 $scope.action = $stateParams.action;
                 $scope.accessCode = $stateParams.accessCode;
             },
+            data: {hideHeaderFooter: true},
             resolve: {
                 activity: function ($stateParams, activationService) {
                     return $stateParams.accessCode && activationService.getActivity($stateParams.accessCode, $stateParams.action);
@@ -32,6 +33,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
                 $scope.action = $stateParams.action;
                 $scope.accessCode = $stateParams.accessCode;
             },
+            data: {hideHeaderFooter: true},
             resolve: {
                 activity: function ($stateParams, activationService) {
                     return $stateParams.accessCode && activationService.getActivity($stateParams.accessCode, $stateParams.action);
