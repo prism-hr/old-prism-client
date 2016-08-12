@@ -10,9 +10,9 @@
 </head>
 
 <body>
-<app-header></app-header>
+<div ng-include="'app/general/header.html'" ng-if="!$state.current.data.hideHeaderFooter"></div>
 <ui-view></ui-view>
-<app-footer></app-footer>
+<div ng-include="'app/general/footer.html'" ng-if="!$state.current.data.hideHeaderFooter"></div>
 </body>
 
 <script type="text/ng-template" id="my-custom-messages">

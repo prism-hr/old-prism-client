@@ -30,7 +30,7 @@ angular
     .config(routes)
     .config(generalConfig.restangular)
     .run(activationHook)
-    .run(generalConfig.errorHook)
+    .run(generalConfig.generalRun)
     .service('activationService', activationService)
     .component('welcome', welcome)
     .component('login', login)
