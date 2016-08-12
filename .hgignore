@@ -1,0 +1,11 @@
+syntax: glob
+mobile/node_modules
+mobile/plugins
+mobile/platforms
+mobile/*.iml
+
+web/node_modules/
+web/.tmp/
+web/coverage/
+web/npm-debug.log*
+web/*.iml
