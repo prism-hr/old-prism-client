@@ -11,6 +11,7 @@ require('angular-recaptcha');
 
 var welcome = require('./app/welcome/welcome');
 var register = require('./app/unauthenticated/register/register');
+var login = require('./app/unauthenticated/login/login');
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
 var activationHook = require('./app/unauthenticated/activation.hook');
@@ -32,4 +33,5 @@ angular
     .run(generalConfig.errorHook)
     .service('activationService', activationService)
     .component('welcome', welcome)
+    .component('login', login)
     .component('register', register);
