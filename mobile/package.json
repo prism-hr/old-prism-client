@@ -23,7 +23,9 @@
     "ionic-plugin-keyboard",
     "ionic-plugin-deploy",
     "cordova-plugin-camera",
-    "cordova-plugin-file-transfer"
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": []
 }
