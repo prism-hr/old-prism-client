@@ -27,7 +27,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('login', {
             url: '/login',
-            template: '<login activity="activity" action="{{action}}" access-code="{{accessCode}}"></login-component>',
+            template: '<login activity="activity" action="{{action}}" access-code="{{accessCode}}"></login>',
             controller: function ($scope, $stateParams, activity) {
                 $scope.activity = activity && activity.plain();
                 $scope.action = $stateParams.action;
@@ -43,5 +43,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('welcome', {
             url: '/',
             template: '<welcome></welcome>'
+        })
+        .state('activities', {
+            url: '/activities',
+            template: '<activities activities="activities"></activities>',
+            resolve: {
+                activities: function (Restangular) {
+                    return Restangular.one('user').all('activities').getList();
+                }
+            }
+
         });
 }
