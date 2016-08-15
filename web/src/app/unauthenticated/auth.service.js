@@ -1,23 +1,19 @@
-/** @ngInject */
-function authService(Restangular) {
+function authService(Restangular, $http) {
     this.Restangular = Restangular;
+    this.$http = $http;
 }
 
 authService.prototype = {
     login: function (email, password) {
+        var self = this;
         return this.Restangular.one('public').all('login').post({email: email, password: password})
-            .then(function(response){
+                .then(function(response){
                 if (response.token) {
-                    // store username and token in local storage to keep user logged in between page refreshes
-                    localStorage.currentUser = { username: username, token: response.token };
+                    localStorage.currentUser = response.token;
 
-                    // add jwt token to auth header for all requests made by the $http service
-                    $http.defaults.headers.common.Authorization = 'X-Auth-Token ' + response.token;
-
-                    // execute callback with true to indicate successful login
-                    callback(true);
+                    self.$http.defaults.headers.common['X-Auth-Token'] = response.token;
                 } else {
-                    console.log('Failes')
+                    console.log('Failed');
                 }
             });
     }

@@ -49,7 +49,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             template: '<activities activities="activities"></activities>',
             resolve: {
                 activities: function (Restangular) {
-                    return Restangular.one('user').all('activities').getList();
+                    return Restangular.one('user', 'activities').get();
                 }
             }
 

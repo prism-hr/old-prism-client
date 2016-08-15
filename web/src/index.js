@@ -31,7 +31,7 @@ angular
     .constant('environment', environment)
     .config(routes)
     .config(generalConfig.restangular)
-    .config(function($mdThemingProvider) {
+    .config(function ($mdThemingProvider) {
         $mdThemingProvider.definePalette('prismblue', {
             '50': '#ffffff',
             '100': '#eef7fb',

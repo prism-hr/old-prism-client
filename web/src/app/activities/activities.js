@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/unauthenticated/activities/activities.html',
+    templateUrl: 'app/activities/activities.html',
     bindings: {
         activities: '<'
     },
