@@ -1,5 +1,7 @@
-body {
-  background-color: lightgrey;
-}
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300,400italic,700);
 
+$font-family: 'Lato' !default;
+$md-hue-1: #57ACD5 !default;
+$md-hue-2: #35C2A3 !default;
+$md-hue-3:#EA6651 !default;
 @import "../node_modules/angular-material/angular-material";
