@@ -64,4 +64,4 @@ function materialConfig($mdThemingProvider) {
         .warnPalette('prismred')
         .backgroundPalette('white');
     $mdThemingProvider.setDefaultTheme('prism')
-})
+};
