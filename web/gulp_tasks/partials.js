@@ -8,12 +8,12 @@ const conf = require('../conf/gulp.conf');
 gulp.task('partials', partials);
 
 function partials() {
-  return gulp.src(conf.path.src('app/**/*.html'))
-    .pipe(htmlmin())
-    .pipe(angularTemplatecache('templateCacheHtml.js', {
-      module: conf.ngModule,
-      root: 'app'
-    }))
-    .pipe(insert.prepend(`var angular = require('angular');`))
-    .pipe(gulp.dest(conf.path.tmp()));
+    return gulp.src(conf.path.src('app/**/*.html'))
+        .pipe(htmlmin())
+        .pipe(angularTemplatecache('templateCacheHtml.js', {
+            module: conf.ngModule,
+            root: 'app'
+        }))
+        .pipe(insert.prepend(`var angular = require('angular');`))
+        .pipe(gulp.dest(conf.path.tmp()));
 }
