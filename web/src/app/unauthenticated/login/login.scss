@@ -1,0 +1,29 @@
+.loginPage {
+  .logo {
+    margin:0 auto 10px;
+    width: 150px;
+    img {
+      width:100%;
+    }
+  }
+  section {
+    width: 380px;
+    margin-top:60px;
+    hgroup {
+      text-align: center;
+    }
+  }
+}
+.md-button.md-prism-theme.md-raised{
+  &.facebook {
+    background-color: $facebook-color;
+    color: white;
+    &:not([disabled]):hover {
+
+    }
+  }
+  &.linkedin {
+    background-color: $linkedin-color;
+    color:white;
+  }
+}

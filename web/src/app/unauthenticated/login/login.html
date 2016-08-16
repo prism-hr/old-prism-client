@@ -1,41 +1,62 @@
-
-    <h1>Login</h1>
-
-    <ng-form novalidate name="loginForm">
-
-        <div>
-            <md-input-container>
-                <label>Email</label>
-                <input name="email" ng-model="$ctrl.user.email" required type="email">
-                <div ng-messages="loginForm.email.$error" role="alert">
-                    <div ng-messages-include="my-custom-messages"></div>
+<div class="loginPage" layout="row" layout-align="center start" layout-fill layout-wrap>
+    <section flex-xs="80">
+        <hgroup>
+            <div class="logo" ui-ref="root">
+                <img src="img/prism-blue.svg" alt="PRiSM">
+            </div>
+            <h3>Sign in</h3>
+        </hgroup>
+        <div class="login">
+            <div class="social-login"  layout="row" layout-sm="column" layout-align="center">
+                    <md-button  flex="50" ng-click="onAuth({provider: 'linkedin'})" class="md-raised linkedin">
+                        <i class="icon-social-linkedin"></i> linkedin
+                    </md-button>
+                    <md-button  flex="50" ng-click="onAuth({provider: 'facebook'})" class="md-raised facebook">
+                        <i class="icon-social-facebook"></i> facebook
+                    </md-button>
+            </div>
+            <ng-form novalidate name="loginForm">
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <input placeholder="Email" name="email" ng-model="$ctrl.user.email" required type="email" ng-pattern="/^.+@.+\..+$/" >
+                        <div ng-messages="loginForm.email.$error" role="alert">
+                            <div ng-message-exp="['required', 'pattern']">
+                                Your email must look like an e-mail address.
+                            </div>
+                        </div>
+                    </md-input-container>
                 </div>
-            </md-input-container>
-        </div>
-
-        <div>
-            <md-input-container>
-                <label>Password</label>
-                <input name="password" ng-model="$ctrl.user.password" required type="password">
-                <div ng-messages="loginForm.password.$error" role="alert">
-                    <div ng-messages-include="my-custom-messages"></div>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required type="password">
+                        <div ng-messages="loginForm.password.$error" role="alert">
+                            <div ng-messages-include="my-custom-messages"></div>
+                        </div>
+                    </md-input-container>
                 </div>
-            </md-input-container>
+                <div layout-gt-xs="row" >
+                    <md-button  flex="100" class="md-warn md-raised" ng-click="$ctrl.submit(loginForm)">Submit</md-button>
+                </div>
+            </ng-form>
         </div>
-
-        <!--<div>-->
-        <!--<md-input-container>-->
-        <!--<label>Captcha</label>-->
-        <!--<div vc-recaptcha name="captcha"-->
-        <!--ng-model="$ctrl.activity.captchaResponse"-->
-        <!--key="'6LeUOSITAAAAAIO5MI65cRKwwk7NKIroHuIrbRlS'"-->
-        <!--aa-val-msg required></div>-->
-        <!--<div ng-messages="loginForm.captcha.$error" role="alert">-->
-        <!--<div ng-message="required">You need to prove you're not a robot</div>-->
-        <!--</div>-->
-        <!--</md-input-container>-->
-        <!--</div>-->
-
-        <button ng-click="$ctrl.submit(loginForm)" class="btn btn-primary">Submit</button>
-    </ng-form>
-
+        <div class="create-account">
+            <h3>Create an account</h3>
+            <div class="text">
+                <p>Enter your email address to register with us</p>
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input placeholder="Email" type="email" class="form-control"
+                               ng-model="registerDetails.email" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary inverted btn-block">Create an account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
