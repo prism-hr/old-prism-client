@@ -6,10 +6,31 @@ $uclgreen: #35C2A3 ;
 $uclred:#EA6651 ;
 $uclfooter: #5A5D6F;
 
+$facebook-color: #3b5998;
+$linkedin-color: #4875B4;
 
+$font-size: 1.6rem !default;
+
+h1, h2, h3, h4, h5, h6 {
+  color: $uclred;
+  font-weight:400;
+}
+ui-view {
+  width: 100%;
+  &.centered {
+    height: 100%;
+  }
+}
 $button-border-radius:1.5px !default;
 
 @import "../node_modules/angular-material/angular-material";
 
+$simple-line-font-path        : "../node_modules/simple-line-icons/fonts/";
+@import "../node_modules/simple-line-icons/scss/simple-line-icons";
+
 @import "app/general/header";
 @import "app/general/footer";
+
+@import "app/unauthenticated/login/login";
+
+
