@@ -9,9 +9,22 @@
 </head>
 
 <body>
-<div ng-include="'app/general/header.html'" ng-if="!$state.current.data.hideHeaderFooter"></div>
-<ui-view></ui-view>
-<div ng-include="'app/general/footer.html'" ng-if="!$state.current.data.hideHeaderFooter"></div>
+<div layout="row" layout-fill>
+    <div flex layout="column" layout-fill>
+        <md-toolbar layout="column" layout-align="center start" ng-include="'app/general/header.html'" ng-if="!$state.current.data.hideHeaderFooter"> </md-toolbar>
+        <div layout="row" flex>
+            <md-content flex>
+                <!-- My scrollable content -->
+                <div autoscroll layout="column" flex layout-align="center center" layout-fill>
+                    <ui-view ></ui-view>
+                    <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!$state.current.data.hideHeaderFooter" ng-include="'app/general/footer.html'"></md-toolbar>
+                </div>
+            </md-content>
+        </div>
+    </div>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="!$state.current.data.hideSidebar" ng-include="'app/general/sidebar.html'"></md-sidenav>
+</div>
+
 </body>
 
 <script type="text/ng-template" id="my-custom-messages">
