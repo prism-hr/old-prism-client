@@ -12,7 +12,7 @@ module.exports = {
             if (!form.$valid) {
                 return;
             }
-            authService.login(this.user.email, this.user.password)
+            authService.authenticate(this.user.email, this.user.password)
                 .then(function () {
                     $state.go('activities');
                 });

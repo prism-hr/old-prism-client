@@ -62,6 +62,6 @@ function materialConfig($mdThemingProvider) {
         .primaryPalette('prismblue')
         .accentPalette('prismgreen')
         .warnPalette('prismred')
-        .backgroundPalette('white');
+        .backgroundPalette('grey');
     $mdThemingProvider.setDefaultTheme('prism')
-};
+}
