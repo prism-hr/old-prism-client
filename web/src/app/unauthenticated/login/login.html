@@ -1,39 +1,41 @@
-<h1>Login</h1>
 
-<ng-form novalidate name="loginForm">
+    <h1>Login</h1>
 
-    <div>
-        <md-input-container>
-            <label>Email</label>
-            <input name="email" ng-model="$ctrl.user.email" required type="email">
-            <div ng-messages="loginForm.email.$error" role="alert">
-                <div ng-messages-include="my-custom-messages"></div>
-            </div>
-        </md-input-container>
-    </div>
+    <ng-form novalidate name="loginForm">
 
-    <div>
-        <md-input-container>
-            <label>Password</label>
-            <input name="password" ng-model="$ctrl.user.password" required type="password">
-            <div ng-messages="loginForm.password.$error" role="alert">
-                <div ng-messages-include="my-custom-messages"></div>
-            </div>
-        </md-input-container>
-    </div>
+        <div>
+            <md-input-container>
+                <label>Email</label>
+                <input name="email" ng-model="$ctrl.user.email" required type="email">
+                <div ng-messages="loginForm.email.$error" role="alert">
+                    <div ng-messages-include="my-custom-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
 
-    <!--<div>-->
+        <div>
+            <md-input-container>
+                <label>Password</label>
+                <input name="password" ng-model="$ctrl.user.password" required type="password">
+                <div ng-messages="loginForm.password.$error" role="alert">
+                    <div ng-messages-include="my-custom-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <!--<div>-->
         <!--<md-input-container>-->
-            <!--<label>Captcha</label>-->
-            <!--<div vc-recaptcha name="captcha"-->
-                 <!--ng-model="$ctrl.activity.captchaResponse"-->
-                 <!--key="'6LeUOSITAAAAAIO5MI65cRKwwk7NKIroHuIrbRlS'"-->
-                 <!--aa-val-msg required></div>-->
-            <!--<div ng-messages="loginForm.captcha.$error" role="alert">-->
-                <!--<div ng-message="required">You need to prove you're not a robot</div>-->
-            <!--</div>-->
+        <!--<label>Captcha</label>-->
+        <!--<div vc-recaptcha name="captcha"-->
+        <!--ng-model="$ctrl.activity.captchaResponse"-->
+        <!--key="'6LeUOSITAAAAAIO5MI65cRKwwk7NKIroHuIrbRlS'"-->
+        <!--aa-val-msg required></div>-->
+        <!--<div ng-messages="loginForm.captcha.$error" role="alert">-->
+        <!--<div ng-message="required">You need to prove you're not a robot</div>-->
+        <!--</div>-->
         <!--</md-input-container>-->
-    <!--</div>-->
+        <!--</div>-->
 
-    <button ng-click="$ctrl.submit(loginForm)" class="btn btn-primary">Submit</button>
-</ng-form>
+        <button ng-click="$ctrl.submit(loginForm)" class="btn btn-primary">Submit</button>
+    </ng-form>
+

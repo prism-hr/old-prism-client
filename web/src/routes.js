@@ -18,7 +18,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
                 $scope.action = $stateParams.action;
                 $scope.accessCode = $stateParams.accessCode;
             },
-            data: {hideHeaderFooter: true},
+            data: {hideHeaderFooter: true, hideSidebar: true},
             resolve: {
                 activity: function ($stateParams, activationService) {
                     return $stateParams.accessCode && activationService.getActivity($stateParams.accessCode, $stateParams.action);
@@ -33,7 +33,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
                 $scope.action = $stateParams.action;
                 $scope.accessCode = $stateParams.accessCode;
             },
-            data: {hideHeaderFooter: true},
+            data: {hideHeaderFooter: true, hideSidebar: true},
             resolve: {
                 activity: function ($stateParams, activationService) {
                     return $stateParams.accessCode && activationService.getActivity($stateParams.accessCode, $stateParams.action);
@@ -42,7 +42,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('welcome', {
             url: '/',
-            template: '<welcome></welcome>'
+            template: '<welcome></welcome>',
+            data: {hideSidebar: true}
         })
         .state('activities', {
             url: '/activities',

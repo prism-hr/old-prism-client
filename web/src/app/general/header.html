@@ -1,7 +1,14 @@
-<md-toolbar>
-    <div class="logo">
-        <a ui-ref="root">
-            <img src="../../img/prism_white.png" alt="PRiSM">
-        </a>
+<div layout="row" class="md-toolbar-tools" layout-align="space-between center" >
+    <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+        <md-icon md-svg-icon="menu" ></md-icon>
+    </md-button>
+    <div class="logo" ui-ref="root">
+        <img src="img/prism-white.svg" alt="PRiSM">
     </div>
-</md-toolbar>
+    <span>
+        <md-button aria-label="Sing in" class="md-raised md-warn" ui-sref="login"> Sing in </md-button>
+        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="" ng-if="!$state.current.data.hideSidebar">
+            Toggle left
+          </md-button>
+    </span>
+</div>

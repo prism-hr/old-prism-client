@@ -17,7 +17,7 @@ function materialConfig($mdThemingProvider) {
         'A400': '#6fb8db',
         'A700': '#3090bf',
         'contrastDefaultColor': 'light',
-        'contrastDarkColors': '50 100 200 300 400 500 600 A100 A200 A400'
+        'contrastDarkColors': '50 100 200 300 A100 A200'
     });
 
     $mdThemingProvider.definePalette('prismgreen', {
@@ -36,7 +36,7 @@ function materialConfig($mdThemingProvider) {
         'A400': '#48cdb0',
         'A700': '#28927b',
         'contrastDefaultColor': 'light',
-        'contrastDarkColors': '50 100 200 300 400 500 600 A100 A200 A400'
+        'contrastDarkColors': '50 100 200 300 A100 A200'
     });
 
     $mdThemingProvider.definePalette('prismred', {
@@ -55,7 +55,7 @@ function materialConfig($mdThemingProvider) {
         'A400': '#ed7e6c',
         'A700': '#e2371b',
         'contrastDefaultColor': 'light',
-        'contrastDarkColors': '50 100 200 300 400 500 A100 A200 A400'
+        'contrastDarkColors': '50 100 200 300 A100 A200'
     });
 
     $mdThemingProvider.theme('prism')
