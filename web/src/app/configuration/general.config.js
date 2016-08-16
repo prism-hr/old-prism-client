@@ -16,7 +16,7 @@ function generalRun($rootScope, $transitions, $state, $http) {
     $rootScope.$state = $state;
 
     // keep user logged in after page refresh
-    if (localStorage.currentUser) {
-        $http.defaults.headers.common['X-Auth-Token'] = localStorage.currentUser;
+    if (localStorage.userToken) {
+        $http.defaults.headers.common['X-Auth-Token'] = localStorage.userToken;
     }
 }

@@ -47,6 +47,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('activities', {
             url: '/activities',
             template: '<activities activities="activities"></activities>',
+            data: {auth: true},
             resolve: {
                 activities: function (Restangular) {
                     return Restangular.one('user', 'activities').get();
