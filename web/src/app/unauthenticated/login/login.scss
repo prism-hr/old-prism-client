@@ -14,20 +14,22 @@
     }
     .login {
       padding-left: 10%;
+      padding-right: 10%;
     }
-    .create-account {
-     padding-right: 10%;
-    }
-    margin-top:60px;
-    hgroup {
-      text-align: center;
-    }
+    margin-top:10px;
+    margin-bottom:10px;
   }
   .index-padding {
     padding: 0 8px;
   }
   .text-content {
     padding: 15px 10px 0;
+  }
+}
+.create-account {
+  width: 360px;
+  h3 {
+    margin-top:0;
   }
 }
 .divider-or {
