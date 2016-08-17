@@ -9,8 +9,8 @@ function restangularConfig(RestangularProvider) {
     RestangularProvider.setBaseUrl(host + '/prism/api');
 }
 
-function generalRun($rootScope, $transitions, $state, $http) {
-    $transitions.onError(null, function () {
+function generalRun($rootScope, $transitions, $state, $http, AuthService) {
+    $transitions.onError(null, function (transition) {
         console.log('Transition error');
     });
     $rootScope.$state = $state;
@@ -18,5 +18,6 @@ function generalRun($rootScope, $transitions, $state, $http) {
     // keep user logged in after page refresh
     if (localStorage.userToken) {
         $http.defaults.headers.common['X-Auth-Token'] = localStorage.userToken;
+        AuthService.loadUser();
     }
 }
