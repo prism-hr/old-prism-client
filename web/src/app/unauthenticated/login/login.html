@@ -36,29 +36,21 @@
                             </div>
                         </md-input-container>
                     </div>
-                    <div layout="row" >
-                        <md-button type="submit" flex="100" class="md-warn md-raised">Submit</md-button>
+                    <div layout="column" layout-align="space-between stretch">
+                        <md-button type="submit" class="md-warn md-raised">Submit</md-button>
+                    </div>
+                    <div layout-gt-xs="row" layout-align="end center">
+                        <md-button  class="md-warn" ui-sref="forgot-password">Forgot password?</md-button>
                     </div>
                 </form>
             </div>
             <div class="create-account">
                 <h3 class="text-aline-center">Create an account</h3>
-                <p class="text-content">Enter your email address to register with us</p>
-                <ng-form novalidate name="registerFrom">
-                    <div layout-gt-xs="row" class="index-padding">
-                        <md-input-container class="md-block" flex-gt-xs>
-                            <input placeholder="Email" name="email" ng-model="$ctrl.user.email" required type="email" ng-pattern="/^.+@.+\..+$/" >
-                            <div ng-messages="loginForm.email.$error" role="alert">
-                                <div ng-message-exp="['required', 'pattern']">
-                                    Your email must look like an e-mail address.
-                                </div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                    <div layout="row" >
-                        <md-button  flex="100" class="md-warn md-raised" ng-click="$ctrl.submit(registerFrom)" ui-sref="register">Create Account</md-button>
-                    </div>
-                </ng-form>
+                <div layout="column" layout-align="space-between stretch">
+                    <md-button class="md-primary md-raised" ng-click="$ctrl.submit(registerFrom)" ui-sref="register">Student</md-button>
+                    <md-button class="md-warn md-raised" ng-click="$ctrl.submit(registerFrom)" ui-sref="register">Univeristy</md-button>
+                    <md-button class="md-accent md-hue-2 md-raised" ng-click="$ctrl.submit(registerFrom)" ui-sref="register">Employer</md-button>
+                </div>
             </div>
         </div>
     </section>

@@ -1,12 +1,11 @@
 <header layout="row" class="md-toolbar-tools" layout-align="space-between center" >
-    <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
-        <md-icon md-svg-icon="menu" ></md-icon>
-    </md-button>
     <div class="logo" ui-ref="root">
         <img src="img/prism-white.svg" alt="PRiSM">
     </div>
     <span>
-        <md-button aria-label="Sing in" class="md-raised md-warn" ui-sref="login"> Sing in </md-button>
+        <md-button aria-label="Post Ad" class="md-raised md-warn"> Advertise </md-button>
+        <md-button aria-label="Sing in" ng-click="showSingUp($event)"> Sing-up </md-button>
+        <md-button aria-label="Sing in" ng-click="showLogin($event)"> <i class="icon-lock"></i> Log-in </md-button>
         <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="" ng-if="!$state.current.data.hideSidebar">
             Toggle left
           </md-button>
