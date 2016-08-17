@@ -11,7 +11,7 @@
 <body>
 <div layout="row" layout-fill>
     <div flex layout="column">
-        <md-toolbar layout="column" layout-align="center center" ng-include="'app/general/header.html'" ng-if="!$state.current.data.hideHeaderFooter"> </md-toolbar>
+        <header ng-if="!$state.current.data.hideHeaderFooter"></header>
         <div layout="row" flex>
             <md-content flex>
                 <div autoscroll layout="column" layout-align="none center" flex layout-fill >

@@ -1,13 +1,15 @@
-<header layout="row" class="md-toolbar-tools" layout-align="space-between center" >
-    <div class="logo" ui-ref="root">
-        <img src="img/prism-white.svg" alt="PRiSM">
-    </div>
+<md-toolbar layout="column" layout-align="center center" >
+    <div layout="row" class="md-toolbar-tools" layout-align="space-between center" >
+        <div class="logo" ui-ref="root">
+            <img src="img/prism-white.svg" alt="PRiSM">
+        </div>
     <span>
-        <md-button aria-label="Post Ad" class="md-raised md-warn"> Advertise </md-button>
-        <md-button aria-label="Sing in" ng-click="showSingUp($event)"> Sing-up </md-button>
-        <md-button aria-label="Sing in" ng-click="showLogin($event)"> <i class="icon-lock"></i> Log-in </md-button>
-        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="" ng-if="!$state.current.data.hideSidebar">
+        <md-button aria-label="Post Ad" class="md-raised md-warn" ng-click="advertise($event)"> Advertise </md-button>
+        <md-button aria-label="Sing-up" ng-click="showSignup($event)"> Sing-up </md-button>
+        <md-button aria-label="Log-in" ng-click="showLogin($event)"> <i class="icon-lock"></i> Log-in </md-button>
+        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="" ng-if="hideSidebar">
             Toggle left
           </md-button>
     </span>
-</header>
+    </div>
+</md-toolbar>
