@@ -6,11 +6,15 @@ function authenticationHook($transitions) {
         }
     };
     $transitions.onBefore(activationMatch, function (transition) {
-        var authService = transition.injector().get('authService');
+        var AuthService = transition.injector().get('AuthService');
         var $state = transition.router.stateService;
-        if (!authService.isAuthenticated()) {
-            return $state.target('login', undefined, {location: false});
-        }
+        return AuthService.loadUser().then(function (user) {
+            if (user) {
+                return true;
+            } else {
+                return $state.target('login', undefined, {location: false});
+            }
+        });
     });
 }
 

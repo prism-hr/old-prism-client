@@ -17,8 +17,8 @@ var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
 var materialConfig = require('./app/configuration/material.config');
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
-var activationService = require('./app/unauthenticated/activity.service');
-var authService = require('./app/unauthenticated/auth.service');
+var ActivationService = require('./app/unauthenticated/activity.service');
+var AuthService = require('./app/unauthenticated/auth.service');
 
 require('./index.scss');
 
@@ -33,8 +33,8 @@ angular
     .config(routes)
     .config(generalConfig.restangular)
     .config(materialConfig)
-    .service('activationService', activationService)
-    .service('authService', authService)
+    .service('ActivationService', ActivationService)
+    .service('AuthService', AuthService)
     .run(authenticationHook)
     .run(generalConfig.generalRun)
     .component('welcome', welcome)

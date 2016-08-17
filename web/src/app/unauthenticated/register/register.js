@@ -5,14 +5,14 @@ module.exports = {
         action: '@',
         accessCode: '@'
     },
-    controller: function (Restangular, $state, activationService) {
+    controller: function (Restangular, $state, ActivationService) {
 
         this.submit = function (form) {
             if (!form.$valid) {
                 return;
             }
             this.activity.action = this.action;
-            activationService.putActivity(this.accessCode, this.activity)
+            ActivationService.putActivity(this.accessCode, this.activity)
                 .then(function () {
                     $state.go('login');
                 });
