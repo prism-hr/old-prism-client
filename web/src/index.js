@@ -13,6 +13,7 @@ require('satellizer');
 var welcome = require('./app/welcome/welcome');
 var register = require('./app/unauthenticated/register/register');
 var login = require('./app/unauthenticated/login/login');
+var header = require('./app/general/header');
 var activities = require('./app/activities/activities');
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
@@ -29,7 +30,7 @@ module.exports = app;
 var environment = require('./env.json')[ENVIRONMENT];
 
 angular
-    .module(app, ['ui.router', 'ngMessages', 'ngMaterial', 'restangular', 'vcRecaptcha', 'satellizer'])
+    .module(app, ['ui.router', 'ngMessages', 'ngMaterial', 'restangular', 'vcRecaptcha', 'satellizer', 'ngAnimate'])
     .constant('environment', environment)
     .config(routes)
     .config(generalConfig.restangular)
@@ -40,6 +41,7 @@ angular
     .run(authenticationHook)
     .run(generalConfig.generalRun)
     .component('welcome', welcome)
+    .component('header', header)
     .component('login', login)
     .component('register', register)
     .component('activities', activities);
