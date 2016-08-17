@@ -20,14 +20,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             },
             data: {hideHeaderFooter: true, hideSidebar: true},
             resolve: {
-                activity: function ($stateParams, activationService) {
-                    return $stateParams.accessCode && activationService.getActivity($stateParams.accessCode, $stateParams.action);
+                activity: function ($stateParams, ActivationService) {
+                    return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
                 }
             }
         })
         .state('login', {
             url: '/login',
-            template: '<login activity="activity" action="{{action}}" access-code="{{accessCode}}"></login>',
+            template: '<login activity="activity" action="{{action}}" returnTo="returnTo"></login>',
             controller: function ($scope, $stateParams, activity) {
                 $scope.activity = activity && activity.plain();
                 $scope.action = $stateParams.action;
@@ -35,9 +35,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             },
             data: {hideHeaderFooter: true, hideSidebar: true},
             resolve: {
-                activity: function ($stateParams, activationService) {
-                    return $stateParams.accessCode && activationService.getActivity($stateParams.accessCode, $stateParams.action);
-                }
+                activity: function ($stateParams, ActivationService) {
+                    return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
+                },
+                returnTo: returnTo
             }
         })
         .state('welcome', {
@@ -56,4 +57,26 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             }
 
         });
+
+    function returnTo($transition$) {
+        var redirectedFrom = $transition$.previous();
+        // The user was redirected to the login state (via the requiresAuth hook)
+        if (redirectedFrom != null) {
+            while (redirectedFrom.previous()) {
+                redirectedFrom = redirectedFrom.previous();
+            }
+            return {state: redirectedFrom.to(), params: redirectedFrom.params("to")};
+        }
+
+        // The user was not redirected to the login state; they directly activated the login state somehow.
+        // Return them to the state they came from.
+        var fromState = $transition$.from();
+        var fromParams = $transition$.params("from");
+
+        if (fromState.name !== '') {
+            return {state: fromState, params: fromParams};
+        }
+
+        return {state: 'welcome'};
+    }
 }
