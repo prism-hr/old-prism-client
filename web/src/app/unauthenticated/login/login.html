@@ -17,7 +17,7 @@
                     </md-button>
                 </div>
                 <div class="divider-or"><span>OR</span></div>
-                <ng-form novalidate name="loginForm">
+                <form novalidate name="loginForm" ng-submit="$ctrl.submit(loginForm)">
                     <div layout-gt-xs="row" class="index-padding">
                         <md-input-container class="md-block" flex-gt-xs>
                             <input placeholder="Email" name="email" ng-model="$ctrl.user.email" required type="email" ng-pattern="/^.+@.+\..+$/" >
@@ -37,9 +37,9 @@
                         </md-input-container>
                     </div>
                     <div layout="row" >
-                        <md-button  flex="100" class="md-warn md-raised" ng-click="$ctrl.submit(loginForm)">Submit</md-button>
+                        <md-button type="submit" flex="100" class="md-warn md-raised">Submit</md-button>
                     </div>
-                </ng-form>
+                </form>
             </div>
             <div class="create-account">
                 <h3 class="text-aline-center">Create an account</h3>

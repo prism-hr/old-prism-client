@@ -8,6 +8,7 @@ require('restangular');
 require('angular-ui-router');
 require('api-check');
 require('angular-recaptcha');
+require('satellizer');
 
 var welcome = require('./app/welcome/welcome');
 var register = require('./app/unauthenticated/register/register');
@@ -28,10 +29,11 @@ module.exports = app;
 var environment = require('./env.json')[ENVIRONMENT];
 
 angular
-    .module(app, ['ui.router', 'ngMessages', 'ngMaterial', 'restangular', 'vcRecaptcha'])
+    .module(app, ['ui.router', 'ngMessages', 'ngMaterial', 'restangular', 'vcRecaptcha', 'satellizer'])
     .constant('environment', environment)
     .config(routes)
     .config(generalConfig.restangular)
+    .config(generalConfig.satellizerConfig)
     .config(materialConfig)
     .service('ActivationService', ActivationService)
     .service('AuthService', AuthService)

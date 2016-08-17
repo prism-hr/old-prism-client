@@ -1,40 +1,48 @@
-function AuthService(Restangular, $http, $q) {
-    this.Restangular = Restangular;
+function AuthService($http, $q, $auth, Restangular) {
     this.$http = $http;
     this.$q = $q;
+    this.$auth = $auth;
+    this.Restangular = Restangular;
 }
 
 AuthService.prototype = {
-    authenticate: function (email, password) {
+    refreshTokenHeader: function () {
+        this.$http.defaults.headers.common['X-Auth-Token'] = localStorage.userToken;
+    },
+    authenticate: function (loginDetails) {
         var self = this;
         self.user = null;
-        return this.Restangular.one('public').all('login').post({email: email, password: password})
+        var authPromise;
+        if (loginDetails.provider) {
+            authPromise = this.$auth.authenticate(loginDetails.provider);
+        } else {
+            authPromise = this.Restangular.one('public').all('login').post(_.map(loginDetails, ['email', 'password']));
+        }
+        return authPromise
             .then(function (response) {
-                if (response.token) {
-                    localStorage.userToken = response.token;
-                    self.$http.defaults.headers.common['X-Auth-Token'] = response.token;
-                    return self.loadUser();
-                } else {
-                    console.log('Failed');
-                }
+                localStorage.userToken = response.token;
+                self.refreshTokenHeader();
+                return self.loadUser();
+            }, function (response) {
+                console.log(response);
             });
     },
     loadUser: function () {
         var self = this;
         if (!this.userPromise) {
-            this.userPromise = this.Restangular.one('user').one('activities').get()
-                .then(function () {
-                    self.user = {firstName: 'Dupa'};
-                    return self.user;
-                }, function (response) {
-                    if(response.status === 401) {
-                        return false;
-                    }
-                    throw Error('Couldn\'t load user');
-                });
+            this.userPromise = !localStorage.userToken ? self.$q.when(null) :
+                this.Restangular.one('user').get()
+                    .then(function (user) {
+                        self.user = {firstName: 'Dupa'};
+                        return self.user;
+                    }, function (response) {
+                        if (response.status === 401) {
+                            return false;
+                        }
+                        throw Error('Couldn\'t load user');
+                    });
         }
         return this.userPromise;
-
     }
 };
 

@@ -5,7 +5,7 @@ module.exports = {
         action: '@',
         accessCode: '@'
     },
-    controller: function (Restangular, $state, ActivationService) {
+    controller: function (Restangular, $state, ActivationService, AuthService) {
 
         this.submit = function (form) {
             if (!form.$valid) {
@@ -16,6 +16,10 @@ module.exports = {
                 .then(function () {
                     $state.go('login');
                 });
-        }
+        };
+
+        this.oauth = function (provider) {
+            AuthService.authenticate({provider: provider});
+        };
     }
 };
