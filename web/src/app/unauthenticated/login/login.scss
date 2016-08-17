@@ -1,0 +1,88 @@
+.loginPage {
+  background: white;
+  .logo {
+    margin:0 auto 10px;
+    width: 150px;
+    display: block;
+    img {
+      width:100%;
+    }
+  }
+  section {
+    .login, .create-account {
+      width: 360px;
+    }
+    .login {
+      padding-left: 10%;
+    }
+    .create-account {
+     padding-right: 10%;
+    }
+    margin-top:60px;
+    hgroup {
+      text-align: center;
+    }
+  }
+  .index-padding {
+    padding: 0 8px;
+  }
+  .text-content {
+    padding: 15px 10px 0;
+  }
+}
+.divider-or {
+  margin: 7px 8px 5px;
+  border-bottom: 1px solid #cccccc;
+  position: relative;
+  height: 16px;
+  text-align: center;
+  span {
+    padding: 0 10px;
+    margin-top: -8px;
+    background: white;
+    color: #cccccc;
+    font-family: 'lato';
+    font-size: 1.2rem;
+  }
+}
+.md-button.md-prism-theme.md-raised{
+  &.facebook {
+    background-color: $facebook-color;
+    color: white;
+    &:not([disabled]):hover {
+      background-color: #2A3F6C;
+    }
+  }
+  &.linkedin {
+    background-color: $linkedin-color;
+    color:white;
+    &:not([disabled]):hover {
+      background-color: #375988;
+    }
+  }
+}
+
+
+// MediaQ
+
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .loginPage {
+    section {
+      .login, .create-account {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+@media (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) {
+  .loginPage {
+    section {
+      .login, .create-account {
+        padding-left: 3%;
+        padding-right: 3%;
+      }
+    }
+  }
+}

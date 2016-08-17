@@ -1,0 +1,29 @@
+<ion-view title="University and Department" hide-nav-bar="true" id="page8" class=" ">
+    <ion-content padding="true" class="manual-ios-statusbar-padding">
+        <h3 id="universityAndDepartment-heading7" style="color:#000000;text-align:center;" class=" ">Welcome to PRiSM</h3>
+        <p id="universityAndDepartment-markdown5" style="color:#000000;" class=" ">To notify you about the best positions and events that suit your career we need to connect you to your university department before we can proceed</p>
+        <ion-list id="universityAndDepartment-list4" class=" ">
+            <label class="item item-input" modal-select ng-model="selectedUniversity" options="universities" modal-title="Universities" has-search="true">
+                <input type="text" placeholder="University" ng-model="selectedUniversity.name">
+                <div class="option">
+                  <div class="item item-avatar square">
+                    <img src="/img/{{option.img}}">
+                    <h2>{{option.name}}</h2>
+                    <p>{{option.location}}</p>
+                  </div>
+              </div>
+            </label>
+            <label class="item item-input " name="department" modal-select ng-model="selectedDepartment" options="departments" modal-title="Departments" has-search="true" ng-show="selectedUniversity">
+                <input type="text" placeholder="Department" ng-model="selectedDepartment.name">
+                <div class="option">
+                  <div class="item item-avatar square">
+                    <img src="/img/{{option.img}}">
+                    <h2>{{option.name}}</h2>
+                    <p>{{option.location}}</p>
+                  </div>
+                </div>
+            </label>
+        </ion-list>
+        <a ui-sref="profilePicture" id="universityAndDepartment-button17" class=" button button-assertive  button-block " ng-disabled="!selectedUniversity || !selectedDepartment">Confirm Department</a>
+    </ion-content>
+</ion-view>
