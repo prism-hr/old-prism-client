@@ -1,9 +1,9 @@
 /** @ngInject */
-function activationService(Restangular) {
+function ActivationService(Restangular) {
     this.Restangular = Restangular;
 }
 
-activationService.prototype = {
+ActivationService.prototype = {
     getActivity: function (accessCode) {
         return this.Restangular.one('public').one('user').one('activities', accessCode).get();
     },
@@ -13,5 +13,5 @@ activationService.prototype = {
     }
 };
 
-module.exports = activationService;
+module.exports = ActivationService;
 

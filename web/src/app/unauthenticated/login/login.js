@@ -2,9 +2,11 @@ module.exports = {
     templateUrl: 'app/unauthenticated/login/login.html',
     bindings: {
         activity: '<',
-        action: '@'
+        action: '@',
+        returnTo: '<'
     },
-    controller: function ($state, authService) {
+    controller: function ($state, AuthService) {
+        var self = this;
         this.activity = this.activity || {user: {}};
         this.user = this.activity.user;
 
@@ -12,9 +14,9 @@ module.exports = {
             if (!form.$valid) {
                 return;
             }
-            authService.authenticate(this.user.email, this.user.password)
+            AuthService.authenticate(this.user.email, this.user.password)
                 .then(function () {
-                    $state.go('activities');
+                    $state.go(self.returnTo.state, self.returnTo.params, { reload: true });
                 });
         }
     }
