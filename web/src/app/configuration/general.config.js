@@ -1,12 +1,24 @@
 module.exports = {
     restangular: restangularConfig,
+    satellizerConfig: satellizerConfig,
     generalRun: generalRun
 };
 
-/** @ngInject */
 function restangularConfig(RestangularProvider) {
     var host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
     RestangularProvider.setBaseUrl(host + '/prism/api');
+}
+
+function satellizerConfig($authProvider, environment) {
+    $authProvider.linkedin({
+        clientId: environment.oauth.linkedin,
+        requiredUrlParams: ['state', 'scope'],
+        scopePrefix: '',
+        scopeDelimiter: ''
+    });
+    $authProvider.facebook({
+        clientId: environment.oauth.facebook
+    });
 }
 
 function generalRun($rootScope, $transitions, $state, $http, AuthService) {
@@ -16,8 +28,6 @@ function generalRun($rootScope, $transitions, $state, $http, AuthService) {
     $rootScope.$state = $state;
 
     // keep user logged in after page refresh
-    if (localStorage.userToken) {
-        $http.defaults.headers.common['X-Auth-Token'] = localStorage.userToken;
-        AuthService.loadUser();
-    }
+    AuthService.refreshTokenHeader();
+    AuthService.loadUser();
 }

@@ -9,15 +9,15 @@
             <div class="register">
                 <h3 class="text-aline-center">Register</h3>
                 <div class="social-login" layout="row" layout-align="center">
-                    <md-button  flex="50" ng-click="onAuth({provider: 'linkedin'})" class="md-raised linkedin">
+                    <md-button  flex="50" ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
                         <i class="icon-social-linkedin"></i> linkedin
                     </md-button>
-                    <md-button  flex="50" ng-click="onAuth({provider: 'facebook'})" class="md-raised facebook">
+                    <md-button  flex="50" ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
                         <i class="icon-social-facebook"></i> facebook
                     </md-button>
                 </div>
                 <div class="divider-or"><span>OR</span></div>
-                <ng-form novalidate name="registerForm" ng-submit="$ctrl.submit(registerForm)">
+                <form novalidate name="registerForm" ng-submit="$ctrl.submit(registerForm)">
                     <div layout-gt-xs="row" class="index-padding">
                         <md-input-container class="md-block" flex-gt-xs>
                             <input placeholder="Email" name="email" ng-model="$ctrl.activity.user.email" required type="email" ng-pattern="/^.+@.+\..+$/" >
@@ -65,9 +65,9 @@
                     <!--</md-input-container>-->
                     <!--</div>-->
                     <div layout="row" >
-                        <md-button  flex="100" class="md-warn md-raised" ng-click="$ctrl.submit(registerForm)">Submit</md-button>
+                        <md-button flex="100" class="md-warn md-raised" type="submit">Submit</md-button>
                     </div>
-                </ng-form>
+                </form>
             </div>
         </div>
     </section>
