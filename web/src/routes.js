@@ -10,35 +10,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/404',
             templateUrl: 'app/404.html'
         })
-        .state('register', {
-            url: '/register?accessCode&action',
-            template: '<register activity="activity" action="{{action}}" access-code="{{accessCode}}"></register>',
+        .state('invited', {
+            url: '/invited?accessCode&action',
+            template: '<invited activity="activity"></invited>',
             controller: function ($scope, $stateParams, activity) {
-                $scope.activity = activity && activity.plain();
-                $scope.action = $stateParams.action;
-                $scope.accessCode = $stateParams.accessCode;
+                $scope.activity = activity.plain();
             },
-            data: {hideHeaderFooter: true, hideSidebar: true},
             resolve: {
                 activity: function ($stateParams, ActivationService) {
                     return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
                 }
-            }
-        })
-        .state('login', {
-            url: '/login',
-            template: '<login activity="activity" action="{{action}}" returnTo="returnTo"></login>',
-            controller: function ($scope, $stateParams, activity) {
-                $scope.activity = activity && activity.plain();
-                $scope.action = $stateParams.action;
-                $scope.accessCode = $stateParams.accessCode;
-            },
-            data: {hideHeaderFooter: true, hideSidebar: true},
-            resolve: {
-                activity: function ($stateParams, ActivationService) {
-                    return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
-                },
-                returnTo: returnTo
             }
         })
         .state('welcome', {
@@ -52,7 +33,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             data: {auth: true},
             resolve: {
                 activities: function (Restangular) {
-                    return Restangular.one('user', 'activities').get();
+                    return Restangular.one('user', 'activities').get({state: 'PENDING'});
                 }
             }
 
