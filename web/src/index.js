@@ -15,6 +15,7 @@ var welcome = require('./app/welcome/welcome');
 var register = require('./app/unauthenticated/register/register');
 var login = require('./app/unauthenticated/login/login');
 var header = require('./app/general/header');
+var mAppLoading = require('./app/general/mAppLoading');
 var activities = require('./app/activities/activities');
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
@@ -35,7 +36,7 @@ angular
     .constant('environment', environment)
     .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
-        cfpLoadingBarProvider.latencyThreshold = 1;
+        cfpLoadingBarProvider.latencyThreshold = 100;
     }])
     .config(routes)
     .config(generalConfig.restangular)
@@ -49,4 +50,6 @@ angular
     .component('header', header)
     .component('login', login)
     .component('register', register)
-    .component('activities', activities);
+    .component('activities', activities)
+    .directive('mAppLoading', mAppLoading);
+

@@ -9,6 +9,63 @@
 </head>
 
 <body>
+<div class="m-app-loading" ng-animate-children>
+    <style type="text/css">
+        div.m-app-loading {
+            position: relative;
+        }
+        div.m-app-loading div.animated-container {
+            background-color: #EA6651 ;
+            bottom: 0px ;
+            left: 0px ;
+            opacity: 1.0 ;
+            position: fixed ;
+            right: 0px ;
+            top: 0px ;
+            z-index: 999999 ;
+        }
+        /* Used to initialize the ng-leave animation state. */
+        div.m-app-loading div.animated-container.ng-leave {
+            opacity: 1.0 ;
+            transition: all linear 200ms ;
+            -webkit-transition: all linear 200ms ;
+        }
+        /* Used to set the end properties of the ng-leave animation state. */
+        div.m-app-loading div.animated-container.ng-leave-active {
+            opacity: 0 ;
+        }
+        div.m-app-loading div.messaging {
+            color: #FFFFFF ;
+            font-family: monospace ;
+            left: 0px ;
+            margin-top: -37px ;
+            position: absolute ;
+            right: 0px ;
+            text-align: center ;
+            top: 50% ;
+        }
+        div.m-app-loading h1 {
+            width: 150px;
+            line-height: 35px ;
+            margin: 0px auto 20px ;
+        }
+        div.m-app-loading p {
+            font-size: 18px ;
+            line-height: 14px ;
+            margin: 0px 0px 0px 0px ;
+        }
+    </style>
+    <div class="animated-container">
+        <div class="messaging">
+            <h1>
+                <img src="img/prism-white.svg" alt="PRiSM">
+            </h1>
+            <p>
+                Loading...
+            </p>
+        </div>
+    </div>
+</div>
 <div layout="row" layout-fill>
     <div flex layout="column">
         <header ng-if="!$state.current.data.hideHeaderFooter"></header>
