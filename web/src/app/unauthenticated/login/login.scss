@@ -70,21 +70,30 @@
 @media (max-width: $layout-breakpoint-xs - 1) {
   .loginPage {
     section {
-      .login, .create-account {
+      .login{
         width: 100%;
         padding-left: 0;
         padding-right: 0;
       }
     }
   }
+  .create-account {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 @media (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) {
   .loginPage {
     section {
-      .login, .create-account {
+      .login {
         padding-left: 3%;
         padding-right: 3%;
       }
     }
+  }
+  .create-account {
+    padding-left: 3%;
+    padding-right: 3%;
   }
 }
