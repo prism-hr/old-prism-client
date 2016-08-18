@@ -10,14 +10,12 @@
   }
   section {
     .login, .create-account {
-      width: 360px;
+      width: 400px;
     }
     .login {
       padding-left: 10%;
       padding-right: 10%;
     }
-    margin-top:10px;
-    margin-bottom:10px;
   }
   .index-padding {
     padding: 0 8px;
@@ -27,10 +25,10 @@
   }
 }
 .create-account {
-  width: 360px;
-  h3 {
-    margin-top:0;
-  }
+  width: 400px;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 15px;
 }
 .divider-or {
   margin: 7px 8px 5px;

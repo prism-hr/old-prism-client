@@ -10,13 +10,19 @@
     </md-toolbar>
     <md-dialog-content>
         <div class="md-dialog-content">
-            <div class="create-account">
-                <h3 class="text-aline-center hide-xs hide-sm">Create an account</h3>
-                <div layout="column" layout-align="space-between stretch">
-                    <md-button class="md-primary md-raised" ng-click="$ctrl.submit(registerFrom)" ui-sref="register">Student</md-button>
-                    <md-button class="md-warn md-raised" ng-click="$ctrl.submit(registerFrom)" ui-sref="register">Univeristy</md-button>
-                    <md-button class="md-accent md-hue-2 md-raised" ng-click="$ctrl.submit(registerFrom)" ui-sref="register">Employer</md-button>
-                </div>
+            <div layout="row" layout-align="center start" layout-fill layout-wrap>
+                <section flex-xs="100" flex="">
+                    <div layout-xs="column" layout-gt-xs="row" layout-align="space-around start" flex="">
+                        <div class="create-account">
+                            <h3 class="text-aline-center hide-xs hide-sm">Create an account</h3>
+                            <div layout="column" layout-align="space-between stretch">
+                                <md-button class="md-primary md-raised" ng-click="hide()" ui-sref="register">Student</md-button>
+                                <md-button class="md-warn md-raised" ng-click="hide()" ui-sref="register">Univeristy</md-button>
+                                <md-button class="md-accent md-hue-2 md-raised" ng-click="hide()" ui-sref="register">Employer</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </md-dialog-content>

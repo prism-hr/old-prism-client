@@ -26,6 +26,9 @@ module.exports = {
             $state.go('register');
         };
         function DialogController($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
             $scope.cancel = function() {
                 $mdDialog.cancel();
             };
