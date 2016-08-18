@@ -2,24 +2,27 @@ module.exports = {
     templateUrl: 'app/unauthenticated/register/register.html',
     bindings: {
         activity: '<',
-        action: '@',
-        accessCode: '@'
+        onSuccess: '&'
     },
-    controller: function (Restangular, $state, ActivationService, AuthService) {
+    controller: function (Restangular, $state, AuthService) {
+        var self = this;
+        this.user = this.activity.user;
 
         this.submit = function (form) {
             if (!form.$valid) {
                 return;
             }
-            this.activity.action = this.action;
-            ActivationService.putActivity(this.accessCode, this.activity)
+            AuthService.register(this.user)
                 .then(function () {
-                    $state.go('login');
+                    self.onSuccess();
                 });
         };
 
         this.oauth = function (provider) {
-            AuthService.authenticate({provider: provider});
+            AuthService.authenticate(provider)
+                .then(function () {
+                    self.onSuccess();
+                });
         };
     }
 };

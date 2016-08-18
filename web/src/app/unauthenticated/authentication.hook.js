@@ -12,7 +12,7 @@ function authenticationHook($transitions) {
             if (user) {
                 return true;
             } else {
-                return $state.target('login', undefined, {location: false});
+                return $state.target('welcome', undefined, {location: true});
             }
         });
     });
