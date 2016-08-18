@@ -11,18 +11,20 @@ require('api-check');
 require('angular-recaptcha');
 require('satellizer');
 
-var welcome = require('./app/welcome/welcome');
-var register = require('./app/unauthenticated/register/register');
-var login = require('./app/unauthenticated/login/login');
-var header = require('./app/general/header');
-var mAppLoading = require('./app/general/mAppLoading');
-var activities = require('./app/activities/activities');
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
 var materialConfig = require('./app/configuration/material.config');
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
+var mAppLoading = require('./app/general/mAppLoading');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
+var dialog = require('./app/general/dialog/dialog');
+var welcome = require('./app/welcome/welcome');
+var register = require('./app/unauthenticated/register/register');
+var login = require('./app/unauthenticated/login/login');
+var header = require('./app/general/header');
+var activities = require('./app/activities/activities');
+var invited = require('./app/unauthenticated/invited.component');
 
 require('./index.scss');
 
@@ -46,10 +48,12 @@ angular
     .service('AuthService', AuthService)
     .run(authenticationHook)
     .run(generalConfig.generalRun)
+    .component('prismDialog', dialog)
     .component('welcome', welcome)
     .component('header', header)
     .component('login', login)
     .component('register', register)
     .component('activities', activities)
+    .component('invited', invited)
     .directive('mAppLoading', mAppLoading);
 
