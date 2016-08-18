@@ -19,6 +19,7 @@ $simple-line-font-path        : "../node_modules/simple-line-icons/fonts/";
 @import "../node_modules/simple-line-icons/scss/simple-line-icons";
 
 @import "styles/general";
+@import "app/general/dialog/dialog";
 @import "app/general/header";
 @import "app/general/footer";
 

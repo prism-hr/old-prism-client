@@ -3,29 +3,39 @@ function AuthService($http, $q, $auth, Restangular) {
     this.$q = $q;
     this.$auth = $auth;
     this.Restangular = Restangular;
+    var self = this;
+
+    this.applyAuthentication = function (response) {
+        self.userPromise = null;
+        localStorage.userToken = response.token;
+        self.refreshTokenHeader();
+        return self.loadUser();
+    };
 }
 
 AuthService.prototype = {
     refreshTokenHeader: function () {
         this.$http.defaults.headers.common['X-Auth-Token'] = localStorage.userToken;
     },
-    authenticate: function (loginDetails) {
+    register: function (registerDetails) {
         var self = this;
-        self.user = null;
-        var authPromise;
-        if (loginDetails.provider) {
-            authPromise = this.$auth.authenticate(loginDetails.provider);
-        } else {
-            authPromise = this.Restangular.one('public').all('login').post(_.map(loginDetails, ['email', 'password']));
-        }
-        return authPromise
-            .then(function (response) {
-                localStorage.userToken = response.token;
-                self.refreshTokenHeader();
-                return self.loadUser();
-            }, function (response) {
-                console.log(response);
-            });
+        return this.Restangular.one('public').all('register').post(registerDetails)
+            .then(self.applyAuthentication);
+    },
+    login: function (loginDetails) {
+        var self = this;
+        return this.Restangular.one('public').all('login').post(loginDetails)
+            .then(self.applyAuthentication);
+    },
+    authenticate: function (provider) {
+        var self = this;
+        return this.$auth.authenticate(provider)
+            .then(self.applyAuthentication);
+    },
+    logout: function() {
+        this.user = null;
+        localStorage.userToken = null;
+        this.refreshTokenHeader();
     },
     loadUser: function () {
         var self = this;

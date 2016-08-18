@@ -20,9 +20,9 @@
                 <form novalidate name="registerForm" ng-submit="$ctrl.submit(registerForm)">
                     <div layout-gt-xs="row" class="index-padding">
                         <md-input-container class="md-block" flex-gt-xs>
-                            <input placeholder="Email" name="email" ng-model="$ctrl.activity.user.email" required type="email" ng-pattern="/^.+@.+\..+$/" >
-                            <div ng-messages="registerForm.email.$error" role="alert">
-                                <div ng-message-exp="['required', 'pattern']">
+                            <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
+                            <div ng-messages="registerForm.username.$error" role="alert">
+                                <div ng-message-exp="['required', 'email']">
                                     Your email must look like an e-mail address.
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div layout-gt-xs="row" class="index-padding">
                         <md-input-container class="md-block" flex-gt-xs>
-                            <input placeholder="Name" name="firstName" ng-model="$ctrl.activity.user.firstName" required>
+                            <input placeholder="Name" name="firstName" ng-model="$ctrl.user.firstName" required>
                             <div ng-messages="registerForm.firstName.$error" role="alert">
                                 <div ng-messages-include="my-custom-messages"></div>
                             </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div layout-gt-xs="row" class="index-padding">
                         <md-input-container class="md-block" flex-gt-xs>
-                            <input placeholder="Surname" name="lastName" ng-model="$ctrl.activity.user.lastName" required>
+                            <input placeholder="Surname" name="lastName" ng-model="$ctrl.user.lastName" required>
                             <div ng-messages="registerForm.lastName.$error" role="alert">
                                 <div ng-messages-include="my-custom-messages"></div>
                             </div>
@@ -46,7 +46,7 @@
                     </div>
                     <div layout-gt-xs="row" class="index-padding">
                         <md-input-container class="md-block" flex-gt-xs>
-                            <input placeholder="Password" name="password" ng-model="$ctrl.activity.user.password" required minlength="8" md-maxlength="15" type="password">
+                            <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required minlength="8" md-maxlength="15" type="password">
                             <div ng-messages="registerForm.password.$error" role="alert">
                                 <div ng-messages-include="my-custom-messages"></div>
                             </div>

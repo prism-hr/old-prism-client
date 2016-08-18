@@ -12,12 +12,14 @@ function restangularConfig(RestangularProvider) {
 function satellizerConfig($authProvider, environment) {
     $authProvider.linkedin({
         clientId: environment.oauth.linkedin,
+        url: 'prism/api/public/authenticate/linkedin',
         requiredUrlParams: ['state', 'scope'],
         scopePrefix: '',
         scopeDelimiter: ''
     });
     $authProvider.facebook({
-        clientId: environment.oauth.facebook
+        clientId: environment.oauth.facebook,
+        url: 'prism/api/public/authenticate/facebook'
     });
 }
 
