@@ -1,6 +1,7 @@
 var angular = require('angular');
 require('angular-animate');
 require('angular-aria');
+require('angular-loading-bar');
 require('angular-messages');
 require('angular-material');
 require('lodash');
@@ -30,8 +31,12 @@ module.exports = app;
 var environment = require('./env.json')[ENVIRONMENT];
 
 angular
-    .module(app, ['ui.router', 'ngMessages', 'ngMaterial', 'restangular', 'vcRecaptcha', 'satellizer', 'ngAnimate'])
+    .module(app, ['ui.router', 'ngMessages', 'ngMaterial', 'restangular', 'vcRecaptcha', 'satellizer', 'angular-loading-bar', 'ngAnimate'])
     .constant('environment', environment)
+    .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
+        cfpLoadingBarProvider.latencyThreshold = 1;
+    }])
     .config(routes)
     .config(generalConfig.restangular)
     .config(generalConfig.satellizerConfig)
