@@ -25,6 +25,7 @@ var login = require('./app/unauthenticated/login/login');
 var header = require('./app/general/header');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
+var employer = require('./app/unauthenticated/register/employer/employer');
 
 require('./index.scss');
 
@@ -53,6 +54,7 @@ angular
     .component('header', header)
     .component('login', login)
     .component('register', register)
+    .component('employer', employer)
     .component('activities', activities)
     .component('invited', invited)
     .directive('mAppLoading', mAppLoading);

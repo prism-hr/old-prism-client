@@ -1,0 +1,38 @@
+md-content.header-employer {
+
+  background-size: cover;
+  min-height: 250px;
+  h1 {
+    color: white;
+    margin-bottom:10px;
+  }
+  p {
+    color: white;
+  }
+  .icon {
+    display: block;
+    width: 160px;
+    float: left;
+    margin-right: 20px;
+    &.employer{
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+.profile-box {
+  min-height: 150px;
+  .avatar-holder {
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
