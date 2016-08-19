@@ -19,6 +19,7 @@ $simple-line-font-path        : "../node_modules/simple-line-icons/fonts/";
 @import "../node_modules/simple-line-icons/scss/simple-line-icons";
 
 @import "styles/general";
+@import "styles/loading-bar";
 @import "app/general/dialog/dialog";
 @import "styles/loading-bar";
 @import "app/general/header";
@@ -26,3 +27,4 @@ $simple-line-font-path        : "../node_modules/simple-line-icons/fonts/";
 
 @import "app/unauthenticated/login/login";
 @import "app/unauthenticated/register/register";
+@import "app/unauthenticated/register/employer/employer";

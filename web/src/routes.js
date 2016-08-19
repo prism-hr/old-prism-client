@@ -22,6 +22,21 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
                 }
             }
         })
+        .state('employer', {
+            url: '/employer?accessCode&action',
+            template: '<employer activity="activity" action="{{action}}" access-code="{{accessCode}}"></employer>',
+            controller: function ($scope, $stateParams, activity) {
+                $scope.activity = activity && activity.plain();
+                $scope.action = $stateParams.action;
+                $scope.accessCode = $stateParams.accessCode;
+            },
+            data: {hideSidebar: true},
+            resolve: {
+                activity: function ($stateParams, ActivationService) {
+                    return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
+                }
+            }
+        })
         .state('welcome', {
             url: '/',
             template: '<welcome></welcome>',
