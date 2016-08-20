@@ -7,3 +7,18 @@ header {
     }
   }
 }
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .nav-container {
+    .md-button {
+      margin: 6px 0px;
+      min-width: 50px;
+      min-height: 32px;
+      line-height:32px;
+    }
+  }
+  header .logo {
+    width: 80px;
+    height: 24px;
+    margin-top: 4px;
+  }
+}

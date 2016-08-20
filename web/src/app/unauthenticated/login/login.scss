@@ -1,35 +1,3 @@
-.loginPage {
-  background: white;
-  .logo {
-    margin:0 auto 10px;
-    width: 150px;
-    display: block;
-    img {
-      width:100%;
-    }
-  }
-  section {
-    .login, .create-account {
-      width: 400px;
-    }
-    .login {
-      padding-left: 10%;
-      padding-right: 10%;
-    }
-  }
-  .index-padding {
-    padding: 0 8px;
-  }
-  .text-content {
-    padding: 15px 10px 0;
-  }
-}
-.create-account {
-  width: 400px;
-  padding-left: 10%;
-  padding-right: 10%;
-  margin-bottom: 15px;
-}
 .divider-or {
   margin: 7px 8px 5px;
   border-bottom: 1px solid #cccccc;
@@ -59,39 +27,5 @@
     &:not([disabled]):hover {
       background-color: #375988;
     }
-  }
-}
-
-
-// MediaQ
-
-@media (max-width: $layout-breakpoint-xs - 1) {
-  .loginPage {
-    section {
-      .login{
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-  }
-  .create-account {
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-@media (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) {
-  .loginPage {
-    section {
-      .login {
-        padding-left: 3%;
-        padding-right: 3%;
-      }
-    }
-  }
-  .create-account {
-    padding-left: 3%;
-    padding-right: 3%;
   }
 }

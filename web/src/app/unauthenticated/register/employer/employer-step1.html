@@ -1,0 +1,99 @@
+<div class="page-wrap">
+    <div layout="column" ng-cloak class="md-inline-form">
+        <div class="header-employer" layout-padding layout="column" layout-gt-sm="row" layout-align-gt-sm="space-between center" layout-align="center center">
+            <div>
+                <h1>Welcome Employers & Recruiters</h1>
+                <p>Create a free advert to start using PRiSM.</p>
+            </div>
+            <div class="icon employer" ng-include="'img/employer-logo.html'"></div>
+        </div>
+        <div class="hr-divider"></div>
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" >
+            <div class="profile-box layout-padding" flex="30">
+                <h2>Profile</h2>
+                <div class="profile-holder">
+                    <div class="avatar-holder">
+                        <img src="img/2c09657.jpg">
+                    </div>
+                    <h3>Juan Mingo</h3>
+                </div>
+            </div>
+            <div flex="70" class="layout-padding">
+                <h2>Company Details</h2>
+                <form name="userForm">
+                    <div layout-xs="column" layout="row">
+                        <div class="lookup-organisation" flex="100"  flex-order="2" flex-gt-xs="70" flex-order-gt-xs="1" ng-if="!notFoundCompany">
+                            <place-autocomplete ng-model="company" placeholder="Company"></place-autocomplete>
+                            <div ng-if="company.name">
+                                <div class="google-institution">
+                                    <h3>{{company.name}}</h3>
+                                    <p class="address" ng-bind-html="company.address"></p>
+
+                                    <div class="part-of">
+                                        <div ng-if="data.foundInstitution.completionAction">
+                                            <div class="col-sm-12">
+                                                <h4>{{'SYSTEM_ADVERTISE_CLAIM' | translate}} {{data.foundInstitution.name}} {{'SYSTEM_ADVERTISE_YOUR_COMPANY' | translate}}</h4>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-primary btn-xs"><i class="icon-check"></i>
+                                                    This is me
+                                                </button>
+                                                <a class="btn btn-warning btn-xs pull-right" ng-click="declineInstitution()"><i
+                                                        class="icon-close"></i>
+                                                    This is not me
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div ng-if="!data.foundInstitution.completionAction">
+                                            <div class="col-sm-12">
+                                                <h4>{{'SYSTEM_ADVERTISE_MEMBER_OF' | translate}} {{data.foundInstitution.name}}?</h4>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <a class="btn btn-success btn-xs"
+                                                   ng-click="$root.requestUser(data.foundInstitution, 'VIEWER')">
+                                                    <i class="icon-user"></i>
+                                                    {{'SYSTEM_OPPORTUNITIES_JOIN_STAFF' | translate}}
+                                                </a>
+                                                <button class="btn btn-warning btn-xs pull-right" ng-click="declineInstitution()"><i
+                                                        class="icon-close"></i>
+                                                    {{'SYSTEM_ADVERTISE_NOT_ME' | translate}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div flex="100" flex-order="1" flex-gt-xs="30" flex-order-gt-xs="2">
+                            <div class="layout-padding">
+                                <div class="logo-flex company-logo">
+                                    <div class="logo">
+                                        <img src="img/UCL-Engineering-logo.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div flex="100" flex-order="2" flex-gt-xs="70" flex-order-gt-xs="1" ng-if="notFoundCompany">
+                            <md-input-container class="md-block" flex-gt-xs>
+                                <label>Company Name</label>
+                                <input ng-model="employer.company-name" required>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Company Summary</label>
+                                <textarea ng-model="employer.summary" md-maxlength="150" rows="2" required></textarea>
+                            </md-input-container>
+                            <p>Category: <span class="radioValue">{{ data.group1 }}</span> </p>
+                            <md-radio-group ng-required="true" ng-model="data.group1">
+                                <md-radio-button value="employer" class="md-primary" checked="checked"  ng-checked="true">Employer</md-radio-button>
+                                <md-radio-button value="recruiter" class="md-primary"> Recruiter </md-radio-button>
+                                <md-radio-button value="department" class="md-primary">Department</md-radio-button>
+                                <md-radio-button value="career" class="md-primary">Career Services</md-radio-button>
+                            </md-radio-group>
+                            <hr />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

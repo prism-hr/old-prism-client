@@ -12,14 +12,8 @@
         <div class="md-dialog-content">
             <div layout="row" layout-align="center start" layout-fill layout-wrap>
                 <section flex-xs="100" flex="">
-                    <div layout-xs="column" layout-gt-xs="row" layout-align="space-around start" flex="">
-                        <div>
-                            <h3 class="text-aline-center hide-xs hide-sm">{{$ctrl.title}}</h3>
-
-                            <div ng-transclude></div>
-
-                        </div>
-                    </div>
+                    <h3 class="text-aline-center hide-xs hide-sm">{{$ctrl.title}}</h3>
+                    <div ng-transclude class="dialog-content"></div>
                 </section>
             </div>
         </div>
