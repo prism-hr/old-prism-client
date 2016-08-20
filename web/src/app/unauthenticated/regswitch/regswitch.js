@@ -1,9 +1,6 @@
 module.exports = {
-    transclude: true,
-    templateUrl: 'app/general/dialog/dialog.html',
-    bindings: {
-        title: '@'
-    },
+    transclude:true,
+    templateUrl: 'app/unauthenticated/regswitch/regswitch.html',
     controller: function ($scope, $mdDialog) {
         $scope.hide = function() {
             $mdDialog.hide();

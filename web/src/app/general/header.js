@@ -17,7 +17,7 @@ module.exports = {
         $scope.showRegister = function(ev) {
             $mdDialog.show({
                 controller: DialogController,
-                templateUrl: 'app/unauthenticated/register-switch/register-switch.html',
+                template: '<prism-dialog title="Create Account"><regswitch></regswitch></prism-dialog>',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true,
@@ -41,5 +41,6 @@ module.exports = {
                         $state.go('activities');
                     });
             };
-        }    }
+        }
+    }
 };

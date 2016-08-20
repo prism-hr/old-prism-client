@@ -16,16 +16,19 @@ var generalConfig = require('./app/configuration/general.config');
 var materialConfig = require('./app/configuration/material.config');
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
 var mAppLoading = require('./app/general/mAppLoading');
+var placeAutocomplete = require('./app/general/place-autocomplete');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
 var dialog = require('./app/general/dialog/dialog');
 var welcome = require('./app/welcome/welcome');
 var register = require('./app/unauthenticated/register/register');
+var regswitch = require('./app/unauthenticated/regswitch/regswitch');
 var login = require('./app/unauthenticated/login/login');
 var header = require('./app/general/header');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
 var employer = require('./app/unauthenticated/register/employer/employer');
+var employerStep1 = require('./app/unauthenticated/register/employer/employer-step1');
 
 require('./index.scss');
 
@@ -54,8 +57,11 @@ angular
     .component('header', header)
     .component('login', login)
     .component('register', register)
+    .component('regswitch', regswitch)
     .component('employer', employer)
+    .component('employerStep1', employerStep1)
     .component('activities', activities)
     .component('invited', invited)
-    .directive('mAppLoading', mAppLoading);
+    .directive('mAppLoading', mAppLoading)
+    .directive('placeAutocomplete', placeAutocomplete);
 

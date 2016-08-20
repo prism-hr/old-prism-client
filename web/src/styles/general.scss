@@ -1,6 +1,7 @@
 h1, h2, h3, h4, h5, h6 {
   color: $uclred;
   font-weight:400;
+  margin: 0;
 }
 .md-toolbar-tools {
   h1, h2, h3, h4, h5, h6 {
@@ -28,7 +29,18 @@ md-input-container {
 md-dialog .md-dialog-content {
   padding: 10px;
 }
+.layout-padding > * {
+  padding: 0;
+}
+.hr-divider {
+  margin-top:20px;
+  margin-bottom:10px;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(87, 172, 213, 0), rgba(170, 170, 170, 1), rgba(87, 172, 213, 0));
+}
 
+//
 
 // Animations for view
 
@@ -45,4 +57,53 @@ md-dialog .md-dialog-content {
 
 .fade-animation.ng-leave.ng-leave-active, .fade-animation.ng-enter {
   opacity:0;
+}
+.logo-flex {
+  background: #ffffff;
+  display: flex;
+  border-radius: 1px;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  height: 125px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  .logo {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+    img {
+      max-height: 121px;
+      max-width: 176px;
+      position: relative;
+      vertical-align: middle;
+    }
+  }
+}
+
+#place-autocomplete > md-autocomplete md-input-container {
+  margin-top: -10px;
+}
+// Responsive
+@media (max-width: $layout-breakpoint-xs - 1) {
+  #place-autocomplete > md-autocomplete md-input-container {
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) {
+
+}
+@media (min-width: $layout-breakpoint-sm) and (max-width: $layout-breakpoint-md - 1) {
+
+}
+@media (min-width: $layout-breakpoint-md) and (max-width: $layout-breakpoint-lg - 1) {
+  .page-wrap {
+    max-width: 1310px;
+    margin: auto;
+  }
+}
+@media (min-width: $layout-breakpoint-lg) {
+
 }
