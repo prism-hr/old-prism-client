@@ -1,20 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300,400italic,700,900);
 
-$font-family: 'Lato' !default;
-$uclblue: #57ACD5 ;
-$uclblue2: #57BBD5;
-$uclgreen: #35C2A3 ;
-$uclred:#EA6651 ;
-$uclfooter: #5A5D6F;
-
-$employmentColor: #f0ad4e;
-
-$facebook-color: #3b5998;
-$linkedin-color: #4875B4;
-
-$font-size: 1.6rem !default;
-
-$button-border-radius:1.5px !default;
+@import "styles/variables";
 
 @import "../node_modules/angular-material/angular-material";
 

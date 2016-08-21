@@ -1,9 +1,18 @@
 // Intro
 .step-page {
+  &.child {
+    .left-side-block .header{
+      margin-bottom:0;
+    }
+  }
   .left-side-block {
     padding: 60px 40px;
     .header {
       margin-bottom:40px;
+    }
+    h4 {
+      color: $uclfooter;
+      font-weight:900;
     }
   }
   .step {
@@ -18,12 +27,6 @@
     p {
       margin-top: 4px;
       margin-bottom:10px;
-    }
-    .md-button {
-      min-height:42px;
-      line-height:42px;
-      padding: 0 20px;
-      font-weight: 900 !important;
     }
     > div {
       position: relative;
@@ -49,6 +52,9 @@
   .right-side-block {
 
   }
+}
+.action-block {
+  margin-top:20px;
 }
 .custom-icon {
   display: block;
@@ -160,8 +166,7 @@ div.header-employer {
       margin-left: 10px;
     }
     h4{
-      margin-top: 0;
-      font-size: 1.8rem;
+
     }
   }
   h3 {
@@ -177,5 +182,8 @@ div.header-employer {
       padding: 0.4em 0.6em 0.3em;
       float: right;
     }
+  }
+  .button-group {
+    margin: 10px -8px -6px;
   }
 }

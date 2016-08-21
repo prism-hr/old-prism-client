@@ -23,6 +23,23 @@ ui-view {
 .text-aline-center {
   text-align: center;
 }
+.md-button.small {
+  min-height: 28px;
+  line-height:28px;
+  font-size:12px;
+}
+.md-button.big {
+  min-height:42px;
+  line-height:42px;
+  padding: 0 20px;
+  font-weight: 900 !important;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
 md-input-container {
   margin: 18px 0 0;
 }
@@ -39,7 +56,8 @@ md-dialog .md-dialog-content {
   height: 1px;
   background-image: linear-gradient(to right, rgba(87, 172, 213, 0), rgba(170, 170, 170, 1), rgba(87, 172, 213, 0));
 }
-
+.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+.clearfix:after{clear:both;}
 //
 
 // Animations for view
@@ -82,9 +100,6 @@ md-dialog .md-dialog-content {
   }
 }
 
-#place-autocomplete > md-autocomplete md-input-container {
-  margin-top: -10px;
-}
 // Responsive
 @media (max-width: $layout-breakpoint-xs - 1) {
   #place-autocomplete > md-autocomplete md-input-container {
