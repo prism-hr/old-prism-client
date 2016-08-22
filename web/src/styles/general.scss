@@ -62,6 +62,14 @@ md-dialog .md-dialog-content {
   height: 1px;
   background-image: linear-gradient(to right, rgba(87, 172, 213, 0), rgba(170, 170, 170, 1), rgba(87, 172, 213, 0));
 }
+md-radio-group {
+  md-radio-button {
+    .md-label {
+      margin-left:24px;
+    }
+    margin-right:12px;
+  }
+}
 .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
 .clearfix:after{clear:both;}
 //

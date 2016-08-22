@@ -58,9 +58,12 @@
                             <div layout-padding>
                                 <md-input-container class="md-block" flex-gt-xs>
                                     <label>Company Telephone</label>
-                                    <input ng-model="employer.companyName" required>
+                                    <input name="phone" ng-model="employer.phone" required>
+                                    <div ng-messages="companyForm.phone.$error" role="alert">
+                                        <div ng-messages-include="my-custom-messages"></div>
+                                    </div>
                                 </md-input-container>
-                                <md-radio-group ng-required="true" ng-model="data.group1">
+                                <md-radio-group name="type" ng-required="true" ng-model="data.group1">
                                     <md-radio-button value="employer" class="md-primary" checked="checked"  ng-checked="true">Employer</md-radio-button>
                                     <md-radio-button value="recruiter" class="md-primary"> Recruiter </md-radio-button>
                                     <md-radio-button value="department" class="md-primary">Department</md-radio-button>
@@ -78,12 +81,13 @@
                     </div>
                     <md-input-container class="md-block">
                         <label>Company Summary</label>
-                        <textarea ng-model="employer.summary" md-maxlength="150" rows="2" required></textarea>
+                        <textarea ng-model="employer.summary" md-maxlength="140" rows="2" required></textarea>
                     </md-input-container>
                 </div>
             </div>
         </div>
-        <div class="action-block">
+        <div class="action-block" layout="row" layout-align="space-between none">
+            <md-button class="md-raised md-button md-ink-ripple big">< Back</md-button>
             <md-button class="md-primary md-raised big">Continue</md-button>
         </div>
     </form>

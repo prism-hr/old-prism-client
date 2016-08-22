@@ -12,6 +12,10 @@
     padding: 60px 40px;
     .header {
       margin-bottom:40px;
+      h3 {
+        margin-top:4px;
+        color: rgba(0,0,0,0.87);
+      }
     }
     .manual-entering {
       margin-top: -15px;
@@ -42,7 +46,7 @@
       .icon-holder {
         position: absolute;
         right: 35px;
-        top: 35px;
+        top: 15px;
         i {
           font-size: 50px;
           &.icon-check {
@@ -61,9 +65,9 @@
   .right-side-block {
 
   }
-}
-.action-block {
-  margin-top:20px;
+  .action-block{
+    padding: 60px 40px;
+  }
 }
 .custom-icon {
   display: block;
@@ -80,21 +84,31 @@
         stroke: transparent;
       }
     }
-
+  }
+  &.university {
+    svg {
+      line, path, polygon, polyline, g {
+        stroke: $uclgreen;
+      }
+      g path, g rect {
+        fill: $uclgreen;
+        stroke: transparent;
+      }
+    }
+  }
+  &.student {
+    svg {
+      line, path, polygon, polyline, g, rect, circle {
+        stroke: $uclblue;
+      }
+      g path, g circle, g rect {
+        fill: $uclblue;
+        stroke: transparent;
+      }
+    }
   }
 }
 // step 1
-div.header-employer {
-  margin-top:20px;
-  background-size: cover;
-  min-height: 200px;
-  h1 {
-    margin-bottom:10px;
-  }
-  p {
-    color: $uclred;
-  }
-}
 .profile-box {
   .profile-holder {
     background: white;
@@ -204,7 +218,7 @@ div.header-employer {
 
 @media (max-width: $layout-breakpoint-xs - 1) {
   .step-page {
-    .left-side-block{
+    .left-side-block, .action-block{
       padding: 20px;
     }
     &.child {
