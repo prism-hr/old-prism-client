@@ -11,6 +11,7 @@
     "api-check": "^7.5.5",
     "http-proxy-middleware": "^0.17.0",
     "lodash": "^4.14.2",
+    "ng-file-upload": "^12.0.4",
     "restangular": "^1.5.2",
     "satellizer": "^0.15.4",
     "simple-line-icons": "^2.3.2"

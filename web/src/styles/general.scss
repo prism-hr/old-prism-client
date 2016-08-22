@@ -34,6 +34,12 @@ ui-view {
   padding: 0 20px;
   font-weight: 900 !important;
 }
+.documents {
+  margin-bottom:10px;
+  .md-button {
+    margin-bottom:20px;
+  }
+}
 .pull-right {
   float: right;
 }
