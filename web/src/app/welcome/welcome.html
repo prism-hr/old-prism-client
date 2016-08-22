@@ -1,8 +1,73 @@
 <div class="page-wrap">
-    <section class="hero"  layout-align="space-around center">
-        <div class="text-aline-center">
-            <h1>Welcome to Prism</h1>
-            <h2>The personal careers services</h2>
+    <section class="hero" layout-align="space-around center">
+        <div class="splash-container">
+            <h1 class="strap-line">
+                THE MARKETPLACE FOR <br/><b>STUDENT</b> AND <b>GRADUATE</b> CAREERS
+            </h1>
+            <div class="splash-box-container">
+                <div layout="row" layout-align="space-around center">
+                    <div class="box-item student">
+                        <div class="box-content">
+                            <div class="box-icon">
+                                <span>
+                                    <div class="custom-icon student"
+                                         ng-include="'img/student-logo.html'"></div>
+                                </span>
+                            </div>
+                            <h2>STUDENTS & GRADUATES</h2>
+                            <div class="md-button-group">
+                                <md-button class="md-primary md-raised big"
+                                           ui-sref="student">
+                                    <i class="icon-user"></i> Join
+                                </md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-item university">
+                        <div class="box-arrow left"></div>
+                        <div class="box-content">
+                            <div class="box-icon">
+                                <span>
+                                    <div class="custom-icon university"
+                                         ng-include="'img/uni-logo.html'"></div>
+                                </span>
+                            </div>
+                            <h2>UNIVERSITIES & COLLEGES</h2>
+                            <div class="md-button-group">
+                                <md-button class="md-accent md-hue-2 md-raised big"
+                                           ui-sref="university">
+                                    <i class="icon-user"></i> Join
+                                </md-button>
+                            </div>
+                        </div>
+                        <div class="box-arrow right"></div>
+                    </div>
+                    <div class="box-item employer">
+                        <div class="box-content">
+                            <div class="box-icon">
+                        <span>
+                            <div class="custom-icon employer"
+                                 ng-include="'img/employer-logo.html'"></div>
+                        </span>
+                            </div>
+                            <h2>EMPLOYERS & RECRUITERS</h2>
+                            <div class="md-button-group">
+                                <md-button class="md-warn md-raised big"
+                                           ui-sref="university">
+                                    <i class="icon-plus"></i> Advertise
+                                </md-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="register-mobile-box hide-md hide-lg hide-sm">
+                <md-button class="md-warn md-raised big"
+                           ng-click="showRegister($event)">
+                    Register now
+                </md-button>
+            </div>
         </div>
+
     </section>
 </div>

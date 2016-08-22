@@ -63,17 +63,18 @@
     }
   }
   .right-side-block {
-
+    .custom-icon {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: auto;
+    }
   }
   .action-block{
     padding: 60px 40px;
   }
 }
 .custom-icon {
-  display: block;
-  width: 100%;
-  max-width: 200px;
-  margin: auto;
   &.employer{
     svg {
       line, path, polygon, polyline, g ,circle{
