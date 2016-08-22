@@ -1,15 +1,15 @@
-<div class="social-login" layout="row" layout-align="center">
-    <md-button flex="50" ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
+<div class="social-login md-button-group" layout="row" layout-align="center">
+    <md-button ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
         <i class="icon-social-linkedin"></i> linkedin
     </md-button>
-    <md-button flex="50" ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
+    <md-button ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
         <i class="icon-social-facebook"></i> facebook
     </md-button>
 </div>
 <div class="divider-or"><span>OR</span></div>
 <form novalidate name="loginForm" ng-submit="$ctrl.submit(loginForm)">
-    <div layout-gt-xs="row" class="index-padding">
-        <md-input-container class="md-block" flex-gt-xs>
+    <div class="index-padding">
+        <md-input-container class="md-block">
             <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
             <div ng-messages="loginForm.username.$error" role="alert">
                 <div ng-message-exp="['required', 'email']">
@@ -18,8 +18,8 @@
             </div>
         </md-input-container>
     </div>
-    <div layout-gt-xs="row" class="index-padding">
-        <md-input-container class="md-block" flex-gt-xs>
+    <div class="index-padding">
+        <md-input-container class="md-block">
             <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required type="password">
             <div ng-messages="loginForm.password.$error" role="alert">
                 <div ng-messages-include="my-custom-messages"></div>

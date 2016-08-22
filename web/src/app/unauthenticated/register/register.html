@@ -8,18 +8,18 @@
         <div layout-xs="column" layout-gt-xs="row" layout-align="space-around start" flex="">
             <div class="register">
                 <h3 class="text-aline-center">Register</h3>
-                <div class="social-login" layout="row" layout-align="center">
-                    <md-button  flex="50" ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
+                <div class="social-login  md-button-group" layout="row" layout-align="center">
+                    <md-button  ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
                         <i class="icon-social-linkedin"></i> linkedin
                     </md-button>
-                    <md-button  flex="50" ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
+                    <md-button  ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
                         <i class="icon-social-facebook"></i> facebook
                     </md-button>
                 </div>
                 <div class="divider-or"><span>OR</span></div>
                 <form novalidate name="registerForm" ng-submit="$ctrl.submit(registerForm)">
-                    <div layout-gt-xs="row" class="index-padding">
-                        <md-input-container class="md-block" flex-gt-xs>
+                    <div class="index-padding">
+                        <md-input-container class="md-block">
                             <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
                             <div ng-messages="registerForm.username.$error" role="alert">
                                 <div ng-message-exp="['required', 'email']">
@@ -27,25 +27,19 @@
                                 </div>
                             </div>
                         </md-input-container>
-                    </div>
-                    <div layout-gt-xs="row" class="index-padding">
-                        <md-input-container class="md-block" flex-gt-xs>
+                        <md-input-container class="md-block">
                             <input placeholder="Name" name="firstName" ng-model="$ctrl.user.firstName" required>
                             <div ng-messages="registerForm.firstName.$error" role="alert">
                                 <div ng-messages-include="my-custom-messages"></div>
                             </div>
                         </md-input-container>
-                    </div>
-                    <div layout-gt-xs="row" class="index-padding">
-                        <md-input-container class="md-block" flex-gt-xs>
+                        <md-input-container class="md-block">
                             <input placeholder="Surname" name="lastName" ng-model="$ctrl.user.lastName" required>
                             <div ng-messages="registerForm.lastName.$error" role="alert">
                                 <div ng-messages-include="my-custom-messages"></div>
                             </div>
                         </md-input-container>
-                    </div>
-                    <div layout-gt-xs="row" class="index-padding">
-                        <md-input-container class="md-block" flex-gt-xs>
+                        <md-input-container class="md-block">
                             <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required minlength="8" md-maxlength="15" type="password">
                             <div ng-messages="registerForm.password.$error" role="alert">
                                 <div ng-messages-include="my-custom-messages"></div>
@@ -64,9 +58,7 @@
                     <!--</div>-->
                     <!--</md-input-container>-->
                     <!--</div>-->
-                    <div layout="row" >
-                        <md-button flex="100" class="md-warn md-raised" type="submit">Submit</md-button>
-                    </div>
+                    <md-button flex="100" class="md-warn md-raised" type="submit">Submit</md-button>
                 </form>
             </div>
         </div>

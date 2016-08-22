@@ -46,7 +46,7 @@
                         </div>
                         <div flex="100" ng-if="$ctrl.notFoundCompany" class="manual-entering">
                             <div layout-padding>
-                                <md-input-container class="md-block" flex-gt-xs>
+                                <md-input-container class="md-block">
                                     <label>Company Name</label>
                                     <input name="companyName" ng-model="employer.companyName" required>
                                     <div  ng-messages="companyForm.companyName.$error" role="alert">
@@ -56,7 +56,7 @@
                             </div>
                             <md-button ng-click="$ctrl.cannotFindCompany(false)" class="md-warn md-raised small">Look up company</md-button>
                             <div layout-padding>
-                                <md-input-container class="md-block" flex-gt-xs>
+                                <md-input-container class="md-block">
                                     <label>Company Telephone</label>
                                     <input name="phone" ng-model="employer.phone" required>
                                     <div ng-messages="companyForm.phone.$error" role="alert">
