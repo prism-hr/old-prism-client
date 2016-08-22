@@ -25,22 +25,22 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('employer', {
             url: '/employer',
             template: '<employer></employer>',
-            data: {hideSidebar: true},
+            data: {hideSidebar: true}
         })
         .state('employer-step1', {
             url: '/employer/step1',
-            template: '<employer-step1 activity="activity" action="{{action}}" access-code="{{accessCode}}"></employer-step1>',
-            data: {hideSidebar: true},
+            template: '<employer-step1></employer-step1>',
+            data: {hideSidebar: true}
         })
         .state('university', {
             url: '/university',
             template: '<university></university>',
-            data: {hideSidebar: true},
+            data: {hideSidebar: true}
         })
         .state('student', {
             url: '/student',
             template: '<student></student>',
-            data: {hideSidebar: true},
+            data: {hideSidebar: true}
         })
         .state('welcome', {
             url: '/',
