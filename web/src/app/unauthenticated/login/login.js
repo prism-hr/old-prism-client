@@ -17,6 +17,13 @@ module.exports = {
                 .then(function () {
                     self.onSuccess();
                 });
-        }
+        };
+
+        this.oauth = function (provider) {
+            AuthService.authenticate(provider)
+                .then(function () {
+                    self.onSuccess();
+                });
+        };
     }
 };

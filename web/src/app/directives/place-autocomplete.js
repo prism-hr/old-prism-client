@@ -1,6 +1,6 @@
 module.exports = function () {
     return {
-        templateUrl: 'app/general/directives/place-autocomplete.html',
+        templateUrl: 'app/directives/place-autocomplete.html',
         restrict: 'E',
         replace: true,
         scope: {

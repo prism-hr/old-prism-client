@@ -1,6 +1,6 @@
 module.exports = function () {
     return{
-        templateUrl: 'app/general/directives/client-file-upload.html',
+        templateUrl: 'app/directives/file-upload.html',
         require: 'ngModel',
         restrict: "E",
         scope: {
