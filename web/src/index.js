@@ -5,6 +5,7 @@ require('angular-loading-bar');
 require('angular-messages');
 require('angular-material');
 require('lodash');
+require('ng-file-upload');
 require('restangular');
 require('angular-ui-router');
 require('api-check');
@@ -15,11 +16,14 @@ var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
 var materialConfig = require('./app/configuration/material.config');
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
-var mAppLoading = require('./app/general/mAppLoading');
-var placeAutocomplete = require('./app/general/place-autocomplete');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
 var dialog = require('./app/general/dialog/dialog');
+// Directives
+var mAppLoading = require('./app/general/directives/mAppLoading');
+var placeAutocomplete = require('./app/general/directives/place-autocomplete');
+var clientFileUpload = require('./app/general/directives/client-file-upload');
+// Pages
 var welcome = require('./app/welcome/welcome');
 var register = require('./app/unauthenticated/register/register');
 var regswitch = require('./app/unauthenticated/regswitch/regswitch');
@@ -38,7 +42,17 @@ module.exports = app;
 var environment = require('./env.json')[ENVIRONMENT];
 
 angular
-    .module(app, ['ui.router', 'ngMessages', 'ngMaterial', 'restangular', 'vcRecaptcha', 'satellizer', 'angular-loading-bar', 'ngAnimate'])
+    .module(app, [
+        'ui.router',
+        'ngMessages',
+        'ngMaterial',
+        'restangular',
+        'vcRecaptcha',
+        'ngFileUpload',
+        'satellizer',
+        'angular-loading-bar',
+        'ngAnimate'
+    ])
     .constant('environment', environment)
     .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
@@ -63,5 +77,6 @@ angular
     .component('activities', activities)
     .component('invited', invited)
     .directive('mAppLoading', mAppLoading)
-    .directive('placeAutocomplete', placeAutocomplete);
+    .directive('placeAutocomplete', placeAutocomplete)
+    .directive('clientFileUpload', clientFileUpload);
 

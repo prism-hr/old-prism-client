@@ -2,13 +2,22 @@
 .step-page {
   &.child {
     .left-side-block .header{
-      margin-bottom:0;
+      margin-bottom:26px;
+    }
+    .right-side-block {
+      padding: 60px 40px 0 0;
     }
   }
   .left-side-block {
     padding: 60px 40px;
     .header {
       margin-bottom:40px;
+    }
+    .manual-entering {
+      margin-top: -15px;
+      .md-button.md-warn {
+        margin-top:-5px;
+      }
     }
     h4 {
       color: $uclfooter;
@@ -75,9 +84,6 @@
   }
 }
 // step 1
-.company-logo {
-  margin-top:-20px;
-}
 div.header-employer {
   margin-top:20px;
   background-size: cover;
@@ -115,6 +121,13 @@ div.header-employer {
   padding: 15px;
   border-radius: 2px;
   border: 1px dashed $employmentColor;
+  position: relative;
+  .phone {
+    position: absolute;
+    right: 15px;
+    font-size: 12px;
+    top: 45px;
+  }
   &.no-name {
     background: none;
     border: none;
@@ -185,5 +198,19 @@ div.header-employer {
   }
   .button-group {
     margin: 10px -8px -6px;
+  }
+}
+// MediaQ
+
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .step-page {
+    .left-side-block{
+      padding: 20px;
+    }
+    &.child {
+      .left-side-block, .right-side-block {
+        padding: 20px;
+      }
+    }
   }
 }

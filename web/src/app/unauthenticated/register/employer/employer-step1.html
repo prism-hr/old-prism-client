@@ -1,98 +1,90 @@
 <div class="page-wrap step-page child">
-    <div layout="row" layout-align="center center" ng-cloak>
-        <div flex="60" flex-xs="100" class="left-side-block" layout="column" layout-align="center stretch">
-            <div class="header" layout-padding>
-                <h4>STEP 1</h4>
-                <h1>Company Information</h1>
-                <p>Initial basic information about your company</p>
-            </div>
-            <form name="userForm" class="md-inline-form">
-                <div layout-xs="column" layout="row">
-                    <div class="lookup-organisation" flex="100" ng-if="!notFoundCompany">
-                        <place-autocomplete ng-model="company" placeholder="Company" layout-padding></place-autocomplete>
-                        <md-button ng-click="cannotFindCompany(true)" class="md-warn md-raised small">I cannot find my company</md-button>
-                        <div ng-if="company.name" layout-padding>
-                            <div class="google-institution">
-                                <h3>{{company.name}}</h3>
-                                <p class="address" ng-bind-html="company.address"></p>
-                                <div class="part-of">
-                                    <div ng-if="data.foundInstitution.completionAction">
-                                        <h4>Claim {{company.name}} as your company</h4>
-                                        <div class="clearfix button-group">
-                                            <md-button class="pull-left md-primary md-raised small" ng-click="$root.requestUser(data.foundInstitution, 'VIEWER')">
-                                                <i class="icon-check"></i> This is me
-                                            </md-button>
-                                            <md-button  class="pull-right md-warn md-raised small"  ng-click="declineInstitution()">
-                                                <i class="icon-close"></i> This is not me
-                                            </md-button>
+    <form name="companyForm" class="md-inline-form">
+        <div layout="column" layout-gt-xs="row" layout-align-gt-xs="center start" ng-cloak>
+            <div flex="100" flex-gt-xs="65" class="left-side-block" layout="column" layout-align="center stretch">
+                <div class="header" layout-padding>
+                    <h4>STEP 1</h4>
+                    <h1>Company Information</h1>
+                    <p>Initial basic information about your company</p>
+                </div>
+                <div>
+                    <div layout-xs="column" layout="row">
+                        <div class="lookup-organisation" flex="100" ng-if="!notFoundCompany">
+                            <place-autocomplete ng-model="company" placeholder="Company" layout-padding></place-autocomplete>
+                            <md-button ng-click="cannotFindCompany(true)" class="md-warn md-raised small">I cannot find my company</md-button>
+                            <div ng-if="company.name" layout-padding>
+                                <div class="google-institution">
+                                    <h3>{{company.name}}</h3>
+                                    <p class="address" ng-bind-html="company.address"></p>
+                                    <span class="phone" ng-if="company.phone"><i class="icon-phone"></i> {{company.phone}}</span>
+                                    <div class="part-of">
+                                        <div ng-if="data.foundInstitution.completionAction">
+                                            <h4>Claim {{company.name}} as your company</h4>
+                                            <div class="clearfix button-group">
+                                                <md-button class="pull-left md-primary md-raised small" ng-click="$root.requestUser(data.foundInstitution, 'VIEWER')">
+                                                    <i class="icon-check"></i> This is me
+                                                </md-button>
+                                                <md-button  class="pull-right md-warn md-raised small"  ng-click="declineInstitution()">
+                                                    <i class="icon-close"></i> This is not me
+                                                </md-button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div ng-if="!data.foundInstitution.completionAction">
-                                        <h4>Are you a member of {{company.name}}?</h4>
-                                        <div class="clearfix button-group">
-                                            <md-button class="pull-left md-primary md-raised small" ng-click="$root.requestUser(data.foundInstitution, 'VIEWER')">
-                                                <i class="icon-user"></i> I work here
-                                            </md-button>
-                                            <md-button class="pull-right md-warn md-raised small" ng-click="declineInstitution()">
-                                                <i class="icon-close"></i> This is not me
-                                            </md-button>
+                                        <div ng-if="!data.foundInstitution.completionAction">
+                                            <h4>Are you a member of {{company.name}}?</h4>
+                                            <div class="clearfix button-group">
+                                                <md-button class="pull-left md-primary md-raised small" ng-click="$root.requestUser(data.foundInstitution, 'VIEWER')">
+                                                    <i class="icon-user"></i> I work here
+                                                </md-button>
+                                                <md-button class="pull-right md-warn md-raised small" ng-click="declineInstitution()">
+                                                    <i class="icon-close"></i> This is not me
+                                                </md-button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div flex="100" ng-if="notFoundCompany">
-                        <div layout-padding>
-                            <md-input-container class="md-block" flex-gt-xs>
-                                <label>Company Name</label>
-                                <input ng-model="employer.companyName" required>
-                            </md-input-container>
-                        </div>
-                        <md-button ng-click="cannotFindCompany(false)" class="md-warn md-raised small">Look up company</md-button>
-                        <div layout-padding>
-                            <md-input-container class="md-block">
-                                <label>Company Summary</label>
-                                <textarea ng-model="employer.summary" md-maxlength="150" rows="2" required></textarea>
-                            </md-input-container>
-                            <md-input-container class="md-block" flex-gt-xs>
-                                <label>Company Telephone</label>
-                                <input ng-model="employer.companyName" required>
-                            </md-input-container>
-                            <md-radio-group ng-required="true" ng-model="data.group1">
-                                <md-radio-button value="employer" class="md-primary" checked="checked"  ng-checked="true">Employer</md-radio-button>
-                                <md-radio-button value="recruiter" class="md-primary"> Recruiter </md-radio-button>
-                                <md-radio-button value="department" class="md-primary">Department</md-radio-button>
-                                <md-radio-button value="career" class="md-primary">Career Services</md-radio-button>
-                            </md-radio-group>
-                        </div>
-                    </div>
-                </div>
-                <div class="action-block">
-                    <md-button class="md-primary md-raised big">Continue</md-button>
-                </div>
-            </form>
-        </div>
-        <div flex="40" class="right-side-block hide-xs">
-            <div class="profile-box layout-padding">
-                <h2>Company Logo</h2>
-                <div flex="100">
-                    <div class="layout-padding">
-                        <div class="logo-flex company-logo">
-                            <div class="logo">
-                                <img src="img/UCL-Engineering-logo.png">
+                        <div flex="100" ng-if="notFoundCompany" class="manual-entering">
+                            <div layout-padding>
+                                <md-input-container class="md-block" flex-gt-xs>
+                                    <label>Company Name</label>
+                                    <input name="companyName" ng-model="employer.companyName" required>
+                                    <div  ng-messages="companyForm.companyName.$error" role="alert">
+                                        <div ng-messages-include="my-custom-messages"></div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <md-button ng-click="cannotFindCompany(false)" class="md-warn md-raised small">Look up company</md-button>
+                            <div layout-padding>
+                                <md-input-container class="md-block" flex-gt-xs>
+                                    <label>Company Telephone</label>
+                                    <input ng-model="employer.companyName" required>
+                                </md-input-container>
+                                <md-radio-group ng-required="true" ng-model="data.group1">
+                                    <md-radio-button value="employer" class="md-primary" checked="checked"  ng-checked="true">Employer</md-radio-button>
+                                    <md-radio-button value="recruiter" class="md-primary"> Recruiter </md-radio-button>
+                                    <md-radio-button value="department" class="md-primary">Department</md-radio-button>
+                                    <md-radio-button value="career" class="md-primary">Career Services</md-radio-button>
+                                </md-radio-group>
                             </div>
                         </div>
                     </div>
                 </div>
-                <h2>Profile</h2>
-                <div class="profile-holder">
-                    <div class="avatar-holder">
-                        <img src="img/2c09657.jpg">
+            </div>
+            <div flex="100" flex-gt-xs="35" class="right-side-block">
+                <div class="profile-box layout-padding">
+                    <div class="logo-upload">
+                        <client-file-upload file-category="images" image-category="INSTITUTION_LOGO"></client-file-upload>
                     </div>
-                    <h3>Juan Mingo</h3>
+                    <md-input-container class="md-block">
+                        <label>Company Summary</label>
+                        <textarea ng-model="employer.summary" md-maxlength="150" rows="2" required></textarea>
+                    </md-input-container>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="action-block">
+            <md-button class="md-primary md-raised big">Continue</md-button>
+        </div>
+    </form>
 </div>

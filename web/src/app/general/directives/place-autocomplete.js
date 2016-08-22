@@ -1,6 +1,6 @@
 module.exports = function () {
     return {
-        templateUrl: 'app/general/place-autocomplete.html',
+        templateUrl: 'app/general/directives/place-autocomplete.html',
         restrict: 'E',
         replace: true,
         scope: {
@@ -95,7 +95,7 @@ module.exports = function () {
                         'longitude': details.geometry.location.lng(),
                         'place_id': details.place_id,
                         'map-url': details.url,
-                        'international_phone_number': details.international_phone_number,
+                        'phone': details.international_phone_number,
                         'website': details.website,
                         'address': $sce.trustAsHtml(details.adr_address)
                     }
