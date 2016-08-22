@@ -9,9 +9,9 @@
                 </div>
                 <div>
                     <div layout-xs="column" layout="row">
-                        <div class="lookup-organisation" flex="100" ng-if="!notFoundCompany">
+                        <div class="lookup-organisation" flex="100" ng-if="!$ctrl.notFoundCompany">
                             <place-autocomplete ng-model="company" placeholder="Company" layout-padding></place-autocomplete>
-                            <md-button ng-click="cannotFindCompany(true)" class="md-warn md-raised small">I cannot find my company</md-button>
+                            <md-button ng-click="$ctrl.cannotFindCompany(true)" class="md-warn md-raised small">I cannot find my company</md-button>
                             <div ng-if="company.name" layout-padding>
                                 <div class="google-institution">
                                     <h3>{{company.name}}</h3>
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div flex="100" ng-if="notFoundCompany" class="manual-entering">
+                        <div flex="100" ng-if="$ctrl.notFoundCompany" class="manual-entering">
                             <div layout-padding>
                                 <md-input-container class="md-block" flex-gt-xs>
                                     <label>Company Name</label>
@@ -54,7 +54,7 @@
                                     </div>
                                 </md-input-container>
                             </div>
-                            <md-button ng-click="cannotFindCompany(false)" class="md-warn md-raised small">Look up company</md-button>
+                            <md-button ng-click="$ctrl.cannotFindCompany(false)" class="md-warn md-raised small">Look up company</md-button>
                             <div layout-padding>
                                 <md-input-container class="md-block" flex-gt-xs>
                                     <label>Company Telephone</label>
