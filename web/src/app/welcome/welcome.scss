@@ -1,3 +1,583 @@
-.welcome {
-  background: red;
+.splash-container {
+  //background: url(/images/hero3.png) left top no-repeat;
+  background: white;
+  padding: 40px 0 80px 0;
+  background-size: cover;
+  .container {
+    background: transparent;
+  }
+  .strap-line {
+    font-size: 2.4rem;
+    font-weight: 300;
+    text-align: center;
+    color: $uclred;
+    margin-bottom: 30px;
+    b {
+      font-weight: 400;
+    }
+  }
+  .splash-box-container {
+    .box-item {
+      position: relative;
+      min-height: 368px;
+      margin: 5px -10px;
+      text-align: center;
+      color: white;
+      &.university {
+        margin: 5px -15px;
+        h2 {
+          color: $uclgreen;
+        }
+      }
+      &.student {
+        h2 {
+          color: $uclblue;
+        }
+      }
+      .box-icon {
+        padding: 10px 0 0;
+        span {
+          display: block;
+          margin: 10px auto 0;
+          width: 120px;
+        }
+      }
+      h2 {
+        font-weight: 300;
+        margin: 30px auto 30px;
+        letter-spacing: 0.1rem;
+      }
+      .box-content {
+        padding: 0 11% 30px;
+      }
+    }
+    .box-arrow {
+      position: absolute;
+      z-index: 99;
+      top: 80px;
+      &:after, &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
+      &.right {
+        right: 0;
+        &:after {
+          left: 100%;
+          top: 2px;
+          border-color: transparent transparent transparent white;
+          border-width: 23px;
+        }
+        &:before {
+          left: 100%;
+          top: 0px;
+          border-color: transparent transparent transparent $uclred;
+          border-width: 25px;
+        }
+      }
+      &.left {
+        left: 0;
+        &:after {
+          right: 100%;
+          top: 2px;
+          border-color:  transparent white transparent transparent ;
+          border-width: 23px;
+        }
+        &:before {
+          right: 100%;
+          top: 0px;
+          border-color:  transparent $uclblue transparent transparent;
+          border-width: 25px;
+        }
+      }
+
+    }
+  }
+}
+.how-it-works {
+  padding-top: 40px;
+  background: white;
+  margin-top: 60px;
+  h2 {
+    margin-bottom: 60px;
+    font-size: 4rem;
+    line-height: 4.8rem;
+    font-family: 'lato';
+    font-weight: 300;
+    text-align: center;
+    color: #8a8281;
+    text-transform: uppercase;
+  }
+  .hiw-students {
+    background-color: $blueback;
+    color: $uclblue;
+    .icon-svg {
+      margin: 90px auto 30px;
+      svg {
+        line, path, polygon, polyline, g, rect, circle {
+          stroke: $uclblue;
+        }
+        g path, g circle, g rect {
+          fill: $uclblue;
+          stroke: transparent;
+        }
+      }
+    }
+    .btn-transparent {
+      color: $uclblue;
+      border-color: $uclblue;
+      border-width: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .number span {
+      border: 2px solid $uclblue;
+    }
+  }
+  .hiw-university {
+    background-color: $greenback;
+    color: $uclgreen;
+    .icon-svg {
+      margin: 90px auto 30px;
+      svg {
+        line, path, polygon, polyline, g {
+          stroke: $uclgreen;
+        }
+        g path, g rect {
+          fill: $uclgreen;
+          stroke: transparent;
+        }
+      }
+    }
+    .btn-transparent {
+      color: $uclgreen;
+      border-color: $uclgreen;
+      border-width: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .number span {
+      border: 2px solid $uclgreen;
+    }
+    .price-block {
+      border-top: 1px solid $uclgreen;
+    }
+  }
+  .hiw-employer {
+    background-color: $redback;
+    color: $uclred;
+    .icon-svg {
+      margin: 90px auto 30px;
+      svg {
+        line, path, polygon, polyline, g ,circle{
+          stroke: $uclred;
+        }
+        g path {
+          fill: $uclred;
+          stroke: transparent;
+        }
+      }
+    }
+    .btn-transparent {
+      color: $uclred;
+      border-color: $uclred;
+      border-width: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .number span {
+      border: 2px solid $uclred;
+    }
+    .price-block {
+      border-top: 1px solid $uclred;
+    }
+  }
+  .hiw-item {
+    padding-bottom: 20px;
+    margin-bottom: 80px;
+    h3 {
+      font-family: 'lato';
+      font-size: 3.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 40px auto 40px;
+    }
+    .side {
+      .icon-svg {
+
+        width: 150px;
+      }
+    }
+    .btn-list {
+      li {
+        margin-bottom: 65px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    ul {
+      li {
+        margin-bottom: 40px;
+        .number {
+          float: left;
+          display: inline-block;
+          width: 10%;
+          span {
+            margin-top: 8px;
+            width: 55px;
+            height: 55px;
+            display: block;
+            border-radius: 50%;
+            text-align: center;
+            font-family: "lato";
+            line-height: 54px;
+            font-size: 3.2rem;
+            font-weight: 400;
+          }
+        }
+        .text-content {
+          float: left;
+          display: inline-block;
+          font-size: 1.6rem;
+          width: 90%;
+          h4 {
+            font-size: 2.1rem;
+            line-height: 1rem;
+            font-family: 'lato';
+            text-transform: uppercase;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}
+.register-box, .register-box {
+  &.university {
+    background: $uclgreen;
+  }
+  &.employer {
+    background: $uclred;
+  }
+  &.project, &.program {
+    background: $uclblue;
+  }
+
+  border-radius: 2px;
+  color: white;
+  padding: 0 14px 14px;
+  text-align: center;
+  .text {
+    h2 {
+      margin-top: 10px;
+      font-family: 'lato';
+      font-weight: 300;
+      font-size: 2rem ;
+    }
+    h3 {
+      font-family: 'lato';
+      font-weight: 700;
+      font-size: 1.6rem ;
+
+    }
+    p {
+      font-family: 'lato';
+      border-bottom: 1px solid white;
+      padding-bottom: 25px;
+      margin-bottom: 25px;
+      font-size: 1.6rem;
+      line-height: 2.4rem ;
+      a {
+        color: white;
+        text-decoration: underline;
+      }
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 15px;
+      }
+    }
+    small {
+      font-size: 90%;
+    }
+  }
+  .icon-logo {
+    width: 125px;
+    padding-top: 14px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 2px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.about-container, .contact-container {
+  //background: url(/images/uni-welcome-new.jpg) center top no-repeat;
+  margin-top: -75px;
+  padding: 50px 0 25px 0;
+  background-size: cover;
+  h1 {
+    font-size: 4rem;
+    font-family: 'lato';
+    font-weight: 300;
+    color: white;
+  }
+  p {
+    font-size:1.9rem;
+    color: white;
+    font-family:'lato';
+    font-weight:300;
+    b {
+      font-weight:600;
+    }
+  }
+  .hero {
+    padding-bottom: 50px;
+    position: relative;
+    .screen-container {
+      position: absolute;
+      right: 16px;
+      top:0px;
+      height: 300px;
+      z-index: 1;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    .ipad-screen-container {
+      height: 146px;
+      position: absolute;
+      right: 283px;
+      top: 155px;
+      z-index: 3;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+  .container {
+    background: transparent;
+  }
+}
+.about-section, .contact-section {
+  border-radius: 2px;
+  margin-top:-20px;
+  padding-bottom:40px;
+  padding-top: 100px;
+  text-align: center;
+  h3 {
+    font-size:3.6rem;
+    color: $uclblue;
+    font-weight:400;
+    font-family:'lato';
+    margin-bottom:20px;
+  }
+  hr {
+    margin-top:30px;
+    margin-bottom:60px;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(87, 172, 213, 0), rgba(87, 172, 213, 1), rgba(87, 172, 213, 0));
+  }
+  p.intro {
+    font-size:2.1rem;
+  }
+  .solution-content {
+    p {
+      font-size:1.6rem;
+    }
+  }
+  b {
+    font-weight:600;
+    &.employer {
+      color: $uclred;
+    }
+    &.university {
+      color: $uclgreen;
+    }
+    &.student {
+      color: $uclblue;
+    }
+  }
+  .icon-svg {
+    margin: 30px 70px 20px;
+    &.employer {
+      svg {
+        line, path, polygon, polyline, g ,circle{
+          stroke: $uclred;
+        }
+        g path {
+          fill: $uclred;
+          stroke: transparent;
+        }
+      }
+    }
+    &.university {
+      svg {
+        line, path, polygon, polyline, g {
+          stroke: $uclgreen;
+        }
+        g path, g rect {
+          fill: $uclgreen;
+          stroke: transparent;
+        }
+      }
+    }
+    &.student {
+      svg {
+        line, path, polygon, polyline, g, rect, circle {
+          stroke: $uclblue;
+        }
+        g path, g circle, g rect {
+          fill: $uclblue;
+          stroke: transparent;
+        }
+      }
+    }
+  }
+  .workflow-list {
+    margin-top:30px;
+    .item {
+      h4 {
+        font-size:2rem;
+        font-family:'lato';
+        font-weight:300;
+      }
+      i {
+        font-size:2.3rem;
+        color: $uclred;
+      }
+      &.connect {
+        i {
+          font-size:2.8rem;
+          color: $uclred;
+        }
+        h4 {
+          margin-top:8px;
+        }
+      }
+    }
+  }
+  .clients-content {
+    text-align: left;
+    .client {
+      .client-logo {
+        &.engineering {
+          width: 70%;
+          margin: 20px auto 20px;
+        }
+        &.lahp {
+          width: 78%;
+          margin: 20px auto 20px;
+        }
+        &.biochemical {
+          width: 25%;
+          margin: 10px auto 10px;
+        }
+        img {
+          width: 100%;
+        }
+      }
+      h4 {
+        font-size: 1.8rem;
+        color: $uclblue;
+        margin-bottom:0;
+      }
+      h5 {
+        margin-top:6px;
+        font-size:1.4rem;
+        color: $uclgreen;
+      }
+      hr {
+        margin-top:20px;
+        margin-bottom:30px;
+      }
+      .quote {
+        h5 {
+          margin-bottom: 4px;
+        }
+        h6 {
+          margin-top: 0;
+        }
+        .image-quote {
+          float:right;
+          overflow: hidden;
+          border-radius: 50%;
+          width: 80px;
+          height: 80px;
+          margin-bottom:10px;
+          margin-left: 10px;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
+.contact-section {
+  padding-top: 140px;
+  .thanks-message{
+    text-align: center ;
+  }
+  .section {
+    text-align: left;
+  }
+  .title {
+    text-align: center;
+  }
+  .team-picture {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 56%;
+    height: auto;
+    margin: auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  h4 {
+    font-size: 1.8rem;
+    color: $uclblue;
+    margin-bottom:0;
+  }
+  h5 {
+    margin-top: 4px;
+    font-size: 1.6rem;
+    color: $uclgreen;
+  }
+  hr {
+    margin-top:14px;
+    margin-bottom:12px;
+  }
+}
+
+// MediaQ
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .splash-container {
+    margin-top: 0;
+    background: white;
+    padding: 20px 0 60px 0;
+    .splash-box-container {
+      display: none;
+    }
+    .strap-line {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+      margin-bottom: 15px;
+    }
+    .register-mobile-box {
+      text-align: center;
+    }
+  }
 }
