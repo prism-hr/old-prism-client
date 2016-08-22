@@ -42,7 +42,7 @@
             </ul>
         </div>
     </div>
-    <md-button class="md-primary md-raised" type="file" ngf-select ngf-change="onFileSelect($files)"
+    <md-button class="md-primary md-raised" type="file" aria-label="upload" ngf-select ngf-change="onFileSelect($files)"
                accept="{{acceptType}}">
         <span ng-if="fileCategory === 'documents'" >Upload PDF</span>
         <span ng-if="fileCategory === 'images'  && imageCategory.indexOf('_LOGO') > -1">Upload Logo</span>
