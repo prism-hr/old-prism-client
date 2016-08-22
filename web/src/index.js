@@ -18,12 +18,14 @@ var materialConfig = require('./app/configuration/material.config');
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
-var dialog = require('./app/general/dialog/dialog');
+
 // Directives
-var mAppLoading = require('./app/general/directives/mAppLoading');
-var placeAutocomplete = require('./app/general/directives/place-autocomplete');
-var clientFileUpload = require('./app/general/directives/client-file-upload');
-// Pages
+var applicationLoader = require('./app/directives/application-loader');
+var placeAutocomplete = require('./app/directives/place-autocomplete');
+var fileUpload = require('./app/directives/file-upload');
+
+// Components
+var dialog = require('./app/general/dialog/dialog');
 var welcome = require('./app/welcome/welcome');
 var register = require('./app/unauthenticated/register/register');
 var regswitch = require('./app/unauthenticated/regswitch/regswitch');
@@ -31,8 +33,8 @@ var login = require('./app/unauthenticated/login/login');
 var header = require('./app/general/header');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
-var employer = require('./app/unauthenticated/register/employer/employer');
-var employerStep1 = require('./app/unauthenticated/register/employer/employer-step1');
+var employer = require('./app/create/employer/employer');
+var employerStep1 = require('./app/create/employer/employer-step1');
 
 require('./index.scss');
 
@@ -66,6 +68,9 @@ angular
     .service('AuthService', AuthService)
     .run(authenticationHook)
     .run(generalConfig.generalRun)
+    .directive('applicationLoader', applicationLoader)
+    .directive('placeAutocomplete', placeAutocomplete)
+    .directive('clientFileUpload', fileUpload)
     .component('prismDialog', dialog)
     .component('welcome', welcome)
     .component('header', header)
@@ -75,8 +80,5 @@ angular
     .component('employer', employer)
     .component('employerStep1', employerStep1)
     .component('activities', activities)
-    .component('invited', invited)
-    .directive('mAppLoading', mAppLoading)
-    .directive('placeAutocomplete', placeAutocomplete)
-    .directive('clientFileUpload', clientFileUpload);
+    .component('invited', invited);
 

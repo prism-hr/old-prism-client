@@ -23,34 +23,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
         .state('employer', {
-            url: '/employer?accessCode&action',
-            template: '<employer activity="activity" action="{{action}}" access-code="{{accessCode}}"></employer>',
-            controller: function ($scope, $stateParams, activity) {
-                $scope.activity = activity && activity.plain();
-                $scope.action = $stateParams.action;
-                $scope.accessCode = $stateParams.accessCode;
-            },
+            url: '/employer',
+            template: '<employer></employer>',
             data: {hideSidebar: true},
-            resolve: {
-                activity: function ($stateParams, ActivationService) {
-                    return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
-                }
-            }
         })
         .state('employer-step1', {
-            url: '/employer-step1',
+            url: '/employer/step1',
             template: '<employer-step1 activity="activity" action="{{action}}" access-code="{{accessCode}}"></employer-step1>',
-            controller: function ($scope, $stateParams, activity) {
-                $scope.activity = activity && activity.plain();
-                $scope.action = $stateParams.action;
-                $scope.accessCode = $stateParams.accessCode;
-            },
             data: {hideSidebar: true},
-            resolve: {
-                activity: function ($stateParams, ActivationService) {
-                    return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
-                }
-            }
         })
         .state('welcome', {
             url: '/',

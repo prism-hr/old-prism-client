@@ -1,8 +1,8 @@
 <div class="social-login" layout="row" layout-align="center">
-    <md-button flex="50" ng-click="onAuth({provider: 'linkedin'})" class="md-raised linkedin">
+    <md-button flex="50" ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
         <i class="icon-social-linkedin"></i> linkedin
     </md-button>
-    <md-button flex="50" ng-click="onAuth({provider: 'facebook'})" class="md-raised facebook">
+    <md-button flex="50" ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
         <i class="icon-social-facebook"></i> facebook
     </md-button>
 </div>

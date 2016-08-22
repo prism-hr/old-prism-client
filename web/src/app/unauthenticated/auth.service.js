@@ -29,7 +29,10 @@ AuthService.prototype = {
     },
     authenticate: function (provider) {
         var self = this;
-        return this.$auth.authenticate(provider)
+        return this.$auth.authenticate(provider, {state: null})
+            .then(function(response){
+                return response.data;
+            })
             .then(self.applyAuthentication);
     },
     logout: function() {

@@ -10,12 +10,12 @@
 </head>
 
 <body>
-<div class="m-app-loading" ng-animate-children>
+<div class="application-loader" ng-animate-children>
     <style type="text/css">
-        div.m-app-loading {
+        div.application-loader {
             position: relative;
         }
-        div.m-app-loading div.animated-container {
+        div.application-loader div.animated-container {
             background-color: #EA6651 ;
             bottom: 0px ;
             left: 0px ;
@@ -26,16 +26,16 @@
             z-index: 999999 ;
         }
         /* Used to initialize the ng-leave animation state. */
-        div.m-app-loading div.animated-container.ng-leave {
+        div.application-loader div.animated-container.ng-leave {
             opacity: 1.0 ;
             transition: all linear 200ms ;
             -webkit-transition: all linear 200ms ;
         }
         /* Used to set the end properties of the ng-leave animation state. */
-        div.m-app-loading div.animated-container.ng-leave-active {
+        div.application-loader div.animated-container.ng-leave-active {
             opacity: 0 ;
         }
-        div.m-app-loading div.messaging {
+        div.application-loader div.messaging {
             color: #FFFFFF ;
             font-family: monospace ;
             left: 0px ;
@@ -45,12 +45,12 @@
             text-align: center ;
             top: 50% ;
         }
-        div.m-app-loading h1 {
+        div.application-loader h1 {
             width: 150px;
             line-height: 35px ;
             margin: 0px auto 20px ;
         }
-        div.m-app-loading p {
+        div.application-loader p {
             font-size: 18px ;
             line-height: 14px ;
             margin: 0px 0px 0px 0px ;
