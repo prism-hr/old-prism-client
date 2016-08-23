@@ -113,7 +113,9 @@ md-radio-group {
     }
   }
 }
-
+.page-wrap {
+  background: white;
+}
 // Responsive
 @media (max-width: $layout-breakpoint-xs - 1) {
   #place-autocomplete > md-autocomplete md-input-container {

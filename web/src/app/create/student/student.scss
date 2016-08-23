@@ -5,20 +5,18 @@ student {
         color: $uclblue;
       }
     }
-    .right-side-block {
-      .badges-box {
-        margin-bottom:30px;
-        div {
-          display: inline-block;
-          height: 40px;
-          &.google-play {
-            margin-right:15px;
-          }
-          img {
-            height: 100%;
-          }
-        }
-      }
+  }
+}
+.badges-box {
+  margin-bottom:30px;
+  div {
+    display: inline-block;
+    height: 40px;
+    &.google-play {
+      margin-right:15px;
+    }
+    img {
+      height: 100%;
     }
   }
 }
