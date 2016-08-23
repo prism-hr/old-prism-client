@@ -83,3 +83,51 @@
     margin: 10px -8px -6px;
   }
 }
+
+.company-box {
+  background: url(/img/emp-back.png) left top no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  .company-header {
+    width: 96%;
+    margin-bottom:-20px;
+    padding-right:20px;
+    background: white;
+    .logo-image {
+      margin: 10px;
+      min-width: 200px;
+      display: inline-block;
+    }
+    h2 {
+      margin-top:16px;
+    }
+    p {
+      margin-top:6px;
+      &.summary {
+      }
+      &.address {
+        font-size:0.8rem;
+        .phone {
+          float: right;
+        }
+      }
+    }
+
+  }
+}
+.preview {
+  margin-top:-25px;
+  position: relative;
+  margin-bottom:30px;
+  border: 1px dashed grey;
+  background: $fadeGrey;
+  label {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    color: grey;
+  }
+ .company-box {
+   margin: 10px 10px 30px;
+ }
+}
