@@ -1,0 +1,92 @@
+<div class="preview" ng-if="$ctrl.organization.name">
+    <label>Preview</label>
+    <div class="company-box" layout="row" layout-align="center end">
+        <div class="company-header" layout="row">
+            <div class="logo-image">
+                <div class="logo-flex company-logo">
+                    <div class="logo">
+                        <img src="img/UCL-Engineering-logo.png">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2>{{$ctrl.organization.name}}</h2>
+                <p class="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan
+                    risus erat, eget bibendum metus tristique et. Integer placerat ex amet.</p>
+                <p class="address">{{$ctrl.organization.address}}
+                    <span class="phone" ng-if="$ctrl.organization.phone">
+                                        <i class="icon-phone"></i> {{$ctrl.organization.phone}}
+                                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div layout-xs="column" layout="row">
+        <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
+            <div layout-padding="">
+                <place-autocomplete ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
+                                    ng-model="$ctrl.foundOrganization" placeholder="Company Lookup">
+                </place-autocomplete>
+            </div>
+            <md-button ng-click="$ctrl.cannotFindOrganization()" class="md-warn md-raised small">
+                I cannot find my company
+            </md-button>
+            <div ng-if="$ctrl.selectedOrganization" layout-padding>
+                <div class="google-institution">
+                    <h3>{{$ctrl.selectedOrganization.name}}</h3>
+                    <p class="address">
+                        {{$ctrl.selectedOrganization.address}}
+                    </p>
+                    <span class="phone" ng-if="$ctrl.selectedOrganization.phone"><i
+                            class="icon-phone"></i> {{$ctrl.selectedOrganization.phone}}</span>
+                    <div class="part-of">
+                        <h4>Claim {{$ctrl.selectedOrganization.name}} as your company</h4>
+                        <div class="clearfix button-group">
+                            <md-button class="pull-left md-primary md-raised small"
+                                       ng-click="$ctrl.confirmSelectedOrganization(true)">
+                                <i class="icon-user"></i> Confirm
+                            </md-button>
+                            <md-button class="pull-right md-warn md-raised small"
+                                       ng-click="$ctrl.confirmSelectedOrganization(false)">
+                                <i class="icon-close"></i> Decline
+                            </md-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div flex="100" ng-if="$ctrl.organization" class="manual-entering">
+            <div layout-padding>
+                <md-input-container class="md-block">
+                    <label>Company Name</label>
+                    <input name="companyName" ng-model="$ctrl.organization.name" required>
+                    <div ng-messages="companyForm.companyName.$error" role="alert">
+                        <div ng-messages-include="my-custom-messages"></div>
+                    </div>
+                </md-input-container>
+            </div>
+            <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
+                Look up company
+            </md-button>
+            <div layout-padding>
+                <md-input-container class="md-block">
+                    <label>Company Telephone</label>
+                    <input name="phone" ng-model="$ctrl.organization.phone" required>
+                    <div ng-messages="companyForm.phone.$error" role="alert">
+                        <div ng-messages-include="my-custom-messages"></div>
+                    </div>
+                </md-input-container>
+                <md-radio-group name="type" ng-required="true" ng-model="data.group1">
+                    <md-radio-button value="employer" class="md-primary" checked="checked"
+                                     ng-checked="true">Employer
+                    </md-radio-button>
+                    <md-radio-button value="recruiter" class="md-primary"> Recruiter</md-radio-button>
+                    <md-radio-button value="department" class="md-primary">Department</md-radio-button>
+                    <md-radio-button value="career" class="md-primary">Career Services</md-radio-button>
+                </md-radio-group>
+            </div>
+        </div>
+    </div>
+</div>
