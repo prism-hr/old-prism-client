@@ -1,29 +1,52 @@
 <div class="page-wrap step-page child">
     <form name="companyForm" class="md-inline-form">
-        <div layout="column" layout-gt-xs="row" layout-align-gt-xs="center start">
-            <div flex="100" flex-gt-xs="65" class="left-side-block" layout="column" layout-align="center stretch">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+            <div flex="100" flex-gt-sm="75" class="left-side-block" layout="column" layout-align="center stretch">
                 <div class="header" layout-padding>
                     <h4>STEP 1</h4>
                     <h1>Company Information</h1>
                     <p>Initial basic information about your company</p>
                 </div>
+                <div class="preview" ng-if="$ctrl.organization.name">
+                    <label>Preview</label>
+                    <div class="company-box" layout="row" layout-align="center end">
+                        <div class="company-header" layout="row">
+                            <div class="logo-image">
+                                <div class="logo-flex company-logo">
+                                    <div class="logo">
+                                        <img src="img/UCL-Engineering-logo.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h2>{{$ctrl.organization.name}}</h2>
+                                <p class="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan risus erat, eget bibendum metus tristique et. Integer placerat ex amet.</p>
+                                <p class="address">{{$ctrl.organization.address}} <span class="phone" ng-if="$ctrl.organization.phone"><i
+                                        class="icon-phone"></i> {{$ctrl.organization.phone}}</span></p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
                 <div>
                     <div layout-xs="column" layout="row">
                         <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
-                            <place-autocomplete ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
-                                                ng-model="$ctrl.foundOrganization" placeholder="Company"
-                                                layout-padding></place-autocomplete>
+                            <div layout-padding="">
+                                <place-autocomplete ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
+                                                    ng-model="$ctrl.foundOrganization" placeholder="Company"></place-autocomplete>
+                            </div>
                             <md-button ng-click="$ctrl.cannotFindOrganization()" class="md-warn md-raised small">
                                 I cannot find my company
                             </md-button>
                             <div ng-if="$ctrl.selectedOrganization" layout-padding>
                                 <div class="google-institution">
                                     <h3>{{$ctrl.selectedOrganization.name}}</h3>
-                                    <p class="address" ng-bind-html="$ctrl.selectedOrganization.address"></p>
+                                    <p class="address">
+                                        {{$ctrl.selectedOrganization.address}}
+                                    </p>
                                     <span class="phone" ng-if="$ctrl.selectedOrganization.phone"><i
                                             class="icon-phone"></i> {{$ctrl.selectedOrganization.phone}}</span>
                                     <div class="part-of">
-                                        <h4>Are you a member of {{$ctrl.selectedOrganization.name}}?</h4>
+                                        <h4>Claim {{$ctrl.selectedOrganization.name}} as your company</h4>
                                         <div class="clearfix button-group">
                                             <md-button class="pull-left md-primary md-raised small"
                                                        ng-click="$ctrl.confirmSelectedInstitution(true)">
@@ -71,23 +94,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div flex="100" flex-gt-xs="35" class="right-side-block">
-                <div class="profile-box layout-padding">
-                    <div class="logo-upload">
-                        <client-file-upload file-category="images"
-                                            image-category="INSTITUTION_LOGO"></client-file-upload>
-                    </div>
-                    <md-input-container class="md-block">
-                        <label>Company Summary</label>
-                        <textarea ng-model="employer.summary" md-maxlength="140" rows="2" required></textarea>
-                    </md-input-container>
+                <div class="action-block" layout="row" layout-align="space-between none">
+                    <md-button class="md-raised md-button md-ink-ripple big">Back</md-button>
+                    <md-button class="md-primary md-raised big">Continue</md-button>
                 </div>
             </div>
+
         </div>
-        <div class="action-block" layout="row" layout-align="space-between none">
-            <md-button class="md-raised md-button md-ink-ripple big">Back</md-button>
-            <md-button class="md-primary md-raised big">Continue</md-button>
-        </div>
+
     </form>
 </div>
