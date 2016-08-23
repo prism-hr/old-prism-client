@@ -31,7 +31,7 @@ module.exports = function ($q) {
                             scope.place = {};
                             if (place) {
                                 scope.place.name = place.name;
-                                // scope.place.address = extractGooglePlaceAddress(place);
+                                scope.place.address = place.formatted_address;
                                 scope.place.phone = place.international_phone_number;
                             } else { // sometimes Google returns NOT_FOUND
                                 scope.place.name = selectedPlace.name;
