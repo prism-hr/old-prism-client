@@ -46,7 +46,7 @@ AuthService.prototype = {
             this.userPromise = !localStorage.userToken ? self.$q.when(null) :
                 this.Restangular.one('user').get()
                     .then(function (user) {
-                        self.user = {firstName: 'Dupa'};
+                        self.user = {firstName: 'Admin', lastName: 'Prism', role:'Administrator'};
                         return self.user;
                     }, function (response) {
                         if (response.status === 401) {

@@ -1,22 +1,39 @@
-<md-toolbar layout="column" layout-align="center center"  md-whiteframe="3">
+<md-toolbar layout="column" layout-align="center center"  md-whiteframe="1">
     <div layout="row" class="md-toolbar-tools" layout-align="space-between center">
         <a class="logo" ui-sref="welcome">
             <img src="img/prism-white.svg" alt="PRiSM">
         </a>
         <span class="nav-container">
-            <md-button aria-label="Post Ad" class="md-raised md-warn"
-                       ng-click="advertise($event)">Advertise</md-button>
-            <span ng-if="!$ctrl.AuthService.user">
+            <div ng-if="!$ctrl.AuthService.user">
+                <md-button  aria-label="Post Ad" class="md-raised md-warn"
+                            ng-click="advertise($event)">Advertise</md-button>
                 <md-button aria-label="Sing up" ng-click="showRegister($event)">Sing up</md-button>
                 <md-button aria-label="Log in" ng-click="showLogin($event)"> <i class="icon-lock"></i> Log in</md-button>
-            </span>
-
-            <span ng-if="$ctrl.AuthService.user">
-                <md-button aria-label="Log out" ng-click="logout()">Log out</md-button>
-            </span>
-
-            <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md=""
-                       ng-if="hideSidebar">Toggle left</md-button>
+            </div>
+            <div ng-if="$ctrl.AuthService.user" class="user-block" layout="row" layout-align="end center">
+                <div class="user-details">
+                    <div class="avatar-holder employer">
+                        <img src="img/2c09657.jpg" class="md-avatar" alt="{{item.who}}">
+                    </div>
+                    <div class="contact-container"><a href="#">{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}</a> <span>{{$ctrl.AuthService.user.role}}</span></div>
+                </div>
+                <md-menu md-position-mode="target-right target">
+                    <md-button aria-label="Open menu" class="md-icon-button md-raised" ng-click="openMenu($mdOpenMenu, $event)">
+                        <md-icon class="icon-settings"></md-icon>
+                    </md-button>
+                    <md-menu-content width="3">
+                        <md-menu-item>
+                          <md-button aria-label="Log out" ng-click="logout()">
+                              <md-icon class="icon-logout"></md-icon> Log out
+                          </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+                <md-button ng-click="toggleActivities()" class="md-icon-button md-raised notifications"hide-gt-md>
+                    <i class="icon-bell" ng-if="!hideSidebar"></i>
+                    <label>5</label>
+                </md-button>
+            </div>
         </span>
     </div>
 </md-toolbar>

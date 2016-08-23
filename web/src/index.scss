@@ -9,11 +9,12 @@ $simple-line-font-path        : "../node_modules/simple-line-icons/fonts/";
 
 @import "styles/general";
 @import "styles/loading-bar";
-@import "app/general/dialog/dialog";
 @import "styles/loading-bar";
+@import "app/general/dialog/dialog";
 @import "app/general/header";
 @import "app/general/footer";
 
+@import "app/activities/activities";
 @import "app/welcome/welcome";
 @import "app/unauthenticated/login/login";
 @import "app/unauthenticated/register/register";
