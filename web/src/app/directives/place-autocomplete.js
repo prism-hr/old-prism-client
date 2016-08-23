@@ -13,6 +13,7 @@ module.exports = function ($q) {
             } else if (!google.maps.places) {
                 throw new Error('Google Maps JS library does not have the Places module');
             }
+            scope.placeholder = attrs.placeholder;
             var autocomplete = new google.maps.places.AutocompleteService();
             var map = new google.maps.Map(document.createElement('div'));
             var placeService = new google.maps.places.PlacesService(map);

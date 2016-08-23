@@ -33,9 +33,11 @@ var login = require('./app/unauthenticated/login/login');
 var header = require('./app/general/header');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
+var organizationLookup = require('./app/create/organization-lookup');
 var employer = require('./app/create/employer/employer');
 var employerOrganization = require('./app/create/employer/employer-organization');
 var university = require('./app/create/university/university');
+var universityOrganization = require('./app/create/university/university-organization');
 var student = require('./app/create/student/student');
 
 require('./index.scss');
@@ -79,10 +81,12 @@ angular
     .component('login', login)
     .component('register', register)
     .component('regswitch', regswitch)
+    .component('organizationLookup', organizationLookup)
     .component('employer', employer)
-    .component('university', university)
-    .component('student', student)
     .component('employerOrganization', employerOrganization)
+    .component('university', university)
+    .component('universityOrganization', universityOrganization)
+    .component('student', student)
     .component('activities', activities)
     .component('invited', invited);
 

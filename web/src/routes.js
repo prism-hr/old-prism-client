@@ -29,13 +29,18 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             data: {hideSidebar: true}
         })
         .state('employerOrganization', {
-            url: '/employer/company',
+            url: '/employer/organization',
             template: '<employer-organization></employer-organization>',
             data: {hideSidebar: true}
         })
         .state('university', {
             url: '/university',
             template: '<university></university>',
+            data: {hideSidebar: true}
+        })
+        .state('universityOrganization', {
+            url: '/university/organization',
+            template: '<employer-organization></employer-organization>',
             data: {hideSidebar: true}
         })
         .state('student', {
