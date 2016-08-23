@@ -28,7 +28,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             template: '<employer></employer>',
             data: {hideSidebar: true}
         })
-        .state('employer-step1', {
+        .state('employerStep1', {
             url: '/employer/step1',
             template: '<employer-step1></employer-step1>',
             data: {hideSidebar: true}

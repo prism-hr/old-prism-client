@@ -1,106 +1,83 @@
-module.exports = function () {
+module.exports = function ($q) {
     return {
         templateUrl: 'app/directives/place-autocomplete.html',
+        require: 'ngModel',
         restrict: 'E',
-        replace: true,
         scope: {
-            'ngModel': '=',
-            'placeholder': '='
+            types: '<'
         },
-        controller: function ($scope, $q, $sce, $attrs) {
+        link: function (scope, element, attrs, ngModel) {
             if (!google || !google.maps) {
                 throw new Error('Google Maps JS library is not loaded!');
             } else if (!google.maps.places) {
                 throw new Error('Google Maps JS library does not have the Places module');
             }
-            var autocompleteService = new google.maps.places.AutocompleteService();
+            var autocomplete = new google.maps.places.AutocompleteService();
             var map = new google.maps.Map(document.createElement('div'));
             var placeService = new google.maps.places.PlacesService(map);
-            $scope.ngModel = {};
-            $scope.placeholder = $attrs.placeholder;
 
-            /**
-             * @ngdoc function
-             * @name getResults
-             * @description
-             *
-             * Helper function that accepts an input string
-             * and fetches the relevant location suggestions
-             *
-             * This wraps the Google Places Autocomplete Api
-             * in a promise.
-             *
-             * Refer: https://developers.google.com/maps/documentation/javascript/places-autocomplete#place_autocomplete_service
-             */
-            var getResults = function (address) {
+            ngModel.$render = function () {
+                var model = ngModel.$modelValue;
+                if (model) {
+                    scope.place = model;
+                    scope.lookupText = model.name;
+                }
+            };
+
+            scope.placeSelected = function (selectedPlace) {
+                if (selectedPlace.alreadyRegistered) {
+                    scope.place = selectedPlace;
+                    ngModel.$setViewValue(scope.place);
+                } else {
+                    placeService.getDetails({placeId: selectedPlace.googleId}, function (place) {
+                        scope.$apply(function () {
+                            scope.place = {};
+                            if (place) {
+                                scope.place.name = place.name;
+                                // scope.place.address = extractGooglePlaceAddress(place);
+                                scope.place.phone = place.international_phone_number;
+                            } else { // sometimes Google returns NOT_FOUND
+                                scope.place.name = selectedPlace.name;
+                            }
+                            ngModel.$setViewValue(scope.place);
+                        });
+                    });
+                }
+            };
+
+            scope.getPlaces = function (input) {
+                if (!angular.isString(input) || input === '') {
+                    return;
+                }
                 var deferred = $q.defer();
-                autocompleteService.getQueryPredictions({
-                    input: address
-                }, function (data) {
-                    deferred.resolve(data);
+                autocomplete.getPlacePredictions({input: input, types: ['establishment']}, function (places) {
+                    places = _.map(places, function(place) {
+                        return {name: place.description, googleId: place.place_id};
+                    });
+                    deferred.resolve(places);
+                    // var googleIds = _.map(places, 'place_id');
+                    // Restangular.all('institutions').getList({
+                    //     query: input,
+                    //     googleIds: googleIds,
+                    //     type: 'simple'
+                    // })
+                    //     .then(function (institutions) {
+                    //         _.each(institutions, function (institution) {
+                    //             var googleId = institution.address.googleId;
+                    //             var place = _.findWhere(places, {'place_id': googleId});
+                    //             if (!place) {
+                    //                 place = institutionToPlace(institution);
+                    //                 places.push(place);
+                    //             }
+                    //             place.institution = institution.plain();
+                    //             place.alreadyRegistered = true;
+                    //         });
+                    //         places = _.sortBy(places, 'alreadyRegistered');
+                    //         deferred.resolve(places);
+                    //     });
                 });
                 return deferred.promise;
             };
-
-            /**
-             * @ngdoc function
-             * @name getDetails
-             * @description
-             * Helper function that accepts a place and fetches
-             * more information about the place. This is necessary
-             * to determine the latitude and longitude of the place.
-             *
-             * This wraps the Google Places Details Api in a promise.
-             *
-             * Refer: https://developers.google.com/maps/documentation/javascript/places#place_details_requests
-             */
-            var getDetails = function (place) {
-                var deferred = $q.defer();
-                placeService.getDetails({
-                    'placeId': place.place_id
-                }, function (details) {
-                    deferred.resolve(details);
-                });
-                return deferred.promise;
-            };
-
-            $scope.search = function (input) {
-                if (!input) {
-                    return;
-                }
-                return getResults(input).then(function (places) {
-                    return places;
-                });
-            };
-            /**
-             * @ngdoc function
-             * @name getLatLng
-             * @description
-             * Updates the scope ngModel variable with details of the selected place.
-             * The latitude, longitude and name of the place are made available.
-             *
-             * This function is called every time a location is selected from among
-             * the suggestions.
-             */
-            $scope.getLatLng = function (place) {
-                if (!place) {
-                    $scope.ngModel = {};
-                    return;
-                }
-                getDetails(place).then(function (details) {
-                    $scope.ngModel = {
-                        'name': details.name,
-                        'description': place.description,
-                        'latitude': details.geometry.location.lat(),
-                        'longitude': details.geometry.location.lng(),
-                        'place_id': details.place_id,
-                        'map-url': details.url,
-                        'phone': details.international_phone_number,
-                        'website': details.website,
-                        'address': $sce.trustAsHtml(details.adr_address)
-                    }
-                });
-            }
         }
     }
 };
