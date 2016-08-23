@@ -31,6 +31,7 @@ var register = require('./app/unauthenticated/register/register');
 var regswitch = require('./app/unauthenticated/regswitch/regswitch');
 var login = require('./app/unauthenticated/login/login');
 var header = require('./app/general/header');
+var sidebar = require('./app/general/sidebar');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
 var organizationLookup = require('./app/create/organization-lookup');
@@ -78,6 +79,7 @@ angular
     .component('prismDialog', dialog)
     .component('welcome', welcome)
     .component('header', header)
+    .component('sidebar', sidebar)
     .component('login', login)
     .component('register', register)
     .component('regswitch', regswitch)

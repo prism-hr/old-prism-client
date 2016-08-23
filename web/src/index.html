@@ -79,7 +79,9 @@
             </md-content>
         </div>
     </div>
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="!$state.current.data.hideSidebar" ng-include="'app/general/sidebar.html'"></md-sidenav>
+    <sidebar ng-if="!$state.current.data.hideSidebar">
+
+    </sidebar>
 </div>
 
 </body>

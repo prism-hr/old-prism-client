@@ -1,6 +1,6 @@
 module.exports = {
     templateUrl: 'app/general/header.html',
-    controller: function ($scope, $mdDialog, $state, AuthService) {
+    controller: function ($scope, $mdDialog, $mdSidenav, $state, AuthService) {
         this.hideSidebar = $state.current.data && $state.current.data.hideSidebar;
         this.AuthService = AuthService;
 
@@ -24,6 +24,18 @@ module.exports = {
                 fullscreen: true
             })
         };
+        var originatorEv;
+        $scope.openMenu = function($mdOpenMenu, ev) {
+            originatorEv = ev;
+            $mdOpenMenu(ev);
+        };
+
+        $scope.toggleActivities = buildToggler('right');
+        function buildToggler(navID) {
+            return function() {
+                $mdSidenav(navID).toggle();
+            }
+        }
 
         $scope.logout = function() {
             AuthService.logout();
