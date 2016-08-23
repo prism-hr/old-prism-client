@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/create/employer/employer-step1.html',
+    templateUrl: 'app/create/employer/employer-organization.html',
     controller: function () {
         var self = this;
 
