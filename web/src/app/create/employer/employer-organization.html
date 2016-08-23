@@ -32,7 +32,7 @@
                         <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
                             <div layout-padding="">
                                 <place-autocomplete ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
-                                                    ng-model="$ctrl.foundOrganization" placeholder="Company"></place-autocomplete>
+                                                    ng-model="$ctrl.foundOrganization" placeholder="Company Lookup"></place-autocomplete>
                             </div>
                             <md-button ng-click="$ctrl.cannotFindOrganization()" class="md-warn md-raised small">
                                 I cannot find my company
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="action-block" layout="row" layout-align="space-between none">
-                    <md-button class="md-raised md-button md-ink-ripple big">Back</md-button>
+                    <md-button class="md-raised md-button md-ink-ripple big" ui-sref="employer">Back</md-button>
                     <md-button class="md-primary md-raised big">Continue</md-button>
                 </div>
             </div>

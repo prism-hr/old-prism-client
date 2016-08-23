@@ -34,7 +34,7 @@ var header = require('./app/general/header');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
 var employer = require('./app/create/employer/employer');
-var employerStep1 = require('./app/create/employer/employer-step1');
+var employerOrganization = require('./app/create/employer/employer-organization');
 var university = require('./app/create/university/university');
 var student = require('./app/create/student/student');
 
@@ -82,7 +82,7 @@ angular
     .component('employer', employer)
     .component('university', university)
     .component('student', student)
-    .component('employerStep1', employerStep1)
+    .component('employerOrganization', employerOrganization)
     .component('activities', activities)
     .component('invited', invited);
 
