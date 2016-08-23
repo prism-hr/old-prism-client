@@ -13,6 +13,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('invited', {
             url: '/invited?accessCode&action',
             template: '<invited activity="activity"></invited>',
+            data: {hideSidebar: true},
             controller: function ($scope, $stateParams, activity) {
                 $scope.activity = activity.plain();
             },
