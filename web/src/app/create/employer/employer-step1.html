@@ -9,63 +9,61 @@
                 </div>
                 <div>
                     <div layout-xs="column" layout="row">
-                        <div class="lookup-organisation" flex="100" ng-if="!$ctrl.notFoundCompany">
-                            <place-autocomplete ng-model="company" placeholder="Company" layout-padding></place-autocomplete>
-                            <md-button ng-click="$ctrl.cannotFindCompany(true)" class="md-warn md-raised small">I cannot find my company</md-button>
-                            <div ng-if="company.name" layout-padding>
+                        <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
+                            <place-autocomplete ng-change="$ctrl.organizationSelected(foundOrganization)"
+                                                ng-model="foundOrganization" placeholder="Company"
+                                                layout-padding></place-autocomplete>
+                            <md-button ng-click="$ctrl.cannotFindOrganization()" class="md-warn md-raised small">
+                                I cannot find my company
+                            </md-button>
+                            <div ng-if="$ctrl.selectedOrganization" layout-padding>
                                 <div class="google-institution">
-                                    <h3>{{company.name}}</h3>
-                                    <p class="address" ng-bind-html="company.address"></p>
-                                    <span class="phone" ng-if="company.phone"><i class="icon-phone"></i> {{company.phone}}</span>
+                                    <h3>{{$ctrl.selectedOrganization.name}}</h3>
+                                    <p class="address" ng-bind-html="$ctrl.selectedOrganization.address"></p>
+                                    <span class="phone" ng-if="$ctrl.selectedOrganization.phone"><i
+                                            class="icon-phone"></i> {{$ctrl.selectedOrganization.phone}}</span>
                                     <div class="part-of">
-                                        <div ng-if="data.foundInstitution.completionAction">
-                                            <h4>Claim {{company.name}} as your company</h4>
-                                            <div class="clearfix button-group">
-                                                <md-button class="pull-left md-primary md-raised small" ng-click="$root.requestUser(data.foundInstitution, 'VIEWER')">
-                                                    <i class="icon-check"></i> This is me
-                                                </md-button>
-                                                <md-button  class="pull-right md-warn md-raised small"  ng-click="declineInstitution()">
-                                                    <i class="icon-close"></i> This is not me
-                                                </md-button>
-                                            </div>
-                                        </div>
-                                        <div ng-if="!data.foundInstitution.completionAction">
-                                            <h4>Are you a member of {{company.name}}?</h4>
-                                            <div class="clearfix button-group">
-                                                <md-button class="pull-left md-primary md-raised small" ng-click="$root.requestUser(data.foundInstitution, 'VIEWER')">
-                                                    <i class="icon-user"></i> I work here
-                                                </md-button>
-                                                <md-button class="pull-right md-warn md-raised small" ng-click="declineInstitution()">
-                                                    <i class="icon-close"></i> This is not me
-                                                </md-button>
-                                            </div>
+                                        <h4>Are you a member of {{$ctrl.selectedOrganization.name}}?</h4>
+                                        <div class="clearfix button-group">
+                                            <md-button class="pull-left md-primary md-raised small"
+                                                       ng-click="$ctrl.confirmSelectedInstitution(true)">
+                                                <i class="icon-user"></i> Confirm
+                                            </md-button>
+                                            <md-button class="pull-right md-warn md-raised small"
+                                                       ng-click="$ctrl.confirmSelectedInstitution(false)">
+                                                <i class="icon-close"></i> Decline
+                                            </md-button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div flex="100" ng-if="$ctrl.notFoundCompany" class="manual-entering">
+                        <div flex="100" ng-if="$ctrl.organization" class="manual-entering">
                             <div layout-padding>
                                 <md-input-container class="md-block">
                                     <label>Company Name</label>
-                                    <input name="companyName" ng-model="employer.companyName" required>
-                                    <div  ng-messages="companyForm.companyName.$error" role="alert">
+                                    <input name="companyName" ng-model="$ctrl.organization.name" required>
+                                    <div ng-messages="companyForm.companyName.$error" role="alert">
                                         <div ng-messages-include="my-custom-messages"></div>
                                     </div>
                                 </md-input-container>
                             </div>
-                            <md-button ng-click="$ctrl.cannotFindCompany(false)" class="md-warn md-raised small">Look up company</md-button>
+                            <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
+                                Look up company
+                            </md-button>
                             <div layout-padding>
                                 <md-input-container class="md-block">
                                     <label>Company Telephone</label>
-                                    <input name="phone" ng-model="employer.phone" required>
+                                    <input name="phone" ng-model="$ctrl.organization.phone" required>
                                     <div ng-messages="companyForm.phone.$error" role="alert">
                                         <div ng-messages-include="my-custom-messages"></div>
                                     </div>
                                 </md-input-container>
                                 <md-radio-group name="type" ng-required="true" ng-model="data.group1">
-                                    <md-radio-button value="employer" class="md-primary" checked="checked"  ng-checked="true">Employer</md-radio-button>
-                                    <md-radio-button value="recruiter" class="md-primary"> Recruiter </md-radio-button>
+                                    <md-radio-button value="employer" class="md-primary" checked="checked"
+                                                     ng-checked="true">Employer
+                                    </md-radio-button>
+                                    <md-radio-button value="recruiter" class="md-primary"> Recruiter</md-radio-button>
                                     <md-radio-button value="department" class="md-primary">Department</md-radio-button>
                                     <md-radio-button value="career" class="md-primary">Career Services</md-radio-button>
                                 </md-radio-group>
@@ -77,7 +75,8 @@
             <div flex="100" flex-gt-xs="35" class="right-side-block">
                 <div class="profile-box layout-padding">
                     <div class="logo-upload">
-                        <client-file-upload file-category="images" image-category="INSTITUTION_LOGO"></client-file-upload>
+                        <client-file-upload file-category="images"
+                                            image-category="INSTITUTION_LOGO"></client-file-upload>
                     </div>
                     <md-input-container class="md-block">
                         <label>Company Summary</label>
@@ -87,7 +86,7 @@
             </div>
         </div>
         <div class="action-block" layout="row" layout-align="space-between none">
-            <md-button class="md-raised md-button md-ink-ripple big">< Back</md-button>
+            <md-button class="md-raised md-button md-ink-ripple big">Back</md-button>
             <md-button class="md-primary md-raised big">Continue</md-button>
         </div>
     </form>
