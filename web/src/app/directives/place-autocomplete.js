@@ -17,11 +17,8 @@ module.exports = function ($q) {
             var placeService = new google.maps.places.PlacesService(map);
 
             ngModel.$render = function () {
-                var model = ngModel.$modelValue;
-                if (model) {
-                    scope.place = model;
-                    scope.lookupText = model.name;
-                }
+                scope.place = ngModel.$modelValue;
+                scope.searchText = _.get(scope.place, 'name');
             };
 
             scope.placeSelected = function (selectedPlace) {
@@ -51,7 +48,7 @@ module.exports = function ($q) {
                 }
                 var deferred = $q.defer();
                 autocomplete.getPlacePredictions({input: input, types: ['establishment']}, function (places) {
-                    places = _.map(places, function(place) {
+                    places = _.map(places, function (place) {
                         return {name: place.description, googleId: place.place_id};
                     });
                     deferred.resolve(places);
