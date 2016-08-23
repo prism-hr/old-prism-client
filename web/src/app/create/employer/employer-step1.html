@@ -10,8 +10,8 @@
                 <div>
                     <div layout-xs="column" layout="row">
                         <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
-                            <place-autocomplete ng-change="$ctrl.organizationSelected(foundOrganization)"
-                                                ng-model="foundOrganization" placeholder="Company"
+                            <place-autocomplete ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
+                                                ng-model="$ctrl.foundOrganization" placeholder="Company"
                                                 layout-padding></place-autocomplete>
                             <md-button ng-click="$ctrl.cannotFindOrganization()" class="md-warn md-raised small">
                                 I cannot find my company

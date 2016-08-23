@@ -5,6 +5,7 @@ module.exports = {
 
         this.cannotFindOrganization = function () {
             self.organization = {};
+            self.foundOrganization = null;
         };
 
         this.lookupOrganization = function () {
@@ -20,6 +21,7 @@ module.exports = {
                 self.organization = self.selectedOrganization;
             }
             self.selectedOrganization = null;
+            self.foundOrganization = null;
         };
     }
 };
