@@ -13,7 +13,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('invited', {
             url: '/invited?accessCode&action',
             template: '<invited activity="activity"></invited>',
-            data: {hideSidebar: true},
             controller: function ($scope, $stateParams, activity) {
                 $scope.activity = activity.plain();
             },
@@ -25,33 +24,27 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('employer', {
             url: '/employer',
-            template: '<employer></employer>',
-            data: {hideSidebar: true}
+            template: '<employer></employer>'
         })
         .state('employerOrganization', {
             url: '/employer/organization',
-            template: '<employer-organization></employer-organization>',
-            data: {hideSidebar: true}
+            template: '<employer-organization></employer-organization>'
         })
         .state('university', {
             url: '/university',
-            template: '<university></university>',
-            data: {hideSidebar: true}
+            template: '<university></university>'
         })
         .state('universityOrganization', {
             url: '/university/organization',
-            template: '<employer-organization></employer-organization>',
-            data: {hideSidebar: true}
+            template: '<employer-organization></employer-organization>'
         })
         .state('student', {
             url: '/student',
-            template: '<student></student>',
-            data: {hideSidebar: true}
+            template: '<student></student>'
         })
         .state('welcome', {
             url: '/',
-            template: '<welcome></welcome>',
-            data: {hideSidebar: true}
+            template: '<welcome></welcome>'
         })
         .state('activities', {
             url: '/activities',

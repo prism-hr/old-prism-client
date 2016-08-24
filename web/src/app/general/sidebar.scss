@@ -1,0 +1,20 @@
+.nav-header {
+  position: relative;
+  background:$uclblue;
+  .prism-icon {
+    height:80px;
+    width: auto;
+    img {
+      height: 100%;
+    }
+  }
+  .prism-logo{
+
+  }
+  .md-icon-button.close {
+    position: absolute;
+    .icon-close {
+      font-size:25px;
+    }
+  }
+}
