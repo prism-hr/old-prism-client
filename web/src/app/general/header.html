@@ -1,8 +1,21 @@
 <md-toolbar layout="column" layout-align="center center"  md-whiteframe="1">
-    <div layout="row" class="md-toolbar-tools" layout-align="space-between center">
-        <a class="logo" ui-sref="welcome">
-            <img src="img/prism-white.svg" alt="PRiSM">
-        </a>
+    <div layout="row" class="md-toolbar-tools" layout-align="center center">
+        <div layout="row" layout-align="start center">
+            <md-button ng-click="toggleActivities()" class="md-icon-button notifications" hide-gt-md ng-if="$ctrl.AuthService.user">
+                <i class="icon-menu" ng-if="!hideSidebar"></i>
+                <label>5</label>
+            </md-button>
+            <a class="prism-icon hide-gt-xs" ui-sref="welcome">
+                <img src="/img/logo.svg">
+            </a>
+            <a class="prism-logo hide-xs" ui-sref="welcome" ng-if="!$ctrl.AuthService.user">
+                <img src="img/prism-white.svg" alt="PRiSM">
+            </a>
+            <a class="prism-logo hide-xs" ui-sref="welcome" hide-gt-md ng-if="$ctrl.AuthService.user">
+                <img src="img/prism-white.svg" alt="PRiSM">
+            </a>
+        </div>
+        <span flex></span>
         <span class="nav-container">
             <div ng-if="!$ctrl.AuthService.user">
                 <md-button  aria-label="Post Ad" class="md-raised md-warn"
@@ -29,10 +42,6 @@
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
-                <md-button ng-click="toggleActivities()" class="md-icon-button md-raised notifications"hide-gt-md>
-                    <i class="icon-menu" ng-if="!hideSidebar"></i>
-                    <label>5</label>
-                </md-button>
             </div>
         </span>
     </div>

@@ -82,7 +82,14 @@ md-radio-group {
     margin-right:12px;
   }
 }
-
+.prism-icon {
+  height: 40px;
+  float: left;
+  width: auto;
+  img {
+    height: 100%;
+  }
+}
 .avatar-holder {
   display: block;
   overflow: hidden;

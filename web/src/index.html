@@ -68,6 +68,9 @@
     </div>
 </div>
 <div layout="row" layout-fill>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="AuthService.user">
+        <sidebar></sidebar>
+    </md-sidenav>
     <div flex layout="column">
         <header ng-if="!$state.current.data.hideHeaderFooter"></header>
         <div layout="row" flex>
@@ -79,10 +82,6 @@
             </md-content>
         </div>
     </div>
-    <div ng-if="AuthService.user">Logged In!</div>
-    <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" md-is-locked-open="$mdMedia('gt-md')" ng-if="!$state.current.data.hideSidebar">
-        <sidebar></sidebar>
-    </md-sidenav>
 </div>
 
 </body>

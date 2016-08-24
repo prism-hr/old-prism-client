@@ -1,9 +1,32 @@
-header {
-  .logo {
+header, .header {
+  .prism-logo {
     width: 100px;
     height: 24px;
+    display: block;
     img {
       width:100%;
+    }
+  }
+  .notifications {
+    position: relative;
+    overflow: visible;
+    label{
+      position: absolute;
+      left: -3px;
+      top: 25px;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      font-size: 10px;
+      background: $uclred;
+      color: white;
+      border-radius: 2px;
+      z-index: 4;
+    }
+    .icon-menu {
+      font-size: 1.3rem;
+      line-height:24px;
     }
   }
   .user-block {
@@ -38,28 +61,7 @@ header {
       font-size: 1.3rem;
       margin-top: 2px;
     }
-    .icon-menu {
-      font-size: 1.3rem;
-      line-height:24px;
-    }
-    .notifications {
-      position: relative;
-      overflow: visible;
-      label{
-        position: absolute;
-        right: -3px;
-        top: 25px;
-        width: 16px;
-        height: 16px;
-        text-align: center;
-        line-height: 16px;
-        font-size: 10px;
-        background: $uclred;
-        color: white;
-        border-radius: 2px;
-        z-index: 4;
-      }
-    }
+
   }
 }
 md-menu-content {

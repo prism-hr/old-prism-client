@@ -30,7 +30,7 @@ module.exports = {
             $mdOpenMenu(ev);
         };
 
-        $scope.toggleActivities = buildToggler('right');
+        $scope.toggleActivities = buildToggler('left');
         function buildToggler(navID) {
             return function() {
                 $mdSidenav(navID).toggle();
