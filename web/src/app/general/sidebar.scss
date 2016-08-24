@@ -1,20 +1,117 @@
-.nav-header {
-  position: relative;
-  background:$uclblue;
-  .prism-icon {
-    height:80px;
-    width: auto;
-    img {
-      height: 100%;
+sidebar {
+  .header {
+    margin-bottom:0;
+  }
+  .user-details {
+    padding: 12px;
+  }
+  .user-block {
+    .avatar-holder {
+      width: 60px;
+      height: 60px;
     }
   }
-  .prism-logo{
-
-  }
-  .md-icon-button.close {
-    position: absolute;
-    .icon-close {
-      font-size:25px;
+  .nav-header {
+    position: relative;
+    background:$uclblue;
+    .prism-icon {
+      height:80px;
+      width: auto;
+      img {
+        height: 100%;
+      }
     }
+    .md-icon-button.close {
+      position: absolute;
+      .icon-close {
+        font-size:25px;
+      }
+    }
+  }
+  .icon-logout {
+    font-size: 1.25rem;
+  }
+  .logout-button {
+    width: 100%;
+    text-align: left;
+  }
+  .ucl-footer {
+    md-list {
+      margin-left: -8px;
+      margin-right: -8px;
+      .md-list-item-inner {
+        font-size:16px;
+        i {
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+  .main-menu {
+    i {
+      margin-right: 12px;
+    }
+    .badge {
+      height: 20px;
+      line-height:20px;
+    }
+  }
+  .notifications {
+    position: relative;
+    overflow: visible;
+    label{
+      position: absolute;
+      left: -3px;
+      top: 25px;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      font-size: 10px;
+      background: $uclred;
+      color: white;
+      border-radius: 2px;
+      z-index: 4;
+    }
+    .icon-bell, .icon-envelope {
+      font-size: 18px;
+      line-height:24px;
+    }
+  }
+}
+.user-block {
+  padding-right: 6px;
+  &.employer {
+    background: #88c4e1;
+  }
+  .avatar-holder {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px 0 0;
+    &.employer {
+      border: 2px solid $uclred;
+    }
+    &.university {
+      border: 2px solid $uclgreen;
+    }
+    &.student {
+      border: 2px solid $uclblue;
+    }
+  }
+  .contact-container {
+    font-size:0.9rem;
+    a {
+      display: inline-block;
+      color: $uclfooter;
+      font-weight:700;
+    }
+    span {
+      font-size:0.8rem;
+      font-weight:500;
+    }
+  }
+  .icon-settings {
+    font-size: 1.3rem;
+    margin-top: 2px;
   }
 }

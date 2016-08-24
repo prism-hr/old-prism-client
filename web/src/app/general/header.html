@@ -23,25 +23,16 @@
                 <md-button aria-label="Sing up" ng-click="showRegister($event)">Sing up</md-button>
                 <md-button aria-label="Log in" ng-click="showLogin($event)"> <i class="icon-lock"></i> Log in</md-button>
             </div>
-            <div ng-if="$ctrl.AuthService.user" class="user-block" layout="row" layout-align="end center">
-                <div class="user-details">
+            <div ng-if="$ctrl.AuthService.user" class="user-block" layout="row" layout-align="end center" hide-gt-sm>
+                <div class="user-details" layout="row" layout-align="center center">
                     <div class="avatar-holder employer">
-                        <img src="img/2c09657.jpg" class="md-avatar" alt="{{item.who}}">
+                        <img src="img/2c09657.jpg" class="md-avatar" alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}">
                     </div>
-                    <div class="contact-container"><a href="#">{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}</a> <span>{{$ctrl.AuthService.user.role}}</span></div>
+                    <div class="contact-container" layout="column" layout-align="center start">
+                        <a href="#">{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}</a>
+                        <span>{{$ctrl.AuthService.user.role}}</span>
+                    </div>
                 </div>
-                <md-menu md-position-mode="target-right target">
-                    <md-button aria-label="Open menu" class="md-icon-button md-raised" ng-click="openMenu($mdOpenMenu, $event)">
-                        <md-icon class="icon-settings"></md-icon>
-                    </md-button>
-                    <md-menu-content width="3">
-                        <md-menu-item>
-                          <md-button aria-label="Log out" ng-click="logout()">
-                              <md-icon class="icon-logout"></md-icon> Log out
-                          </md-button>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
             </div>
         </span>
     </div>
