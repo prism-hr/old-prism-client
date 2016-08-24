@@ -15,8 +15,8 @@
                     risus erat, eget bibendum metus tristique et. Integer placerat ex amet.</p>
                 <p class="address">{{$ctrl.organization.address}}
                     <span class="phone" ng-if="$ctrl.organization.phone">
-                                        <i class="icon-phone"></i> {{$ctrl.organization.phone}}
-                                    </span>
+                        <i class="icon-phone"></i> {{$ctrl.organization.phone}}
+                    </span>
                 </p>
             </div>
         </div>
@@ -66,18 +66,6 @@
                         <div ng-messages-include="my-custom-messages"></div>
                     </div>
                 </md-input-container>
-            </div>
-            <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
-                Look up company
-            </md-button>
-            <div layout-padding>
-                <md-input-container class="md-block">
-                    <label>Company Telephone</label>
-                    <input name="phone" ng-model="$ctrl.organization.phone" required>
-                    <div ng-messages="companyForm.phone.$error" role="alert">
-                        <div ng-messages-include="my-custom-messages"></div>
-                    </div>
-                </md-input-container>
                 <md-radio-group name="type" ng-required="true" ng-model="data.group1">
                     <md-radio-button value="employer" class="md-primary" checked="checked"
                                      ng-checked="true">Employer
@@ -86,6 +74,27 @@
                     <md-radio-button value="department" class="md-primary">Department</md-radio-button>
                     <md-radio-button value="career" class="md-primary">Career Services</md-radio-button>
                 </md-radio-group>
+                <md-input-container class="md-block">
+                    <label>Strapline</label>
+                    <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="2" required></textarea>
+                    <div ng-messages="companyForm.phone.$error" role="alert">
+                        <div ng-messages-include="my-custom-messages"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Company Telephone</label>
+                    <input name="phone" ng-model="$ctrl.organization.phone" required>
+                    <div ng-messages="companyForm.phone.$error" role="alert">
+                        <div ng-messages-include="my-custom-messages"></div>
+                    </div>
+                </md-input-container>
+            </div>
+            <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
+                Look up company
+            </md-button>
+            <div layout-padding>
+
+
             </div>
         </div>
     </div>
