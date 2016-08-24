@@ -49,7 +49,7 @@ module.exports = function ($q) {
                     return;
                 }
                 var deferred = $q.defer();
-                autocomplete.getPlacePredictions({input: input, types: ['establishment']}, function (places) {
+                autocomplete.getPlacePredictions({input: input, types: ['address']}, function (places) {
                     places = _.map(places, function (place) {
                         return {name: place.description, googleId: place.place_id};
                     });
