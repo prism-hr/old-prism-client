@@ -23,11 +23,12 @@ function satellizerConfig($authProvider, environment) {
     });
 }
 
-function generalRun($rootScope, $transitions, $state, $http, AuthService) {
+function generalRun($rootScope, $transitions, $state, AuthService) {
     $transitions.onError(null, function (transition) {
         console.log('Transition error');
     });
     $rootScope.$state = $state;
+    $rootScope.AuthService = AuthService;
 
     // keep user logged in after page refresh
     AuthService.refreshTokenHeader();
