@@ -23,6 +23,10 @@ module.exports = function ($q) {
                 scope.searchText = _.get(scope.place, 'name');
             };
 
+            scope.newPlace = function (text) {
+                ngModel.$setViewValue({name: text});
+            };
+
             scope.placeSelected = function (selectedPlace) {
                 if (selectedPlace.alreadyRegistered) {
                     scope.place = selectedPlace;
@@ -32,11 +36,10 @@ module.exports = function ($q) {
                         scope.$apply(function () {
                             scope.place = {};
                             if (place) {
+                                scope.place.id = 666; // FIXME found institutions will have ID
                                 scope.place.name = place.name;
                                 scope.place.address = place.formatted_address;
                                 scope.place.phone = place.international_phone_number;
-                            } else { // sometimes Google returns NOT_FOUND
-                                scope.place.name = selectedPlace.name;
                             }
                             ngModel.$setViewValue(scope.place);
                         });

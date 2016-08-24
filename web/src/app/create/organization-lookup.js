@@ -3,17 +3,16 @@ module.exports = {
     controller: function () {
         var self = this;
 
-        this.cannotFindOrganization = function () {
-            self.organization = {};
-            self.foundOrganization = null;
-        };
-
         this.lookupOrganization = function () {
             self.organization = null;
         };
 
         this.organizationSelected = function (organization) {
-            self.selectedOrganization = organization;
+            if(organization.id) {
+                self.selectedOrganization = organization;
+            } else {
+                self.organization = organization;
+            }
         };
 
         this.confirmSelectedOrganization = function (confirm) {

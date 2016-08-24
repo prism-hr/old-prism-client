@@ -12,7 +12,7 @@
             placeholder="{{placeholder}}"
             md-menu-class="autocomplete-custom-template">
         <md-not-found>
-            Create "{{searchText}}".
+            <a ng-click="newPlace(searchText)">Create {{searchText}}</a>
         </md-not-found>
         <md-item-template>
             <span md-highlight-text="searchText">

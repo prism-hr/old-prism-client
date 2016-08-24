@@ -30,9 +30,6 @@
                                     ng-model="$ctrl.foundOrganization" placeholder="Company Lookup">
                 </place-autocomplete>
             </div>
-            <md-button ng-click="$ctrl.cannotFindOrganization()" class="md-warn md-raised small">
-                I cannot find my company
-            </md-button>
             <div ng-if="$ctrl.selectedOrganization" layout-padding>
                 <div class="google-institution">
                     <h3>{{$ctrl.selectedOrganization.name}}</h3>
