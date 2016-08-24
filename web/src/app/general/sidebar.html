@@ -1,16 +1,68 @@
-<md-toolbar class="md-toolbar-tools header">
-    <div>
-        <a class="prism-logo" ui-sref="welcome">
-        <img src="img/prism-white.svg" alt="PRiSM">
-        </a>
+<div flex>
+    <md-toolbar class="md-toolbar-tools header">
+        <div>
+            <a class="prism-logo" ui-sref="welcome">
+                <img src="img/prism-white.svg" alt="PRiSM">
+            </a>
+        </div>
+        <span flex=""></span>
+        <md-button class="md-icon-button" ng-click="close()" aria-label="Cancel" hide-gt-md>
+            <i class="icon-close"></i>
+        </md-button>
+    </md-toolbar>
+    <div class="user-block employer" layout="row" layout-align="center center">
+        <div class="user-details" layout="row" layout-align="start center">
+            <div class="avatar-holder employer">
+                <img src="img/2c09657.jpg" class="md-avatar" alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}">
+            </div>
+            <div class="contact-container" layout="column">
+                <a href="#">{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}</a>
+                <span>{{$ctrl.AuthService.user.role}}</span>
+            </div>
+        </div>
+        <span flex></span>
+        <md-button class="md-icon-button md-raised notifications" ui-sref="activities">
+            <i class="icon-bell"></i>
+            <label>5</label>
+        </md-button>
+        <md-button class="md-icon-button md-raised notifications">
+            <i class="icon-envelope"></i>
+            <label>3</label>
+        </md-button>
     </div>
-    <span flex=""></span>
-    <md-button class="md-icon-button" ng-click="close()" aria-label="Cancel" hide-gt-md>
-        <i class="icon-close"></i>
-    </md-button>
+    <md-content class="main-menu">
+        <md-list flex >
+            <md-subheader class="md-no-sticky">Menu</md-subheader>
+            <md-list-item ng-click="navigateTo('candidates', $event)">
+                <i class="icon-people"></i>
+                <p>Candidates</p>
+            </md-list-item>
+            <md-list-item ng-click="navigateTo('applications', $event)">
+                <i class="icon-paper-plane"></i>
+                <p>Applications</p>
+                <span class="badge">2</span>
+            </md-list-item>
+            <md-list-item ng-click="navigateTo('positions', $event)">
+                <i class="icon-briefcase"></i>
+                <p>Positions</p>
+            </md-list-item>
+            <md-list-item ng-click="navigateTo('positions', $event)">
+                <i class="icon-grid"></i>
+                <p>Departments</p>
+            </md-list-item>
+            <md-list-item ng-click="navigateTo('positions', $event)">
+                <i class="icon-home"></i>
+                <p>Companies</p>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>
+<md-toolbar class="md-toolbar-tools ucl-footer">
+    <md-list flex>
+        <md-list-item ng-click="logout()" aria-label="Log out">
+            <i class="icon-logout"></i> Log out
+        </md-list-item>
+    </md-list>
 </md-toolbar>
-<md-content layout-padding>
-    <ul>
-        <li></li>
-    </ul>
-</md-content>
+
+

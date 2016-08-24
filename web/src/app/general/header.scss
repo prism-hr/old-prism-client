@@ -7,67 +7,6 @@ header, .header {
       width:100%;
     }
   }
-  .notifications {
-    position: relative;
-    overflow: visible;
-    label{
-      position: absolute;
-      left: -3px;
-      top: 25px;
-      width: 16px;
-      height: 16px;
-      text-align: center;
-      line-height: 16px;
-      font-size: 10px;
-      background: $uclred;
-      color: white;
-      border-radius: 2px;
-      z-index: 4;
-    }
-    .icon-menu {
-      font-size: 1.3rem;
-      line-height:24px;
-    }
-  }
-  .user-block {
-    .avatar-holder {
-      width: 50px;
-      height: 50px;
-      margin: 0 10px 0 0;
-      &.employer {
-        border: 2px solid $uclred;
-      }
-      &.university {
-        border: 2px solid $uclgreen;
-      }
-      &.student {
-        border: 2px solid $uclblue;
-      }
-    }
-    .contact-container {
-      font-size:0.9rem;
-      a {
-        margin-top: 6px;
-        display: inline-block;
-        color: $uclfooter;
-        font-weight:700;
-      }
-      span {
-        font-size:0.8rem;
-        font-weight:500;
-      }
-    }
-    .icon-settings {
-      font-size: 1.3rem;
-      margin-top: 2px;
-    }
-
-  }
-}
-md-menu-content {
-  .icon-logout {
-    font-size: 1.25rem;
-  }
 }
 @media (max-width: $layout-breakpoint-xs - 1) {
   .nav-container {
