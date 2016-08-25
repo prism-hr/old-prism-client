@@ -55,10 +55,21 @@ sidebar {
       height: 20px;
       line-height:20px;
     }
+    .md-list-item-inner {
+      button {
+        width: 40px;
+        min-width: 40px;
+        min-height: 24px;
+        line-height: 24px;
+        margin-right: 0px;
+        box-shadow:none !important;
+      }
+    }
   }
   .notifications {
     position: relative;
     overflow: visible;
+    box-shadow:none !important;
     label{
       position: absolute;
       left: -3px;

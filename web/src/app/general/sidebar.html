@@ -37,6 +37,11 @@
                 <i class="icon-people"></i>
                 <p>Candidates</p>
             </md-list-item>
+            <md-list-item ng-click="navigateTo('contacts', $event)">
+                <i class="icon-notebook"></i>
+                <p>Contacts</p>
+                <md-button class="md-raised md-primary small">New</md-button>
+            </md-list-item>
             <md-list-item ng-click="navigateTo('applications', $event)">
                 <i class="icon-paper-plane"></i>
                 <p>Applications</p>
@@ -45,14 +50,20 @@
             <md-list-item ng-click="navigateTo('positions', $event)">
                 <i class="icon-briefcase"></i>
                 <p>Positions</p>
+                <span class="badge">2</span>
+                <md-button class="md-raised md-primary small">New</md-button>
             </md-list-item>
-            <md-list-item ng-click="navigateTo('positions', $event)">
-                <i class="icon-grid"></i>
+            <md-list-item ng-click="navigateTo('departments', $event)">
+                <i class="icon-organization"></i>
                 <p>Departments</p>
             </md-list-item>
-            <md-list-item ng-click="navigateTo('positions', $event)">
+            <md-list-item ng-click="navigateTo('companies', $event)">
                 <i class="icon-home"></i>
                 <p>Companies</p>
+            </md-list-item>
+            <md-list-item ng-click="navigateTo('system', $event)">
+                <i class="icon-wrench"></i>
+                <p>System</p>
             </md-list-item>
         </md-list>
     </md-content>
