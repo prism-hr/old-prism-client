@@ -1,77 +1,44 @@
-<div class="preview" ng-if="$ctrl.organization.name">
-    <label>Preview</label>
-    <div class="company-box" layout="row" layout-align="center end">
-        <div class="company-header" layout="row">
-            <div class="logo-image">
-                <div class="logo-flex company-logo">
-                    <div class="logo">
-                        <img src="img/UCL-Engineering-logo.png">
-                    </div>
+<div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
+    <div layout-padding>
+        <h3>Find or create your company</h3>
+        <place-autocomplete ng-model="$ctrl.foundOrganization" name="foundOrganization"
+                            ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
+                            placeholder="{{'create.organization.organization-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
+        </place-autocomplete>
+    </div>
+
+    <div ng-if="$ctrl.selectedOrganization" layout-padding>
+        <div class="google-institution">
+            <h3>{{$ctrl.selectedOrganization.name}}</h3>
+            <div class="part-of">
+                <h4>Claim {{$ctrl.selectedOrganization.name}} as your company</h4>
+                <div class="clearfix button-group">
+                    <md-button class="pull-left md-primary md-raised small"
+                               ng-click="$ctrl.confirmSelectedOrganization(true)">
+                        <i class="icon-user"></i> Confirm
+                    </md-button>
+                    <md-button class="pull-right md-warn md-raised small"
+                               ng-click="$ctrl.confirmSelectedOrganization(false)">
+                        <i class="icon-close"></i> Decline
+                    </md-button>
                 </div>
-            </div>
-            <div>
-                <h2>{{$ctrl.organization.name}}</h2>
-                <p class="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan
-                    risus erat, eget bibendum metus tristique et. Integer placerat ex amet.</p>
-                <p class="address">{{$ctrl.organization.address}}
-                    <span class="phone" ng-if="$ctrl.organization.phone">
-                        <i class="icon-phone"></i> {{$ctrl.organization.phone}}
-                    </span>
-                </p>
             </div>
         </div>
     </div>
 </div>
-<div>
-    <div layout-xs="column" layout="row">
-        <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
+<div flex="100" ng-if="$ctrl.organization" class="manual-entering">
+    <div layout-padding>
+        <md-input-container class="md-block">
+            <label>Company Name</label>
+            <input name="companyName" ng-model="$ctrl.organization.name" required>
+        </md-input-container>
+    </div>
+    <div layout="row" layout-align="end">
+        <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
+            {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
+        </md-button>
+    </div>
 
-            <div layout-padding="">
-                <place-autocomplete ng-model="$ctrl.foundOrganization" name="foundOrganization"
-                                    ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
-                                    placeholder="{{'create.organization.organization-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
-                </place-autocomplete>
-            </div>
-
-            <div ng-if="$ctrl.selectedOrganization" layout-padding>
-                <div class="google-institution">
-                    <h3>{{$ctrl.selectedOrganization.name}}</h3>
-                    <p class="address">
-                        {{$ctrl.selectedOrganization.address}}
-                    </p>
-                    <span class="phone" ng-if="$ctrl.selectedOrganization.phone"><i
-                            class="icon-phone"></i> {{$ctrl.selectedOrganization.phone}}</span>
-                    <div class="part-of">
-                        <h4>Claim {{$ctrl.selectedOrganization.name}} as your company</h4>
-                        <div class="clearfix button-group">
-                            <md-button class="pull-left md-primary md-raised small"
-                                       ng-click="$ctrl.confirmSelectedOrganization(true)">
-                                <i class="icon-user"></i> Confirm
-                            </md-button>
-                            <md-button class="pull-right md-warn md-raised small"
-                                       ng-click="$ctrl.confirmSelectedOrganization(false)">
-                                <i class="icon-close"></i> Decline
-                            </md-button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div flex="100" ng-if="$ctrl.organization" class="manual-entering">
-            <div layout-padding>
-                <md-input-container class="md-block">
-                    <label>Company Name</label>
-                    <input name="companyName" ng-model="$ctrl.organization.name" required>
-                </md-input-container>
-            </div>
-
-            <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
-                {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
-            </md-button>
-
-            <div layout-padding>
-            </div>
-        </div>
+    <div layout-padding>
     </div>
 </div>

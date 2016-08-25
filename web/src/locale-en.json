@@ -10,8 +10,17 @@
           "EMPLOYER": "Lookup Company",
           "UNIVERSITY": "Lookup University"
         }
+      },
+      "address-lookup": {
+        "autocomplete-placeholder": {
+          "EMPLOYER": "Lookup your Address",
+          "UNIVERSITY": "Lookup your Address"
+        },
+        "lookup-button": {
+          "EMPLOYER": "Lookup Address",
+          "UNIVERSITY": "Lookup Address"
+        }
       }
-
     }
   }
 }

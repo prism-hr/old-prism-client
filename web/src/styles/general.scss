@@ -51,8 +51,10 @@ ui-view {
   font-weight: 900 !important;
 }
 .documents {
+
   margin-bottom:10px;
   .md-button {
+    margin-left:0px;
     margin-bottom:20px;
   }
 }
@@ -140,7 +142,24 @@ md-radio-group {
   opacity:0;
 }
 // Logo
-
+.image-uploader {
+  margin-top:4px;
+  &.logo {
+    border: 1px dashed $inactiveGrey;
+    width: 200px;
+    min-height: 125px;
+    .logo-flex {
+      border: none;
+      background: transparent;
+    }
+  }
+  &.background {
+    border: 1px dashed $inactiveGrey;
+    background-size: cover;
+    min-height: 250px;
+    width: 100%;
+  }
+}
 .logo-flex {
   border:1px solid #ececec;
   background: #ffffff;
