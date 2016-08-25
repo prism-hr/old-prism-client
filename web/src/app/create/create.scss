@@ -1,31 +1,29 @@
 // Intro
 .step-page {
   &.child {
-    .left-side-block .header{
-      margin-bottom:26px;
+    .single-block {
+      .header{
+        margin-bottom:0px;
+      }
     }
-    .right-side-block {
-      padding: 60px 40px 0 0;
+  }
+  h4 {
+    color: $uclfooter;
+    font-weight:900;
+  }
+  h3 {
+    margin-top:4px;
+    color: rgba(0,0,0,0.87);
+  }
+  .step-witzard {
+    h3 {
+      margin-bottom:12px;
     }
   }
   .left-side-block {
     padding: 60px 40px;
     .header {
       margin-bottom:40px;
-      h3 {
-        margin-top:4px;
-        color: rgba(0,0,0,0.87);
-      }
-    }
-    .manual-entering {
-      margin-top: -15px;
-      .md-button.md-warn {
-        margin-top:-5px;
-      }
-    }
-    h4 {
-      color: $uclfooter;
-      font-weight:900;
     }
   }
   .step {
@@ -36,6 +34,9 @@
     h4 {
       color: $uclfooter;
       font-weight:900;
+    }
+    h3 {
+      color: $uclfooter;
     }
     p {
       margin-top: 4px;
@@ -130,7 +131,28 @@
     }
   }
 }
-
+.radio-box {
+  border: 1px solid $fadeGrey;
+  border-radius:2px;
+  md-radio-button {
+    border-bottom:1px solid $fadeGrey;
+    margin:0;
+    padding: 20px;
+    &:last-child {
+      border-bottom:none;
+    }
+    .md-container {
+      left: 20px;
+    }
+    .md-label {
+      font-size:18px;
+      margin-left:32px;
+    }
+  }
+}
+md-autocomplete input:not(.md-input), md-input-container  {
+  font-size:18px;
+}
 // MediaQ
 @media (max-width: $layout-breakpoint-xs - 1) {
   .step-page {
