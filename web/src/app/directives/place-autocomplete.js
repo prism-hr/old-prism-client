@@ -26,6 +26,8 @@ module.exports = function ($q) {
                 if(place && !place.id) {
                     place.name = scope.searchText;
                 }
+                // Removing the mask that block the scroll on the page TODO: AjsMaterial wait for fix
+                angular.element(document.body.querySelector('.md-scroll-mask')).remove();
                 ngModel.$setViewValue(place);
             };
 
