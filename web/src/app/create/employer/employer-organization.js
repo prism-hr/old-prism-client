@@ -14,5 +14,9 @@ module.exports = {
             self.step++;
         };
 
+        this.back = function() {
+            self.step--;
+        };
+
     }
 };
