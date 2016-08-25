@@ -1,8 +1,21 @@
 module.exports = {
+    generalRun: generalRun,
     restangular: restangularConfig,
     satellizerConfig: satellizerConfig,
-    generalRun: generalRun
+    translateConfig: translateConfig
 };
+
+function generalRun($rootScope, $transitions, $state, AuthService) {
+    $transitions.onError(null, function (transition) {
+        console.log('Transition error');
+    });
+    $rootScope.$state = $state;
+    $rootScope.AuthService = AuthService;
+
+    // keep user logged in after page refresh
+    AuthService.refreshTokenHeader();
+    AuthService.loadUser();
+}
 
 function restangularConfig(RestangularProvider) {
     var host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
@@ -23,14 +36,10 @@ function satellizerConfig($authProvider, environment) {
     });
 }
 
-function generalRun($rootScope, $transitions, $state, AuthService) {
-    $transitions.onError(null, function (transition) {
-        console.log('Transition error');
+function translateConfig($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'locale-',
+        suffix: '.json'
     });
-    $rootScope.$state = $state;
-    $rootScope.AuthService = AuthService;
-
-    // keep user logged in after page refresh
-    AuthService.refreshTokenHeader();
-    AuthService.loadUser();
+    $translateProvider.preferredLanguage('en');
 }

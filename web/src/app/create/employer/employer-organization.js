@@ -8,7 +8,7 @@ module.exports = {
             if (!form.$valid) {
                 return;
             }
-            this.step++;
+            this.step += organization.id ? 2 : 1;
         };
 
     }

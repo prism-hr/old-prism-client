@@ -11,6 +11,8 @@ require('angular-ui-router');
 require('api-check');
 require('angular-recaptcha');
 require('satellizer');
+require('angular-translate');
+require('angular-translate-loader-static-files');
 
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
@@ -58,7 +60,8 @@ angular
         'ngFileUpload',
         'satellizer',
         'angular-loading-bar',
-        'ngAnimate'
+        'ngAnimate',
+        'pascalprecht.translate'
     ])
     .constant('environment', environment)
     .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
@@ -68,6 +71,7 @@ angular
     .config(routes)
     .config(generalConfig.restangular)
     .config(generalConfig.satellizerConfig)
+    .config(generalConfig.translateConfig)
     .config(materialConfig)
     .service('ActivationService', ActivationService)
     .service('AuthService', AuthService)
