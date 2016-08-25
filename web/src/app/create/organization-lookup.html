@@ -26,9 +26,15 @@
     <div layout-xs="column" layout="row">
         <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
             <div layout-padding="">
-                <place-autocomplete ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
-                                    ng-model="$ctrl.foundOrganization" placeholder="Company Lookup">
+                <place-autocomplete ng-model="$ctrl.foundOrganization" name="foundOrganization"
+                                    ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
+                                    placeholder="Company Lookup" required>
                 </place-autocomplete>
+                <div ng-messages="$ctrl.form.foundOrganization.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                        You have to find an organization or create new one.
+                    </div>
+                </div>
             </div>
             <div ng-if="$ctrl.selectedOrganization" layout-padding>
                 <div class="google-institution">
@@ -59,7 +65,7 @@
                 <md-input-container class="md-block">
                     <label>Company Name</label>
                     <input name="companyName" ng-model="$ctrl.organization.name" required>
-                    <div ng-messages="companyForm.companyName.$error" role="alert">
+                    <div ng-messages="$ctrl.form.companyName.$error" role="alert">
                         <div ng-messages-include="my-custom-messages"></div>
                     </div>
                 </md-input-container>
@@ -67,21 +73,21 @@
                     <md-radio-button value="employer" class="md-primary" checked="checked"
                                      ng-checked="true">Employer
                     </md-radio-button>
-                    <md-radio-button value="recruiter" class="md-primary"> Recruiter</md-radio-button>
+                    <md-radio-button value="recruiter" class="md-primary">Recruiter</md-radio-button>
                     <md-radio-button value="department" class="md-primary">Department</md-radio-button>
                     <md-radio-button value="career" class="md-primary">Career Services</md-radio-button>
                 </md-radio-group>
                 <md-input-container class="md-block">
                     <label>Strapline</label>
                     <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="2" required></textarea>
-                    <div ng-messages="companyForm.phone.$error" role="alert">
+                    <div ng-messages="$ctrl.form.phone.$error" role="alert">
                         <div ng-messages-include="my-custom-messages"></div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>Company Telephone</label>
                     <input name="phone" ng-model="$ctrl.organization.phone" required>
-                    <div ng-messages="companyForm.phone.$error" role="alert">
+                    <div ng-messages="$ctrl.form.phone.$error" role="alert">
                         <div ng-messages-include="my-custom-messages"></div>
                     </div>
                 </md-input-container>
