@@ -6,10 +6,16 @@ module.exports = {
     },
     controller: function (AuthService) {
         var self = this;
+        this.view = 'LOGIN';
         this.activity = this.activity || {user: {}};
-        this.user = this.activity.user;
+        this.user = angular.copy(this.activity.user) || {};
 
-        this.submit = function (form) {
+        this.setView = function (view) {
+            this.view = view;
+            this.user = view === 'LOGIN' ? angular.copy(this.activity.user) || {} : {};
+        };
+
+        this.login = function (form) {
             if (!form.$valid) {
                 return;
             }
@@ -23,6 +29,16 @@ module.exports = {
             AuthService.authenticate(provider)
                 .then(function () {
                     self.onSuccess();
+                });
+        };
+
+        this.resetPassword = function (form) {
+            if (!form.$valid) {
+                return;
+            }
+            AuthService.resetPassword(self.user)
+                .then(function(){
+                    self.passwordReset = true;
                 });
         };
     }

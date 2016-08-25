@@ -29,7 +29,7 @@
             <div layout-padding="">
                 <place-autocomplete ng-model="$ctrl.foundOrganization" name="foundOrganization"
                                     ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
-                                    placeholder="Company Lookup" required>
+                                    placeholder="{{'create.organization-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
                 </place-autocomplete>
             </div>
 
@@ -83,7 +83,7 @@
             </div>
 
             <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
-                Look up company
+                {{'create.organization-lookup.lookup-button.' + $ctrl.type | translate}}
             </md-button>
 
             <div layout-padding>
