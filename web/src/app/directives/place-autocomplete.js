@@ -23,7 +23,7 @@ module.exports = function ($q) {
 
             scope.placeSelected = function (selectedPlace) {
                 var place = angular.copy(selectedPlace);
-                if(!_.get(place, 'id')) {
+                if(place && !place.id) {
                     place.name = scope.searchText;
                 }
                 ngModel.$setViewValue(place);
