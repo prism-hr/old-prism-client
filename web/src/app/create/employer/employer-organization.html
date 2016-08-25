@@ -8,18 +8,28 @@
                 </div>
 
                 <div ng-if="$ctrl.step === 0">
+                    <p>Choose category of your company</p>
+                    <organization-category form="organizationForm" category="$ctrl.category"></organization-category>
+                </div>
+
+                <div ng-if="$ctrl.step === 1">
                     <p>Find or create your company</p>
                     <organization-lookup type="EMPLOYER" form="organizationForm" organization="$ctrl.organization"></organization-lookup>
                 </div>
 
-                <div ng-if="$ctrl.step === 1">
-                    <p>Basic information about your company</p>
-                    <span>Substep2</span>
+                <div ng-if="$ctrl.step === 2">
+                    <p>Provide your company summary</p>
+                    <organization-summary type="EMPLOYER" form="organizationForm" organization="$ctrl.organization"></organization-summary>
+                </div>
+
+                <div ng-if="$ctrl.step === 3">
+                    <p>Review?</p>
+                    {{$ctrl.organization}}
                 </div>
 
                 <div class="action-block" layout="row" layout-align="space-between none">
                     <md-button class="md-raised md-button md-ink-ripple big" ui-sref="employer">Back</md-button>
-                    <md-button type="submit" class="md-primary md-raised big">Continue</md-button>
+                    <md-button type="submit" class="md-primary md-raised big" ng-disabled="organizationForm.$invalid">Continue</md-button>
                 </div>
             </div>
 

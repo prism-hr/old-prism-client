@@ -1,0 +1,18 @@
+<div layout-xs="column" layout="row">
+    <div flex="100" class="manual-entering">
+
+        <div layout-padding>
+            <md-radio-group name="type" ng-required="true" ng-model="$ctrl.category">
+                <md-radio-button value="EMPLOYER" class="md-primary" checked="checked" ng-checked="true">
+                    Employer
+                </md-radio-button>
+                <md-radio-button value="RECRUITER" class="md-primary">Recruiter</md-radio-button>
+                <md-radio-button value="DEPARTMENT" class="md-primary">Department</md-radio-button>
+                <md-radio-button value="CAREER" class="md-primary">Career Services</md-radio-button>
+            </md-radio-group>
+        </div>
+
+        <div layout-padding>
+        </div>
+    </div>
+</div>

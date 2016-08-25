@@ -29,7 +29,7 @@
             <div layout-padding="">
                 <place-autocomplete ng-model="$ctrl.foundOrganization" name="foundOrganization"
                                     ng-change="$ctrl.organizationSelected($ctrl.foundOrganization)"
-                                    placeholder="{{'create.organization-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
+                                    placeholder="{{'create.organization.organization-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
                 </place-autocomplete>
             </div>
 
@@ -64,26 +64,10 @@
                     <label>Company Name</label>
                     <input name="companyName" ng-model="$ctrl.organization.name" required>
                 </md-input-container>
-                <md-radio-group name="type" ng-required="true" ng-model="data.group1">
-                    <md-radio-button value="EMPLOYER" class="md-primary" checked="checked"
-                                     ng-checked="true">Employer
-                    </md-radio-button>
-                    <md-radio-button value="RECRUITER" class="md-primary">Recruiter</md-radio-button>
-                    <md-radio-button value="DEPARTMENT" class="md-primary">Department</md-radio-button>
-                    <md-radio-button value="CAREER" class="md-primary">Career Services</md-radio-button>
-                </md-radio-group>
-                <md-input-container class="md-block">
-                    <label>Strapline</label>
-                    <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="2" required></textarea>
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Company Telephone</label>
-                    <input name="phone" ng-model="$ctrl.organization.phone" required>
-                </md-input-container>
             </div>
 
             <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
-                {{'create.organization-lookup.lookup-button.' + $ctrl.type | translate}}
+                {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
             </md-button>
 
             <div layout-padding>
