@@ -1,4 +1,5 @@
 <div ng-if="$ctrl.view === 'LOGIN'">
+    <h3 class="text-aline-center hide-xs hide-sm">Login</h3>
     <div class="social-login md-button-group" layout="row" layout-align="center">
         <md-button ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
             <i class="icon-social-linkedin"></i> linkedin
@@ -34,13 +35,25 @@
     </form>
 </div>
 <div ng-if="$ctrl.view === 'FORGOT_PASSWORD'">
-
+    <h3 class="text-aline-center hide-xs hide-sm">Recover Password</h3>
     <div ng-if="!$ctrl.passwordReset">
     <form novalidate name="resetPasswordForm" ng-submit="$ctrl.resetPassword(resetPasswordForm)">
-        <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
-
-        <md-button type="submit" class="md-warn">Reset Password</md-button>
-        <md-button class="md-warn" ng-click="$ctrl.setView('LOGIN')">Back</md-button>
+        <div class="index-padding">
+            <md-input-container class="md-block">
+                <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
+                <div ng-messages="loginForm.username.$error" role="alert">
+                    <div ng-message-exp="['required', 'email']">
+                        Your email must look like an e-mail address.
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="column" layout-align="space-between stretch">
+            <md-button type="submit" class="md-warn md-raised">Reset Password</md-button>
+        </div>
+        <div layout-gt-xs="row" layout-align="end center">
+            <md-button class="md-warn" ng-click="$ctrl.setView('LOGIN')">Login</md-button>
+        </div>
     </form>
     </div>
     <div ng-if="$ctrl.passwordReset">
