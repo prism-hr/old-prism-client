@@ -1,10 +1,15 @@
 module.exports = {
     templateUrl: 'app/create/organization-lookup.html',
+    bindings: {
+        organization: '=',
+        form: '<'
+    },
     controller: function () {
         var self = this;
 
         this.lookupOrganization = function () {
             self.organization = null;
+            self.foundOrganization = null;
         };
 
         this.organizationSelected = function (organization) {

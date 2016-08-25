@@ -36,7 +36,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('universityOrganization', {
             url: '/university/organization',
-            template: '<employer-organization></employer-organization>'
+            template: '<university-organization></university-organization>'
         })
         .state('student', {
             url: '/student',
