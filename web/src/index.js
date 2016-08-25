@@ -36,7 +36,9 @@ var header = require('./app/general/header');
 var sidebar = require('./app/general/sidebar');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
-var organizationLookup = require('./app/create/organization-lookup');
+var organizationCategory = require('./app/create/organization/organization-category');
+var organizationLookup = require('./app/create/organization/organization-lookup');
+var organizationSummary = require('./app/create/organization/organization-summary');
 var employer = require('./app/create/employer/employer');
 var employerOrganization = require('./app/create/employer/employer-organization');
 var university = require('./app/create/university/university');
@@ -87,7 +89,9 @@ angular
     .component('login', login)
     .component('register', register)
     .component('regswitch', regswitch)
+    .component('organizationCategory', organizationCategory)
     .component('organizationLookup', organizationLookup)
+    .component('organizationSummary', organizationSummary)
     .component('employer', employer)
     .component('employerOrganization', employerOrganization)
     .component('university', university)

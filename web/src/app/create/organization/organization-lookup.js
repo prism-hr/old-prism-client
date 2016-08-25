@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/create/organization-lookup.html',
+    templateUrl: 'app/create/organization/organization-lookup.html',
     bindings: {
         type: '@',
         organization: '=',

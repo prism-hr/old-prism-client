@@ -1,14 +1,17 @@
 {
   "create": {
-    "organization-lookup": {
-      "autocomplete-placeholder": {
-        "EMPLOYER": "Lookup or create company",
-        "UNIVERSITY": "Lookup or create university"
-      },
-      "lookup-button": {
-        "EMPLOYER": "Lookup Company",
-        "UNIVERSITY": "Lookup University"
+    "organization" : {
+      "organization-lookup": {
+        "autocomplete-placeholder": {
+          "EMPLOYER": "Lookup or create company",
+          "UNIVERSITY": "Lookup or create university"
+        },
+        "lookup-button": {
+          "EMPLOYER": "Lookup Company",
+          "UNIVERSITY": "Lookup University"
+        }
       }
+
     }
   }
 }
