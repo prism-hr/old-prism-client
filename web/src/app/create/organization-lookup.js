@@ -1,6 +1,7 @@
 module.exports = {
     templateUrl: 'app/create/organization-lookup.html',
     bindings: {
+        type: '@',
         organization: '=',
         form: '<'
     },

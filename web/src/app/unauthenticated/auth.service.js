@@ -30,15 +30,18 @@ AuthService.prototype = {
     authenticate: function (provider) {
         var self = this;
         return this.$auth.authenticate(provider, {state: null})
-            .then(function(response){
+            .then(function (response) {
                 return response.data;
             })
             .then(self.applyAuthentication);
     },
-    logout: function() {
+    logout: function () {
         this.user = null;
         localStorage.userToken = null;
         this.refreshTokenHeader();
+    },
+    resetPassword: function (user) {
+        return this.Restangular.one('public').one('passwordTemporary').customPUT(user);
     },
     loadUser: function () {
         var self = this;
@@ -46,7 +49,7 @@ AuthService.prototype = {
             this.userPromise = !localStorage.userToken ? self.$q.when(null) :
                 this.Restangular.one('user').get()
                     .then(function (user) {
-                        self.user = {firstName: 'Admin', lastName: 'Prism', role:'Administrator'};
+                        self.user = {firstName: 'Admin', lastName: 'Prism', role: 'Administrator'};
                         return self.user;
                     }, function (response) {
                         if (response.status === 401) {

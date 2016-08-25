@@ -1,7 +1,8 @@
-<md-toolbar layout="column" layout-align="center center"  md-whiteframe="1">
+<md-toolbar layout="column" layout-align="center center" md-whiteframe="1">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
         <div layout="row" layout-align="start center">
-            <md-button ng-click="toggleActivities()" class="md-icon-button notifications" hide-gt-md ng-if="$ctrl.AuthService.user">
+            <md-button ng-click="toggleActivities()" class="md-icon-button notifications" hide-gt-md
+                       ng-if="$ctrl.AuthService.user">
                 <i class="icon-menu" ng-if="!hideSidebar"></i>
                 <label>5</label>
             </md-button>
@@ -9,24 +10,28 @@
                 <img src="/img/logo.svg">
             </a>
             <a class="prism-logo hide-xs" ui-sref="welcome" ng-if="!$ctrl.AuthService.user">
-                <img src="img/prism-white.svg" alt="PRiSM">
+                <img src="/img/prism-white.svg" alt="PRiSM">
             </a>
             <a class="prism-logo hide-xs" ui-sref="welcome" hide-gt-md ng-if="$ctrl.AuthService.user">
-                <img src="img/prism-white.svg" alt="PRiSM">
+                <img src="/img/prism-white.svg" alt="PRiSM">
             </a>
         </div>
         <span flex></span>
         <span class="nav-container">
             <div ng-if="!$ctrl.AuthService.user">
-                <md-button  aria-label="Post Ad" class="md-raised md-warn"
-                            ng-click="advertise($event)">Advertise</md-button>
+                <md-button aria-label="Post Ad" class="md-raised md-warn" ng-click="advertise($event)">
+                    Advertise
+                </md-button>
                 <md-button aria-label="Sing up" ng-click="showRegister($event)">Sing up</md-button>
-                <md-button aria-label="Log in" ng-click="showLogin($event)"> <i class="icon-lock"></i> Log in</md-button>
+                <md-button aria-label="Log in" ng-click="showLogin($event)">
+                    <i class="icon-lock"></i> Log in
+                </md-button>
             </div>
             <div ng-if="$ctrl.AuthService.user" class="user-block" layout="row" layout-align="end center" hide-gt-sm>
                 <div class="user-details" layout="row" layout-align="center center">
                     <div class="avatar-holder employer">
-                        <img src="img/2c09657.jpg" class="md-avatar" alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}">
+                        <img src="/img/2c09657.jpg" class="md-avatar"
+                             alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}">
                     </div>
                     <div class="contact-container" layout="column" layout-align="center start">
                         <a href="#">{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}</a>
