@@ -15,36 +15,18 @@ module.exports = function ($q) {
             }
             scope.placeholder = attrs.placeholder;
             var autocomplete = new google.maps.places.AutocompleteService();
-            var map = new google.maps.Map(document.createElement('div'));
-            var placeService = new google.maps.places.PlacesService(map);
 
             ngModel.$render = function () {
                 scope.place = ngModel.$modelValue;
                 scope.searchText = _.get(scope.place, 'name');
             };
 
-            scope.newPlace = function (text) {
-                ngModel.$setViewValue({name: text});
-            };
-
             scope.placeSelected = function (selectedPlace) {
-                if (selectedPlace.alreadyRegistered) {
-                    scope.place = selectedPlace;
-                    ngModel.$setViewValue(scope.place);
-                } else {
-                    placeService.getDetails({placeId: selectedPlace.googleId}, function (place) {
-                        scope.$apply(function () {
-                            scope.place = {};
-                            if (place) {
-                                scope.place.id = 666; // FIXME found institutions will have ID
-                                scope.place.name = place.name;
-                                scope.place.address = place.formatted_address;
-                                scope.place.phone = place.international_phone_number;
-                            }
-                            ngModel.$setViewValue(scope.place);
-                        });
-                    });
+                var place = angular.copy(selectedPlace);
+                if(!place.id) {
+                    place.name = scope.searchText;
                 }
+                ngModel.$setViewValue(place);
             };
 
             scope.getPlaces = function (input) {
@@ -54,29 +36,10 @@ module.exports = function ($q) {
                 var deferred = $q.defer();
                 autocomplete.getPlacePredictions({input: input, types: ['address']}, function (places) {
                     places = _.map(places, function (place) {
-                        return {name: place.description, googleId: place.place_id};
+                        return {id: 666, name: place.description, summary: 'Sample summary'};
                     });
+                    places.unshift({name: 'Create ' + input});
                     deferred.resolve(places);
-                    // var googleIds = _.map(places, 'place_id');
-                    // Restangular.all('institutions').getList({
-                    //     query: input,
-                    //     googleIds: googleIds,
-                    //     type: 'simple'
-                    // })
-                    //     .then(function (institutions) {
-                    //         _.each(institutions, function (institution) {
-                    //             var googleId = institution.address.googleId;
-                    //             var place = _.findWhere(places, {'place_id': googleId});
-                    //             if (!place) {
-                    //                 place = institutionToPlace(institution);
-                    //                 places.push(place);
-                    //             }
-                    //             place.institution = institution.plain();
-                    //             place.alreadyRegistered = true;
-                    //         });
-                    //         places = _.sortBy(places, 'alreadyRegistered');
-                    //         deferred.resolve(places);
-                    //     });
                 });
                 return deferred.promise;
             };
