@@ -13,7 +13,10 @@ module.exports = {
         };
 
         this.organizationSelected = function (organization) {
-            if(organization.id) {
+            if (!organization) {
+                return;
+            }
+            if (organization.id) {
                 self.selectedOrganization = organization;
             } else {
                 self.organization = organization;
