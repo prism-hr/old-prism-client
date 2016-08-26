@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/welcome/welcome.html',
+    template: require('./welcome.html'),
     /** @ngInject */
     controller: function () {
         // this.title = environment.distribution;

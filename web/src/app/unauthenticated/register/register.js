@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/unauthenticated/register/register.html',
+    template: require('./register.html'),
     bindings: {
         activity: '<',
         onSuccess: '&'

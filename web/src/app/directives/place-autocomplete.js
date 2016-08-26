@@ -1,7 +1,7 @@
 /** @ngInject */
 module.exports = function ($q) {
     return {
-        templateUrl: 'app/directives/place-autocomplete.html',
+        template: require('./place-autocomplete.html'),
         require: 'ngModel',
         restrict: 'E',
         scope: {

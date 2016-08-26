@@ -1,7 +1,7 @@
 /** @ngInject */
 module.exports = function () {
     return {
-        templateUrl: 'app/directives/file-upload.html',
+        template: require('./file-upload.html'),
         require: 'ngModel',
         restrict: "E",
         scope: {

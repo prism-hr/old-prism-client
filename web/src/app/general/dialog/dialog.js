@@ -1,6 +1,6 @@
 module.exports = {
     transclude: true,
-    templateUrl: 'app/general/dialog/dialog.html',
+    template: require('./dialog.html'),
     bindings: {
         title: '@'
     },
