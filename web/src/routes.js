@@ -12,11 +12,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('invited', {
             url: '/invited?accessCode&action',
-            template: '<invited activity="activity"></invited>',
-            /** @ngInject */
-            controller: function ($scope, $stateParams, activity) {
-                $scope.activity = activity.plain();
-            },
+            component: 'invited',
             resolve: {
                 /** @ngInject */
                 activity: function ($stateParams, ActivationService) {
@@ -26,31 +22,31 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('employer', {
             url: '/employer',
-            template: '<employer></employer>'
+            component: 'employer'
         })
         .state('employerOrganization', {
             url: '/employer/organization',
-            template: '<employer-organization></employer-organization>'
+            component: 'employer-organization'
         })
         .state('university', {
             url: '/university',
-            template: '<university></university>'
+            component: 'university'
         })
         .state('universityOrganization', {
             url: '/university/organization',
-            template: '<university-organization></university-organization>'
+            component: 'university-organization'
         })
         .state('student', {
             url: '/student',
-            template: '<student></student>'
+            component: 'student'
         })
         .state('welcome', {
             url: '/',
-            template: '<welcome></welcome>'
+            component: 'welcome'
         })
         .state('activities', {
             url: '/activities',
-            template: '<activities activities="activities"></activities>',
+            component: 'activities',
             data: {auth: true},
             resolve: {
                 /** @ngInject */
