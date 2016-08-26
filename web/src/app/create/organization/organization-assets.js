@@ -6,6 +6,6 @@ module.exports = {
         form: '<'
     },
     controller: function () {
-   
+
     }
 };

@@ -1,11 +1,11 @@
 module.exports = {
-    transclude:true,
+    transclude: true,
     templateUrl: 'app/unauthenticated/regswitch/regswitch.html',
     controller: function ($scope, $mdDialog) {
-        $scope.hide = function() {
+        $scope.hide = function () {
             $mdDialog.hide();
         };
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $mdDialog.cancel();
         };
     }

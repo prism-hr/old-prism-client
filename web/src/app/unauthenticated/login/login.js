@@ -37,7 +37,7 @@ module.exports = {
                 return;
             }
             AuthService.resetPassword(self.user)
-                .then(function(){
+                .then(function () {
                     self.passwordReset = true;
                 });
         };

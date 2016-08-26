@@ -6,7 +6,7 @@ module.exports = {
 };
 
 function generalRun($rootScope, $transitions, $state, AuthService) {
-    $transitions.onError(null, function (transition) {
+    $transitions.onError(null, function () {
         console.log('Transition error');
     });
     $rootScope.$state = $state;

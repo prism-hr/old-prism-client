@@ -33,7 +33,7 @@ header, .header {
 @media (max-width: $layout-breakpoint-xs - 1) {
   .nav-container {
     .md-button {
-      margin: 6px 0px;
+      margin: 6px 0;
       min-width: 50px;
       min-height: 32px;
       line-height:32px;

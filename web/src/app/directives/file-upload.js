@@ -1,5 +1,5 @@
 module.exports = function () {
-    return{
+    return {
         templateUrl: 'app/directives/file-upload.html',
         require: 'ngModel',
         restrict: "E",
@@ -102,9 +102,8 @@ module.exports = function () {
                             return !value || value.length === 0;
                         };
                     }
-
                 }
             };
         }
-    }
+    };
 };

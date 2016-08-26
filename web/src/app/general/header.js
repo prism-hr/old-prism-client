@@ -4,40 +4,38 @@ module.exports = {
         this.hideSidebar = $state.current.data && $state.current.data.hideSidebar;
         this.AuthService = AuthService;
 
-        $scope.showLogin = function(ev) {
+        $scope.showLogin = function (ev) {
             $mdDialog.show({
                 controller: DialogController,
                 template: '<prism-dialog title="Log In"><login activity="activity" on-success="redirect()"></login></prism-dialog>',
                 parent: angular.element(document.body),
                 targetEvent: ev,
-                clickOutsideToClose:true,
+                clickOutsideToClose: true,
                 fullscreen: true
             });
         };
-        $scope.showRegister = function(ev) {
+        $scope.showRegister = function (ev) {
             $mdDialog.show({
                 controller: DialogController,
                 template: '<prism-dialog title="Create Account"><regswitch></regswitch></prism-dialog>',
                 parent: angular.element(document.body),
                 targetEvent: ev,
-                clickOutsideToClose:true,
+                clickOutsideToClose: true,
                 fullscreen: true
-            })
+            });
         };
-        var originatorEv;
-        $scope.openMenu = function($mdOpenMenu, ev) {
-            originatorEv = ev;
+        $scope.openMenu = function ($mdOpenMenu, ev) {
             $mdOpenMenu(ev);
         };
 
         $scope.toggleActivities = buildToggler('left');
         function buildToggler(navID) {
-            return function() {
+            return function () {
                 $mdSidenav(navID).toggle();
-            }
+            };
         }
 
-        $scope.logout = function() {
+        $scope.logout = function () {
             AuthService.logout();
         };
 

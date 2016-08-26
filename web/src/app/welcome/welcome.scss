@@ -69,7 +69,7 @@ welcome {
           }
           &:before {
             left: 100%;
-            top: 0px;
+            top: 0;
             border-color: transparent transparent transparent $uclred;
             border-width: 25px;
           }
@@ -84,7 +84,7 @@ welcome {
           }
           &:before {
             right: 100%;
-            top: 0px;
+            top: 0;
             border-color:  transparent $uclblue transparent transparent;
             border-width: 25px;
           }

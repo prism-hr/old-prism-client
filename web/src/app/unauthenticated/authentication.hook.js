@@ -1,4 +1,3 @@
-/** @ngInject */
 function authenticationHook($transitions) {
     var activationMatch = {
         to: function (state) {
@@ -11,12 +10,10 @@ function authenticationHook($transitions) {
         return AuthService.loadUser().then(function (user) {
             if (user) {
                 return true;
-            } else {
-                return $state.target('welcome', undefined, {location: true});
             }
+            return $state.target('welcome', undefined, {location: true});
         });
     });
 }
 
 module.exports = authenticationHook;
-
