@@ -26,7 +26,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('employerOrganization', {
             url: '/employer/organization',
-            component: 'employer-organization'
+            component: 'employerOrganization'
         })
         .state('university', {
             url: '/university',
@@ -34,7 +34,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('universityOrganization', {
             url: '/university/organization',
-            component: 'university-organization'
+            component: 'universityOrganization'
         })
         .state('student', {
             url: '/student',
