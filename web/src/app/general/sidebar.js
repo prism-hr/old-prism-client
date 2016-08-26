@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/general/sidebar.html',
+    template: require('./sidebar.html'),
     /** @ngInject */
     controller: function ($scope, $mdSidenav, AuthService) {
         this.AuthService = AuthService;

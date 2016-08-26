@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/activities/activities.html',
+    template: require('./activities.html'),
     bindings: {
         activities: '<'
     }

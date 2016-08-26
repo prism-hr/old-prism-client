@@ -1,5 +1,5 @@
 module.exports = {
-    templateUrl: 'app/create/employer/employer-organization.html',
+    template: require('./employer-organization.html'),
     /** @ngInject */
     controller: function () {
         var self = this;

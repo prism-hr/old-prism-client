@@ -8,7 +8,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
         .state('404', {
             url: '/404',
-            templateUrl: 'app/404.html'
+            template: require('./app/404.html')
         })
         .state('invited', {
             url: '/invited?accessCode&action',
@@ -64,7 +64,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     function returnTo($transition$) {
         var redirectedFrom = $transition$.previous();
         // The user was redirected to the login state (via the requiresAuth hook)
-        if (redirectedFrom != null) {
+        if (redirectedFrom !== null) {
             while (redirectedFrom.previous()) {
                 redirectedFrom = redirectedFrom.previous();
             }

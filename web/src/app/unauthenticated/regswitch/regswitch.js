@@ -1,6 +1,6 @@
 module.exports = {
     transclude: true,
-    templateUrl: 'app/unauthenticated/regswitch/regswitch.html',
+    template: require('./regswitch.html'),
     /** @ngInject */
     controller: function ($scope, $mdDialog) {
         $scope.hide = function () {
