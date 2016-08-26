@@ -5,10 +5,10 @@ module.exports = {
         title: '@'
     },
     controller: function ($scope, $mdDialog) {
-        $scope.hide = function() {
+        $scope.hide = function () {
             $mdDialog.hide();
         };
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $mdDialog.cancel();
         };
     }

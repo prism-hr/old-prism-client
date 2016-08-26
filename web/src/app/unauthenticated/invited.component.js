@@ -20,7 +20,6 @@ module.exports = {
                 parent: angular.element(document.body),
                 fullscreen: true
             });
-
         }
 
         function DialogController($scope, $mdDialog) {
@@ -32,6 +31,5 @@ module.exports = {
                     });
             };
         }
-
     }
 };

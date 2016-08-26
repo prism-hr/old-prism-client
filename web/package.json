@@ -75,12 +75,18 @@
   },
   "eslintConfig": {
     "globals": {
-      "expect": true
+      "expect": true,
+      "google": true,
+      "angular": true,
+      "_": true
     },
     "root": true,
     "env": {
       "browser": true,
       "jasmine": true
+    },
+    "rules": {
+      "indent": ["error", 4]
     },
     "extends": [
       "xo-space"

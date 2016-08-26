@@ -23,11 +23,11 @@ module.exports = function ($q) {
 
             scope.placeSelected = function (selectedPlace) {
                 var place = angular.copy(selectedPlace);
-                if(place && !place.id) {
+                if (place && !place.id) {
                     place.name = scope.searchText;
                 }
                 // Removing the mask that block the scroll on the page TODO: AjsMaterial wait for fix
-                if ( angular.element(document.body.querySelector('.md-scroll-mask'))) {
+                if (angular.element(document.body.querySelector('.md-scroll-mask'))) {
                     angular.element(document.body.querySelector('.md-scroll-mask')).remove();
                 }
                 ngModel.$setViewValue(place);
@@ -40,7 +40,7 @@ module.exports = function ($q) {
                 var deferred = $q.defer();
                 autocomplete.getPlacePredictions({input: input, types: ['address']}, function (places) {
                     places = _.map(places, function (place) {
-                        return {id: 666, name: place.description, summary: 'summary', address:place.description};
+                        return {id: 666, name: place.description, summary: 'summary', address: place.description};
                     });
                     places.unshift({name: 'Create ' + input});
                     deferred.resolve(places);
@@ -48,5 +48,5 @@ module.exports = function ($q) {
                 return deferred.promise;
             };
         }
-    }
+    };
 };

@@ -1,7 +1,6 @@
 module.exports = {
     templateUrl: 'app/create/university/university-organization.html',
     controller: function () {
-
         this.step = 0;
 
         this.submit = function (form) {
@@ -11,7 +10,7 @@ module.exports = {
             this.step++;
         };
 
-        this.back = function() {
+        this.back = function () {
             self.step--;
         };
     }

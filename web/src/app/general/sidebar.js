@@ -3,9 +3,9 @@ module.exports = {
     controller: function ($scope, $mdSidenav, AuthService) {
         this.AuthService = AuthService;
         $scope.close = function () {
-            $mdSidenav('left').close()
+            $mdSidenav('left').close();
         };
-        $scope.logout = function() {
+        $scope.logout = function () {
             AuthService.logout();
         };
     }

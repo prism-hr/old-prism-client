@@ -46,10 +46,11 @@ AuthService.prototype = {
     loadUser: function () {
         var self = this;
         if (!this.userPromise) {
-            this.userPromise = !localStorage.userToken ? self.$q.when(null) :
+            var noToken = !localStorage.userToken;
+            this.userPromise = noToken ? self.$q.when(null) :
                 this.Restangular.one('user').get()
                     .then(function (user) {
-                        self.user = {firstName: 'Admin', lastName: 'Prism', role: 'Administrator'};
+                        self.user = user.plain();
                         return self.user;
                     }, function (response) {
                         if (response.status === 401) {
