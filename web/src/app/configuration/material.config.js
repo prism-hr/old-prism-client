@@ -1,5 +1,6 @@
 module.exports = materialConfig;
 
+/** @ngInject */
 function materialConfig($mdThemingProvider) {
     $mdThemingProvider.definePalette('prismblue', {
         50: '#ffffff',

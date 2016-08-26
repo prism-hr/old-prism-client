@@ -1,3 +1,4 @@
+/** @ngInject */
 module.exports = function () {
     return {
         templateUrl: 'app/directives/file-upload.html',
@@ -9,6 +10,7 @@ module.exports = function () {
             imageCategory: '@',
             entityId: '@'
         },
+        /** @ngInject */
         controller: function (Upload) {
             return {
                 pre: function (scope) {

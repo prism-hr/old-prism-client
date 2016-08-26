@@ -78,7 +78,8 @@
       "expect": true,
       "google": true,
       "angular": true,
-      "_": true
+      "_": true,
+      "ENVIRONMENT": true
     },
     "root": true,
     "env": {

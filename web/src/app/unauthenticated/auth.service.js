@@ -1,3 +1,4 @@
+/** @ngInject */
 function AuthService($http, $q, $auth, Restangular) {
     this.$http = $http;
     this.$q = $q;

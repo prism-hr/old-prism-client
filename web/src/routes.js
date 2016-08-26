@@ -13,10 +13,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('invited', {
             url: '/invited?accessCode&action',
             template: '<invited activity="activity"></invited>',
+            /** @ngInject */
             controller: function ($scope, $stateParams, activity) {
                 $scope.activity = activity.plain();
             },
             resolve: {
+                /** @ngInject */
                 activity: function ($stateParams, ActivationService) {
                     return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
                 }
@@ -51,6 +53,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             template: '<activities activities="activities"></activities>',
             data: {auth: true},
             resolve: {
+                /** @ngInject */
                 activities: function (Restangular) {
                     return Restangular.one('user', 'activities').get({state: 'PENDING'});
                 }

@@ -1,3 +1,4 @@
+/** @ngInject */
 module.exports = function ($animate) {
     return ({
         link: link,

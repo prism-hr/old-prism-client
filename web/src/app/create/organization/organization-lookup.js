@@ -5,6 +5,7 @@ module.exports = {
         organization: '=',
         form: '<'
     },
+    /** @ngInject */
     controller: function () {
         var self = this;
 

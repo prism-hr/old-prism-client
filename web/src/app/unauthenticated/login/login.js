@@ -4,6 +4,7 @@ module.exports = {
         activity: '<',
         onSuccess: '&'
     },
+    /** @ngInject */
     controller: function (AuthService) {
         var self = this;
         this.view = 'LOGIN';
