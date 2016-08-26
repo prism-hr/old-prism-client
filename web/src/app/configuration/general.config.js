@@ -5,6 +5,7 @@ module.exports = {
     translateConfig: translateConfig
 };
 
+/** @ngInject */
 function generalRun($rootScope, $transitions, $state, AuthService) {
     $transitions.onError(null, function () {
         console.log('Transition error');
@@ -17,11 +18,13 @@ function generalRun($rootScope, $transitions, $state, AuthService) {
     AuthService.loadUser();
 }
 
+/** @ngInject */
 function restangularConfig(RestangularProvider) {
     var host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
     RestangularProvider.setBaseUrl(host + '/prism/api');
 }
 
+/** @ngInject */
 function satellizerConfig($authProvider, environment) {
     $authProvider.linkedin({
         clientId: environment.oauth.linkedin,
@@ -36,6 +39,7 @@ function satellizerConfig($authProvider, environment) {
     });
 }
 
+/** @ngInject */
 function translateConfig($translateProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: 'locale-',

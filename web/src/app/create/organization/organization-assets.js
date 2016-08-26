@@ -5,6 +5,7 @@ module.exports = {
         category: '=',
         form: '<'
     },
+    /** @ngInject */
     controller: function () {
 
     }

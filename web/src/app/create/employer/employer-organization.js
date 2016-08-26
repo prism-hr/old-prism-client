@@ -1,5 +1,6 @@
 module.exports = {
     templateUrl: 'app/create/employer/employer-organization.html',
+    /** @ngInject */
     controller: function () {
         var self = this;
         this.step = 0;

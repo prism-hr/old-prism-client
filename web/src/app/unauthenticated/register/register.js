@@ -4,6 +4,7 @@ module.exports = {
         activity: '<',
         onSuccess: '&'
     },
+    /** @ngInject */
     controller: function (Restangular, $state, AuthService) {
         var self = this;
         this.user = this.activity.user;

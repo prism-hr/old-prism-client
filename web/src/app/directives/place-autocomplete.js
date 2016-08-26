@@ -1,3 +1,4 @@
+/** @ngInject */
 module.exports = function ($q) {
     return {
         templateUrl: 'app/directives/place-autocomplete.html',

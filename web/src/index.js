@@ -68,10 +68,11 @@ angular
         'pascalprecht.translate'
     ])
     .constant('environment', environment)
-    .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    /** @ngInject */
+    .config(function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
         cfpLoadingBarProvider.latencyThreshold = 100;
-    }])
+    })
     .config(routes)
     .config(generalConfig.restangular)
     .config(generalConfig.satellizerConfig)

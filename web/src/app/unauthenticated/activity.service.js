@@ -1,3 +1,4 @@
+/** @ngInject */
 function ActivationService(Restangular) {
     this.Restangular = Restangular;
 }

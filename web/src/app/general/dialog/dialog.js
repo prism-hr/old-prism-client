@@ -4,6 +4,7 @@ module.exports = {
     bindings: {
         title: '@'
     },
+    /** @ngInject */
     controller: function ($scope, $mdDialog) {
         $scope.hide = function () {
             $mdDialog.hide();

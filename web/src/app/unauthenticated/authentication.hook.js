@@ -1,3 +1,4 @@
+/** @ngInject */
 function authenticationHook($transitions) {
     var activationMatch = {
         to: function (state) {

@@ -3,6 +3,7 @@ module.exports = {
     bindings: {
         activity: '<'
     },
+    /** @ngInject */
     controller: function ($state, $mdDialog) {
         var self = this;
         var userState = this.activity.user.state;
