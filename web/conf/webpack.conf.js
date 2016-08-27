@@ -15,10 +15,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=100000'
-            },
-            {
                 test: /\.(css|scss)$/,
                 loaders: [
                     'style',
@@ -41,11 +37,8 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-                ]
+                test: /\.(eot|woff|woff2|svg|ttf|png)([\?]?.*)$/,
+                loader: "file-loader"
             }
         ]
     },
