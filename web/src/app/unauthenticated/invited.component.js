@@ -7,30 +7,24 @@ module.exports = {
     controller: function ($state, $mdDialog) {
         var self = this;
         var userState = this.activity.user.state;
+
+        var template;
         if (userState === 'UNIDENTIFIED' || userState === 'IDENTIFIED') {
-            $mdDialog.show({
-                controller: DialogController,
-                template: '<prism-dialog title="Log In"><login activity="activity" on-success="redirect()"></login></prism-dialog>',
-                parent: angular.element(document.body),
-                fullscreen: true
-            });
+            template = '<authenticate initial-view="LOGIN" activity="activity"></authenticate>';
         } else {
-            $mdDialog.show({
-                controller: DialogController,
-                template: '<prism-dialog title="Sign Up"><register activity="activity" on-success="redirect()"></register></prism-dialog>',
-                parent: angular.element(document.body),
-                fullscreen: true
-            });
+            template = '<authenticate initial-view="REGISTER" activity="activity"></authenticate>';
         }
 
-        function DialogController($scope, $mdDialog) {
-            $scope.activity = self.activity;
-            $scope.redirect = function () {
-                $mdDialog.cancel()
-                    .then(function () {
-                        $state.go('activities');
-                    });
-            };
-        }
+        $mdDialog.show({
+            template: template,
+            controller: function ($scope) {
+                $scope.activity = self.activity;
+            },
+            parent: angular.element(document.body),
+            fullscreen: true
+        }).then(function () {
+            $state.go('activities');
+        });
+
     }
 };

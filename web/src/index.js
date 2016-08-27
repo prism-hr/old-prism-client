@@ -29,9 +29,8 @@ var fileUpload = require('./app/directives/file-upload');
 // Components
 var dialog = require('./app/general/dialog/dialog');
 var welcome = require('./app/welcome/welcome');
-var register = require('./app/unauthenticated/register/register');
 var regswitch = require('./app/unauthenticated/regswitch/regswitch');
-var login = require('./app/unauthenticated/login/login');
+var authenticate = require('./app/unauthenticated/authenticate/authenticate');
 var header = require('./app/general/header');
 var sidebar = require('./app/general/sidebar');
 var activities = require('./app/activities/activities');
@@ -89,8 +88,7 @@ angular
     .component('welcome', welcome)
     .component('header', header)
     .component('sidebar', sidebar)
-    .component('login', login)
-    .component('register', register)
+    .component('authenticate', authenticate)
     .component('regswitch', regswitch)
     .component('organizationCategory', organizationCategory)
     .component('organizationLookup', organizationLookup)

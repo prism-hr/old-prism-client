@@ -1,0 +1,8 @@
+<prism-dialog title="{{'unauthenticated.authenticate.title.' + $ctrl.view | translate}}">
+    <h3 class="text-aline-center hide-xs hide-sm">
+        {{'unauthenticated.authenticate.title.' + $ctrl.view | translate}}
+    </h3>
+    <div ng-if="$ctrl.view === 'LOGIN'" ng-include="'/app/unauthenticated/authenticate/login.view.html'"></div>
+    <div ng-if="$ctrl.view === 'REGISTER'" ng-include="'/app/unauthenticated/authenticate/register.view.html'"></div>
+    <div ng-if="$ctrl.view === 'FORGOT_PASSWORD'" ng-include="'/app/unauthenticated/authenticate/forgot-password.view.html'"></div>
+</prism-dialog>

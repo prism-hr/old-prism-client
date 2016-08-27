@@ -7,18 +7,18 @@ module.exports = {
 
         $scope.showLogin = function (ev) {
             $mdDialog.show({
-                controller: DialogController,
-                template: '<prism-dialog title="Log In"><login activity="activity" on-success="redirect()"></login></prism-dialog>',
+                template: '<authenticate initial-view="LOGIN"></authenticate>',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
                 fullscreen: true
+            }).then(function () {
+                $state.go('activities');
             });
         };
         $scope.showRegister = function (ev) {
             $mdDialog.show({
-                controller: DialogController,
-                template: '<prism-dialog title="Create Account"><regswitch></regswitch></prism-dialog>',
+                template: '<regswitch></regswitch>',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
@@ -44,14 +44,5 @@ module.exports = {
             $state.go('register');
         };
 
-        function DialogController($scope, $mdDialog) {
-            $scope.activity = self.activity;
-            $scope.redirect = function () {
-                $mdDialog.cancel()
-                    .then(function () {
-                        $state.go('activities');
-                    });
-            };
-        }
     }
 };
