@@ -30,7 +30,7 @@
             <div ng-if="$ctrl.AuthService.user" class="user-block" layout="row" layout-align="end center" hide-gt-sm>
                 <div class="user-details" layout="row" layout-align="center center">
                     <div class="avatar-holder employer">
-                        <img src="/img/2c09657.jpg" class="md-avatar"
+                        <img ng-src="/prism/api/public/documents/{{$ctrl.AuthService.user.documentImage.id}}" class="md-avatar"
                              alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}">
                     </div>
                     <div class="contact-container" layout="column" layout-align="center start">
