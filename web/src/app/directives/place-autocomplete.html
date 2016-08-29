@@ -1,0 +1,20 @@
+<div id="place-autocomplete">
+    <md-autocomplete
+            md-no-cache="true"
+            md-selected-item="selectedPlace"
+            md-selected-item-change="placeSelected(place, $event)"
+            ng-model-options="{debounce: 600}"
+            md-search-text-change="searchSearchChanged(searchText)"
+            md-search-text="searchText"
+            md-items="place in getPlaces(searchText)"
+            md-item-text="place.description"
+            md-min-length="2"
+            placeholder="{{placeholder}}"
+            md-menu-class="autocomplete-custom-template">
+        <md-item-template>
+            <span md-highlight-text="searchText">
+                {{place.description}}
+            </span>
+        </md-item-template>
+    </md-autocomplete>
+</div>

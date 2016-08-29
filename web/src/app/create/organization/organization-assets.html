@@ -1,0 +1,16 @@
+<div layout-padding>
+    <h3>Logo and Background Images</h3>
+
+    <small>Image size 400 x 254</small>
+    <md-button class="button" ngf-select ng-model="$ctrl.organizationFiles.logo" name="file"
+         ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">
+        Select
+    </md-button>
+    Drop files:
+
+
+    <div class="image-uploader logo" layout="row" layout-align="center center">
+        <span ngf-drop ng-model="$ctrl.organization.organization.documentLogoImage" class="drop-box">Drop</span>
+    </div>
+
+</div>

@@ -1,0 +1,132 @@
+// step 1
+.google-institution {
+  background: lighten($employmentColor, 30%);
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px dashed $employmentColor;
+  position: relative;
+  .phone {
+    position: absolute;
+    right: 15px;
+    font-size: 12px;
+    top: 45px;
+  }
+  &.no-name {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .address {
+    margin-top:0;
+  }
+  &.registered, &.family-registered {
+    background: lighten($uclblue, 30%);;
+    border-color: $uclblue;
+  }
+  &.registered {
+    p {
+      clear: both;
+      margin-bottom: 0;
+    }
+  }
+  &.institution {
+    background: lighten($uclblue2, 30%);;
+    border-color: $uclblue2;
+
+    .institution-name {
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+    .address {
+      margin-bottom: 10px;
+    }
+
+  }
+  .footer {
+    background: transparent;
+    .btn {
+      margin-right: 8px;
+    }
+  }
+  .part-of {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed $employmentColor;
+    p {
+      margin-bottom: 10px;
+    }
+    .btn-success {
+      margin-right: 10px;
+    }
+    .btn-info {
+      margin-left: 10px;
+    }
+    h4{
+
+    }
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom:5px;
+    a {
+      max-width: 84%;
+      float: left;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .label {
+      padding: 0.4em 0.6em 0.3em;
+      float: right;
+    }
+  }
+  .button-group {
+    margin: 10px -8px -6px;
+  }
+}
+
+.company-box {
+  background: url(/img/emp-back.png) left top no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  .company-header {
+    width: 96%;
+    margin-bottom:-20px;
+    padding-right:20px;
+    background: white;
+    .logo-image {
+      margin: 10px;
+      min-width: 200px;
+      display: inline-block;
+    }
+    h2 {
+      margin-top:16px;
+    }
+    p {
+      margin-top:6px;
+      &.summary {
+      }
+      &.address {
+        font-size:0.8rem;
+        .phone {
+          float: right;
+        }
+      }
+    }
+
+  }
+}
+.preview {
+  position: relative;
+  margin-bottom:30px;
+  border: 1px dashed grey;
+  background: $fadeGrey;
+  label {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    color: grey;
+  }
+ .company-box {
+   margin: 10px 10px 30px;
+ }
+}

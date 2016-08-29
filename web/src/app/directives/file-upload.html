@@ -1,0 +1,48 @@
+
+<div class="documents">
+    <div ng-if="fileCategory === 'images'">
+        <div>
+            <div class="image-uploader logo" layout="row" layout-align="center center">
+                <span>Drop your Logo here</span>
+            </div>
+        </div>
+        <div class="image-uploader logo" ng-if="ngModel.id">
+            <div class="logo-flex" style="background:{{institution.logoBackgroundColor}};">
+                <div class="logo">
+                    <img ng-src="{{$root.imageBaseUrl}}/{{ngModel.id}}"/>
+                </div>
+            </div>
+        </div>
+        <button class="button-delete" ng-if="fileCategory === 'documents'" ng-click="deleteFile(file)" >
+            Delete
+        </button>
+    </div>
+    <div ng-if="fileCategory === 'documents'">
+        <div ng-if="multiple">
+            <ul class="list-group">
+                <li ng-repeat="file in ngModel" class="list-group-item">
+                    <a href="{{apiBaseUrl}}/documents/{{file.id}}">{{file.fileName}}</a>
+                    <button class="button-delete" ng-click="deleteFile(file)">Delete
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="!multiple">
+            <ul class="list-group">
+                <li ng-if="ngModel.id" class="list-group-item">
+                    <a href="{{apiBaseUrl}}/documents/{{ngModel.id}}" target="_blank">{{ngModel.fileName}}</a>
+                    <button class="button-delete" ng-click="deleteFile(file)">Delete
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <md-button class="md-primary md-raised" type="file" aria-label="upload" ngf-select ngf-change="onFileSelect($files)"
+               accept="{{acceptType}}">
+        <span ng-if="fileCategory === 'documents'" >Upload PDF</span>
+        <span ng-if="fileCategory === 'images'  && imageCategory.indexOf('_LOGO') > -1">Upload Logo</span>
+        <span ng-if="fileCategory === 'images' && imageCategory.indexOf('_BACKGROUND') > -1">Upload Background</span>
+    </md-button>
+    <span ng-if="fileCategory === 'images'" image-category="imageCategory" image-editor entity-id="{{entityId}}" ng-model="ngModel" class="edit-btn-holder"></span>
+    <div class="message-container"></div>
+</div>

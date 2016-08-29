@@ -1,0 +1,36 @@
+<div class="social-login md-button-group" layout="row" layout-align="center">
+    <md-button ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
+        <i class="icon-social-linkedin"></i> linkedin
+    </md-button>
+    <md-button ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
+        <i class="icon-social-facebook"></i> facebook
+    </md-button>
+</div>
+<div class="divider-or"><span>OR</span></div>
+<form novalidate name="loginForm" ng-submit="$ctrl.login(loginForm)">
+    <div class="index-padding">
+        <md-input-container class="md-block">
+            <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
+            <div ng-messages="loginForm.username.$error" role="alert">
+                <div ng-message-exp="['required', 'email']">
+                    Your email must look like an e-mail address.
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required type="password">
+            <div ng-messages="loginForm.password.$error" role="alert">
+                <div ng-messages-include="my-custom-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="column" layout-align="space-between stretch">
+        <md-button type="submit" class="md-warn md-raised">Submit</md-button>
+    </div>
+    <div layout-gt-xs="row" layout-align="end center">
+        <md-button class="md-warn" ng-click="$ctrl.setView('FORGOT_PASSWORD')">Forgot password?</md-button>
+    </div>
+    <div ng-if="$ctrl.initialView === 'REGISTER'" layout-gt-xs="row" layout-align="end center">
+        <md-button class="md-warn" ng-click="$ctrl.setView('REGISTER')">Register</md-button>
+    </div>
+</form>

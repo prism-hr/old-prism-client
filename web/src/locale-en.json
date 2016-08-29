@@ -1,0 +1,36 @@
+{
+  "create": {
+    "organization" : {
+      "organization-lookup": {
+        "autocomplete-placeholder": {
+          "EMPLOYER": "Lookup or create company",
+          "UNIVERSITY": "Lookup or create university"
+        },
+        "lookup-button": {
+          "EMPLOYER": "Lookup Company",
+          "UNIVERSITY": "Lookup University"
+        }
+      },
+      "address-lookup": {
+        "autocomplete-placeholder": {
+          "EMPLOYER": "Lookup your Address",
+          "UNIVERSITY": "Lookup your Address"
+        },
+        "lookup-button": {
+          "EMPLOYER": "Lookup Address",
+          "UNIVERSITY": "Lookup Address"
+        }
+      }
+    }
+  },
+  "unauthenticated": {
+    "authenticate" : {
+      "title": {
+        "LOGIN": "Sign In",
+        "REGISTER": "Sign Up",
+        "FORGOT_PASSWORD": "Recover Password"
+      }
+    }
+  }
+
+}

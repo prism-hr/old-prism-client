@@ -1,0 +1,86 @@
+<div class="page-wrap">
+    <section class="hero" layout-align="space-around center">
+        <div class="splash-container">
+            <h1 class="strap-line">
+                THE MARKETPLACE FOR <br/><b>STUDENT</b> AND <b>GRADUATE</b> CAREERS
+            </h1>
+            <div class="splash-box-container">
+                <div layout="row" layout-align="space-around center">
+                    <div class="box-item student">
+                        <div class="box-content">
+                            <div class="box-icon">
+                                <span class="custom-icon student" ng-include="'/img/student-logo.html'"></span>
+                            </div>
+                            <h2>STUDENTS & GRADUATES</h2>
+                            <div class="md-button-group">
+                                <md-button class="md-primary md-raised big"
+                                           ui-sref="student">
+                                    <i class="icon-user"></i> Join
+                                </md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-item university">
+                        <div class="box-arrow left"></div>
+                        <div class="box-content">
+                            <div class="box-icon">
+                                <span class="custom-icon university" ng-include="'/img/uni-logo.html'"></span>
+                            </div>
+                            <h2>UNIVERSITIES & COLLEGES</h2>
+                            <div class="md-button-group">
+                                <md-button class="md-accent md-hue-2 md-raised big"
+                                           ui-sref="university">
+                                    <i class="icon-user"></i> Join
+                                </md-button>
+                            </div>
+                        </div>
+                        <div class="box-arrow right"></div>
+                    </div>
+                    <div class="box-item employer">
+                        <div class="box-content">
+                            <div class="box-icon">
+                                <span class="custom-icon employer" ng-include="'/img/employer-logo.html'"></span>
+                            </div>
+                            <h2>EMPLOYERS & RECRUITERS</h2>
+                            <div class="md-button-group">
+                                <md-button class="md-warn md-raised big"
+                                           ui-sref="employer">
+                                    <i class="icon-plus"></i> Advertise
+                                </md-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="register-mobile-box" hide-gt-xs>
+                <md-button class="md-warn md-raised big"
+                           ng-click="showRegister($event)">
+                    Register now
+                </md-button>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="app-intro big-padding" layout="row" layout-align="center center">
+        <div flex="100" flex-gt-xs="60">
+            <h3>Introducing</h3>
+            <h2>PRiSM for Students</h2>
+            <h4>Get notifications about jobs, events and more</h4>
+            <p>We created an app to keep you informed about new positions, events and messages of your process of
+                hiring</p>
+            <div class="badges-box">
+                <div class="google-play">
+                    <a><img src="/img/google-play-badge.png"></a>
+                </div>
+                <div class="app-store">
+                    <a><img src="/img/app-store-badge.png"></a>
+                </div>
+            </div>
+        </div>
+        <div flex="40" class="hide-xs">
+            <div class="hand-container">
+                <img src="/img/hand-container.png">
+            </div>
+        </div>
+    </section>
+</div>
