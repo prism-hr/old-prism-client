@@ -8,7 +8,6 @@ require('lodash');
 require('ng-file-upload');
 require('restangular');
 require('angular-ui-router');
-require('api-check');
 require('angular-recaptcha');
 require('satellizer');
 require('angular-translate');
