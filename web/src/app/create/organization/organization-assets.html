@@ -7,10 +7,13 @@
         Select
     </md-button>
     Drop files:
-
-
-    <div class="image-uploader logo" layout="row" layout-align="center center">
-        <span ngf-drop ng-model="$ctrl.organization.organization.documentLogoImage" class="drop-box">Drop</span>
+    <div class="image-uploader logo" layout="row" layout-align="center center" ngf-drop ng-model="$ctrl.organization.organization.documentLogoImage">
+        <span class="drop-box" ng-if="!$ctrl.organization.organization.documentLogoImage">Drop your Logo here</span>
+        <div class="logo-flex">
+            <div class="logo" ng-if="$ctrl.organization.organization.documentLogoImage">
+                <img ngf-src="$ctrl.organization.organization.documentLogoImage" class="thumb">
+            </div>
+        </div>
     </div>
 
 </div>
