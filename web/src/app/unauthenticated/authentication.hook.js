@@ -1,5 +1,5 @@
 /** @ngInject */
-function authenticationHook($transitions) {
+function authenticationHook($transitions, $mdDialog) {
     var activationMatch = {
         to: function (state) {
             return state.data && state.data.auth;
@@ -12,7 +12,14 @@ function authenticationHook($transitions) {
             if (user) {
                 return true;
             }
-            return $state.target('welcome', undefined, {location: true});
+            return $mdDialog.show({
+                template: '<authenticate initial-view="REGISTER"></authenticate>',
+                parent: angular.element(document.body),
+                clickOutsideToClose: true,
+                fullscreen: true
+            }).then(function () {
+                $state.go(transition.to());
+            });
         });
     });
 }

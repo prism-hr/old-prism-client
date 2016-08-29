@@ -39,6 +39,7 @@ AuthService.prototype = {
     logout: function () {
         this.user = null;
         localStorage.userToken = null;
+        this.userPromise = null;
         this.refreshTokenHeader();
     },
     resetPassword: function (user) {

@@ -22,23 +22,28 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('employer', {
             url: '/employer',
-            component: 'employer'
+            component: 'employer',
+            data: {auth: true}
         })
         .state('employerOrganization', {
             url: '/employer/organization',
-            component: 'employerOrganization'
+            component: 'employerOrganization',
+            data: {auth: true}
         })
         .state('university', {
             url: '/university',
-            component: 'university'
+            component: 'university',
+            data: {auth: true}
         })
         .state('universityOrganization', {
             url: '/university/organization',
-            component: 'universityOrganization'
+            component: 'universityOrganization',
+            data: {auth: true}
         })
         .state('student', {
             url: '/student',
-            component: 'student'
+            component: 'student',
+            data: {auth: true}
         })
         .state('welcome', {
             url: '/',
