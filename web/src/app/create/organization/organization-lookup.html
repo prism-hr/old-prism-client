@@ -16,7 +16,7 @@
                 required>
             <md-item-template>
             <span md-highlight-text="searchText">
-                {{organization.name}}
+                {{organization.id ? organization.name : 'Create ' + organization.name}}
             </span>
             </md-item-template>
         </md-autocomplete>

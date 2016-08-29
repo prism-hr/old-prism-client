@@ -82,7 +82,7 @@ angular
     .run(generalConfig.generalRun)
     .directive('applicationLoader', applicationLoader)
     .directive('placeAutocomplete', placeAutocomplete)
-    .directive('clientFileUpload', fileUpload)
+    .directive('fileUpload', fileUpload)
     .component('prismDialog', dialog)
     .component('welcome', welcome)
     .component('header', header)

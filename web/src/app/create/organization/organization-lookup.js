@@ -18,7 +18,7 @@ module.exports = {
             return Restangular.all('organizations').getList({searchTerm: searchText})
                 .then(function (organizations) {
                     var list = angular.copy(organizations.plain());
-                    list.unshift({name: 'Create ' + searchText});
+                    list.unshift({name: searchText});
                     return list;
                 });
         };

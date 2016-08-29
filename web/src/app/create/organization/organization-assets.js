@@ -2,7 +2,7 @@ module.exports = {
     template: require('./organization-assets.html'),
     bindings: {
         type: '@',
-        category: '=',
+        organizationFiles: '=',
         form: '<'
     },
     /** @ngInject */
