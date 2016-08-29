@@ -6,7 +6,7 @@ module.exports = {
         form: '<'
     },
     /** @ngInject */
-    controller: function () {
+    controller: function ($timeout, Restangular) {
         var self = this;
 
         this.lookupOrganization = function () {
@@ -14,14 +14,26 @@ module.exports = {
             self.foundOrganization = null;
         };
 
+        this.getOrganizations = function (searchText) {
+            return Restangular.all('organizations').getList({searchTerm: searchText})
+                .then(function (organizations) {
+                    var list = angular.copy(organizations.plain());
+                    list.unshift({name: 'Create ' + searchText});
+                    return list;
+                });
+        };
+
         this.organizationSelected = function (organization) {
             if (!organization) {
                 return;
             }
             if (organization.id) {
+                self.form.foundOrganization.$setValidity('confirmed', false);
                 self.selectedOrganization = organization;
             } else {
-                self.organization = organization;
+                $timeout(function () { // problem with removing mask: https://github.com/angular/material/issues/9318
+                    self.organization = organization;
+                });
             }
         };
 
@@ -31,6 +43,7 @@ module.exports = {
             }
             self.selectedOrganization = null;
             self.foundOrganization = null;
+            self.form.foundOrganization.$setValidity('confirmed', true);
         };
     }
 };

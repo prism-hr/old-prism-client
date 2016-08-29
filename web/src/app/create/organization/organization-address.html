@@ -5,54 +5,6 @@
                             ng-change="$ctrl.addressSelected($ctrl.foundAddress)"
                             placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
         </place-autocomplete>
-    </div>
-
-    <div ng-if="$ctrl.selectedAddress" layout-padding>
-        <div class="google-institution">
-
-                <h4>Confirm {{$ctrl.selectedAddress.name}} as your address</h4>
-                <div class="clearfix button-group">
-                    <md-button class="pull-left md-primary md-raised small"
-                               ng-click="$ctrl.confirmSelectedAddress(true)">
-                        <i class="icon-user"></i> Confirm
-                    </md-button>
-                    <md-button class="pull-right md-warn md-raised small"
-                               ng-click="$ctrl.confirmSelectedAddress(false)">
-                        <i class="icon-close"></i> Decline
-                    </md-button>
-                </div>
-
-        </div>
-    </div>
-</div>
-<div flex="100" ng-if="$ctrl.address" class="manual-entering">
-    <div layout-padding>
-        <md-input-container class="md-block">
-            <label>Address</label>
-            <input name="companyName" ng-model="$ctrl.address.address" required>
-        </md-input-container>
-        <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>City</label>
-                <input name="companyName" ng-model="$ctrl.address.city" required>
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Postal Code</label>
-                <input name="companyName" ng-model="$ctrl.address.postalCode" required>
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Country</label>
-                <input name="companyName" ng-model="$ctrl.address.country" required>
-            </md-input-container>
-        </div>
-
-    </div>
-    <div layout="row" layout-align="end">
-        <md-button ng-click="$ctrl.lookupAddress()" class="md-warn md-raised small">
-            {{'create.organization.address-lookup.lookup-button.' + $ctrl.type | translate}}
-        </md-button>
-    </div>
-
-    <div layout-padding>
+        {{$ctrl.organization.location}}
     </div>
 </div>

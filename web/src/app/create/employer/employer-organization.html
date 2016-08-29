@@ -27,24 +27,31 @@
                 </div>
                 <div class="step-wizard">
                     <div ng-if="$ctrl.step === 0" layout="column" layout-align="center">
-                        <organization-category form="organizationForm" category="$ctrl.category" flex="100" flex-gt-sm="60"></organization-category>
+                        <organization-category form="organizationForm" category="$ctrl.category"
+                                               flex="100" flex-gt-sm="60"></organization-category>
                     </div>
                     <div ng-if="$ctrl.step === 1">
-                        <organization-lookup type="EMPLOYER" form="organizationForm" organization="$ctrl.organization"></organization-lookup>
+                        <organization-lookup type="EMPLOYER" form="organizationForm"
+                                             organization="$ctrl.organization"></organization-lookup>
                     </div>
                     <div ng-if="$ctrl.step === 2">
-                        <organization-summary type="EMPLOYER" form="organizationForm" organization="$ctrl.organization"></organization-summary>
+                        <organization-summary type="EMPLOYER" form="organizationForm"
+                                              organization="$ctrl.organization"></organization-summary>
                     </div>
                     <div ng-if="$ctrl.step === 3">
-                        <organization-address type="EMPLOYER" form="organizationForm" organization="$ctrl.organization"></organization-address>
+                        <organization-address type="EMPLOYER" form="organizationForm"
+                                              organization="$ctrl.organization"></organization-address>
                     </div>
                     <div ng-if="$ctrl.step === 4">
-                        <organization-assets type="EMPLOYER" form="organizationForm" organization="$ctrl.organization"></organization-assets>
+                        <organization-assets type="EMPLOYER" form="organizationForm"
+                                             organization="$ctrl.organization"></organization-assets>
                     </div>
                 </div>
                 <div class="action-block" layout="row" layout-align="space-between none">
                     <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()">Back</md-button>
-                    <md-button type="submit" class="md-primary md-raised big" ng-disabled="organizationForm.$invalid">Continue</md-button>
+                    <md-button type="submit" class="md-primary md-raised big" ng-disabled="organizationForm.$invalid">
+                        Continue
+                    </md-button>
                 </div>
             </div>
 
