@@ -33,9 +33,7 @@ module.exports = {
 
         this.oauth = function (provider) {
             AuthService.authenticate(provider)
-                .then(function () {
-                    self.onSuccess();
-                });
+                .then($mdDialog.hide);
         };
 
         this.resetPassword = function (form) {
