@@ -51,7 +51,6 @@ ui-view {
   font-weight: 900 !important;
 }
 .documents {
-
   margin-bottom:10px;
   .md-button {
     margin-left:0px;
@@ -145,7 +144,7 @@ md-radio-group {
 .image-uploader {
   margin-top:4px;
   &.logo {
-    border: 1px dashed $inactiveGrey;
+    border: 3px dashed $inactiveGrey;
     width: 200px;
     min-height: 125px;
     .logo-flex {
@@ -153,6 +152,14 @@ md-radio-group {
       background: transparent;
     }
   }
+  &.dragover {
+    border: 3px dashed $uclblue;
+  }
+
+  &.dragover-err {
+    border: 3px dashed $uclred;
+  }
+
   &.background {
     border: 1px dashed $inactiveGrey;
     background-size: cover;
