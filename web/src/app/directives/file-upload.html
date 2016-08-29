@@ -1,29 +1,12 @@
 
 <div class="documents">
-    <div ng-if="fileCategory === 'images' && imageCategory.indexOf('_LOGO') > -1">
+    <div ng-if="fileCategory === 'images'">
         <div>
             <div class="image-uploader logo" layout="row" layout-align="center center">
                 <span>Drop your Logo here</span>
             </div>
         </div>
         <div class="image-uploader logo" ng-if="ngModel.id">
-            <div class="logo-flex" style="background:{{institution.logoBackgroundColor}};">
-                <div class="logo">
-                    <img ng-src="{{$root.imageBaseUrl}}/{{ngModel.id}}"/>
-                </div>
-            </div>
-        </div>
-        <button class="button-delete" ng-if="fileCategory === 'documents'" ng-click="deleteFile(file)" >
-            Delete
-        </button>
-    </div>
-    <div ng-if="fileCategory === 'images' && imageCategory.indexOf('_BACKGROUND') > -1">
-        <div>
-            <div class="image-uploader background" layout="row" layout-align="center center">
-                <span>Drop your background here</span>
-            </div>
-        </div>
-        <div class="image-uploader" ng-if="ngModel.id">
             <div class="logo-flex" style="background:{{institution.logoBackgroundColor}};">
                 <div class="logo">
                     <img ng-src="{{$root.imageBaseUrl}}/{{ngModel.id}}"/>

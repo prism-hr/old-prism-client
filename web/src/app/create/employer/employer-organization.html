@@ -3,7 +3,7 @@
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
             <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="header" layout-padding>
-                    <h4>STEP 1</h4>
+                    <h4>STEP {{$ctrl.step + 1}}</h4>
                     <h1>Company Information</h1>
                 </div>
                 <div class="preview" ng-if="$ctrl.organization.name">
@@ -13,7 +13,7 @@
                             <div class="logo-image">
                                 <div class="logo-flex company-logo">
                                     <div class="logo">
-                                        <img src="/img/UCL-Engineering-logo.png">
+                                        <img ngf-thumbnail="$ctrl.organization.organization.documentLogoImage || '/img/UCL-Engineering-logo.png'">
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div ng-if="$ctrl.step === 4">
                         <organization-assets type="EMPLOYER" form="organizationForm"
-                                             organization="$ctrl.organization"></organization-assets>
+                                             organization-files="$ctrl.organizationFiles"></organization-assets>
                     </div>
                 </div>
                 <div class="action-block" layout="row" layout-align="space-between none">
