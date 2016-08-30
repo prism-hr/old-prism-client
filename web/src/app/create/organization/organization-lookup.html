@@ -42,14 +42,14 @@
         </div>
     </div>
 </div>
-<div flex="100" ng-if="$ctrl.organization" class="manual-entering">
+<div flex="100" ng-if="$ctrl.organization" class="manual-entering md-whiteframe-1dp">
     <div layout-padding>
         <md-input-container class="md-block">
             <label>Company Name</label>
             <input name="companyName" ng-model="$ctrl.organization.name" required>
         </md-input-container>
     </div>
-    <div layout="row" layout-align="end">
+    <div layout="row" layout-align="end" class="secondary-actions">
         <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
             {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
         </md-button>
