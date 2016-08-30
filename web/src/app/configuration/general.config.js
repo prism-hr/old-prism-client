@@ -41,6 +41,7 @@ function satellizerConfig($authProvider, environment) {
 
 /** @ngInject */
 function translateConfig($translateProvider) {
+    $translateProvider.useSanitizeValueStrategy('sanitize');
     $translateProvider.useStaticFilesLoader({
         prefix: 'locale-',
         suffix: '.json'

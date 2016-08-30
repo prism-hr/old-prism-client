@@ -4,14 +4,15 @@ require('angular-aria');
 require('angular-loading-bar');
 require('angular-messages');
 require('angular-material');
+require('angular-sanitize');
+require('angular-translate');
+require('angular-translate-loader-static-files');
 require('lodash');
 require('ng-file-upload');
 require('restangular');
 require('angular-ui-router');
 require('angular-recaptcha');
 require('satellizer');
-require('angular-translate');
-require('angular-translate-loader-static-files');
 
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
@@ -57,6 +58,7 @@ angular
         'ui.router',
         'ngMessages',
         'ngMaterial',
+        'ngSanitize',
         'restangular',
         'vcRecaptcha',
         'ngFileUpload',
