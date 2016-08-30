@@ -3,14 +3,14 @@
 
     <small>Image size 400 x 250</small>
     <md-button class="button" ngf-select ng-model="$ctrl.organizationFiles.logo" name="file"
-         ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">
+         ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="250">
         Select
     </md-button>
-    <div class="image-uploader logo" ngf-select layout="row" layout-align="center center" ngf-drop ng-model="$ctrl.organization.documentLogoImage">
-        <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
+    <div class="image-uploader logo" ngf-select layout="row" layout-align="center center" ngf-drop ng-model="$ctrl.organizationFiles.logo">
+        <span class="drop-box" ng-if="!$ctrl.organizationFiles.logo">Drop your Logo here</span>
         <div class="logo-flex">
-            <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
-                <img ngf-src="$ctrl.organization.documentLogoImage" class="thumb">
+            <div class="logo" ng-if="$ctrl.organizationFiles.logo">
+                <img ngf-src="$ctrl.organizationFiles.logo" class="thumb">
             </div>
         </div>
     </div>
