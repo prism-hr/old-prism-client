@@ -56,6 +56,7 @@ module.exports = function ($q) {
                 }
 
                 var domicile = getAddressPart('country');
+                var display_address = place.formatted_address;
                 var postalTown = getAddressPart('postal_town');
                 var alternativeTown = getAddressPart('locality');
                 var alternativeTown2 = getAddressPart('administrative_area_level_2');
@@ -63,7 +64,7 @@ module.exports = function ($q) {
 
                 var location = {};
                 location.name = postalTown || alternativeTown || alternativeTown2;
-                location.description = place.description;
+                location.description = display_address;
                 location.domicile = domicile;
                 location.googleId = place.place_id;
                 location.latitude = geolocation.lat();

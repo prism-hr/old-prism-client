@@ -1,7 +1,7 @@
 module.exports = {
     template: require('./employer-organization.html'),
     /** @ngInject */
-    controller: function (Restangular, Upload) {
+    controller: function (Restangular, Upload, $state) {
         var self = this;
         this.step = 0;
         this.organizationFiles = {};
@@ -30,7 +30,11 @@ module.exports = {
         };
 
         this.back = function () {
-            self.step--;
+            if (self.step === 0) {
+                $state.go('employer')
+            } else {
+                self.step--;
+            }
         };
     }
 };

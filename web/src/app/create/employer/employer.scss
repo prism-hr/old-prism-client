@@ -89,6 +89,7 @@
   background-size: cover;
   min-height: 250px;
   .company-header {
+    border:1px solid #ececec;
     width: 96%;
     margin-bottom:-20px;
     padding-right:20px;
@@ -97,6 +98,10 @@
       margin: 10px;
       min-width: 200px;
       display: inline-block;
+    }
+    .md-button {
+      margin-bottom: 0;
+      margin-top:0;
     }
     h2 {
       margin-top:16px;
@@ -117,16 +122,13 @@
 }
 .preview {
   position: relative;
-  margin-bottom:30px;
-  border: 1px dashed grey;
-  background: $fadeGrey;
   label {
     position: absolute;
     right: 0;
-    top: -25px;
-    color: grey;
+    top: 25px;
+    right: 25px;
+    background: grey;
+    padding: 2px 4px;
+    color: white;
   }
- .company-box {
-   margin: 10px 10px 30px;
- }
 }

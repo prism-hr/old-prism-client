@@ -26,29 +26,32 @@ ui-view {
     height: 100%;
   }
 }
-.md-button.md-raised, md-toolbar .md-button {
-  font-weight:700 !important;
-}
 .text-aline-center {
   text-align: center;
 }
-.md-button.small {
-  min-height: 28px;
-  line-height:28px;
-  font-size:12px;
-}
-.md-button.small-xs {
-  min-width: 40px;
-  min-height: 22px;
-  height: 22px;
-  line-height: 22px;
-  font-size: 12px;
-}
-.md-button.big {
-  min-height:42px;
-  line-height:42px;
-  padding: 0 20px;
-  font-weight: 900 !important;
+.md-button {
+  cursor: pointer;
+  &.md-raised, md-toolbar .md-button {
+    font-weight:700 !important;
+  }
+  &.small {
+    min-height: 28px;
+    line-height:28px;
+    font-size:12px;
+  }
+  &.small-xs {
+    min-width: 40px;
+    min-height: 22px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+  }
+  &.big {
+    min-height:42px;
+    line-height:42px;
+    padding: 0 20px;
+    font-weight: 900 !important;
+  }
 }
 .documents {
   margin-bottom:10px;
@@ -183,8 +186,8 @@ md-radio-group {
     justify-content: center; /* align horizontal */
     align-items: center;
     img {
-      max-height: 121px;
-      max-width: 176px;
+      max-height: 125px;
+      max-width: 200px;
       position: relative;
       vertical-align: middle;
     }
