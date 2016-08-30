@@ -29,6 +29,13 @@ header, .header {
       line-height:24px;
     }
   }
+  .user-block .avatar-holder .no-user-image {
+    width: 42px;
+    height: 42px;
+    i {
+      font-size:22px;
+    }
+  }
 }
 @media (max-width: $layout-breakpoint-xs - 1) {
   .nav-container {

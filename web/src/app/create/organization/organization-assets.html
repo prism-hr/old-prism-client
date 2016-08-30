@@ -6,12 +6,11 @@
          ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">
         Select
     </md-button>
-    Drop files:
     <div class="image-uploader logo" ngf-select layout="row" layout-align="center center" ngf-drop ng-model="$ctrl.organization.documentLogoImage">
         <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
         <div class="logo-flex">
             <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
-                <img ngf-src="$ctrl.organization.organization.documentLogoImage" class="thumb">
+                <img ngf-src="$ctrl.organization.documentLogoImage" class="thumb">
             </div>
         </div>
     </div>
