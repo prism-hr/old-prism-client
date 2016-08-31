@@ -17,6 +17,7 @@ require('satellizer');
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
 var materialConfig = require('./app/configuration/material.config');
+var serverInterceptor = require('./app/configuration/server-interceptor.config');
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
@@ -78,6 +79,7 @@ angular
     .config(generalConfig.satellizerConfig)
     .config(generalConfig.translateConfig)
     .config(materialConfig)
+    .config(serverInterceptor)
     .service('ActivationService', ActivationService)
     .service('AuthService', AuthService)
     .run(authenticationHook)

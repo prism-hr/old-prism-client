@@ -193,6 +193,34 @@ md-radio-group {
     }
   }
 }
+// Badges
+.info-badge {
+  font-size: 14px;
+  color: white;
+  padding: 10px;
+  border-radius: 2px;
+  &.red {
+    background-color: $uclred;
+  }
+}
+md-toast.md-prism-theme .md-toast-content {
+  margin-top:67px;
+  background-color: $uclred;
+  color: white;
+  flex-direction: column;
+  &::before {
+    min-height: 10px;
+  }
+  h3 {
+    color: white;
+    font-weight:900;
+  }
+  a {
+    color: white;
+    font-weight:700;
+  }
+}
+
 .page-wrap {
   background: white;
 }
