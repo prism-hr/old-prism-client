@@ -1,49 +1,61 @@
-<div class="page-wrap step-page">
-    <div layout="row" layout-align="center center" ng-cloak>
-        <div flex="60" flex-xs="100" class="left-side-block" layout="column" layout-align="center stretch">
-            <div class="header" layout-padding>
-                <h1>Welcome Employers</h1>
-                <h3>Create a free advert to start using PRiSM.</h3>
-            </div>
-            <div class="step step1">
-                <div layout-padding>
-                    <div class="icon-holder">
-                        <i class="icon-check"></i>
+<div class="preview" ng-if="$ctrl.organization.name">
+    <label>Preview</label>
+    <div class="company-box" layout="row" layout-align="center end" >
+        <div class="company-header" layout="row" flex-gt-sm="75">
+            <div class="logo-image">
+                <div class="logo-flex company-logo">
+                    <div class="logo">
+                        <img ngf-src="$ctrl.organizationFiles.logo || '/img/prism-logo-default.png'">
                     </div>
-                    <h4>STEP 1</h4>
-                    <h2>Company Information</h2>
-                    <p>Initial basic information about your company</p>
                 </div>
-                <md-button class="md-primary md-raised big" ui-sref="employerOrganization">Continue</md-button>
-                <div class="hr-divider"></div>
             </div>
-            <div class="step step2">
-                <div layout-padding>
-                    <div class="icon-holder">
-                        <i class="icon-close"></i>
-                    </div>
-                    <h4>STEP 2</h4>
-                    <h2>Create Opportunity</h2>
-                    <p>Create your first opportunity</p>
-                </div>
-                <md-button class="md-primary md-raised big">Continue</md-button>
-                <div class="hr-divider"></div>
+            <div>
+                <h2>{{$ctrl.organization.name}} <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button></h2>
+                <p class="summary">{{$ctrl.organization.summary}} <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button></p>
+                <p class="address">{{$ctrl.organization.location.description}} <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button></p>
             </div>
-            <div class="step step3">
-                <div layout-padding>
-                    <div class="icon-holder">
-                        <i class="icon-exclamation"></i>
-                    </div>
-                    <h4>STEP 3</h4>
-                    <h2>Select your Audience</h2>
-                    <p>Target University departments to get your right candidate</p>
-                </div>
-                <md-button class="md-primary md-raised big">Continue</md-button>
-            </div>
-        </div>
-        <div flex="40" class="right-side-block hide-xs">
-            <div class="custom-icon employer" ng-include="'img/employer-logo.html'"></div>
-            <p class="text-aline-center">Temporal image</p>
         </div>
     </div>
+</div>
+<div class="page-wrap step-page child">
+    <form novalidate name="organizationForm" ng-submit="$ctrl.submit(organizationForm)">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+            <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
+                <div class="header" layout-padding>
+                    <h4>STEP {{$ctrl.step + 1}}</h4>
+                    <h1>Company Information</h1>
+                </div>
+                <div class="step-wizard">
+                    <div ng-if="$ctrl.step === 0" layout="column" layout-align="center">
+                        <organization-category form="organizationForm" category="$ctrl.category"
+                                               flex="100" flex-gt-sm="60"></organization-category>
+                    </div>
+                    <div ng-if="$ctrl.step === 1">
+                        <organization-lookup type="EMPLOYER" form="organizationForm"
+                                             organization="$ctrl.organization"></organization-lookup>
+                    </div>
+                    <div ng-if="$ctrl.step === 2">
+                        <organization-summary type="EMPLOYER" form="organizationForm"
+                                              organization="$ctrl.organization"></organization-summary>
+                    </div>
+                    <div ng-if="$ctrl.step === 3">
+                        <organization-address type="EMPLOYER" form="organizationForm"
+                                              organization="$ctrl.organization"></organization-address>
+                    </div>
+                    <div ng-if="$ctrl.step === 4">
+                        <organization-assets type="EMPLOYER" form="organizationForm"
+                                             organization-files="$ctrl.organizationFiles"></organization-assets>
+                    </div>
+                </div>
+                <div class="action-block" layout="row" layout-align="space-between none">
+                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()">Back</md-button>
+                    <md-button type="submit" class="md-primary md-raised big" ng-disabled="organizationForm.$invalid">
+                        Continue
+                    </md-button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
 </div>

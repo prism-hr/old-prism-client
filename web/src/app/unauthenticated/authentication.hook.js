@@ -12,8 +12,12 @@ function authenticationHook($transitions, $mdDialog) {
             if (user) {
                 return true;
             }
+            var template = '<authenticate initial-view="LOGIN"></authenticate>';
+            if (transition.params().showRegistration) {
+                template = '<authenticate initial-view="REGISTER"></authenticate>';
+            }
             return $mdDialog.show({
-                template: '<authenticate initial-view="REGISTER"></authenticate>',
+                template: template,
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 fullscreen: true

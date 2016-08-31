@@ -6,7 +6,7 @@ module.exports = {
         this.goto = function (state) {
             $mdDialog.hide()
                 .then(function () {
-                    $state.go(state);
+                    $state.go(state, {showRegistration: true});
                 });
         };
     }
