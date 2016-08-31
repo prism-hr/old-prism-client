@@ -12,9 +12,7 @@
         <md-input-container class="md-block">
             <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
             <div ng-messages="registerForm.username.$error" role="alert">
-                <div ng-message-exp="['required', 'email']">
-                    Your email must look like an e-mail address.
-                </div>
+                <div ng-messages-include="my-custom-messages"></div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">

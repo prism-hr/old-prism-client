@@ -1,4 +1,5 @@
 <prism-dialog title="{{'unauthenticated.authenticate.title.' + $ctrl.view | translate}}">
+    <md-progress-linear class="md-warn" ng-if="$ctrl.pending"></md-progress-linear>
     <h3 class="text-aline-center hide-xs hide-sm">
         {{'unauthenticated.authenticate.title.' + $ctrl.view | translate}}
     </h3>

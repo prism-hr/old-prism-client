@@ -1,3 +1,10 @@
+<div ng-messages="loginForm.$error" role="alert">
+    <div ng-message="fail" layout-padding>
+        <div class="info-badge red">
+            <i class="icon-info"></i> This email/password combination does not exist
+        </div>
+    </div>
+</div>
 <div class="social-login md-button-group" layout="row" layout-align="center">
     <md-button ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
         <i class="icon-social-linkedin"></i> linkedin
@@ -12,9 +19,7 @@
         <md-input-container class="md-block">
             <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
             <div ng-messages="loginForm.username.$error" role="alert">
-                <div ng-message-exp="['required', 'email']">
-                    Your email must look like an e-mail address.
-                </div>
+                <div ng-messages-include="my-custom-messages"></div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
