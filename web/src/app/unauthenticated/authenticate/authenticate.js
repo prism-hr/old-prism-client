@@ -19,31 +19,43 @@ module.exports = {
             if (!form.$valid) {
                 return;
             }
+            self.loading = true;
             AuthService.login(_.pick(this.user, ['username', 'password']))
-                .then($mdDialog.hide);
+                .then($mdDialog.hide)
+                .finally(resetLoading);
         };
 
         this.register = function (form) {
             if (!form.$valid) {
                 return;
             }
+            self.loading = true;
             AuthService.register(this.user)
-                .then($mdDialog.hide);
+                .then($mdDialog.hide)
+                .finally(resetLoading);
         };
 
         this.oauth = function (provider) {
+            self.loading = true;
             AuthService.authenticate(provider)
-                .then($mdDialog.hide);
+                .then($mdDialog.hide)
+                .finally(resetLoading);
         };
 
         this.resetPassword = function (form) {
             if (!form.$valid) {
                 return;
             }
+            self.loading = true;
             AuthService.resetPassword(self.user)
                 .then(function () {
                     self.passwordReset = true;
-                });
+                })
+                .finally(resetLoading);
         };
+
+        function resetLoading() {
+            self.loading = false;
+        }
     }
 };

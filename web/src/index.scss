@@ -19,6 +19,6 @@ $simple-line-font-path        : "../node_modules/simple-line-icons/fonts/";
 @import "app/welcome/welcome";
 @import "app/unauthenticated/authenticate/authenticate";
 @import "app/create/create";
-@import "app/create/employer/employer";
-@import "app/create/university/university";
+@import "app/create/employer/employer-welcome";
+@import "app/create/university/university-welcome";
 @import "app/create/student/student";

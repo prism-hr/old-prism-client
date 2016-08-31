@@ -41,10 +41,10 @@ var organizationLookup = require('./app/create/organization/organization-lookup'
 var organizationSummary = require('./app/create/organization/organization-summary');
 var organizationAddress = require('./app/create/organization/organization-address');
 var organizationAssets = require('./app/create/organization/organization-assets');
+var employerWelcome = require('./app/create/employer/employer-welcome');
 var employer = require('./app/create/employer/employer');
-var employerOrganization = require('./app/create/employer/employer-organization');
+var universityWelcome = require('./app/create/university/university-welcome');
 var university = require('./app/create/university/university');
-var universityOrganization = require('./app/create/university/university-organization');
 var student = require('./app/create/student/student');
 
 require('./index.scss');
@@ -98,10 +98,10 @@ angular
     .component('organizationSummary', organizationSummary)
     .component('organizationAddress', organizationAddress)
     .component('organizationAssets', organizationAssets)
+    .component('employerWelcome', employerWelcome)
     .component('employer', employer)
-    .component('employerOrganization', employerOrganization)
+    .component('universityWelcome', universityWelcome)
     .component('university', university)
-    .component('universityOrganization', universityOrganization)
     .component('student', student)
     .component('activities', activities)
     .component('invited', invited);
