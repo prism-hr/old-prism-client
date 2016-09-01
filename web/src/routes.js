@@ -29,9 +29,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
         .state('employer', {
-            url: '/employer',
+            url: '/employer/{id:new|\\d+}/:step',
             component: 'employer',
-            data: {auth: true}
+            data: {auth: true},
+            params: {
+                step: {value: null, squash: true, dynamic: true}
+            }
         })
         .state('university', {
             url: '/university',
