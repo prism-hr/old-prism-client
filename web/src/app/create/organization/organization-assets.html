@@ -8,6 +8,7 @@
          ngf-resize="{width: 400, height: 250}"
          ngf-select
          ngf-drop
+         name="logo"
          layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
         <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
         <div class="logo-flex">
@@ -17,6 +18,8 @@
         </div>
     </div>
     <small>Image size 400 x 250 / 10mb max</small>
-    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    <div ng-messages="$ctrl.form.logo.$error" role="alert">
+        <div ng-messages-include="my-custom-messages"></div>
+    </div>
 
 </div>
