@@ -20,7 +20,7 @@ module.exports = function ($q) {
             var placeService = new google.maps.places.PlacesService(map);
 
             ngModel.$render = function () {
-                scope.searchText = _.get(ngModel.$modelValue, 'name');
+                scope.searchText = _.get(ngModel.$modelValue, 'description');
             };
 
             scope.placeSelected = function (selectedPlace) {

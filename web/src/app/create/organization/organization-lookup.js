@@ -10,7 +10,7 @@ module.exports = {
         var self = this;
 
         this.lookupOrganization = function () {
-            self.organization = null;
+            self.organization.organization = null;
             self.foundOrganization = null;
         };
 
@@ -32,14 +32,14 @@ module.exports = {
                 self.selectedOrganization = organization;
             } else {
                 $timeout(function () { // problem with removing mask: https://github.com/angular/material/issues/9318
-                    self.organization = organization;
+                    self.organization.organization = organization;
                 });
             }
         };
 
         this.confirmSelectedOrganization = function (confirm) {
             if (confirm) {
-                self.organization = self.selectedOrganization;
+                self.organization.organization = self.selectedOrganization;
             }
             self.selectedOrganization = null;
             self.foundOrganization = null;
