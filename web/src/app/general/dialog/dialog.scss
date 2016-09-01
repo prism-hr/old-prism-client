@@ -12,6 +12,9 @@ md-dialog-content {
   .text-content {
     padding: 15px 10px 0;
   }
+  md-progress-linear {
+    margin-bottom: -5px !important;
+  }
 }
 .dialog-content {
   width: 360px;
