@@ -22,27 +22,27 @@
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
             <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="header" layout-padding>
-                    <h4>STEP {{$ctrl.step + 1}}</h4>
+                    <h4>STEP {{$ctrl.stepIdx + 1}}</h4>
                     <h1>Company Information</h1>
                 </div>
                 <div class="step-wizard">
-                    <div ng-if="$ctrl.step === 0" layout="column" layout-align="center">
+                    <div ng-if="$ctrl.step === 'category'" layout="column" layout-align="center">
                         <organization-category form="organizationForm" category="$ctrl.category"
                                                flex="100" flex-gt-sm="60"></organization-category>
                     </div>
-                    <div ng-if="$ctrl.step === 1">
+                    <div ng-if="$ctrl.step === 'lookup'">
                         <organization-lookup type="EMPLOYER" form="organizationForm"
                                              organization="$ctrl.organization"></organization-lookup>
                     </div>
-                    <div ng-if="$ctrl.step === 2">
+                    <div ng-if="$ctrl.step === 'summary'">
                         <organization-summary type="EMPLOYER" form="organizationForm"
                                               organization="$ctrl.organization"></organization-summary>
                     </div>
-                    <div ng-if="$ctrl.step === 3">
+                    <div ng-if="$ctrl.step === 'address'">
                         <organization-address type="EMPLOYER" form="organizationForm"
                                               organization="$ctrl.organization"></organization-address>
                     </div>
-                    <div ng-if="$ctrl.step === 4">
+                    <div ng-if="$ctrl.step === 'assets'">
                         <organization-assets type="EMPLOYER" form="organizationForm"
                                              organization-files="$ctrl.organizationFiles"></organization-assets>
                     </div>
