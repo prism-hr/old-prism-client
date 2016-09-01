@@ -7,11 +7,5 @@ module.exports = {
     },
     /** @ngInject */
     controller: function () {
-        var self = this;
-
-        this.addressSelected = function (address) {
-            self.organization.location = address;
-        };
-
     }
 };

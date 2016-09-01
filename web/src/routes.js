@@ -34,6 +34,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             data: {auth: true},
             params: {
                 step: {value: null, squash: true, dynamic: true}
+            },
+            resolve: {
+                employerManager: function ($stateParams, employerManagerFactory) {
+                    return employerManagerFactory.getManager($stateParams.id);
+                }
             }
         })
         .state('university', {

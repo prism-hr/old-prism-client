@@ -1,4 +1,4 @@
-<div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization">
+<div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization.organization">
     <div layout-padding>
         <h3>Find or create your company</h3>
 
@@ -43,11 +43,11 @@
         </div>
     </div>
 </div>
-<div flex="100" ng-if="$ctrl.organization" class="manual-entering">
+<div flex="100" ng-if="$ctrl.organization.organization" class="manual-entering">
     <div layout-padding>
         <md-input-container class="md-block">
             <label>Company Name</label>
-            <input name="companyName" ng-model="$ctrl.organization.name" required>
+            <input name="companyName" ng-model="$ctrl.organization.organization.name" required>
         </md-input-container>
     </div>
     <div layout="row" layout-align="end" class="secondary-actions">

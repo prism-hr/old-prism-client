@@ -8,11 +8,11 @@
          ngf-resize="{width: 400, height: 250}"
          ngf-select
          ngf-drop
-         layout="row" layout-align="center center" ng-model="$ctrl.organizationFiles.logo">
-        <span class="drop-box" ng-if="!$ctrl.organizationFiles.logo">Drop your Logo here</span>
+         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
+        <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
         <div class="logo-flex">
-            <div class="logo" ng-if="$ctrl.organizationFiles.logo">
-                <img ngf-src="$ctrl.organizationFiles.logo" class="thumb">
+            <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
+                <img ngf-src="$ctrl.organization.documentLogoImage" class="thumb">
             </div>
         </div>
     </div>

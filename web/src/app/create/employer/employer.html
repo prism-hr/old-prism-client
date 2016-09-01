@@ -5,7 +5,7 @@
             <div class="logo-image">
                 <div class="logo-flex company-logo">
                     <div class="logo">
-                        <img ngf-src="$ctrl.organizationFiles.logo || '/img/prism-logo-default.png'">
+                        <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'">
                     </div>
                 </div>
             </div>
@@ -27,8 +27,8 @@
                 </div>
                 <div class="step-wizard">
                     <div ng-if="$ctrl.step === 'category'" layout="column" layout-align="center">
-                        <organization-category form="organizationForm" category="$ctrl.category"
-                                               flex="100" flex-gt-sm="60"></organization-category>
+                        <organization-category type="EMPLOYER" form="organizationForm"
+                                               organization="$ctrl.organization"></organization-category>
                     </div>
                     <div ng-if="$ctrl.step === 'lookup'">
                         <organization-lookup type="EMPLOYER" form="organizationForm"
@@ -44,7 +44,7 @@
                     </div>
                     <div ng-if="$ctrl.step === 'assets'">
                         <organization-assets type="EMPLOYER" form="organizationForm"
-                                             organization-files="$ctrl.organizationFiles"></organization-assets>
+                                             organization="$ctrl.organization"></organization-assets>
                     </div>
                 </div>
                 <div class="action-block" layout="row" layout-align="space-between none">

@@ -1,9 +1,12 @@
 module.exports = {
     template: require('./employer.html'),
+    bindings: {
+        employerManager: '<'
+    },
     /** @ngInject */
     controller: function (Restangular, Upload, $state) {
         var self = this;
-        this.organizationFiles = {};
+        this.organization = this.employerManager.getEmployer();
 
         var createSteps = ['category', 'lookup', 'summary', 'address', 'assets'];
 
@@ -23,20 +26,12 @@ module.exports = {
             if (!form.$valid) {
                 return;
             }
-            if (self.step === 'lookup') {
-                self.organization.category = self.category;
-            }
 
-            if (self.step === 'assets') {
-                self.organization.organization = {name: self.organization.name};
-                var url = Restangular.all('organizationImplementations').getRestangularUrl();
-                Upload.upload({
-                    url: url,
-                    data: {
-                        data: Upload.json(self.organization),
-                        file: self.organizationFiles.logo
-                    }
-                });
+            if (self.step === _.last(createSteps)) {
+                self.employerManager.saveEmployer(self.organization)
+                    .then(function () {
+                        $state.go('employerWelcome');
+                    });
             } else {
                 $state.go('employer', {id: $state.params.id, step: createSteps[self.stepIdx + 1]});
             }

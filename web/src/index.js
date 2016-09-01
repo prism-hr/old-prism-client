@@ -21,6 +21,7 @@ var serverInterceptor = require('./app/configuration/server-interceptor.config')
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
+var employerManagerFactory = require('./app/create/employer/employer-manager.factory');
 
 // Directives
 var applicationLoader = require('./app/directives/application-loader');
@@ -82,6 +83,7 @@ angular
     .config(serverInterceptor)
     .service('ActivationService', ActivationService)
     .service('AuthService', AuthService)
+    .service('employerManagerFactory', employerManagerFactory)
     .run(authenticationHook)
     .run(generalConfig.generalRun)
     .directive('applicationLoader', applicationLoader)
