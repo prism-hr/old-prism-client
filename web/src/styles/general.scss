@@ -202,6 +202,14 @@ md-radio-group {
     background-color: $uclred;
   }
 }
+.error {
+  margin-top:10px;
+  color: $uclred;
+  padding: 10px;
+  width: auto;
+  display: inline-block;
+  background:lighten($uclred , 30% );
+}
 md-toast.md-prism-theme .md-toast-content {
   margin-top:67px;
   background-color: $uclred;
