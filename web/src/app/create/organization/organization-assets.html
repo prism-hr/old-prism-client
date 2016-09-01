@@ -1,12 +1,14 @@
 <div layout-padding>
     <h3>Logo and Background Images</h3>
-
-    <small>Image size 400 x 250</small>
-    <md-button class="button" ngf-select ng-model="$ctrl.organizationFiles.logo" name="file"
-         ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="250">
-        Select
-    </md-button>
-    <div class="image-uploader logo" ngf-select layout="row" layout-align="center center" ngf-drop ng-model="$ctrl.organizationFiles.logo">
+    <div class="image-uploader logo"
+         ngf-pattern="'image/*'"
+         ngf-accept="'image/*'"
+         ngf-max-size="10MB"
+         ngf-min-height="250"
+         ngf-resize="{width: 400, height: 250}"
+         ngf-select
+         ngf-drop
+         layout="row" layout-align="center center" ng-model="$ctrl.organizationFiles.logo">
         <span class="drop-box" ng-if="!$ctrl.organizationFiles.logo">Drop your Logo here</span>
         <div class="logo-flex">
             <div class="logo" ng-if="$ctrl.organizationFiles.logo">
@@ -14,5 +16,7 @@
             </div>
         </div>
     </div>
+    <small>Image size 400 x 250 / 10mb max</small>
+    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 
 </div>

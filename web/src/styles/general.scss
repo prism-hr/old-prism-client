@@ -158,8 +158,7 @@ md-radio-group {
   &.dragover {
     border: 3px dashed $uclblue;
   }
-
-  &.dragover-err {
+  &.dragover-err, &.ng-invalid-pattern, &.ng-invalid {
     border: 3px dashed $uclred;
   }
 
