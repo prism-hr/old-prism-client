@@ -55,14 +55,49 @@ sidebar {
       height: 20px;
       line-height:20px;
     }
-    .md-list-item-inner {
-      button {
-        width: 40px;
-        min-width: 40px;
-        min-height: 24px;
-        line-height: 24px;
-        margin-right: 0;
-        box-shadow:none !important;
+    md-list-item {
+      border-bottom:1px solid $fadeGrey;
+      &.active {
+        background: $blueback;
+        .md-list-item-inner {
+          i.icon-arrow-down {
+            transform: rotate(180deg);
+
+          }
+        }
+      }
+      .md-list-item-inner {
+        i.icon-arrow-down {
+          transition-property: all;
+          transition-duration: 0.5s;
+          transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+        }
+      }
+    }
+    .submenu {
+      background: $fadeGrey;
+      overflow: hidden;
+      max-height: 0;
+      transition-property: all;
+      transition-duration: 0.5s;
+      transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+      &.active {
+        max-height:200px;
+        transition-property: all;
+        transition-duration: 2s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+      }
+    }
+    .md-button {
+      .md-list-item-inner {
+        button {
+          width: 40px;
+          min-width: 40px;
+          min-height: 24px;
+          line-height: 24px;
+          margin-right: 0;
+          box-shadow:none !important;
+        }
       }
     }
   }
@@ -145,5 +180,19 @@ sidebar {
   .icon-settings {
     font-size: 1.3rem;
     margin-top: 2px;
+  }
+}
+md-menu-content.small {
+  md-menu-item {
+    min-height: 35px;
+    height: 35px;
+    > .md-button {
+      padding-left: 10px;
+      padding-right:10px;
+      font-size:13px;
+      i{
+        margin-right:5px;
+      }
+    }
   }
 }
