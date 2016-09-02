@@ -8,7 +8,7 @@ module.exports = {
         var self = this;
         this.organization = this.employerManager.getEmployer();
 
-        var createSteps = ['category', 'lookup', 'summary', 'address', 'assets'];
+        var createSteps = ['category', 'lookup', 'summary', 'address', 'assets', 'preview'];
 
         function applyStep(step) {
             self.step = step;

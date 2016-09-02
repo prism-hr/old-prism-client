@@ -28,14 +28,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
                 showRegistration: false
             }
         })
-        .state('employerView', {
-            url: '/employer/view',
-            component: 'employerView',
-            data: {auth: true},
-            params: {
-                showRegistration: false
-            }
-        })
         .state('employer', {
             url: '/employer/{id:new|\\d+}/:step',
             component: 'employer',
