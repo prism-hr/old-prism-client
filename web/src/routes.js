@@ -21,8 +21,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
         .state('employerWelcome', {
-            url: '/employerWelcome',
+            url: '/employer/welcome',
             component: 'employerWelcome',
+            data: {auth: true},
+            params: {
+                showRegistration: false
+            }
+        })
+        .state('employerView', {
+            url: '/employer/view',
+            component: 'employerView',
             data: {auth: true},
             params: {
                 showRegistration: false
