@@ -43,6 +43,7 @@ var organizationLookup = require('./app/create/organization/organization-lookup'
 var organizationSummary = require('./app/create/organization/organization-summary');
 var organizationAddress = require('./app/create/organization/organization-address');
 var organizationAssets = require('./app/create/organization/organization-assets');
+var organizationPreview = require('./app/create/organization/organization-preview');
 var employerWelcome = require('./app/create/employer/employer-welcome');
 var employer = require('./app/create/employer/employer');
 var universityWelcome = require('./app/create/university/university-welcome');
@@ -102,6 +103,7 @@ angular
     .component('organizationSummary', organizationSummary)
     .component('organizationAddress', organizationAddress)
     .component('organizationAssets', organizationAssets)
+    .component('organizationPreview', organizationPreview)
     .component('employerWelcome', employerWelcome)
     .component('employer', employer)
     .component('universityWelcome', universityWelcome)
