@@ -1,25 +1,15 @@
 <div class="preview" ng-if="$ctrl.organization">
     <label>Preview</label>
-    <div class="company-box" layout="row" layout-align="center end">
-        <div class="company-header" layout="row" flex-gt-sm="75">
-            <div class="logo-image">
-                <div class="logo-flex company-logo">
-                    <div class="logo">
-                        <span image-src="$ctrl.organization.documentLogoImage"></span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h2>{{$ctrl.organization.name}}
-                    <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button>
-                </h2>
-                <p class="summary">{{$ctrl.organization.summary}}
-                    <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button>
-                </p>
-                <p class="address">{{$ctrl.organization.location.description}}
-                    <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button>
-                </p>
-            </div>
+    <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
+    <div layout="row" layout-align="center end">
+        <div class="preview-navigation" flex-gt-sm="75">
+            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="preview links" class="md-primary">
+                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.category" name="category">Category</md-nav-item>
+                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.lookup" name="name">Name</md-nav-item>
+                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.summary" name="summary">Summary/Description</md-nav-item>
+                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.address" name="address">Address</md-nav-item>
+                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.assets" name="assets">Logo</md-nav-item>
+            </md-nav-bar>
         </div>
     </div>
 </div>

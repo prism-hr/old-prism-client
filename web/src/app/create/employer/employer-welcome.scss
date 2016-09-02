@@ -120,6 +120,30 @@
 
   }
 }
+.preview-navigation {
+  margin-top:20px;
+  margin-bottom:-57px;
+  background: white;
+  border:1px solid #ececec;
+  border-top:none;
+  .md-nav-bar {
+    height: auto;
+    border:none;
+    .md-button.md-prism-theme.md-accent {
+      line-height: 20px;
+      margin: 0 4px;
+      padding: 8px 10px;
+      color: $uclfooter;
+      font-weight:700;
+      &.md-active {
+        color: $uclred;
+      }
+    }
+  }
+  md-nav-ink-bar {
+    background-color: $uclred;
+  }
+}
 .preview {
   position: relative;
   label {
