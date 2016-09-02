@@ -22,6 +22,7 @@ var authenticationHook = require('./app/unauthenticated/authentication.hook');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
 var employerManagerFactory = require('./app/create/employer/employer-manager.factory');
+var createSteps = require('./app/create/create-steps.configuration');
 
 // Directives
 var applicationLoader = require('./app/directives/application-loader');
@@ -74,6 +75,7 @@ angular
         'pascalprecht.translate'
     ])
     .constant('environment', environment)
+    .constant('createSteps', createSteps)
     /** @ngInject */
     .config(function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;

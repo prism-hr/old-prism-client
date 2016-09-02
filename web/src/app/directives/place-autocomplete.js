@@ -42,7 +42,7 @@ module.exports = function ($q) {
                 }
                 var deferred = $q.defer();
                 autocomplete.getPlacePredictions({input: input, types: ['address']}, function (places) {
-                    deferred.resolve(places);
+                    deferred.resolve(places || {});
                 });
                 return deferred.promise;
             };
@@ -59,11 +59,14 @@ module.exports = function ($q) {
                 var displayAddress = place.formatted_address;
                 var postalTown = getAddressPart('postal_town');
                 var alternativeTown = getAddressPart('locality');
-                var alternativeTown2 = getAddressPart('administrative_area_level_2');
+                var administrativeAreaLevel2 = getAddressPart('administrative_area_level_2');
+                var administrativeAreaLevel3 = getAddressPart('administrative_area_level_3');
+                var administrativeAreaLevel4 = getAddressPart('administrative_area_level_4');
+                var administrativeAreaLevel5 = getAddressPart('administrative_area_level_5');
                 var geolocation = place.geometry.location;
 
                 var location = {};
-                location.name = postalTown || alternativeTown || alternativeTown2;
+                location.name = postalTown || alternativeTown || administrativeAreaLevel2 || administrativeAreaLevel3 || administrativeAreaLevel4 || administrativeAreaLevel5;
                 location.description = displayAddress;
                 location.domicile = domicile;
                 location.googleId = place.place_id;
