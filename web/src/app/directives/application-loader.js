@@ -2,7 +2,7 @@
 module.exports = function ($animate) {
     return ({
         link: link,
-        restrict: "C"
+        restrict: 'C'
     });
     function link(scope, element) {
         $animate.enabled(true);

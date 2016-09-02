@@ -27,6 +27,7 @@ var employerManagerFactory = require('./app/create/employer/employer-manager.fac
 var applicationLoader = require('./app/directives/application-loader');
 var placeAutocomplete = require('./app/directives/place-autocomplete');
 var fileUpload = require('./app/directives/file-upload');
+var imageSrc = require('./app/directives/image-src');
 
 // Components
 var dialog = require('./app/general/dialog/dialog');
@@ -89,6 +90,7 @@ angular
     .directive('applicationLoader', applicationLoader)
     .directive('placeAutocomplete', placeAutocomplete)
     .directive('fileUpload', fileUpload)
+    .directive('imageSrc', imageSrc)
     .component('prismDialog', dialog)
     .component('welcome', welcome)
     .component('header', header)
