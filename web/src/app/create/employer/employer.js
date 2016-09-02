@@ -30,7 +30,7 @@ module.exports = {
             if (self.step === _.last(createSteps)) {
                 self.employerManager.saveEmployer(self.organization)
                     .then(function () {
-                        $state.go('employerWelcome');
+                        $state.go('employerWelcome', {}, {reload: true});
                     });
             } else {
                 $state.go('employer', {id: $state.params.id, step: createSteps[self.stepIdx + 1]});

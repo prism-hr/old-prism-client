@@ -1,18 +1,24 @@
-<div class="preview" ng-if="$ctrl.organization.name">
+<div class="preview" ng-if="$ctrl.organization">
     <label>Preview</label>
-    <div class="company-box" layout="row" layout-align="center end" >
+    <div class="company-box" layout="row" layout-align="center end">
         <div class="company-header" layout="row" flex-gt-sm="75">
             <div class="logo-image">
                 <div class="logo-flex company-logo">
                     <div class="logo">
-                        <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'">
+                        <span image-src="$ctrl.organization.documentLogoImage"></span>
                     </div>
                 </div>
             </div>
             <div>
-                <h2>{{$ctrl.organization.name}} <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button></h2>
-                <p class="summary">{{$ctrl.organization.summary}} <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button></p>
-                <p class="address">{{$ctrl.organization.location.description}} <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button></p>
+                <h2>{{$ctrl.organization.name}}
+                    <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button>
+                </h2>
+                <p class="summary">{{$ctrl.organization.summary}}
+                    <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button>
+                </p>
+                <p class="address">{{$ctrl.organization.location.description}}
+                    <md-button class="small-xs" ng-if="$ctrl.preview">Edit</md-button>
+                </p>
             </div>
         </div>
     </div>
