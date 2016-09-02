@@ -21,8 +21,9 @@ module.exports = function ($q, Restangular, Upload) {
                 data: Upload.json(employer),
                 file: logo
             }
-        }).then(function () {
+        }).then(function (response) {
             this._employer = {};
+            return response;
         });
     };
 

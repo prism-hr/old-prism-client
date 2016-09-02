@@ -4,45 +4,35 @@ module.exports = {
         employerManager: '<'
     },
     /** @ngInject */
-    controller: function (Restangular, Upload, $state) {
+    controller: function (Restangular, Upload, $state, createSteps) {
         var self = this;
-        this.organization = this.employerManager.getEmployer();
-
-        var createSteps = ['category', 'lookup', 'summary', 'address', 'assets', 'preview'];
-
-        function applyStep(step) {
-            self.step = step;
-            self.stepIdx = createSteps.indexOf(self.step);
-        }
-
-        applyStep($state.params.step);
-        this.uiOnParamsChanged = function (newValues) {
-            if (newValues.step) {
-                applyStep(newValues.step);
-            }
-        };
+        this.createSteps = createSteps;
+        this.organization = self.employerManager.getEmployer();
 
         this.submit = function (form) {
             if (!form.$valid) {
                 return;
             }
 
-            if (self.step === _.last(createSteps)) {
+            if ($state.current.data.lastCreateStep) {
                 self.employerManager.saveEmployer(self.organization)
-                    .then(function () {
-                        $state.go('employerWelcome', {}, {reload: true});
+                    .then(function (response) {
+                        $state.go('employer.view', {id: response.data.id}, {reload: true});
                     });
             } else {
-                $state.go('employer', {id: $state.params.id, step: createSteps[self.stepIdx + 1]});
+                var nextStep = createSteps.employer[$state.current.data.stepIdx + 1].id;
+                $state.go('employer.' + nextStep, {id: $state.params.id});
             }
         };
 
         this.back = function () {
-            if (self.stepIdx === 0) {
-                $state.go('employer');
+            if ($state.current.data.stepIdx === 0) {
+                $state.go('employerWelcome');
             } else {
-                $state.go('employer', {id: $state.params.id, step: createSteps[self.stepIdx - 1]});
+                var prevStep = createSteps.employer[$state.current.data.stepIdx - 1].id;
+                $state.go('employer.' + prevStep, {id: $state.params.id});
             }
         };
+
     }
 };

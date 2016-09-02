@@ -1,7 +1,7 @@
 module.exports = routesConfig;
 
 /** @ngInject */
-function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, createSteps) {
     $locationProvider.html5Mode(true).hashPrefix('!');
     $urlRouterProvider.otherwise('/404');
 
@@ -29,15 +29,19 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             }
         })
         .state('employer', {
-            url: '/employer/{id:new|\\d+}/:step',
+            url: '/employer/{id:new|\\d+}',
+            abstract: true,
             component: 'employer',
             data: {auth: true},
-            params: {
-                step: {value: null, squash: true, dynamic: true}
-            },
             resolve: {
                 employerManager: function ($stateParams, employerManagerFactory) {
                     return employerManagerFactory.getManager($stateParams.id);
+                },
+                organization: function (employerManager) {
+                    return employerManager.getEmployer();
+                },
+                type: function () {
+                    return 'EMPLOYER';
                 }
             }
         })
@@ -77,6 +81,18 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             }
 
         });
+
+    _.each(createSteps.employer, function (step, index) {
+        var data = angular.copy(step.data) || {};
+        data.stepIdx = index;
+        $stateProvider
+            .state('employer.' + step.id, {
+                url: '/' + step.id,
+                component: step.component,
+                data: data
+            });
+    });
+    console.log(createSteps);
 
     function returnTo($transition$) {
         var redirectedFrom = $transition$.previous();

@@ -4,11 +4,7 @@
     <div layout="row" layout-align="center end">
         <div class="preview-navigation" flex-gt-sm="75">
             <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="preview links" class="md-primary">
-                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.category" name="category">Category</md-nav-item>
-                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.lookup" name="name">Name</md-nav-item>
-                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.summary" name="summary">Summary/Description</md-nav-item>
-                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.address" name="address">Address</md-nav-item>
-                <md-nav-item md-nav-sref="employer.{{$ctrl.organization.id}}.assets" name="assets">Logo</md-nav-item>
+                <md-nav-item ng-repeat="step in $ctrl.createSteps.employer" md-nav-sref="employer.{{step.id}}" name="{{step.id}}">{{step.id}}</md-nav-item>
             </md-nav-bar>
         </div>
     </div>
@@ -22,30 +18,7 @@
                     <h1>Company Information</h1>
                 </div>
                 <div class="step-wizard">
-                    <div ng-if="$ctrl.step === 'category'" layout="column" layout-align="center">
-                        <organization-category type="EMPLOYER" form="organizationForm"
-                                               organization="$ctrl.organization"></organization-category>
-                    </div>
-                    <div ng-if="$ctrl.step === 'lookup'">
-                        <organization-lookup type="EMPLOYER" form="organizationForm"
-                                             organization="$ctrl.organization"></organization-lookup>
-                    </div>
-                    <div ng-if="$ctrl.step === 'summary'">
-                        <organization-summary type="EMPLOYER" form="organizationForm"
-                                              organization="$ctrl.organization"></organization-summary>
-                    </div>
-                    <div ng-if="$ctrl.step === 'address'">
-                        <organization-address type="EMPLOYER" form="organizationForm"
-                                              organization="$ctrl.organization"></organization-address>
-                    </div>
-                    <div ng-if="$ctrl.step === 'assets'">
-                        <organization-assets type="EMPLOYER" form="organizationForm"
-                                             organization="$ctrl.organization"></organization-assets>
-                    </div>
-                    <div ng-if="$ctrl.step === 'preview'">
-                        <organization-preview type="EMPLOYER" form="organizationForm"
-                                             organization="$ctrl.organization"></organization-preview>
-                    </div>
+                    <div ui-view></div>
                 </div>
                 <div class="action-block" layout="row" layout-align="space-between none">
                     <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()">Back</md-button>
