@@ -1,7 +1,15 @@
 .position-list {
-  background:lighten($uclred , 34% );
-  border-radius: 2px;
+  &:hover {
+    background:lighten($uclred , 34% );
+    border-radius: 2px;
+  }
   .position-header {
-
+    h2 {
+      display: inline-block;
+    }
+  }
+  .position-summary {
+    column-count: 2;
+    column-gap: 1em;
   }
 }

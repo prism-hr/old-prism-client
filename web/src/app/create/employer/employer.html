@@ -52,6 +52,10 @@
                         <organization-assets type="EMPLOYER" form="organizationForm"
                                              organization="$ctrl.organization"></organization-assets>
                     </div>
+                    <div ng-if="$ctrl.step === 'preview'">
+                        <organization-preview type="EMPLOYER" form="organizationForm"
+                                             organization="$ctrl.organization"></organization-preview>
+                    </div>
                 </div>
                 <div class="action-block" layout="row" layout-align="space-between none">
                     <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()">Back</md-button>

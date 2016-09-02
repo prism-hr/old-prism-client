@@ -1,5 +1,5 @@
 module.exports = {
-    template: require('./employer-view.html'),
+    template: require('./position-list.html'),
     /** @ngInject */
     controller: function () {
 
