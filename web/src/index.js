@@ -47,6 +47,7 @@ var organizationPreview = require('./app/create/organization/organization-previe
 var organizationPreviewBox = require('./app/create/organization/organization-preview-box');
 var employerWelcome = require('./app/create/employer/employer-welcome');
 var employer = require('./app/create/employer/employer');
+var position = require('./app/create/position/position');
 var universityWelcome = require('./app/create/university/university-welcome');
 var university = require('./app/create/university/university');
 var student = require('./app/create/student/student');
@@ -108,6 +109,7 @@ angular
     .component('organizationPreviewBox', organizationPreviewBox)
     .component('employerWelcome', employerWelcome)
     .component('employer', employer)
+    .component('position', position)
     .component('universityWelcome', universityWelcome)
     .component('university', university)
     .component('student', student)

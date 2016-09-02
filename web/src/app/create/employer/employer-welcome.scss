@@ -92,35 +92,28 @@
     border:1px solid #ececec;
     width: 96%;
     margin-bottom:-20px;
-    padding-right:20px;
     background: white;
     .logo-image {
       margin: 10px;
       min-width: 200px;
       display: inline-block;
     }
-    .md-button {
-      margin-bottom: 0;
-      margin-top:0;
-    }
     h2 {
-      margin-top:16px;
+      margin-top:10px;
+      margin-bottom:6px;
     }
     p {
-      margin-top:6px;
       &.summary {
       }
       &.address {
         font-size:0.8rem;
-        .phone {
-          float: right;
-        }
       }
     }
-
   }
 }
 .preview-navigation {
+  width: 96%;
+  overflow: hidden;
   margin-top:20px;
   margin-bottom:-57px;
   background: white;
@@ -146,7 +139,7 @@
 }
 .preview {
   position: relative;
-  label {
+  > label {
     position: absolute;
     right: 0;
     top: 25px;

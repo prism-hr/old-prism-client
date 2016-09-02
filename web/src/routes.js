@@ -41,6 +41,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
                 }
             }
         })
+        .state('position', {
+            url: '/position',
+            component: 'position',
+            data: {auth: true}
+        })
         .state('university', {
             url: '/university',
             component: 'university',
