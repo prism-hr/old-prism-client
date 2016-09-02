@@ -8,8 +8,79 @@
       display: inline-block;
     }
   }
+}
+.position-item {
+  width: 100%;
+  .position-header {
+    margin-top:10px;
+    margin-right: 10px;
+    h2 {
+      font-size:22px;
+    }
+  }
+  .position-subheader {
+    margin-top:3px;
+  }
   .position-summary {
+    margin: 10px 10px 8px 0;
+    padding: 9px 0 6px;
+    border-top:1px solid $fadeGrey;
+    border-bottom:1px solid $fadeGrey;
     column-count: 2;
     column-gap: 1em;
+    font-size:14px;
+    color: $uclfooter;
+    font-weight:600;
+    > div {
+      margin-bottom:6px;
+      &:before {
+        content: '•';
+        font-size:10px;
+        margin-right:4px;
+        margin-left:2px;
+      }
+    }
+  }
+  .position-features {
+    padding:8px 0 4px;
+    font-size:14px;
+    color: $uclfooter;
+    font-weight:600;
+    > div {
+      display: inline-block;
+      padding-right: 30px;
+      padding-left: 2px;
+      i {
+        margin-right:4px;
+      }
+    }
+  }
+  .position-actions {
+    margin-left:-6px;
+    margin-bottom:2px;
+    .lock-size {
+      min-width: 56px;
+      min-height: 56px;
+      width: 56px;
+      height: 56px;
+      margin-left: auto;
+      margin-right: -6px;
+    }
+  }
+}
+.position-box {
+  background: url(/img/emp-back.png) left top no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  .position-box-header {
+    border: 1px solid #ececec;
+    width: 96%;
+    margin-bottom: -80px;
+    background: white;
+    .logo-image {
+      margin: 10px;
+      min-width: 200px;
+      display: inline-block;
+    }
   }
 }
