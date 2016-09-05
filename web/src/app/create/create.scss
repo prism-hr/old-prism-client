@@ -161,7 +161,7 @@ md-autocomplete input:not(.md-input), md-input-container  {
 @media (max-width: $layout-breakpoint-xs - 1) {
   .step-page {
     .left-side-block, .action-block{
-      padding: 20px;
+      padding: 20px 0;
     }
     &.child {
       .left-side-block, .right-side-block {

@@ -86,3 +86,26 @@
     }
   }
 }
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .position-box {
+    .position-box-header {
+      padding: 10px;
+      .logo-image {
+        margin: 0;
+      }
+      .logo-flex {
+        padding-bottom:10px;
+        border-width: 0 0 1px 0;
+      }
+    }
+    .position-item {
+      .position-header {
+        margin-right:0;
+      }
+      .position-summary {
+        column-count: 1;
+        column-gap: 0;
+      }
+    }
+  }
+}

@@ -100,3 +100,8 @@
     }
   }
 }
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .single-block {
+    padding: 10px 10px 20px;
+  }
+}
