@@ -85,13 +85,10 @@
 }
 
 .company-box {
-  background: url(/img/emp-back.png) left top no-repeat;
-  background-size: cover;
-  min-height: 250px;
+  margin-top:-137px;
   .company-header {
     border:1px solid #ececec;
     width: 96%;
-    margin-bottom:-20px;
     background: white;
     .logo-image {
       margin: 10px;
@@ -114,8 +111,6 @@
 .preview-navigation {
   width: 96%;
   overflow: hidden;
-  margin-top:20px;
-  margin-bottom:-57px;
   background: white;
   border:1px solid #ececec;
   border-top:none;

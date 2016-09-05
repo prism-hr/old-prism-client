@@ -1,63 +1,63 @@
-<div class="preview">
-    <label>Preview</label>
-    <div class="position-box" layout="row" layout-align="center end">
-        <div class="position-box-header" layout="row" flex-gt-sm="75">
-            <div class="logo-image">
-                <div class="logo-flex company-logo">
-                    <div class="logo">
-                        <span image-src="$ctrl.organization.documentLogoImage"></span>
+<div class="page-wrap step-page child">
+    <div class="preview employer">
+        <label>Preview</label>
+        <div class="background-box"></div>
+        <div class="position-box" layout="row" layout-align="center end">
+            <div class="position-box-header" layout="row" flex-gt-sm="75">
+                <div class="logo-image">
+                    <div class="logo-flex company-logo">
+                        <div class="logo">
+                            <span image-src="$ctrl.organization.documentLogoImage"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="position-item">
-                <div class="position-header" layout="row" layout-align="start center">
-                    <h2>Graduate Software and Electronics Engineers</h2>
-                    <span flex></span>
-                    <label class="badge">Employment</label>
-                </div>
-                <div class="position-subheader" layout="row" layout-align="start center">
-                    <h4>Juan Mingo ltd</h4>
-                </div>
-                <div class="position-summary">
-                    <div class="availability">Available: Permanent - Full Time</div>
-                    <div class="salary">Competitive Salary</div>
-                    <div class="closing-date">Closing Date: 1 Oct 2016</div>
-                    <div class="location">Madrid, Spain</div>
-                </div>
-                <div class="position-features">
-                    <div class="posted"><i class="icon-calendar"></i> Posted 5 days ago</div>
-                    <div class="views"><i class="icon-people"></i> 0 views </div>
-                </div>
-                <div class="position-actions" layout="row" layout-align="start center">
-                    <md-button type="submit" class="md-primary md-raised ">
-                        <i class="icon-paper-plane"></i> Apply Now
-                    </md-button>
-                    <span class="flex"></span>
-                    <div class="lock-size">
-                        <md-fab-speed-dial md-direction="down" class="md-scale" md-open="$ctrl.isOpen">
-                            <md-fab-trigger>
-                                <md-button aria-label="Share" class="md-fab md-warn md-mini"><i class="icon-share"></i></md-button>
-                            </md-fab-trigger>
-                            <md-fab-actions>
-                                <md-button aria-label="Share with Facebook" class="md-fab md-raised md-mini">
-                                    <i class="icon-social-facebook"></i>
-                                </md-button>
-                                <md-button aria-label="Share with Twitter" class="md-fab md-raised md-mini">
-                                    <i class="icon-social-twitter"></i>
-                                </md-button>
-                                <md-button aria-label="Share with Linkedin" class="md-fab md-raised md-mini">
-                                <i class="icon-social-linkedin"></i>
-                            </md-button>
-                            </md-fab-actions>
-                        </md-fab-speed-dial>
+                <div class="position-item">
+                    <div class="position-header" layout="row" layout-align="start center">
+                        <h2>Graduate Software and Electronics Engineers</h2>
+                        <span flex></span>
+                        <label class="badge">Employment</label>
+                    </div>
+                    <div class="position-subheader" layout="row" layout-align="start center">
+                        <h4>Juan Mingo ltd</h4>
+                    </div>
+                    <div class="position-summary">
+                        <div class="availability">Available: Permanent - Full Time</div>
+                        <div class="salary">Competitive Salary</div>
+                        <div class="closing-date">Closing Date: 1 Oct 2016</div>
+                        <div class="location">Madrid, Spain</div>
+                    </div>
+                    <div class="position-features">
+                        <div class="posted"><i class="icon-calendar"></i> Posted 5 days ago</div>
+                        <div class="views"><i class="icon-people"></i> 0 views </div>
+                    </div>
+                    <div class="position-actions" layout="row" layout-align="start center">
+                        <md-button type="submit" class="md-primary md-raised ">
+                            <i class="icon-paper-plane"></i> Apply Now
+                        </md-button>
+                        <span class="flex"></span>
+                        <div class="lock-size">
+                            <md-fab-speed-dial md-direction="down" class="md-scale" md-open="$ctrl.isOpen">
+                                <md-fab-trigger>
+                                    <md-button aria-label="Share" class="md-fab md-warn md-mini"><i class="icon-share"></i></md-button>
+                                </md-fab-trigger>
+                                <md-fab-actions>
+                                    <md-button aria-label="Share with Facebook" class="md-fab md-raised md-mini facebook">
+                                        <i class="icon-social-facebook"></i>
+                                    </md-button>
+                                    <md-button aria-label="Share with Twitter" class="md-fab md-raised md-mini twitter">
+                                        <i class="icon-social-twitter"></i>
+                                    </md-button>
+                                    <md-button aria-label="Share with Linkedin" class="md-fab md-raised md-mini linkedin">
+                                        <i class="icon-social-linkedin"></i>
+                                    </md-button>
+                                </md-fab-actions>
+                            </md-fab-speed-dial>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-</div>
-<div class="page-wrap step-page child">
     <form novalidate name="positionForm" ng-submit="$ctrl.submit(positionForm)">
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
             <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
