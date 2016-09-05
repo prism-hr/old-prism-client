@@ -1,15 +1,15 @@
-<div class="preview" ng-if="$ctrl.organization">
-    <label>Preview</label>
-    <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
-    <div layout="row" layout-align="center end">
-        <div class="preview-navigation" flex-gt-sm="75">
-            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="preview links" class="md-primary">
-                <md-nav-item ng-repeat="step in $ctrl.createSteps.employer" md-nav-sref="employer.{{step.id}}" name="{{step.id}}">{{step.id}}</md-nav-item>
-            </md-nav-bar>
+<div class="page-wrap step-page child">
+    <div class="preview employer" ng-if="$ctrl.organization">
+        <label>Preview</label>
+        <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
+        <div layout="row" layout-align="center end">
+            <div class="preview-navigation" flex-gt-sm="75">
+                <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="preview links" class="md-primary">
+                    <md-nav-item ng-repeat="step in $ctrl.createSteps.employer" md-nav-sref="employer.{{step.id}}" name="{{step.id}}">{{step.id}}</md-nav-item>
+                </md-nav-bar>
+            </div>
         </div>
     </div>
-</div>
-<div class="page-wrap step-page child">
     <form novalidate name="organizationForm" ng-submit="$ctrl.submit(organizationForm)">
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
             <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">

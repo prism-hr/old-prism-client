@@ -21,6 +21,13 @@
       background-color: #2A3F6C;
     }
   }
+  &.twitter {
+    background-color: $twitter-color;
+    color: white;
+    &:not([disabled]):hover {
+      background-color: #0084b4;
+    }
+  }
   &.linkedin {
     background-color: $linkedin-color;
     color:white;
