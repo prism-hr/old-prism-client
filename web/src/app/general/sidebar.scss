@@ -48,7 +48,18 @@ sidebar {
     }
   }
   .main-menu {
-    i {
+    .md-subheader-inner {
+      .md-icon-button {
+        float: right;
+        margin-top: -12px;
+        margin-right: -12px;
+        font-size: 18px;
+        .icon-options-vertical:before {
+          line-height:24px;
+        }
+      }
+    }
+    md-list-item i {
       margin-right: 12px;
     }
     .badge {

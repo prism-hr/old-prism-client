@@ -35,7 +35,28 @@
     </div>
     <md-content class="main-menu">
         <md-list flex >
-            <md-subheader class="md-no-sticky">Menu</md-subheader>
+            <md-subheader class="md-no-sticky">
+                Menu
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-home"></i> New Company</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-notebook"></i> New Contact</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-subheader>
             <md-list-item ng-click="navigateTo('candidates', $event)">
                 <i class="icon-people"></i>
                 <p>Candidates</p>
@@ -43,7 +64,6 @@
             <md-list-item ng-click="navigateTo('contacts', $event)">
                 <i class="icon-notebook"></i>
                 <p>Contacts</p>
-                <md-button class="md-raised md-primary small">New</md-button>
             </md-list-item>
             <md-list-item ng-click="navigateTo('applications', $event)">
                 <i class="icon-paper-plane"></i>
@@ -54,17 +74,14 @@
                 <i class="icon-briefcase"></i>
                 <p>Positions</p>
                 <span class="badge">2</span>
-                <md-button class="md-raised md-primary small">New</md-button>
             </md-list-item>
             <md-list-item ng-click="navigateTo('departments', $event)">
                 <i class="icon-organization"></i>
                 <p>Departments</p>
-                <md-button class="md-raised md-primary small">New</md-button>
             </md-list-item>
             <md-list-item ng-click="toggleSubmenu('company', $event)">
                 <i class="icon-home"></i>
                 <p>Companies <i class="icon-arrow-down"></i></p>
-                <md-button class="md-raised md-primary small">New</md-button>
             </md-list-item>
             <div flex="" class="submenu submenu-company">
                 <md-list-item ng-click="navigateTo('company-1', $event)">
