@@ -5,6 +5,5 @@ module.exports = {
     },
     /** @ngInject */
     controller: function () {
-        
     }
 };

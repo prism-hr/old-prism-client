@@ -25,6 +25,5 @@ module.exports = {
         }).then(function () {
             $state.go('activities');
         });
-
     }
 };

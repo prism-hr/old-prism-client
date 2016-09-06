@@ -27,7 +27,6 @@ var createSteps = require('./app/create/create-steps.configuration');
 // Directives
 var applicationLoader = require('./app/directives/application-loader');
 var placeAutocomplete = require('./app/directives/place-autocomplete');
-var fileUpload = require('./app/directives/file-upload');
 var imageSrc = require('./app/directives/image-src');
 
 // Components
@@ -94,7 +93,6 @@ angular
     .run(generalConfig.generalRun)
     .directive('applicationLoader', applicationLoader)
     .directive('placeAutocomplete', placeAutocomplete)
-    .directive('fileUpload', fileUpload)
     .directive('imageSrc', imageSrc)
     .component('prismDialog', dialog)
     .component('welcome', welcome)

@@ -43,6 +43,5 @@ module.exports = {
         $scope.advertise = function () {
             $state.go('register');
         };
-
     }
 };

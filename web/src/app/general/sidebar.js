@@ -11,7 +11,7 @@ module.exports = {
             $state.go('welcome');
         };
         $scope.toggleSubmenu = function (name, $event) {
-            var menu = angular.element(document.body.querySelector('.submenu-'+name));
+            var menu = angular.element(document.body.querySelector('.submenu-' + name));
             var ele = angular.element($event.target.parentElement.parentElement);
             if (menu.hasClass('active')) {
                 menu.removeClass('active');
@@ -20,6 +20,6 @@ module.exports = {
                 menu.addClass('active');
                 ele.addClass('active');
             }
-        }
+        };
     }
 };
