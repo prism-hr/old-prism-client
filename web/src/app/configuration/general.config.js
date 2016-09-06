@@ -2,7 +2,8 @@ module.exports = {
     generalRun: generalRun,
     restangular: restangularConfig,
     satellizerConfig: satellizerConfig,
-    translateConfig: translateConfig
+    translateConfig: translateConfig,
+    ladingConfigurationBar: ladingConfigurationBar
 };
 
 /** @ngInject */
@@ -17,7 +18,11 @@ function generalRun($rootScope, $transitions, $state, AuthService) {
     AuthService.refreshTokenHeader();
     AuthService.loadUser();
 }
-
+/** @ngInject */
+function ladingConfigurationBar(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+    cfpLoadingBarProvider.latencyThreshold = 100;
+}
 /** @ngInject */
 function restangularConfig(RestangularProvider) {
     var host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');

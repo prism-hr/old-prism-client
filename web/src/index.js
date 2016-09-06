@@ -31,6 +31,7 @@ var imageSrc = require('./app/directives/image-src');
 
 // Components
 var dialog = require('./app/general/dialog/dialog');
+var browserTitle = require('./app/general/browserTitle');
 var welcome = require('./app/welcome/welcome');
 var regswitch = require('./app/unauthenticated/regswitch/regswitch');
 var authenticate = require('./app/unauthenticated/authenticate/authenticate');
@@ -75,11 +76,6 @@ angular
     ])
     .constant('environment', environment)
     .constant('createSteps', createSteps)
-    /** @ngInject */
-    .config(function (cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeSpinner = false;
-        cfpLoadingBarProvider.latencyThreshold = 100;
-    })
     .config(routes)
     .config(generalConfig.restangular)
     .config(generalConfig.satellizerConfig)
@@ -91,6 +87,7 @@ angular
     .service('employerManagerFactory', employerManagerFactory)
     .run(authenticationHook)
     .run(generalConfig.generalRun)
+    .run(browserTitle)
     .directive('applicationLoader', applicationLoader)
     .directive('placeAutocomplete', placeAutocomplete)
     .directive('imageSrc', imageSrc)
