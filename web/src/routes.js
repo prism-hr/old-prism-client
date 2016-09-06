@@ -8,7 +8,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
     $stateProvider
         .state('404', {
             url: '/404',
-            template: require('./app/404.html')
+            template: require('./app/404.html'),
+            resolve: {
+                $title: function () {
+                    return '404';
+                }
+            }
         })
         .state('invited', {
             url: '/invited?accessCode&action',
@@ -17,6 +22,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 /** @ngInject */
                 activity: function ($stateParams, ActivationService) {
                     return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
+                },
+                $title: function () {
+                    return 'Invited';
                 }
             }
         })
@@ -26,6 +34,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             data: {auth: true},
             params: {
                 showRegistration: false
+            },
+            resolve: {
+                $title: function () {
+                    return 'Welcome Employer';
+                }
             }
         })
         .state('employer', {
@@ -42,32 +55,60 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 },
                 type: function () {
                     return 'EMPLOYER';
+                },
+                $title: function () {
+                    return 'Create Employer';
                 }
             }
         })
         .state('position', {
             url: '/position',
             component: 'position',
-            data: {auth: true}
+            data: {auth: true},
+            resolve: {
+                $title: function () {
+                    return 'Create Position';
+                }
+            }
         })
         .state('university', {
             url: '/university',
             component: 'university',
-            data: {auth: true}
+            data: {auth: true},
+            resolve: {
+                $title: function () {
+                    return 'University';
+                }
+            }
         })
         .state('universityOrganization', {
             url: '/university/organization',
             component: 'universityOrganization',
-            data: {auth: true}
+            data: {auth: true},
+            resolve: {
+                $title: function () {
+                    return 'Create University';
+                }
+            }
         })
         .state('student', {
             url: '/student',
             component: 'student',
-            data: {auth: true}
+            data: {auth: true},
+            resolve: {
+                $title: function () {
+                    return 'Student';
+                }
+            }
         })
         .state('welcome', {
             url: '/',
-            component: 'welcome'
+            component: 'welcome',
+            resolve: {
+                $title: function () {
+                    return 'Welcome';
+                }
+            }
         })
         .state('activities', {
             url: '/activities',
@@ -77,6 +118,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 /** @ngInject */
                 activities: function (Restangular) {
                     return Restangular.one('user', 'activities').get({state: 'PENDING'});
+                },
+                $title: function () {
+                    return 'Activities';
                 }
             }
 
