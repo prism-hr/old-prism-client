@@ -92,27 +92,26 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 data: data
             });
     });
-    console.log(createSteps);
 
-    function returnTo($transition$) {
-        var redirectedFrom = $transition$.previous();
-        // The user was redirected to the login state (via the requiresAuth hook)
-        if (redirectedFrom !== null) {
-            while (redirectedFrom.previous()) {
-                redirectedFrom = redirectedFrom.previous();
-            }
-            return {state: redirectedFrom.to(), params: redirectedFrom.params("to")};
-        }
-
-        // The user was not redirected to the login state; they directly activated the login state somehow.
-        // Return them to the state they came from.
-        var fromState = $transition$.from();
-        var fromParams = $transition$.params("from");
-
-        if (fromState.name !== '') {
-            return {state: fromState, params: fromParams};
-        }
-
-        return {state: 'welcome'};
-    }
+    // function returnTo($transition$) {
+    //     var redirectedFrom = $transition$.previous();
+    //     // The user was redirected to the login state (via the requiresAuth hook)
+    //     if (redirectedFrom !== null) {
+    //         while (redirectedFrom.previous()) {
+    //             redirectedFrom = redirectedFrom.previous();
+    //         }
+    //         return {state: redirectedFrom.to(), params: redirectedFrom.params('to')};
+    //     }
+    //
+    //     // The user was not redirected to the login state; they directly activated the login state somehow.
+    //     // Return them to the state they came from.
+    //     var fromState = $transition$.from();
+    //     var fromParams = $transition$.params('from');
+    //
+    //     if (fromState.name !== '') {
+    //         return {state: fromState, params: fromParams};
+    //     }
+    //
+    //     return {state: 'welcome'};
+    // }
 }

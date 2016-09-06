@@ -11,14 +11,19 @@ module.exports = function ($q, Restangular, Upload) {
     };
 
     EmployerManager.prototype.saveEmployer = function (employer) {
-        var url = Restangular.all('organizationImplementations').getRestangularUrl();
-        var employerPost = angular.copy(employer);
+        var url;
+        if (employer.id) {
+            url = Restangular.one('organizationImplementations', employer.id).getRestangularUrl();
+        } else {
+            url = Restangular.all('organizationImplementations').getRestangularUrl();
+        }
+        var employerPost = angular.copy(_.omit(employer, ['state', 'userCreate']));
         var logo = employerPost.documentLogoImage;
         employerPost.documentLogoImage = null;
         return Upload.upload({
             url: url,
             data: {
-                data: Upload.json(employer),
+                data: Upload.json(employerPost),
                 file: logo
             }
         }).then(function (response) {
@@ -34,7 +39,7 @@ module.exports = function ($q, Restangular, Upload) {
             }
             return Restangular.one('organizationImplementations', id).get()
                 .then(function (employer) {
-                    return new EmployerManager(employer);
+                    return new EmployerManager(employer.plain());
                 });
         }
     };
