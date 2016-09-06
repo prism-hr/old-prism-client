@@ -88,6 +88,7 @@ angular
     .run(authenticationHook)
     .run(browserTitleHook)
     .run(generalConfig.generalRun)
+    .run(generalConfig.templateCacheConfig)
     .directive('applicationLoader', applicationLoader)
     .directive('placeAutocomplete', placeAutocomplete)
     .directive('imageSrc', imageSrc)
