@@ -52,11 +52,13 @@ sidebar {
       .md-icon-button {
         float: right;
         margin-top: -12px;
-        margin-right: -12px;
-        font-size: 18px;
-        .icon-options-vertical:before {
-          line-height:24px;
-        }
+      }
+    }
+    .md-icon-button {
+      font-size: 18px;
+      margin-right: -12px !important;
+      .icon-options-vertical:before {
+        line-height:24px;
       }
     }
     md-list-item i {
