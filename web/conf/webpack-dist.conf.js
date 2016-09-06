@@ -53,6 +53,9 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.NoErrorsPlugin(),
+        new webpack.DefinePlugin({
+            ENVIRONMENT: JSON.stringify('prod')
+        }),
         new HtmlWebpackPlugin({
             template: conf.path.src('index.html'),
             inject: true

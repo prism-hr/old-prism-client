@@ -1,5 +1,6 @@
 module.exports = {
     generalRun: generalRun,
+    templateCacheConfig: templateCacheConfig,
     restangular: restangularConfig,
     satellizerConfig: satellizerConfig,
     translateConfig: translateConfig,
@@ -18,11 +19,21 @@ function generalRun($rootScope, $transitions, $state, AuthService) {
     AuthService.refreshTokenHeader();
     AuthService.loadUser();
 }
+
+/** @ngInject */
+function templateCacheConfig($templateCache) {
+    $templateCache.put('login.view.html', require('../unauthenticated/authenticate/login.view.html'));
+    $templateCache.put('register.view.html', require('../unauthenticated/authenticate/register.view.html'));
+    $templateCache.put('forgot-password.view.html', require('../unauthenticated/authenticate/forgot-password.view.html'));
+    $templateCache.put('footer.html', require('../general/footer.html'));
+}
+
 /** @ngInject */
 function ladingConfigurationBar(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
     cfpLoadingBarProvider.latencyThreshold = 100;
 }
+
 /** @ngInject */
 function restangularConfig(RestangularProvider) {
     var host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
