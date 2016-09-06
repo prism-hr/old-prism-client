@@ -31,7 +31,7 @@ var imageSrc = require('./app/directives/image-src');
 
 // Components
 var dialog = require('./app/general/dialog/dialog');
-var browserTitle = require('./app/general/browserTitle');
+var browserTitleHook = require('./app/general/browser-title.hook');
 var welcome = require('./app/welcome/welcome');
 var regswitch = require('./app/unauthenticated/regswitch/regswitch');
 var authenticate = require('./app/unauthenticated/authenticate/authenticate');
@@ -86,8 +86,8 @@ angular
     .service('AuthService', AuthService)
     .service('employerManagerFactory', employerManagerFactory)
     .run(authenticationHook)
+    .run(browserTitleHook)
     .run(generalConfig.generalRun)
-    .run(browserTitle)
     .directive('applicationLoader', applicationLoader)
     .directive('placeAutocomplete', placeAutocomplete)
     .directive('imageSrc', imageSrc)
