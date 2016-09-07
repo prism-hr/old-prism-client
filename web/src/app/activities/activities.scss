@@ -5,14 +5,6 @@
   border-radius: 2px;
   padding: 1px 5px 3px;
 }
-.badge {
-  display: inline-block;
-  background: $uclred;
-  color: #FFF;
-  border-radius: 2px;
-  padding: 1px 5px 3px;
-  font-size:0.8rem;
-}
 .activities {
   .left-side-block {
     padding: 60px 40px;
@@ -23,6 +15,9 @@
     margin-top:4px;
     color: rgba(0,0,0,0.87);
   }
+}
+.single-full-block {
+  padding: 20px 0px 60px;
 }
 .single-block {
   padding: 20px 40px 60px;
@@ -102,6 +97,9 @@
 }
 @media (max-width: $layout-breakpoint-xs - 1) {
   .single-block {
+    padding: 10px 10px 20px;
+  }
+  .single-full-block {
     padding: 10px 10px 20px;
   }
 }

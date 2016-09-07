@@ -51,6 +51,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 $title: _.wrap('Create Employer')
             }
         })
+        .state('employer-view', {
+            url: '/employer-view',
+            component: 'employerView',
+            data: {auth: true},
+            resolve: {
+                $title: function () {
+                    return 'Employer Demo with List';
+                }
+            }
+        })
         .state('position', {
             url: '/position',
             component: 'position',

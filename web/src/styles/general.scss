@@ -26,8 +26,24 @@ ui-view {
     height: 100%;
   }
 }
+:focus {
+  outline: none;
+}
 .text-aline-center {
   text-align: center;
+}
+a {
+  color: $uclblue;
+  text-decoration: none;
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+  cursor: pointer;
+  font-weight:600;
+  &:hover {
+    color: darken($uclblue, 10%);
+  }
 }
 .md-button {
   cursor: pointer;
@@ -200,6 +216,17 @@ md-radio-group {
   border-radius: 2px;
   &.red {
     background-color: $uclred;
+  }
+}
+.badge {
+  display: inline-block;
+  background: $uclred;
+  color: #FFF;
+  border-radius: 2px;
+  padding: 1px 5px 3px;
+  font-size:0.8rem;
+  &.info {
+    background-color: $uclblue;
   }
 }
 .error {
