@@ -16,7 +16,9 @@
                 <img src="/img/prism-white.svg" alt="PRiSM">
             </a>
         </div>
-        <span flex></span>
+        <span class="titles" flex>
+            <h2>Company Information > Step 1: Category</h2>
+        </span>
         <span class="nav-container">
             <div ng-if="!$ctrl.AuthService.user">
                 <md-button aria-label="Post Ad" class="md-raised md-warn" ng-click="advertise($event)">
@@ -26,20 +28,6 @@
                 <md-button aria-label="Log in" ng-click="showLogin($event)">
                     <i class="icon-lock"></i> Log in
                 </md-button>
-            </div>
-            <div ng-if="$ctrl.AuthService.user" class="user-block" layout="row" layout-align="end center" hide-gt-sm>
-                <div class="user-details" layout="row" layout-align="center center">
-                    <div class="avatar-holder employer">
-                        <img ng-src="/prism/api/public/documents/{{$ctrl.AuthService.user.documentImage.id}}" class="md-avatar" alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}"  ng-if="$ctrl.AuthService.user.documentImage.id">
-                        <div ng-if="!$ctrl.AuthService.user.documentImage.id" class="no-user-image" layout="row" layout-align="center center">
-                            <i class="icon-user"></i>
-                        </div>
-                    </div>
-                    <div class="contact-container" layout="column" layout-align="center start">
-                        <a href="#">{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}</a>
-                        <span>{{$ctrl.AuthService.user.role}}</span>
-                    </div>
-                </div>
             </div>
         </span>
     </div>
