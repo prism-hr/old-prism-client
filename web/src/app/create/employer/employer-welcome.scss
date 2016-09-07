@@ -99,11 +99,13 @@
       margin-top:10px;
       margin-bottom:6px;
     }
-    p {
-      &.summary {
+    .address {
+      font-size:0.8rem;
+      p {
+        margin: 0;
       }
-      &.address {
-        font-size:0.8rem;
+      .lock-size {
+        margin-top:-18px;
       }
     }
   }
