@@ -10,9 +10,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             url: '/404',
             template: require('./app/404.html'),
             resolve: {
-                $title: function () {
-                    return '404';
-                }
+                $title: _.wrap('404')
             }
         })
         .state('invited', {
@@ -23,9 +21,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 activity: function ($stateParams, ActivationService) {
                     return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
                 },
-                $title: function () {
-                    return 'Invited';
-                }
+                $title: _.wrap('Invited')
             }
         })
         .state('employerWelcome', {
@@ -36,9 +32,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 showRegistration: false
             },
             resolve: {
-                $title: function () {
-                    return 'Welcome Employer';
-                }
+                $title: _.wrap('Welcome Employer')
             }
         })
         .state('employer', {
@@ -53,12 +47,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 organization: function (employerManager) {
                     return employerManager.getEmployer();
                 },
-                type: function () {
-                    return 'EMPLOYER';
-                },
-                $title: function () {
-                    return 'Create Employer';
-                }
+                type: _.wrap('EMPLOYER'),
+                $title: _.wrap('Create Employer')
             }
         })
         .state('position', {
@@ -66,9 +56,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             component: 'position',
             data: {auth: true},
             resolve: {
-                $title: function () {
-                    return 'Create Position';
-                }
+                $title: _.wrap('Create Position')
             }
         })
         .state('universityWelcome', {
@@ -76,9 +64,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             component: 'universityWelcome',
             data: {auth: true},
             resolve: {
-                $title: function () {
-                    return 'Welcome University';
-                }
+                $title: _.wrap('Welcome University')
             }
         })
         .state('universityOrganization', {
@@ -86,9 +72,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             component: 'universityOrganization',
             data: {auth: true},
             resolve: {
-                $title: function () {
-                    return 'Create University';
-                }
+                $title: _.wrap('Create University')
             }
         })
         .state('student', {
@@ -96,18 +80,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             component: 'student',
             data: {auth: true},
             resolve: {
-                $title: function () {
-                    return 'Student';
-                }
+                $title: _.wrap('Student')
             }
         })
         .state('welcome', {
             url: '/',
             component: 'welcome',
             resolve: {
-                $title: function () {
-                    return 'Welcome';
-                }
+                $title: _.wrap('Welcome')
             }
         })
         .state('activities', {
@@ -119,9 +99,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 activities: function (Restangular) {
                     return Restangular.one('user', 'activities').get({state: 'PENDING'});
                 },
-                $title: function () {
-                    return 'Activities';
-                }
+                $title: _.wrap('Activities')
             }
 
         });
@@ -135,9 +113,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 component: step.component,
                 data: data,
                 resolve: {
-                    $title: function () {
-                        return 'Step ' + (index + 1) + ': ' + step.title;
-                    }
+                    $title: _.wrap('Step ' + (index + 1) + ': ' + step.title)
                 }
             });
     });

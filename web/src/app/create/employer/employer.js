@@ -40,14 +40,16 @@ module.exports = {
         };
 
         var watchTimeout;
-        $scope.$watch('organization', function (newVal, oldVal) {
-            if (oldVal && newVal !== oldVal) {
+        var oldOrganization;
+        this.$doCheck = function () {
+            if (oldOrganization && !angular.equals(this.organization, oldOrganization)) {
                 if (watchTimeout) {
                     $timeout.cancel(watchTimeout);
                 }
                 watchTimeout = $timeout(saveEmployer, 1000);
             }
-        }, true);
+            oldOrganization = angular.copy(this.organization);
+        };
 
         function saveEmployer() {
             self.loading = true;
