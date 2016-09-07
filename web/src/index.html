@@ -3,7 +3,7 @@
 <head>
     <base href="/">
     <meta charset="utf-8">
-    <title ng-bind="($title || 'Home') + ' - Prism.hr'">Prism.hr</title>
+    <title ng-bind="$title + ' - Prism.hr'">Prism.hr</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaG0kokK45WdXcwZ_J0KcJ6N8EeXF2nFU&libraries=places"></script>
@@ -72,7 +72,7 @@
         <sidebar  layout="column" layout-align="space-between none" flex></sidebar>
     </md-sidenav>
     <div flex layout="column">
-        <header ng-if="!$state.current.data.hideHeaderFooter"></header>
+        <prism-header ng-if="!$state.current.data.hideHeaderFooter" title="{{$title}}"></prism-header>
         <div layout="row" flex>
             <md-content flex>
                 <div layout="column" layout-align="space-between center" flex layout-fill >

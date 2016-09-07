@@ -1,5 +1,8 @@
 module.exports = {
     template: require('./header.html'),
+    bindings: {
+        title: '@'
+    },
     /** @ngInject */
     controller: function ($scope, $mdDialog, $mdSidenav, $state, AuthService) {
         this.hideSidebar = $state.current.data && $state.current.data.hideSidebar;

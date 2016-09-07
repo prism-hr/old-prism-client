@@ -71,13 +71,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 }
             }
         })
-        .state('university', {
-            url: '/university',
-            component: 'university',
+        .state('universityWelcome', {
+            url: '/universityWelcome',
+            component: 'universityWelcome',
             data: {auth: true},
             resolve: {
                 $title: function () {
-                    return 'University';
+                    return 'Welcome University';
                 }
             }
         })
@@ -133,7 +133,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             .state('employer.' + step.id, {
                 url: '/' + step.id,
                 component: step.component,
-                data: data
+                data: data,
+                resolve: {
+                    $title: function () {
+                        return 'Step ' + (index + 1) + ': ' + step.title;
+                    }
+                }
             });
     });
 
