@@ -94,7 +94,7 @@ angular
     .directive('imageSrc', imageSrc)
     .component('prismDialog', dialog)
     .component('welcome', welcome)
-    .component('header', header)
+    .component('prismHeader', header)
     .component('sidebar', sidebar)
     .component('authenticate', authenticate)
     .component('regswitch', regswitch)
