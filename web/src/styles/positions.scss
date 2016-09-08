@@ -1,9 +1,6 @@
 .position-list {
   margin-bottom:30px;
   .position-item {
-    h2, h3, h4 {
-      color: $uclblue;
-    }
     padding: 8px;
     > div {
       cursor: pointer;
@@ -32,6 +29,9 @@
     }
   }
 }
+.position-description-box {
+  padding-right:20px;
+}
 .position {
   .position-item {
     width: 100%;
@@ -43,6 +43,7 @@
     margin-right: 10px;
     h2 {
       font-size:22px;
+      color: $uclblue;
     }
   }
   .position-subheader {
@@ -145,5 +146,8 @@
         column-gap: 0;
       }
     }
+  }
+  .position-description-box {
+    padding-right:0;
   }
 }

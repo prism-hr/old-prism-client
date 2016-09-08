@@ -1,4 +1,4 @@
-header, .header {
+prism-header, .header {
   .prism-logo {
     width: 100px;
     height: 24px;
@@ -29,6 +29,15 @@ header, .header {
       line-height:24px;
     }
   }
+  .toolbar-title {
+    background: $fadeGrey;
+    position: relative;
+    z-index: 1;
+    h2 {
+      font-size: 26px;
+      color: $uclblue;
+    }
+  }
 }
 @media (max-width: $layout-breakpoint-xs - 1) {
   .nav-container {
@@ -39,22 +48,24 @@ header, .header {
       line-height:32px;
     }
   }
-  header .logo {
+  .toolbar-title {
+    h2 {
+      font-size: 17px !important;
+    }
+  }
+  prism-header .logo {
     width: 80px;
     height: 24px;
     margin-top: 4px;
   }
-  header .titles h2{
-    display: none;
-  }
 }
 @media (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) {
-  header .titles h2{
+  prism-header .titles h2{
     margin-left: 20px;
   }
 }
 @media (min-width: $layout-breakpoint-sm) and (max-width: $layout-breakpoint-md - 1) {
-  header .titles h2{
+  prism-header .titles h2{
     margin-left: 20px;
   }
 }
