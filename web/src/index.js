@@ -1,10 +1,12 @@
 var angular = require('angular');
 require('angular-animate');
 require('angular-aria');
+require('angular-google-maps');
 require('angular-loading-bar');
 require('angular-messages');
 require('angular-material');
 require('angular-sanitize');
+require('angular-simple-logger');
 require('angular-translate');
 require('angular-translate-loader-static-files');
 require('lodash');
@@ -48,6 +50,7 @@ var organizationPreview = require('./app/create/organization/organization-previe
 var organizationPreviewBox = require('./app/create/organization/organization-preview-box');
 var employerWelcome = require('./app/create/employer/employer-welcome');
 var employerView = require('./app/view/employer/employer-view');
+var positionView = require('./app/view/position/position-view');
 var employer = require('./app/create/employer/employer');
 var position = require('./app/create/position/position');
 var universityWelcome = require('./app/create/university/university-welcome');
@@ -73,7 +76,8 @@ angular
         'satellizer',
         'angular-loading-bar',
         'ngAnimate',
-        'pascalprecht.translate'
+        'pascalprecht.translate',
+        'uiGmapgoogle-maps'
     ])
     .constant('environment', environment)
     .constant('createSteps', createSteps)
@@ -108,6 +112,7 @@ angular
     .component('organizationPreviewBox', organizationPreviewBox)
     .component('employerWelcome', employerWelcome)
     .component('employerView', employerView)
+    .component('positionView', positionView)
     .component('employer', employer)
     .component('position', position)
     .component('universityWelcome', universityWelcome)

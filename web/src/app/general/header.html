@@ -1,4 +1,4 @@
-<md-toolbar layout="column" layout-align="center center" md-whiteframe="1">
+<md-toolbar layout="column" layout-align="center center" md-whiteframe="2" ng-class="{'hide-lg' : $ctrl.AuthService.user}">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
         <div layout="row" layout-align="start center">
             <md-button ng-click="toggleActivities()" class="md-icon-button notifications" hide-gt-md
@@ -16,9 +16,7 @@
                 <img src="/img/prism-white.svg" alt="PRiSM">
             </a>
         </div>
-        <span class="titles" flex>
-            <h2 ng-bind="$ctrl.title"></h2>
-        </span>
+        <span flex ></span>
         <span class="nav-container">
             <div ng-if="!$ctrl.AuthService.user">
                 <md-button aria-label="Post Ad" class="md-raised md-warn" ng-click="advertise($event)">
@@ -32,3 +30,14 @@
         </span>
     </div>
 </md-toolbar>
+<div class="toolbar-title md-whiteframe-1dp" ng-if="$ctrl.title && $ctrl.AuthService.user">
+    <div layout="row" class="md-toolbar-tools" layout-align="center center">
+        <span class="titles" flex >
+            <h2 ng-bind="$ctrl.title" ng-if="$ctrl.AuthService.user"></h2>
+            {{$ctrl.$state}}
+        </span>
+        <md-button type="submit" class="md-primary md-raised apply">
+            <i class="icon-paper-plane"></i> Apply Now
+        </md-button>
+    </div>
+</div>

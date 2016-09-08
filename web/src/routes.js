@@ -56,9 +56,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             component: 'employerView',
             data: {auth: true},
             resolve: {
-                $title: function () {
-                    return 'Employer Demo with List';
-                }
+                $title: _.wrap('Employer View Demo')
+            }
+        })
+        .state('position-view', {
+            url: '/position-view',
+            component: 'positionView',
+            data: {auth: true},
+            resolve: {
+                $title: _.wrap('Graduate Software and Electronics Engineers')
             }
         })
         .state('position', {
