@@ -1,7 +1,6 @@
 <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization.organization">
     <div layout-padding>
         <h3>Find or create your company</h3>
-
         <md-autocomplete
                 md-input-name="foundOrganization"
                 md-no-cache="true"
@@ -21,9 +20,7 @@
             </span>
             </md-item-template>
         </md-autocomplete>
-
     </div>
-
     <div ng-if="$ctrl.selectedOrganization" layout-padding>
         <div class="google-institution">
             <h3>{{$ctrl.selectedOrganization.name}}</h3>
@@ -45,6 +42,7 @@
 </div>
 <div flex="100" ng-if="$ctrl.organization.organization" class="manual-entering">
     <div layout-padding>
+        <h3>Create your company</h3>
         <md-input-container class="md-block">
             <label>Company Name</label>
             <input name="companyName" ng-model="$ctrl.organization.organization.name" required>
@@ -54,8 +52,5 @@
         <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
             {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
         </md-button>
-    </div>
-
-    <div layout-padding>
     </div>
 </div>
