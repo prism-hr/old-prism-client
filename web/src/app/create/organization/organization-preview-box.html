@@ -1,0 +1,17 @@
+<div class="background-box"></div>
+<div class="company-box" layout="row" layout-align="center end">
+    <div class="company-header" layout="row" flex-gt-sm="75">
+        <div class="logo-image">
+            <div class="logo-flex company-logo">
+                <div class="logo">
+                    <span image-src="$ctrl.organization.documentLogoImage"></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>{{$ctrl.organization.organization.name}}</h2>
+            <p class="summary">{{$ctrl.organization.summary}}</p>
+            <p class="address">{{$ctrl.organization.location.description}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="page-wrap step-page child">
+    <form novalidate name="organizationForm" class="md-inline-form" ng-submit="$ctrl.submit(organizationForm)">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+            <div flex="100" flex-gt-sm="75" class="left-side-block" layout="column" layout-align="center stretch">
+                <div class="header" layout-padding>
+                    <h4>STEP 1</h4>
+                    <h1>University Information</h1>
+                </div>
+
+                <div ng-if="$ctrl.step === 0">
+                    <p>Find your university</p>
+                    <organization-lookup type="UNIVERSITY" form="organizationForm" organization="$ctrl.organization"></organization-lookup>
+                </div>
+
+                <div ng-if="$ctrl.step === 1">
+                    <p>Basic information about your university</p>
+                    <span>Substep2</span>
+                </div>
+
+                <div ng-if="$ctrl.step === 2">
+                    <p>Find or create your department</p>
+                    <span>Substep3</span>
+                </div>
+
+                <div class="action-block" layout="row" layout-align="space-between none">
+                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()">Back</md-button>
+                    <md-button type="submit" class="md-primary md-raised big">Continue</md-button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,8 @@
+<div class="lookup-organisation" flex="100">
+    <div layout-padding>
+        <h3>Look for you address (we use google search)</h3>
+        <place-autocomplete ng-model="$ctrl.organization.location" name="foundAddress"
+                            placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
+        </place-autocomplete>
+    </div>
+</div>

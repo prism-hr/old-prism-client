@@ -1,0 +1,61 @@
+<div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization.organization">
+    <div layout-padding>
+        <h3>Find or create your company</h3>
+
+        <md-autocomplete
+                md-input-name="foundOrganization"
+                md-no-cache="true"
+                md-selected-item="$ctrl.foundOrganization"
+                md-selected-item-change="$ctrl.organizationSelected(organization)"
+                ng-model-options="{debounce: 600}"
+                md-search-text="searchText"
+                md-items="organization in $ctrl.getOrganizations(searchText)"
+                md-item-text="organization.name"
+                md-min-length="1"
+                placeholder="{{'create.organization.organization-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}"
+                md-menu-class="autocomplete-custom-template"
+                required>
+            <md-item-template>
+            <span md-highlight-text="searchText">
+                {{organization.id ? organization.name : 'Create ' + organization.name}}
+            </span>
+            </md-item-template>
+        </md-autocomplete>
+
+    </div>
+
+    <div ng-if="$ctrl.selectedOrganization" layout-padding>
+        <div class="google-institution">
+            <h3>{{$ctrl.selectedOrganization.name}}</h3>
+            <div class="part-of">
+                <h4>Claim {{$ctrl.selectedOrganization.name}} as your company</h4>
+                <div class="clearfix button-group">
+                    <md-button class="pull-left md-primary md-raised small"
+                               ng-click="$ctrl.confirmSelectedOrganization(true)">
+                        <i class="icon-user"></i> Confirm
+                    </md-button>
+                    <md-button class="pull-right md-warn md-raised small"
+                               ng-click="$ctrl.confirmSelectedOrganization(false)">
+                        <i class="icon-close"></i> Decline
+                    </md-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div flex="100" ng-if="$ctrl.organization.organization" class="manual-entering">
+    <div layout-padding>
+        <md-input-container class="md-block">
+            <label>Company Name</label>
+            <input name="companyName" ng-model="$ctrl.organization.organization.name" required>
+        </md-input-container>
+    </div>
+    <div layout="row" layout-align="end" class="secondary-actions">
+        <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
+            {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
+        </md-button>
+    </div>
+
+    <div layout-padding>
+    </div>
+</div>

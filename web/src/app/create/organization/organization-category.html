@@ -1,0 +1,10 @@
+<div layout-padding>
+    <h3>Choose category of your company</h3>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.organization.category">
+        <div class="radio-box">
+            <md-radio-button flex value="EMPLOYER" class="md-primary" checked="checked" ng-checked="true">Employer</md-radio-button>
+            <md-radio-button value="RECRUITER" class="md-primary">Recruiter</md-radio-button>
+            <md-radio-button value="CAREER" class="md-primary">Career Services</md-radio-button>
+        </div>
+    </md-radio-group>
+</div>

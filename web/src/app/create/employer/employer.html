@@ -1,0 +1,40 @@
+<div class="page-wrap step-page child">
+    <div class="preview employer" ng-if="$ctrl.organization">
+        <label>Preview</label>
+        <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
+        <div ng-if="$ctrl.organization.id" layout="row" layout-align="center end">
+            <div class="preview-navigation" flex-gt-sm="75">
+                <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="preview links" class="md-primary">
+                    <md-nav-item ng-repeat="step in $ctrl.createSteps.employer" md-nav-sref="employer.{{step.id}}"
+                                 name="{{step.id}}">{{step.id}}
+                    </md-nav-item>
+                </md-nav-bar>
+            </div>
+        </div>
+    </div>
+    <form novalidate name="organizationForm" ng-submit="$ctrl.next(organizationForm)">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+            <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
+                <div class="header" layout-padding>
+                    <h4>STEP {{$ctrl.stepIdx + 1}}</h4>
+                    <h1>Company Information</h1>
+                </div>
+                <div class="step-wizard">
+                    <div ui-view></div>
+                </div>
+                <div class="action-block" layout="row" layout-align="space-between none">
+                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()"
+                               ng-disabled="$ctrl.loading || ($ctrl.organization.id && organizationForm.$invalid)">
+                        Back
+                    </md-button>
+                    <md-button type="submit" class="md-primary md-raised big"
+                               ng-disabled="$ctrl.loading || organizationForm.$invalid">
+                        Continue
+                    </md-button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html ng-app="prismWeb">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title ng-bind="$title + ' - Prism.hr'">Prism.hr</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaG0kokK45WdXcwZ_J0KcJ6N8EeXF2nFU&libraries=places"></script>
+</head>
+
+<body>
+<div class="application-loader" ng-animate-children>
+    <style type="text/css">
+        div.application-loader {
+            position: relative;
+        }
+        div.application-loader div.animated-container {
+            background-color: #EA6651 ;
+            bottom: 0px ;
+            left: 0px ;
+            opacity: 1.0 ;
+            position: fixed ;
+            right: 0px ;
+            top: 0px ;
+            z-index: 999999 ;
+        }
+        /* Used to initialize the ng-leave animation state. */
+        div.application-loader div.animated-container.ng-leave {
+            opacity: 1.0 ;
+            transition: all linear 200ms ;
+            -webkit-transition: all linear 200ms ;
+        }
+        /* Used to set the end properties of the ng-leave animation state. */
+        div.application-loader div.animated-container.ng-leave-active {
+            opacity: 0 ;
+        }
+        div.application-loader div.messaging {
+            color: #FFFFFF ;
+            font-family: monospace ;
+            left: 0px ;
+            margin-top: -37px ;
+            position: absolute ;
+            right: 0px ;
+            text-align: center ;
+            top: 50% ;
+        }
+        div.application-loader h1 {
+            width: 150px;
+            line-height: 35px ;
+            margin: 0px auto 20px ;
+        }
+        div.application-loader p {
+            font-size: 18px ;
+            line-height: 14px ;
+            margin: 0px 0px 0px 0px ;
+        }
+    </style>
+    <div class="animated-container">
+        <div class="messaging">
+            <h1>
+                <img src="img/prism-white.svg" alt="PRiSM">
+            </h1>
+            <p>
+                Loading...
+            </p>
+        </div>
+    </div>
+</div>
+<div layout="row" layout-fill>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="AuthService.user">
+        <sidebar  layout="column" layout-align="space-between none" flex></sidebar>
+    </md-sidenav>
+    <div flex layout="column">
+        <prism-header ng-if="!$state.current.data.hideHeaderFooter" title="{{$title}}"></prism-header>
+        <div layout="row" flex>
+            <md-content flex>
+                <div layout="column" layout-align="space-between center" flex layout-fill >
+                    <ui-view ng-class="{'centered': $state.current.data.hideHeaderFooter}" class="fade-animation" autoscroll="true"></ui-view>
+                    <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!$state.current.data.hideHeaderFooter" ng-include="'footer.html'"></md-toolbar>
+                </div>
+            </md-content>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/ng-template" id="my-custom-messages">
+    <div ng-message="required" class="error">This field is required</div>
+    <div ng-message="minlength" class="error">This field is too short</div>
+    <div ng-message="email" class="error">Your email must look like an e-mail address</div>
+    <div ng-message="maxSize" class="error"> The max size is 10mb</div>
+    <div ng-message="pattern" class="error"> You can upload jpg, gif or png images only</div>
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+
+</html>

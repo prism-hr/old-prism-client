@@ -1,0 +1,23 @@
+<div layout-padding>
+    <h3>Logo and Background Images</h3>
+    <div class="image-uploader logo"
+         ngf-pattern="'image/*'"
+         ngf-accept="'image/*'"
+         ngf-max-size="10MB"
+         ngf-resize="{width: 400, height: 250}"
+         ngf-select
+         ngf-drop
+         name="logo"
+         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
+        <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
+        <div class="logo-flex">
+            <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
+                <span image-src="$ctrl.organization.documentLogoImage"></span>
+            </div>
+        </div>
+    </div>
+    <small>Image size 400 x 250 / 10mb max</small>
+    <div ng-messages="$ctrl.form.logo.$error" role="alert">
+        <div ng-messages-include="my-custom-messages"></div>
+    </div>
+</div>
