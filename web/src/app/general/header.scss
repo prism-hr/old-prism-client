@@ -37,6 +37,9 @@ prism-header, .header {
       font-size: 26px;
       color: $uclblue;
     }
+    .md-toolbar-tools > .md-button:last-child {
+      margin-right:0;
+    }
   }
 }
 @media (max-width: $layout-breakpoint-xs - 1) {

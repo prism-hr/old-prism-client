@@ -36,7 +36,7 @@
             <h2 ng-bind="$ctrl.title" ng-if="$ctrl.AuthService.user"></h2>
             {{$ctrl.$state}}
         </span>
-        <md-button type="submit" class="md-primary md-raised apply">
+        <md-button type="submit" class="md-primary md-raised apply" ng-if="$state.includes('position-view')">
             <i class="icon-paper-plane"></i> Apply Now
         </md-button>
     </div>

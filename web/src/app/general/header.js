@@ -7,6 +7,8 @@ module.exports = {
     controller: function ($scope, $mdDialog, $mdSidenav, $state, AuthService) {
         this.hideSidebar = $state.current.data && $state.current.data.hideSidebar;
         this.AuthService = AuthService;
+        //Dummy showapplybtn
+        $scope.$state = $state;
 
         $scope.showLogin = function (ev) {
             $mdDialog.show({
