@@ -38,14 +38,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
         .state('employer', {
             url: '/employer/{id:new|\\d+}',
             abstract: true,
-            component: 'employer',
+            component: 'organization',
             data: {auth: true},
             resolve: {
-                employerManager: function ($stateParams, employerManagerFactory) {
-                    return employerManagerFactory.getManager($stateParams.id);
+                resourceManager: function ($stateParams, resourceManagerFactory) {
+                    return resourceManagerFactory.getManager($stateParams.id);
                 },
-                organization: function (employerManager) {
-                    return employerManager.getEmployer();
+                organization: function (resourceManager) {
+                    return resourceManager.getResource();
                 },
                 type: _.wrap('EMPLOYER'),
                 $title: _.wrap('Create Employer')
@@ -123,13 +123,18 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
     _.each(createSteps.employer, function (step, index) {
         var data = angular.copy(step.data) || {};
         data.stepIdx = index;
+        var component = _.kebabCase(step.component);
         $stateProvider
             .state('employer.' + step.id, {
                 url: '/' + step.id,
-                component: step.component,
+                template: '<' + component + ' type="{{type}}" form="organizationForm" organization="organization"></' + component + '>',
                 data: data,
                 resolve: {
                     $title: _.wrap('Step ' + (index + 1) + ': ' + step.title)
+                },
+                controller: function ($scope, type, organization) {
+                    $scope.type = type;
+                    $scope.organization = organization;
                 }
             });
     });
