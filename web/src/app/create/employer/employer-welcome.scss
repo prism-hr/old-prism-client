@@ -1,7 +1,6 @@
 // step 1
 .google-institution {
   background: lighten($employmentColor, 30%);
-  padding: 15px;
   border-radius: 2px;
   border: 1px dashed $employmentColor;
   position: relative;
@@ -49,7 +48,7 @@
     }
   }
   .part-of {
-    margin-top: 10px;
+    margin: 10px;
     padding-top: 10px;
     border-top: 1px dashed $employmentColor;
     p {
@@ -83,30 +82,31 @@
     margin: 10px -8px -6px;
   }
 }
-
+.logo-image {
+  margin: 10px;
+  min-width: 200px;
+  display: inline-block;
+}
 .company-box {
   margin-top:-137px;
   .company-header {
     border:1px solid #ececec;
     width: 96%;
     background: white;
-    .logo-image {
-      margin: 10px;
-      min-width: 200px;
-      display: inline-block;
+  }
+}
+.company-header {
+  h2 {
+    margin-top:10px;
+    margin-bottom:6px;
+  }
+  .address {
+    font-size:0.8rem;
+    p {
+      margin: 0;
     }
-    h2 {
-      margin-top:10px;
-      margin-bottom:6px;
-    }
-    .address {
-      font-size:0.8rem;
-      p {
-        margin: 0;
-      }
-      .lock-size {
-        margin-top:-18px;
-      }
+    .lock-size {
+      margin-top:-18px;
     }
   }
 }
@@ -130,9 +130,10 @@
       }
     }
   }
-  md-nav-ink-bar {
+  md-nav-bar.md-prism-theme md-nav-ink-bar {
     background-color: $uclred;
   }
+
 }
 .preview {
   position: relative;
