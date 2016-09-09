@@ -28,7 +28,7 @@ module.exports = function ($q, Restangular, Upload) {
             }
         }).then(function (response) {
             this._resource = {};
-            return response;
+            return response.data;
         });
     };
 
