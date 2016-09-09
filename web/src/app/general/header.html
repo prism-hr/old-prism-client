@@ -1,4 +1,4 @@
-<md-toolbar layout="column" layout-align="center center" md-whiteframe="2" ng-class="{'hide-lg' : $ctrl.AuthService.user}">
+<md-toolbar layout="column" layout-align="center center" md-whiteframe="2" ng-class="{'hide-gt-md' : $ctrl.AuthService.user}">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
         <div layout="row" layout-align="start center">
             <md-button ng-click="toggleActivities()" class="md-icon-button notifications" hide-gt-md
@@ -30,13 +30,17 @@
         </span>
     </div>
 </md-toolbar>
-<div class="toolbar-title md-whiteframe-1dp" ng-if="$ctrl.title && $ctrl.AuthService.user">
+<div class="toolbar-title md-whiteframe-1dp" ng-if="$root.$breadcrumbs && $ctrl.AuthService.user">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
         <span class="titles" flex >
-            <h2 ng-bind="$ctrl.title" ng-if="$ctrl.AuthService.user"></h2>
-            {{$ctrl.$state}}
+            <h2>
+                <span ng-repeat="crumb in $root.$breadcrumbs">
+                    <span ng-if="!$last"> {{crumb.title}} > </span>
+                    <span ng-if="$last">{{crumb.title}}</span>
+                </span>
+            </h2>
         </span>
-        <md-button type="submit" class="md-primary md-raised apply" ng-if="$state.includes('position-view')">
+        <md-button type="submit" class="md-primary md-raised apply" ng-if="$root.$state.includes('position-view')">
             <i class="icon-paper-plane"></i> Apply Now
         </md-button>
     </div>
