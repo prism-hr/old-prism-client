@@ -1,16 +1,16 @@
 module.exports = {
-    template: require('./employer.html'),
+    template: require('./organization.html'),
     bindings: {
-        employerManager: '<'
+        resourceManager: '<'
     },
     /** @ngInject */
-    controller: function ($rootScope, $scope, $timeout, $state, Restangular, Upload, createSteps) {
+    controller: function ($rootScope, $timeout, $state, Restangular, Upload, createSteps) {
         var self = this;
         this.createSteps = createSteps;
-        $scope.organization = this.organization = self.employerManager.getEmployer();
+        this.organization = self.resourceManager.getResource();
 
         $rootScope.$watch('$state.current', function (currentState) {
-            self.stepIdx = currentState.data.stepIdx;
+            self.stepIdx = _.get(currentState.data, 'stepIdx');
         });
 
         this.next = function (form) {
@@ -42,6 +42,9 @@ module.exports = {
         var watchTimeout;
         var oldOrganization;
         this.$doCheck = function () {
+            if (!this.organization.id) {
+                return;
+            }
             if (oldOrganization && !angular.equals(this.organization, oldOrganization)) {
                 if (watchTimeout) {
                     $timeout.cancel(watchTimeout);
@@ -53,7 +56,7 @@ module.exports = {
 
         function saveEmployer() {
             self.loading = true;
-            return self.employerManager.saveEmployer(self.organization)
+            return self.resourceManager.saveResource(self.organization)
                 .then(function (response) {
                     self.loading = false;
                     return response;

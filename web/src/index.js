@@ -23,7 +23,7 @@ var serverInterceptor = require('./app/configuration/server-interceptor.config')
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
-var employerManagerFactory = require('./app/create/employer/employer-manager.factory');
+var resourceManagerFactory = require('./app/create/resource-manager.factory');
 var createSteps = require('./app/create/create-steps.configuration');
 
 // Directives
@@ -41,6 +41,7 @@ var header = require('./app/general/header');
 var sidebar = require('./app/general/sidebar');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
+var organization = require('./app/create/organization/organization');
 var organizationCategory = require('./app/create/organization/organization-category');
 var organizationLookup = require('./app/create/organization/organization-lookup');
 var organizationSummary = require('./app/create/organization/organization-summary');
@@ -51,7 +52,6 @@ var organizationPreviewBox = require('./app/create/organization/organization-pre
 var employerWelcome = require('./app/create/employer/employer-welcome');
 var employerView = require('./app/view/employer/employer-view');
 var positionView = require('./app/view/position/position-view');
-var employer = require('./app/create/employer/employer');
 var position = require('./app/create/position/position');
 var universityWelcome = require('./app/create/university/university-welcome');
 var university = require('./app/create/university/university');
@@ -89,7 +89,7 @@ angular
     .config(serverInterceptor)
     .service('ActivationService', ActivationService)
     .service('AuthService', AuthService)
-    .service('employerManagerFactory', employerManagerFactory)
+    .service('resourceManagerFactory', resourceManagerFactory)
     .run(authenticationHook)
     .run(browserTitleHook)
     .run(generalConfig.generalRun)
@@ -103,6 +103,7 @@ angular
     .component('sidebar', sidebar)
     .component('authenticate', authenticate)
     .component('regswitch', regswitch)
+    .component('organization', organization)
     .component('organizationCategory', organizationCategory)
     .component('organizationLookup', organizationLookup)
     .component('organizationSummary', organizationSummary)
@@ -113,7 +114,6 @@ angular
     .component('employerWelcome', employerWelcome)
     .component('employerView', employerView)
     .component('positionView', positionView)
-    .component('employer', employer)
     .component('position', position)
     .component('universityWelcome', universityWelcome)
     .component('university', university)
