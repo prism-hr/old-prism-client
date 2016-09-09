@@ -73,17 +73,12 @@
     </md-sidenav>
     <div flex layout="column">
         <prism-header ng-if="!$state.current.data.hideHeaderFooter"></prism-header>
-        <div layout="row" flex>
-            <md-content flex>
-                <div layout="column" layout-align="space-between center" flex layout-fill >
-                    <ui-view ng-class="{'centered': $state.current.data.hideHeaderFooter}" class="fade-animation" autoscroll="true"></ui-view>
-                    <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!$state.current.data.hideHeaderFooter" ng-include="'footer.html'"></md-toolbar>
-                </div>
-            </md-content>
-        </div>
+        <md-content flex layout="column" md-scroll-y>
+            <ui-view ng-class="{'centered': $state.current.data.hideHeaderFooter}" class="fade-animation" autoscroll="true" flex="noshrink"></ui-view>
+            <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!AuthService.user" ng-include="'footer.html'" flex="noshrink"></md-toolbar>
+        </md-content>
     </div>
 </div>
-
 </body>
 
 <script type="text/ng-template" id="my-custom-messages">
