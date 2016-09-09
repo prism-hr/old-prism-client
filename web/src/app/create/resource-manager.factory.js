@@ -1,6 +1,7 @@
 /** @ngInject */
 module.exports = function ($q, Restangular, Upload) {
-    var newResourceManager = new ResourceManager();
+
+    var managers = {};
 
     function ResourceManager(resource) {
         this._resource = resource || {};
@@ -33,9 +34,12 @@ module.exports = function ($q, Restangular, Upload) {
     };
 
     return {
-        getManager: function (id) {
+        getManager: function (id, type) {
             if (id === 'new') {
-                return $q.when(newResourceManager);
+                if (!managers[type]) {
+                    managers[type] = new ResourceManager();
+                }
+                return $q.when(managers[type]);
             }
             return Restangular.one('organizationImplementations', id).get()
                 .then(function (resource) {

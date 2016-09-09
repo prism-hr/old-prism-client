@@ -6,5 +6,5 @@ module.exports = {
         {id: 'summary', component: 'organizationSummary', title: 'Summary'},
         {id: 'address', component: 'organizationAddress', title: 'Address'},
         {id: 'assets', component: 'organizationAssets', title: 'Assets', data: {skippable: true}},
-        {id: 'view', component: 'organizationPreview', title: 'View', data: {previewStep: true}}]
+        {id: 'preview', component: 'organizationPreview', title: 'Preview'}]
 };
