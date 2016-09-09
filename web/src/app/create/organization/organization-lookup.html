@@ -23,9 +23,23 @@
     </div>
     <div ng-if="$ctrl.selectedOrganization" layout-padding>
         <div class="google-institution">
-            <h3>{{$ctrl.selectedOrganization.name}}</h3>
+            <div layout="row" class="company-header">
+                <div class="logo-image">
+                    <div class="logo-flex company-logo">
+                        <div class="logo">
+                            <img ng-src="{{$root.documentsUrl + $ctrl.selectedOrganization.documentLogoImageId}}">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!--TODO: fetch creator and address-->
+                    <h2>{{$ctrl.selectedOrganization.name}}</h2>
+                    <h4>Created by <span>Juan Mingo</span> TODO</h4>
+                    <p>{{$ctrl.selectedOrganization.location.description}} TODO Address</p>
+                </div>
+            </div>
             <div class="part-of">
-                <h4>Claim {{$ctrl.selectedOrganization.name}} as your company</h4>
+                <h4>Request access to Juan Mingo TODO</h4>
                 <div class="clearfix button-group">
                     <md-button class="pull-left md-primary md-raised small"
                                ng-click="$ctrl.confirmSelectedOrganization(true)">
