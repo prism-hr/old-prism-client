@@ -41,13 +41,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
             component: 'organization',
             data: {auth: true},
             resolve: {
-                resourceManager: function ($stateParams, resourceManagerFactory) {
-                    return resourceManagerFactory.getManager($stateParams.id);
+                type: _.wrap('EMPLOYER'),
+                resourceManager: function ($stateParams, resourceManagerFactory, type) {
+                    return resourceManagerFactory.getManager($stateParams.id, type);
                 },
                 organization: function (resourceManager) {
                     return resourceManager.getResource();
                 },
-                type: _.wrap('EMPLOYER'),
                 $title: _.wrap('Company Information')
             }
         })
@@ -130,7 +130,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 template: '<' + component + ' type="{{type}}" form="organizationForm" organization="organization"></' + component + '>',
                 data: data,
                 resolve: {
-                    $title: _.wrap('Step ' + (index + 1) + ': ' + step.title)
+                    $title: function (organization) {
+                        var prefix = organization.id ? '' : 'Step ' + (index + 1) + ': ';
+                        return prefix + step.title;
+                    }
                 },
                 controller: function ($scope, type, organization) {
                     $scope.type = type;

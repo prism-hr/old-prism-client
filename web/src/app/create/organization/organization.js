@@ -8,8 +8,11 @@ module.exports = {
     controller: function ($rootScope, $timeout, $state, Restangular, Upload, createSteps) {
         var self = this;
         this.typeLower = this.type.toLowerCase();
-        this.createSteps = createSteps[self.typeLower];
         this.organization = self.resourceManager.getResource();
+        this.createSteps = createSteps[self.typeLower];
+        if (this.organization.id && !_.endsWith($state.current.name, '.preview')) { // if existing organization don't show preview tab (unless requested)
+            this.createSteps.splice(-1, 1);
+        }
 
         $rootScope.$watch('$state.current', function (currentState) {
             self.stepIdx = _.get(currentState.data, 'stepIdx');
@@ -22,13 +25,15 @@ module.exports = {
                 return;
             }
 
-            if (self.nextStep) {
+            if (!self.organization.id && self.stepIdx === self.createSteps.length - 2) { // step before preview, save it now
+                saveOrganization()
+                    .then(function (organization) {
+                        $state.go(self.typeLower + '.' + self.nextStep.id, {id: organization.id}, {reload: true});
+                    });
+            } else if (self.nextStep) {
                 $state.go(self.typeLower + '.' + self.nextStep.id, {id: $state.params.id});
             } else {
-                saveOrganization()
-                    .then(function () {
-                        $state.go(self.typeLower + 'Welcome');
-                    });
+                $state.go(self.typeLower + 'Welcome');
             }
         };
 
