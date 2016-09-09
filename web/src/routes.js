@@ -48,7 +48,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                     return resourceManager.getResource();
                 },
                 type: _.wrap('EMPLOYER'),
-                $title: _.wrap('Create Employer')
+                $title: _.wrap('Company Information')
             }
         })
         .state('employer-view', {

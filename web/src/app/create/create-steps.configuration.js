@@ -5,6 +5,6 @@ module.exports = {
         {id: 'lookup', component: 'organizationLookup', title: 'Organization Lookup'},
         {id: 'summary', component: 'organizationSummary', title: 'Summary'},
         {id: 'address', component: 'organizationAddress', title: 'Address'},
-        {id: 'assets', component: 'organizationAssets', title: 'Assets', data: {lastCreateStep: true}},
-        {id: 'view', component: 'organizationPreview', title: 'View'}]
+        {id: 'assets', component: 'organizationAssets', title: 'Assets', data: {skippable: true}},
+        {id: 'view', component: 'organizationPreview', title: 'View', data: {previewStep: true}}]
 };

@@ -1,16 +1,20 @@
 module.exports = {
     template: require('./organization.html'),
     bindings: {
-        resourceManager: '<'
+        resourceManager: '<',
+        type: '<'
     },
     /** @ngInject */
     controller: function ($rootScope, $timeout, $state, Restangular, Upload, createSteps) {
         var self = this;
-        this.createSteps = createSteps;
+        this.typeLower = this.type.toLowerCase();
+        this.createSteps = createSteps[self.typeLower];
         this.organization = self.resourceManager.getResource();
 
         $rootScope.$watch('$state.current', function (currentState) {
             self.stepIdx = _.get(currentState.data, 'stepIdx');
+            self.nextStep = self.stepIdx + 1 < self.createSteps.length && self.createSteps[self.stepIdx + 1];
+            self.prevStep = self.stepIdx > 0 && self.createSteps[self.stepIdx - 1];
         });
 
         this.next = function (form) {
@@ -18,24 +22,21 @@ module.exports = {
                 return;
             }
 
-            if ($state.current.data.lastCreateStep) {
-                saveEmployer()
-                    .then(function (response) {
-                        var savedId = self.organization.id || response.data.id;
-                        $state.go('employer.view', {id: savedId}, {reload: true});
-                    });
+            if (self.nextStep) {
+                $state.go(self.typeLower + '.' + self.nextStep.id, {id: $state.params.id});
             } else {
-                var nextStep = createSteps.employer[self.stepIdx + 1].id;
-                $state.go('employer.' + nextStep, {id: $state.params.id});
+                saveOrganization()
+                    .then(function () {
+                        $state.go(self.typeLower + 'Welcome');
+                    });
             }
         };
 
         this.back = function () {
-            if (self.stepIdx === 0) {
-                $state.go('employerWelcome');
+            if (self.prevStep) {
+                $state.go(self.typeLower + '.' + self.prevStep.id, {id: $state.params.id});
             } else {
-                var prevStep = createSteps.employer[self.stepIdx - 1].id;
-                $state.go('employer.' + prevStep, {id: $state.params.id});
+                $state.go(self.typeLower + 'Welcome');
             }
         };
 
@@ -49,12 +50,12 @@ module.exports = {
                 if (watchTimeout) {
                     $timeout.cancel(watchTimeout);
                 }
-                watchTimeout = $timeout(saveEmployer, 1000);
+                watchTimeout = $timeout(saveOrganization, 1000);
             }
             oldOrganization = angular.copy(this.organization);
         };
 
-        function saveEmployer() {
+        function saveOrganization() {
             self.loading = true;
             return self.resourceManager.saveResource(self.organization)
                 .then(function (response) {
