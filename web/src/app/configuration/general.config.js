@@ -8,12 +8,13 @@ module.exports = {
 };
 
 /** @ngInject */
-function generalRun($rootScope, $transitions, $state, AuthService) {
+function generalRun($rootScope, $transitions, $state, Restangular, AuthService) {
     $transitions.onError(null, function () {
         console.log('Transition error');
     });
     $rootScope.$state = $state;
     $rootScope.AuthService = AuthService;
+    $rootScope.documentsUrl = Restangular.one('public').all('documents').getRestangularUrl() + '/';
 
     // keep user logged in after page refresh
     AuthService.refreshTokenHeader();
