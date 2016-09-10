@@ -63,7 +63,7 @@
                         <h4 layout-padding="8">Recomended for your skills</h4>
                         <div class="position-list" layout="row" layout-wrap layout-fill layout-align="start start">
                             <div class="position-item " flex="100" flex-gt-xs="50" flex-gt-sm="33">
-                                <div class="md-whiteframe-1dp" ui-sref="position">
+                                <div class="md-whiteframe-1dp" ui-sref="position-view">
                                     <div class="position-header" layout="row" layout-align="start center">
                                         <h2>Graduate Software and Electronics Engineers</h2>
                                         <span flex></span>
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="position-item " flex="100" flex-gt-xs="50" flex-gt-sm="33">
-                                <div class="md-whiteframe-1dp" ui-sref="position">
+                                <div class="md-whiteframe-1dp" ui-sref="position-view">
                                     <div class="position-header" layout="row" layout-align="start center">
                                         <h2>Graduate Software and Electronics Engineers</h2>
                                         <span flex></span>
@@ -201,6 +201,17 @@
                                 <h4>Type: </h4>
                                 Employer
                             </div>
+                        </div>
+                        <div class="map-container">
+                            <ui-gmap-google-map center="map.center" zoom="map.zoom">
+                                <!--<ui-gmap-window show="map.clickedMarker"-->
+                                <!--templateUrl="'views/opportunities/opportunity-item-location-window.html'"-->
+                                <!--templateParameter="map.clickedMarker" coords="map.clickedMarker.coordinates"-->
+                                <!--closeclick="map.clickedMarker = null">-->
+                                <!--</ui-gmap-window>-->
+                                <!--<ui-gmap-markers models="map.markers" coords="'self'" fit="true" events="{click: map.clickMarker}">-->
+                                <!--</ui-gmap-markers>-->
+                            </ui-gmap-google-map>
                         </div>
                     </md-content>
                 </md-tab>

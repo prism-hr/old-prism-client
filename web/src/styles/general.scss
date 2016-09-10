@@ -20,6 +20,9 @@ ul, li {
     font-size:25px;
   }
 }
+md-content ui-view:nth-child(2) {
+  position: absolute;
+}
 ui-view {
   width: 100%;
   &.centered {

@@ -48,6 +48,9 @@
   }
   .position-subheader {
     margin-top:3px;
+    h4 a {
+      color: $uclred;
+    }
   }
   .position-summary {
     margin: 10px 10px 8px 0;
