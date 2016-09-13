@@ -94,11 +94,18 @@
     width: 96%;
     background: white;
   }
+  .website {
+    margin-right:10px;
+  }
 }
 .company-header {
   h2 {
     margin-top:10px;
     margin-bottom:6px;
+  }
+  .company-details {
+    display: block;
+    width: 100%;
   }
   .address {
     font-size:0.8rem;

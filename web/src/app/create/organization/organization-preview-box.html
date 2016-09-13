@@ -8,8 +8,13 @@
                 </div>
             </div>
         </div>
-        <div>
-            <h2>{{$ctrl.organization.organization.name}}</h2>
+        <div class="company-details">
+            <div layout="row" layout-align="center center">
+                <h2>{{$ctrl.organization.organization.name}}</h2>
+                <span flex></span>
+                <a ng-href="$ctrl.organization.website" target="_blank" ng-if="$ctrl.organization.website" class="website"><i class="icon-globe"></i> Web</a>
+            </div>
+            <h4 ng-if="$ctrl.organization.division.name">{{$ctrl.organization.division.name}}</h4>
             <p class="summary">{{$ctrl.organization.summary}}</p>
             <p class="address">{{$ctrl.organization.location.description}}</p>
         </div>
