@@ -20,7 +20,9 @@ module.exports = function ($q, Restangular, Upload) {
         }
         var resourcePost = angular.copy(_.omit(resource, ['state', 'userCreate']));
         var logo = resourcePost.documentLogoImage;
+        var background = resourcePost.documentBackgroundImage;
         resourcePost.documentLogoImage = null;
+        resourcePost.documentBackgroundImage = null;
         return Upload.upload({
             url: url,
             data: {

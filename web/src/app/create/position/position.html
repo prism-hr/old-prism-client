@@ -61,12 +61,18 @@
     <form novalidate name="positionForm" ng-submit="$ctrl.submit(positionForm)">
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
             <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
-                <div class="header" layout-padding>
-                    <h4>STEP {{$ctrl.stepIdx + 1}}</h4>
-                    <h1>Position Information</h1>
-                </div>
-                <div class="step-wizard">
-
+                <div class="tab-wizard">
+                    <md-tabs md-selected="$ctrl.selectedIndex" md-border-bottom md-autoselect>
+                        <md-tab ng-repeat="tab in $ctrl.tabs"
+                                ng-disabled="tab.disabled"
+                                label="{{tab.title}}">
+                            <div class="demo-tab tab{{$index%4}}">
+                                <div ng-bind="tab.content"></div>
+                                <md-button class="md-raised md-primary" ng-click="$ctrl.backTab()">Back</md-button>
+                                <md-button class="md-raised md-primary" ng-click="$ctrl.nextTab()">Next</md-button>
+                            </div>
+                        </md-tab>
+                    </md-tabs>
                 </div>
                 <div class="action-block" layout="row" layout-align="space-between none">
                     <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()">Back</md-button>

@@ -25,6 +25,7 @@ var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
 var resourceManagerFactory = require('./app/create/resource-manager.factory');
 var createSteps = require('./app/create/create-steps.configuration');
+var ngImgCrop = require('./app/directives/ng-img-crop');
 
 // Directives
 var applicationLoader = require('./app/directives/application-loader');
@@ -73,6 +74,7 @@ angular
         'restangular',
         'vcRecaptcha',
         'ngFileUpload',
+        'ngImgCrop',
         'satellizer',
         'angular-loading-bar',
         'ngAnimate',
@@ -98,6 +100,7 @@ angular
     .directive('placeAutocomplete', placeAutocomplete)
     .directive('imageSrc', imageSrc)
     .component('prismDialog', dialog)
+    .component('ngImgCrop', ngImgCrop)
     .component('welcome', welcome)
     .component('prismHeader', header)
     .component('sidebar', sidebar)

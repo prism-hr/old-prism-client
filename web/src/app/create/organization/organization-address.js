@@ -6,8 +6,8 @@ module.exports = {
         form: '<'
     },
     /** @ngInject */
-    controller: function ($scope) {
-        $scope.sizes = [
+    controller: function () {
+        this.sizes = [
             '1 to 9',
             '10 to 49',
             '50 to 99',

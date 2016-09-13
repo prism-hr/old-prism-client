@@ -1,20 +1,25 @@
 <div layout-padding>
-    <h3>Logo and Background Images</h3>
-    <div class="image-uploader logo"
+    <h3>Background Image and Description</h3>
+    <div class="image-uploader background"
          ngf-pattern="'image/*'"
          ngf-accept="'image/*'"
          ngf-max-size="10MB"
-         ngf-resize="{width: 1250, height: 368}"
          ngf-select
          ngf-drop
          name="background"
-         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentBackgroundImage">
-        <span class="drop-box" ng-if="!$ctrl.organization.documentBackgroundImage">Drop your Background here</span>
-        <div class="background" ng-if="$ctrl.organization.documentBackgroundImage">
-            <span image-src="$ctrl.organization.documentBackgroundImage"></span>
-        </div>
+         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentBackgroundImageOriginal"
+         ng-hide="$ctrl.organization.documentBackgroundImageOriginal">
+        <span class="drop-box" ng-if="!$ctrl.organization.documentBackgroundImageOriginal">Drop your Background</span>
     </div>
-    <small>Image size  1250 x 368</small>
+    <div class="cropArea" ng-if="$ctrl.organization.documentBackgroundImageOriginal">
+        <img-crop image="$ctrl.organization.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1" result-image="$ctrl.organization.documentBackgroundImage" result-image-size='{w: 1280,h: 320}' init-max-area="true"></img-crop>
+    </div>
+
+    <div layout="row" layout-align="center center">
+        <small>Minimun Image size 1280 x 320</small>
+        <span class="flex"></span>
+        <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()" ng-if="$ctrl.organization.documentBackgroundImageOriginal">Clear Image</md-button>
+    </div>
     <div ng-messages="$ctrl.form.background.$error" role="alert">
         <div ng-messages-include="my-custom-messages"></div>
     </div>
