@@ -7,6 +7,10 @@ module.exports = {
     },
     /** @ngInject */
     controller: function () {
-
+        this.clearImage = function () {
+            this.organization.documentBackgroundImageOriginal = '';
+            this.organization.documentBackgroundImage = '';
+        };
     }
-};
+}
+;

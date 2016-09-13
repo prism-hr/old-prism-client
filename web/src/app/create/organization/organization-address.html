@@ -12,7 +12,7 @@
             <md-input-container  class="md-block">
                 <label>Company Size (number of employers)</label>
                 <md-select ng-model="size">
-                    <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
+                    <md-option ng-repeat="size in $ctrl.sizes" value="{{size}}">{{size}}</md-option>
                 </md-select>
             </md-input-container>
         </div>

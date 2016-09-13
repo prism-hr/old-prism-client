@@ -6,7 +6,7 @@ module.exports = {
         form: '<'
     },
     /** @ngInject */
-    controller: function ($scope, $timeout, Restangular) {
+    controller: function ($timeout, Restangular) {
         var self = this;
         this.division = false;
         this.addDivision = function (bolean) {
