@@ -4,20 +4,22 @@
          ngf-pattern="'image/*'"
          ngf-accept="'image/*'"
          ngf-max-size="10MB"
-         ngf-resize="{width: 400, height: 250}"
+         ngf-resize="{width: 1250, height: 368}"
          ngf-select
          ngf-drop
-         name="logo"
-         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
-        <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
-        <div class="logo-flex">
-            <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
-                <span image-src="$ctrl.organization.documentLogoImage"></span>
-            </div>
+         name="background"
+         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentBackgroundImage">
+        <span class="drop-box" ng-if="!$ctrl.organization.documentBackgroundImage">Drop your Background here</span>
+        <div class="background" ng-if="$ctrl.organization.documentBackgroundImage">
+            <span image-src="$ctrl.organization.documentBackgroundImage"></span>
         </div>
     </div>
-    <small>Image size 400 x 250 / 10mb max</small>
-    <div ng-messages="$ctrl.form.logo.$error" role="alert">
+    <small>Image size  1250 x 368</small>
+    <div ng-messages="$ctrl.form.background.$error" role="alert">
         <div ng-messages-include="my-custom-messages"></div>
     </div>
+    <md-input-container class="md-block">
+        <label>Description <small>(Optional)</small></label>
+        <textarea ng-model="$ctrl.organization.description" rows="4" ></textarea>
+    </md-input-container>
 </div>

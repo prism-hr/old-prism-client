@@ -6,8 +6,15 @@ module.exports = {
         form: '<'
     },
     /** @ngInject */
-    controller: function ($timeout, Restangular) {
+    controller: function ($scope, $timeout, Restangular) {
         var self = this;
+        this.division = false;
+        this.addDivision = function (bolean) {
+            this.division = bolean;
+            if (!bolean) {
+                self.organization.division.name = null;
+            }
+        };
 
         this.lookupOrganization = function () {
             self.organization.organization = null;

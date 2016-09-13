@@ -118,6 +118,9 @@
 .secondary-actions {
   margin-bottom:-10px;
 }
+.secondary-options {
+  margin-top:36px;
+}
 .profile-box {
   .profile-holder {
     background: white;
@@ -141,6 +144,14 @@
     }
   }
 }
+.horizontal-form {
+  md-radio-button {
+    display: inline-block;
+  }
+  .radio-box {
+    border: none;
+  }
+}
 .radio-box {
   border: 1px solid $fadeGrey;
   border-radius:2px;
@@ -157,8 +168,19 @@
     .md-label {
       font-size:18px;
       margin-left:32px;
+      font-weight:700;
+    }
+    small {
+      display: block;
+      margin-top:6px;
+      font-weight:400;
     }
   }
+}
+.md-select-value .md-select-icon:after {
+  content: '\E604';
+  font-family: "simple-line-icons";
+  transform: scaleY(1) scaleX(1);
 }
 md-autocomplete input:not(.md-input), md-input-container  {
   font-size:18px;

@@ -56,15 +56,52 @@
 </div>
 <div flex="100" ng-if="$ctrl.organization.organization" class="manual-entering">
     <div layout-padding>
-        <h3>Create your company</h3>
-        <md-input-container class="md-block">
-            <label>Company Name</label>
-            <input name="companyName" ng-model="$ctrl.organization.organization.name" required>
-        </md-input-container>
-    </div>
-    <div layout="row" layout-align="end" class="secondary-actions">
-        <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
-            {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
-        </md-button>
+        <div layout="row" layout-align="space-between start">
+            <h3>Create your company</h3>
+            <span flex></span>
+            <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
+                {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
+            </md-button>
+        </div>
+        <div layout-gt-xs="row">
+            <div flex="100" flex-gt-xs="65">
+                <md-input-container class="md-block">
+                    <label>Company Name</label>
+                    <input name="companyName" ng-model="$ctrl.organization.organization.name" required>
+                </md-input-container>
+                <md-input-container class="md-block" ng-if="$ctrl.division">
+                    <label>Division Name</label>
+                    <input name="divisionName" ng-model="$ctrl.organization.division.name">
+                </md-input-container>
+                <div class="division-controls secondary-actions" layout="row" layout-align="start">
+                    <md-button class="md-raised md-primary small" ng-click="$ctrl.addDivision(true)"  ng-if="!$ctrl.division">Add a Division</md-button>
+                    <md-button class="md-warn md-raised small" ng-click="$ctrl.addDivision(false)"  ng-if="$ctrl.division">Cancel Division</md-button>
+                </div>
+            </div>
+            <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
+                <div>
+                    <div class="image-uploader logo"
+                         ngf-pattern="'image/*'"
+                         ngf-accept="'image/*'"
+                         ngf-max-size="10MB"
+                         ngf-resize="{width: 400, height: 250}"
+                         ngf-select
+                         ngf-drop
+                         name="logo"
+                         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
+                        <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
+                        <div class="logo-flex">
+                            <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
+                                <span image-src="$ctrl.organization.documentLogoImage"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <small>Image size 400 x 250 / 10mb max</small>
+                    <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                        <div ng-messages-include="my-custom-messages"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
