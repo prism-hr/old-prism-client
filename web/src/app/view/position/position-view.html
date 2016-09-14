@@ -2,7 +2,7 @@
     <div class="view employer position">
         <div class="background-box"></div>
         <div class="position-box" layout="row" layout-align="center end">
-            <div class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
+            <md-card class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
                 <div class="logo-image">
                     <div class="logo-flex company-logo">
                         <div class="logo">
@@ -41,14 +41,30 @@
                                             class="icon-share"></i></md-button>
                                 </md-fab-trigger>
                                 <md-fab-actions>
-                                    <md-button aria-label="Share with Facebook"
+                                    <md-button socialshare
+                                               socialshare-provider="facebook"
+                                               socialshare-type="sharer"
+                                               socialshare-text="{{$ctrl.dummyShare.text}}"
+                                               socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                                               socialshare-url="{{$ctrl.dummyShare.url}}"
+                                               aria-label="Share with Facebook"
                                                class="md-fab md-raised md-mini facebook">
                                         <i class="icon-social-facebook"></i>
                                     </md-button>
-                                    <md-button aria-label="Share with Twitter" class="md-fab md-raised md-mini twitter">
+                                    <md-button socialshare
+                                               socialshare-provider="twitter"
+                                               socialshare-text="{{$ctrl.dummyShare.text}}"
+                                               socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                                               socialshare-url="{{$ctrl.dummyShare.url}}"
+                                               aria-label="Share with Twitter" class="md-fab md-raised md-mini twitter">
                                         <i class="icon-social-twitter"></i>
                                     </md-button>
-                                    <md-button aria-label="Share with Linkedin"
+                                    <md-button socialshare
+                                               socialshare-provider="linkedin"
+                                               socialshare-text="{{$ctrl.dummyShare.text}}"
+                                               socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                                               socialshare-url="{{$ctrl.dummyShare.url}}"
+                                               aria-label="Share with Linkedin"
                                                class="md-fab md-raised md-mini linkedin">
                                         <i class="icon-social-linkedin"></i>
                                     </md-button>
@@ -57,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </md-card>
         </div>
     </div>
     <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
@@ -76,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <md-tabs md-dynamic-height md-selected="selectedIndex">
+            <md-tabs md-dynamic-height md-selected="$ctrl.selectedIndex">
                 <md-tab label="overview">
                     <md-content class="md-padding">
                         <div layout="column" layout-gt-xs="row" layout-align="center start">
@@ -147,7 +163,7 @@
                             </div>
                         </div>
                         <div class="map-container">
-                            <ui-gmap-google-map center="map.center" zoom="map.zoom">
+                            <ui-gmap-google-map center="$ctrl.map.center" zoom="$ctrl.map.zoom">
                                 <!--<ui-gmap-window show="map.clickedMarker"-->
                                                 <!--templateUrl="'views/opportunities/opportunity-item-location-window.html'"-->
                                                 <!--templateParameter="map.clickedMarker" coords="map.clickedMarker.coordinates"-->
