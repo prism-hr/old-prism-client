@@ -12,19 +12,32 @@
         <span class="drop-box" ng-if="!$ctrl.organization.documentBackgroundImageOriginal">Drop your Background</span>
     </div>
     <div class="cropArea" ng-if="$ctrl.organization.documentBackgroundImageOriginal">
-        <img-crop image="$ctrl.organization.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1" result-image="$ctrl.organization.documentBackgroundImage" result-image-size='{w: 1280,h: 320}' init-max-area="true"></img-crop>
+        <img-crop image="$ctrl.organization.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1"
+                  result-image="$ctrl.organization.documentBackgroundImage" result-image-size='{w: 1280,h: 320}'
+                  init-max-area="true"></img-crop>
     </div>
-
     <div layout="row" layout-align="center center">
         <small>Minimun Image size 1280 x 320</small>
         <span class="flex"></span>
-        <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()" ng-if="$ctrl.organization.documentBackgroundImageOriginal">Clear Image</md-button>
+        <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()"
+                   ng-if="$ctrl.organization.documentBackgroundImageOriginal">Clear Image
+        </md-button>
     </div>
     <div ng-messages="$ctrl.form.background.$error" role="alert">
         <div ng-messages-include="my-custom-messages"></div>
     </div>
-    <md-input-container class="md-block">
-        <label>Description <small>(Optional)</small></label>
-        <textarea ng-model="$ctrl.organization.description" rows="4" ></textarea>
-    </md-input-container>
 </div>
+<md-card class="text-editor">
+    <md-card-title>
+        <h3>Description <small>(optional)</small></h3>
+    </md-card-title>
+    <md-card-content>
+        <text-angular-toolbar
+                name="organizationDescriptionToolbar"
+                ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol', 'insertLink'],['redo', 'undo']]">
+        </text-angular-toolbar>
+        <md-input-container class="md-block">
+            <text-angular ng-model="$ctrl.organization.description" rows="4" ta-target-toolbars="organizationDescriptionToolbar" class="form-control md-input"></text-angular>
+        </md-input-container>
+    </md-card-content>
+</md-card>
