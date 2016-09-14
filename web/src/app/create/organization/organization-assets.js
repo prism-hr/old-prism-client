@@ -10,6 +10,9 @@ module.exports = {
         this.clearImage = function () {
             this.organization.documentBackgroundImageOriginal = '';
             this.organization.documentBackgroundImage = '';
+            this.organization.pallet = '';
+            this.organization.dominant = '';
+
         };
     }
 }

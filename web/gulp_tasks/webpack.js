@@ -36,7 +36,7 @@ function webpackWrapper(watch, conf, done) {
             done();
             done = null;
         } else {
-            browsersync.reload();
+            //browsersync.reload();
         }
     };
 

@@ -12,9 +12,11 @@ require('angular-translate-loader-static-files');
 require('lodash');
 require('ng-file-upload');
 require('restangular');
+require('textAngular');
 require('angular-ui-router');
 require('angular-recaptcha');
 require('satellizer');
+require('textangular/dist/textAngular-sanitize.min');
 
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
@@ -78,6 +80,7 @@ angular
         'satellizer',
         'angular-loading-bar',
         'ngAnimate',
+        'textAngular',
         'pascalprecht.translate',
         'uiGmapgoogle-maps'
     ])
