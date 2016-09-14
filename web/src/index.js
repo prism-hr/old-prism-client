@@ -7,6 +7,7 @@ require('angular-messages');
 require('angular-material');
 require('angular-sanitize');
 require('angular-simple-logger');
+require('angular-socialshare');
 require('angular-translate');
 require('angular-translate-loader-static-files');
 require('lodash');
@@ -78,6 +79,7 @@ angular
         'ngFileUpload',
         'ngImgCrop',
         'satellizer',
+        '720kb.socialshare',
         'angular-loading-bar',
         'ngAnimate',
         'textAngular',

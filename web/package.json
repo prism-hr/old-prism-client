@@ -10,6 +10,7 @@
     "angular-recaptcha": "3.0.4",
     "angular-sanitize": "1.5.8",
     "angular-simple-logger": "0.1.7",
+    "angular-socialshare": "^2.2.8",
     "angular-translate": "2.11.1",
     "angular-translate-loader-static-files": "2.11.1",
     "angular-ui-router": "1.0.0-beta.1",

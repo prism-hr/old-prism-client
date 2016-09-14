@@ -1,5 +1,5 @@
 <div class="page-wrap step-page child">
-    <div class="preview {{typeLower}}" ng-if="$ctrl.organization">
+    <div class="preview {{typeLower}}" ng-if="$ctrl.organization.organization">
         <label>Preview</label>
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
         <div ng-if="$ctrl.organization.id" layout="row" layout-align="center end">
@@ -19,7 +19,7 @@
                 <div class="step-wizard">
                     <div ui-view></div>
                 </div>
-                <div class="action-block" layout="row" layout-align="space-between none">
+                <md-card-actions class="action-block" layout="row" layout-align="space-between none">
                     <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()"
                                ng-disabled="$ctrl.loading || ($ctrl.organization.id && organizationForm.$invalid)">
                         Back
@@ -28,7 +28,7 @@
                                ng-disabled="$ctrl.loading || organizationForm.$invalid">
                         {{$ctrl.nextStep ? 'Continue' : 'Finish'}}
                     </md-button>
-                </div>
+                </md-card-actions>
             </md-card>
         </div>
 
