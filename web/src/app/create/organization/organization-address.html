@@ -1,20 +1,24 @@
-<div class="lookup-organisation" flex="100">
-    <div layout-padding>
-        <h3>Look for you address (we use google search)</h3>
-        <place-autocomplete ng-model="$ctrl.organization.location" name="foundAddress"
-                            placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
-        </place-autocomplete>
-        <div class="secondary-options">
-            <md-input-container class="md-block">
-                <label>Website (http://yourweb.com )</label>
-                <input type="url" name="website" ng-model="$ctrl.organization.website">
-            </md-input-container>
-            <md-input-container  class="md-block">
-                <label>Company Size (number of employers)</label>
-                <md-select ng-model="size">
-                    <md-option ng-repeat="size in $ctrl.sizes" value="{{size}}">{{size}}</md-option>
-                </md-select>
-            </md-input-container>
-        </div>
+<div layout-padding>
+    <h3>Address, Web and Company Size</h3>
+
+    <label class="standalone-label">Address </label>
+    <place-autocomplete ng-model="$ctrl.organization.location" name="foundAddress"
+                        placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
+    </place-autocomplete>
+
+    <div class="secondary-options">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Website <small>(http://yourweb.com )</small></label>
+            <input type="url" name="website" ng-model="$ctrl.organization.website">
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label class="md-no-float">Company Size <small>(number of employers)</small></label>
+            <md-select ng-model="size">
+                <md-option ng-repeat="size in $ctrl.sizes" value="{{size}}">{{size}}</md-option>
+            </md-select>
+        </md-input-container>
     </div>
 </div>
+
+
+

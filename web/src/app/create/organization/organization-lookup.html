@@ -66,11 +66,11 @@
         <div layout-gt-xs="row">
             <div flex="100" flex-gt-xs="65">
                 <md-input-container class="md-block">
-                    <label>Company Name</label>
+                    <label class="md-no-float">Company Name</label>
                     <input name="companyName" ng-model="$ctrl.organization.organization.name" required>
                 </md-input-container>
                 <md-input-container class="md-block" ng-if="$ctrl.division">
-                    <label>Division Name</label>
+                    <label class="md-no-float">Division Name</label>
                     <input name="divisionName" ng-model="$ctrl.organization.division.name">
                 </md-input-container>
                 <div class="division-controls secondary-actions" layout="row" layout-align="start">

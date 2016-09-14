@@ -8,6 +8,9 @@ module.exports = {
             {title: 'One', content: 'tab1'},
             {title: 'dos', content: 'Tab2'},
             {title: 'tes', content: 'tab3'},
+            {title: 'tes2', content: 'tab32'},
+            {title: 'tes3', content: 'tab33'},
+            {title: 'tes4', content: 'tab34'},
             {title: 'cuatro', content: 'tab4'}
         ];
         this.maxTabs = this.tabs.length;

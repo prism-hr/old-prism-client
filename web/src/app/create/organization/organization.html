@@ -15,7 +15,7 @@
     </div>
     <form novalidate name="organizationForm" ng-submit="$ctrl.next(organizationForm)">
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
-            <div flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
+            <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="step-wizard">
                     <div ui-view></div>
                 </div>
@@ -29,8 +29,7 @@
                         {{$ctrl.nextStep ? 'Continue' : 'Finish'}}
                     </md-button>
                 </div>
-            </div>
-
+            </md-card>
         </div>
 
     </form>
