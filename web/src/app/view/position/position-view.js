@@ -12,6 +12,11 @@ module.exports = {
             this.selectedIndex = number;
         };
         // dummy copy for sharing
-        this.dummyShare = {text: 'Welcome to careerJet.io', url: 'careerjet.io', hashtags: 'careerjet.io, promoteCareerJet'};
+        this.dummyShare = {
+            title: 'careerjet.io',
+            text: 'Welcome to careerJet.io',
+            url: 'careerjet.io',
+            hashtags: 'careerjet.io, promoteCareerJet'
+        };
     }
 };
