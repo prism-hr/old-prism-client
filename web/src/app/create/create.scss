@@ -9,6 +9,14 @@
       }
     }
   }
+  &.with-preview {
+    .wizard-holder-padding {
+      padding-top:0px;
+    }
+  }
+  .wizard-holder-padding {
+    padding-top:60px;
+  }
   h4 {
     color: $uclfooter;
     font-weight:900;
@@ -255,6 +263,9 @@ img-crop {
       .left-side-block, .right-side-block {
         padding: 20px;
       }
+    }
+    .wizard-holder-padding {
+      padding-top:0px;
     }
   }
 }
