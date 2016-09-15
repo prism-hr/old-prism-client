@@ -1,4 +1,4 @@
-<div class="page-wrap step-page child">
+<div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.organization.organization}">
     <div class="preview {{typeLower}}" ng-if="$ctrl.organization.organization">
         <label>Preview</label>
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
@@ -14,7 +14,7 @@
         </div>
     </div>
     <form novalidate name="organizationForm" ng-submit="$ctrl.next(organizationForm)">
-        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" class="wizard-holder-padding">
             <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="step-wizard">
                     <div ui-view></div>
