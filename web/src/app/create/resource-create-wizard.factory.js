@@ -6,7 +6,7 @@ module.exports = function () {
             {id: 'summary', component: 'organizationSummary', title: 'Summary'},
             {id: 'address', component: 'organizationAddress', title: 'Address'},
             {id: 'assets', component: 'organizationAssets', title: 'Assets', data: {optional: true}},
-            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}]
+            {id: 'preview', component: 'organizationPreview', title: 'Preview'}]
     };
     _.forEach(steps, function (subSteps) {
         _.forEach(subSteps, function (step, index) {
@@ -71,6 +71,7 @@ module.exports = function () {
             });
 
             if (_.find(this._steps, {id: toStep}).available) {
+                this._currentStep = toStep;
                 return true;
             }
             return lastNotCompleteStep;
@@ -88,7 +89,13 @@ module.exports = function () {
 
         ResourceCreateWizard.prototype.next = function () {
             var self = this;
-            // update lastStep
+
+            var nextStep = this.getNextStep();
+            if (!nextStep) {
+                $state.go(this._resourceType.toLowerCase() + 'Welcome');
+            }
+
+            // update stateComplete
             var resource = this.getResource();
             var currentStep = this.getStepForName(this._currentStep);
             resource.stateComplete[currentStep.id] = true;
@@ -97,10 +104,6 @@ module.exports = function () {
                 .then(function (resource) {
                     $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id});
                 });
-        };
-
-        ResourceCreateWizard.prototype.finish = function () {
-            $state.go(this._resourceType.toLowerCase() + 'Welcome');
         };
 
         ResourceCreateWizard.prototype.prev = function () {
