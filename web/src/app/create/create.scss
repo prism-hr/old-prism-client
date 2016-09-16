@@ -137,6 +137,19 @@
 .secondary-actions {
   margin-bottom:-10px;
 }
+.division-controls {
+  .secondary-actions {
+    margin-top:18px;
+    .md-warn {
+      margin-right: 3px;
+    }
+  }
+  .md-primary {
+    margin-left: 0;
+    margin-top:24px;
+  }
+}
+
 .secondary-options {
   margin-top:36px;
 }

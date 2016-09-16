@@ -3,7 +3,7 @@ module.exports = function () {
     var thisProvider = this;
     var steps = {
         PROMOTER: [{id: 'lookup', component: 'organizationLookup', title: 'Organization Name'},
-            {id: 'summary', component: 'organizationSummary', title: 'Summary'},
+            {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations and Industries'},
             {id: 'address', component: 'organizationAddress', title: 'Address'},
             {id: 'assets', component: 'organizationAssets', title: 'Assets', data: {optional: true}},
             {id: 'preview', component: 'organizationPreview', title: 'Preview'}]

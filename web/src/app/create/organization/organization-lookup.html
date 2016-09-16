@@ -69,14 +69,17 @@
                     <label class="md-no-float">Company Name</label>
                     <input name="companyName" ng-model="$ctrl.organization.organization.name" required>
                 </md-input-container>
-                <md-input-container class="md-block" ng-if="$ctrl.division">
-                    <label class="md-no-float">Division Name</label>
-                    <input name="divisionName" ng-model="$ctrl.organization.division.name">
-                </md-input-container>
-                <div class="division-controls secondary-actions" layout="row" layout-align="start">
+                <div layout-gt-xs="row" class="division-controls">
+                    <md-input-container class="md-block" ng-if="$ctrl.division" flex-gt-xs="75">
+                        <label class="md-no-float">Division Name</label>
+                        <input name="divisionName" ng-model="$ctrl.organization.division.name">
+                    </md-input-container>
                     <md-button class="md-raised md-primary small" ng-click="$ctrl.addDivision(true)"  ng-if="!$ctrl.division">Add a Division</md-button>
-                    <md-button class="md-warn md-raised small" ng-click="$ctrl.addDivision(false)"  ng-if="$ctrl.division">Cancel Division</md-button>
+                    <div class="secondary-actions" layout="row" layout-align="end start" flex-gt-xs="25" ng-if="$ctrl.division">
+                        <md-button class="md-warn md-raised small" ng-click="$ctrl.addDivision(false)">Cancel Division</md-button>
+                    </div>
                 </div>
+
             </div>
             <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
                 <div>

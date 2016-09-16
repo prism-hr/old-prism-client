@@ -12,7 +12,7 @@ module.exports = {
         this.addDivision = function (bolean) {
             this.division = bolean;
             if (!bolean) {
-                self.organization.division.name = null;
+                self.organization.division = null;
             }
         };
 
