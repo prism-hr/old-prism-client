@@ -31,7 +31,7 @@ module.exports = {
             {
                 test: /\.(eot|woff|woff2|svg|ttf|png)([\?]?.*)$/,
                 loader: "file-loader"
-            }
+            },
             {
                 test: /\.js$/,
                 exclude: /(node_modules|.*\.spec\.js)/,

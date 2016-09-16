@@ -2,7 +2,7 @@ module.exports = browserTitle;
 
 /** @ngInject */
 function browserTitle($rootScope, $state, $transitions) {
-    $transitions.onSuccess({from: '*.*', to: '*.*'}, function (transition) {
+    $transitions.onSuccess({from: '*.**', to: '*.**'}, function (transition) {
         $rootScope.$title = transition.getResolveValue('$title');
 
         function getBreadcrumb(pathNode) {

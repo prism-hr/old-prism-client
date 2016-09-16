@@ -3,22 +3,22 @@
     "organization" : {
       "organization-lookup": {
         "autocomplete-placeholder": {
-          "EMPLOYER": "Lookup or create company",
-          "UNIVERSITY": "Lookup or create university"
+          "PROMOTER": "Lookup or create company",
+          "DEPARTMENT": "Lookup or create university"
         },
         "lookup-button": {
-          "EMPLOYER": "Lookup Company",
-          "UNIVERSITY": "Lookup University"
+          "PROMOTER": "Lookup Company",
+          "DEPARTMENT": "Lookup University"
         }
       },
       "address-lookup": {
         "autocomplete-placeholder": {
-          "EMPLOYER": "Lookup your Address",
-          "UNIVERSITY": "Lookup your Address"
+          "PROMOTER": "Lookup your Address",
+          "DEPARTMENT": "Lookup your Address"
         },
         "lookup-button": {
-          "EMPLOYER": "Lookup Address",
-          "UNIVERSITY": "Lookup Address"
+          "PROMOTER": "Lookup Address",
+          "DEPARTMENT": "Lookup Address"
         }
       }
     }
