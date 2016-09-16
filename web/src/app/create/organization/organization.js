@@ -7,8 +7,10 @@ module.exports = {
     /** @ngInject */
     controller: function ($rootScope, $timeout, $state) {
         var self = this;
-        this.typeLower = this.type.toLowerCase();
+        this.typeLower = self.type.toLowerCase();
         this.organization = self.wizard.getResource();
+        this.createSteps = self.wizard.getSteps();
+
         // this.createSteps = createSteps[self.typeLower];
         // if (this.organization.id && !_.endsWith($state.current.name, '.preview')) { // if existing organization don't show preview tab (unless requested)
         //     this.createSteps.splice(-1, 1);

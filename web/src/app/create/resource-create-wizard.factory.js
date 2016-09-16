@@ -28,10 +28,14 @@ module.exports = function () {
             }
             this._resourceManager = resourceManager;
             this._resourceType = resourceType;
-            this.steps = thisProvider.getStepDefinitions(resourceType);
+            this._steps = angular.copy(thisProvider.getStepDefinitions(resourceType));
 
             this.getStepForName = function (stepName) {
-                return _.find(this.steps, {id: stepName});
+                return _.find(this._steps, {id: stepName});
+            };
+
+            this.computeStepCompleteness = function () {
+
             };
         }
 
@@ -43,30 +47,43 @@ module.exports = function () {
             return this.getStepForName(this._currentStep);
         };
 
-        ResourceCreateWizard.prototype.onEnter = function (step) {
+        /**
+         * Invoked before trying to enter a step.
+         *
+         * @param toStep step about to be entered
+         * @return {boolean|string} true when step can be entered or `stepName` which router should redirect browser to
+         */
+        ResourceCreateWizard.prototype.onEnter = function (toStep) {
             var stateComplete = this.getResource().stateComplete;
 
-            var moveTo = _.find(this.steps, function (s) { // find first not complete and not optional step (or requested one)
-                if (!stateComplete[s.id]) {
-                    return s.id === step || !s.optional;
+            var missingStepEncountered = false;
+            var lastNotCompleteStep = null;
+            _.each(this._steps, function (step) {
+                if (!missingStepEncountered) {
+                    step.available = true;
+                    if (stateComplete[step.id]) {
+                        step.complete = true;
+                    } else if (!step.data.optional) {
+                        missingStepEncountered = true;
+                        lastNotCompleteStep = step.id;
+                    }
                 }
-                return false;
             });
-            if (step === moveTo.id) {
-                this._currentStep = step;
+
+            if (_.find(this._steps, {id: toStep}).available) {
                 return true;
             }
-            return moveTo.id;
+            return lastNotCompleteStep;
         };
 
         ResourceCreateWizard.prototype.getNextStep = function () {
             var currentStep = this.getStepForName(this._currentStep);
-            return currentStep.index + 1 < this.steps.length && this.steps[currentStep.index + 1];
+            return currentStep.index + 1 < this._steps.length && this._steps[currentStep.index + 1];
         };
 
         ResourceCreateWizard.prototype.getPrevStep = function () {
             var currentStep = this.getStepForName(this._currentStep);
-            return currentStep.index > 0 && this.steps[currentStep.index - 1];
+            return currentStep.index > 0 && this._steps[currentStep.index - 1];
         };
 
         ResourceCreateWizard.prototype.next = function () {
@@ -93,6 +110,10 @@ module.exports = function () {
             } else {
                 $state.go(this._resourceType.toLowerCase() + 'Welcome');
             }
+        };
+
+        ResourceCreateWizard.prototype.getSteps = function () {
+            return this._steps;
         };
 
         return {
