@@ -20,8 +20,8 @@
                     <div ui-view></div>
                 </div>
                 <md-card-actions class="action-block" layout="row" layout-align="space-between none">
-                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.back()"
-                               ng-disabled="$ctrl.loading || ($ctrl.organization.id && organizationForm.$invalid)">
+                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.prev()"
+                               ng-disabled="$ctrl.loading">
                         Back
                     </md-button>
                     <md-button type="submit" class="md-primary md-raised big"

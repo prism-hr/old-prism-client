@@ -1,5 +1,5 @@
 module.exports = {
-    template: require('./employer-welcome.html'),
+    template: require('./promoter-welcome.html'),
     /** @ngInject */
     controller: function () {
 

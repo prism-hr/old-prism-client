@@ -1,7 +1,7 @@
 module.exports = routesConfig;
 
 /** @ngInject */
-function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, createSteps) {
+function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, resourceCreateWizardFactoryProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
     $urlRouterProvider.otherwise('/404');
 
@@ -24,29 +24,29 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
                 $title: _.wrap('Invited')
             }
         })
-        .state('employerWelcome', {
-            url: '/employer/welcome',
-            component: 'employerWelcome',
+        .state('promoterWelcome', {
+            url: '/promoter/welcome',
+            component: 'promoterWelcome',
             data: {auth: true},
             params: {
                 showRegistration: false
             },
             resolve: {
-                $title: _.wrap('Welcome Employer')
+                $title: _.wrap('Welcome Employers and Recruiters')
             }
         })
-        .state('employer', {
-            url: '/employer/{id:new|\\d+}',
+        .state('promoter', {
+            url: '/promoter/{id:new|\\d+}',
             abstract: true,
             component: 'organization',
             data: {auth: true},
             resolve: {
-                type: _.wrap('EMPLOYER'),
-                resourceManager: function ($stateParams, resourceManagerFactory, type) {
-                    return resourceManagerFactory.getManager($stateParams.id, type);
-                },
-                organization: function (resourceManager) {
-                    return resourceManager.getResource();
+                type: _.wrap('PROMOTER'),
+                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                    return resourceManagerFactory.getManager($stateParams.id, type)
+                        .then(function (resourceManager) {
+                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
+                        });
                 },
                 $title: _.wrap('Company Information')
             }
@@ -120,34 +120,38 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, cre
 
         });
 
-    _.each(createSteps.employer, function (step, index) {
+    _.each(resourceCreateWizardFactoryProvider.getStepDefinitions('PROMOTER'), function (step, index) {
         var data = angular.copy(step.data) || {};
         data.stepIdx = index;
         var component = _.kebabCase(step.component);
         $stateProvider
-            .state('employer.' + step.id, {
+            .state('promoter.' + step.id, {
                 url: '/' + step.id,
-                template: '<' + component + ' type="{{type}}" form="organizationForm" organization="organization"></' + component + '>',
+                template: '<' + component + ' type="{{type}}" form="organizationForm" organization="organization" wizard="wizard"></' + component + '>',
                 data: data,
                 resolve: {
+                    organization: function (wizard) {
+                        return wizard.getResource();
+                    },
                     $title: function (organization) {
-                        var prefix = organization.id ? '' : 'Step ' + (index + 1) + ': ';
+                        var prefix = organization ? '' : 'Step ' + (index + 1) + ': ';
                         return prefix + step.title;
                     }
                 },
-                controller: function ($scope, type, organization) {
+                controller: function ($scope, type, organization, wizard) {
                     $scope.type = type;
                     $scope.organization = organization;
+                    $scope.wizard = wizard;
                 }
             });
     });
 
     // function returnTo($transition$) {
-    //     var redirectedFrom = $transition$.previous();
+    //     var redirectedFrom = $transition$.redirectedFrom();
     //     // The user was redirected to the login state (via the requiresAuth hook)
     //     if (redirectedFrom !== null) {
-    //         while (redirectedFrom.previous()) {
-    //             redirectedFrom = redirectedFrom.previous();
+    //         while (redirectedFrom.redirectedFrom()) {
+    //             redirectedFrom = redirectedFrom.redirectedFrom();
     //         }
     //         return {state: redirectedFrom.to(), params: redirectedFrom.params('to')};
     //     }

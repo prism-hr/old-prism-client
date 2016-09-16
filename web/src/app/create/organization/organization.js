@@ -1,23 +1,25 @@
 module.exports = {
     template: require('./organization.html'),
     bindings: {
-        resourceManager: '<',
+        wizard: '<',
         type: '<'
     },
     /** @ngInject */
-    controller: function ($rootScope, $timeout, $state, Restangular, Upload, createSteps) {
+    controller: function ($rootScope, $timeout, $state) {
         var self = this;
         this.typeLower = this.type.toLowerCase();
-        this.organization = self.resourceManager.getResource();
-        this.createSteps = createSteps[self.typeLower];
-        if (this.organization.id && !_.endsWith($state.current.name, '.preview')) { // if existing organization don't show preview tab (unless requested)
-            this.createSteps.splice(-1, 1);
-        }
+        this.organization = self.wizard.getResource();
+        // this.createSteps = createSteps[self.typeLower];
+        // if (this.organization.id && !_.endsWith($state.current.name, '.preview')) { // if existing organization don't show preview tab (unless requested)
+        //     this.createSteps.splice(-1, 1);
+        // }
 
-        $rootScope.$watch('$state.current', function (currentState) {
-            self.stepIdx = _.get(currentState.data, 'stepIdx');
-            self.nextStep = self.stepIdx + 1 < self.createSteps.length && self.createSteps[self.stepIdx + 1];
-            self.prevStep = self.stepIdx > 0 && self.createSteps[self.stepIdx - 1];
+        $rootScope.$watch('$state.current', function () {
+            if (self.wizard.getCurrentStep()) {
+                self.stepIdx = self.wizard.getCurrentStep().index;
+                self.nextStep = self.wizard.getNextStep();
+                self.prevStep = self.wizard.getPrevStep();
+            }
         });
 
         this.next = function (form) {
@@ -25,48 +27,26 @@ module.exports = {
                 return;
             }
 
-            if (!self.organization.id && self.stepIdx === self.createSteps.length - 2) { // step before preview, save it now
-                saveOrganization()
-                    .then(function (organization) {
-                        $state.go(self.typeLower + '.' + self.nextStep.id, {id: organization.id}, {reload: true});
-                    });
-            } else if (self.nextStep) {
-                $state.go(self.typeLower + '.' + self.nextStep.id, {id: $state.params.id});
-            } else {
-                $state.go(self.typeLower + 'Welcome');
-            }
+            self.wizard.next();
         };
 
-        this.back = function () {
-            if (self.prevStep) {
-                $state.go(self.typeLower + '.' + self.prevStep.id, {id: $state.params.id});
-            } else {
-                $state.go(self.typeLower + 'Welcome');
-            }
+        this.prev = function () {
+            self.wizard.prev();
         };
 
-        var watchTimeout;
-        var oldOrganization;
-        this.$doCheck = function () {
-            if (!this.organization.id) {
-                return;
-            }
-            if (oldOrganization && !angular.equals(this.organization, oldOrganization)) {
-                if (watchTimeout) {
-                    $timeout.cancel(watchTimeout);
-                }
-                watchTimeout = $timeout(saveOrganization, 1000);
-            }
-            oldOrganization = angular.copy(this.organization);
-        };
-
-        function saveOrganization() {
-            self.loading = true;
-            return self.resourceManager.saveResource(self.organization)
-                .then(function (response) {
-                    self.loading = false;
-                    return response;
-                });
-        }
+        // var watchTimeout;
+        // var oldOrganization;
+        // this.$doCheck = function () {
+        //     if (!this.organization.id) {
+        //         return;
+        //     }
+        //     if (oldOrganization && !angular.equals(this.organization, oldOrganization)) {
+        //         if (watchTimeout) {
+        //             $timeout.cancel(watchTimeout);
+        //         }
+        //         watchTimeout = $timeout(saveOrganization, 1000);
+        //     }
+        //     oldOrganization = angular.copy(this.organization);
+        // };
     }
 };

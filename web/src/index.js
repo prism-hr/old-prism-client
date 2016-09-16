@@ -27,7 +27,8 @@ var authenticationHook = require('./app/unauthenticated/authentication.hook');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
 var resourceManagerFactory = require('./app/create/resource-manager.factory');
-var createSteps = require('./app/create/create-steps.configuration');
+var resourceCreateWizardFactory = require('./app/create/resource-create-wizard.factory');
+var resourceCreateWizardStepHook = require('./app/create/resource-create-wizard-step.hook');
 var ngImgCrop = require('./app/directives/ng-img-crop');
 
 // Directives
@@ -53,7 +54,7 @@ var organizationAddress = require('./app/create/organization/organization-addres
 var organizationAssets = require('./app/create/organization/organization-assets');
 var organizationPreview = require('./app/create/organization/organization-preview');
 var organizationPreviewBox = require('./app/create/organization/organization-preview-box');
-var employerWelcome = require('./app/create/employer/employer-welcome');
+var promoterWelcome = require('./app/create/promoter/promoter-welcome');
 var employerView = require('./app/view/employer/employer-view');
 var positionView = require('./app/view/position/position-view');
 var position = require('./app/create/position/position');
@@ -87,7 +88,6 @@ angular
         'uiGmapgoogle-maps'
     ])
     .constant('environment', environment)
-    .constant('createSteps', createSteps)
     .config(routes)
     .config(generalConfig.restangular)
     .config(generalConfig.satellizerConfig)
@@ -97,8 +97,10 @@ angular
     .service('ActivationService', ActivationService)
     .service('AuthService', AuthService)
     .service('resourceManagerFactory', resourceManagerFactory)
+    .provider('resourceCreateWizardFactory', resourceCreateWizardFactory)
     .run(authenticationHook)
     .run(browserTitleHook)
+    .run(resourceCreateWizardStepHook)
     .run(generalConfig.generalRun)
     .run(generalConfig.templateCacheConfig)
     .directive('applicationLoader', applicationLoader)
@@ -119,7 +121,7 @@ angular
     .component('organizationAssets', organizationAssets)
     .component('organizationPreview', organizationPreview)
     .component('organizationPreviewBox', organizationPreviewBox)
-    .component('employerWelcome', employerWelcome)
+    .component('promoterWelcome', promoterWelcome)
     .component('employerView', employerView)
     .component('positionView', positionView)
     .component('position', position)
