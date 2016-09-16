@@ -52,13 +52,14 @@ module.exports = function ($q) {
                     var component = _.find(place.address_components, function (component) {
                         return _.includes(component.types, componentType);
                     });
-                    return component ? component.short_name : undefined;
+                    return component ? component.long_name : undefined;
                 }
 
                 var domicile = getAddressPart('country');
                 var displayAddress = place.formatted_address;
                 var postalTown = getAddressPart('postal_town');
                 var alternativeTown = getAddressPart('locality');
+                var administrativeAreaLevel1 = getAddressPart('administrative_area_level_1');
                 var administrativeAreaLevel2 = getAddressPart('administrative_area_level_2');
                 var administrativeAreaLevel3 = getAddressPart('administrative_area_level_3');
                 var administrativeAreaLevel4 = getAddressPart('administrative_area_level_4');
@@ -66,6 +67,7 @@ module.exports = function ($q) {
                 var geolocation = place.geometry.location;
 
                 var location = {};
+                location.displayLocation = alternativeTown + ', ' + administrativeAreaLevel1 + ', ' + domicile;
                 location.name = postalTown || alternativeTown || administrativeAreaLevel2 || administrativeAreaLevel3 || administrativeAreaLevel4 || administrativeAreaLevel5;
                 location.description = displayAddress;
                 location.domicile = domicile;

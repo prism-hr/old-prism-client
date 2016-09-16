@@ -4,12 +4,11 @@
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
         <div ng-if="$ctrl.organization.id" layout="row" layout-align="center end">
             <div class="preview-navigation" flex-gt-sm="75">
-                <md-nav-bar md-selected-nav-item="$ctrl.stepIdx" nav-bar-aria-label="preview links" class="md-primary">
-                    <md-nav-item ng-repeat="step in $ctrl.createSteps"
-                                 md-nav-sref="{{typeLower}}.{{step.id}}" name="{{$index}}">
-                        {{step.title}}
-                    </md-nav-item>
-                </md-nav-bar>
+                <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.stepIdx">
+                    <md-tab label="{{step.title}}" ui-sref="{{typeLower}}.{{step.id}}" ng-repeat="step in $ctrl.createSteps">
+
+                    </md-tab>
+                </md-tabs>
             </div>
         </div>
     </div>
@@ -17,7 +16,7 @@
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" class="wizard-holder-padding">
             <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="step-wizard">
-                    <div ui-view></div>
+                    <div ui-view class="fade-animation"></div>
                 </div>
                 <md-card-actions class="action-block" layout="row" layout-align="space-between none">
                     <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.prev()"
