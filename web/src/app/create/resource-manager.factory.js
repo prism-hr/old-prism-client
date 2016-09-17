@@ -3,7 +3,7 @@ module.exports = function ($q, Restangular, Upload) {
     var managers = {};
 
     function ResourceManager(resource) {
-        this._resource = resource;
+        this._resource = resource || {stateComplete: {}};
     }
 
     ResourceManager.prototype.getResource = function () {
@@ -32,7 +32,7 @@ module.exports = function ($q, Restangular, Upload) {
             }
         }).then(function (response) {
             if (!self._resource.id) {
-                self._resource = {};
+                self._resource = {stateComplete: {}};
             }
             return self._resource.id ? self._resource : response.data;
         });
@@ -42,14 +42,14 @@ module.exports = function ($q, Restangular, Upload) {
         getManager: function (id, type) {
             if (id === 'new') {
                 if (!managers[type]) {
-                    managers[type] = new ResourceManager({stateComplete: {}});
+                    managers[type] = new ResourceManager();
                 }
                 return $q.when(managers[type]);
             }
             return Restangular.one('organizationImplementations', id).get()
                 .then(function (resource) {
                     resource = resource.plain();
-                    resource.stateComplete = JSON.parse(resource.stateComplete);
+                    resource.stateComplete = resource.stateComplete ? JSON.parse(resource.stateComplete) : {};
                     return new ResourceManager(resource);
                 });
         }

@@ -51,6 +51,22 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Company Information')
             }
         })
+        .state('department', {
+            url: '/department/{id:new|\\d+}',
+            abstract: true,
+            component: 'organization',
+            data: {auth: true},
+            resolve: {
+                type: _.wrap('DEPARTMENT'),
+                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                    return resourceManagerFactory.getManager($stateParams.id, type)
+                        .then(function (resourceManager) {
+                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
+                        });
+                },
+                $title: _.wrap('University Information')
+            }
+        })
         .state('employer-view', {
             url: '/employer-view',
             component: 'employerView',
@@ -75,9 +91,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Create Position')
             }
         })
-        .state('universityWelcome', {
-            url: '/universityWelcome',
-            component: 'universityWelcome',
+        .state('departmentWelcome', {
+            url: '/departmentWelcome',
+            component: 'departmentWelcome',
             data: {auth: true},
             resolve: {
                 $title: _.wrap('Welcome University')
@@ -120,30 +136,32 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
 
         });
 
-    _.each(resourceCreateWizardFactoryProvider.getStepDefinitions('PROMOTER'), function (step, index) {
-        var data = angular.copy(step.data) || {};
-        data.stepIdx = index;
-        var component = _.kebabCase(step.component);
-        $stateProvider
-            .state('promoter.' + step.id, {
-                url: '/' + step.id,
-                template: '<' + component + ' type="{{type}}" form="organizationForm" organization="organization" wizard="wizard"></' + component + '>',
-                data: data,
-                resolve: {
-                    organization: function (wizard) {
-                        return wizard.getResource();
+    _.each(['PROMOTER', 'DEPARTMENT'], function (resourceType) {
+        _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(resourceType), function (step, index) {
+            var data = angular.copy(step.data) || {};
+            data.stepIdx = index;
+            var component = _.kebabCase(step.component);
+            $stateProvider
+                .state(resourceType.toLowerCase() + '.' + step.id, {
+                    url: '/' + step.id,
+                    template: '<' + component + ' type="{{type}}" form="organizationForm" organization="organization" wizard="wizard"></' + component + '>',
+                    data: data,
+                    resolve: {
+                        organization: function (wizard) {
+                            return wizard.getResource();
+                        },
+                        $title: function (organization) {
+                            var prefix = organization ? '' : 'Step ' + (index + 1) + ': ';
+                            return prefix + step.title;
+                        }
                     },
-                    $title: function (organization) {
-                        var prefix = organization ? '' : 'Step ' + (index + 1) + ': ';
-                        return prefix + step.title;
+                    controller: function ($scope, type, organization, wizard) {
+                        $scope.type = type;
+                        $scope.organization = organization;
+                        $scope.wizard = wizard;
                     }
-                },
-                controller: function ($scope, type, organization, wizard) {
-                    $scope.type = type;
-                    $scope.organization = organization;
-                    $scope.wizard = wizard;
-                }
-            });
+                });
+        });
     });
 
     // function returnTo($transition$) {
