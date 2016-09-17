@@ -125,21 +125,19 @@
   background: white;
   border:1px solid #ececec;
   border-top:none;
-  md-tabs {
-    height: auto;
-    border:none;
-    .md-button.md-prism-theme.md-accent {
-      line-height: 20px;
-      margin: 0 4px;
-      padding: 8px 10px;
-      color: $uclfooter;
-      font-weight:700;
-      &.md-active {
-        color: $uclred;
-      }
+  md-pagination-wrapper, md-tabs-canvas  {
+    height: 38px;
+  }
+  md-tabs.md-prism-theme .md-tab {
+    line-height: 20px;
+    padding: 8px 10px;
+    color: $uclfooter;
+    font-weight:700;
+    &.md-active {
+      color: $uclred;
     }
   }
-  md-nav-bar.md-prism-theme md-nav-ink-bar {
+  md-tabs.md-prism-theme md-ink-bar {
     background-color: $uclred;
   }
 
