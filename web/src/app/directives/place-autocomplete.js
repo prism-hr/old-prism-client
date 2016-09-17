@@ -48,26 +48,31 @@ module.exports = function ($q) {
             };
 
             function extractLocation(place) {
-                function getAddressPart(componentType) {
+                function getAddressPart(componentType, type) {
                     var component = _.find(place.address_components, function (component) {
                         return _.includes(component.types, componentType);
                     });
+                    if (type === 'long') {
+                        return component ? component.long_name : undefined;
+                    }
                     return component ? component.short_name : undefined;
                 }
 
-                var domicile = getAddressPart('country');
+                var domicile = getAddressPart('country', 'short');
+                var domicileLong = getAddressPart('country', 'long');
                 var displayAddress = place.formatted_address;
-                var postalTown = getAddressPart('postal_town');
-                var alternativeTown = getAddressPart('locality');
-                var administrativeAreaLevel1 = getAddressPart('administrative_area_level_1');
-                var administrativeAreaLevel2 = getAddressPart('administrative_area_level_2');
-                var administrativeAreaLevel3 = getAddressPart('administrative_area_level_3');
-                var administrativeAreaLevel4 = getAddressPart('administrative_area_level_4');
-                var administrativeAreaLevel5 = getAddressPart('administrative_area_level_5');
+                var postalTown = getAddressPart('postal_town', 'long');
+                var alternativeTown = getAddressPart('locality', 'long');
+                var administrativeAreaLevel1 = getAddressPart('administrative_area_level_1', 'long');
+                var administrativeAreaLevel2 = getAddressPart('administrative_area_level_2', 'long');
+                var administrativeAreaLevel3 = getAddressPart('administrative_area_level_3', 'long');
+                var administrativeAreaLevel4 = getAddressPart('administrative_area_level_4', 'long');
+                var administrativeAreaLevel5 = getAddressPart('administrative_area_level_5', 'long');
+                var naturalFeature = getAddressPart('natural_feature', 'long');
                 var geolocation = place.geometry.location;
 
                 var location = {};
-                location.displayLocation = alternativeTown + ', ' + administrativeAreaLevel1 + ', ' + domicile;
+                location.displayLocation = (alternativeTown || naturalFeature || administrativeAreaLevel4 || administrativeAreaLevel3 || administrativeAreaLevel2 || administrativeAreaLevel1) + ', ' + domicileLong;
                 location.name = postalTown || alternativeTown || administrativeAreaLevel2 || administrativeAreaLevel3 || administrativeAreaLevel4 || administrativeAreaLevel5;
                 location.description = displayAddress;
                 location.domicile = domicile;

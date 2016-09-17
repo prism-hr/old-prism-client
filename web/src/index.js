@@ -50,7 +50,7 @@ var organization = require('./app/create/organization/organization');
 var organizationCategory = require('./app/create/organization/organization-category');
 var organizationLookup = require('./app/create/organization/organization-lookup');
 var organizationSummary = require('./app/create/organization/organization-summary');
-var organizationAddress = require('./app/create/organization/organization-address');
+var organizationWeb = require('./app/create/organization/organization-web');
 var organizationAssets = require('./app/create/organization/organization-assets');
 var organizationPreview = require('./app/create/organization/organization-preview');
 var organizationPreviewBox = require('./app/create/organization/organization-preview-box');
@@ -117,7 +117,7 @@ angular
     .component('organizationCategory', organizationCategory)
     .component('organizationLookup', organizationLookup)
     .component('organizationSummary', organizationSummary)
-    .component('organizationAddress', organizationAddress)
+    .component('organizationWeb', organizationWeb)
     .component('organizationAssets', organizationAssets)
     .component('organizationPreview', organizationPreview)
     .component('organizationPreviewBox', organizationPreviewBox)

@@ -2,10 +2,10 @@
 module.exports = function () {
     var thisProvider = this;
     var steps = {
-        PROMOTER: [{id: 'lookup', component: 'organizationLookup', title: 'Organization Name'},
-            {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations and Industries'},
-            {id: 'address', component: 'organizationAddress', title: 'Address'},
-            {id: 'assets', component: 'organizationAssets', title: 'Assets', data: {optional: true}},
+        PROMOTER: [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
+            {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Areas'},
+            {id: 'address', component: 'organizationWeb', title: 'Web & Size'},
+            {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
             {id: 'preview', component: 'organizationPreview', title: 'Preview'}]
     };
     _.forEach(steps, function (subSteps) {
