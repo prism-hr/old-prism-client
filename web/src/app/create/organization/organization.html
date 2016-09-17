@@ -2,7 +2,7 @@
     <div class="preview {{typeLower}}" ng-if="$ctrl.organization.organization">
         <label>Preview</label>
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
-        <div ng-if="$ctrl.organization.id" layout="row" layout-align="center end">
+        <div ng-if="$ctrl.showNavigation" layout="row" layout-align="center end">
             <div class="preview-navigation" flex-gt-sm="75">
                 <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.stepIdx">
                     <md-tab label="{{step.title}}" ui-sref="{{typeLower}}.{{step.id}}" ng-repeat="step in $ctrl.createSteps">

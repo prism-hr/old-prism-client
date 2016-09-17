@@ -17,8 +17,12 @@ module.exports = {
         // }
 
         $rootScope.$watch('$state.current', function () {
-            if (self.wizard.getCurrentStep()) {
-                self.stepIdx = self.wizard.getCurrentStep().index;
+            var currentStep = self.wizard.getCurrentStep();
+            if (currentStep) {
+                if (currentStep.data.preview) {
+                    self.showNavigation = true;
+                }
+                self.stepIdx = currentStep.index;
                 self.nextStep = self.wizard.getNextStep();
                 self.prevStep = self.wizard.getPrevStep();
             }
