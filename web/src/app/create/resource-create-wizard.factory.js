@@ -6,12 +6,12 @@ module.exports = function () {
             {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Areas'},
             {id: 'address', component: 'organizationWeb', title: 'Web & Size'},
             {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
-            {id: 'preview', component: 'organizationPreview', title: 'Preview'}],
+            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
         DEPARTMENT: [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
             {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Areas'},
             {id: 'address', component: 'organizationWeb', title: 'Web & Size'},
             {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
-            {id: 'preview', component: 'organizationPreview', title: 'Preview'}]
+            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}]
     };
     _.forEach(steps, function (subSteps) {
         _.forEach(subSteps, function (step, index) {

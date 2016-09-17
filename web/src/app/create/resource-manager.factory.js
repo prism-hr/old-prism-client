@@ -18,11 +18,11 @@ module.exports = function ($q, Restangular, Upload) {
         } else {
             url = Restangular.all('organizationImplementations').getRestangularUrl();
         }
-        var resourcePost = angular.copy(_.omit(this._resource, ['state', 'userCreate']));
+        var resourcePost = angular.copy(_.omit(this._resource, ['state', 'userCreate', 'roles']));
         var logo = resourcePost.documentLogoImage;
-        var background = resourcePost.documentBackgroundImage;
+        // var background = resourcePost.documentBackgroundImage;
         resourcePost.documentLogoImage = null;
-        resourcePost.documentBackgroundImage = null;
+        // resourcePost.documentBackgroundImage = null;
         resourcePost.stateComplete = JSON.stringify(resourcePost.stateComplete);
         return Upload.upload({
             url: url,
