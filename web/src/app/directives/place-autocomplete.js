@@ -41,7 +41,7 @@ module.exports = function ($q) {
                     return;
                 }
                 var deferred = $q.defer();
-                autocomplete.getPlacePredictions({input: input, types: ['address']}, function (places) {
+                autocomplete.getPlacePredictions({input: input, types: ['geocode']}, function (places) {
                     deferred.resolve(places || {});
                 });
                 return deferred.promise;
@@ -52,7 +52,7 @@ module.exports = function ($q) {
                     var component = _.find(place.address_components, function (component) {
                         return _.includes(component.types, componentType);
                     });
-                    return component ? component.long_name : undefined;
+                    return component ? component.short_name : undefined;
                 }
 
                 var domicile = getAddressPart('country');

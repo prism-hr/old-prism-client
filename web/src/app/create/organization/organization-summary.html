@@ -1,9 +1,16 @@
 <div layout-padding>
-    <h3>Provide your company summary</h3>
+    <h3>Provide your company summary, locations and industries areas </h3>
     <md-input-container class="md-block">
         <label class="md-no-float">Strapline</label>
         <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="2" required></textarea>
     </md-input-container>
+    <div class="locations">
+        <label class="standalone-label">Locations </label>
+        <place-autocomplete ng-model="$ctrl.organization.location" name="foundAddress"
+                            placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
+        </place-autocomplete>
+    </div>
+
     <md-input-container class="md-block">
         <label class="md-no-float">Industries</label>
         <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
