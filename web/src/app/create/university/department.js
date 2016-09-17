@@ -1,5 +1,5 @@
 module.exports = {
-    template: require('./university.html'),
+    template: require('./department.html'),
     /** @ngInject */
     controller: function () {
         this.step = 0;

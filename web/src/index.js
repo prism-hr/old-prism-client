@@ -58,8 +58,8 @@ var promoterWelcome = require('./app/create/promoter/promoter-welcome');
 var employerView = require('./app/view/employer/employer-view');
 var positionView = require('./app/view/position/position-view');
 var position = require('./app/create/position/position');
-var universityWelcome = require('./app/create/university/university-welcome');
-var university = require('./app/create/university/university');
+var departmentWelcome = require('./app/create/university/department-welcome');
+var department = require('./app/create/university/department');
 var student = require('./app/create/student/student');
 
 require('./index.scss');
@@ -125,8 +125,8 @@ angular
     .component('employerView', employerView)
     .component('positionView', positionView)
     .component('position', position)
-    .component('universityWelcome', universityWelcome)
-    .component('university', university)
+    .component('departmentWelcome', departmentWelcome)
+    .component('department', department)
     .component('student', student)
     .component('activities', activities)
     .component('invited', invited);
