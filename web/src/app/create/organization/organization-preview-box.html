@@ -17,7 +17,7 @@
             </div>
             <h4 ng-if="$ctrl.organization.division.name">{{$ctrl.organization.division.name}}</h4>
             <p class="summary">{{$ctrl.organization.summary}}</p>
-            <p class="address">{{$ctrl.organization.location.name}}, {{$ctrl.organization.location.domicile}}</p>
+            <p class="address" ng-if="$ctrl.organization.location.name">{{$ctrl.organization.location.name}}, {{$ctrl.organization.location.domicile}}</p>
         </div>
     </md-card>
 </md>

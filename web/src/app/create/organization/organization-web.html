@@ -1,14 +1,20 @@
 <div layout-padding>
-    <h3>Web and Company Size</h3>
+    <h3>Web and {{'create.organization.lc-type.' + $ctrl.type | translate}} size</h3>
     <div class="secondary-options">
         <md-input-container class="md-block">
             <label class="md-no-float">Website <small>(http://yourweb.com )</small></label>
             <input type="url" name="website" ng-model="$ctrl.organization.website">
         </md-input-container>
         <md-input-container class="md-block">
-            <label class="md-no-float">Company Size <small>(number of employers)</small></label>
+            <label class="md-no-float">Number Staff</label>
             <md-select ng-model="size">
-                <md-option ng-repeat="size in $ctrl.sizes" value="{{size}}">{{size}}</md-option>
+                <md-option placeholder="Number Staff" ng-repeat="size in $ctrl.sizes" value="{{size}}">{{size}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" ng-if-="$ctrl.type === 'DEPARTMENT'">
+            <label class="md-no-float">Number of Students</label>
+            <md-select ng-model="student">
+                <md-option ng-repeat="student in $ctrl.students" value="{{student}}">{{student}}</md-option>
             </md-select>
         </md-input-container>
     </div>
