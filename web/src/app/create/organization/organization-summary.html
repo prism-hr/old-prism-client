@@ -1,5 +1,5 @@
 <div layout-padding>
-    <h3>Provide your company summary, locations and industries areas </h3>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.type | translate}} summary, locations and industries areas </h3>
     <md-input-container class="md-block">
         <label class="md-no-float">Strapline</label>
         <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="2" required></textarea>

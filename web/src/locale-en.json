@@ -1,6 +1,10 @@
 {
   "create": {
     "organization" : {
+      "lc-type": {
+        "PROMOTER": "company",
+        "DEPARTMENT": "department"
+      },
       "organization-lookup": {
         "autocomplete-placeholder": {
           "PROMOTER": "Lookup or create company",
@@ -9,16 +13,32 @@
         "lookup-button": {
           "PROMOTER": "Lookup Company",
           "DEPARTMENT": "Lookup University"
+        },
+        "lookup-title": {
+          "PROMOTER": "Find or create your company",
+          "DEPARTMENT": "Find or create your department"
+        },
+        "lookup-subtitle": {
+          "PROMOTER": "Create your company",
+          "DEPARTMENT": "Create your department"
+        },
+        "add-department": {
+          "PROMOTER": "Add division",
+          "DEPARTMENT": "Add department"
+        },
+        "cancel-department": {
+          "PROMOTER": "Cancel division",
+          "DEPARTMENT": "Cancel department"
         }
       },
       "address-lookup": {
         "autocomplete-placeholder": {
-          "PROMOTER": "Lookup your Address",
-          "DEPARTMENT": "Lookup your Address"
+          "PROMOTER": "Lookup your Location",
+          "DEPARTMENT": "Lookup your Location"
         },
         "lookup-button": {
-          "PROMOTER": "Lookup Address",
-          "DEPARTMENT": "Lookup Address"
+          "PROMOTER": "Lookup Location",
+          "DEPARTMENT": "Lookup Location"
         }
       }
     }

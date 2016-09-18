@@ -1,6 +1,6 @@
 <div class="lookup-organisation" flex="100" ng-if="!$ctrl.organization.organization">
     <div layout-padding>
-        <h3>Find or create your company</h3>
+        <h3>{{'create.organization.organization-lookup.lookup-title.' + $ctrl.type | translate}}</h3>
         <md-autocomplete
                 md-input-name="foundOrganization"
                 md-no-cache="true"
@@ -57,7 +57,7 @@
 <div flex="100" ng-if="$ctrl.organization.organization" class="manual-entering">
     <div layout-padding>
         <div layout="row" layout-align="space-between start">
-            <h3>Create your company</h3>
+            <h3>{{'create.organization.organization-lookup.lookup-subtitle.' + $ctrl.type | translate}}</h3>
             <span flex></span>
             <md-button ng-click="$ctrl.lookupOrganization()" class="md-warn md-raised small">
                 {{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}
@@ -74,9 +74,9 @@
                         <label class="md-no-float">Division Name</label>
                         <input name="divisionName" ng-model="$ctrl.organization.division.name">
                     </md-input-container>
-                    <md-button class="md-raised md-primary small" ng-click="$ctrl.addDivision(true)"  ng-if="!$ctrl.division">Add a Division</md-button>
+                    <md-button class="md-raised md-primary small" ng-click="$ctrl.addDivision(true)"  ng-if="!$ctrl.division">{{'create.organization.organization-lookup.add-department.' + $ctrl.type | translate}}</md-button>
                     <div class="secondary-actions" layout="row" layout-align="end start" flex-gt-xs="25" ng-if="$ctrl.division">
-                        <md-button class="md-warn md-raised small" ng-click="$ctrl.addDivision(false)">Cancel Division</md-button>
+                        <md-button class="md-warn md-raised small" ng-click="$ctrl.addDivision(false)">{{'create.organization.organization-lookup.cancel-department.' + $ctrl.type | translate}}</md-button>
                     </div>
                 </div>
 
