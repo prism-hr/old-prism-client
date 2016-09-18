@@ -22,6 +22,14 @@
           "PROMOTER": "Create your company",
           "DEPARTMENT": "Create your department"
         },
+        "create-label": {
+          "PROMOTER": "Company Name",
+          "DEPARTMENT": "University Name"
+        },
+        "department-label": {
+          "PROMOTER": "Division Name",
+          "DEPARTMENT": "Department Name"
+        },
         "add-department": {
           "PROMOTER": "Add division",
           "DEPARTMENT": "Add department"
