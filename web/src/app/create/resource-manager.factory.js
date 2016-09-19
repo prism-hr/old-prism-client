@@ -2,8 +2,9 @@
 module.exports = function ($q, Restangular, Upload) {
     var managers = {};
 
-    function ResourceManager(resource) {
+    function ResourceManager(endpoint, resource) {
         this._resource = resource || {stateComplete: {}};
+        this._endpoint = endpoint;
     }
 
     ResourceManager.prototype.getResource = function () {
@@ -12,11 +13,16 @@ module.exports = function ($q, Restangular, Upload) {
 
     ResourceManager.prototype.saveResource = function () {
         var self = this;
+
+        if (!this._endpoint) {
+            return $q.when(self._resource);
+        }
+
         var url;
         if (this._resource.id) {
-            url = Restangular.one('organizationImplementations', this._resource.id).getRestangularUrl();
+            url = this._endpoint.one(this._resource.id).getRestangularUrl();
         } else {
-            url = Restangular.all('organizationImplementations').getRestangularUrl();
+            url = this._endpoint.getRestangularUrl();
         }
         var resourcePost = angular.copy(_.omit(this._resource, ['state', 'userCreate', 'roles']));
         var logo = resourcePost.documentLogoImage;
@@ -40,17 +46,19 @@ module.exports = function ($q, Restangular, Upload) {
 
     return {
         getManager: function (id, type) {
+            var endpoint = type !== 'POSITION' && Restangular.all('organizationImplementations');
             if (id === 'new') {
                 if (!managers[type]) {
-                    managers[type] = new ResourceManager();
+                    managers[type] = new ResourceManager(endpoint);
                 }
                 return $q.when(managers[type]);
             }
-            return Restangular.one('organizationImplementations', id).get()
+
+            return endpoint.one(id).get()
                 .then(function (resource) {
                     resource = resource.plain();
                     resource.stateComplete = resource.stateComplete ? JSON.parse(resource.stateComplete) : {};
-                    return new ResourceManager(resource);
+                    return new ResourceManager(endpoint, resource);
                 });
         }
     };

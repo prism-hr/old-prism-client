@@ -46,20 +46,21 @@ var header = require('./app/general/header');
 var sidebar = require('./app/general/sidebar');
 var activities = require('./app/activities/activities');
 var invited = require('./app/unauthenticated/invited.component');
+var departmentWelcome = require('./app/create/department/department-welcome');
+var promoterWelcome = require('./app/create/promoter/promoter-welcome');
 var organization = require('./app/create/organization/organization');
-var organizationCategory = require('./app/create/organization/organization-category');
 var organizationLookup = require('./app/create/organization/organization-lookup');
 var organizationSummary = require('./app/create/organization/organization-summary');
 var organizationWeb = require('./app/create/organization/organization-web');
 var organizationAssets = require('./app/create/organization/organization-assets');
 var organizationPreview = require('./app/create/organization/organization-preview');
 var organizationPreviewBox = require('./app/create/organization/organization-preview-box');
-var promoterWelcome = require('./app/create/promoter/promoter-welcome');
+var position = require('./app/create/position/position');
+var positionCategory = require('./app/create/position/position-category');
+var positionPreview = require('./app/create/position/position-preview');
 var employerView = require('./app/view/employer/employer-view');
 var positionView = require('./app/view/position/position-view');
-var position = require('./app/create/position/position');
-var departmentWelcome = require('./app/create/university/department-welcome');
-var department = require('./app/create/university/department');
+var department = require('./app/create/department/department');
 var student = require('./app/create/student/student');
 
 require('./index.scss');
@@ -113,19 +114,20 @@ angular
     .component('sidebar', sidebar)
     .component('authenticate', authenticate)
     .component('regswitch', regswitch)
+    .component('departmentWelcome', departmentWelcome)
+    .component('promoterWelcome', promoterWelcome)
     .component('organization', organization)
-    .component('organizationCategory', organizationCategory)
     .component('organizationLookup', organizationLookup)
     .component('organizationSummary', organizationSummary)
     .component('organizationWeb', organizationWeb)
     .component('organizationAssets', organizationAssets)
     .component('organizationPreview', organizationPreview)
     .component('organizationPreviewBox', organizationPreviewBox)
-    .component('promoterWelcome', promoterWelcome)
+    .component('position', position)
+    .component('positionCategory', positionCategory)
+    .component('positionPreview', positionPreview)
     .component('employerView', employerView)
     .component('positionView', positionView)
-    .component('position', position)
-    .component('departmentWelcome', departmentWelcome)
     .component('department', department)
     .component('student', student)
     .component('activities', activities)

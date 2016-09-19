@@ -11,6 +11,8 @@ module.exports = function () {
             {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Areas'},
             {id: 'address', component: 'organizationWeb', title: 'Web & Size'},
             {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
+            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
+        POSITION: [{id: 'category', component: 'positionCategory', title: 'Category'},
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}]
     };
     _.forEach(steps, function (subSteps) {
@@ -103,7 +105,7 @@ module.exports = function () {
 
             this._resourceManager.saveResource()
                 .then(function (resource) {
-                    $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id});
+                    $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
                 });
         };
 

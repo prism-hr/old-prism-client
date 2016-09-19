@@ -67,6 +67,22 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('University Information')
             }
         })
+        .state('position', {
+            url: '/position/{id:new|\\d+}',
+            abstract: true,
+            component: 'position',
+            data: {auth: true},
+            resolve: {
+                type: _.wrap('POSITION'),
+                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                    return resourceManagerFactory.getManager($stateParams.id, type)
+                        .then(function (resourceManager) {
+                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
+                        });
+                },
+                $title: _.wrap('Position')
+            }
+        })
         .state('employer-view', {
             url: '/employer-view',
             component: 'employerView',
@@ -81,14 +97,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 $title: _.wrap('Graduate Software and Electronics Engineers')
-            }
-        })
-        .state('position', {
-            url: '/position',
-            component: 'position',
-            data: {auth: true},
-            resolve: {
-                $title: _.wrap('Create Position')
             }
         })
         .state('departmentWelcome', {
@@ -136,28 +144,34 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
 
         });
 
-    _.each(['PROMOTER', 'DEPARTMENT'], function (resourceType) {
+    _.each(['PROMOTER', 'DEPARTMENT', 'POSITION'], function (resourceType) {
         _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(resourceType), function (step, index) {
             var data = angular.copy(step.data) || {};
             data.stepIdx = index;
             var component = _.kebabCase(step.component);
+            var template;
+            if (resourceType === 'POSITION') {
+                template = '<' + component + ' type="{{type}}" form="positionForm" position="resource" wizard="wizard"></' + component + '>';
+            } else {
+                template = '<' + component + ' type="{{type}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
+            }
             $stateProvider
                 .state(resourceType.toLowerCase() + '.' + step.id, {
                     url: '/' + step.id,
-                    template: '<' + component + ' type="{{type}}" form="organizationForm" organization="organization" wizard="wizard"></' + component + '>',
+                    template: template,
                     data: data,
                     resolve: {
-                        organization: function (wizard) {
+                        resource: function (wizard) {
                             return wizard.getResource();
                         },
-                        $title: function (organization) {
-                            var prefix = organization ? '' : 'Step ' + (index + 1) + ': ';
+                        $title: function (resource) {
+                            var prefix = resource ? '' : 'Step ' + (index + 1) + ': ';
                             return prefix + step.title;
                         }
                     },
-                    controller: function ($scope, type, organization, wizard) {
+                    controller: function ($scope, type, resource, wizard) {
                         $scope.type = type;
-                        $scope.organization = organization;
+                        $scope.resource = resource;
                         $scope.wizard = wizard;
                     }
                 });
