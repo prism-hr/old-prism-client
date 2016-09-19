@@ -17,14 +17,14 @@
                   init-max-area="true"></img-crop>
     </div>
     <div layout="row" layout-align="center center">
-        <small>Minimun Image size 1280 x 320</small>
+        <small>Minimum Image size 1280 x 320</small>
         <span class="flex"></span>
         <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()"
                    ng-if="$ctrl.organization.documentBackgroundImageOriginal">Clear Image
         </md-button>
     </div>
     <div ng-messages="$ctrl.form.background.$error" role="alert">
-        <div ng-messages-include="my-custom-messages"></div>
+        <div ng-messages-include="general-messages"></div>
     </div>
 </div>
 <md-card class="text-editor">
