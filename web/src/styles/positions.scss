@@ -111,9 +111,19 @@
   }
 }
 .background-box {
-  background: url(/img/emp-back.png) left top no-repeat;
-  background-size: cover;
   height: 320px;
+}
+.promoter {
+  .background-box {
+    background: url(/img/emp-back.png) left top no-repeat;
+    background-size: cover;
+  }
+}
+.department {
+  .background-box {
+    background: url(/img/uni-back.png) left top no-repeat;
+    background-size: cover;
+  }
 }
 .position-box {
   margin-top:-137px;
