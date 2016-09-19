@@ -268,7 +268,9 @@ img-crop {
     background-color: rgba(0, 0, 0, 0.75);
   }
 }
-
+.department-lookup {
+  margin-top:16px;
+}
 // MediaQ
 @media (max-width: $layout-breakpoint-xs - 1) {
   .step-page {

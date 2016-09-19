@@ -21,7 +21,7 @@
             </md-item-template>
         </md-autocomplete>
 
-        <div ng-if="$ctrl.selectedOrganization">
+        <div ng-if="$ctrl.selectedOrganization" class="department-lookup">
             <md-autocomplete
                     md-input-name="selectedOrganizationImplementation"
                     md-no-cache="true"
@@ -92,15 +92,8 @@
                 <label class="md-no-float">
                     {{'create.organization.organization-lookup.organization-label.' + $ctrl.type | translate}}
                 </label>
-                <label>{{$ctrl.organization.organization.name}}</label>
-                <!--<input name="companyName" ng-model="$ctrl.organization.organization.name" required>-->
+                <input name="divisionName" ng-model="$ctrl.organization.organization.name" disabled="disabled">
             </md-input-container>
-
-            <br />
-            <br />
-            <br />
-            <br />
-
             <md-input-container class="md-block">
                 <label class="md-no-float">
                     {{'create.organization.organization-lookup.implementation-label.' + $ctrl.type | translate}}

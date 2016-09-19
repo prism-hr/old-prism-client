@@ -16,6 +16,7 @@
                 <a ng-href="{{$ctrl.organization.website}}" target="_blank" ng-if="$ctrl.organization.website" class="website"><i class="icon-globe"></i> Web</a>
             </div>
             <h4 ng-if="$ctrl.organization.division.name">{{$ctrl.organization.division.name}}</h4>
+            <h4 ng-if="$ctrl.organization.name">{{$ctrl.organization.name}}</h4>
             <p class="summary">{{$ctrl.organization.summary}}</p>
             <p class="address">{{$ctrl.organization.location.description}}</p>
         </div>
