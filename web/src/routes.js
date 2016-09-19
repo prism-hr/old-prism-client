@@ -51,6 +51,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Company Information')
             }
         })
+        .state('departmentWelcome', {
+            url: '/department/welcome',
+            component: 'departmentWelcome',
+            data: {auth: true},
+            resolve: {
+                $title: _.wrap('Welcome University')
+            }
+        })
         .state('department', {
             url: '/department/{id:new|\\d+}',
             abstract: true,
@@ -97,14 +105,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 $title: _.wrap('Graduate Software and Electronics Engineers')
-            }
-        })
-        .state('departmentWelcome', {
-            url: '/departmentWelcome',
-            component: 'departmentWelcome',
-            data: {auth: true},
-            resolve: {
-                $title: _.wrap('Welcome University')
             }
         })
         .state('universityOrganization', {

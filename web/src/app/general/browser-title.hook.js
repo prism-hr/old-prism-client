@@ -21,5 +21,8 @@ function browserTitle($rootScope, $state, $transitions) {
         $rootScope.$breadcrumbs = toPathNodes
             .map(getBreadcrumb)
             .filter(angular.identity);
+        if ($rootScope.$breadcrumbs.length > 1) {
+            $rootScope.$title = _.map($rootScope.$breadcrumbs, 'title').join(' > ');
+        }
     });
 }
