@@ -19,13 +19,13 @@
         <md-input-container class="md-block">
             <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
             <div ng-messages="loginForm.username.$error" role="alert">
-                <div ng-messages-include="my-custom-messages"></div>
+                <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
             <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required type="password">
             <div ng-messages="loginForm.password.$error" role="alert">
-                <div ng-messages-include="my-custom-messages"></div>
+                <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
     </div>
