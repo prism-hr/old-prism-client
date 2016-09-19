@@ -3,7 +3,7 @@
         <label>Preview</label>
         <div class="background-box"></div>
         <div class="position-box" layout="row" layout-align="center end">
-            <div class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
+            <md-card class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
                 <div class="logo-image">
                     <div class="logo-flex company-logo">
                         <div class="logo">
@@ -58,11 +58,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </md-card>
         </div>
     </div>
     <form novalidate name="positionForm" ng-submit="$ctrl.next(positionForm)">
-        <md-card layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
             <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="step-wizard">
                     <div ui-view class="fade-animation"></div>
@@ -78,6 +78,6 @@
                     </md-button>
                 </md-card-actions>
             </md-card>
-</div>
-</form>
+        </div>
+    </form>
 </div>
