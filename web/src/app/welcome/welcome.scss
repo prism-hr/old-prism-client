@@ -1,17 +1,6 @@
 welcome {
   .splash-container {
     padding: 60px 0 40px;
-
-    .strap-line {
-      font-size: 2.4rem;
-      font-weight: 300;
-      text-align: center;
-      color: $uclred;
-      margin-bottom: 30px;
-      b {
-        font-weight: 400;
-      }
-    }
     .splash-box-container {
       .box-item {
         position: relative;
@@ -123,8 +112,67 @@ welcome {
       }
     }
   }
+  .prices-box {
+    padding: 20px 40px 40px;
+    md-card md-card-title + md-card-content {
+      padding-top:16px;
+      p {
+        margin-top:0;
+      }
+    }
+    .price-item {
+      background: #fafafa;
+      text-align: center;
+      margin: 20px;
+      md-card-title {
+        padding-top:16px !important;
+        border-bottom:3px solid $uclred;
+        max-height: 51px;
+        background: white;
+      }
+      &.university {
+        h2 {
+          color: $uclgreen;
+        }
+        md-card-title {
+          border-bottom:3px solid $uclgreen;
+        }
+      }
+      &.student {
+        h2 {
+          color: $uclblue;
+        }
+        md-card-title {
+          border-bottom:3px solid $uclblue;
+        }
+      }
+      md-card-actions {
+        margin-bottom:8px;
+        .md-button {
+          width: 86%;
+        }
+      }
+      h3, h4 {
+        color: $uclfooter;
+        font-weight:400;
+      }
+      h4 {
+        font-weight:600;
+        margin-bottom:6px;
+      }
+    }
+  }
 }
-
+.strap-line {
+  font-size: 2.4rem;
+  font-weight: 300;
+  text-align: center;
+  color: $uclred;
+  margin-bottom: 30px;
+  b {
+    font-weight: 400;
+  }
+}
 .big-padding{
   padding: 40px 120px;
 }
