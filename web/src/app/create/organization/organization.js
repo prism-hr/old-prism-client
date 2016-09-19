@@ -5,7 +5,7 @@ module.exports = {
         type: '<'
     },
     /** @ngInject */
-    controller: function ($rootScope, $timeout, $state) {
+    controller: function ($rootScope) {
         var self = this;
         this.typeLower = self.type.toLowerCase();
         this.organization = self.wizard.getResource();
