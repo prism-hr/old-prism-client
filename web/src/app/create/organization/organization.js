@@ -8,6 +8,7 @@ module.exports = {
     controller: function ($rootScope) {
         var self = this;
         this.typeLower = self.type.toLowerCase();
+        this.type = self.type;
         this.organization = self.wizard.getResource();
         this.createSteps = self.wizard.getSteps();
 

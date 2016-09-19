@@ -87,7 +87,7 @@ welcome {
     margin:30px 120px 60px;
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(87, 172, 213, 0), rgba(87, 172, 213, 1), rgba(87, 172, 213, 0));
+    background-image: linear-gradient(to right, rgba($uclblue, 0), rgba($uclblue, 1), rgba($uclblue, 0));
   }
   .app-intro {
     h2 {
@@ -119,6 +119,10 @@ welcome {
       p {
         margin-top:0;
       }
+      hr {
+        padding:0 10px;
+        margin:20px 0;
+      }
     }
     .price-item {
       background: #fafafa;
@@ -127,6 +131,7 @@ welcome {
       md-card-title {
         padding-top:16px !important;
         border-bottom:3px solid $uclred;
+        border-top:3px solid $uclred;
         max-height: 51px;
         background: white;
       }
@@ -134,8 +139,17 @@ welcome {
         h2 {
           color: $uclgreen;
         }
+        hr {
+          background-image: linear-gradient(to right, rgba($uclgreen, 0), rgba($uclgreen, 1), rgba($uclgreen, 0));
+        }
         md-card-title {
           border-bottom:3px solid $uclgreen;
+          border-top:3px solid $uclgreen;
+        }
+      }
+      &.employer {
+        hr {
+          background-image: linear-gradient(to right, rgba($uclred, 0), rgba($uclred, 1), rgba($uclred, 0));
         }
       }
       &.student {
@@ -144,6 +158,7 @@ welcome {
         }
         md-card-title {
           border-bottom:3px solid $uclblue;
+          border-top:3px solid $uclblue;
         }
       }
       md-card-actions {
