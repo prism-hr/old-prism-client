@@ -1,28 +1,34 @@
 /** @ngInject */
 module.exports = function ($q, Restangular, Upload) {
     var managers = {};
+    var collectionNames = {
+        'PROMOTER': 'organizationImplementations',
+        'DEPARTMENT': 'organizationImplementations',
+        'POSITION': 'positions'
+    };
 
-    function ResourceManager(endpoint, resource) {
+    function ResourceManager(type, resource) {
         this._resource = resource || {stateComplete: {}};
-        this._endpoint = endpoint;
+        this._type = type;
     }
 
     ResourceManager.prototype.getResource = function () {
         return this._resource;
     };
 
-    ResourceManager.prototype.saveResource = function () {
+    ResourceManager.prototype.saveResource = function (step) {
         var self = this;
 
-        if (!this._endpoint) {
+        if (this._type === 'POSITION') { // TODO drop these lines when position is ready
             return $q.when(self._resource);
         }
 
+        var collectionName = collectionNames[this._type];
         var url;
         if (this._resource.id) {
-            url = this._endpoint.one(this._resource.id).getRestangularUrl();
+            url = Restangular.one(collectionName, this._resource.id).getRestangularUrl();
         } else {
-            url = this._endpoint.getRestangularUrl();
+            url = Restangular.all(collectionName).getRestangularUrl();
         }
         var resourcePost = angular.copy(_.omit(this._resource, ['state', 'userCreate', 'roles']));
         var logo = resourcePost.documentLogoImage;
@@ -33,6 +39,9 @@ module.exports = function ($q, Restangular, Upload) {
         return Upload.upload({
             url: url,
             data: {
+                section: step,
+                context: self._type,
+                drafting: true,
                 data: Upload.json(resourcePost),
                 file: logo
             }
@@ -46,19 +55,18 @@ module.exports = function ($q, Restangular, Upload) {
 
     return {
         getManager: function (id, type) {
-            var endpoint = type !== 'POSITION' && Restangular.all('organizationImplementations');
             if (id === 'new') {
                 if (!managers[type]) {
-                    managers[type] = new ResourceManager(endpoint);
+                    managers[type] = new ResourceManager(type);
                 }
                 return $q.when(managers[type]);
             }
 
-            return endpoint.one(id).get()
+            return Restangular.one(collectionNames[type], id).get()
                 .then(function (resource) {
                     resource = resource.plain();
                     resource.stateComplete = resource.stateComplete ? JSON.parse(resource.stateComplete) : {};
-                    return new ResourceManager(endpoint, resource);
+                    return new ResourceManager(type, resource);
                 });
         }
     };
