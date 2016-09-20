@@ -182,9 +182,22 @@
 .horizontal-form {
   md-radio-button {
     display: inline-block;
+    border-bottom:none !important;
   }
   .radio-box {
     border: none;
+  }
+}
+.audience {
+  margin-top:20px;
+  .sub-audience {
+    md-switch {
+      min-width: 260px;
+    }
+    md-input-container {
+      margin-top: 12px;
+      min-width: 260px;
+    }
   }
 }
 .radio-box {

@@ -397,3 +397,10 @@ text-angular.form-control {
 @media (min-width: $layout-breakpoint-lg) {
 
 }
+md-input-container.md-prism-theme.md-input-invalid .md-input {
+  &.ng-untouched {
+    color: rgba(0,0,0,0.87);
+    border-color: rgba(0,0,0,0.12);
+  }
+}
+
