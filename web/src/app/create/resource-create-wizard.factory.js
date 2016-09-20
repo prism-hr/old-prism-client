@@ -103,7 +103,7 @@ module.exports = function () {
             var currentStep = this.getStepForName(this._currentStep);
             resource.stateComplete[currentStep.id] = true;
 
-            this._resourceManager.saveResource()
+            this._resourceManager.saveResource(currentStep.id)
                 .then(function (resource) {
                     $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
                 });
