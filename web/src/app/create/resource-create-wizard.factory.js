@@ -4,15 +4,17 @@ module.exports = function () {
     var steps = {
         PROMOTER: [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
             {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Areas'},
-            {id: 'address', component: 'organizationWeb', title: 'Web & Size'},
+            {id: 'web', component: 'organizationWeb', title: 'Web & Size'},
             {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
         DEPARTMENT: [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
             {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Areas'},
-            {id: 'address', component: 'organizationWeb', title: 'Web & Size'},
+            {id: 'web', component: 'organizationWeb', title: 'Web & Size'},
             {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
         POSITION: [{id: 'category', component: 'positionCategory', title: 'Category'},
+            {id: 'details', component: 'positionDetails', title: 'Title, Type & Summary'},
+            {id: 'location', component: 'positionLocations', title: 'Location, Industries & Audience '},
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}]
     };
     _.forEach(steps, function (subSteps) {

@@ -1,0 +1,23 @@
+<div layout-padding>
+    <h3>Provide Type, Title and Strapline of the promotion</h3>
+    <label class="standalone-label">Type of promotion</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.position.type" class="horizontal-form">
+        <md-radio-button value="POSITION" class="md-primary" checked="checked" ng-checked="true">
+           Position
+        </md-radio-button>
+        <md-radio-button value="PLACEMENT" class="md-primary">
+            Placement
+        </md-radio-button>
+        <md-radio-button value="EVENT" class="md-primary">
+            Event
+        </md-radio-button>
+    </md-radio-group>
+    <md-input-container class="md-block">
+        <label class="md-no-float">Title</label>
+        <input name="divisionName" ng-model="$ctrl.position.name" required>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <label class="md-no-float">Strapline</label>
+        <textarea ng-model="$ctrl.position.summary" md-maxlength="140" rows="2" required></textarea>
+    </md-input-container>
+</div>
