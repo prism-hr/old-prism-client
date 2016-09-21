@@ -13,6 +13,7 @@
                 md-min-length="1"
                 placeholder="{{'create.organization.organization-lookup.organization-placeholder.' + $ctrl.type | translate}}"
                 md-menu-class="autocomplete-custom-template"
+                md-require-match
                 required>
             <md-item-template>
             <span md-highlight-text="searchText">
@@ -34,6 +35,7 @@
                     md-min-length="1"
                     placeholder="{{'create.organization.organization-lookup.implementation-placeholder.' + $ctrl.type | translate}}"
                     md-menu-class="autocomplete-custom-template"
+                    md-require-match
                     required>
                 <md-item-template>
             <span md-highlight-text="searchText">
@@ -92,13 +94,13 @@
                 <label class="md-no-float">
                     {{'create.organization.organization-lookup.organization-label.' + $ctrl.type | translate}}
                 </label>
-                <input name="divisionName" ng-model="$ctrl.organization.organization.name" disabled="disabled">
+                <input name="organizationName" ng-model="$ctrl.organization.organization.name" disabled="disabled">
             </md-input-container>
             <md-input-container class="md-block">
                 <label class="md-no-float">
                     {{'create.organization.organization-lookup.implementation-label.' + $ctrl.type | translate}}
                 </label>
-                <input name="divisionName" ng-model="$ctrl.organization.name" required>
+                <input name="implementationName" ng-change="$ctrl.implementationNameChanged($ctrl.organization.name)" ng-model="$ctrl.organization.name" required>
             </md-input-container>
 
             <div ng-if="false" layout-gt-xs="row" class="division-controls">

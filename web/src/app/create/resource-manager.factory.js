@@ -8,7 +8,7 @@ module.exports = function ($q, Restangular, Upload) {
     };
 
     function ResourceManager(type, resource) {
-        this._resource = resource || {stateComplete: {}};
+        this._resource = resource || {};
         this._type = type;
     }
 
@@ -34,20 +34,18 @@ module.exports = function ($q, Restangular, Upload) {
         var logo = resourcePost.documentLogoImage;
         // var background = resourcePost.documentBackgroundImage;
         resourcePost.documentLogoImage = null;
-        // resourcePost.documentBackgroundImage = null;
-        resourcePost.stateComplete = JSON.stringify(resourcePost.stateComplete);
+        resourcePost.documentBackgroundImage = null;
         return Upload.upload({
             url: url,
             data: {
                 section: step,
                 context: self._type,
-                drafting: true,
                 data: Upload.json(resourcePost),
                 file: logo
             }
         }).then(function (response) {
             if (!self._resource.id) {
-                self._resource = {stateComplete: {}};
+                self._resource = {};
             }
             return self._resource.id ? self._resource : response.data;
         });
@@ -64,9 +62,7 @@ module.exports = function ($q, Restangular, Upload) {
 
             return Restangular.one(collectionNames[type], id).get()
                 .then(function (resource) {
-                    resource = resource.plain();
-                    resource.stateComplete = resource.stateComplete ? JSON.parse(resource.stateComplete) : {};
-                    return new ResourceManager(type, resource);
+                    return new ResourceManager(type, resource.plain());
                 });
         }
     };

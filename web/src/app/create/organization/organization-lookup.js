@@ -63,6 +63,17 @@ module.exports = {
             this.setView('lookup');
         };
 
+        // Rx.createObservableFunction(this, 'implementationNameChanged')
+        //     .flatMapLatest(function (name) {
+        //         return Restangular.one('organizations', self.organization.organization.id).all('organizationImplementations').getList({searchTerm: name})
+        //             .then(function (implementations) {
+        //                 return implementations.plain();
+        //             });
+        //     })
+        //     .subscribe(function (results) {
+        //         console.log(results);
+        //     });
+
         this.division = false;
         this.addDivision = function (bolean) {
             this.division = bolean;
