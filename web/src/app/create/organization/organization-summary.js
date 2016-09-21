@@ -9,7 +9,6 @@ module.exports = {
     controller: function () {
         var self = this;
 
-        self.readonly = false;
         self.selectedItem = null;
         self.searchText = null;
         self.querySearch = querySearch;
@@ -18,7 +17,6 @@ module.exports = {
         self.numberChips = [];
         self.numberChips2 = [];
         self.numberBuffer = '';
-        self.autocompleteDemoRequireMatch = true;
         self.transformChip = transformChip;
 
         /**
