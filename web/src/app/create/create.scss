@@ -162,6 +162,7 @@
 }
 .autocomplete-custom-template {
   li {
+    height: auto;
     &:first-child {
       font-size: 16px;
       color: white;
@@ -174,6 +175,16 @@
         color: white;
       }
     }
+  }
+}
+.checkboxes-group {
+ > div {
+   display: inline-block;
+   margin-right:20px;
+ }
+  md-checkbox {
+    font-size: 18px;
+    font-weight: 700;
   }
 }
 .locations {
@@ -198,6 +209,24 @@
       margin-top: 12px;
       min-width: 260px;
     }
+  }
+}
+.radio-box-alined {
+  md-radio-button {
+    line-height:50px;
+  }
+}
+.medium {
+  .md-label {
+    font-size:18px;
+    margin-left:32px;
+    font-weight:700;
+  }
+}
+md-datepicker {
+  margin-left: -16px;
+  .md-datepicker-input{
+    font-size:18px;
   }
 }
 .radio-box {

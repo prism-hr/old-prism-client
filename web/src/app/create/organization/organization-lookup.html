@@ -16,9 +16,17 @@
                 md-require-match
                 required>
             <md-item-template>
-            <span md-highlight-text="searchText">
-                {{organization.id ? organization.name : 'Create ' + organization.name}}
-            </span>
+                <div layout="row">
+                    <div class="icon">
+                        <div class="logo" ng-if="organization.documentLogoImageId">
+                            <img ng-src="{{$root.documentsUrl + organization.documentLogoImageId}}">
+                        </div>
+                    </div>
+                    <div>
+                        <span md-highlight-text="searchText" class="item-title"> {{organization.id ? organization.name : 'Create ' + organization.name}} </span>
+                        <span class="item-location" ng-if="organization.location"> {{organization.location}}</span>
+                    </div>
+                </div>
             </md-item-template>
         </md-autocomplete>
 

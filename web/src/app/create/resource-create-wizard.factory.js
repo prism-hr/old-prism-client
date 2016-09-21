@@ -14,7 +14,9 @@ module.exports = function () {
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
         POSITION: [{id: 'category', component: 'positionCategory', title: 'Category'},
             {id: 'details', component: 'positionDetails', title: 'Title, Type & Summary'},
-            {id: 'location', component: 'positionLocations', title: 'Location, Industries & Audience '},
+            {id: 'location', component: 'positionLocations', title: 'Location, Industries & Audience'},
+            {id: 'availability', component: 'positionAvailability', title: 'Availability'},
+            {id: 'salary', component: 'positionSalary', title: 'Salary'},
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}]
     };
     _.forEach(steps, function (subSteps) {

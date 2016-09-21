@@ -1,4 +1,5 @@
 module.exports = materialConfig;
+// module.exports = dateFormatProvider;
 
 /** @ngInject */
 function materialConfig($mdThemingProvider) {
@@ -66,3 +67,14 @@ function materialConfig($mdThemingProvider) {
         .backgroundPalette('grey');
     $mdThemingProvider.setDefaultTheme('prism');
 }
+// TODO moment integration for date format
+// function dateFormatProvider($mdDateLocaleProvider, moment) {
+//     $mdDateLocaleProvider.formatDate = function (date) {
+//         return moment(date).format('DD/MM/YYYY');
+//     };
+//
+//     $mdDateLocaleProvider.parseDate = function (dateString) {
+//         var m = moment(dateString, 'DD/MM/YYYY', true);
+//         return m.isValid() ? m.toDate() : new Date(NaN);
+//     };
+// }
