@@ -17,6 +17,7 @@ require('textAngular');
 require('angular-ui-router');
 require('angular-recaptcha');
 require('satellizer');
+require('rx-angular');
 require('textangular/dist/textAngular-sanitize.min');
 
 var routes = require('./routes');
@@ -88,7 +89,8 @@ angular
         'ngAnimate',
         'textAngular',
         'pascalprecht.translate',
-        'uiGmapgoogle-maps'
+        'uiGmapgoogle-maps',
+        'rx'
     ])
     .constant('environment', environment)
     .config(routes)

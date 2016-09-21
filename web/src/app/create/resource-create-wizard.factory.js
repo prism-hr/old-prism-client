@@ -59,15 +59,17 @@ module.exports = function () {
          * @return {boolean|string} true when step can be entered or `stepName` which router should redirect browser to
          */
         ResourceCreateWizard.prototype.onEnter = function (toStep) {
-            var stateComplete = this.getResource().stateComplete;
+            var stateComplete = this.getResource().stateComplete || [];
 
             var missingStepEncountered = false;
             var lastNotCompleteStep = null;
             _.each(this._steps, function (step) {
                 if (!missingStepEncountered) {
                     step.available = true;
-                    if (stateComplete[step.id]) {
+                    var complete = _.find(stateComplete, {section: step.id});
+                    if (complete) {
                         step.complete = true;
+                        step.skipped = complete.skipped;
                     } else if (!step.data.optional) {
                         missingStepEncountered = true;
                         lastNotCompleteStep = step.id;
@@ -100,12 +102,7 @@ module.exports = function () {
                 $state.go(this._resourceType.toLowerCase() + 'Welcome');
             }
 
-            // update stateComplete
-            var resource = this.getResource();
-            var currentStep = this.getStepForName(this._currentStep);
-            resource.stateComplete[currentStep.id] = true;
-
-            this._resourceManager.saveResource(currentStep.id)
+            this._resourceManager.saveResource(this._currentStep)
                 .then(function (resource) {
                     $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
                 });
