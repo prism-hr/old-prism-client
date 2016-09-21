@@ -11,7 +11,7 @@
                     md-items="place in getPlaces(searchText)"
                     md-item-text="place.description"
                     placeholder="{{placeholder}}">
-                <span md-highlight-text="$ctrl.searchText">{{place.description}}</span>
+                <span md-highlight-text="searchText">{{place.description}}</span>
             </md-autocomplete>
             <md-chip-template>
                 {{$chip.description}}

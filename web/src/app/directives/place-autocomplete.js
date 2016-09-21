@@ -24,7 +24,6 @@ module.exports = function ($q) {
             };
 
             scope.transformChip = function (chip) {
-                console.log(chip);
                 return {googleId: chip.place_id, description: chip.description};
             };
 
