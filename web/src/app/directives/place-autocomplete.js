@@ -20,18 +20,21 @@ module.exports = function ($q) {
             var placeService = new google.maps.places.PlacesService(map);
 
             ngModel.$render = function () {
-                scope.searchText = _.get(ngModel.$modelValue, 'description');
+                scope.places = ngModel.$modelValue ? angular.copy(_.map(ngModel.$modelValue, 'location')) : [];
             };
 
-            scope.placeSelected = function (selectedPlace) {
-                if (!selectedPlace) {
-                    ngModel.$setViewValue(undefined);
-                    return;
-                }
-                placeService.getDetails({placeId: selectedPlace.place_id}, function (place) {
+            scope.transformChip = function (chip) {
+                console.log(chip);
+                return {googleId: chip.place_id, description: chip.description};
+            };
+
+            scope.placeAdded = function (place) {
+                placeService.getDetails({placeId: place.googleId}, function (placeDetails) {
                     scope.$apply(function () {
-                        var location = extractLocation(place);
-                        ngModel.$setViewValue(location);
+                        applyLocationFields(place, placeDetails);
+                        ngModel.$setViewValue(_.map(scope.places, function (place) {
+                            return {location: place};
+                        }));
                     });
                 });
             };
@@ -47,9 +50,9 @@ module.exports = function ($q) {
                 return deferred.promise;
             };
 
-            function extractLocation(place) {
+            function applyLocationFields(place, placeDetails) {
                 function getAddressPart(componentType, type) {
-                    var component = _.find(place.address_components, function (component) {
+                    var component = _.find(placeDetails.address_components, function (component) {
                         return _.includes(component.types, componentType);
                     });
                     if (type === 'long') {
@@ -59,24 +62,20 @@ module.exports = function ($q) {
                 }
 
                 var domicile = getAddressPart('country', 'short');
-                var displayAddress = place.formatted_address;
+                var displayAddress = placeDetails.formatted_address;
                 var alternativeTown = getAddressPart('locality', 'long');
                 var administrativeAreaLevel1 = getAddressPart('administrative_area_level_1', 'long');
                 var administrativeAreaLevel2 = getAddressPart('administrative_area_level_2', 'long');
                 var administrativeAreaLevel3 = getAddressPart('administrative_area_level_3', 'long');
                 var administrativeAreaLevel4 = getAddressPart('administrative_area_level_4', 'long');
                 var naturalFeature = getAddressPart('natural_feature', 'long');
-                var geolocation = place.geometry.location;
+                var geolocation = placeDetails.geometry.location;
 
-                var location = {};
-                location.name = alternativeTown || naturalFeature || administrativeAreaLevel4 || administrativeAreaLevel3 || administrativeAreaLevel2 || administrativeAreaLevel1;
-                location.description = displayAddress;
-                location.domicile = domicile;
-                location.googleId = place.place_id;
-                location.latitude = geolocation.lat();
-                location.longitude = geolocation.lng();
-
-                return location;
+                place.name = alternativeTown || naturalFeature || administrativeAreaLevel4 || administrativeAreaLevel3 || administrativeAreaLevel2 || administrativeAreaLevel1;
+                place.description = displayAddress;
+                place.domicile = domicile;
+                place.latitude = geolocation.lat();
+                place.longitude = geolocation.lng();
             }
         }
     };
