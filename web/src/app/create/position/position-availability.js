@@ -6,7 +6,7 @@ module.exports = {
     /** @ngInject */
     controller: function () {
         this.promotionDate = new Date();
-        this.promotionClosingDate = new Date();
+        this.promotionClosingDate = this.promotionDate;
         this.minPromotionDate = new Date(
             this.promotionDate.getFullYear(),
             this.promotionDate.getMonth(),
