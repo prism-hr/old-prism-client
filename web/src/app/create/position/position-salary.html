@@ -1,4 +1,75 @@
 <div layout-padding>
     <h3>Provide Promotion Salary</h3>
-
+    <label class="standalone-label">Salary options</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.position.salary" class="horizontal-form medium">
+        <div class="radio-box-alined">
+            <md-radio-button value="RANGE" class="md-primary" checked="checked" ng-checked="true">
+                Salary Range
+            </md-radio-button>
+            <md-radio-button value="COMPETITIVE" class="md-primary">
+                Competitive Salary
+            </md-radio-button>
+            <md-radio-button value="NO-SALARY" class="md-primary">
+                No Salary
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+    <div class="payment-range" ng-if="$ctrl.position.salary === 'RANGE'">
+        <label class="standalone-label">Salary Range</label>
+        <div layout="row">
+            <md-input-container>
+                <label>Min</label>
+                <input required type="number" name="duration-min" ng-model="$ctrl.position.salaryMin" min="1"
+                       max="99999"/>
+            </md-input-container>
+            <md-input-container>
+                <label>Max</label>
+                <input type="number" name="duration-max" ng-model="$ctrl.position.salaryMax" min="2"
+                       max="99999"/>
+            </md-input-container>
+            <md-input-container>
+                <label>Currency</label>
+                <md-select ng-model="$ctrl.position.currency" required>
+                    <md-option value="GBP"> £ - GBP</md-option>
+                    <md-option value="EURO"> € - Euro</md-option>
+                    <md-option value="DOLLAR"> $ - Dollar</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Interval</label>
+                <md-select ng-model="$ctrl.position.interval" required>
+                    <md-option value="HOUR">Hour</md-option>
+                    <md-option value="DAY">Day</md-option>
+                    <md-option value="MONTH">Month</md-option>
+                    <md-option value="YEAR">Year</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="benefits">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Benefits</label>
+            <md-chips
+                    ng-model="$ctrl.selectedBenefits.types"
+                    md-transform-chip="$ctrl.transformChip($chip)">
+                <md-autocomplete
+                        md-selected-item="$ctrl.selectedOption"
+                        md-search-text="$ctrl.searchText"
+                        md-items="typeOption in $ctrl.launchBenefits"
+                        md-item-text="typeOption.name"
+                        md-min-length="0"
+                        md-no-cache="true"
+                        placeholder="Search or type Benefit">
+                    <span md-highlight-text="$ctrl.searchText">{{typeOption.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>{{$chip.name}}</span>
+                </md-chip-template>
+            </md-chips>
+        </md-input-container>
+    </div>
+    <md-input-container class="md-block">
+        <label class="md-no-float">Benefits description</label>
+        <textarea ng-model="$ctrl.position.benefitDescription" md-maxlength="250" rows="2" ></textarea>
+    </md-input-container>
 </div>

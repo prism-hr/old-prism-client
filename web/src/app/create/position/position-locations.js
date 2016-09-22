@@ -14,9 +14,6 @@ module.exports = {
         self.querySearch = querySearch;
         self.industries = loadIndustries();
         self.selectedIndustries = [];
-        self.numberChips = [];
-        self.numberChips2 = [];
-        self.numberBuffer = '';
         self.autocompleteDemoRequireMatch = true;
         self.transformChip = transformChip;
 
