@@ -5,17 +5,7 @@ module.exports = {
     },
     /** @ngInject */
     controller: function () {
-        this.promotionDate = new Date();
-        this.promotionClosingDate = this.promotionDate;
-        this.minPromotionDate = new Date(
-            this.promotionDate.getFullYear(),
-            this.promotionDate.getMonth(),
-            this.promotionDate.getDate()
-        );
-        this.maxPromotionDate = new Date(
-            this.promotionDate.getFullYear(),
-            this.promotionDate.getMonth() + 3,
-            this.promotionDate.getDate());
+
         this.items = ['Full Time', 'Part Time', 'Flexible'];
         this.selected = [];
         this.toggle = function (item, list) {

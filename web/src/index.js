@@ -62,6 +62,7 @@ var positionDetails = require('./app/create/position/position-details');
 var positionLocations = require('./app/create/position/position-locations');
 var positionAvailability = require('./app/create/position/position-availability');
 var positionSalary = require('./app/create/position/position-salary');
+var positionAdvert = require('./app/create/position/position-advert');
 var positionPreview = require('./app/create/position/position-preview');
 var employerView = require('./app/view/employer/employer-view');
 var positionView = require('./app/view/position/position-view');
@@ -135,6 +136,7 @@ angular
     .component('positionLocations', positionLocations)
     .component('positionAvailability', positionAvailability)
     .component('positionSalary', positionSalary)
+    .component('positionAdvert', positionAdvert)
     .component('positionPreview', positionPreview)
     .component('employerView', employerView)
     .component('positionView', positionView)
