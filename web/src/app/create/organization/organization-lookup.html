@@ -109,14 +109,14 @@
                 <input name="organizationName" ng-model="$ctrl.organization.organization.name" disabled="disabled">
             </md-input-container>
 
-            <div layout-gt-xs="row" class="division-controls">
+            <div class="division-controls">
 
                 <md-button ng-if="!$ctrl.showingImplementationName" ng-click="$ctrl.showImplementationName(true)"
                            class="md-raised md-primary small">
                     {{'create.organization.organization-lookup.add-department.' + $ctrl.type | translate}}
                 </md-button>
 
-                <div ng-if="$ctrl.showingImplementationName">
+                <div ng-if="$ctrl.showingImplementationName" layout-gt-xs="row">
                     <md-input-container class="md-block" flex-gt-sm="70"
                                         flex="100">
                         <label class="md-no-float">

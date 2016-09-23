@@ -1,22 +1,5 @@
 <div layout-padding>
     <h3>Provide Advert Details</h3>
-    <label class="standalone-label">Advert available from</label>
-    <md-datepicker ng-model="$ctrl.promotionDate"
-                   md-placeholder="Available from"
-                   md-min-date="$ctrl.minPromotionDate"
-                   md-max-date="$ctrl.maxPromotionDate"
-                   md-open-on-focus></md-datepicker>
-    <md-switch ng-model="$ctrl.promotionClosingDateEnable" class="md-primary" aria-label="All Research Students">
-        Closing Date
-    </md-switch>
-    <div ng-if="$ctrl.promotionClosingDateEnable">
-        <label class="standalone-label">Promotion Closing Date</label>
-        <md-datepicker ng-model="$ctrl.promotionClosingDate"
-                       md-placeholder="Closing date"
-                       md-min-date="$ctrl.promotionDate"
-                       md-max-date="$ctrl.maxPromotionDate"
-                       md-open-on-focus></md-datepicker>
-    </div>
     <div class="image-uploader background"
          ngf-pattern="'image/*'"
          ngf-accept="'image/*'"

@@ -6,6 +6,6 @@ module.exports = {
     },
     /** @ngInject */
     controller: function () {
-        this.position.type = this.position.type || 'POSITION';
+        this.position.positionType = this.position.positionType || 'EMPLOYMENT';
     }
 };
