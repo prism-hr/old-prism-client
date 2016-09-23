@@ -30,9 +30,9 @@ module.exports = function ($q, Restangular, Upload) {
         } else {
             url = Restangular.all(collectionName).getRestangularUrl();
         }
-        var resourcePost = angular.copy(_.omit(this._resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context']));
+        var resourcePost = angular.copy(_.omit(this._resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions']));
         var logo = resourcePost.documentLogoImage;
-        // var background = resourcePost.documentBackgroundImage;
+        var background = resourcePost.documentBackgroundImage;
         resourcePost.documentLogoImage = null;
         resourcePost.documentBackgroundImage = null;
         return Upload.upload({
@@ -41,7 +41,8 @@ module.exports = function ($q, Restangular, Upload) {
                 section: step,
                 context: self._type,
                 data: Upload.json(resourcePost),
-                file: logo
+                logo: logo,
+                background: background
             }
         }).then(function (response) {
             if (!self._resource.id) {

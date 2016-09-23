@@ -107,6 +107,7 @@ module.exports = function () {
 
             this._resourceManager.saveResource(this._currentStep)
                 .then(function (resource) {
+                    self.getResource().stateComplete = resource.stateComplete;
                     $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
                 });
         };
