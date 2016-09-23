@@ -88,7 +88,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                             return resourceCreateWizardFactory.getWizard(resourceManager, type);
                         });
                 },
-                $title: _.wrap('Position')
+                $title: _.wrap('Advert')
             }
         })
         .state('employer-view', {

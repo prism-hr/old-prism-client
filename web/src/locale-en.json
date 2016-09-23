@@ -1,6 +1,6 @@
 {
   "create": {
-    "organization" : {
+    "organization": {
       "lc-type": {
         "PROMOTER": "company",
         "DEPARTMENT": "department"
@@ -45,18 +45,23 @@
       },
       "address-lookup": {
         "autocomplete-placeholder": {
-          "PROMOTER": "Look up your Location",
-          "DEPARTMENT": "Look up your Location"
+          "PROMOTER": "Look up your Locations",
+          "DEPARTMENT": "Look up your Locations"
         },
         "lookup-button": {
-          "PROMOTER": "Look up Location",
-          "DEPARTMENT": "Look up Location"
+          "PROMOTER": "Look up Locations",
+          "DEPARTMENT": "Look up Locations"
         }
+      }
+    },
+    "advert": {
+      "address-lookup": {
+        "autocomplete-placeholder": "Look up your Locations"
       }
     }
   },
   "unauthenticated": {
-    "authenticate" : {
+    "authenticate": {
       "title": {
         "LOGIN": "Log In",
         "REGISTER": "Sign Up",
@@ -64,5 +69,4 @@
       }
     }
   }
-
 }

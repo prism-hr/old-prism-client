@@ -1,29 +1,30 @@
 <div layout-padding>
     <h3>Provide Location, Industries Areas and Students Audience</h3>
     <div class="locations">
-        <label class="standalone-label">Locations </label>
         <place-autocomplete ng-model="$ctrl.position.location" name="foundAddress"
-                            placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}" required>
+                            placeholder="{{'create.advert.address-lookup.autocomplete-placeholder' | translate}}" required>
         </place-autocomplete>
     </div>
-    <md-input-container class="md-block">
-        <label class="md-no-float">Industry Areas</label>
-        <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
-                  md-transform-chip="$ctrl.transformChip($chip)"
-                  md-require-match="$ctrl.autocompleteDemoRequireMatch">
-            <md-autocomplete
-                    md-selected-item="$ctrl.selectedItem"
-                    md-search-text="$ctrl.searchText"
-                    md-items="item in $ctrl.querySearch($ctrl.searchText)"
-                    md-item-text="item.name"
-                    placeholder="Search for a Industry Areas">
-                <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
-            </md-autocomplete>
-            <md-chip-template>
-                {{$chip.name}}
-            </md-chip-template>
-        </md-chips>
-    </md-input-container>
+    <div class="industries-holder">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Industry Areas</label>
+            <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
+                      md-transform-chip="$ctrl.transformChip($chip)"
+                      md-require-match="$ctrl.autocompleteDemoRequireMatch">
+                <md-autocomplete
+                        md-selected-item="$ctrl.selectedItem"
+                        md-search-text="$ctrl.searchText"
+                        md-items="item in $ctrl.querySearch($ctrl.searchText)"
+                        md-item-text="item.name"
+                        placeholder="Search for a Industry Areas">
+                    <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    {{$chip.name}}
+                </md-chip-template>
+            </md-chips>
+        </md-input-container>
+    </div>
     <div class="audience">
         <label class="standalone-label">Audience</label>
         <md-switch ng-model="$ctrl.studentsTypeAll" class="md-primary" aria-label="All Students">
