@@ -61,19 +61,19 @@
             <div class="logo-image">
                 <div class="logo-flex company-logo">
                     <div class="logo">
-                        <img ng-src="{{$root.documentsUrl + $ctrl.selectedOrganizationImplementation.documentLogoImageId}}">
+                        <img ng-src="{{$root.documentsUrl + $ctrl.organization.documentLogoImage.id}}">
                     </div>
                 </div>
             </div>
             <div>
                 <!--TODO: fetch creator and address-->
-                <h2>{{$ctrl.selectedOrganizationImplementation.name}}</h2>
+                <h2>{{$ctrl.organization.name}}</h2>
                 <h4>Created by <span>Juan Mingo</span> TODO</h4>
                 <p>{{$ctrl.selectedOrganizationImplementation.location.description}} TODO Address</p>
             </div>
         </div>
         <div class="part-of">
-            <h4>Request access to Juan Mingo TODO</h4>
+            <h4>Request access to {{$ctrl.organization.name}}</h4>
             <div class="clearfix button-group">
                 <md-button class="pull-left md-primary md-raised small"
                            ng-click="$ctrl.requestAccess(true)">
@@ -82,6 +82,10 @@
                 <md-button class="pull-right md-warn md-raised small"
                            ng-click="$ctrl.requestAccess(false)">
                     <i class="icon-close"></i> Decline
+                </md-button>
+                <md-button class="pull-right md-warn md-raised small"
+                           ng-click="$ctrl.addImplementation()">
+                    <i class="icon-close"></i> Create a division
                 </md-button>
             </div>
         </div>
@@ -104,29 +108,28 @@
                 </label>
                 <input name="organizationName" ng-model="$ctrl.organization.organization.name" disabled="disabled">
             </md-input-container>
-            <md-input-container class="md-block">
-                <label class="md-no-float">
-                    {{'create.organization.organization-lookup.implementation-label.' + $ctrl.type | translate}}
-                </label>
-                <input name="implementationName" ng-change="$ctrl.implementationNameChanged($ctrl.organization.name)" ng-model="$ctrl.organization.name" required>
-            </md-input-container>
 
-            <div ng-if="false" layout-gt-xs="row" class="division-controls">
-                <md-input-container class="md-block" ng-if="$ctrl.division" flex-gt-sm="70" flex="100">
-                    <label class="md-no-float">
-                        {{'create.organization.organization-lookup.implementation-label.' + $ctrl.type | translate}}
-                    </label>
-                    <input name="divisionName" ng-model="$ctrl.organization.division.name">
-                </md-input-container>
-                <md-button class="md-raised md-primary small" ng-click="$ctrl.addDivision(true)"
-                           ng-if="!$ctrl.division">
+            <div layout-gt-xs="row" class="division-controls">
+
+                <md-button ng-if="!$ctrl.showingImplementationName" ng-click="$ctrl.showImplementationName(true)"
+                           class="md-raised md-primary small">
                     {{'create.organization.organization-lookup.add-department.' + $ctrl.type | translate}}
                 </md-button>
-                <div class="secondary-actions" layout="row" layout-align="end start" flex-gt-sm="30"
-                     ng-if="$ctrl.division">
-                    <md-button class="md-warn md-raised small" ng-click="$ctrl.addDivision(false)">
-                        {{'create.organization.organization-lookup.cancel-department.' + $ctrl.type | translate}}
-                    </md-button>
+
+                <div ng-if="$ctrl.showingImplementationName">
+                    <md-input-container class="md-block" flex-gt-sm="70"
+                                        flex="100">
+                        <label class="md-no-float">
+                            {{'create.organization.organization-lookup.implementation-label.' + $ctrl.type | translate}}
+                        </label>
+                        <input name="implementationName" ng-model="$ctrl.organization.name" required>
+                    </md-input-container>
+
+                    <div class="secondary-actions" layout="row" layout-align="end start" flex-gt-sm="30">
+                        <md-button class="md-warn md-raised small" ng-click="$ctrl.showImplementationName(false)">
+                            {{'create.organization.organization-lookup.cancel-department.' + $ctrl.type | translate}}
+                        </md-button>
+                    </div>
                 </div>
             </div>
 

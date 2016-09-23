@@ -8,6 +8,8 @@ module.exports = {
     /** @ngInject */
     controller: function ($q, $timeout, $state, Restangular) {
         var self = this;
+        var isImplementationSpecified = this.organization.name && this.organization.name !== this.organization.organization.name;
+        this.showingImplementationName = this.type === 'DEPARTMENT' || isImplementationSpecified;
 
         this.setView = function (view) {
             this.view = view;
@@ -26,9 +28,15 @@ module.exports = {
                 });
         };
 
-        this.organizationSelected = function () {
+        this.organizationSelected = function (organization) {
             self.implementationSearchText = null;
             self.selectedOrganizationImplementation = null;
+            if (self.type === 'PROMOTER') {
+                self.organization.organization = organization;
+                self.organization.name = organization.name;
+                self.organization.documentLogoImage = {id: organization.documentLogoImageId};
+                self.setView(organization.id ? 'request' : 'details');
+            }
         };
 
         this.getOrganizationImplementations = function (searchText) {
@@ -57,6 +65,11 @@ module.exports = {
             self.setView(implementation.id ? 'request' : 'details');
         };
 
+        this.addImplementation = function () {
+            self.setView('details');
+            self.showImplementationName(true);
+        };
+
         this.gotoLookup = function () {
             self.selectedOrganization = null;
             self.selectedOrganizationImplementation = null;
@@ -74,12 +87,9 @@ module.exports = {
         //         console.log(results);
         //     });
 
-        this.division = false;
-        this.addDivision = function (bolean) {
-            this.division = bolean;
-            if (!bolean) {
-                self.organization.division = null;
-            }
+        this.showImplementationName = function (show) {
+            self.showingImplementationName = show;
+            self.organization.name = show ? '' : self.organization.organization.name;
         };
 
         this.requestAccess = function (request) {
