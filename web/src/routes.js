@@ -32,7 +32,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 showRegistration: false
             },
             resolve: {
-                $title: _.wrap('Welcome Employers and Recruiters')
+                $title: _.wrap('Welcome Advertiser')
             }
         })
         .state('promoter', {
