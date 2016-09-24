@@ -55,12 +55,12 @@
                 <md-autocomplete
                         md-selected-item="$ctrl.selectedOption"
                         md-search-text="$ctrl.searchText"
-                        md-items="typeOption in $ctrl.launchBenefits"
+                        md-items="benefit in $ctrl.querySearch($ctrl.launchBenefits)"
                         md-item-text="typeOption.name"
                         md-min-length="0"
                         md-no-cache="true"
                         placeholder="Search or type Benefit">
-                    <span md-highlight-text="$ctrl.searchText">{{typeOption.name}}</span>
+                    <span md-highlight-text="$ctrl.searchText">{{benefit.name}}</span>
                 </md-autocomplete>
                 <md-chip-template>
                     <span>{{$chip.name}}</span>
