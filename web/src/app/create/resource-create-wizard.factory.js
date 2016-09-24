@@ -13,11 +13,11 @@ module.exports = function () {
             {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
         POSITION: [{id: 'category', component: 'positionCategory', title: 'Type and Role'},
-            {id: 'advert', component: 'positionAdvert', title: 'Advert'},
             {id: 'details', component: 'positionDetails', title: 'Header'},
             {id: 'location', component: 'positionLocations', title: 'Location, Industries & Audience'},
             {id: 'availability', component: 'positionAvailability', title: 'Availability'},
             {id: 'salary', component: 'positionSalary', title: 'Salary'},
+            {id: 'advert', component: 'positionAdvert', title: 'Advert'},
             {id: 'publication', component: 'positionPublication', title: 'Publication'},
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}]
     };
