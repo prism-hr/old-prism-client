@@ -5,20 +5,14 @@ module.exports = {
         type: '<'
     },
     /** @ngInject */
-    controller: function ($rootScope) {
+    controller: function () {
         var self = this;
         this.typeLower = self.type.toLowerCase();
         this.type = self.type;
         this.organization = self.wizard.getResource();
         this.createSteps = self.wizard.getSteps();
 
-        // this.createSteps = createSteps[self.typeLower];
-        // if (this.organization.id && !_.endsWith($state.current.name, '.preview')) { // if existing organization don't show preview tab (unless requested)
-        //     this.createSteps.splice(-1, 1);
-        // }
-
-        $rootScope.$watch('$state.current', function () {
-            var currentStep = self.wizard.getCurrentStep();
+        var onStepChange = function (currentStep) {
             if (currentStep) {
                 if (currentStep.data.preview) {
                     self.showNavigation = true;
@@ -26,8 +20,11 @@ module.exports = {
                 self.stepIdx = currentStep.index;
                 self.nextStep = self.wizard.getNextStep();
                 self.prevStep = self.wizard.getPrevStep();
+                self.optional = currentStep.data.optional;
             }
-        });
+        };
+        var stepSubscription = self.wizard.stepSubscribe(onStepChange);
+        onStepChange(self.wizard.getCurrentStep());
 
         this.next = function (form) {
             if (!form.$valid) {
@@ -39,6 +36,14 @@ module.exports = {
 
         this.prev = function () {
             self.wizard.prev();
+        };
+
+        this.skip = function () {
+            self.wizard.skip();
+        };
+
+        this.$onDestroy = function () {
+            stepSubscription.dispose();
         };
 
         // var watchTimeout;

@@ -165,7 +165,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                             return wizard.getResource();
                         },
                         $title: function (resource) {
-                            var prefix = resource ? '' : 'Step ' + (index + 1) + ': ';
+                            var prefix = resource.state === 'DRAFT' ? 'Step ' + (index + 1) + ': ' : '';
                             return prefix + step.title;
                         }
                     },
