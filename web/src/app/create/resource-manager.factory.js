@@ -16,8 +16,9 @@ module.exports = function ($q, Restangular, Upload) {
         return this._resource;
     };
 
-    ResourceManager.prototype.saveResource = function (step) {
+    ResourceManager.prototype.saveResource = function (step, options) {
         var self = this;
+        options = options || {};
 
         if (this._type === 'POSITION') { // TODO drop these lines when position is ready
             return $q.when(self._resource);
@@ -40,15 +41,18 @@ module.exports = function ($q, Restangular, Upload) {
             data: {
                 section: step,
                 context: self._type,
+                skipped: options.skipped || false,
                 data: Upload.json(resourcePost),
                 logo: logo,
                 background: background
             }
         }).then(function (response) {
-            if (!self._resource.id) {
+            if (self._resource.id) {
+                self._resource = response.data;
+            } else {
                 self._resource = {};
             }
-            return self._resource.id ? self._resource : response.data;
+            return response.data;
         });
     };
 

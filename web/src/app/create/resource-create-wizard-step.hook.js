@@ -11,6 +11,7 @@ module.exports = function ($transitions) {
         var toStep = subStates.pop();
         var canGo = wizard.onEnter(toStep);
         if (canGo !== true) {
+            console.warn(toStep + ' step is not available. Redirecting to ' + canGo);
             var $state = transition.router.stateService;
             var stateName = subStates[0] + '.' + canGo;
             $state.go(stateName, transition.params());

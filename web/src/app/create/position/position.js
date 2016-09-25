@@ -4,11 +4,10 @@ module.exports = {
         wizard: '<'
     },
     /** @ngInject */
-    controller: function ($rootScope) {
+    controller: function () {
         var self = this;
 
-        $rootScope.$watch('$state.current', function () {
-            var currentStep = self.wizard.getCurrentStep();
+        var onStepChange = function (currentStep) {
             if (currentStep) {
                 if (currentStep.data.preview) {
                     self.showNavigation = true;
@@ -17,7 +16,9 @@ module.exports = {
                 self.nextStep = self.wizard.getNextStep();
                 self.prevStep = self.wizard.getPrevStep();
             }
-        });
+        };
+        var stepSubscription = self.wizard.stepSubscribe(onStepChange);
+        onStepChange(self.wizard.getCurrentStep());
 
         this.next = function (form) {
             if (!form.$valid) {
@@ -30,5 +31,10 @@ module.exports = {
         this.prev = function () {
             self.wizard.prev();
         };
+
+        this.$onDestroy = function () {
+            stepSubscription.dispose();
+        };
+
     }
 };

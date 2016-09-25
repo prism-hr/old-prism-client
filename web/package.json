@@ -10,10 +10,10 @@
     "angular-recaptcha": "3.0.4",
     "angular-sanitize": "1.5.8",
     "angular-simple-logger": "0.1.7",
-    "angular-socialshare": "^2.2.8",
+    "angular-socialshare": "2.2.9",
     "angular-translate": "2.11.1",
     "angular-translate-loader-static-files": "2.11.1",
-    "angular-ui-router": "1.0.0-beta.2",
+    "angular-ui-router": "1.0.0-beta.3",
     "font-awesome": "^4.6.3",
     "lodash": "4.14.2",
     "ng-file-upload": "12.2.5",
@@ -85,10 +85,11 @@
   },
   "eslintConfig": {
     "globals": {
-      "expect": true,
-      "google": true,
-      "angular": true,
-      "_": true,
+      "expect": false,
+      "google": false,
+      "angular": false,
+      "_": false,
+      "Rx": false,
       "ENVIRONMENT": true
     },
     "root": true,

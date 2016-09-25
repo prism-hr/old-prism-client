@@ -1,17 +1,27 @@
 /** @ngInject */
 module.exports = function () {
     var thisProvider = this;
+
+    function clearAssets(resource) {
+        resource.documentBackgroundImage = null;
+        resource.description = null;
+    }
+
+    var organizationSteps = [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
+        {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Industries'},
+        {id: 'web', component: 'organizationWeb', title: 'Web & Size'},
+        {
+            id: 'assets',
+            component: 'organizationAssets',
+            title: 'Background & Description',
+            data: {optional: true},
+            clear: clearAssets
+        },
+        {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}];
+
     var steps = {
-        PROMOTER: [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
-            {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Industries'},
-            {id: 'web', component: 'organizationWeb', title: 'Web & Size'},
-            {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
-            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
-        DEPARTMENT: [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
-            {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Industries'},
-            {id: 'web', component: 'organizationWeb', title: 'Web & Size'},
-            {id: 'assets', component: 'organizationAssets', title: 'Background & Description', data: {optional: true}},
-            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}],
+        PROMOTER: organizationSteps,
+        DEPARTMENT: organizationSteps,
         POSITION: [{id: 'category', component: 'positionCategory', title: 'Type and Role'},
             {id: 'details', component: 'positionDetails', title: 'Header'},
             {id: 'location', component: 'positionLocations', title: 'Location, Industries & Audience'},
@@ -42,6 +52,7 @@ module.exports = function () {
             this._resourceManager = resourceManager;
             this._resourceType = resourceType;
             this._steps = angular.copy(thisProvider.getStepDefinitions(resourceType));
+            this._stepSubject = new Rx.Subject();
 
             this.getStepForName = function (stepName) {
                 return _.find(this._steps, {id: stepName});
@@ -81,11 +92,17 @@ module.exports = function () {
                 }
             });
 
-            if (_.find(this._steps, {id: toStep}).available) {
+            var toStepDefinition = _.find(this._steps, {id: toStep});
+            if (toStepDefinition.available) {
                 this._currentStep = toStep;
+                this._stepSubject.onNext(toStepDefinition);
                 return true;
             }
             return lastNotCompleteStep;
+        };
+
+        ResourceCreateWizard.prototype.stepSubscribe = function (observer) {
+            return this._stepSubject.subscribe(observer);
         };
 
         ResourceCreateWizard.prototype.getNextStep = function () {
@@ -108,7 +125,6 @@ module.exports = function () {
 
             this._resourceManager.saveResource(this._currentStep)
                 .then(function (resource) {
-                    self.getResource().stateComplete = resource.stateComplete;
                     $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
                 });
         };
@@ -120,6 +136,19 @@ module.exports = function () {
             } else {
                 $state.go(this._resourceType.toLowerCase() + 'Welcome');
             }
+        };
+
+        ResourceCreateWizard.prototype.skip = function () {
+            var self = this;
+
+            var currentStep = this.getStepForName(this._currentStep);
+            var clear = currentStep.clear || _.noop;
+            clear(this.getResource());
+
+            this._resourceManager.saveResource(this._currentStep, {skipped: true})
+                .then(function (resource) {
+                    $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id});
+                });
         };
 
         ResourceCreateWizard.prototype.getSteps = function () {

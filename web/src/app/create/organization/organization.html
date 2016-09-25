@@ -23,6 +23,10 @@
                                ng-disabled="$ctrl.loading">
                         Back
                     </md-button>
+                    <md-button ng-if="$ctrl.optional" class="md-primary md-raised big" ng-click="$ctrl.skip()"
+                               ng-disabled="$ctrl.loading || organizationForm.$invalid">
+                        Skip
+                    </md-button>
                     <md-button type="submit" class="md-primary md-raised big"
                                ng-disabled="$ctrl.loading || organizationForm.$invalid">
                         {{$ctrl.nextStep ? 'Continue' : 'Finish'}}
