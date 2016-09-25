@@ -2,9 +2,9 @@
 module.exports = function ($q, Restangular, Upload) {
     var managers = {};
     var collectionNames = {
-        'PROMOTER': 'organizationImplementations',
-        'DEPARTMENT': 'organizationImplementations',
-        'POSITION': 'positions'
+        PROMOTER: 'organizationImplementations',
+        DEPARTMENT: 'organizationImplementations',
+        POSITION: 'positions'
     };
 
     function ResourceManager(type, resource) {
@@ -55,10 +55,7 @@ module.exports = function ($q, Restangular, Upload) {
     return {
         getManager: function (id, type) {
             if (id === 'new') {
-                if (!managers[type]) {
-                    managers[type] = new ResourceManager(type);
-                }
-                return $q.when(managers[type]);
+                return $q.when(new ResourceManager(type));
             }
 
             return Restangular.one(collectionNames[type], id).get()
