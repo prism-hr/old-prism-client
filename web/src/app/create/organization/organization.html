@@ -1,4 +1,4 @@
-<div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.organization.organization}">
+<div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.organization.organization.id}">
     <div class="preview {{$ctrl.typeLower}}" ng-if="$ctrl.organization.id">
         <label>Preview</label>
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>

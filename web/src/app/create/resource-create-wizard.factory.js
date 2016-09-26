@@ -8,7 +8,7 @@ module.exports = function () {
     }
 
     var organizationSteps = [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
-        {id: 'summary', component: 'organizationSummary', title: 'Summary, Locations & Industries'},
+        {id: 'summary', component: 'organizationSummary', title: 'Header'},
         {id: 'web', component: 'organizationWeb', title: 'Web & Size'},
         {
             id: 'assets',
@@ -93,12 +93,12 @@ module.exports = function () {
             });
 
             var toStepDefinition = _.find(this._steps, {id: toStep});
-            if (toStepDefinition.available) {
+            // if (toStepDefinition.available) {
                 this._currentStep = toStep;
                 this._stepSubject.onNext(toStepDefinition);
                 return true;
-            }
-            return lastNotCompleteStep;
+            // }
+            // return lastNotCompleteStep;
         };
 
         ResourceCreateWizard.prototype.stepSubscribe = function (observer) {
