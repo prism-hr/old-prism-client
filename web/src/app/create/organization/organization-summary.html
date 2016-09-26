@@ -1,10 +1,38 @@
 <div layout-padding>
     <h3>Provide your {{'create.organization.lc-type.' + $ctrl.type | translate}} summary, locations and industries
         areas </h3>
-    <md-input-container class="md-block">
-        <label class="md-no-float">Summary</label>
-        <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="2" required></textarea>
-    </md-input-container>
+    <div layout-gt-xs="row">
+        <div flex="100" flex-gt-xs="65">
+            <md-input-container class="md-block">
+                <label class="md-no-float">Summary</label>
+                <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="4" required></textarea>
+            </md-input-container>
+        </div>
+        <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
+            <div>
+                <div class="image-uploader logo"
+                     ngf-pattern="'image/*'"
+                     ngf-accept="'image/*'"
+                     ngf-max-size="10MB"
+                     ngf-resize="{width: 400, height: 250}"
+                     ngf-select
+                     ngf-drop
+                     name="logo"
+                     layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
+                    <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
+                    <div class="logo-flex">
+                        <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
+                            <span image-src="$ctrl.organization.documentLogoImage"></span>
+                        </div>
+                    </div>
+                </div>
+                <small>Image size 400 x 250 / 10mb max</small>
+                <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="locations">
         <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
                             placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}"

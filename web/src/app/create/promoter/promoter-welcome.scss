@@ -118,6 +118,14 @@
     .lock-size {
       margin-top:-18px;
     }
+    span {
+      padding-right:3px;
+      &:before {
+        content: '\00B7';
+        padding-right:3px;
+        font-size:18px;
+      }
+    }
   }
   .summary {
     margin-top:0;

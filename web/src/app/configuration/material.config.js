@@ -4,20 +4,20 @@ module.exports = materialConfig;
 /** @ngInject */
 function materialConfig($mdThemingProvider) {
     $mdThemingProvider.definePalette('prismblue', {
-        50: '#ffffff',
-        100: '#eef7fb',
-        200: '#c1e0f0',
-        300: '#88c4e1',
-        400: '#6fb8db',
-        500: '#57acd5',
-        600: '#3fa0cf',
-        700: '#3090bf',
-        800: '#2a7ea7',
-        900: '#246b8e',
-        A100: '#ffffff',
-        A200: '#eef7fb',
-        A400: '#6fb8db',
-        A700: '#3090bf',
+        50: '#d9edf5',
+        100: '#9dd2e4',
+        200: '#70bdd8',
+        300: '#38a3c9',
+        400: '#3191b2',
+        500: '#2a7d9a',
+        600: '#236982',
+        700: '#1d566a',
+        800: '#164252',
+        900: '#102f3a',
+        A100: '#d9edf5',
+        A200: '#9dd2e4',
+        A400: '#3191b2',
+        A700: '#1d566a',
         contrastDefaultColor: 'light',
         contrastDarkColors: '50 100 200 300 A100 A200'
     });
@@ -43,21 +43,21 @@ function materialConfig($mdThemingProvider) {
 
     $mdThemingProvider.definePalette('prismred', {
         50: '#ffffff',
-        100: '#fefaf9',
-        200: '#f8cec7',
-        300: '#f19688',
-        400: '#ed7e6c',
-        500: '#ea6651',
-        600: '#e74e36',
-        700: '#e2371b',
-        800: '#c73018',
-        900: '#ac2915',
+        100: '#fef3e9',
+        200: '#fcd5b3',
+        300: '#f9af6f',
+        400: '#f79e51',
+        500: '#f68e34',
+        600: '#f57e17',
+        700: '#e36f0a',
+        800: '#c56009',
+        900: '#a85207',
         A100: '#ffffff',
-        A200: '#fefaf9',
-        A400: '#ed7e6c',
-        A700: '#e2371b',
+        A200: '#fef3e9',
+        A400: '#f79e51',
+        A700: '#e36f0a',
         contrastDefaultColor: 'light',
-        contrastDarkColors: '50 100 200 300 A100 A200'
+        contrastDarkColors: '50 100 200 300 400 A100 A200 A400'
     });
 
     $mdThemingProvider.theme('prism')
