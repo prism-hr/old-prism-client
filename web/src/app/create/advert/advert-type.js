@@ -1,11 +1,14 @@
 module.exports = {
-    template: require('./position-availability.html'),
+    template: require('./advert-type.html'),
     bindings: {
-        form: '<'
+        form: '<',
+        advert: '='
     },
     /** @ngInject */
     controller: function () {
+        var self = this;
 
+        self.advert.duration = 'PERMANENT';
         this.items = ['Full Time', 'Part Time', 'Flexible'];
         this.selected = [];
         this.toggle = function (item, list) {
@@ -34,5 +37,17 @@ module.exports = {
             }
         };
         this.promotionClosingDateEnable = false;
+
+        this.promotionDate = new Date();
+        this.promotionClosingDate = this.promotionDate; // TODO add 1 month
+        this.minPromotionDate = new Date(
+            this.promotionDate.getFullYear(),
+            this.promotionDate.getMonth(),
+            this.promotionDate.getDate()
+        );
+        this.maxPromotionDate = new Date(
+            this.promotionDate.getFullYear(),
+            this.promotionDate.getMonth() + 3,
+            this.promotionDate.getDate());
     }
 };

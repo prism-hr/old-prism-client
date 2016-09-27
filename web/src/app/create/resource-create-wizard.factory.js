@@ -22,14 +22,13 @@ module.exports = function () {
     var steps = {
         PROMOTER: organizationSteps,
         DEPARTMENT: organizationSteps,
-        POSITION: [{id: 'category', component: 'positionCategory', title: 'Type and Role'},
-            {id: 'details', component: 'positionDetails', title: 'Header'},
-            {id: 'location', component: 'positionLocations', title: 'Location, Industries & Audience'},
-            {id: 'availability', component: 'positionAvailability', title: 'Availability'},
-            {id: 'salary', component: 'positionSalary', title: 'Salary'},
-            {id: 'advert', component: 'positionAdvert', title: 'Advert'},
-            {id: 'publication', component: 'positionPublication', title: 'Publication'},
-            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}]
+        ADVERT: [{id: 'category', component: 'advertCategory', title: 'Category'},
+            {id: 'type', component: 'advertType', title: 'Type'},
+            {id: 'header', component: 'advertHeader', title: 'Header'},
+            {id: 'salary', component: 'advertSalary', title: 'Salary'},
+            {id: 'details', component: 'advertDetails', title: 'Details'},
+            {id: 'audience', component: 'advertAudience', title: 'Audience'},
+            {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}]
     };
     _.forEach(steps, function (subSteps) {
         _.forEach(subSteps, function (step, index) {
@@ -93,12 +92,12 @@ module.exports = function () {
             });
 
             var toStepDefinition = _.find(this._steps, {id: toStep});
-            if (toStepDefinition.available) {
+            // if (toStepDefinition.available) {
                 this._currentStep = toStep;
                 this._stepSubject.onNext(toStepDefinition);
                 return true;
-            }
-            return lastNotCompleteStep;
+            // }
+            // return lastNotCompleteStep;
         };
 
         ResourceCreateWizard.prototype.stepSubscribe = function (observer) {

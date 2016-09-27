@@ -1,5 +1,5 @@
 module.exports = {
-    template: require('./position.html'),
+    template: require('./advert.html'),
     bindings: {
         wizard: '<'
     },

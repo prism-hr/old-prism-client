@@ -1,7 +1,7 @@
 module.exports = {
-    template: require('./position-locations.html'),
+    template: require('./advert-audience.html'),
     bindings: {
-        position: '=',
+        advert: '=',
         form: '<'
     },
     /** @ngInject */

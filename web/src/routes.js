@@ -75,13 +75,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('University Information')
             }
         })
-        .state('position', {
-            url: '/position/{id:new|\\d+}',
+        .state('advert', {
+            url: '/advert/{id:new|\\d+}',
             abstract: true,
-            component: 'position',
+            component: 'advert',
             data: {auth: true},
             resolve: {
-                type: _.wrap('POSITION'),
+                type: _.wrap('ADVERT'),
                 wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
                     return resourceManagerFactory.getManager($stateParams.id, type)
                         .then(function (resourceManager) {
@@ -144,14 +144,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
 
         });
 
-    _.each(['PROMOTER', 'DEPARTMENT', 'POSITION'], function (resourceType) {
+    _.each(['PROMOTER', 'DEPARTMENT', 'ADVERT'], function (resourceType) {
         _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(resourceType), function (step, index) {
             var data = angular.copy(step.data) || {};
             data.stepIdx = index;
             var component = _.kebabCase(step.component);
             var template;
-            if (resourceType === 'POSITION') {
-                template = '<' + component + ' type="{{type}}" form="positionForm" position="resource" wizard="wizard"></' + component + '>';
+            if (resourceType === 'ADVERT') {
+                template = '<' + component + ' type="{{type}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
             } else {
                 template = '<' + component + ' type="{{type}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
             }
