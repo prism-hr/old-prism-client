@@ -1,7 +1,6 @@
 module.exports = {
-    template: require('./position-preview.html'),
+    template: require('./position-publication.html'),
     bindings: {
-        position: '=',
         form: '<'
     },
     /** @ngInject */

@@ -4,7 +4,7 @@ module.exports = function ($q, Restangular, Upload) {
     var collectionNames = {
         PROMOTER: 'organizationImplementations',
         DEPARTMENT: 'organizationImplementations',
-        POSITION: 'positions'
+        ADVERT: 'adverts'
     };
 
     function ResourceManager(type, resource) {
@@ -20,7 +20,7 @@ module.exports = function ($q, Restangular, Upload) {
         var self = this;
         options = options || {};
 
-        if (this._type === 'POSITION') { // TODO drop these lines when position is ready
+        if (this._type === 'ADVERT') { // TODO drop these lines when advert is ready
             return $q.when(self._resource);
         }
 

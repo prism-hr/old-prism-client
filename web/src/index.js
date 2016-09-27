@@ -56,15 +56,14 @@ var organizationWeb = require('./app/create/organization/organization-web');
 var organizationAssets = require('./app/create/organization/organization-assets');
 var organizationPreview = require('./app/create/organization/organization-preview');
 var organizationPreviewBox = require('./app/create/organization/organization-preview-box');
-var position = require('./app/create/position/position');
-var positionCategory = require('./app/create/position/position-category');
-var positionDetails = require('./app/create/position/position-details');
-var positionLocations = require('./app/create/position/position-locations');
-var positionAvailability = require('./app/create/position/position-availability');
-var positionSalary = require('./app/create/position/position-salary');
-var positionAdvert = require('./app/create/position/position-advert');
-var positionPublication = require('./app/create/position/position-publication');
-var positionPreview = require('./app/create/position/position-preview');
+var advert = require('./app/create/advert/advert');
+var advertCategory = require('./app/create/advert/advert-category');
+var advertType = require('./app/create/advert/advert-type');
+var advertHeader = require('./app/create/advert/advert-header');
+var advertSalary = require('./app/create/advert/advert-salary');
+var advertDetails = require('./app/create/advert/advert-details');
+var advertAudience = require('./app/create/advert/advert-audience');
+var advertPreview = require('./app/create/advert/advert-preview');
 var employerView = require('./app/view/employer/employer-view');
 var positionView = require('./app/view/position/position-view');
 var department = require('./app/create/department/department');
@@ -131,15 +130,14 @@ angular
     .component('organizationAssets', organizationAssets)
     .component('organizationPreview', organizationPreview)
     .component('organizationPreviewBox', organizationPreviewBox)
-    .component('position', position)
-    .component('positionCategory', positionCategory)
-    .component('positionDetails', positionDetails)
-    .component('positionLocations', positionLocations)
-    .component('positionAvailability', positionAvailability)
-    .component('positionSalary', positionSalary)
-    .component('positionAdvert', positionAdvert)
-    .component('positionPublication', positionPublication)
-    .component('positionPreview', positionPreview)
+    .component('advert', advert)
+    .component('advertCategory', advertCategory)
+    .component('advertType', advertType)
+    .component('advertHeader', advertHeader)
+    .component('advertSalary', advertSalary)
+    .component('advertDetails', advertDetails)
+    .component('advertAudience', advertAudience)
+    .component('advertPreview', advertPreview)
     .component('employerView', employerView)
     .component('positionView', positionView)
     .component('department', department)

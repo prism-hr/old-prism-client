@@ -46,7 +46,11 @@
             </md-input-container>
         </div>
     </div>
-    <div class="benefits">
+
+    <md-switch ng-model="$ctrl.showBenefits" class="md-primary" aria-label="Benefits">
+        Benefits
+    </md-switch>
+    <div ng-if="$ctrl.showBenefits" class="benefits">
         <md-input-container class="md-block">
             <label class="md-no-float">Benefits</label>
             <md-chips
@@ -56,7 +60,7 @@
                         md-selected-item="$ctrl.selectedOption"
                         md-search-text="$ctrl.searchText"
                         md-items="benefit in $ctrl.querySearch($ctrl.launchBenefits)"
-                        md-item-text="typeOption.name"
+                        md-item-text="benefit.name"
                         md-min-length="0"
                         md-no-cache="true"
                         placeholder="Search or type Benefit">
@@ -67,9 +71,9 @@
                 </md-chip-template>
             </md-chips>
         </md-input-container>
+        <md-input-container class="md-block">
+            <label class="md-no-float">Benefits description</label>
+            <textarea ng-model="$ctrl.advert.benefitDescription" md-maxlength="250" rows="2"></textarea>
+        </md-input-container>
     </div>
-    <md-input-container class="md-block">
-        <label class="md-no-float">Benefits description</label>
-        <textarea ng-model="$ctrl.position.benefitDescription" md-maxlength="250" rows="2" ></textarea>
-    </md-input-container>
 </div>

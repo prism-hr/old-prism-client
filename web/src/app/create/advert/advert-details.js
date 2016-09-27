@@ -1,16 +1,14 @@
 module.exports = {
-    template: require('./position-advert.html'),
+    template: require('./advert-details.html'),
     bindings: {
-        form: '<'
+        form: '<',
+        advert: '='
     },
     /** @ngInject */
     controller: function () {
         this.clearImage = function () {
             this.position.documentBackgroundImageOriginal = '';
             this.position.documentBackgroundImage = '';
-            this.position.pallet = '';
-            this.position.dominant = '';
-
         };
     }
 };

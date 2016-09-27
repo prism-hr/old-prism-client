@@ -1,10 +1,13 @@
 module.exports = {
-    template: require('./position-salary.html'),
+    template: require('./advert-salary.html'),
     bindings: {
-        form: '<'
+        form: '<',
+        advert: '='
     },
     /** @ngInject */
     controller: function () {
+        // TODO fetch currency from location, interval based on type options
+
         this.selectedOption = '';
         this.searchText = '';
         this.selectedBenefits = {

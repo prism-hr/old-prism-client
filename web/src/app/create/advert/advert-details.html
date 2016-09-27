@@ -1,0 +1,79 @@
+<md-card class="text-editor">
+    <md-card-title>
+        <h3>Description</h3>
+    </md-card-title>
+    <md-card-content>
+        <text-angular-toolbar
+                name="advertDescriptionToolbar"
+                ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol'],['redo', 'undo']]">
+        </text-angular-toolbar>
+        <md-input-container class="md-block">
+            <text-angular ng-model="$ctrl.advert.description" rows="4" ta-target-toolbars="advertDescriptionToolbar"
+                          class="form-control md-input" aria-label="Description"></text-angular>
+        </md-input-container>
+    </md-card-content>
+</md-card>
+
+
+<div layout-padding>
+    <div class="documents">
+        <label class="standalone-label">Document Support
+            <small>(only pdf)</small>
+        </label>
+        <md-button ngf-pattern=".pdf" ngf-select="upload($file)" class="md-warn md-raised">
+            Upload PDF
+        </md-button>
+    </div>
+    <md-switch ng-model="$ctrl.advertOutsideLink" class="md-primary" aria-label="All Research Students">
+        Use my own recruitment software
+    </md-switch>
+    <div class="outside-link" ng-if="$ctrl.advertOutsideLink">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Position URL
+                <small>(http://yourposition.com )</small>
+            </label>
+            <input type="url" name="url" ng-model="$ctrl.advert.url" required>
+            <div ng-messages="positionForm.position.url.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+</div>
+
+<div layout-padding>
+
+    <md-switch ng-model="$ctrl.showBackground" class="md-primary" aria-label="All Research Students">
+        Background
+    </md-switch>
+
+    <div ng-if="$ctrl.showBackground">
+        <div class="image-uploader background"
+             ngf-pattern="'image/*'"
+             ngf-accept="'image/*'"
+             ngf-max-size="10MB"
+             ngf-select
+             ngf-drop
+             name="background"
+             layout="row" layout-align="center center" ng-model="$ctrl.position.documentBackgroundImageOriginal"
+             ng-hide="$ctrl.position.documentBackgroundImageOriginal">
+            <span class="drop-box" ng-if="!$ctrl.position.documentBackgroundImageOriginal">Drop your Background</span>
+        </div>
+        <div class="cropArea" ng-if="$ctrl.position.documentBackgroundImageOriginal">
+            <img-crop image="$ctrl.position.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1"
+                      result-image="$ctrl.position.documentBackgroundImage" result-image-size='{w: 1280,h: 320}'
+                      init-max-area="true"></img-crop>
+
+        </div>
+        <div layout="row" layout-align="center center">
+            <small>Minimum Image size 1280 x 320</small>
+            <span class="flex"></span>
+            <md-button class="md-warn md-raised small" ng-click="$ctrl.clearIma ge()"
+                       ng-if="$ctrl.position.documentBackgroundImageOriginal">Clear Image
+            </md-button>
+        </div>
+        <div ng-messages="$ctrl.form.background.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
+    </div>
+</div>
+
