@@ -1,11 +1,9 @@
 <div layout-padding>
     <h3>Provide Type, Title and Strapline of the advert</h3>
-
-    {{form}}
     <md-input-container class="md-block">
         <label class="md-no-float">Title</label>
         <input name="advertName" ng-model="$ctrl.advert.name" required>
-        <div ng-messages="form.advertName.$error" role="alert">
+        <div ng-messages="$ctrl.form.advertName.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>

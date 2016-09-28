@@ -191,7 +191,7 @@ md-radio-group {
     border: 3px dashed $uclblue;
   }
   &.dragover-err, &.ng-invalid-pattern, &.ng-invalid {
-    border: 3px dashed $uclred;
+    border: 3px dashed $error;
   }
 
 
@@ -242,11 +242,10 @@ md-radio-group {
 }
 .error {
   margin-top:10px;
-  color: $uclred;
+  color: $error;
   padding: 10px;
   width: auto;
   display: inline-block;
-  background:lighten($uclred , 30% );
 }
 md-toast.md-prism-theme .md-toast-content {
   margin-top:67px;
@@ -397,7 +396,15 @@ text-angular.form-control {
 @media (min-width: $layout-breakpoint-lg) {
 
 }
+md-input-container.md-prism-theme label.md-required:after {
+  color: $error;
+}
+md-input-container.md-prism-theme.md-input-invalid label, md-input-container.md-prism-theme.md-input-invalid .md-input-message-animation, md-input-container.md-prism-theme.md-input-invalid .md-char-counter {
+  color: $error;
+}
 md-input-container.md-prism-theme.md-input-invalid .md-input {
+  color: $error;
+  border-color: $error;
   &.ng-untouched {
     color: rgba(0,0,0,0.87);
     border-color: rgba(0,0,0,0.12);
