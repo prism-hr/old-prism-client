@@ -25,10 +25,12 @@ module.exports = {
                 return;
             }
 
+            form.$setPristine();
             self.wizard.next();
         };
 
-        this.prev = function () {
+        this.prev = function (form) {
+            form.$setPristine();
             self.wizard.prev();
         };
 
