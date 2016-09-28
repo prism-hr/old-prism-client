@@ -31,9 +31,10 @@ module.exports = function ($q) {
                 placeService.getDetails({placeId: place.googleId}, function (placeDetails) {
                     scope.$apply(function () {
                         applyLocationFields(place, placeDetails);
-                        ngModel.$setViewValue(_.map(scope.places, function (place) {
+                        var places = _.map(scope.places, function (place) {
                             return {location: place};
-                        }));
+                        });
+                        ngModel.$setViewValue(places.length && places);
                     });
                 });
             };

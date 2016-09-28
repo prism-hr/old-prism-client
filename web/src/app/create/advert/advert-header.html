@@ -10,14 +10,19 @@
     <md-input-container class="md-block">
         <label class="md-no-float">Strapline</label>
         <textarea name="advertSummary" ng-model="$ctrl.advert.summary" md-maxlength="140" rows="2" required></textarea>
-        <div ng-messages="form.advertSummary.$error" role="alert">
+        <div ng-messages="$ctrl.form.advertSummary.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>
-
     <div class="locations">
-        <place-autocomplete ng-model="$ctrl.advert.location" name="foundAddress"
-                            placeholder="{{'create.advert.address-lookup.autocomplete-placeholder' | translate}}" required>
-        </place-autocomplete>
+        <md-input-container class="md-block">
+            <label class="md-no-float">Locations</label>
+            <place-autocomplete ng-model="$ctrl.advert.location" name="foundAddress"
+                                placeholder="{{'create.advert.address-lookup.autocomplete-placeholder' | translate}}" required>
+            </place-autocomplete>
+            <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
     </div>
 </div>

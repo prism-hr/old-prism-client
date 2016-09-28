@@ -34,12 +34,17 @@
         </div>
     </div>
     <div class="locations">
-        <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
-                            placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}"
-                            required>
-        </place-autocomplete>
+        <md-input-container class="md-block">
+            <label class="md-no-float">Locations</label>
+            <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
+                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}"
+                                required>
+            </place-autocomplete>
+            <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
     </div>
-
     <md-input-container class="md-block">
         <label class="md-no-float">Industry Areas</label>
         <md-chips ng-model="$ctrl.organization.tags"

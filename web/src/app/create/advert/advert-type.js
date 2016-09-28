@@ -8,9 +8,10 @@ module.exports = {
     controller: function () {
         var self = this;
 
+        self.advert.advertType = 'EMPLOYMENT';
         self.advert.duration = 'PERMANENT';
         this.items = ['Full Time', 'Part Time', 'Flexible'];
-        this.selected = [];
+        this.selected = ['Full Time'];
         this.toggle = function (item, list) {
             var idx = list.indexOf(item);
             if (idx > -1) {
