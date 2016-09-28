@@ -7,7 +7,9 @@ module.exports = {
     /** @ngInject */
     controller: function () {
         // TODO fetch currency from location, interval based on type options
-
+        this.advert.salary = 'RANGE';
+        this.advert.currency = 'GBP';
+        this.advert.interval = 'YEAR';
         this.selectedOption = '';
         this.searchText = '';
         this.selectedBenefits = {
