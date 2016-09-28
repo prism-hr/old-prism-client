@@ -31,15 +31,10 @@ module.exports = {
             {
                 test: /\.(eot|woff|woff2|svg|ttf|png)([\?]?.*)$/,
                 loader: "file-loader"
-            },
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|.*\.spec\.js)/,
-                loader: 'isparta'
-            },
+            }
         ]
     },
     plugins: [],
     debug: true,
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'source-map'
 };

@@ -35,7 +35,6 @@ module.exports = {
             self.showingImplementationName = this.type === 'DEPARTMENT';
             self.implementationSearchText = null;
             self.selectedOrganizationImplementation = null;
-
         };
 
         this.confirmOrganization = function () {

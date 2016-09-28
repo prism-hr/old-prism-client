@@ -57,13 +57,13 @@ module.exports = {
             ENVIRONMENT: JSON.stringify('prod')
         }),
         new HtmlWebpackPlugin({
-            template: conf.path.src('index.html'),
-            inject: true
+            template: conf.path.src('index.html')
         }),
         new webpack.optimize.UglifyJsPlugin({
-            compress: {unused: true, dead_code: true} // eslint-disable-line camelcase
+            compress: {unused: true, dead_code: true, warnings: false} // eslint-disable-line camelcase
         }),
-        new ExtractTextPlugin('/index-[contenthash].css')
+        new ExtractTextPlugin('/index-[contenthash].css'),
+        new webpack.optimize.CommonsChunkPlugin({name: 'vendor'})
     ],
     postcss: () => [autoprefixer],
     output: {

@@ -35,6 +35,5 @@ module.exports = {
         this.$onDestroy = function () {
             stepSubscription.dispose();
         };
-
     }
 };

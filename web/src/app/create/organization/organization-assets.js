@@ -12,7 +12,6 @@ module.exports = {
             this.organization.documentBackgroundImage = '';
             this.organization.pallet = '';
             this.organization.dominant = '';
-
         };
     }
 }

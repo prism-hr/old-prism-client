@@ -19,6 +19,7 @@ require('angular-recaptcha');
 require('satellizer');
 require('rx-angular');
 require('textangular/dist/textAngular-sanitize.min');
+require('ng-img-crop-full-extended/compile/unminified/ng-img-crop');
 
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
@@ -30,7 +31,6 @@ var AuthService = require('./app/unauthenticated/auth.service');
 var resourceManagerFactory = require('./app/create/resource-manager.factory');
 var resourceCreateWizardFactory = require('./app/create/resource-create-wizard.factory');
 var resourceCreateWizardStepHook = require('./app/create/resource-create-wizard-step.hook');
-var ngImgCrop = require('./app/directives/ng-img-crop');
 
 // Directives
 var applicationLoader = require('./app/directives/application-loader');
@@ -115,7 +115,6 @@ angular
     .directive('placeAutocomplete', placeAutocomplete)
     .directive('imageSrc', imageSrc)
     .component('prismDialog', dialog)
-    .component('ngImgCrop', ngImgCrop)
     .component('welcome', welcome)
     .component('prismHeader', header)
     .component('sidebar', sidebar)
