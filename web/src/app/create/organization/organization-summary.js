@@ -7,8 +7,6 @@ module.exports = {
     },
     /** @ngInject */
     controller: function (Restangular) {
-        var self = this;
-
         this.lookupTags = function (text) {
             return Restangular.all('tags').getList({searchTerm: text})
                 .then(function (tags) {

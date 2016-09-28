@@ -1,6 +1,5 @@
 /** @ngInject */
 module.exports = function ($q, Restangular, Upload) {
-    var managers = {};
     var collectionNames = {
         PROMOTER: 'organizationImplementations',
         DEPARTMENT: 'organizationImplementations',
