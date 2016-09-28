@@ -31,14 +31,17 @@ module.exports = {
                 return;
             }
 
+            form.$setPristine();
             self.wizard.next();
         };
 
-        this.prev = function () {
+        this.prev = function (form) {
+            form.$setPristine();
             self.wizard.prev();
         };
 
-        this.skip = function () {
+        this.skip = function (form) {
+            form.$setPristine();
             self.wizard.skip();
         };
 
