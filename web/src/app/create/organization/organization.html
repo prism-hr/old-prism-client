@@ -19,11 +19,11 @@
                     <div ui-view class="fade-animation"></div>
                 </div>
                 <md-card-actions class="action-block" layout="row" layout-align="space-between none">
-                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.prev()"
+                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.prev(organizationForm)"
                                ng-disabled="$ctrl.loading">
                         Back
                     </md-button>
-                    <md-button ng-if="$ctrl.optional" class="md-primary md-raised big" ng-click="$ctrl.skip()"
+                    <md-button ng-if="$ctrl.optional" class="md-primary md-raised big" ng-click="$ctrl.skip(organizationForm)"
                                ng-disabled="$ctrl.loading || organizationForm.$invalid">
                         Skip
                     </md-button>

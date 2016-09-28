@@ -122,19 +122,18 @@ module.exports = function () {
                 $state.go(this._resourceType.toLowerCase() + 'Welcome');
             }
 
-            this._resourceManager.saveResource(this._currentStep)
+            return this._resourceManager.saveResource(this._currentStep)
                 .then(function (resource) {
-                    $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
+                    return $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
                 });
         };
 
         ResourceCreateWizard.prototype.prev = function () {
             var prevStep = this.getPrevStep();
             if (prevStep) {
-                $state.go(this._resourceType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().id});
-            } else {
-                $state.go(this._resourceType.toLowerCase() + 'Welcome');
+                return $state.go(this._resourceType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().id});
             }
+            return $state.go(this._resourceType.toLowerCase() + 'Welcome');
         };
 
         ResourceCreateWizard.prototype.skip = function () {
@@ -144,9 +143,9 @@ module.exports = function () {
             var clear = currentStep.clear || _.noop;
             clear(this.getResource());
 
-            this._resourceManager.saveResource(this._currentStep, {skipped: true})
+            return this._resourceManager.saveResource(this._currentStep, {skipped: true})
                 .then(function (resource) {
-                    $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id});
+                    return $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id});
                 });
         };
 
