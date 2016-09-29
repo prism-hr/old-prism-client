@@ -17,8 +17,12 @@ module.exports = {
 
         this.setView('details');
         if (this.organization.id) {
-            this.selectedOrganization = this.organization.organization;
-            this.selectedOrganizationImplementation = this.organization;
+            if (this.organization.name === this.organization.organization.name) {
+                this.selectedOrganization = this.organization;
+            } else {
+                this.selectedOrganization = this.organization.organization;
+                this.selectedOrganizationImplementation = this.organization;
+            }
         }
 
         this.getOrganizations = function (searchText) {

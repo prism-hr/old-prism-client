@@ -74,9 +74,15 @@
                                 md-require-match
                                 required>
                             <md-item-template>
-                    <span md-highlight-text="searchText">
-                        {{implementation.id ? implementation.name : 'Create ' + implementation.name}}
-                    </span>
+                                <div class="icon">
+                                    <div class="logo" ng-if="implementation.documentLogoImageId">
+                                        <img ng-src="{{$root.documentsUrl + implementation.documentLogoImageId}}">
+                                    </div>
+                                </div>
+                                <div>
+                                    <span md-highlight-text="searchText" class="item-title"> {{implementation.id ? implementation.name : 'Create ' + implementation.name}} </span>
+                                    <span class="item-location" ng-if="implementation.location"> {{implementation.location}}</span>
+                                </div>
                             </md-item-template>
                         </md-autocomplete>
                     </div>
