@@ -115,11 +115,27 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Create University')
             }
         })
+        .state('studentWelcome', {
+            url: '/student/welcome',
+            component: 'studentWelcome',
+            data: {auth: true},
+            resolve: {
+                $title: _.wrap('Student')
+            }
+        })
         .state('student', {
-            url: '/student',
+            url: '/student/{id:new|\\d+}',
+            abstract: true,
             component: 'student',
             data: {auth: true},
             resolve: {
+                type: _.wrap('STUDENT'),
+                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                    return resourceManagerFactory.getManager($stateParams.id, type)
+                        .then(function (resourceManager) {
+                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
+                        });
+                },
                 $title: _.wrap('Student')
             }
         })
@@ -144,7 +160,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
 
         });
 
-    _.each(['PROMOTER', 'DEPARTMENT', 'ADVERT'], function (resourceType) {
+    _.each(['PROMOTER', 'DEPARTMENT', 'ADVERT', 'STUDENT'], function (resourceType) {
         _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(resourceType), function (step, index) {
             var data = angular.copy(step.data) || {};
             data.stepIdx = index;
@@ -152,6 +168,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             var template;
             if (resourceType === 'ADVERT') {
                 template = '<' + component + ' type="{{type}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
+            } else if (resourceType === 'STUDENT') {
+                template = '<' + component + ' type="{{type}}" form="studentForm" student="resource" wizard="wizard"></' + component + '>';
             } else {
                 template = '<' + component + ' type="{{type}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
             }

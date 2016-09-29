@@ -3,7 +3,8 @@ module.exports = function ($q, Restangular, Upload) {
     var collectionNames = {
         PROMOTER: 'organizationImplementations',
         DEPARTMENT: 'organizationImplementations',
-        ADVERT: 'adverts'
+        ADVERT: 'adverts',
+        STUDENT: 'students'
     };
 
     function ResourceManager(type, resource) {

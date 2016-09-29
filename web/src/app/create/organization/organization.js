@@ -8,7 +8,6 @@ module.exports = {
     controller: function () {
         var self = this;
         this.typeLower = self.type.toLowerCase();
-        this.type = self.type;
         this.organization = self.wizard.getResource();
         this.createSteps = self.wizard.getSteps();
 

@@ -67,6 +67,13 @@ var advertPreview = require('./app/create/advert/advert-preview');
 var employerView = require('./app/view/employer/employer-view');
 var positionView = require('./app/view/position/position-view');
 var department = require('./app/create/department/department');
+var studentWelcome = require('./app/create/student/student-welcome');
+var studentHeader = require('./app/create/student/student-header');
+var studentStudies = require('./app/create/student/student-studies');
+var studentContact = require('./app/create/student/student-contact');
+var studentSkills = require('./app/create/student/student-skills');
+var studentAbout = require('./app/create/student/student-about');
+var studentPreview = require('./app/create/student/student-preview');
 var student = require('./app/create/student/student');
 
 require('./index.scss');
@@ -140,7 +147,14 @@ angular
     .component('employerView', employerView)
     .component('positionView', positionView)
     .component('department', department)
+    .component('studentWelcome', studentWelcome)
     .component('student', student)
+    .component('studentHeader', studentHeader)
+    .component('studentStudies', studentStudies)
+    .component('studentContact', studentContact)
+    .component('studentSkills', studentSkills)
+    .component('studentAbout', studentAbout)
+    .component('studentPreview', studentPreview)
     .component('activities', activities)
     .component('invited', invited);
 
