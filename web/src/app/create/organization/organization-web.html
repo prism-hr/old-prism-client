@@ -12,7 +12,7 @@
                     <md-option placeholder="Number Staff" ng-repeat="size in $ctrl.sizes" value="{{size}}">{{size}}</md-option>
                 </md-select>
             </md-input-container>
-            <md-input-container class="md-block" ng-if-="$ctrl.type === 'DEPARTMENT'" flex>
+            <md-input-container class="md-block" ng-if="$ctrl.type === 'DEPARTMENT'" flex>
                 <label class="md-no-float">Number of Students</label>
                 <md-select ng-model="$ctrl.organization.numberStudentInvalid" required>
                     <md-option ng-repeat="student in $ctrl.students" value="{{student}}">{{student}}</md-option>
