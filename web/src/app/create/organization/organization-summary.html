@@ -12,7 +12,7 @@
             <div>
                 <div class="image-uploader logo"
                      ngf-pattern="'image/*'"
-                     ngf-accept="'image/*'"
+                     ngf-accept="'image/png, image/jpeg, image/gif'"
                      ngf-max-size="10MB"
                      ngf-resize="{width: 400, height: 250}"
                      ngf-select
@@ -47,17 +47,19 @@
     </div>
     <md-input-container class="md-block">
         <label class="md-no-float">Industry Areas</label>
-        <md-chips ng-model="$ctrl.organization.tags"
-                  md-transform-chip="$ctrl.transformTag($chip)">
+        <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
+                  md-transform-chip="$ctrl.transformChip($chip)"
+                  md-require-match="$ctrl.autocompleteDemoRequireMatch">
             <md-autocomplete
-                    md-search-text="searchText"
-                    md-items="item in $ctrl.lookupTags(searchText)"
+                    md-selected-item="$ctrl.selectedItem"
+                    md-search-text="$ctrl.searchText"
+                    md-items="item in $ctrl.querySearch($ctrl.searchText)"
                     md-item-text="item.name"
-                    placeholder="Find a tag or add a new one">
-                <span md-highlight-text="searchText">{{item.name}}</span>
+                    placeholder="Search for a Industry Areas">
+                <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
             </md-autocomplete>
             <md-chip-template>
-                {{$chip.tag.name}}
+                {{$chip.name}}
             </md-chip-template>
         </md-chips>
     </md-input-container>

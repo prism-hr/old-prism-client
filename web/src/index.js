@@ -19,7 +19,7 @@ require('angular-recaptcha');
 require('satellizer');
 require('rx-angular');
 require('textangular/dist/textAngular-sanitize.min');
-require('ng-img-crop-full-extended/compile/unminified/ng-img-crop');
+require('ng-img-crop-full-extended/compile/minified/ng-img-crop');
 
 var routes = require('./routes');
 var generalConfig = require('./app/configuration/general.config');
