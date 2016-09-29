@@ -9,6 +9,7 @@ module.exports = {
     controller: function ($q, $timeout, $state, Restangular) {
         var self = this;
         this.showImplementationName = this.type === 'DEPARTMENT';
+        this.editingOrganization = Boolean(this.organization.id);
 
         this.setView = function (view) {
             this.view = view;

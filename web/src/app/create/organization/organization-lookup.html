@@ -33,15 +33,23 @@
             </md-item-template>
         </md-autocomplete>
 
-        <md-input-container ng-if="$ctrl.selectedOrganization" class="md-block">
+        <div ng-if="$ctrl.selectedOrganization">
+        <md-input-container  class="md-block">
             <label class="md-no-float">
                 {{'create.organization.organization-lookup.organization-label.' + $ctrl.type | translate}}
             </label>
             <input name="organizationName" ng-model="$ctrl.organization.organization.name" disabled="disabled">
         </md-input-container>
+            <md-button ng-if="!$ctrl.editingOrganization"
+                       class="pull-left md-primary md-raised small"
+                       ng-click="$ctrl.startOver()">
+                <i class="icon-plus"></i>
+                Start Over
+            </md-button>
+        </div>
 
         <div ng-if="$ctrl.selectedOrganization">
-            <md-button ng-if="!$ctrl.showImplementationName"
+            <md-button ng-if="!$ctrl.editingOrganization && !$ctrl.showImplementationName"
                        class="pull-left md-primary md-raised small"
                        ng-click="$ctrl.addDepartment()">
                 <i class="icon-plus"></i>
