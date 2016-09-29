@@ -22,7 +22,7 @@ function authenticationHook($transitions, $mdDialog) {
                 clickOutsideToClose: true,
                 fullscreen: true
             }).then(function () {
-                $state.go(transition.to());
+                $state.go(transition.to(), transition.params());
             });
         });
     });
