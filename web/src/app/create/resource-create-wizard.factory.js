@@ -28,7 +28,13 @@ module.exports = function () {
             {id: 'salary', component: 'advertSalary', title: 'Salary'},
             {id: 'details', component: 'advertDetails', title: 'Details'},
             {id: 'audience', component: 'advertAudience', title: 'Audience'},
-            {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}]
+            {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}],
+        STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
+            {id: 'studies', component: 'studentStudies', title: 'Studies'},
+            {id: 'contact', component: 'studentContact', title: 'Contact'},
+            {id: 'skills', component: 'studentSkills', title: 'Skills'},
+            {id: 'about', component: 'studentAbout', title: 'About you'},
+            {id: 'preview', component: 'studentPreview', title: 'Preview', data: {preview: true}}]
     };
     _.forEach(steps, function (subSteps) {
         _.forEach(subSteps, function (step, index) {
