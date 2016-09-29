@@ -8,17 +8,13 @@ module.exports = {
     /** @ngInject */
     controller: function ($q, $timeout, $state, Restangular) {
         var self = this;
-        this.showingImplementationName = this.type === 'DEPARTMENT';
+        this.showImplementationName = this.type === 'DEPARTMENT';
 
         this.setView = function (view) {
             this.view = view;
         };
 
-        this.setView(this.organization.name ? 'details' : 'lookup');
-
-        this.showImplementationName = function (show) {
-            self.showingImplementationName = show;
-        };
+        this.setView('details');
 
         this.getOrganizations = function (searchText) {
             return Restangular.all('organizations').getList({searchTerm: searchText})
@@ -31,18 +27,24 @@ module.exports = {
                 });
         };
 
-        this.organizationSelected = function () {
-            self.showingImplementationName = this.type === 'DEPARTMENT';
-            self.implementationSearchText = null;
-            self.selectedOrganizationImplementation = null;
+        this.organizationSelected = function (organization) {
+            if (organization.organizationImplementationId) {
+                self.requestOrganization = organization;
+                self.setView('request');
+            } else {
+                self.organization.organization = _.pick(organization, ['id', 'name']);
+                self.organization.name = organization.name;
+                // self.organization.documentLogoImage = {id: organization.documentLogoImageId};
+            }
         };
 
-        this.confirmOrganization = function () {
-            var organization = self.selectedOrganization;
-            self.organization.organization = organization;
-            self.organization.name = organization.name;
-            self.organization.documentLogoImage = {id: organization.documentLogoImageId};
-            self.setView(organization.id ? 'request' : 'details');
+        this.addDepartment = function (organization) {
+            if (organization) {
+                self.organization.organization = _.pick(organization, ['id', 'name']);
+            }
+            self.organization.name = null;
+            self.showImplementationName = true;
+            self.setView('details');
         };
 
         this.getOrganizationImplementations = function (searchText) {
@@ -66,15 +68,13 @@ module.exports = {
         };
 
         this.organizationImplementationSelected = function (implementation) {
-            self.organization.organization = self.selectedOrganization;
-            self.organization.name = self.selectedOrganizationImplementation.name;
-            self.setView(implementation.id ? 'request' : 'details');
-        };
-
-        this.gotoLookup = function () {
-            self.selectedOrganization = null;
-            self.selectedOrganizationImplementation = null;
-            this.setView('lookup');
+            if (implementation.id) {
+                self.requestOrganization = implementation;
+                implementation.isImplementation = true;
+                self.setView('request');
+            } else {
+                self.organization.name = implementation.name;
+            }
         };
 
         // Rx.createObservableFunction(this, 'implementationNameChanged')
@@ -88,11 +88,21 @@ module.exports = {
         //         console.log(results);
         //     });
 
-        this.requestAccess = function (request) {
-            if (request) {
-                // request access
-            }
-            $state.go('activities');
+        this.requestAccess = function (organization) {
+            var id = organization.organizationImplementationId || organization.id;
+            Restangular.one('organizationImplementations', id).one('join').customPUT({})
+                .then(function () {
+                    $state.go('activities');
+                });
+        };
+
+        this.startOver = function () {
+            self.requestOrganization = null;
+            self.selectedOrganization = null;
+            self.selectedOrganizationImplementation = null;
+            self.organization.organization = self.organization.name = null;
+            self.showImplementationName = false;
+            self.setView('details');
         };
     }
 };
