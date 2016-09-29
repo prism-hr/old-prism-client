@@ -15,6 +15,10 @@ module.exports = {
         };
 
         this.setView('details');
+        if (this.organization.id) {
+            this.selectedOrganization = this.organization.organization;
+            this.selectedOrganizationImplementation = this.organization;
+        }
 
         this.getOrganizations = function (searchText) {
             return Restangular.all('organizations').getList({searchTerm: searchText})
