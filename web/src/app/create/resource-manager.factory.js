@@ -31,11 +31,11 @@ module.exports = function ($q, Restangular, Upload) {
         } else {
             url = Restangular.all(collectionName).getRestangularUrl();
         }
+        var logo = this._resource.documentLogoImage;
+        var background = this._resource.documentBackgroundImage;
+        this._resource.documentLogoImage = null;
+        this._resource.documentBackgroundImage = null;
         var resourcePost = angular.copy(_.omit(this._resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions']));
-        var logo = resourcePost.documentLogoImage;
-        var background = resourcePost.documentBackgroundImage;
-        resourcePost.documentLogoImage = null;
-        resourcePost.documentBackgroundImage = null;
         return Upload.upload({
             url: url,
             data: {
