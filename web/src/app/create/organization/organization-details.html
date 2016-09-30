@@ -1,8 +1,7 @@
 <div layout-padding>
-    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.type | translate}} summary, locations and industries
-        areas </h3>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.type | translate}} industry areas, web and sizes </h3>
 
-    <md-input-container class="md-block">
+    <md-input-container class="md-block industries-holder">
         <label class="md-no-float">Industry Areas</label>
         <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
                   md-transform-chip="$ctrl.transformChip($chip)"
