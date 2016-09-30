@@ -26,8 +26,10 @@ var generalConfig = require('./app/configuration/general.config');
 var materialConfig = require('./app/configuration/material.config');
 var serverInterceptor = require('./app/configuration/server-interceptor.config');
 var authenticationHook = require('./app/unauthenticated/authentication.hook');
+var definitionsLoadHook = require('./app/general/definitions-load.hook');
 var ActivationService = require('./app/unauthenticated/activity.service');
 var AuthService = require('./app/unauthenticated/auth.service');
+var definitionsService = require('./app/general/definitions.service');
 var resourceManagerFactory = require('./app/create/resource-manager.factory');
 var resourceCreateWizardFactory = require('./app/create/resource-create-wizard.factory');
 var resourceCreateWizardStepHook = require('./app/create/resource-create-wizard-step.hook');
@@ -111,10 +113,12 @@ angular
     .service('ActivationService', ActivationService)
     .service('AuthService', AuthService)
     .service('resourceManagerFactory', resourceManagerFactory)
+    .service('definitions', definitionsService)
     .provider('resourceCreateWizardFactory', resourceCreateWizardFactory)
     .run(authenticationHook)
     .run(browserTitleHook)
     .run(resourceCreateWizardStepHook)
+    .run(definitionsLoadHook)
     .run(generalConfig.generalRun)
     .run(generalConfig.templateCacheConfig)
     .directive('applicationLoader', applicationLoader)
