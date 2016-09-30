@@ -42,7 +42,7 @@ module.exports = function ($q, Restangular, Upload) {
         }
         if (this._resource.documentBackgroundImage instanceof Blob) {
             resourcePost.documentBackgroundImage = null;
-            logo = this._resource.documentBackgroundImage;
+            background = this._resource.documentBackgroundImage;
         }
 
         resourcePost = angular.copy(resourcePost);
