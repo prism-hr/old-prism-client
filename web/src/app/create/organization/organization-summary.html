@@ -1,66 +1,183 @@
-<div layout-padding>
-    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.type | translate}} summary, locations and industries
-        areas </h3>
-    <div layout-gt-xs="row">
-        <div flex="100" flex-gt-xs="65">
+<div>
+    <h3>{{'create.organization.organization-lookup.lookup-subtitle.' + $ctrl.type | translate}}</h3>
+    <!--<md-button ng-click="$ctrl.gotoLookup()" class="md-warn md-raised small">-->
+    <!--{{'create.organization.organization-lookup.lookup-button.' + $ctrl.type | translate}}-->
+    <!--</md-button>-->
+    <div ng-if="$ctrl.view === 'details'">
+        <md-autocomplete ng-if="!$ctrl.selectedOrganization"
+                         md-input-name="selectedOrganization"
+                         md-no-cache="true"
+                         md-selected-item="$ctrl.selectedOrganization"
+                         md-selected-item-change="$ctrl.organizationSelected(organization)"
+                         ng-model-options="{debounce: 600}"
+                         md-search-text="organizationSearchText"
+                         md-items="organization in $ctrl.getOrganizations(organizationSearchText)"
+                         md-item-text="organization.name"
+                         md-min-length="1"
+                         placeholder="{{'create.organization.organization-lookup.organization-placeholder.' + $ctrl.type | translate}}"
+                         md-menu-class="autocomplete-custom-template"
+                         md-require-match
+                         required>
+            <md-item-template>
+                <div layout="row">
+                    <div class="icon">
+                        <div class="logo" ng-if="organization.documentLogoImageId">
+                            <img ng-src="{{$root.documentsUrl + organization.documentLogoImageId}}">
+                        </div>
+                    </div>
+                    <div>
+                        <span md-highlight-text="searchText" class="item-title"> {{organization.id ? organization.name : 'Create ' + organization.name}} </span>
+                        <span class="item-location" ng-if="organization.location"> {{organization.location}}</span>
+                    </div>
+                </div>
+            </md-item-template>
+        </md-autocomplete>
+
+        <div ng-if="$ctrl.selectedOrganization">
             <md-input-container class="md-block">
-                <label class="md-no-float">Summary</label>
-                <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="4" required></textarea>
+                <label class="md-no-float">
+                    {{'create.organization.organization-lookup.organization-label.' + $ctrl.type | translate}}
+                </label>
+                <input name="organizationName" ng-model="$ctrl.organization.organization.name" disabled="disabled">
             </md-input-container>
+            <md-button ng-if="!$ctrl.editingOrganization"
+                       class="pull-left md-primary md-raised small"
+                       ng-click="$ctrl.startOver()">
+                <i class="icon-plus"></i>
+                Start Over
+            </md-button>
         </div>
-        <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
-            <div>
-                <div class="image-uploader logo"
-                     ngf-pattern="'image/*'"
-                     ngf-accept="'image/png, image/jpeg, image/gif'"
-                     ngf-max-size="10MB"
-                     ngf-resize="{width: 400, height: 250}"
-                     ngf-select
-                     ngf-drop
-                     name="logo"
-                     layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
-                    <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
-                    <div class="logo-flex">
-                        <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
-                            <span image-src="$ctrl.organization.documentLogoImage"></span>
+
+        <div ng-if="$ctrl.selectedOrganization">
+            <md-button ng-if="!$ctrl.editingOrganization && !$ctrl.showImplementationName"
+                       class="pull-left md-primary md-raised small"
+                       ng-click="$ctrl.addDepartment()">
+                <i class="icon-plus"></i>
+                {{'create.organization.organization-lookup.add-department.' + $ctrl.type | translate}}
+            </md-button>
+            <div ng-if="$ctrl.showImplementationName">
+                <div ng-if="!$ctrl.selectedOrganizationImplementation" class="department-lookup">
+                    <div layout="row" class="division-controls">
+                        <md-autocomplete
+                                class="md-block" flex="grow"
+                                md-input-name="selectedOrganizationImplementation"
+                                md-no-cache="true"
+                                md-selected-item="$ctrl.selectedOrganizationImplementation"
+                                md-selected-item-change="$ctrl.organizationImplementationSelected(implementation)"
+                                ng-model-options="{debounce: 600}"
+                                md-search-text="implementationSearchText"
+                                md-items="implementation in $ctrl.getOrganizationImplementations(implementationSearchText)"
+                                md-item-text="implementation.name"
+                                md-min-length="1"
+                                placeholder="{{'create.organization.organization-lookup.implementation-placeholder.' + $ctrl.type | translate}}"
+                                md-menu-class="autocomplete-custom-template"
+                                md-require-match
+                                required>
+                            <md-item-template>
+                                <div class="icon">
+                                    <div class="logo" ng-if="implementation.documentLogoImageId">
+                                        <img ng-src="{{$root.documentsUrl + implementation.documentLogoImageId}}">
+                                    </div>
+                                </div>
+                                <div>
+                                    <span md-highlight-text="searchText" class="item-title"> {{implementation.id ? implementation.name : 'Create ' + implementation.name}} </span>
+                                    <span class="item-location" ng-if="implementation.location"> {{implementation.location}}</span>
+                                </div>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                </div>
+
+                <md-input-container ng-if="$ctrl.selectedOrganizationImplementation" class="md-block">
+                    <label class="md-no-float">
+                        {{'create.organization.organization-lookup.implementation-label.' + $ctrl.type | translate}}
+                    </label>
+                    <input name="implementationName" ng-model="$ctrl.organization.name" disabled="disabled">
+                </md-input-container>
+            </div>
+            <div layout-gt-xs="row">
+                <div flex="100" flex-gt-xs="65">
+                    <md-input-container class="md-block">
+                        <label class="md-no-float">Summary</label>
+                        <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="4" required></textarea>
+                    </md-input-container>
+                </div>
+                <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
+                    <div>
+                        <div class="image-uploader logo"
+                             ngf-pattern="'image/*'"
+                             ngf-accept="'image/png, image/jpeg, image/gif'"
+                             ngf-max-size="10MB"
+                             ngf-resize="{width: 400, height: 250}"
+                             ngf-select
+                             ngf-drop
+                             name="logo"
+                             layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
+                            <span class="drop-box" ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
+                            <div class="logo-flex">
+                                <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
+                                    <span image-src="$ctrl.organization.documentLogoImage"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <small>Image size 400 x 250 / 10MB max</small>
+                        <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                            <div ng-messages-include="general-messages"></div>
                         </div>
                     </div>
                 </div>
-                <small>Image size 400 x 250 / 10mb max</small>
-                <div ng-messages="$ctrl.form.logo.$error" role="alert">
-                    <div ng-messages-include="general-messages"></div>
+            </div>
+            <div class="locations">
+                <md-input-container class="md-block">
+                    <label class="md-no-float">Locations</label>
+                    <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
+                                        placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}"
+                                        required>
+                    </place-autocomplete>
+                    <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="$ctrl.view === 'request'">
+        <div class="google-institution">
+            <div layout="row" class="company-header">
+                <div class="logo-image">
+                    <div class="logo-flex company-logo">
+                        <div class="logo">
+                            <img ng-src="{{$root.documentsUrl + $ctrl.requestOrganization.documentLogoImageId}}">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!--TODO: fetch creator and address-->
+                    <h2>{{$ctrl.organizationw.name}}</h2>
+                    <h4>Created by <span>Juan Mingo</span> TODO</h4>
+                    <p>{{$ctrl.requestOrganization.location.description}} TODO Address</p>
+                </div>
+            </div>
+            <div class="part-of">
+                <h4>Request access to {{$ctrl.requestOrganization.name}}</h4>
+                <div class="clearfix button-group">
+                    <md-button class="pull-left md-primary md-raised small"
+                               ng-click="$ctrl.requestAccess($ctrl.requestOrganization)">
+                        <i class="icon-user"></i> Request
+                    </md-button>
+                    <md-button ng-if="!$ctrl.requestOrganization.isImplementation"
+                               class="pull-left md-primary md-raised small"
+                               ng-click="$ctrl.addDepartment($ctrl.requestOrganization)">
+                        <i class="icon-plus"></i>
+                        {{'create.organization.organization-lookup.add-department.' + $ctrl.type | translate}}
+                    </md-button>
+                    <md-button class="pull-right md-warn md-raised small"
+                               ng-click="$ctrl.startOver()">
+                        <i class="icon-close"></i> Decline
+                    </md-button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="locations">
-        <md-input-container class="md-block">
-            <label class="md-no-float">Locations</label>
-            <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
-                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.type | translate}}"
-                                required>
-            </place-autocomplete>
-            <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
-                <div ng-messages-include="general-messages"></div>
-            </div>
-        </md-input-container>
-    </div>
-    <md-input-container class="md-block">
-        <label class="md-no-float">Industry Areas</label>
-        <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
-                  md-transform-chip="$ctrl.transformChip($chip)"
-                  md-require-match="$ctrl.autocompleteDemoRequireMatch">
-            <md-autocomplete
-                    md-selected-item="$ctrl.selectedItem"
-                    md-search-text="$ctrl.searchText"
-                    md-items="item in $ctrl.querySearch($ctrl.searchText)"
-                    md-item-text="item.name"
-                    placeholder="Search for a Industry Areas">
-                <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
-            </md-autocomplete>
-            <md-chip-template>
-                {{$chip.name}}
-            </md-chip-template>
-        </md-chips>
-    </md-input-container>
 </div>

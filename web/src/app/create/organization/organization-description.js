@@ -1,5 +1,5 @@
 module.exports = {
-    template: require('./organization-assets.html'),
+    template: require('./organization-description.html'),
     bindings: {
         type: '@',
         organization: '=',

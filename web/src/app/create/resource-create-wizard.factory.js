@@ -7,14 +7,10 @@ module.exports = function () {
         resource.description = null;
     }
 
-    var organizationSteps = [{id: 'lookup', component: 'organizationLookup', title: 'Name & Logo'},
-        {id: 'summary', component: 'organizationSummary', title: 'Header'},
-        {id: 'web', component: 'organizationWeb', title: 'Web & Size'},
+    var organizationSteps = [{id: 'summary', component: 'organizationSummary', title: 'Summary'},
+        {id: 'details', component: 'organizationDetails', title: 'Details'},
         {
-            id: 'assets',
-            component: 'organizationAssets',
-            title: 'Background & Description',
-            data: {optional: true},
+            id: 'description', component: 'organizationDescription', title: 'Description', data: {optional: true},
             clear: clearAssets
         },
         {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}];
