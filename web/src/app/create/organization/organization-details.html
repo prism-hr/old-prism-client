@@ -1,0 +1,46 @@
+<div layout-padding>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.type | translate}} summary, locations and industries
+        areas </h3>
+
+    <md-input-container class="md-block">
+        <label class="md-no-float">Industry Areas</label>
+        <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
+                  md-transform-chip="$ctrl.transformChip($chip)"
+                  md-require-match="$ctrl.autocompleteDemoRequireMatch">
+            <md-autocomplete
+                    md-selected-item="$ctrl.selectedItem"
+                    md-search-text="$ctrl.searchText"
+                    md-items="item in $ctrl.querySearch($ctrl.searchText)"
+                    md-item-text="item.name"
+                    placeholder="Search for a Industry Areas">
+                <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                {{$chip.name}}
+            </md-chip-template>
+        </md-chips>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+        <label class="md-no-float">Homepage URL
+            <small>(http://yourweb.com)</small>
+        </label>
+        <input type="url" name="website" ng-model="$ctrl.organization.website">
+    </md-input-container>
+
+    <div layout="row">
+        <md-input-container class="md-block" flex>
+            <label class="md-no-float">Number Staff</label>
+            <md-select ng-model="$ctrl.organization.numberStaffInvalid" required>
+                <md-option placeholder="Number Staff" ng-repeat="size in $ctrl.sizes" value="{{size}}">{{size}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" ng-if="$ctrl.type === 'DEPARTMENT'" flex>
+            <label class="md-no-float">Number of Students</label>
+            <md-select ng-model="$ctrl.organization.numberStudentInvalid" required>
+                <md-option ng-repeat="student in $ctrl.students" value="{{student}}">{{student}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>

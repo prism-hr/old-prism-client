@@ -50,10 +50,9 @@ var invited = require('./app/unauthenticated/invited.component');
 var departmentWelcome = require('./app/create/department/department-welcome');
 var promoterWelcome = require('./app/create/promoter/promoter-welcome');
 var organization = require('./app/create/organization/organization');
-var organizationLookup = require('./app/create/organization/organization-lookup');
 var organizationSummary = require('./app/create/organization/organization-summary');
-var organizationWeb = require('./app/create/organization/organization-web');
-var organizationAssets = require('./app/create/organization/organization-assets');
+var organizationDetails = require('./app/create/organization/organization-details');
+var organizationDescription = require('./app/create/organization/organization-description');
 var organizationPreview = require('./app/create/organization/organization-preview');
 var organizationPreviewBox = require('./app/create/organization/organization-preview-box');
 var advert = require('./app/create/advert/advert');
@@ -130,10 +129,9 @@ angular
     .component('departmentWelcome', departmentWelcome)
     .component('promoterWelcome', promoterWelcome)
     .component('organization', organization)
-    .component('organizationLookup', organizationLookup)
     .component('organizationSummary', organizationSummary)
-    .component('organizationWeb', organizationWeb)
-    .component('organizationAssets', organizationAssets)
+    .component('organizationDetails', organizationDetails)
+    .component('organizationDescription', organizationDescription)
     .component('organizationPreview', organizationPreview)
     .component('organizationPreviewBox', organizationPreviewBox)
     .component('advert', advert)
