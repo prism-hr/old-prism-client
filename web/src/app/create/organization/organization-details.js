@@ -6,8 +6,9 @@ module.exports = {
         form: '<'
     },
     /** @ngInject */
-    controller: function () {
+    controller: function (definitions) {
         var self = this;
+        this.definitions = definitions;
 
         self.readonly = false;
         self.selectedItem = null;
