@@ -1,38 +1,19 @@
 class OrganizationDetailsController {
-    constructor(definitions) {
+    constructor(Restangular, definitions) {
         this.definitions = definitions;
+        this.Restangular = Restangular;
     }
 
-    $onInit() {
-        function createFilterFor(query) {
-            const lowercaseQuery = angular.lowercase(query);
+    lookupTags(text) {
+        return this.Restangular.all('tags').getList({searchTerm: text})
+            .then(tags => tags.plain());
+    }
 
-            return function filterFn(industry) {
-                return (industry.name.indexOf(lowercaseQuery) === 0) ||
-                    (industry.value.indexOf(lowercaseQuery) === 0);
-            };
+    transformTag(chip) {
+        if (angular.isObject(chip)) {
+            return {tag: _.pick(chip, ['id', 'name'])};
         }
-
-        this.readonly = false;
-        this.selectedItem = null;
-        this.searchText = null;
-        this.querySearch = function (query) {
-            return query ? this.industries.filter(createFilterFor(query)) : [];
-        };
-        this.industries = [
-            {value: 'ACCOUNTING', name: 'Accounting'},
-            {value: 'AIRLINES_AVIATION', name: 'Airlines/Aviation'},
-            {value: 'ALTERNATIVE_DISPUTE_RESOLUTION', name: 'Alternative Dispute Resolution'},
-            {value: 'ALTERNATIVE_MEDICINE', name: 'Alternative Medicine'}
-        ];
-        this.selectedIndustries = [];
-        this.autocompleteDemoRequireMatch = true;
-        this.transformChip = function (chip) {
-            if (angular.isObject(chip)) {
-                return chip;
-            }
-            return {name: chip, type: 'new'};
-        };
+        return {tag: {name: chip}};
     }
 }
 

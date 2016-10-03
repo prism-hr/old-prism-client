@@ -1,21 +1,19 @@
 <div layout-padding>
     <h3>Provide your {{'create.organization.lc-type.' + $ctrl.type | translate}} industry areas, web and sizes </h3>
 
-    <md-input-container class="md-block industries-holder">
+    <md-input-container class="md-block">
         <label class="md-no-float">Industry Areas</label>
-        <md-chips ng-model="$ctrl.selectedIndustries" md-autocomplete-snap
-                  md-transform-chip="$ctrl.transformChip($chip)"
-                  md-require-match="$ctrl.autocompleteDemoRequireMatch">
+        <md-chips ng-model="$ctrl.organization.tags"
+                  md-transform-chip="$ctrl.transformTag($chip)">
             <md-autocomplete
-                    md-selected-item="$ctrl.selectedItem"
-                    md-search-text="$ctrl.searchText"
-                    md-items="item in $ctrl.querySearch($ctrl.searchText)"
+                    md-search-text="searchText"
+                    md-items="item in $ctrl.lookupTags(searchText)"
                     md-item-text="item.name"
-                    placeholder="Search for a Industry Areas">
-                <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
+                    placeholder="Find a tag or add a new one">
+                <span md-highlight-text="searchText">{{item.name}}</span>
             </md-autocomplete>
             <md-chip-template>
-                {{$chip.name}}
+                {{$chip.tag.name}}
             </md-chip-template>
         </md-chips>
     </md-input-container>
