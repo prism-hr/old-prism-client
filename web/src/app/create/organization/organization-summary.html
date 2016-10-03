@@ -48,14 +48,15 @@
             </md-button>
         </div>
 
-        <div ng-if="$ctrl.selectedOrganization" class="department-lookup" layout="row" layout-align="start start">
-            <md-button ng-if="!$ctrl.editingOrganization && !$ctrl.showImplementationName"
-                       class="pull-left md-primary md-raised small"
-                       ng-click="$ctrl.addDepartment()">
-                <i class="icon-plus"></i>
-                {{'create.organization.organization-lookup.add-department.' + $ctrl.type | translate}}
-            </md-button>
-            <div ng-if="$ctrl.showImplementationName" flex>
+        <div ng-if="$ctrl.selectedOrganization" layout="row" layout-align="start start">
+            <div class="department-lookup" ng-if="!$ctrl.editingOrganization && !$ctrl.showImplementationName">
+                <md-button class="pull-left md-primary md-raised small"
+                           ng-click="$ctrl.addDepartment()">
+                    <i class="icon-plus"></i>
+                    {{'create.organization.organization-lookup.add-department.' + $ctrl.type | translate}}
+                </md-button>
+            </div>
+            <div ng-if="$ctrl.showImplementationName" flex class="department-lookup">
                 <div ng-if="!$ctrl.selectedOrganizationImplementation" class="division-controls md-block">
                         <md-autocomplete
                                 class="md-block" flex="grow"
@@ -142,6 +143,7 @@
     </div>
 
     <div ng-if="$ctrl.view === 'request'">
+        {{$ctrl.requestOrganization}}
         <div class="google-institution">
             <div layout="row" class="company-header">
                 <div class="logo-image">
@@ -153,9 +155,9 @@
                 </div>
                 <div>
                     <!--TODO: fetch creator and address-->
-                    <h2>{{$ctrl.organizationw.name}}</h2>
+                    <h2>{{$ctrl.requestOrganization.name}}</h2>
                     <h4>Created by <span>Juan Mingo</span> TODO</h4>
-                    <p>{{$ctrl.requestOrganization.location.description}} TODO Address</p>
+                    <p>{{$ctrl.requestOrganization.location.description}} TODO Location</p>
                 </div>
             </div>
             <div class="part-of">
