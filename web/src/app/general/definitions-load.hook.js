@@ -1,6 +1,4 @@
 /** @ngInject */
-module.exports = function ($transitions, definitions) {
-    $transitions.onBefore({from: '*.**', to: '*.**'}, function (transition) {
-        return definitions.loadDefinitions();
-    });
+export const definitionsLoadHook = function ($transitions, definitions) {
+    $transitions.onBefore({from: '*.**', to: '*.**'}, () => definitions.loadDefinitions());
 };

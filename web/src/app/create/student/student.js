@@ -1,50 +1,52 @@
-module.exports = {
+class StudentController {
+    $onInit() {
+        this.student = this.wizard.getResource();
+        this.createSteps = this.wizard.getSteps();
+        this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
+        this._onStepChange(this.wizard.getCurrentStep());
+    }
+
+    _onStepChange(currentStep) {
+        if (currentStep) {
+            if (currentStep.data.preview) {
+                this.showNavigation = true;
+            }
+            this.stepIdx = currentStep.index;
+            this.nextStep = this.wizard.getNextStep();
+            this.prevStep = this.wizard.getPrevStep();
+            this.optional = currentStep.data.optional;
+        }
+    }
+
+    next(form) {
+        if (!form.$valid) {
+            return;
+        }
+
+        form.$setPristine();
+        this.wizard.next();
+    }
+
+    prev(form) {
+        form.$setPristine();
+        this.wizard.prev();
+    }
+
+    skip(form) {
+        form.$setPristine();
+        this.wizard.skip();
+    }
+
+    $onDestroy() {
+        this.stepSubscription.dispose();
+    }
+}
+
+export const Student = {
     template: require('./student.html'),
     bindings: {
         wizard: '<',
         type: '<'
     },
-    /** @ngInject */
-    controller: function () {
-        var self = this;
-        this.student = self.wizard.getResource();
-        this.createSteps = self.wizard.getSteps();
-
-        var onStepChange = function (currentStep) {
-            if (currentStep) {
-                if (currentStep.data.preview) {
-                    self.showNavigation = true;
-                }
-                self.stepIdx = currentStep.index;
-                self.nextStep = self.wizard.getNextStep();
-                self.prevStep = self.wizard.getPrevStep();
-                self.optional = currentStep.data.optional;
-            }
-        };
-        var stepSubscription = self.wizard.stepSubscribe(onStepChange);
-        onStepChange(self.wizard.getCurrentStep());
-
-        this.next = function (form) {
-            if (!form.$valid) {
-                return;
-            }
-
-            form.$setPristine();
-            self.wizard.next();
-        };
-
-        this.prev = function (form) {
-            form.$setPristine();
-            self.wizard.prev();
-        };
-
-        this.skip = function (form) {
-            form.$setPristine();
-            self.wizard.skip();
-        };
-
-        this.$onDestroy = function () {
-            stepSubscription.dispose();
-        };
-    }
+    controller: StudentController
 };

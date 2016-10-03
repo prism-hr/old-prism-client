@@ -1,31 +1,27 @@
 /** @ngInject */
-function authenticationHook($transitions, $mdDialog) {
-    var activationMatch = {
-        to: function (state) {
-            return state.data && state.data.auth;
-        }
+export const authenticationHook = function ($transitions, $mdDialog) {
+    const activationMatch = {
+        to: state => state.data && state.data.auth
     };
-    $transitions.onBefore(activationMatch, function (transition) {
-        var AuthService = transition.injector().get('AuthService');
-        var $state = transition.router.stateService;
-        return AuthService.loadUser().then(function (user) {
+    $transitions.onBefore(activationMatch, transition => {
+        const AuthService = transition.injector().get('AuthService');
+        const $state = transition.router.stateService;
+        return AuthService.loadUser().then(user => {
             if (user) {
                 return true;
             }
-            var template = '<authenticate initial-view="LOGIN"></authenticate>';
+            let template = '<authenticate initial-view="LOGIN"></authenticate>';
             if (transition.params().showRegistration) {
                 template = '<authenticate initial-view="REGISTER"></authenticate>';
             }
             return $mdDialog.show({
-                template: template,
+                template,
                 parent: angular.element(document.body),
                 clickOutsideToClose: true,
                 fullscreen: true
-            }).then(function () {
+            }).then(() => {
                 $state.go(transition.to(), transition.params());
             });
         });
     });
-}
-
-module.exports = authenticationHook;
+};

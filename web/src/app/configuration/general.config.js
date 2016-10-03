@@ -1,15 +1,6 @@
-module.exports = {
-    generalRun: generalRun,
-    templateCacheConfig: templateCacheConfig,
-    restangular: restangularConfig,
-    satellizerConfig: satellizerConfig,
-    translateConfig: translateConfig,
-    ladingConfigurationBar: ladingConfigurationBar
-};
-
 /** @ngInject */
-function generalRun($rootScope, $transitions, $state, Restangular, AuthService) {
-    $transitions.onError(null, function () {
+export const generalRun = function ($rootScope, $transitions, $state, Restangular, AuthService) {
+    $transitions.onError(null, () => {
         console.log('Transition error');
     });
     $rootScope.$state = $state;
@@ -19,30 +10,24 @@ function generalRun($rootScope, $transitions, $state, Restangular, AuthService) 
     // keep user logged in after page refresh
     AuthService.refreshTokenHeader();
     AuthService.loadUser();
-}
+};
 
 /** @ngInject */
-function templateCacheConfig($templateCache) {
+export const templateCacheConfig = function ($templateCache) {
     $templateCache.put('login.view.html', require('../unauthenticated/authenticate/login.view.html'));
     $templateCache.put('register.view.html', require('../unauthenticated/authenticate/register.view.html'));
     $templateCache.put('forgot-password.view.html', require('../unauthenticated/authenticate/forgot-password.view.html'));
     $templateCache.put('footer.html', require('../general/footer.html'));
-}
+};
 
 /** @ngInject */
-function ladingConfigurationBar(cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.includeSpinner = false;
-    cfpLoadingBarProvider.latencyThreshold = 100;
-}
-
-/** @ngInject */
-function restangularConfig(RestangularProvider) {
-    var host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
+export const restangularConfig = function (RestangularProvider) {
+    const host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
     RestangularProvider.setBaseUrl(host + '/prism/api');
-}
+};
 
 /** @ngInject */
-function satellizerConfig($authProvider, environment) {
+export const satellizerConfig = function ($authProvider, environment) {
     $authProvider.linkedin({
         clientId: environment.oauth.linkedin,
         url: 'prism/api/public/authenticate/linkedin',
@@ -54,14 +39,14 @@ function satellizerConfig($authProvider, environment) {
         clientId: environment.oauth.facebook,
         url: 'prism/api/public/authenticate/facebook'
     });
-}
+};
 
 /** @ngInject */
-function translateConfig($translateProvider) {
+export const translateConfig = function ($translateProvider) {
     $translateProvider.useSanitizeValueStrategy('sanitize');
     $translateProvider.useStaticFilesLoader({
         prefix: 'locale-',
         suffix: '.json'
     });
     $translateProvider.preferredLanguage('en');
-}
+};

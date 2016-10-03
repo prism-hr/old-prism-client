@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <md-tabs md-dynamic-height md-selected="selectedIndex">
+            <md-tabs md-dynamic-height md-selected="$ctrl.selectedIndex">
                 <md-tab label="positions">
                     <md-content>
                         <h2 layout-padding="8">Positions</h2>
@@ -203,7 +203,7 @@
                             </div>
                         </div>
                         <div class="map-container">
-                            <ui-gmap-google-map center="map.center" zoom="map.zoom">
+                            <ui-gmap-google-map center="$ctrl.map.center" zoom="map.zoom">
                                 <!--<ui-gmap-window show="map.clickedMarker"-->
                                 <!--templateUrl="'views/opportunities/opportunity-item-location-window.html'"-->
                                 <!--templateParameter="map.clickedMarker" coords="map.clickedMarker.coordinates"-->

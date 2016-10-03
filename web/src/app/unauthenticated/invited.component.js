@@ -1,29 +1,37 @@
-module.exports = {
-    template: '<div></div>',
-    bindings: {
-        activity: '<'
-    },
+class InvitedController {
     /** @ngInject */
-    controller: function ($state, $mdDialog) {
-        var self = this;
-        var userState = this.activity.user.state;
+    constructor($state, $mdDialog) {
+        this.$state = $state;
+        this.$mdDialog = $mdDialog;
+    }
 
-        var template;
+    $onInit() {
+        const userState = this.activity.user.state;
+
+        let template;
         if (userState === 'UNIDENTIFIED' || userState === 'IDENTIFIED') {
             template = '<authenticate initial-view="LOGIN" activity="activity"></authenticate>';
         } else {
             template = '<authenticate initial-view="REGISTER" activity="activity"></authenticate>';
         }
 
-        $mdDialog.show({
-            template: template,
-            controller: function ($scope) {
+        this.$mdDialog.show({
+            template,
+            controller($scope) {
                 $scope.activity = self.activity;
             },
             parent: angular.element(document.body),
             fullscreen: true
-        }).then(function () {
-            $state.go('activities');
+        }).then(() => {
+            this.$state.go('activities');
         });
     }
+}
+
+export const Invited = {
+    template: '<div></div>',
+    bindings: {
+        activity: '<'
+    },
+    controller: InvitedController
 };

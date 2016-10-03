@@ -1,20 +1,18 @@
 /** @ngInject */
-function DefinitionsService(Restangular) {
-    this.Restangular = Restangular;
-}
+export class DefinitionsService {
+    constructor(Restangular) {
+        this.Restangular = Restangular;
+    }
 
-DefinitionsService.prototype = {
-    loadDefinitions: function () {
-        var self = this;
-        if (!self.loadPromise) {
-            self.loadPromise = this.Restangular.one('public', 'definitions').get()
-                .then(function (definitions) {
-                    _.assign(self, definitions.plain());
+    loadDefinitions() {
+        if (!this.loadPromise) {
+            this.loadPromise = this.Restangular.one('public', 'definitions').get()
+                .then(definitions => {
+                    _.assign(this, definitions.plain());
                     return definitions.plain();
                 });
         }
-        return self.loadPromise;
+        return this.loadPromise;
     }
-};
+}
 
-module.exports = DefinitionsService;
