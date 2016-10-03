@@ -27,8 +27,8 @@
           "DEPARTMENT": "Create your department"
         },
         "organization-label": {
-          "PROMOTER": "Company",
-          "DEPARTMENT": "University"
+          "PROMOTER": "Company Name",
+          "DEPARTMENT": "University Name"
         },
         "implementation-label": {
           "PROMOTER": "Division Name",
