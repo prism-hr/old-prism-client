@@ -79,7 +79,7 @@
                 <i class="icon-organization"></i>
                 <p>Departments</p>
             </md-list-item>
-            <md-list-item ng-click="toggleSubmenu('company', $event)">
+            <md-list-item ng-click="$ctrl.toggleSubmenu('company', $event)">
                 <i class="icon-home"></i>
                 <p>Companies <i class="icon-arrow-down"></i></p>
             </md-list-item>
@@ -128,7 +128,7 @@
 </div>
 <md-toolbar class="md-toolbar-tools ucl-footer">
     <md-list flex>
-        <md-list-item ng-click="logout()" aria-label="Log out">
+        <md-list-item ng-click="$ctrl.logout()" aria-label="Log out">
             <i class="icon-logout"></i> Log out
         </md-list-item>
     </md-list>

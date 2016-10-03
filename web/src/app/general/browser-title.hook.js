@@ -1,22 +1,22 @@
-module.exports = browserTitle;
-
 /** @ngInject */
-function browserTitle($rootScope, $state, $transitions) {
-    $transitions.onSuccess({from: '*.**', to: '*.**'}, function (transition) {
+export const browserTitleHook = function ($rootScope, $state, $transitions) {
+    $transitions.onSuccess({from: '*.**', to: '*.**'}, transition => {
         $rootScope.$title = transition.getResolveValue('$title');
 
         function getBreadcrumb(pathNode) {
-            var titleResolvable = pathNode.resolvables.find(function (r) {
-                return r.token === '$title';
-            });
+            const titleResolvable = pathNode.resolvables
+                .find(r => r.token === '$title');
 
-            return titleResolvable && {
-                title: titleResolvable.data,
-                href: $state.href(pathNode.state)
-            };
+            if (titleResolvable) {
+                return {
+                    title: titleResolvable.data,
+                    href: $state.href(pathNode.state)
+                };
+            }
+            return null;
         }
 
-        var toPathNodes = transition.treeChanges().to;
+        const toPathNodes = transition.treeChanges().to;
 
         $rootScope.$breadcrumbs = toPathNodes
             .map(getBreadcrumb)
@@ -25,4 +25,4 @@ function browserTitle($rootScope, $state, $transitions) {
             $rootScope.$title = _.map($rootScope.$breadcrumbs, 'title').join(' > ');
         }
     });
-}
+};

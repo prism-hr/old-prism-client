@@ -1,10 +1,11 @@
-module.exports = {
+class StudentContactController {
+}
+
+export const StudentContact = {
     template: require('./student-contact.html'),
     bindings: {
         student: '=',
         form: '<'
     },
-    /** @ngInject */
-    controller: function () {
-    }
+    controller: StudentContactController
 };

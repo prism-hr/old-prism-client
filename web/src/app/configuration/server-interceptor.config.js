@@ -1,14 +1,12 @@
-module.exports = severMessage;
-
 /** @ngInject */
-function severMessage($provide, $httpProvider) {
-    $provide.factory('serverInterceptor', function ($q, $injector) {
+export const serverInterceptorConfig = function ($provide, $httpProvider) {
+    $provide.factory('serverInterceptor', ($q, $injector) => {
         return {
-            responseError: function (rejection) {
-                var status = rejection.status;
+            responseError(rejection) {
+                const status = rejection.status;
                 if (status) {
                     if (status === 500 || status === 501 || status === 503 || status === 408) {
-                        var alert = $injector.get('$mdToast');
+                        const alert = $injector.get('$mdToast');
                         alert.show({
                             hideDelay: 5000,
                             position: 'top right',
@@ -21,4 +19,4 @@ function severMessage($provide, $httpProvider) {
         };
     });
     $httpProvider.interceptors.push('serverInterceptor');
-}
+};

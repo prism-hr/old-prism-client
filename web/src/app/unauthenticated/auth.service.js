@@ -1,60 +1,59 @@
 /** @ngInject */
-function AuthService($http, $q, $auth, Restangular) {
-    this.$http = $http;
-    this.$q = $q;
-    this.$auth = $auth;
-    this.Restangular = Restangular;
-    var self = this;
+export class AuthService {
+    constructor($http, $q, $auth, Restangular) {
+        this.$http = $http;
+        this.$q = $q;
+        this.$auth = $auth;
+        this.Restangular = Restangular;
+    }
 
-    this.applyAuthentication = function (response) {
-        self.userPromise = null;
+    applyAuthentication(response) {
+        this.userPromise = null;
         localStorage.userToken = response.token;
-        self.refreshTokenHeader();
-        return self.loadUser();
-    };
-}
+        this.refreshTokenHeader();
+        return this.loadUser();
+    }
 
-AuthService.prototype = {
-    refreshTokenHeader: function () {
+    refreshTokenHeader() {
         this.$http.defaults.headers.common['X-Auth-Token'] = localStorage.userToken;
-    },
-    register: function (registerDetails) {
-        var self = this;
+    }
+
+    register(registerDetails) {
         return this.Restangular.one('public').all('register').post(registerDetails)
-            .then(self.applyAuthentication);
-    },
-    login: function (loginDetails) {
-        var self = this;
+            .then(response => this.applyAuthentication(response));
+    }
+
+    login(loginDetails) {
         return this.Restangular.one('public').all('login').post(loginDetails)
-            .then(self.applyAuthentication);
-    },
-    authenticate: function (provider) {
-        var self = this;
+            .then(response => this.applyAuthentication(response));
+    }
+
+    authenticate(provider) {
         return this.$auth.authenticate(provider, {state: null})
-            .then(function (response) {
-                return response.data;
-            })
-            .then(self.applyAuthentication);
-    },
-    logout: function () {
+            .then(response => response.data)
+            .then(response => this.applyAuthentication(response));
+    }
+
+    logout() {
         this.user = null;
         localStorage.userToken = null;
         this.userPromise = null;
         this.refreshTokenHeader();
-    },
-    resetPassword: function (user) {
+    }
+
+    resetPassword(user) {
         return this.Restangular.one('public').one('passwordTemporary').customPUT(user);
-    },
-    loadUser: function () {
-        var self = this;
+    }
+
+    loadUser() {
         if (!this.userPromise) {
-            var noToken = !localStorage.userToken;
-            this.userPromise = noToken ? self.$q.when(null) :
+            const noToken = !localStorage.userToken;
+            this.userPromise = noToken ? this.$q.when(null) :
                 this.Restangular.one('user').get()
-                    .then(function (user) {
-                        self.user = user.plain();
-                        return self.user;
-                    }, function (response) {
+                    .then(user => {
+                        this.user = user.plain();
+                        return this.user;
+                    }, response => {
                         if (response.status === 401) {
                             return false;
                         }
@@ -63,7 +62,4 @@ AuthService.prototype = {
         }
         return this.userPromise;
     }
-};
-
-module.exports = AuthService;
-
+}

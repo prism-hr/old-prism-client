@@ -1,10 +1,11 @@
-module.exports = {
+class StudentPreviewController {
+}
+
+export const StudentPreview = {
     template: require('./student-preview.html'),
     bindings: {
         student: '=',
         form: '<'
     },
-    /** @ngInject */
-    controller: function () {
-    }
+    controller: StudentPreviewController
 };

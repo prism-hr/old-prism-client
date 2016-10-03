@@ -1,7 +1,7 @@
-module.exports = {
-    template: require('./department-welcome.html'),
-    /** @ngInject */
-    controller: function () {
+class DepartmentWelcomeController {
+}
 
-    }
+export const DepartmentWelcome = {
+    template: require('./department-welcome.html'),
+    controller: DepartmentWelcomeController
 };

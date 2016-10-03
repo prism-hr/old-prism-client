@@ -1,16 +1,13 @@
 /** @ngInject */
-module.exports = function ($animate) {
-    return ({
-        link: link,
-        restrict: 'C'
-    });
-    function link(scope, element) {
-        $animate.enabled(true);
-        $animate.leave(element.children().eq(1)).then(
-            function cleanupAfterAnimation() {
-                element.remove();
-            }
-        );
+export class ApplicationLoader {
+    constructor($animate) {
+        this.restrict = 'C';
+        this.$animate = $animate;
+    }
+
+    link(scope, element) {
+        this.$animate.enabled(true);
+        this.$animate.leave(element.children().eq(1))
+            .then(() => element.remove());
     }
 }
-;

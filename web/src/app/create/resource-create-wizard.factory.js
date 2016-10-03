@@ -1,164 +1,163 @@
 /** @ngInject */
-module.exports = function () {
-    var thisProvider = this;
+export class ResourceCreateWizardFactory {
 
-    function clearAssets(resource) {
-        resource.documentBackgroundImage = null;
-        resource.description = null;
-    }
-
-    var organizationSteps = [{id: 'summary', component: 'organizationSummary', title: 'Summary'},
-        {id: 'details', component: 'organizationDetails', title: 'Details'},
-        {
-            id: 'description', component: 'organizationDescription', title: 'Description', data: {optional: true},
-            clear: clearAssets
-        },
-        {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}];
-
-    var steps = {
-        PROMOTER: organizationSteps,
-        DEPARTMENT: organizationSteps,
-        ADVERT: [{id: 'category', component: 'advertCategory', title: 'Category'},
-            {id: 'type', component: 'advertType', title: 'Type'},
-            {id: 'header', component: 'advertHeader', title: 'Header'},
-            {id: 'salary', component: 'advertSalary', title: 'Salary'},
-            {id: 'details', component: 'advertDetails', title: 'Details'},
-            {id: 'audience', component: 'advertAudience', title: 'Audience'},
-            {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}],
-        STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
-            {id: 'studies', component: 'studentStudies', title: 'Studies'},
-            {id: 'contact', component: 'studentContact', title: 'Contact'},
-            {id: 'skills', component: 'studentSkills', title: 'Skills'},
-            {id: 'about', component: 'studentAbout', title: 'About you'},
-            {id: 'preview', component: 'studentPreview', title: 'Preview', data: {preview: true}}]
-    };
-    _.forEach(steps, function (subSteps) {
-        _.forEach(subSteps, function (step, index) {
-            step.index = index;
-            step.data = step.data || {};
-            step.data.wizardStep = true;
-        });
-    });
-
-    this.getStepDefinitions = function (resourceType) {
-        return steps[resourceType];
-    };
-
-    /** @ngInject */
-    this.$get = function ($q, $state) {
-        function ResourceCreateWizard(resourceManager, resourceType) {
-            if (!resourceManager) {
-                throw new Error('Missing resource manager');
-            }
-            this._resourceManager = resourceManager;
-            this._resourceType = resourceType;
-            this._steps = angular.copy(thisProvider.getStepDefinitions(resourceType));
-            this._stepSubject = new Rx.Subject();
-
-            this.getStepForName = function (stepName) {
-                return _.find(this._steps, {id: stepName});
-            };
+    constructor() {
+        function clearAssets(resource) {
+            resource.documentBackgroundImage = null;
+            resource.description = null;
         }
 
-        ResourceCreateWizard.prototype.getResource = function () {
-            return this._resourceManager.getResource();
+        const organizationSteps = [{id: 'summary', component: 'organizationSummary', title: 'Summary'},
+            {id: 'details', component: 'organizationDetails', title: 'Details'},
+            {
+                id: 'description', component: 'organizationDescription', title: 'Description', data: {optional: true},
+                clear: clearAssets
+            },
+            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}];
+
+        this.steps = {
+            PROMOTER: organizationSteps,
+            DEPARTMENT: organizationSteps,
+            ADVERT: [{id: 'category', component: 'advertCategory', title: 'Category'},
+                {id: 'type', component: 'advertType', title: 'Type'},
+                {id: 'header', component: 'advertHeader', title: 'Header'},
+                {id: 'salary', component: 'advertSalary', title: 'Salary'},
+                {id: 'details', component: 'advertDetails', title: 'Details'},
+                {id: 'audience', component: 'advertAudience', title: 'Audience'},
+                {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}],
+            STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
+                {id: 'studies', component: 'studentStudies', title: 'Studies'},
+                {id: 'contact', component: 'studentContact', title: 'Contact'},
+                {id: 'skills', component: 'studentSkills', title: 'Skills'},
+                {id: 'about', component: 'studentAbout', title: 'About you'},
+                {id: 'preview', component: 'studentPreview', title: 'Preview', data: {preview: true}}]
         };
-
-        ResourceCreateWizard.prototype.getCurrentStep = function () {
-            return this.getStepForName(this._currentStep);
-        };
-
-        /**
-         * Invoked before trying to enter a step.
-         *
-         * @param toStep step about to be entered
-         * @return {boolean|string} true when step can be entered or `stepName` which router should redirect browser to
-         */
-        ResourceCreateWizard.prototype.onEnter = function (toStep) {
-            var stateComplete = this.getResource().stateComplete || [];
-
-            var missingStepEncountered = false;
-            var lastNotCompleteStep = null;
-            _.each(this._steps, function (step) {
-                if (!missingStepEncountered) {
-                    step.available = true;
-                    var complete = _.find(stateComplete, {section: step.id});
-                    if (complete) {
-                        step.complete = true;
-                        step.skipped = complete.skipped;
-                    } else if (!step.data.optional) {
-                        missingStepEncountered = true;
-                        lastNotCompleteStep = step.id;
-                    }
-                }
+        _.forEach(this.steps, subSteps => {
+            _.forEach(subSteps, (step, index) => {
+                step.index = index;
+                step.data = step.data || {};
+                step.data.wizardStep = true;
             });
+        });
+    }
 
-            var toStepDefinition = _.find(this._steps, {id: toStep});
-            // if (toStepDefinition.available) {
-            this._currentStep = toStep;
-            this._stepSubject.onNext(toStepDefinition);
-            return true;
-            // }
-            // return lastNotCompleteStep;
-        };
+    getStepDefinitions(resourceType) {
+        return this.steps[resourceType];
+    }
 
-        ResourceCreateWizard.prototype.stepSubscribe = function (observer) {
-            return this._stepSubject.subscribe(observer);
-        };
-
-        ResourceCreateWizard.prototype.getNextStep = function () {
-            var currentStep = this.getStepForName(this._currentStep);
-            return currentStep.index + 1 < this._steps.length && this._steps[currentStep.index + 1];
-        };
-
-        ResourceCreateWizard.prototype.getPrevStep = function () {
-            var currentStep = this.getStepForName(this._currentStep);
-            return currentStep.index > 0 && this._steps[currentStep.index - 1];
-        };
-
-        ResourceCreateWizard.prototype.next = function () {
-            var self = this;
-
-            var nextStep = this.getNextStep();
-            if (!nextStep) {
-                $state.go(this._resourceType.toLowerCase() + 'Welcome');
+    /** @ngInject */
+    $get($state) {
+        class ResourceCreateWizard {
+            constructor(resourceManager, resourceType, steps) {
+                if (!resourceManager) {
+                    throw new Error('Missing resource manager');
+                }
+                this._resourceManager = resourceManager;
+                this._resourceType = resourceType;
+                this._steps = steps;
+                this._stepSubject = new Rx.Subject();
             }
 
-            return this._resourceManager.saveResource(this._currentStep)
-                .then(function (resource) {
-                    return $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id || 'new'});
-                });
-        };
-
-        ResourceCreateWizard.prototype.prev = function () {
-            var prevStep = this.getPrevStep();
-            if (prevStep) {
-                return $state.go(this._resourceType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().id});
+            getResource() {
+                return this._resourceManager.getResource();
             }
-            return $state.go(this._resourceType.toLowerCase() + 'Welcome');
-        };
 
-        ResourceCreateWizard.prototype.skip = function () {
-            var self = this;
+            getCurrentStep() {
+                return this.getStepForName(this._currentStep);
+            }
 
-            var currentStep = this.getStepForName(this._currentStep);
-            var clear = currentStep.clear || _.noop;
-            clear(this.getResource());
+            getStepForName(stepName) {
+                return _.find(this._steps, {id: stepName});
+            }
 
-            return this._resourceManager.saveResource(this._currentStep, {skipped: true})
-                .then(function (resource) {
-                    return $state.go(self._resourceType.toLowerCase() + '.' + self.getNextStep().id, {id: resource.id});
+            /**
+             * Invoked before trying to enter a step.
+             *
+             * @param toStep step about to be entered
+             * @return {boolean|string} true when step can be entered or `stepName` which router should redirect browser to
+             */
+            onEnter(toStep) {
+                const stateComplete = this.getResource().stateComplete || [];
+
+                let missingStepEncountered = false;
+                let lastNotCompleteStep = null;
+                _.each(this._steps, step => {
+                    if (!missingStepEncountered) {
+                        step.available = true;
+                        const complete = _.find(stateComplete, {section: step.id});
+                        if (complete) {
+                            step.complete = true;
+                            step.skipped = complete.skipped;
+                        } else if (!step.data.optional) {
+                            missingStepEncountered = true;
+                            lastNotCompleteStep = step.id;
+                        }
+                    }
                 });
-        };
 
-        ResourceCreateWizard.prototype.getSteps = function () {
-            return this._steps;
-        };
+                const toStepDefinition = _.find(this._steps, {id: toStep});
+                // if (toStepDefinition.available) {
+                this._currentStep = toStep;
+                this._stepSubject.onNext(toStepDefinition);
+                return true;
+                // }
+                // return lastNotCompleteStep;
+            }
+
+            stepSubscribe(observer) {
+                return this._stepSubject.subscribe(observer);
+            }
+
+            getNextStep() {
+                const currentStep = this.getStepForName(this._currentStep);
+                return currentStep.index + 1 < this._steps.length && this._steps[currentStep.index + 1];
+            }
+
+            getPrevStep() {
+                const currentStep = this.getStepForName(this._currentStep);
+                return currentStep.index > 0 && this._steps[currentStep.index - 1];
+            }
+
+            next() {
+                const nextStep = this.getNextStep();
+                if (!nextStep) {
+                    $state.go(this._resourceType.toLowerCase() + 'Welcome');
+                }
+
+                return this._resourceManager.saveResource(this._currentStep)
+                    .then(resource => {
+                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.id || 'new'});
+                    });
+            }
+
+            prev() {
+                const prevStep = this.getPrevStep();
+                if (prevStep) {
+                    return $state.go(this._resourceType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().id});
+                }
+                return $state.go(this._resourceType.toLowerCase() + 'Welcome');
+            }
+
+            skip() {
+                const currentStep = this.getStepForName(this._currentStep);
+                const clear = currentStep.clear || _.noop;
+                clear(this.getResource());
+
+                return this._resourceManager.saveResource(this._currentStep, {skipped: true})
+                    .then(resource => {
+                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.id});
+                    });
+            }
+
+            getSteps() {
+                return this._steps;
+            }
+        }
 
         return {
-            getWizard: function (resourceManager, wizardCategory) {
-                return new ResourceCreateWizard(resourceManager, wizardCategory);
+            getWizard: (resourceManager, wizardCategory) => {
+                return new ResourceCreateWizard(resourceManager, wizardCategory, angular.copy(this.getStepDefinitions(wizardCategory)));
             }
         };
-    };
-};
+    }
+}

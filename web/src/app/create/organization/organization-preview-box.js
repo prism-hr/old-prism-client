@@ -1,9 +1,10 @@
-module.exports = {
+class OrganizationPreviewBoxController {
+}
+
+export const OrganizationPreviewBox = {
     template: require('./organization-preview-box.html'),
     bindings: {
         organization: '='
     },
-    /** @ngInject */
-    controller: function () {
-    }
+    controller: OrganizationPreviewBoxController
 };

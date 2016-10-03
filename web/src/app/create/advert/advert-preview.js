@@ -1,10 +1,11 @@
-module.exports = {
+class AdvertPreviewController {
+}
+
+export const AdvertPreview = {
     template: require('./advert-preview.html'),
     bindings: {
         advert: '=',
         form: '<'
     },
-    /** @ngInject */
-    controller: function () {
-    }
+    controller: AdvertPreviewController
 };

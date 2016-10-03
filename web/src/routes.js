@@ -1,4 +1,4 @@
-module.exports = routesConfig;
+export default routesConfig;
 
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, resourceCreateWizardFactoryProvider) {
@@ -18,7 +18,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'invited',
             resolve: {
                 /** @ngInject */
-                activity: function ($stateParams, ActivationService) {
+                activity($stateParams, ActivationService) {
                     return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
                 },
                 $title: _.wrap('Invited')
@@ -42,11 +42,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 type: _.wrap('PROMOTER'),
-                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
                     return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(function (resourceManager) {
-                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
-                        });
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
                 },
                 $title: _.wrap('Company Information')
             }
@@ -66,11 +64,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 type: _.wrap('DEPARTMENT'),
-                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
                     return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(function (resourceManager) {
-                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
-                        });
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
                 },
                 $title: _.wrap('University Information')
             }
@@ -82,11 +78,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 type: _.wrap('ADVERT'),
-                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
                     return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(function (resourceManager) {
-                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
-                        });
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
                 },
                 $title: _.wrap('Advert')
             }
@@ -130,11 +124,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 type: _.wrap('STUDENT'),
-                wizard: function ($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
                     return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(function (resourceManager) {
-                            return resourceCreateWizardFactory.getWizard(resourceManager, type);
-                        });
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
                 },
                 $title: _.wrap('Student')
             }
@@ -152,7 +144,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 /** @ngInject */
-                activities: function (Restangular) {
+                activities(Restangular) {
                     return Restangular.one('user', 'activities').get({state: 'PENDING'});
                 },
                 $title: _.wrap('Activities')
@@ -160,12 +152,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
 
         });
 
-    _.each(['PROMOTER', 'DEPARTMENT', 'ADVERT', 'STUDENT'], function (resourceType) {
-        _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(resourceType), function (step, index) {
-            var data = angular.copy(step.data) || {};
+    _.each(['PROMOTER', 'DEPARTMENT', 'ADVERT', 'STUDENT'], resourceType => {
+        _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(resourceType), (step, index) => {
+            const data = angular.copy(step.data) || {};
             data.stepIdx = index;
-            var component = _.kebabCase(step.component);
-            var template;
+            const component = _.kebabCase(step.component);
+            let template;
             if (resourceType === 'ADVERT') {
                 template = '<' + component + ' type="{{type}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
             } else if (resourceType === 'STUDENT') {
@@ -176,17 +168,18 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             $stateProvider
                 .state(resourceType.toLowerCase() + '.' + step.id, {
                     url: '/' + step.id,
-                    template: template,
-                    data: data,
+                    template,
+                    data,
                     resolve: {
-                        resource: function (wizard) {
+                        resource(wizard) {
                             return wizard.getResource();
                         },
-                        $title: function (resource) {
-                            var prefix = resource.state === 'DRAFT' ? 'Step ' + (index + 1) + ': ' : '';
+                        $title(resource) {
+                            const prefix = resource.state === 'DRAFT' ? 'Step ' + (index + 1) + ': ' : '';
                             return prefix + step.title;
                         }
                     },
+                    /** @ngInject */
                     controller: function ($scope, type, resource, wizard) {
                         $scope.type = type;
                         $scope.resource = resource;

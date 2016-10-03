@@ -1,8 +1,5 @@
-module.exports = materialConfig;
-// module.exports = dateFormatProvider;
-
 /** @ngInject */
-function materialConfig($mdThemingProvider) {
+export const materialConfig = function ($mdThemingProvider) {
     $mdThemingProvider.definePalette('prismblue', {
         50: '#d9edf5',
         100: '#9dd2e4',
@@ -66,7 +63,8 @@ function materialConfig($mdThemingProvider) {
         .warnPalette('prismred')
         .backgroundPalette('grey');
     $mdThemingProvider.setDefaultTheme('prism');
-}
+};
+
 // TODO moment integration for date format
 // function dateFormatProvider($mdDateLocaleProvider, moment) {
 //     $mdDateLocaleProvider.formatDate = function (date) {

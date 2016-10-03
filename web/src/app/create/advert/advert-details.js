@@ -1,14 +1,15 @@
-module.exports = {
+class AdvertDetailsController {
+    clearImage() {
+        this.position.documentBackgroundImageOriginal = '';
+        this.position.documentBackgroundImage = '';
+    }
+}
+
+export const AdvertDetails = {
     template: require('./advert-details.html'),
     bindings: {
         form: '<',
         advert: '='
     },
-    /** @ngInject */
-    controller: function () {
-        this.clearImage = function () {
-            this.position.documentBackgroundImageOriginal = '';
-            this.position.documentBackgroundImage = '';
-        };
-    }
+    controller: AdvertDetailsController
 };

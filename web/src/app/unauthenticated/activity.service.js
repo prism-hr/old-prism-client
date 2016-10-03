@@ -1,12 +1,10 @@
 /** @ngInject */
-function ActivationService(Restangular) {
-    this.Restangular = Restangular;
-}
+export class ActivationService {
+    constructor(Restangular) {
+        this.Restangular = Restangular;
+    }
 
-ActivationService.prototype = {
-    getActivity: function (accessCode) {
+    getActivity(accessCode) {
         return this.Restangular.one('public').one('user').one('activities', accessCode).get();
     }
-};
-
-module.exports = ActivationService;
+}

@@ -1,11 +1,6 @@
-module.exports = {
-    transclude: true,
-    template: require('./dialog.html'),
-    bindings: {
-        title: '@'
-    },
+class DialogController {
     /** @ngInject */
-    controller: function ($scope, $mdDialog) {
+    constructor($scope, $mdDialog) {
         $scope.hide = function () {
             $mdDialog.hide();
         };
@@ -13,4 +8,13 @@ module.exports = {
             $mdDialog.cancel();
         };
     }
+}
+
+export const Dialog = {
+    transclude: true,
+    template: require('./dialog.html'),
+    bindings: {
+        title: '@'
+    },
+    controller: DialogController
 };
