@@ -13,9 +13,12 @@ class OrganizationSummaryController {
         if (this.organization.id) {
             if (this.organization.name === this.organization.organization.name) {
                 this.selectedOrganization = this.organization;
+                this.editableName = 'ORGANIZATION';
             } else {
                 this.selectedOrganization = this.organization.organization;
                 this.selectedOrganizationImplementation = this.organization;
+                this.showImplementationName = true;
+                this.editableName = 'IMPLEMENTATION';
             }
         }
     }
@@ -109,6 +112,10 @@ class OrganizationSummaryController {
         this.organization.organization = this.organization.name = null;
         this.showImplementationName = false;
         this.setView('details');
+    }
+
+    onOrganizationNameChanged(name) {
+        this.organization.name = name;
     }
 }
 
