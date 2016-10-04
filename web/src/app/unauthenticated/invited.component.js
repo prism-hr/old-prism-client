@@ -18,7 +18,7 @@ class InvitedController {
         this.$mdDialog.show({
             template,
             controller($scope) {
-                $scope.activity = self.activity;
+                $scope.activity = this.activity;
             },
             parent: angular.element(document.body),
             fullscreen: true
