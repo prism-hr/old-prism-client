@@ -1,7 +1,11 @@
 class AdvertDetailsController {
     clearImage() {
-        this.position.documentBackgroundImageOriginal = '';
-        this.position.documentBackgroundImage = '';
+        this.advert.documentBackgroundImageOriginal = '';
+        this.advert.documentBackgroundImage = '';
+    }
+
+    addSupportDocument(file) {
+        // this.advert.supportDocuments.push(file);
     }
 }
 
