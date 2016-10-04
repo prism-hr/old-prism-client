@@ -110,7 +110,7 @@ class OrganizationSummaryController {
         this.selectedOrganization = null;
         this.selectedOrganizationImplementation = null;
         this.organization.organization = this.organization.name = null;
-        this.showImplementationName = false;
+        this.showImplementationName = this.type === 'DEPARTMENT';
         this.setView('details');
     }
 

@@ -10,21 +10,21 @@
              ngf-select
              ngf-drop
              name="background"
-             layout="row" layout-align="center center" ng-model="$ctrl.position.documentBackgroundImageOriginal"
-             ng-hide="$ctrl.position.documentBackgroundImageOriginal">
-            <span class="drop-box" ng-if="!$ctrl.position.documentBackgroundImageOriginal">Drop your Background</span>
+             layout="row" layout-align="center center" ng-model="$ctrl.advert.documentBackgroundImageOriginal"
+             ng-hide="$ctrl.advert.documentBackgroundImageOriginal">
+            <span class="drop-box" ng-if="!$ctrl.advert.documentBackgroundImageOriginal">Drop your Background</span>
         </div>
-        <div class="cropArea" ng-if="$ctrl.position.documentBackgroundImageOriginal">
-            <img-crop image="$ctrl.position.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1"
-                      result-image="$ctrl.position.documentBackgroundImage" result-image-size='{w: 1280,h: 320}'
+        <div class="cropArea" ng-if="$ctrl.advert.documentBackgroundImageOriginal">
+            <img-crop image="$ctrl.advert.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1"
+                      result-image="$ctrl.advert.documentBackgroundImage" result-image-size='{w: 1280,h: 320}'
                       init-max-area="true"></img-crop>
 
         </div>
         <div layout="row" layout-align="center center">
             <small>Minimum Image size 1280 x 320</small>
             <span class="flex"></span>
-            <md-button class="md-warn md-raised small" ng-click="$ctrl.clearIma ge()"
-                       ng-if="$ctrl.position.documentBackgroundImageOriginal">Clear Image
+            <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()"
+                       ng-if="$ctrl.advert.documentBackgroundImageOriginal">Clear Image
             </md-button>
         </div>
         <div ng-messages="$ctrl.form.background.$error" role="alert">
@@ -46,7 +46,7 @@
                           class="form-control md-input" aria-label="Description"></text-angular>
         </md-input-container>
         <div class="documents" layout="row" layout-align="start center">
-            <md-button name="fileSupport" ngf-pattern=".pdf" ngf-select="upload($file)" class="md-warn md-raised small">
+            <md-button name="fileSupport" ngf-accept="'application/pdf'" ngf-select="addSupportDocument($file)" class="md-warn md-raised small">
                 Document Support (PDF)
             </md-button>
             <md-chips>
@@ -61,17 +61,17 @@
     </md-switch>
     <div class="outside-link" ng-if="$ctrl.advertOutsideLink">
         <md-input-container class="md-block">
-            <label class="md-no-float">Position URL
-                <small>(http://yourposition.com )</small>
+            <label class="md-no-float">advert URL
+                <small>(http://youradvert.com )</small>
             </label>
             <input type="url" name="url" ng-model="$ctrl.advert.url">
-            <div ng-messages="positionForm.position.url.$error" role="alert">
+            <div ng-messages="advertForm.advert.url.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
         <div class="documents" layout="row" layout-align="start center">
-            <md-button name="fileSupport" ngf-pattern=".pdf" ngf-select="upload($file)" class="md-warn md-raised small">
-                 Document (PDF)
+            <md-button name="fileSupport" ngf-accept="'application/pdf'" ngf-select="upload($file)" class="md-warn md-raised small">
+                Document (PDF)
             </md-button>
             <md-chips>
                 <md-chip>Support file.pdf</md-chip>
