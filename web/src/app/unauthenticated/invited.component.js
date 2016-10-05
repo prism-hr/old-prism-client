@@ -15,10 +15,11 @@ class InvitedController {
             template = '<authenticate initial-view="REGISTER" activity="activity"></authenticate>';
         }
 
+        const activity = this.activity;
         this.$mdDialog.show({
             template,
             controller($scope) {
-                $scope.activity = this.activity;
+                $scope.activity = activity;
             },
             parent: angular.element(document.body),
             fullscreen: true

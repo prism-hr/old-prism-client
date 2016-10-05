@@ -36,7 +36,7 @@ export class AuthService {
 
     logout() {
         this.user = null;
-        localStorage.userToken = null;
+        localStorage.removeItem('userToken');
         this.userPromise = null;
         this.refreshTokenHeader();
     }
@@ -46,6 +46,7 @@ export class AuthService {
     }
 
     loadUser() {
+        this.refreshTokenHeader();
         if (!this.userPromise) {
             const noToken = !localStorage.userToken;
             this.userPromise = noToken ? this.$q.when(null) :

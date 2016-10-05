@@ -6,10 +6,6 @@ export const generalRun = function ($rootScope, $transitions, $state, Restangula
     $rootScope.$state = $state;
     $rootScope.AuthService = AuthService;
     $rootScope.documentsUrl = Restangular.one('public').all('documents').getRestangularUrl() + '/';
-
-    // keep user logged in after page refresh
-    AuthService.refreshTokenHeader();
-    AuthService.loadUser();
 };
 
 /** @ngInject */
