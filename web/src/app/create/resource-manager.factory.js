@@ -1,5 +1,5 @@
 /** @ngInject */
-export const resourceManagerFactory = function ($q, Restangular, Upload) {
+export const resourceManagerFactory = function ($q, Restangular, Upload, fileConversion) {
     const collectionNames = {
         PROMOTER: 'organizationImplementations',
         DEPARTMENT: 'organizationImplementations',
@@ -32,10 +32,10 @@ export const resourceManagerFactory = function ($q, Restangular, Upload) {
                 url = Restangular.all(collectionName).getRestangularUrl();
             }
 
-            let logo = null;
-            let background = null;
             let resourcePost = _.omit(this._resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions']);
 
+            let logo = null;
+            let background = null;
             if (this._resource.documentLogoImage instanceof Blob) {
                 resourcePost.documentLogoImage = null;
                 logo = this._resource.documentLogoImage;
@@ -44,8 +44,8 @@ export const resourceManagerFactory = function ($q, Restangular, Upload) {
                 resourcePost.documentBackgroundImage = null;
                 background = this._resource.documentBackgroundImage;
             }
+            resourcePost = fileConversion.processForUpload(angular.copy(resourcePost));
 
-            resourcePost = angular.copy(resourcePost);
             return Upload.upload({
                 url,
                 data: {
@@ -74,7 +74,11 @@ export const resourceManagerFactory = function ($q, Restangular, Upload) {
             }
 
             return Restangular.one(collectionNames[type], id).get()
-                .then(resource => new ResourceManager(type, resource.plain()));
+                .then(resource => {
+                    const r = resource.plain();
+                    fileConversion.processForDisplay(r);
+                    return new ResourceManager(type, r);
+                });
         }
     };
 };

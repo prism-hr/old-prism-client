@@ -35,12 +35,12 @@ import {definitionsLoadHook} from './app/general/definitions-load.hook';
 import {ActivationService} from './app/unauthenticated/activity.service';
 import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
+import {FileConversionService} from './app/general/file-conversion.service';
 import {resourceManagerFactory} from './app/create/resource-manager.factory';
 import {ResourceCreateWizardFactory} from './app/create/resource-create-wizard.factory';
 import {resourceCreateWizardStepHook} from './app/create/resource-create-wizard-step.hook';
 import {ApplicationLoader} from './app/directives/application-loader';
 import {PlaceAutocomplete} from './app/directives/place-autocomplete';
-import {ImageSrc} from './app/directives/image-src';
 import {Dialog} from './app/general/dialog/dialog';
 import {browserTitleHook} from './app/general/browser-title.hook';
 import {Welcome} from './app/welcome/welcome';
@@ -109,6 +109,7 @@ angular
     .service('AuthService', AuthService)
     .service('resourceManagerFactory', resourceManagerFactory)
     .service('definitions', DefinitionsService)
+    .service('fileConversion', FileConversionService)
     .provider('resourceCreateWizardFactory', ResourceCreateWizardFactory)
     .run(authenticationHook)
     .run(browserTitleHook)
@@ -118,7 +119,6 @@ angular
     .run(templateCacheConfig)
     .directive('applicationLoader', ApplicationLoader)
     .directive('placeAutocomplete', PlaceAutocomplete)
-    .directive('imageSrc', ImageSrc)
     .component('prismDialog', Dialog)
     .component('welcome', Welcome)
     .component('prismHeader', Header)
