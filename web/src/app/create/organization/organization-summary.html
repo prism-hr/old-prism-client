@@ -121,7 +121,7 @@
                                   ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
                             <div class="logo-flex">
                                 <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
-                                    <span image-src="$ctrl.organization.documentLogoImage"></span>
+                                    <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'" />
                                 </div>
                             </div>
                         </div>
