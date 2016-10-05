@@ -6,6 +6,10 @@ export const authenticationHook = function ($transitions, $mdDialog) {
     $transitions.onBefore(activationMatch, transition => {
         const AuthService = transition.injector().get('AuthService');
         const $state = transition.router.stateService;
+        if (transition.to() === 'invited') {
+            AuthService.logout();
+            return true;
+        }
         return AuthService.loadUser().then(user => {
             if (user) {
                 return true;
