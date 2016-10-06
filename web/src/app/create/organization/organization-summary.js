@@ -7,10 +7,10 @@ class OrganizationSummaryController {
 
     $onInit() {
         this.showImplementationName = this.type === 'DEPARTMENT';
-        this.editingOrganization = Boolean(this.organization.id);
+        this.editingOrganization = Boolean(this.organization.accessCode);
 
         this.setView('details');
-        if (this.organization.id) {
+        if (this.organization.accessCode) {
             if (this.organization.name === this.organization.organization.name) {
                 this.selectedOrganization = this.organization;
                 this.editableName = 'ORGANIZATION';
@@ -43,15 +43,15 @@ class OrganizationSummaryController {
             this.requestOrganization = organization;
             this.setView('request');
         } else {
-            this.organization.organization = _.pick(organization, ['id', 'name']);
+            this.organization.organization = _.pick(organization, ['accessCode', 'name']);
             this.organization.name = organization.name;
-            // this.organization.documentLogoImage = {id: organization.documentLogoImageId};
+            // this.organization.documentLogoImage = {accessCode: organization.documentLogoImageAccessCode};
         }
     }
 
     addDepartment(organization) {
         if (organization) {
-            this.organization.organization = _.pick(organization, ['id', 'name']);
+            this.organization.organization = _.pick(organization, ['accessCode', 'name']);
         }
         this.organization.name = null;
         this.showImplementationName = true;
@@ -60,8 +60,8 @@ class OrganizationSummaryController {
 
     getOrganizationImplementations(searchText) {
         let searchPromise;
-        if (this.selectedOrganization.id) {
-            searchPromise = this.Restangular.one('organizations', this.selectedOrganization.id).all('organizationImplementations').getList({searchTerm: searchText})
+        if (this.selectedOrganization.accessCode) {
+            searchPromise = this.Restangular.one('organizations', this.selectedOrganization.accessCode).all('organizationImplementations').getList({searchTerm: searchText})
                 .then(implementations => implementations.plain());
         } else {
             searchPromise = this.$q.when([]);
@@ -77,7 +77,7 @@ class OrganizationSummaryController {
     }
 
     organizationImplementationSelected(implementation) {
-        if (implementation.id) {
+        if (implementation.accessCode) {
             this.requestOrganization = implementation;
             implementation.isImplementation = true;
             this.setView('request');
@@ -88,7 +88,7 @@ class OrganizationSummaryController {
 
     // Rx.createObservableFunction(this, 'implementationNameChanged')
     //     .flatMapLatest(function (name) {
-    //         return Restangular.one('organizations', this.organization.organization.id).all('organizationImplementations').getList({searchTerm: name})
+    //         return Restangular.one('organizations', this.organization.organization.accessCode).all('organizationImplementations').getList({searchTerm: name})
     //             .then(function (implementations) {
     //                 return implementations.plain();
     //             });
@@ -98,8 +98,8 @@ class OrganizationSummaryController {
     //     });
 
     requestAccess(organization) {
-        const id = organization.organizationImplementationId || organization.id;
-        this.Restangular.one('organizationImplementations', id).one('join').customPUT({})
+        const accessCode = organization.organizationImplementationAccessCode || organization.accessCode;
+        this.Restangular.one('organizationImplementations', accessCode).one('join').customPUT({})
             .then(() => {
                 this.$state.go('activities');
             });

@@ -36,7 +36,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('promoter', {
-            url: '/promoter/{id:new|\\d+}',
+            url: '/promoter/{id}',
             abstract: true,
             component: 'organization',
             data: {auth: true},
@@ -58,7 +58,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('department', {
-            url: '/department/{id:new|\\d+}',
+            url: '/department/{id}',
             abstract: true,
             component: 'organization',
             data: {auth: true},
@@ -72,7 +72,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('advert', {
-            url: '/advert/{id:new|\\d+}',
+            url: '/advert/{id}',
             abstract: true,
             component: 'advert',
             data: {auth: true},
@@ -118,7 +118,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('student', {
-            url: '/student/{id:new|\\d+}',
+            url: '/student/{id}',
             abstract: true,
             component: 'student',
             data: {auth: true},

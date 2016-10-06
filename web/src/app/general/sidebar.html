@@ -13,8 +13,8 @@
     <div class="user-block employer" layout="row" layout-align="center center">
         <div class="user-details" layout="row" layout-align="start center">
             <div class="avatar-holder employer">
-                <img ng-src="/prism/api/public/documents/{{$ctrl.AuthService.user.documentImage.id}}" class="md-avatar" alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}"  ng-if="$ctrl.AuthService.user.documentImage.id">
-                <div ng-if="!$ctrl.AuthService.user.documentImage.id" class="no-user-image" layout="row" layout-align="center center">
+                <img ng-src="/prism/api/public/documents/{{$ctrl.AuthService.user.documentImage.accessCode}}" class="md-avatar" alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}"  ng-if="$ctrl.AuthService.user.documentImage.id">
+                <div ng-if="!$ctrl.AuthService.user.documentImage.accessCode" class="no-user-image" layout="row" layout-align="center center">
                     <i class="icon-user"></i>
                 </div>
             </div>

@@ -126,14 +126,14 @@ export class ResourceCreateWizardFactory {
 
                 return this._resourceManager.saveResource(this._currentStep)
                     .then(resource => {
-                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.id || 'new'});
+                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode || 'new'});
                     });
             }
 
             prev() {
                 const prevStep = this.getPrevStep();
                 if (prevStep) {
-                    return $state.go(this._resourceType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().id});
+                    return $state.go(this._resourceType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
                 }
                 return $state.go(this._resourceType.toLowerCase() + 'Welcome');
             }
@@ -145,7 +145,7 @@ export class ResourceCreateWizardFactory {
 
                 return this._resourceManager.saveResource(this._currentStep, {skipped: true})
                     .then(resource => {
-                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.id});
+                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode});
                     });
             }
 
