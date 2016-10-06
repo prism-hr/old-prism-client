@@ -28,7 +28,7 @@ export class PlaceAutocomplete {
         };
 
         scope.transformChip = function (chip) {
-            return {googleId: chip.place_id, description: chip.description};
+            return {googleId: chip.place_id, name: chip.description};
         };
 
         scope.placeAdded = function (place) {
@@ -71,8 +71,7 @@ export class PlaceAutocomplete {
             const naturalFeature = getAddressPart('natural_feature', 'long');
             const geolocation = placeDetails.geometry.location;
 
-            place.name = alternativeTown || naturalFeature || administrativeAreaLevel4 || administrativeAreaLevel3 || administrativeAreaLevel2 || administrativeAreaLevel1;
-            place.description = displayAddress;
+            place.name = displayAddress;
             place.domicile = domicile;
             place.latitude = geolocation.lat();
             place.longitude = geolocation.lng();
