@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div>
-                        <span md-highlight-text="searchText" class="item-title"> {{organization.id ? organization.name : 'Create ' + organization.name}} </span>
+                        <span md-highlight-text="searchText" class="item-title"> {{organization.accessCode ? organization.name : 'Create ' + organization.name}} </span>
                         <span class="item-location" ng-if="organization.location"> {{organization.location}}</span>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <div>
-                                <span md-highlight-text="searchText" class="item-title"> {{implementation.id ? implementation.name : 'Create ' + implementation.name}} </span>
+                                <span md-highlight-text="searchText" class="item-title"> {{implementation.accessCode ? implementation.name : 'Create ' + implementation.name}} </span>
                                 <span class="item-location"
                                       ng-if="implementation.location"> {{implementation.location}}</span>
                             </div>

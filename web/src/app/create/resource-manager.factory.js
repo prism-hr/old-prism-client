@@ -26,8 +26,8 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
 
             const collectionName = collectionNames[this._type];
             let url;
-            if (this._resource.id) {
-                url = Restangular.one(collectionName, this._resource.id).getRestangularUrl();
+            if (this._resource.accessCode) {
+                url = Restangular.one(collectionName, this._resource.accessCode).getRestangularUrl();
             } else {
                 url = Restangular.all(collectionName).getRestangularUrl();
             }
@@ -57,7 +57,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
                     background
                 }
             }).then(response => {
-                if (this._resource.id) {
+                if (this._resource.accessCode) {
                     this._resource = response.data;
                 } else {
                     this._resource = {};

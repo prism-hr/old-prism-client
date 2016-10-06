@@ -30,7 +30,7 @@ class AdvertAudienceController {
 
     transformTag(chip) {
         if (angular.isObject(chip)) {
-            return {tag: _.pick(chip, ['id', 'name'])};
+            return {tag: _.pick(chip, ['accessCode', 'name'])};
         }
         return {tag: {name: chip}};
     }

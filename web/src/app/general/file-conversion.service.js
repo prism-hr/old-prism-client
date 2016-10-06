@@ -13,7 +13,7 @@ export class FileConversionService {
                 const value = obj[key];
                 if (value instanceof Object) {
                     if (value.fileName && value.fileType) {
-                        value.$ngfBlobUrl = documentsUrl + '/' + value.id;
+                        value.$ngfBlobUrl = documentsUrl + '/' + value.accessCode;
                         value.type = value.fileType;
                     } else {
                         processData(value);

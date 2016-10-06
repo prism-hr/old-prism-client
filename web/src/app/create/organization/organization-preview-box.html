@@ -1,4 +1,5 @@
-<div class="background-box" ngf-background="$ctrl.organization.documentBackgroundImage"></div>
+<div class="background-box" ng-if="$ctrl.organization.documentBackgroundImage" ngf-background="$ctrl.organization.documentBackgroundImage"></div>
+<div class="background-box" ng-if="!$ctrl.organization.documentBackgroundImage"></div>
 <md class="company-box" layout="row" layout-align="center end">
     <md-card class="company-header" layout="row" flex-gt-sm="75">
         <div class="logo-image">
