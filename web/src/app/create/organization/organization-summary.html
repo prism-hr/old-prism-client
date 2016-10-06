@@ -21,8 +21,8 @@
             <md-item-template>
                 <div layout="row">
                     <div class="icon">
-                        <div class="logo" ng-if="organization.documentLogoImageId">
-                            <img ng-src="{{$root.documentsUrl + organization.documentLogoImageId}}">
+                        <div class="logo" ng-if="organization.documentLogoImageAccessCode">
+                            <img ng-src="{{$root.documentsUrl + organization.documentLogoImageAccessCode}}">
                         </div>
                     </div>
                     <div>
@@ -77,8 +77,8 @@
                             required>
                         <md-item-template>
                             <div class="icon">
-                                <div class="logo" ng-if="implementation.documentLogoImageId">
-                                    <img ng-src="{{$root.documentsUrl + implementation.documentLogoImageId}}">
+                                <div class="logo" ng-if="implementation.documentLogoImageAccessCode">
+                                    <img ng-src="{{$root.documentsUrl + implementation.documentLogoImageAccessCode}}">
                                 </div>
                             </div>
                             <div>
@@ -154,7 +154,7 @@
                 <div class="logo-image">
                     <div class="logo-flex company-logo">
                         <div class="logo">
-                            <img ng-src="{{$root.documentsUrl + $ctrl.requestOrganization.documentLogoImageId}}">
+                            <img ng-src="{{$root.documentsUrl + $ctrl.requestOrganization.documentLogoImageAccessCode}}">
                         </div>
                     </div>
                 </div>
