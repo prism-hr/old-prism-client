@@ -1,17 +1,18 @@
 /** @ngInject */
 export const authenticationHook = function ($transitions, $mdDialog) {
-    const activationMatch = {
-        to: state => state.data && state.data.auth
-    };
-    $transitions.onBefore(activationMatch, transition => {
+    $transitions.onBefore({from: '*.**', to: '*.**'}, transition => {
         const AuthService = transition.injector().get('AuthService');
         const $state = transition.router.stateService;
-        if (transition.to() === 'invited') {
+        if (transition.to().name === 'invited') {
             AuthService.logout();
             return true;
         }
         return AuthService.loadUser().then(user => {
             if (user) {
+                return true;
+            }
+            const state = transition.to().$$state();
+            if (!state.data || !state.data.auth) { // no authentication required, do nothing
                 return true;
             }
             let template = '<authenticate initial-view="LOGIN"></authenticate>';
@@ -26,6 +27,11 @@ export const authenticationHook = function ($transitions, $mdDialog) {
             }).then(() => {
                 $state.go(transition.to(), transition.params());
             });
+        }, data => {
+            if (data.status === 401) {
+                AuthService.logout();
+                $state.go('welcome');
+            }
         });
     });
 };
