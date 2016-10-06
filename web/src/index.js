@@ -32,7 +32,7 @@ import {materialConfig} from './app/configuration/material.config';
 import {serverInterceptorConfig} from './app/configuration/server-interceptor.config';
 import {authenticationHook} from './app/unauthenticated/authentication.hook';
 import {definitionsLoadHook} from './app/general/definitions-load.hook';
-import {ActivationService} from './app/unauthenticated/activity.service';
+import {ActivityService} from './app/unauthenticated/activity.service';
 import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
 import {FileConversionService} from './app/general/file-conversion.service';
@@ -105,7 +105,7 @@ angular
     .config(translateConfig)
     .config(materialConfig)
     .config(serverInterceptorConfig)
-    .service('ActivationService', ActivationService)
+    .service('ActivityService', ActivityService)
     .service('AuthService', AuthService)
     .service('resourceManagerFactory', resourceManagerFactory)
     .service('definitions', DefinitionsService)

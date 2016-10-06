@@ -18,8 +18,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'invited',
             resolve: {
                 /** @ngInject */
-                activity($stateParams, ActivationService) {
-                    return $stateParams.accessCode && ActivationService.getActivity($stateParams.accessCode, $stateParams.action);
+                activity($stateParams, ActivityService) {
+                    return $stateParams.accessCode && ActivityService.getActivity($stateParams.accessCode, $stateParams.action);
                 },
                 $title: _.wrap('Invited')
             }
