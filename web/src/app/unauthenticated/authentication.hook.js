@@ -1,13 +1,13 @@
 /** @ngInject */
 export const authenticationHook = function ($transitions, $mdDialog) {
     $transitions.onBefore({from: '*.**', to: '*.**'}, transition => {
-        const AuthService = transition.injector().get('AuthService');
+        const authService = transition.injector().get('authService');
         const $state = transition.router.stateService;
         if (transition.to().name === 'invited') {
-            AuthService.logout();
+            authService.logout();
             return true;
         }
-        return AuthService.loadUser().then(user => {
+        return authService.loadUser().then(user => {
             if (user) {
                 return true;
             }
@@ -29,7 +29,7 @@ export const authenticationHook = function ($transitions, $mdDialog) {
             });
         }, data => {
             if (data.status === 401) {
-                AuthService.logout();
+                authService.logout();
                 $state.go('welcome');
             }
         });

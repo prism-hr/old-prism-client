@@ -1,10 +1,10 @@
 class HeaderController {
     /** @ngInject */
-    constructor($state, $mdDialog, $mdSidenav, AuthService) {
+    constructor($state, $mdDialog, $mdSidenav, authService) {
         this.$state = $state;
         this.$mdDialog = $mdDialog;
         this.$mdSidenav = $mdSidenav;
-        this.AuthService = AuthService;
+        this.authService = authService;
     }
 
     $onInit() {

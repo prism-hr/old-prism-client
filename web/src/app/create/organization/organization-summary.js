@@ -6,7 +6,7 @@ class OrganizationSummaryController {
     }
 
     $onInit() {
-        this.showImplementationName = this.type === 'DEPARTMENT';
+        this.showImplementationName = this.wizardType === 'DEPARTMENT';
         this.editingOrganization = Boolean(this.organization.accessCode);
 
         this.setView('details');
@@ -110,7 +110,7 @@ class OrganizationSummaryController {
         this.selectedOrganization = null;
         this.selectedOrganizationImplementation = null;
         this.organization.organization = this.organization.name = null;
-        this.showImplementationName = this.type === 'DEPARTMENT';
+        this.showImplementationName = this.wizardType === 'DEPARTMENT';
         this.setView('details');
     }
 
@@ -122,7 +122,7 @@ class OrganizationSummaryController {
 export const OrganizationSummary = {
     template: require('./organization-summary.html'),
     bindings: {
-        type: '@',
+        wizardType: '@',
         organization: '=',
         form: '<'
     },

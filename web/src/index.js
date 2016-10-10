@@ -37,6 +37,7 @@ import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
 import {FileConversionService} from './app/general/file-conversion.service';
 import {resourceManagerFactory} from './app/create/resource-manager.factory';
+import {WelcomeService} from './app/create/welcome.service';
 import {ResourceCreateWizardFactory} from './app/create/resource-create-wizard.factory';
 import {resourceCreateWizardStepHook} from './app/create/resource-create-wizard-step.hook';
 import {ApplicationLoader} from './app/directives/application-loader';
@@ -105,9 +106,10 @@ angular
     .config(translateConfig)
     .config(materialConfig)
     .config(serverInterceptorConfig)
-    .service('ActivityService', ActivityService)
-    .service('AuthService', AuthService)
+    .service('activityService', ActivityService)
+    .service('authService', AuthService)
     .service('resourceManagerFactory', resourceManagerFactory)
+    .service('welcomeService', WelcomeService)
     .service('definitions', DefinitionsService)
     .service('fileConversion', FileConversionService)
     .provider('resourceCreateWizardFactory', ResourceCreateWizardFactory)

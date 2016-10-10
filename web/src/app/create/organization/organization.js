@@ -1,6 +1,5 @@
 class OrganizationController {
     $onInit() {
-        this.typeLower = this.type.toLowerCase();
         this.organization = this.wizard.getResource();
         this.createSteps = this.wizard.getSteps();
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
@@ -47,7 +46,7 @@ export const Organization = {
     template: require('./organization.html'),
     bindings: {
         wizard: '<',
-        type: '<'
+        wizardType: '<'
     },
     controller: OrganizationController
 };

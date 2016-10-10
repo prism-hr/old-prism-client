@@ -13,14 +13,14 @@
     <div class="user-block employer" layout="row" layout-align="center center">
         <div class="user-details" layout="row" layout-align="start center">
             <div class="avatar-holder employer">
-                <img ng-src="/prism/api/public/documents/{{$ctrl.AuthService.user.documentImage.accessCode}}" class="md-avatar" alt="{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}"  ng-if="$ctrl.AuthService.user.documentImage.id">
-                <div ng-if="!$ctrl.AuthService.user.documentImage.accessCode" class="no-user-image" layout="row" layout-align="center center">
+                <img ng-src="/prism/api/public/documents/{{$ctrl.authService.user.documentImage.accessCode}}" class="md-avatar" alt="{{$ctrl.authService.user.firstName}} {{$ctrl.authService.user.lastName}}"  ng-if="$ctrl.authService.user.documentImage.id">
+                <div ng-if="!$ctrl.authService.user.documentImage.accessCode" class="no-user-image" layout="row" layout-align="center center">
                     <i class="icon-user"></i>
                 </div>
             </div>
             <div class="contact-container" layout="column">
-                <a href="#">{{$ctrl.AuthService.user.firstName}} {{$ctrl.AuthService.user.lastName}}</a>
-                <span>{{$ctrl.AuthService.user.role}} TODO user Role</span>
+                <a href="#">{{$ctrl.authService.user.firstName}} {{$ctrl.authService.user.lastName}}</a>
+                <span>{{$ctrl.authService.user.role}} TODO user Role</span>
             </div>
         </div>
         <span flex></span>

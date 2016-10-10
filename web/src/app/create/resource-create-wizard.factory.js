@@ -46,14 +46,15 @@ export class ResourceCreateWizardFactory {
     }
 
     /** @ngInject */
-    $get($state) {
+    $get($state, welcomeService) {
         class ResourceCreateWizard {
-            constructor(resourceManager, resourceType, steps) {
+            constructor(resourceManager, welcomeType, wizardType, steps) {
                 if (!resourceManager) {
                     throw new Error('Missing resource manager');
                 }
                 this._resourceManager = resourceManager;
-                this._resourceType = resourceType;
+                this._welcomeType = welcomeType;
+                this._wizardType = wizardType;
                 this._steps = steps;
                 this._stepSubject = new Rx.Subject();
             }
@@ -121,21 +122,26 @@ export class ResourceCreateWizardFactory {
             next() {
                 const nextStep = this.getNextStep();
                 if (!nextStep) {
-                    $state.go(this._resourceType.toLowerCase() + 'Welcome');
+                    $state.go(this._wizardType.toLowerCase() + 'Welcome');
                 }
 
                 return this._resourceManager.saveResource(this._currentStep)
                     .then(resource => {
-                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode || 'new'});
+                        if (this.getResource().id) {
+                            welcomeService.updateWizardCompleteness(resource);
+                        } else {
+                            welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, resource);
+                        }
+                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode || 'new'});
                     });
             }
 
             prev() {
                 const prevStep = this.getPrevStep();
                 if (prevStep) {
-                    return $state.go(this._resourceType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
+                    return $state.go(this._wizardType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
                 }
-                return $state.go(this._resourceType.toLowerCase() + 'Welcome');
+                return $state.go(this._wizardType.toLowerCase() + 'Welcome');
             }
 
             skip() {
@@ -145,7 +151,7 @@ export class ResourceCreateWizardFactory {
 
                 return this._resourceManager.saveResource(this._currentStep, {skipped: true})
                     .then(resource => {
-                        return $state.go(this._resourceType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode});
+                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode});
                     });
             }
 
@@ -155,8 +161,8 @@ export class ResourceCreateWizardFactory {
         }
 
         return {
-            getWizard: (resourceManager, wizardCategory) => {
-                return new ResourceCreateWizard(resourceManager, wizardCategory, angular.copy(this.getStepDefinitions(wizardCategory)));
+            getWizard: (resourceManager, welcomeType, wizardType) => {
+                return new ResourceCreateWizard(resourceManager, welcomeType, wizardType, angular.copy(this.getStepDefinitions(wizardType)));
             }
         };
     }

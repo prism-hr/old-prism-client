@@ -1,24 +1,24 @@
-<md-toolbar layout="column" layout-align="center center" md-whiteframe="2" ng-class="{'hide-gt-md' : $ctrl.AuthService.user}">
+<md-toolbar layout="column" layout-align="center center" md-whiteframe="2" ng-class="{'hide-gt-md' : $ctrl.authService.user}">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
         <div layout="row" layout-align="start center">
             <md-button ng-click="$ctrl.toggleActivities()" class="md-icon-button notifications" hide-gt-md
-                       ng-if="$ctrl.AuthService.user">
+                       ng-if="$ctrl.authService.user">
                 <i class="icon-menu" ng-if="!$ctrl.hideSidebar"></i>
                 <label>5</label>
             </md-button>
             <a class="prism-icon hide-gt-xs" ui-sref="welcome">
                 <img src="/img/bfj-ico-white.svg">
             </a>
-            <a class="prism-logo hide-xs" ui-sref="welcome" ng-if="!$ctrl.AuthService.user">
+            <a class="prism-logo hide-xs" ui-sref="welcome" ng-if="!$ctrl.authService.user">
                 <img src="/img/bfj-logo.svg" alt="PRiSM">
             </a>
-            <a class="prism-logo hide-xs" ui-sref="welcome" hide-gt-md ng-if="$ctrl.AuthService.user">
+            <a class="prism-logo hide-xs" ui-sref="welcome" hide-gt-md ng-if="$ctrl.authService.user">
                 <img src="/img/bfj-logo.svg" alt="PRiSM">
             </a>
         </div>
         <span flex ></span>
         <span class="nav-container">
-            <div ng-if="!$ctrl.AuthService.user">
+            <div ng-if="!$ctrl.authService.user">
                 <md-button aria-label="Post Ad" class="md-raised md-warn" ng-click="$ctrl.advertise($event)">
                     Advertise
                 </md-button>
@@ -30,7 +30,7 @@
         </span>
     </div>
 </md-toolbar>
-<div class="toolbar-title md-whiteframe-1dp" ng-if="$root.$breadcrumbs && $ctrl.AuthService.user">
+<div class="toolbar-title md-whiteframe-1dp" ng-if="$root.$breadcrumbs && $ctrl.authService.user">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
         <span class="titles" flex >
             <h2>

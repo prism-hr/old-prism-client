@@ -91,14 +91,14 @@
     </div>
 </div>
 <div layout="row" layout-fill>
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="AuthService.user">
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="authService.user">
         <sidebar  layout="column" layout-align="space-between none" flex></sidebar>
     </md-sidenav>
     <div flex layout="column">
         <prism-header ng-if="!$state.current.data.hideHeaderFooter"></prism-header>
         <md-content flex layout="column" md-scroll-y>
             <ui-view ng-class="{'centered': $state.current.data.hideHeaderFooter}" class="fade-animation" autoscroll="true" flex="noshrink"></ui-view>
-            <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!AuthService.user" ng-include="'footer.html'" flex="noshrink"></md-toolbar>
+            <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!authService.user" ng-include="'footer.html'" flex="noshrink"></md-toolbar>
         </md-content>
     </div>
 </div>

@@ -46,7 +46,7 @@ export const Student = {
     template: require('./student.html'),
     bindings: {
         wizard: '<',
-        type: '<'
+        wizardType: '<'
     },
     controller: StudentController
 };

@@ -4,7 +4,7 @@ class OrganizationPreviewController {
 export const OrganizationPreview = {
     template: require('./organization-preview.html'),
     bindings: {
-        type: '@',
+        wizardType: '@',
         organization: '=',
         form: '<'
     },
