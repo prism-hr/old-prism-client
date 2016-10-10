@@ -1,9 +1,9 @@
 class SidebarController {
     /** @ngInject */
-    constructor($state, $mdSidenav, AuthService) {
+    constructor($state, $mdSidenav, authService) {
         this.$state = $state;
         this.$mdSidenav = $mdSidenav;
-        this.AuthService = AuthService;
+        this.authService = authService;
     }
 
     $onInit() {
@@ -15,7 +15,7 @@ class SidebarController {
     }
 
     logout() {
-        this.AuthService.logout();
+        this.authService.logout();
         this.$state.go('welcome');
     }
 

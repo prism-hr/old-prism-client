@@ -18,8 +18,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'invited',
             resolve: {
                 /** @ngInject */
-                activity($stateParams, ActivityService) {
-                    return $stateParams.accessCode && ActivityService.getActivity($stateParams.accessCode, $stateParams.action);
+                activity($stateParams, activityService) {
+                    return $stateParams.accessCode && activityService.getActivity($stateParams.accessCode, $stateParams.action);
                 },
                 $title: _.wrap('Invited')
             }
@@ -36,15 +36,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('promoter', {
-            url: '/promoter/{id}',
+            url: '/promoter/{id}?welcomeType',
             abstract: true,
             component: 'organization',
             data: {auth: true},
             resolve: {
-                type: _.wrap('PROMOTER'),
-                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
-                    return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
+                wizardType: _.wrap('PROMOTER'),
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
+                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('Company Information')
             }
@@ -58,29 +58,29 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('department', {
-            url: '/department/{id}',
+            url: '/department/{id}?welcomeType',
             abstract: true,
             component: 'organization',
             data: {auth: true},
             resolve: {
-                type: _.wrap('DEPARTMENT'),
-                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
-                    return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
+                wizardType: _.wrap('DEPARTMENT'),
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
+                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('University Information')
             }
         })
         .state('advert', {
-            url: '/advert/{id}',
+            url: '/advert/{id}?welcomeType',
             abstract: true,
             component: 'advert',
             data: {auth: true},
             resolve: {
-                type: _.wrap('ADVERT'),
-                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
-                    return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
+                wizardType: _.wrap('ADVERT'),
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
+                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('Advert')
             }
@@ -118,15 +118,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('student', {
-            url: '/student/{id}',
+            url: '/student/{id}?welcomeType',
             abstract: true,
             component: 'student',
             data: {auth: true},
             resolve: {
-                type: _.wrap('STUDENT'),
-                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, type) {
-                    return resourceManagerFactory.getManager($stateParams.id, type)
-                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, type));
+                wizardType: _.wrap('STUDENT'),
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
+                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('Student')
             }
@@ -159,11 +159,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             const component = _.kebabCase(step.component);
             let template;
             if (resourceType === 'ADVERT') {
-                template = '<' + component + ' type="{{type}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
+                template = '<' + component + ' wizard-type="{{wizardType}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
             } else if (resourceType === 'STUDENT') {
-                template = '<' + component + ' type="{{type}}" form="studentForm" student="resource" wizard="wizard"></' + component + '>';
+                template = '<' + component + ' wizard-type="{{wizardType}}" form="studentForm" student="resource" wizard="wizard"></' + component + '>';
             } else {
-                template = '<' + component + ' type="{{type}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
+                template = '<' + component + ' wizard-type="{{wizardType}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
             }
             $stateProvider
                 .state(resourceType.toLowerCase() + '.' + step.id, {
@@ -180,8 +180,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                         }
                     },
                     /** @ngInject */
-                    controller: function ($scope, type, resource, wizard) {
-                        $scope.type = type;
+                    controller: function ($scope, wizardType, resource, wizard) {
+                        $scope.wizardType = wizardType;
                         $scope.resource = resource;
                         $scope.wizard = wizard;
                     }

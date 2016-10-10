@@ -20,7 +20,7 @@ class OrganizationDetailsController {
 export const OrganizationDetails = {
     template: require('./organization-details.html'),
     bindings: {
-        type: '@',
+        wizardType: '@',
         organization: '=',
         form: '<'
     },

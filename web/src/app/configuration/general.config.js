@@ -1,10 +1,10 @@
 /** @ngInject */
-export const generalRun = function ($rootScope, $transitions, $state, Restangular, AuthService) {
+export const generalRun = function ($rootScope, $transitions, $state, Restangular, authService) {
     $transitions.onError(null, () => {
         console.log('Transition error');
     });
     $rootScope.$state = $state;
-    $rootScope.AuthService = AuthService;
+    $rootScope.authService = authService;
     $rootScope.documentsUrl = Restangular.one('public').all('documents').getRestangularUrl() + '/';
 };
 

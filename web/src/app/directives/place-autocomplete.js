@@ -63,12 +63,6 @@ export class PlaceAutocomplete {
 
             const domicile = getAddressPart('country', 'short');
             const displayAddress = placeDetails.formatted_address;
-            const alternativeTown = getAddressPart('locality', 'long');
-            const administrativeAreaLevel1 = getAddressPart('administrative_area_level_1', 'long');
-            const administrativeAreaLevel2 = getAddressPart('administrative_area_level_2', 'long');
-            const administrativeAreaLevel3 = getAddressPart('administrative_area_level_3', 'long');
-            const administrativeAreaLevel4 = getAddressPart('administrative_area_level_4', 'long');
-            const naturalFeature = getAddressPart('natural_feature', 'long');
             const geolocation = placeDetails.geometry.location;
 
             place.name = displayAddress;

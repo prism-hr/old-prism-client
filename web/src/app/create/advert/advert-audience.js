@@ -1,4 +1,5 @@
 class AdvertAudienceController {
+    /** @ngInject */
     constructor(Restangular) {
         this.Restangular = Restangular;
     }

@@ -1,11 +1,11 @@
 <div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.organization.organization.accessCode}">
-    <div class="preview {{$ctrl.typeLower}}" ng-if="$ctrl.organization.accessCode">
+    <div class="preview {{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.organization.accessCode">
         <label>Preview</label>
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
         <div ng-if="$ctrl.showNavigation" layout="row" layout-align="center end">
             <div class="preview-navigation" flex-gt-sm="75">
                 <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.stepIdx">
-                    <md-tab label="{{step.title}}" ui-sref="{{typeLower}}.{{step.id}}" ng-repeat="step in $ctrl.createSteps">
+                    <md-tab label="{{step.title}}" ui-sref="{{$ctrl.wizardType | lowercase}}.{{step.id}}" ng-repeat="step in $ctrl.createSteps">
 
                     </md-tab>
                 </md-tabs>

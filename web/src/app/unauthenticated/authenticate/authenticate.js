@@ -1,8 +1,8 @@
 class AuthenticateController {
     /** @ngInject */
-    constructor($mdDialog, AuthService) {
+    constructor($mdDialog, authService) {
         this.$mdDialog = $mdDialog;
-        this.AuthService = AuthService;
+        this.authService = authService;
     }
 
     $onInit() {
@@ -19,7 +19,7 @@ class AuthenticateController {
             return;
         }
         this.loading = true;
-        this.AuthService.login(_.pick(this.user, ['username', 'password']))
+        this.authService.login(_.pick(this.user, ['username', 'password']))
             .then(this.$mdDialog.hide)
             .finally(this.resetLoading);
     }
@@ -29,14 +29,14 @@ class AuthenticateController {
             return;
         }
         this.loading = true;
-        this.AuthService.register(this.user)
+        this.authService.register(this.user)
             .then(this.$mdDialog.hide)
             .finally(this.resetLoading);
     }
 
     oauth(provider) {
         this.loading = true;
-        this.AuthService.authenticate(provider)
+        this.authService.authenticate(provider)
             .then(this.$mdDialog.hide)
             .finally(this.resetLoading);
     }
@@ -46,7 +46,7 @@ class AuthenticateController {
             return;
         }
         this.loading = true;
-        this.AuthService.resetPassword(this.user)
+        this.authService.resetPassword(this.user)
             .then(function () {
                 this.passwordReset = true;
             })
