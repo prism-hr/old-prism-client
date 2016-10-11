@@ -5,35 +5,36 @@
                 <h1>Welcome University Department</h1>
                 <h3>Register your department to start using PRiSM.</h3>
             </div>
-            <div class="step step1">
-                <div layout-padding>
-                    <div class="icon-holder">
-                        <i class="icon-check"></i>
-                    </div>
-                    <h2>Create your Department</h2>
-                    <p>Initial basic information about your department</p>
-                </div>
-                <md-button class="md-primary md-raised big" ui-sref="department.summary({id: 'new', welcomeType: 'department'})">Continue</md-button>
-                <div class="hr-divider"></div>
-            </div>
-            <div class="step step2">
-                <div layout-padding>
-                    <div class="icon-holder">
-                        <i class="icon-close"></i>
-                    </div>
-                    <h2>Tell your students</h2>
-                    <p>Inform your students about the new way to get jobs, placements or work experience</p>
-                </div>
-                <md-button class="md-primary md-raised big">Continue</md-button>
-                <div class="hr-divider"></div>
-            </div>
+
+            <welcome-wizard-entry title="Create your Department"
+                                  description="Initial basic information about your department"
+                                  initial-state="department.summary"
+                                  welcome-type="department"
+                                  welcome-status="$ctrl.statuses.DEPARTMENT"
+                                  enabled="true">
+            </welcome-wizard-entry>
+            <welcome-wizard-entry title="Tell your students"
+                                  description="Inform your students about the new way to get jobs, placements or work experience"
+                                  initial-state="students.dupa"
+                                  welcome-type="department"
+                                  welcome-status="$ctrl.statuses.STUDENTS"
+                                  enabled="$ctrl.studentsEnabled">
+            </welcome-wizard-entry>
+            <welcome-wizard-entry title="Invite Employers <small>(optional)</small>"
+                                  description="Invite employers to help your students find positions"
+                                  initial-state="employers.dupa"
+                                  welcome-type="department"
+                                  welcome-status="$ctrl.statuses.EMPLOYERS"
+                                  enabled="$ctrl.employersEnabled">
+            </welcome-wizard-entry>
+
             <div class="step step3">
                 <div layout-padding>
                     <div class="icon-holder">
                         <i class="icon-exclamation"></i>
                     </div>
-                    <h2>Invite Employers <small>(optional)</small></h2>
-                    <p>Invite employers to help your students find positions</p>
+                    <h2></h2>
+                    <p></p>
                 </div>
                 <md-button class="md-primary md-raised big">Continue</md-button>
             </div>
