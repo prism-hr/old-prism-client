@@ -120,12 +120,19 @@ export class ResourceCreateWizardFactory {
             }
 
             next() {
+                const currentStep = this.getStepForName(this._currentStep);
                 const nextStep = this.getNextStep();
                 if (!nextStep) {
                     $state.go(this._wizardType.toLowerCase() + 'Welcome');
                 }
 
-                return this._resourceManager.saveResource(this._currentStep)
+                let savePromise;
+                if (currentStep.data.preview) {
+                    savePromise = this._resourceManager.commitResource();
+                } else {
+                    savePromise = this._resourceManager.saveResource(this._currentStep);
+                }
+                return savePromise
                     .then(resource => {
                         if (this.getResource().accessCode) {
                             welcomeService.updateWizardCompleteness(resource);

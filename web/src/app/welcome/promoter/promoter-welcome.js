@@ -9,8 +9,8 @@ class PromoterWelcomeController {
         this.statuses = this.welcomeService.getWelcomeStatuses('promoter');
         const promoter = _.get(this.statuses, 'PROMOTER.resource');
         const advert = _.get(this.statuses, 'ADVERT.resource');
-        this.advertEnabled = _.get(promoter, 'statusComplete.completed');
-        this.audienceEnabled = _.get(advert, 'statusComplete.completed');
+        this.advertEnabled = promoter.state === 'ACCEPTED';
+        this.audienceEnabled = advert.state === 'ACCEPTED';
         this.promoterWizardState = {
             name: 'promoter.summary',
             params: {id: _.get(promoter, 'accessCode') || 'new', welcomeType}
