@@ -65,6 +65,14 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
                 return response.data;
             });
         }
+
+        commitResource() {
+            Restangular.one(collectionNames[this._type], this._resource.accessCode).one('commit').customPUT({})
+                .then(response => {
+                    this._resource = response.data;
+                    return this._resource;
+                });
+        }
     }
 
     return {
