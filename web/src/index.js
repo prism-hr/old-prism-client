@@ -37,22 +37,23 @@ import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
 import {FileConversionService} from './app/general/file-conversion.service';
 import {resourceManagerFactory} from './app/create/resource-manager.factory';
-import {WelcomeService} from './app/create/welcome.service';
+import {WelcomeService} from './app/welcome/welcome.service';
 import {ResourceCreateWizardFactory} from './app/create/resource-create-wizard.factory';
 import {resourceCreateWizardStepHook} from './app/create/resource-create-wizard-step.hook';
 import {ApplicationLoader} from './app/directives/application-loader';
 import {PlaceAutocomplete} from './app/directives/place-autocomplete';
 import {Dialog} from './app/general/dialog/dialog';
 import {browserTitleHook} from './app/general/browser-title.hook';
-import {Welcome} from './app/welcome/welcome';
 import {MotivationCheck} from './app/unauthenticated/motivation-check';
 import {Authenticate} from './app/unauthenticated/authenticate/authenticate';
 import {Header} from './app/general/header';
 import {Sidebar} from './app/general/sidebar';
 import {Activities} from './app/activities/activities';
 import {Invited} from './app/unauthenticated/invited.component';
-import {DepartmentWelcome} from './app/create/department/department-welcome';
-import {PromoterWelcome} from './app/create/promoter/promoter-welcome';
+import {Welcome} from './app/welcome/welcome';
+import {WelcomeWizardEntry} from './app/welcome/welcome-wizard-entry';
+import {DepartmentWelcome} from './app/welcome/department/department-welcome';
+import {PromoterWelcome} from './app/welcome/promoter/promoter-welcome';
 import {Organization} from './app/create/organization/organization';
 import {OrganizationSummary} from './app/create/organization/organization-summary';
 import {OrganizationDetails} from './app/create/organization/organization-details';
@@ -69,14 +70,14 @@ import {AdvertAudience} from './app/create/advert/advert-audience';
 import {AdvertPreview} from './app/create/advert/advert-preview';
 import {EmployerView} from './app/view/employer/employer-view';
 import {PositionView} from './app/view/position/position-view';
-import {StudentWelcome} from './app/create/student/student-welcome';
-import {StudentHeader} from './app/create/student/student-header';
-import {StudentStudies} from './app/create/student/student-studies';
-import {StudentContact} from './app/create/student/student-contact';
-import {StudentSkills} from './app/create/student/student-skills';
-import {StudentAbout} from './app/create/student/student-about';
-import {StudentPreview} from './app/create/student/student-preview';
-import {Student} from './app/create/student/student';
+import {StudentWelcome} from './app/welcome/student/student-welcome';
+import {StudentHeader} from './app/welcome/student/student-header';
+import {StudentStudies} from './app/welcome/student/student-studies';
+import {StudentContact} from './app/welcome/student/student-contact';
+import {StudentSkills} from './app/welcome/student/student-skills';
+import {StudentAbout} from './app/welcome/student/student-about';
+import {StudentPreview} from './app/welcome/student/student-preview';
+import {Student} from './app/welcome/student/student';
 import './index.scss';
 import environment from './env.json';
 
@@ -127,6 +128,7 @@ angular
     .component('sidebar', Sidebar)
     .component('authenticate', Authenticate)
     .component('motivationCheck', MotivationCheck)
+    .component('welcomeWizardEntry', WelcomeWizardEntry)
     .component('departmentWelcome', DepartmentWelcome)
     .component('promoterWelcome', PromoterWelcome)
     .component('organization', Organization)

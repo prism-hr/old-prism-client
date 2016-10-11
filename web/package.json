@@ -109,7 +109,9 @@
       ],
       "no-warning-comments": "off",
       "no-unused-vars": "warn",
-      "babel/object-shorthand": "off"
+      "babel/object-shorthand": "off",
+      "max-params": "off",
+      "prefer-arrow-callback": "warn"
     },
     "extends": [
       "xo-space/esnext"

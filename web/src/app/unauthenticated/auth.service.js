@@ -1,5 +1,5 @@
-/** @ngInject */
 export class AuthService {
+    /** @ngInject */
     constructor($http, $q, $auth, Restangular, activityService) {
         this.$http = $http;
         this.$q = $q;
@@ -10,13 +10,13 @@ export class AuthService {
 
     applyAuthentication(response) {
         this.userPromise = null;
-        localStorage.userToken = response.token;
+        this.setUserData('token', response.token);
         this.refreshTokenHeader();
         return this.loadUser();
     }
 
     refreshTokenHeader() {
-        this.$http.defaults.headers.common['X-Auth-Token'] = localStorage.userToken;
+        this.$http.defaults.headers.common['X-Auth-Token'] = this.getUserData('token');
     }
 
     register(registerDetails) {
@@ -37,7 +37,7 @@ export class AuthService {
 
     logout() {
         this.user = null;
-        localStorage.removeItem('userToken');
+        localStorage.removeItem('userData');
         this.userPromise = null;
         this.refreshTokenHeader();
     }
@@ -49,7 +49,7 @@ export class AuthService {
     loadUser() {
         this.refreshTokenHeader();
         if (!this.userPromise) {
-            const noToken = !localStorage.userToken;
+            const noToken = !this.getUserData('token');
             this.userPromise = noToken ? this.$q.when(null) :
                 this.Restangular.one('user').get()
                     .then(user => {
@@ -66,5 +66,16 @@ export class AuthService {
                     });
         }
         return this.userPromise;
+    }
+
+    getUserData(property) {
+        const data = localStorage.getItem('userData');
+        return data && JSON.parse(data)[property];
+    }
+
+    setUserData(property, value) {
+        const data = JSON.parse(localStorage.getItem('userData') || '{}');
+        data[property] = value;
+        localStorage.setItem('userData', JSON.stringify(data));
     }
 }
