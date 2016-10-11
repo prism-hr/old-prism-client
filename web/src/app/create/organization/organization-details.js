@@ -1,4 +1,5 @@
 class OrganizationDetailsController {
+    /** @ngInject */
     constructor(Restangular, definitions) {
         this.definitions = definitions;
         this.Restangular = Restangular;
