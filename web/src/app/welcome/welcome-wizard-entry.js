@@ -1,16 +1,12 @@
 class WelcomeWizardEntryController {
     $onInit() {
-        const resource = _.get(this.welcomeStatus, 'resource');
         this.statusClass = 'icon-close';
-        if (resource) {
+        if (this.resource) {
             this.statusClass = 'icon-exclamation';
-            if (resource.completeted) {
+            if (this.resource.completed) {
                 this.statusClass = 'icon-check';
             }
         }
-        const id = resource ? resource.accessCode : 'new';
-        this.stateName = this.initialState;
-        this.stateParams = {id, welcomeType: this.welcomeType};
     }
 }
 
@@ -19,10 +15,9 @@ export const WelcomeWizardEntry = {
     bindings: {
         title: '@',
         description: '@',
-        initialState: '@',
-        welcomeType: '@',
-        enabled: '<',
-        welcomeStatus: '<'
+        wizardState: '<',
+        resource: '<',
+        enabled: '<'
     },
     controller: WelcomeWizardEntryController
 };

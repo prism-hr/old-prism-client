@@ -7,23 +7,18 @@
             </div>
             <welcome-wizard-entry title="Company Information"
                                   description="Initial basic information about your company"
-                                  initial-state="promoter.summary"
-                                  welcome-type="promoter"
-                                  welcome-status="$ctrl.statuses.PROMOTER"
+                                  wizard-state="$ctrl.promoterWizardState"
+                                  resource="$ctrl.statuses.PROMOTER.resource"
                                   enabled="true">
             </welcome-wizard-entry>
             <welcome-wizard-entry title="Advert"
                                   description="Create your first advert"
-                                  initial-state="advert.category"
-                                  welcome-type="promoter"
-                                  welcome-status="$ctrl.statuses.ADVERT"
+                                  wizard-state="$ctrl.advertWizardState"
+                                  resource="$ctrl.statuses.ADVERT.resource"
                                   enabled="$ctrl.advertEnabled">
             </welcome-wizard-entry>
             <welcome-wizard-entry title="Audience"
                                   description="Target University departments to get your right candidate"
-                                  initial-state="audience.dupa"
-                                  welcome-type="promoter"
-                                  welcome-status="$ctrl.statuses.AUDIENCE"
                                   enabled="$ctrl.audienceEnabled">
             </welcome-wizard-entry>
         </div>

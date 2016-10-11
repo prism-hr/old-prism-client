@@ -5,9 +5,20 @@ class PromoterWelcomeController {
     }
 
     $onInit() {
+        const welcomeType = 'promoter';
         this.statuses = this.welcomeService.getWelcomeStatuses('promoter');
-        this.advertEnabled = _.get(this.statuses.PROMOTER, 'resource.statusComplete.completed');
-        this.audienceEnabled = _.get(this.statuses.ADVERT, 'resource.statusComplete.completed');
+        const promoter = _.get(this.statuses, 'PROMOTER.resource');
+        const advert = _.get(this.statuses, 'ADVERT.resource');
+        this.advertEnabled = _.get(promoter, 'statusComplete.completed');
+        this.audienceEnabled = _.get(advert, 'statusComplete.completed');
+        this.promoterWizardState = {
+            name: 'promoter.summary',
+            params: {id: _.get(promoter, 'accessCode') || 'new', welcomeType}
+        };
+        this.advertWizardState = {
+            name: 'advert.category',
+            params: {id: _.get(advert, 'accessCode') || 'new', welcomeType}
+        };
     }
 }
 

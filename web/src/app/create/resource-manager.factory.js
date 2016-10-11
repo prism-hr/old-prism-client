@@ -3,7 +3,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
     const collectionNames = {
         PROMOTER: 'organizationImplementations',
         DEPARTMENT: 'organizationImplementations',
-        ADVERT: 'adverts',
+        ADVERT: 'promotions',
         STUDENT: 'students'
     };
 

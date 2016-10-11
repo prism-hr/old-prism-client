@@ -8,23 +8,16 @@
 
             <welcome-wizard-entry title="Create your Department"
                                   description="Initial basic information about your department"
-                                  initial-state="department.summary"
-                                  welcome-type="department"
-                                  welcome-status="$ctrl.statuses.DEPARTMENT"
+                                  wizard-state="$ctrl.departmentWizardState"
+                                  resource="$ctrl.statuses.DEPARTMENT.resource"
                                   enabled="true">
             </welcome-wizard-entry>
             <welcome-wizard-entry title="Tell your students"
                                   description="Inform your students about the new way to get jobs, placements or work experience"
-                                  initial-state="students.dupa"
-                                  welcome-type="department"
-                                  welcome-status="$ctrl.statuses.STUDENTS"
                                   enabled="$ctrl.studentsEnabled">
             </welcome-wizard-entry>
             <welcome-wizard-entry title="Invite Employers <small>(optional)</small>"
                                   description="Invite employers to help your students find positions"
-                                  initial-state="employers.dupa"
-                                  welcome-type="department"
-                                  welcome-status="$ctrl.statuses.EMPLOYERS"
                                   enabled="$ctrl.employersEnabled">
             </welcome-wizard-entry>
 
