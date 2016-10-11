@@ -97,12 +97,12 @@ export class ResourceCreateWizardFactory {
                 });
 
                 const toStepDefinition = _.find(this._steps, {id: toStep});
-                // if (toStepDefinition.available) {
-                this._currentStep = toStep;
-                this._stepSubject.onNext(toStepDefinition);
-                return true;
-                // }
-                // return lastNotCompleteStep;
+                if (toStepDefinition.available) {
+                    this._currentStep = toStep;
+                    this._stepSubject.onNext(toStepDefinition);
+                    return true;
+                }
+                return lastNotCompleteStep;
             }
 
             stepSubscribe(observer) {
@@ -127,7 +127,7 @@ export class ResourceCreateWizardFactory {
 
                 return this._resourceManager.saveResource(this._currentStep)
                     .then(resource => {
-                        if (this.getResource().id) {
+                        if (this.getResource().accessCode) {
                             welcomeService.updateWizardCompleteness(resource);
                         } else {
                             welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, resource);
