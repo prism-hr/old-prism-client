@@ -121,20 +121,19 @@ export class ResourceCreateWizardFactory {
 
             next() {
                 const currentStep = this.getStepForName(this._currentStep);
-                const nextStep = this.getNextStep();
-                if (!nextStep) {
-                    $state.go(this._wizardType.toLowerCase() + 'Welcome');
+                const wasResourceSaved = Boolean(this.getResource().accessCode);
+
+                if (currentStep.data.preview) {
+                    return this._resourceManager.commitResource()
+                        .then(resource => {
+                            welcomeService.updateWizardCompleteness(resource);
+                            $state.go(this._wizardType.toLowerCase() + 'Welcome');
+                        });
                 }
 
-                let savePromise;
-                if (currentStep.data.preview) {
-                    savePromise = this._resourceManager.commitResource();
-                } else {
-                    savePromise = this._resourceManager.saveResource(this._currentStep);
-                }
-                return savePromise
+                return this._resourceManager.saveResource(this._currentStep)
                     .then(resource => {
-                        if (this.getResource().accessCode) {
+                        if (wasResourceSaved) {
                             welcomeService.updateWizardCompleteness(resource);
                         } else {
                             welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, resource);

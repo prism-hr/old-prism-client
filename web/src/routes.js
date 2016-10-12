@@ -43,7 +43,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             resolve: {
                 wizardType: _.wrap('PROMOTER'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
-                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
+                    const source = $stateParams.id === 'new' ? {} : $stateParams.id;
+                    return resourceManagerFactory.getManager(source, wizardType)
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('Company Information')
@@ -65,21 +66,23 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             resolve: {
                 wizardType: _.wrap('DEPARTMENT'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
-                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
+                    const source = $stateParams.id === 'new' ? {} : $stateParams.id;
+                    return resourceManagerFactory.getManager(source, wizardType)
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('University Information')
             }
         })
         .state('advert', {
-            url: '/advert/{id}?welcomeType',
+            url: '/advert/{id}?welcomeType&organization',
             abstract: true,
             component: 'advert',
             data: {auth: true},
             resolve: {
                 wizardType: _.wrap('ADVERT'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
-                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
+                    const source = $stateParams.id === 'new' ? {organization: {accessCode: $stateParams.organization}} : $stateParams.id;
+                    return resourceManagerFactory.getManager(source, wizardType)
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('Advert')

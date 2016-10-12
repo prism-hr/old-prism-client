@@ -67,21 +67,28 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
         }
 
         commitResource() {
-            Restangular.one(collectionNames[this._type], this._resource.accessCode).one('commit').customPUT({})
+            return Restangular.one(collectionNames[this._type], this._resource.accessCode).one('commit').customPUT({})
                 .then(response => {
-                    this._resource = response.data;
+                    this._resource = response.plain();
                     return this._resource;
                 });
         }
     }
 
     return {
-        getManager(id, type) {
-            if (id === 'new') {
-                return $q.when(new ResourceManager(type));
+        /**
+         * Creates new resource manager
+         *
+         * @param {string|object} source id of resource, or initial resource object
+         * @param type type of manager
+         * @return {ResourceManager} created manager
+         */
+        getManager(source, type) {
+            if (angular.isObject(source)) {
+                return $q.when(new ResourceManager(type, source));
             }
 
-            return Restangular.one(collectionNames[type], id).get()
+            return Restangular.one(collectionNames[type], source).get()
                 .then(resource => {
                     const r = resource.plain();
                     fileConversion.processForDisplay(r);

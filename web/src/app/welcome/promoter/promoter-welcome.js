@@ -17,7 +17,7 @@ class PromoterWelcomeController {
         };
         this.advertWizardState = {
             name: 'advert.category',
-            params: {id: _.get(advert, 'accessCode') || 'new', welcomeType}
+            params: {id: _.get(advert, 'accessCode') || 'new', welcomeType, organization: _.get(promoter, 'accessCode')}
         };
     }
 }
