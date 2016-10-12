@@ -23,6 +23,7 @@ export class FileConversionService {
         }
 
         processData(object);
+        return object;
     }
 
     processForUpload(object) {

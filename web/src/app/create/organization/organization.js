@@ -1,6 +1,5 @@
 class OrganizationController {
     $onInit() {
-        this.organization = this.wizard.getResource();
         this.createSteps = this.wizard.getSteps();
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
         this._onStepChange(this.wizard.getCurrentStep());
@@ -8,6 +7,7 @@ class OrganizationController {
 
     _onStepChange(currentStep) {
         if (currentStep) {
+            this.organization = this.wizard.getResource();
             if (currentStep.data.preview) {
                 this.showNavigation = true;
             }

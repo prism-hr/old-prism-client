@@ -57,19 +57,20 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
                     background
                 }
             }).then(response => {
+                const savedResource = fileConversion.processForDisplay(response.data);
                 if (this._resource.accessCode) {
-                    this._resource = response.data;
+                    this._resource = savedResource;
                 } else {
                     this._resource = {};
                 }
-                return response.data;
+                return savedResource;
             });
         }
 
         commitResource() {
             return Restangular.one(collectionNames[this._type], this._resource.accessCode).one('commit').customPUT({})
                 .then(response => {
-                    this._resource = response.plain();
+                    this._resource = fileConversion.processForDisplay(response.plain());
                     return this._resource;
                 });
         }
@@ -91,8 +92,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
             return Restangular.one(collectionNames[type], source).get()
                 .then(resource => {
                     const r = resource.plain();
-                    fileConversion.processForDisplay(r);
-                    return new ResourceManager(type, r);
+                    return new ResourceManager(type, fileConversion.processForDisplay(r));
                 });
         }
     };
