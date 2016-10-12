@@ -19,7 +19,7 @@
             <h4 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">{{$ctrl.organization.name}}</h4>
             <p class="summary">{{$ctrl.organization.summary}}</p>
             <p class="address">
-                <span ng-repeat="location in $ctrl.organization.locations">{{location.location.description}} </span>
+                <span ng-repeat="location in $ctrl.organization.locations">{{location.location.name}} </span>
             </p>
         </div>
     </md-card>

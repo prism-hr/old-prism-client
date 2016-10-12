@@ -1,7 +1,7 @@
 <div layout-padding>
     <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} industry areas, web and sizes </h3>
 
-    <md-input-container class="md-block">
+    <md-input-container class="md-block industries-holder">
         <label class="md-no-float">Industry Areas</label>
         <md-chips ng-model="$ctrl.organization.tags"
                   md-transform-chip="$ctrl.transformTag($chip)">
