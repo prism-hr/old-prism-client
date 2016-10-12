@@ -1,0 +1,85 @@
+<div layout-padding>
+    <h3>Provide Promotion Salary</h3>
+    <label class="standalone-label">Salary options</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.salary" class="horizontal-form medium">
+        <div class="radio-box-alined">
+            <md-radio-button value="RANGE" class="md-primary" checked="checked" ng-checked="true">
+                Salary Range
+            </md-radio-button>
+            <md-radio-button value="COMPETITIVE" class="md-primary">
+                Competitive Salary
+            </md-radio-button>
+            <md-radio-button value="NO-SALARY" class="md-primary">
+                No Salary
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+    <div class="payment-range" ng-if="$ctrl.advert.salary === 'RANGE'">
+        <label class="standalone-label">Salary Range</label>
+        <div layout="row">
+            <md-input-container>
+                <label>Min</label>
+                <input required type="number" name="salaryMin" ng-model="$ctrl.advert.salaryMin" min="1"
+                       max="999999"/>
+                <div ng-messages="$ctrl.form.salaryMin.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Max</label>
+                <input type="number" name="salaryMax" ng-model="$ctrl.advert.salaryMax" min="2"
+                       max="999999"/>
+                <div ng-messages="$ctrl.form.salaryMax.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Currency</label>
+                <md-select ng-model="$ctrl.advert.currency" required>
+                    <md-option value="GBP"> £ - GBP</md-option>
+                    <md-option value="EURO"> € - Euro</md-option>
+                    <md-option value="DOLLAR"> $ - Dollar</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Interval</label>
+                <md-select ng-model="$ctrl.advert.interval" required>
+                    <md-option value="HOUR">Hour</md-option>
+                    <md-option value="DAY">Day</md-option>
+                    <md-option value="MONTH">Month</md-option>
+                    <md-option value="YEAR">Year</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+
+    <md-switch ng-model="$ctrl.showBenefits" class="md-primary" aria-label="Benefits">
+        Benefits
+    </md-switch>
+    <div ng-if="$ctrl.showBenefits" class="benefits">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Benefits</label>
+            <md-chips
+                    ng-model="$ctrl.selectedBenefits.types"
+                    md-transform-chip="$ctrl.transformChip($chip)">
+                <md-autocomplete
+                        md-selected-item="$ctrl.selectedOption"
+                        md-search-text="$ctrl.searchText"
+                        md-items="benefit in $ctrl.querySearch($ctrl.launchBenefits)"
+                        md-item-text="benefit.name"
+                        md-min-length="0"
+                        md-no-cache="true"
+                        placeholder="Search or type Benefit">
+                    <span md-highlight-text="$ctrl.searchText">{{benefit.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>{{$chip.name}}</span>
+                </md-chip-template>
+            </md-chips>
+        </md-input-container>
+        <md-input-container class="md-block benefits-description">
+            <label class="md-no-float">Benefits description</label>
+            <textarea ng-model="$ctrl.advert.benefitDescription" md-maxlength="250" rows="2"></textarea>
+        </md-input-container>
+    </div>
+</div>

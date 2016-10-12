@@ -1,0 +1,45 @@
+<div layout-padding>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} industry areas, web and sizes </h3>
+
+    <md-input-container class="md-block">
+        <label class="md-no-float">Industry Areas</label>
+        <md-chips ng-model="$ctrl.organization.tags"
+                  md-transform-chip="$ctrl.transformTag($chip)">
+            <md-autocomplete
+                    md-search-text="searchText"
+                    md-items="item in $ctrl.lookupTags(searchText)"
+                    md-item-text="item.name"
+                    placeholder="Find a tag or add a new one">
+                <span md-highlight-text="searchText">{{item.name}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                {{$chip.tag.name}}
+            </md-chip-template>
+        </md-chips>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+        <label class="md-no-float">Homepage URL
+            <small>(http://yourweb.com)</small>
+        </label>
+        <input type="url" name="website" ng-model="$ctrl.organization.website">
+    </md-input-container>
+    <div layout="row">
+        <md-input-container class="md-block" flex>
+            <label class="md-no-float">Number Staff</label>
+            <md-select ng-model="$ctrl.organization.numberStaff" required>
+                <md-option placeholder="Number Staff" ng-repeat="number in $ctrl.definitions.numberStaff" value="{{number}}">
+                    {{'organization.numberStaff.' + number | translate}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" ng-if="$ctrl.wizardType === 'DEPARTMENT'" flex>
+            <label class="md-no-float">Number of Students</label>
+            <md-select ng-model="$ctrl.organization.numberStudent" required>
+                <md-option ng-repeat="number in $ctrl.definitions.numberStudent" value="{{number}}">
+                    {{'organization.numberStaff.' + number | translate}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>

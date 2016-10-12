@@ -1,0 +1,18 @@
+<div layout-padding>
+    <h3>Choose the type of advert and your role on it </h3>
+
+    <label class="standalone-label">Your Role on the Advert</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.category" class="medium">
+        <div class="radio-box-column">
+            <md-radio-button flex value="EMPLOYER" class="md-primary" checked="checked" ng-checked="true">
+               Employer
+                <small>I am an Employer and I will manage and promote my adverts</small>
+            </md-radio-button>
+            <md-radio-button value="RECRUITER" class="md-primary">
+                Recruiter
+                <small>I am a Recruiter or Career Services and I will manage and promote adverts from other companies</small>
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+    <div class="payment-plan"></div>
+</div>

@@ -1,0 +1,170 @@
+// step 1
+.google-institution {
+  background: lighten($employmentColor, 30%);
+  border-radius: 2px;
+  border: 1px dashed $employmentColor;
+  position: relative;
+  .phone {
+    position: absolute;
+    right: 15px;
+    font-size: 12px;
+    top: 45px;
+  }
+  &.no-name {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .address {
+    margin-top:0;
+  }
+  &.registered, &.family-registered {
+    background: lighten($uclblue, 30%);;
+    border-color: $uclblue;
+  }
+  &.registered {
+    p {
+      clear: both;
+      margin-bottom: 0;
+    }
+  }
+  &.institution {
+    background: lighten($uclblue2, 30%);;
+    border-color: $uclblue2;
+
+    .institution-name {
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+    .address {
+      margin-bottom: 10px;
+    }
+
+  }
+  .footer {
+    background: transparent;
+    .btn {
+      margin-right: 8px;
+    }
+  }
+  .part-of {
+    margin: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed $employmentColor;
+    p {
+      margin-bottom: 10px;
+    }
+    .btn-success {
+      margin-right: 10px;
+    }
+    .btn-info {
+      margin-left: 10px;
+    }
+    h4{
+
+    }
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom:5px;
+    a {
+      max-width: 84%;
+      float: left;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .label {
+      padding: 0.4em 0.6em 0.3em;
+      float: right;
+    }
+  }
+  .button-group {
+    margin: 10px -8px -6px;
+  }
+}
+.logo-image {
+  margin: 10px;
+  min-width: 200px;
+  display: inline-block;
+}
+.company-box {
+  margin-top:-137px;
+  .company-header {
+    width: 96%;
+    background: white;
+  }
+  .website {
+    margin-right:10px;
+  }
+}
+.company-header {
+  h2 {
+    margin-top:10px;
+    margin-bottom:2px;
+  }
+  h4 {
+    margin-bottom:6px;
+  }
+  .company-details {
+    display: block;
+    width: 100%;
+  }
+  .address {
+    font-size:0.8rem;
+    margin-bottom:0;
+    p {
+      margin: 0;
+    }
+    .lock-size {
+      margin-top:-18px;
+    }
+    span {
+      padding-right:3px;
+      &:before {
+        content: '\00B7';
+        padding-right:3px;
+        font-size:18px;
+      }
+    }
+  }
+  .summary {
+    margin-top:0;
+    margin-bottom:10px;
+    padding-right: 20px;
+  }
+}
+.preview-navigation {
+  width: 96%;
+  overflow: hidden;
+  background: white;
+  border:1px solid #ececec;
+  border-top:none;
+  md-pagination-wrapper, md-tabs-canvas  {
+    height: 38px;
+  }
+  md-tabs.md-prism-theme .md-tab {
+    line-height: 20px;
+    padding: 8px 10px;
+    color: $uclfooter;
+    font-weight:700;
+    &.md-active {
+      color: $uclred;
+    }
+  }
+  md-tabs.md-prism-theme md-ink-bar {
+    background-color: $uclred;
+  }
+
+}
+.preview {
+  position: relative;
+  > label {
+    position: absolute;
+    right: 0;
+    top: 25px;
+    right: 25px;
+    background: grey;
+    padding: 2px 4px;
+    color: white;
+  }
+}

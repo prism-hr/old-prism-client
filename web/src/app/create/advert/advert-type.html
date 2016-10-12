@@ -1,0 +1,86 @@
+<div layout-padding>
+    <h3>Type</h3>
+
+    <div ng-if="false">
+        <label class="standalone-label">Type of Advert</label>
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.type" class="horizontal-form medium">
+            <div class="radio-box-alined">
+                <md-radio-button value="advert" class="md-primary" checked="checked" ng-checked="true">
+                    Advert
+                </md-radio-button>
+                <md-radio-button value="EVENT" class="md-primary">
+                    Event
+                </md-radio-button>
+            </div>
+        </md-radio-group>
+    </div>
+
+    <label class="standalone-label">Type of advert</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.advertType" class="horizontal-form medium">
+        <div class="radio-box-alined">
+            <md-radio-button value="EMPLOYMENT" class="md-primary" checked="checked" ng-checked="true">
+                Employment
+            </md-radio-button>
+            <md-radio-button value="PLACEMENT" class="md-primary">
+                Placement
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+
+    <label class="standalone-label">Promotion options</label>
+    <div layout="row" class="type-duration">
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.duration" class="horizontal-form medium">
+            <div class="radio-box-alined">
+                <md-radio-button value="PERMANENT" class="md-primary">
+                    Permanent
+                </md-radio-button>
+                <md-radio-button value="FIXED-TERM" class="md-primary">
+                    Fixed-Term/Contract
+                </md-radio-button>
+            </div>
+        </md-radio-group>
+        <div class="fixed-term-duration" ng-if="$ctrl.advert.duration === 'FIXED-TERM'">
+            <md-input-container>
+                <label>Months Min</label>
+                <input required type="number" name="duration-min" ng-model="$ctrl.advert.durationMin" min="1"
+                       max="23"/>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="checkboxes-group">
+        <div ng-repeat="item in $ctrl.items">
+            <md-checkbox class="md-primary" ng-checked="$ctrl.exists(item, $ctrl.selected)"
+                         ng-click="$ctrl.toggle(item, $ctrl.selected)">
+                {{ item }}
+            </md-checkbox>
+        </div>
+        <md-checkbox aria-label="Select All"
+                     class="md-primary"
+                     ng-checked="$ctrl.isChecked()"
+                     md-indeterminate="$ctrl.isIndeterminate()"
+                     ng-click="$ctrl.toggleAll()">
+            <span ng-if="$ctrl.isChecked()">Un-</span>Select All
+        </md-checkbox>
+    </div>
+    <div class="hours-week-duration"
+         ng-if="$ctrl.selected.indexOf('Part Time') !== -1 || $ctrl.selected.indexOf('Flexible') !== -1">
+    </div>
+
+    <label class="standalone-label">Advert available from</label>
+    <md-datepicker ng-model="$ctrl.promotionDate"
+                   md-placeholder="Available from"
+                   md-min-date="$ctrl.minPromotionDate"
+                   md-max-date="$ctrl.maxPromotionDate"
+                   md-open-on-focus></md-datepicker>
+    <md-switch ng-model="$ctrl.promotionClosingDateEnable" class="md-primary" aria-label="All Research Students">
+        Closing Date
+    </md-switch>
+    <div ng-if="$ctrl.promotionClosingDateEnable">
+        <label class="standalone-label">Advert Closing Date</label>
+        <md-datepicker ng-model="$ctrl.promotionClosingDate"
+                       md-placeholder="Closing date"
+                       md-min-date="$ctrl.promotionDate"
+                       md-max-date="$ctrl.maxPromotionDate"
+                       md-open-on-focus></md-datepicker>
+    </div>
+</div>

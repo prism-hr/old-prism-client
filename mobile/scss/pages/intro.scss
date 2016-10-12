@@ -1,0 +1,51 @@
+.intro {
+  .slider-btn-holder {
+    display: block;
+    position: absolute;
+    top: 8px;
+    z-index: 1;
+    &.left {
+      left: 10px;
+    }
+    &.right {
+      right: 10px;
+    }
+  }
+  .slider {
+    height: 100%;
+  }
+  .slider-slide {
+    padding-top: 80px;
+    color: #000;
+    background-color: #fff;
+    text-align: center;
+    font-weight: 300;
+  }
+  .toolbar-background {
+    background: #fff;
+    border-color: transparent;
+  }
+  .slide-image {
+    max-height: 50%;
+    max-width: 60%;
+    margin: 18px 0;
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  p {
+    padding: 0 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #60646B;
+
+    b {
+      color: #000000;
+    }
+  }
+}
+
+
+

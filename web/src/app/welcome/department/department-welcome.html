@@ -1,0 +1,40 @@
+<div class="page-wrap step-page">
+    <div layout="row" layout-align="center center" ng-cloak>
+        <div flex="60" flex-xs="100" class="left-side-block" layout="column" layout-align="center stretch">
+            <div class="header" layout-padding>
+                <h1>Welcome University Department</h1>
+                <h3>Register your department to start using PRiSM.</h3>
+            </div>
+
+            <welcome-wizard-entry title="Create your Department"
+                                  description="Initial basic information about your department"
+                                  wizard-state="$ctrl.departmentWizardState"
+                                  resource="$ctrl.statuses.DEPARTMENT.resource"
+                                  enabled="true">
+            </welcome-wizard-entry>
+            <welcome-wizard-entry title="Tell your students"
+                                  description="Inform your students about the new way to get jobs, placements or work experience"
+                                  enabled="$ctrl.studentsEnabled">
+            </welcome-wizard-entry>
+            <welcome-wizard-entry title="Invite Employers <small>(optional)</small>"
+                                  description="Invite employers to help your students find positions"
+                                  enabled="$ctrl.employersEnabled">
+            </welcome-wizard-entry>
+
+            <div class="step step3">
+                <div layout-padding>
+                    <div class="icon-holder">
+                        <i class="icon-exclamation"></i>
+                    </div>
+                    <h2></h2>
+                    <p></p>
+                </div>
+                <md-button class="md-primary md-raised big">Continue</md-button>
+            </div>
+        </div>
+        <div flex="40" class="right-side-block hide-xs">
+            <div class="custom-icon university" ng-include="'img/uni-logo.html'"></div>
+            <p class="text-aline-center">Temporal image</p>
+        </div>
+    </div>
+</div>

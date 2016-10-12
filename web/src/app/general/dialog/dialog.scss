@@ -1,0 +1,43 @@
+md-dialog-content {
+  h3 {
+    margin-top:15px;
+    margin-bottom:15px;
+  }
+}
+.prism-dialog {
+  background: white;
+  .index-padding {
+    padding: 0 8px;
+  }
+  .text-content {
+    padding: 15px 10px 0;
+  }
+  md-progress-linear {
+    margin-bottom: -5px !important;
+  }
+}
+.dialog-content {
+  width: 360px;
+  margin: auto;
+}
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .prism-dialog {
+    .dialog-content {
+        width: 100%;
+    }
+  }
+}
+@media (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) {
+  .loginPage {
+    section {
+      .login {
+        padding-left: 3%;
+        padding-right: 3%;
+      }
+    }
+  }
+  .create-account {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}

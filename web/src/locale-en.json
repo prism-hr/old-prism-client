@@ -1,0 +1,92 @@
+{
+  "create": {
+    "organization": {
+      "lc-type": {
+        "PROMOTER": "company",
+        "DEPARTMENT": "department"
+      },
+      "organization-lookup": {
+        "organization-placeholder": {
+          "PROMOTER": "Look up or create company",
+          "DEPARTMENT": "Look up or create university"
+        },
+        "implementation-placeholder": {
+          "PROMOTER": "Look up or create division",
+          "DEPARTMENT": "Look up or create department"
+        },
+        "lookup-button": {
+          "PROMOTER": "Look up Company",
+          "DEPARTMENT": "Look up University"
+        },
+        "lookup-title": {
+          "PROMOTER": "Find or create your company",
+          "DEPARTMENT": "Find or create your department"
+        },
+        "lookup-subtitle": {
+          "PROMOTER": "Create your company",
+          "DEPARTMENT": "Create your department"
+        },
+        "organization-label": {
+          "PROMOTER": "Company Name",
+          "DEPARTMENT": "University Name"
+        },
+        "implementation-label": {
+          "PROMOTER": "Division Name",
+          "DEPARTMENT": "Department Name"
+        },
+        "add-department": {
+          "PROMOTER": "Add division",
+          "DEPARTMENT": "Add department"
+        },
+        "cancel-department": {
+          "PROMOTER": "Cancel division",
+          "DEPARTMENT": "Cancel department"
+        }
+      },
+      "address-lookup": {
+        "autocomplete-placeholder": {
+          "PROMOTER": "Look up your Locations",
+          "DEPARTMENT": "Look up your Locations"
+        },
+        "lookup-button": {
+          "PROMOTER": "Look up Locations",
+          "DEPARTMENT": "Look up Locations"
+        }
+      }
+    },
+    "advert": {
+      "address-lookup": {
+        "autocomplete-placeholder": "Look up your Locations"
+      }
+    }
+  },
+  "unauthenticated": {
+    "authenticate": {
+      "title": {
+        "LOGIN": "Log In",
+        "REGISTER": "Sign Up",
+        "FORGOT_PASSWORD": "Recover Password"
+      }
+    }
+  },
+  "organization": {
+    "numberStaff": {
+      "FROM_1_TO_10": "1 to 10",
+      "FROM_11_TO_50": "11 to 50",
+      "FROM_51_TO_200": "51 to 200",
+      "FROM_201_TO_500": "201 to 500",
+      "FROM_501_TO_1000": "501 to 1000",
+      "FROM_1001_TO_5000": "1001 to 5000",
+      "FROM_5001_TO_10000": "5001 to 10000",
+      "FROM_10001_TO_ANY": "10000+"
+    },
+    "numberStudent": {
+      "FROM_1_TO_10": "1 to 10",
+      "FROM_11_TO_50": "11 to 50",
+      "FROM_51_TO_200": "51 to 200",
+      "FROM_201_TO_500": "201 to 500",
+      "FROM_501_TO_1000": "501 to 1000",
+      "FROM_1001_TO_ANY": "1000+"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<div class="background-box" ng-if="$ctrl.organization.documentBackgroundImage" ngf-background="$ctrl.organization.documentBackgroundImage"></div>
+<div class="background-box" ng-if="!$ctrl.organization.documentBackgroundImage"></div>
+<md class="company-box" layout="row" layout-align="center end">
+    <md-card class="company-header" layout="row" flex-gt-sm="75">
+        <div class="logo-image">
+            <div class="logo-flex company-logo">
+                <div class="logo">
+                    <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'" />
+                </div>
+            </div>
+        </div>
+        <div class="company-details">
+            <div layout="row" layout-align="center center">
+                <h2 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">{{$ctrl.organization.organization.name}}</h2>
+                <h2 ng-if="$ctrl.organization.name === $ctrl.organization.organization.name">{{$ctrl.organization.name}}</h2>
+                <span flex></span>
+                <a ng-href="{{$ctrl.organization.website}}" target="_blank" ng-if="$ctrl.organization.website" class="website"><i class="icon-globe"></i> Web</a>
+            </div>
+            <h4 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">{{$ctrl.organization.name}}</h4>
+            <p class="summary">{{$ctrl.organization.summary}}</p>
+            <p class="address">
+                <span ng-repeat="location in $ctrl.organization.locations">{{location.location.description}} </span>
+            </p>
+        </div>
+    </md-card>
+</md>

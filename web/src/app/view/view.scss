@@ -1,0 +1,100 @@
+employer-view, position-view {
+  md-tabs-canvas {
+    display: none;
+  }
+  .tab-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    > div {
+      border-bottom: 3px solid $fadeGrey;
+      cursor: pointer;
+      -webkit-transition: all 300ms;
+      -moz-transition: all 300ms;
+      -o-transition: all 300ms;
+      transition: all 300ms;
+      &:hover:not(.active) {
+        background: $fadeGrey;
+      }
+      &.active {
+        border-color: $uclred;
+        cursor: auto;
+        h3 {
+          color: $uclred;
+        }
+      }
+      h3 {
+        color: rgba(0, 0, 0, 0.87);
+      }
+      p {
+        margin-bottom: 0;
+        margin-top: 6px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+    }
+  }
+  md-tabs {
+    md-tabs-wrapper {
+      border: none;
+    }
+    md-content.md-prism-theme {
+      background: white;
+      &.md-padding {
+        padding: 8px;
+      }
+      p {
+        line-height: 1.3rem;
+        font-size: 14px;
+      }
+      h4 {
+        color: $uclfooter;
+        font-weight: 700;
+        margin-bottom: 4px;
+        font-size: 16px;
+      }
+      .specialities {
+        p {
+          margin-top: 2px;
+        }
+      }
+      .more-details {
+        column-count: 3;
+        column-gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .subheader {
+        font-weight: 600;
+        p {
+          margin-top: 2px;
+          font-size: 16px;
+        }
+      }
+      .benefits, .specialities {
+        margin-bottom: 24px;
+        md-chips-wrap {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+.map-container {
+  .angular-google-map-container {
+    height: 400px;
+  }
+  margin-top:30px;
+  border-bottom:3px solid $uclred;
+}
+
+md-chips {
+  &.small {
+    md-chip {
+      height: 24px;
+      line-height: 24px;
+      font-size: 12px;
+    }
+  }
+}
+

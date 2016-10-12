@@ -1,0 +1,45 @@
+<div layout-padding>
+    <h3>Background Image and Description</h3>
+    <div class="image-uploader background"
+         ngf-pattern="'image/*'"
+         ngf-accept="'image/png, image/jpeg, image/gif'"
+         ngf-max-size="10MB"
+         ngf-select
+         ngf-drop
+         name="background"
+         layout="row" layout-align="center center" ng-model="$ctrl.documentBackgroundImageOriginal"
+         ng-hide="$ctrl.documentBackgroundImageOriginal">
+        <span class="drop-box" ng-if="!$ctrl.documentBackgroundImageOriginal">Drop your Background</span>
+    </div>
+    <div class="cropArea" ng-if="$ctrl.documentBackgroundImageOriginal">
+        <img-crop image="$ctrl.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1"
+                  result-blob="$ctrl.organization.documentBackgroundImage" result-image="$ctrl.resultImage"
+                  result-image-size='{w: 1280,h: 320}'
+                  init-max-area="true"></img-crop>
+
+    </div>
+    <div layout="row" layout-align="center center">
+        <small>Minimum Image size 1280 x 320</small>
+        <span class="flex"></span>
+        <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()"
+                   ng-if="$ctrl.documentBackgroundImageOriginal">Clear Image
+        </md-button>
+    </div>
+    <div ng-messages="$ctrl.form.background.$error" role="alert">
+        <div ng-messages-include="general-messages"></div>
+    </div>
+</div>
+<md-card class="text-editor">
+    <md-card-title>
+        <h3>Description <small>(optional)</small></h3>
+    </md-card-title>
+    <md-card-content>
+        <text-angular-toolbar
+                name="organizationDescriptionToolbar"
+                ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol', 'insertLink'],['redo', 'undo']]">
+        </text-angular-toolbar>
+        <md-input-container class="md-block">
+                    <text-angular ng-model="$ctrl.organization.description" rows="4" ta-target-toolbars="organizationDescriptionToolbar" class="form-control md-input" aria-label="Description"></text-angular>
+        </md-input-container>
+    </md-card-content>
+</md-card>
