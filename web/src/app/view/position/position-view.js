@@ -3,10 +3,10 @@ class PositionViewController {
         this.selectedIndex = 0;
         this.map = {center: {latitude: 45, longitude: -73}, zoom: 8};
         this.dummyShare = {
-            title: 'careerjet.io',
-            text: 'Welcome to careerJet.io',
-            url: 'careerjet.io',
-            hashtags: 'careerjet.io, promoteCareerJet'
+            title: 'bigfoot',
+            text: 'Welcome to Bigfoot',
+            url: 'Bigfoot',
+            hashtags: 'Bigfoot, promoteBigfoot'
         };
     }
 
