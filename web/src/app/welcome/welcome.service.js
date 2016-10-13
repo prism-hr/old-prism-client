@@ -24,6 +24,6 @@ export class WelcomeService {
     }
 
     static pickResourceFields(resource) {
-        return _.pick(resource, ['accessCode', 'name', 'state']);
+        return _.pick(resource, ['accessCode', 'name', 'state', 'stateComplete']);
     }
 }

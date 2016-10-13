@@ -9,7 +9,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
 
     class ResourceManager {
         constructor(type, resource) {
-            this._resource = resource || {};
+            this._resource = resource;
             this._type = type;
         }
 
@@ -17,13 +17,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
             return this._resource;
         }
 
-        saveResource(step, options) {
-            options = options || {};
-
-            if (this._type === 'ADVERT') { // TODO drop these lines when advert is ready
-                return $q.when(this._resource);
-            }
-
+        saveResource() {
             const collectionName = collectionNames[this._type];
             let url;
             if (this._resource.accessCode) {
@@ -49,15 +43,15 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
             return Upload.upload({
                 url,
                 data: {
-                    section: step,
+                    stateComplete: Upload.json(this._resource.stateComplete),
                     context: this._type,
-                    skipped: options.skipped || false,
                     data: Upload.json(resourcePost),
                     logo,
                     background
                 }
             }).then(response => {
                 const savedResource = fileConversion.processForDisplay(response.data);
+                savedResource.stateComplete = JSON.parse(savedResource.stateComplete);
                 if (this._resource.accessCode) {
                     this._resource = savedResource;
                 } else {
@@ -71,6 +65,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
             return Restangular.one(collectionNames[this._type], this._resource.accessCode).one('commit').customPUT({})
                 .then(response => {
                     this._resource = fileConversion.processForDisplay(response.plain());
+                    this._resource.stateComplete = JSON.parse(this._resource.stateComplete);
                     return this._resource;
                 });
         }
@@ -91,8 +86,10 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
 
             return Restangular.one(collectionNames[type], source).get()
                 .then(resource => {
-                    const r = resource.plain();
-                    return new ResourceManager(type, fileConversion.processForDisplay(r));
+                    let r = resource.plain();
+                    r = fileConversion.processForDisplay(r);
+                    r.stateComplete = JSON.parse(r.stateComplete);
+                    return new ResourceManager(type, r);
                 });
         }
     };

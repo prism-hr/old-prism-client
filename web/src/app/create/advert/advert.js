@@ -2,6 +2,7 @@ class AdvertController {
     $onInit() {
         this.createSteps = this.wizard.getSteps();
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
+        this._onStepChange(this.wizard.getCurrentStep());
     }
 
     _onStepChange(currentStep) {
