@@ -85,11 +85,11 @@ export class ResourceCreateWizardFactory {
                 let lastNotCompleteStep = null;
                 _.each(this._steps, step => {
                     if (!missingStepEncountered) {
-                        step.available = true;
                         const state = stateComplete[step.id];
+                        step.available = state !== 'invalid';
                         if (state) {
                             step.state = state;
-                        } else if (!step.data.optional) {
+                        } else {
                             missingStepEncountered = true;
                             lastNotCompleteStep = step.id;
                         }
@@ -110,13 +110,23 @@ export class ResourceCreateWizardFactory {
             }
 
             getNextStep() {
+                const stateComplete = this.getResource().stateComplete || {};
                 const currentStep = this.getStepForName(this._currentStep);
-                return currentStep.index + 1 < this._steps.length && this._steps[currentStep.index + 1];
+                let index = currentStep.index + 1;
+                while (index < this._steps.length && stateComplete[this._steps[index].id] === 'invalid') {
+                    index++;
+                }
+                return index < this._steps.length && this._steps[index];
             }
 
             getPrevStep() {
+                const stateComplete = this.getResource().stateComplete || {};
                 const currentStep = this.getStepForName(this._currentStep);
-                return currentStep.index > 0 && this._steps[currentStep.index - 1];
+                let index = currentStep.index - 1;
+                while (index >= 0 && stateComplete[this._steps[index].id] === 'invalid') {
+                    index--;
+                }
+                return index >= 0 && this._steps[index];
             }
 
             next() {

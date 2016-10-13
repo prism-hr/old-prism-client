@@ -7,6 +7,7 @@ class AdvertController {
 
     _onStepChange(currentStep) {
         if (currentStep) {
+            this.advert = this.wizard.getResource();
             if (currentStep.data.preview) {
                 this.showNavigation = true;
             }
