@@ -1,0 +1,66 @@
+<div layout-padding>
+    <h3>Organization details to attach your advert</h3>
+    <div layout-gt-xs="row" layout-align="start center">
+        <div flex-gt-xs="65" flex>
+            <md-input-container class="md-block" flex>
+                <label class="md-no-float">Organization name</label>
+                <input ng-model="$ctrl.advert.organization.name">
+            </md-input-container>
+            <div class="locations">
+                <md-input-container class="md-block" flex>
+                    <label class="md-no-float">Locations</label>
+                    <place-autocomplete ng-model="$ctrl.advert.organization.locations" name="foundAddress"
+                                        placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                        required>
+                    </place-autocomplete>
+                    <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </md-input-container>
+            </div>
+        </div>
+        <div flex-gt-xs="35" layout="row" layout-align-gt-xs="end" flex>
+            <div>
+                <div class="image-uploader logo"
+                     ngf-pattern="'image/*'"
+                     ngf-accept="'image/png, image/jpeg, image/gif'"
+                     ngf-max-size="10MB"
+                     ngf-resize="{width: 400, height: 250}"
+                     ngf-select
+                     ngf-drop
+                     name="logo"
+                     layout="row" layout-align="center center" ng-model="$ctrl.advert.organization.documentLogoImage">
+                        <span class="drop-box"
+                              ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
+                    <div class="logo-flex">
+                        <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
+                            <img ngf-src="$ctrl.advert.organization.documentLogoImage || '/img/prism-logo-default.png'"/>
+                        </div>
+                    </div>
+                </div>
+                <small>Image size 400 x 250 / 10MB max</small>
+                <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="organization-contact">
+        <label class="standalone-label">Organization Contact details</label>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label class="md-no-float">Name</label>
+                <input ng-model="$ctrl.advert.organization.contact.name">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label class="md-no-float">Surname</label>
+                <input ng-model="$ctrl.advert.organization.contact.surname">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label class="md-no-float">Email</label>
+                <input type="email" ng-model="$ctrl.advert.organization.contact.email">
+            </md-input-container>
+        </div>
+    </div>
+</div>
+

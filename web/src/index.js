@@ -65,6 +65,7 @@ import {AdvertSummary} from './app/create/advert/advert-summary';
 import {AdvertType} from './app/create/advert/advert-type';
 import {AdvertHeader} from './app/create/advert/advert-header';
 import {AdvertSalary} from './app/create/advert/advert-salary';
+import {AdvertRecruiter} from './app/create/advert/advert-recruiter';
 import {AdvertDetails} from './app/create/advert/advert-details';
 import {AdvertAudience} from './app/create/advert/advert-audience';
 import {AdvertPreview} from './app/create/advert/advert-preview';
@@ -139,6 +140,7 @@ angular
     .component('organizationPreviewBox', OrganizationPreviewBox)
     .component('advert', Advert)
     .component('advertSummary', AdvertSummary)
+    .component('advertRecruiter', AdvertRecruiter)
     .component('advertType', AdvertType)
     .component('advertHeader', AdvertHeader)
     .component('advertSalary', AdvertSalary)

@@ -19,6 +19,7 @@ export class ResourceCreateWizardFactory {
             PROMOTER: organizationSteps,
             DEPARTMENT: organizationSteps,
             ADVERT: [{id: 'summary', component: 'advertSummary', title: 'Summary'},
+                {id: 'recruiter', component: 'advertRecruiter', title: 'Recruiter'},
                 {id: 'type', component: 'advertType', title: 'Type'},
                 {id: 'header', component: 'advertHeader', title: 'Header'},
                 {id: 'salary', component: 'advertSalary', title: 'Salary'},

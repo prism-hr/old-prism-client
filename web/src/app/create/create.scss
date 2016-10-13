@@ -153,11 +153,19 @@
     margin-top:24px;
   }
 }
-
+.organization-contact {
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid #f3f3f3;
+  >label {
+    font-weight:bold;
+    margin-bottom:10px;
+  }
+}
 .profile-box {
   .profile-holder {
     background: white;
-    margin-top:30px;
+    margin-top:20px;
   }
   min-height: 150px;
 }
