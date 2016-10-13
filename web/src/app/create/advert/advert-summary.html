@@ -36,13 +36,14 @@
     </md-input-container>
 
     <label class="standalone-label">Advertise</label>
-    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.motivation" class="medium">
+    <md-radio-group name="isRecruiter" ng-model="$ctrl.isRecruiter"  ng-change="$ctrl.isRecruiterChanged($ctrl.isRecruiter)"
+                    class="medium">
         <div class="radio-box-column">
-            <md-radio-button flex value="EMPLOYER" class="md-primary" checked="checked" ng-checked="true">
+            <md-radio-button flex ng-value="false" class="md-primary">
                 Using my company
                 <small>I am an Employer and I will manage and promote my adverts</small>
             </md-radio-button>
-            <md-radio-button value="RECRUITER" class="md-primary">
+            <md-radio-button ng-value="true" class="md-primary">
                 Using another company
                 <small>I am a Recruiter or Career Services and I want to display the company I'm advertising for</small>
             </md-radio-button>
