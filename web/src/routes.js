@@ -81,7 +81,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             resolve: {
                 wizardType: _.wrap('ADVERT'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
-                    const source = $stateParams.id === 'new' ? {organization: {accessCode: $stateParams.organization}} : $stateParams.id;
+                    const source = $stateParams.id === 'new' ? {organizationImplementation: {accessCode: $stateParams.organization}} : $stateParams.id;
                     return resourceManagerFactory.getManager(source, wizardType)
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },

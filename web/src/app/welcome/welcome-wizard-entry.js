@@ -1,9 +1,9 @@
 class WelcomeWizardEntryController {
     $onInit() {
-        this.statusClass = 'icon-close';
+        this.statusClass = this.enabled ? 'icon-control-play' : 'icon-close';
         if (this.resource) {
             this.statusClass = 'icon-exclamation';
-            if (this.resource.completed) {
+            if (this.resource.state === 'ACCEPTED') {
                 this.statusClass = 'icon-check';
             }
         }

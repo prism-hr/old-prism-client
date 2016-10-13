@@ -18,7 +18,7 @@ export class ResourceCreateWizardFactory {
         this.steps = {
             PROMOTER: organizationSteps,
             DEPARTMENT: organizationSteps,
-            ADVERT: [{id: 'category', component: 'advertCategory', title: 'Category'},
+            ADVERT: [{id: 'summary', component: 'advertSummary', title: 'Summary'},
                 {id: 'type', component: 'advertType', title: 'Type'},
                 {id: 'header', component: 'advertHeader', title: 'Header'},
                 {id: 'salary', component: 'advertSalary', title: 'Salary'},
@@ -78,17 +78,16 @@ export class ResourceCreateWizardFactory {
              * @return {boolean|string} true when step can be entered or `stepName` which router should redirect browser to
              */
             onEnter(toStep) {
-                const stateComplete = this.getResource().stateComplete || [];
+                const stateComplete = this.getResource().stateComplete || {};
 
                 let missingStepEncountered = false;
                 let lastNotCompleteStep = null;
                 _.each(this._steps, step => {
                     if (!missingStepEncountered) {
                         step.available = true;
-                        const complete = _.find(stateComplete, {section: step.id});
-                        if (complete) {
-                            step.complete = true;
-                            step.skipped = complete.skipped;
+                        const state = stateComplete[step.id];
+                        if (state) {
+                            step.state = state;
                         } else if (!step.data.optional) {
                             missingStepEncountered = true;
                             lastNotCompleteStep = step.id;
@@ -121,24 +120,27 @@ export class ResourceCreateWizardFactory {
 
             next() {
                 const currentStep = this.getStepForName(this._currentStep);
-                const wasResourceSaved = Boolean(this.getResource().accessCode);
+                const resource = this.getResource();
+                const wasResourceSaved = Boolean(resource.accessCode);
 
                 if (currentStep.data.preview) {
                     return this._resourceManager.commitResource()
-                        .then(resource => {
-                            welcomeService.updateWizardCompleteness(resource);
+                        .then(savedResource => {
+                            welcomeService.updateWizardCompleteness(savedResource);
                             $state.go(this._wizardType.toLowerCase() + 'Welcome');
                         });
                 }
 
-                return this._resourceManager.saveResource(this._currentStep)
-                    .then(resource => {
+                resource.stateComplete = resource.stateComplete || {};
+                resource.stateComplete[this._currentStep] = 'complete';
+                return this._resourceManager.saveResource()
+                    .then(savedResource => {
                         if (wasResourceSaved) {
-                            welcomeService.updateWizardCompleteness(resource);
+                            welcomeService.updateWizardCompleteness(savedResource);
                         } else {
-                            welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, resource);
+                            welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, savedResource);
                         }
-                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode || 'new'});
+                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode || 'new'});
                     });
             }
 
@@ -153,11 +155,13 @@ export class ResourceCreateWizardFactory {
             skip() {
                 const currentStep = this.getStepForName(this._currentStep);
                 const clear = currentStep.clear || _.noop;
-                clear(this.getResource());
+                const resource = this.getResource();
+                clear(resource);
+                resource.stateComplete[this._currentStep] = 'skipped';
 
-                return this._resourceManager.saveResource(this._currentStep, {skipped: true})
-                    .then(resource => {
-                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: resource.accessCode});
+                return this._resourceManager.saveResource()
+                    .then(savedResource => {
+                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode});
                     });
             }
 

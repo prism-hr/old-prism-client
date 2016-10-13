@@ -61,7 +61,7 @@ import {OrganizationDescription} from './app/create/organization/organization-de
 import {OrganizationPreview} from './app/create/organization/organization-preview';
 import {OrganizationPreviewBox} from './app/create/organization/organization-preview-box';
 import {Advert} from './app/create/advert/advert';
-import {AdvertCategory} from './app/create/advert/advert-category';
+import {AdvertSummary} from './app/create/advert/advert-summary';
 import {AdvertType} from './app/create/advert/advert-type';
 import {AdvertHeader} from './app/create/advert/advert-header';
 import {AdvertSalary} from './app/create/advert/advert-salary';
@@ -138,7 +138,7 @@ angular
     .component('organizationPreview', OrganizationPreview)
     .component('organizationPreviewBox', OrganizationPreviewBox)
     .component('advert', Advert)
-    .component('advertCategory', AdvertCategory)
+    .component('advertSummary', AdvertSummary)
     .component('advertType', AdvertType)
     .component('advertHeader', AdvertHeader)
     .component('advertSalary', AdvertSalary)
