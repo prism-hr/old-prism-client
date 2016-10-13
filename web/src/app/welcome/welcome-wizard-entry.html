@@ -1,5 +1,5 @@
 <div class="step">
-    <div layout-padding>
+    <div layout-padding ng-class={'disabled':!$ctrl.enabled}>
         <div class="icon-holder">
             <i ng-class="$ctrl.statusClass"></i>
         </div>
@@ -9,7 +9,7 @@
     <md-button class="md-primary md-raised big"
                ui-state="$ctrl.wizardState.name" ui-state-params="$ctrl.wizardState.params"
                ng-disabled="!$ctrl.enabled">
-        Continue
+        {{$ctrl.copyText}}
     </md-button>
     <div class="hr-divider"></div>
 </div>

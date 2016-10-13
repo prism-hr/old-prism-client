@@ -77,10 +77,15 @@
           &.icon-close {
             color: $uclred;
           }
-          &.icon-exclamation {
+          &.icon-exclamation, &.fa-asterisk  {
             color: $employmentColor;
           }
         }
+      }
+    }
+    .disabled {
+      i {
+        color: $activeGrey !important;
       }
     }
   }
