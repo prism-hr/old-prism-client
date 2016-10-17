@@ -26,6 +26,8 @@ export class ResourceCreateWizardFactory {
                 {id: 'details', component: 'advertDetails', title: 'Details'},
                 {id: 'audience', component: 'advertAudience', title: 'Audience'},
                 {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}],
+            AUDIENCE: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
+                {id: 'preview', component: 'audiencePreview', title: 'Preview', data: {preview: true}}],
             STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
                 {id: 'studies', component: 'studentStudies', title: 'Studies'},
                 {id: 'contact', component: 'studentContact', title: 'Contact'},
@@ -42,8 +44,8 @@ export class ResourceCreateWizardFactory {
         });
     }
 
-    getStepDefinitions(resourceType) {
-        return this.steps[resourceType];
+    getStepDefinitions() {
+        return this.steps;
     }
 
     /** @ngInject */
@@ -138,7 +140,7 @@ export class ResourceCreateWizardFactory {
                     return this._resourceManager.commitResource()
                         .then(savedResource => {
                             welcomeService.updateWizardCompleteness(savedResource);
-                            $state.go(this._wizardType.toLowerCase() + 'Welcome');
+                            $state.go(this._welcomeType + 'Welcome');
                         });
                 }
 
@@ -183,7 +185,7 @@ export class ResourceCreateWizardFactory {
 
         return {
             getWizard: (resourceManager, welcomeType, wizardType) => {
-                return new ResourceCreateWizard(resourceManager, welcomeType, wizardType, angular.copy(this.getStepDefinitions(wizardType)));
+                return new ResourceCreateWizard(resourceManager, welcomeType, wizardType, angular.copy(this.getStepDefinitions()[wizardType]));
             }
         };
     }
