@@ -88,6 +88,21 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Advert')
             }
         })
+        .state('audience', {
+            url: '/advert/{id}/audience?welcomeType',
+            abstract: true,
+            component: 'advert',
+            data: {auth: true},
+            resolve: {
+                wizardType: _.wrap('ADVERT'),
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
+                    const source = $stateParams.id;
+                    return resourceManagerFactory.getManager(source, wizardType)
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
+                },
+                $title: _.wrap('Advert')
+            }
+        })
         .state('employer-view', {
             url: '/employer-view',
             component: 'employerView',
@@ -155,8 +170,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
 
         });
 
-    _.each(['PROMOTER', 'DEPARTMENT', 'ADVERT', 'STUDENT'], resourceType => {
-        _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(resourceType), (step, index) => {
+    _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(), (definitions, resourceType) => {
+        _.each(definitions, (step, index) => {
             const data = angular.copy(step.data) || {};
             data.stepIdx = index;
             const component = _.kebabCase(step.component);

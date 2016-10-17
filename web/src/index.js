@@ -69,6 +69,9 @@ import {AdvertRecruiter} from './app/create/advert/advert-recruiter';
 import {AdvertDetails} from './app/create/advert/advert-details';
 import {AdvertAudience} from './app/create/advert/advert-audience';
 import {AdvertPreview} from './app/create/advert/advert-preview';
+import {Audience} from './app/create/audience/audience';
+import {AudienceSummary} from './app/create/audience/audience-summary';
+import {AudiencePreview} from './app/create/audience/audience-preview';
 import {EmployerView} from './app/view/employer/employer-view';
 import {PositionView} from './app/view/position/position-view';
 import {StudentWelcome} from './app/welcome/student/student-welcome';
@@ -147,6 +150,9 @@ angular
     .component('advertDetails', AdvertDetails)
     .component('advertAudience', AdvertAudience)
     .component('advertPreview', AdvertPreview)
+    .component('audience', Audience)
+    .component('audienceSummary', AudienceSummary)
+    .component('audiencePreview', AudiencePreview)
     .component('employerView', EmployerView)
     .component('positionView', PositionView)
     .component('studentWelcome', StudentWelcome)

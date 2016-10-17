@@ -19,6 +19,10 @@ class PromoterWelcomeController {
             name: 'advert.summary',
             params: {id: _.get(advert, 'accessCode') || 'new', welcomeType, organization: _.get(promoter, 'accessCode')}
         };
+        this.audienceWizardState = {
+            name: 'audience.summary',
+            params: {id: _.get(advert, 'accessCode') || 'new', welcomeType} // TODO drop 'new'
+        };
     }
 }
 
