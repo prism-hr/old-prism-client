@@ -1,4 +1,4 @@
-class AdvertAudienceController {
+class AdvertCandidateController {
     /** @ngInject */
     constructor(Restangular) {
         this.Restangular = Restangular;
@@ -37,11 +37,11 @@ class AdvertAudienceController {
     }
 }
 
-export const AdvertAudience = {
-    template: require('./advert-audience.html'),
+export const AdvertCandidate = {
+    template: require('./advert-candidate.html'),
     bindings: {
         advert: '=',
         form: '<'
     },
-    controller: AdvertAudienceController
+    controller: AdvertCandidateController
 };

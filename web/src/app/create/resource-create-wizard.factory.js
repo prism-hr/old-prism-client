@@ -24,7 +24,7 @@ export class ResourceCreateWizardFactory {
                 {id: 'header', component: 'advertHeader', title: 'Header'},
                 {id: 'salary', component: 'advertSalary', title: 'Salary'},
                 {id: 'details', component: 'advertDetails', title: 'Details'},
-                {id: 'audience', component: 'advertAudience', title: 'Audience'},
+                {id: 'audience', component: 'advertCandidate', title: 'Candidate'},
                 {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}],
             AUDIENCE: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
                 {id: 'preview', component: 'audiencePreview', title: 'Preview', data: {preview: true}}],
