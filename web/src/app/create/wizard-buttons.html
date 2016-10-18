@@ -1,0 +1,21 @@
+<md-card-actions class="action-block" layout="row" layout-align="space-between none">
+    <div ng-if="$ctrl.display.isDraft">
+        <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.prev()"
+                   ng-disabled="$ctrl.loading">
+            Back
+        </md-button>
+        <md-button ng-if="$ctrl.display.optional" class=" md-raised big" ng-click="$ctrl.skip()"
+                   ng-disabled="$ctrl.loading || $ctrl.form.$invalid">
+            Skip
+        </md-button>
+        <md-button type="submit" class="md-primary md-raised big" ng-click="$ctrl.next()"
+                   ng-disabled="$ctrl.loading || $ctrl.form.$invalid">
+            {{$ctrl.display.nextStep ? 'Continue' : 'Finish'}}
+        </md-button>
+    </div>
+    <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
+               class="md-primary md-raised big"
+               ng-disabled="$ctrl.loading || $ctrl.form.$invalid">
+        Save
+    </md-button>
+</md-card-actions>

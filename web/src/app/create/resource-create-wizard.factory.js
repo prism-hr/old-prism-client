@@ -101,7 +101,7 @@ export class ResourceCreateWizardFactory {
                 const toStepDefinition = _.find(this._steps, {id: toStep});
                 if (toStepDefinition.available) {
                     this._currentStep = toStep;
-                    this._stepSubject.onNext(toStepDefinition);
+                    this._stepSubject.onNext(toStep);
                     return true;
                 }
                 return lastNotCompleteStep;
@@ -153,7 +153,15 @@ export class ResourceCreateWizardFactory {
                         } else {
                             welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, savedResource);
                         }
-                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode || 'new'});
+                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode});
+                    });
+            }
+
+            save() {
+                return this._resourceManager.saveResource()
+                    .then(savedResource => {
+                        welcomeService.updateWizardCompleteness(savedResource);
+                        return savedResource;
                     });
             }
 
@@ -176,6 +184,18 @@ export class ResourceCreateWizardFactory {
                     .then(savedResource => {
                         return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode});
                     });
+            }
+
+            getDisplayData() {
+                const step = _.find(this._steps, {id: this._currentStep});
+                const resource = this.getResource();
+                const stepIdx = step.index;
+                const nextStep = this.getNextStep();
+                const prevStep = this.getPrevStep();
+                const optional = step.data.optional;
+                const showNavigation = resource.state === 'ACCEPTED' || step.data.preview;
+                const isDraft = !resource.state || resource.state === 'DRAFT';
+                return {stepIdx, nextStep, prevStep, optional, showNavigation, isDraft};
             }
 
             getSteps() {
