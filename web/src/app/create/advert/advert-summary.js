@@ -7,7 +7,6 @@ class AdvertSummaryController {
         } else if (this.advert.stateComplete.summary) { // this is already step editing
             this.isRecruiter = true;
         }
-        this.advert.motivation = this.advert.motivation || 'EMPLOYER';
     }
 
     isRecruiterChanged(isRecruiter) {
