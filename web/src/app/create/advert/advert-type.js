@@ -1,15 +1,13 @@
 class AdvertTypeController {
     /** @ngInject */
-    constructor(Restangular, definitions) {
+    constructor(definitions) {
         this.definitions = definitions;
-        this.Restangular = Restangular;
     }
 
     $onInit() {
-        this.advert.advertType = 'EMPLOYMENT';
-        this.advert.duration = 'PERMANENT';
-        this.items = ['Full Time', 'Part Time', 'Flexible'];
-        this.selected = ['Full Time'];
+        this.advert.positionContract = this.advert.positionContract || 'PERMANENT';
+        this.patternValues = this.definitions.positionWorkPattern;
+        this.advert.positionWorkPatterns = this.advert.positionWorkPatterns || [{positionWorkPattern: 'FULL_TIME'}];
 
         this.promotionClosingDateEnable = false;
 
@@ -26,33 +24,33 @@ class AdvertTypeController {
             this.promotionDate.getDate());
     }
 
-    toggle(item, list) {
-        const idx = list.indexOf(item);
+    togglePattern(pattern) {
+        const idx = this.advert.positionWorkPatterns.findIndex(p => p.positionWorkPattern === pattern);
         if (idx > -1) {
-            list.splice(idx, 1);
+            this.advert.positionWorkPatterns.splice(idx, 1);
         } else {
-            list.push(item);
+            this.advert.positionWorkPatterns.push({positionWorkPattern: pattern});
         }
     }
 
-    exists(item, list) {
-        return list.indexOf(item) > -1;
+    isPatternChecked(pattern) {
+        return this.advert.positionWorkPatterns.find(p => p.positionWorkPattern === pattern);
     }
 
-    isIndeterminate() {
-        return (this.selected.length !== 0 &&
-        this.selected.length !== this.items.length);
+    anyPatternChecked() {
+        return (this.advert.positionWorkPatterns.length !== 0 &&
+        this.advert.positionWorkPatterns.length !== this.patternValues.length);
     }
 
-    isChecked() {
-        return this.selected.length === this.items.length;
+    allPatternsChecked() {
+        return this.advert.positionWorkPatterns.length === this.patternValues.length;
     }
 
-    toggleAll() {
-        if (this.selected.length === this.items.length) {
-            this.selected = [];
-        } else if (this.selected.length === 0 || this.selected.length > 0) {
-            this.selected = this.items.slice(0);
+    toggleAllPatterns() {
+        if (this.advert.positionWorkPatterns.length === this.patternValues.length) {
+            this.advert.positionWorkPatterns = [];
+        } else if (this.advert.positionWorkPatterns.length === 0 || this.advert.positionWorkPatterns.length > 0) {
+            this.advert.positionWorkPatterns = this.patternValues.map(p => ({positionWorkPattern: p}));
         }
     }
 

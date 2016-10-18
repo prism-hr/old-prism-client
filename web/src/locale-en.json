@@ -91,6 +91,11 @@
     "positionContract": {
       "PERMANENT": "Permanent",
       "FIXED_TERM": "Fixed-Term / Contract"
+    },
+    "positionWorkPattern": {
+      "FULL_TIME": "Full-Time",
+      "PART_TIME": "Part-Time",
+      "FLEXIBLE": "Flexible"
     }
   }
 }
