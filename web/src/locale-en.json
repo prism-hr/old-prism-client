@@ -69,7 +69,7 @@
       }
     }
   },
-  "organization": {
+  "definitions": {
     "numberStaff": {
       "FROM_1_TO_10": "1 to 10",
       "FROM_11_TO_50": "11 to 50",
@@ -87,6 +87,10 @@
       "FROM_201_TO_500": "201 to 500",
       "FROM_501_TO_1000": "501 to 1000",
       "FROM_1001_TO_ANY": "1000+"
+    },
+    "positionContract": {
+      "PERMANENT": "Permanent",
+      "FIXED_TERM": "Fixed-Term / Contract"
     }
   }
 }

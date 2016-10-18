@@ -70,7 +70,7 @@ import {AdvertHeader} from './app/create/advert/advert-header';
 import {AdvertSalary} from './app/create/advert/advert-salary';
 import {AdvertRecruiter} from './app/create/advert/advert-recruiter';
 import {AdvertDetails} from './app/create/advert/advert-details';
-import {AdvertAudience} from './app/create/advert/advert-audience';
+import {AdvertCandidate} from './app/create/advert/advert-candidate';
 import {AdvertPreview} from './app/create/advert/advert-preview';
 import {Audience} from './app/create/audience/audience';
 import {AudienceSummary} from './app/create/audience/audience-summary';
@@ -154,7 +154,7 @@ angular
     .component('advertHeader', AdvertHeader)
     .component('advertSalary', AdvertSalary)
     .component('advertDetails', AdvertDetails)
-    .component('advertAudience', AdvertAudience)
+    .component('advertCandidate', AdvertCandidate)
     .component('advertPreview', AdvertPreview)
     .component('audience', Audience)
     .component('audienceSummary', AudienceSummary)

@@ -52,12 +52,8 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
             }).then(response => {
                 const savedResource = fileConversion.processForDisplay(response.data);
                 savedResource.stateComplete = JSON.parse(savedResource.stateComplete);
-                if (this._resource.accessCode) {
-                    this._resource = savedResource;
-                } else {
-                    this._resource = {};
-                }
-                return savedResource;
+                this._resource = savedResource;
+                return this._resource;
             });
         }
 

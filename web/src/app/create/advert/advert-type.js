@@ -1,4 +1,10 @@
 class AdvertTypeController {
+    /** @ngInject */
+    constructor(Restangular, definitions) {
+        this.definitions = definitions;
+        this.Restangular = Restangular;
+    }
+
     $onInit() {
         this.advert.advertType = 'EMPLOYMENT';
         this.advert.duration = 'PERMANENT';

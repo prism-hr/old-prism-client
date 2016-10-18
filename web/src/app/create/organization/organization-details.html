@@ -29,7 +29,7 @@
             <label class="md-no-float">Number Staff</label>
             <md-select ng-model="$ctrl.organization.numberStaff" required>
                 <md-option placeholder="Number Staff" ng-repeat="number in $ctrl.definitions.numberStaff" value="{{number}}">
-                    {{'organization.numberStaff.' + number | translate}}
+                    {{'definitions.numberStaff.' + number | translate}}
                 </md-option>
             </md-select>
         </md-input-container>
@@ -37,7 +37,7 @@
             <label class="md-no-float">Number of Students</label>
             <md-select ng-model="$ctrl.organization.numberStudent" required>
                 <md-option ng-repeat="number in $ctrl.definitions.numberStudent" value="{{number}}">
-                    {{'organization.numberStaff.' + number | translate}}
+                    {{'definitions.numberStaff.' + number | translate}}
                 </md-option>
             </md-select>
         </md-input-container>
