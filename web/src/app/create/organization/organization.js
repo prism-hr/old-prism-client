@@ -8,33 +8,8 @@ class OrganizationController {
     _onStepChange(currentStep) {
         if (currentStep) {
             this.organization = this.wizard.getResource();
-            if (currentStep.data.preview) {
-                this.showNavigation = true;
-            }
-            this.stepIdx = currentStep.index;
-            this.nextStep = this.wizard.getNextStep();
-            this.prevStep = this.wizard.getPrevStep();
-            this.optional = currentStep.data.optional;
+            this.display = this.wizard.getDisplayData();
         }
-    }
-
-    next(form) {
-        if (!form.$valid) {
-            return;
-        }
-
-        form.$setPristine();
-        this.wizard.next();
-    }
-
-    prev(form) {
-        form.$setPristine();
-        this.wizard.prev();
-    }
-
-    skip(form) {
-        form.$setPristine();
-        this.wizard.skip();
     }
 
     $onDestroy() {

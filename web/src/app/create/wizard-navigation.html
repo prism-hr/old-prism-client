@@ -1,0 +1,9 @@
+<div ng-if="$ctrl.display.showNavigation" layout="row" layout-align="center end">
+    <div class="preview-navigation" flex-gt-sm="75">
+        <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.display.stepIdx">
+            <md-tab label="{{step.title}}" ui-sref="{{$ctrl.wizardType | lowercase}}.{{step.id}}"
+                    ng-repeat="step in $ctrl.createSteps" ng-if="!step.data.preview || $ctrl.display.isDraft">
+            </md-tab>
+        </md-tabs>
+    </div>
+</div>

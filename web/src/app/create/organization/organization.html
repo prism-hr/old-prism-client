@@ -2,36 +2,17 @@
     <div class="preview {{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.organization.accessCode">
         <label>Preview</label>
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
-        <div ng-if="$ctrl.showNavigation" layout="row" layout-align="center end">
-            <div class="preview-navigation" flex-gt-sm="75">
-                <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.stepIdx">
-                    <md-tab label="{{step.title}}" ui-sref="{{$ctrl.wizardType | lowercase}}.{{step.id}}" ng-repeat="step in $ctrl.createSteps">
-
-                    </md-tab>
-                </md-tabs>
-            </div>
-        </div>
+        <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
+        </wizard-navigation>
     </div>
-    <form novalidate name="organizationForm" ng-submit="$ctrl.next(organizationForm)">
+    <form novalidate name="organizationForm">
         <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" class="wizard-holder-padding">
             <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="step-wizard">
                     <div ui-view class="fade-animation"></div>
                 </div>
-                <md-card-actions class="action-block" layout="row" layout-align="space-between none">
-                    <md-button class="md-raised md-button md-ink-ripple big" ng-click="$ctrl.prev(organizationForm)"
-                               ng-disabled="$ctrl.loading">
-                        Back
-                    </md-button>
-                    <md-button ng-if="$ctrl.optional" class=" md-raised big" ng-click="$ctrl.skip(organizationForm)"
-                               ng-disabled="$ctrl.loading || organizationForm.$invalid">
-                        Skip
-                    </md-button>
-                    <md-button type="submit" class="md-primary md-raised big"
-                               ng-disabled="$ctrl.loading || organizationForm.$invalid">
-                        {{$ctrl.nextStep ? 'Continue' : 'Finish'}}
-                    </md-button>
-                </md-card-actions>
+                <wizard-buttons wizard="$ctrl.wizard" form="organizationForm" loading="$ctrl.loading"
+                                display="$ctrl.display"></wizard-buttons>
             </md-card>
         </div>
 
