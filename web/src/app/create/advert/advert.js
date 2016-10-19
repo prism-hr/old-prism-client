@@ -20,7 +20,8 @@ class AdvertController {
 export const Advert = {
     template: require('./advert.html'),
     bindings: {
-        wizard: '<'
+        wizard: '<',
+        wizardType: '<'
     },
     controller: AdvertController
 };
