@@ -1,16 +1,16 @@
 /** @ngInject */
 export const resourceManagerFactory = function ($q, Restangular, Upload, fileConversion) {
-    const collectionNames = {
-        PROMOTER: 'organizationImplementations',
-        DEPARTMENT: 'organizationImplementations',
-        ADVERT: 'promotions',
-        STUDENT: 'students'
+    const typeDefinitions = {
+        PROMOTER: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
+        DEPARTMENT: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
+        ADVERT: {apiCollection: 'promotions', generatePostData: generateAdvertPostData},
+        STUDENT: {apiCollection: 'students'}
     };
 
     class ResourceManager {
         constructor(type, resource) {
-            this._resource = resource;
             this._type = type;
+            this._resource = resource;
         }
 
         getResource() {
@@ -18,7 +18,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
         }
 
         saveResource() {
-            const collectionName = collectionNames[this._type];
+            const collectionName = typeDefinitions[this._type].apiCollection;
             let url;
             if (this._resource.accessCode) {
                 url = Restangular.one(collectionName, this._resource.accessCode).getRestangularUrl();
@@ -26,29 +26,14 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
                 url = Restangular.all(collectionName).getRestangularUrl();
             }
 
-            let resourcePost = _.omit(this._resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions']);
-
-            let logo = null;
-            let background = null;
-            if (this._resource.documentLogoImage instanceof Blob) {
-                resourcePost.documentLogoImage = null;
-                logo = this._resource.documentLogoImage;
-            }
-            if (this._resource.documentBackgroundImage instanceof Blob) {
-                resourcePost.documentBackgroundImage = null;
-                background = this._resource.documentBackgroundImage;
-            }
-            resourcePost = fileConversion.processForUpload(angular.copy(resourcePost));
+            const data = typeDefinitions[this._type].generatePostData(this._resource);
 
             return Upload.upload({
                 url,
-                data: {
+                data: _.assign({}, data, {
                     stateComplete: Upload.json(this._resource.stateComplete),
-                    context: this._type,
-                    data: Upload.json(resourcePost),
-                    logo,
-                    background
-                }
+                    context: this._type
+                })
             }).then(response => {
                 const savedResource = fileConversion.processForDisplay(response.data);
                 savedResource.stateComplete = JSON.parse(savedResource.stateComplete);
@@ -58,7 +43,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
         }
 
         commitResource() {
-            return Restangular.one(collectionNames[this._type], this._resource.accessCode).one('commit').customPUT({})
+            return Restangular.one(typeDefinitions[this._type].apiCollection, this._resource.accessCode).one('commit').customPUT({})
                 .then(response => {
                     this._resource = fileConversion.processForDisplay(response.plain());
                     this._resource.stateComplete = JSON.parse(this._resource.stateComplete);
@@ -80,7 +65,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
                 return $q.when(new ResourceManager(type, source));
             }
 
-            return Restangular.one(collectionNames[type], source).get()
+            return Restangular.one(typeDefinitions[type].apiCollection, source).get()
                 .then(resource => {
                     let r = resource.plain();
                     r = fileConversion.processForDisplay(r);
@@ -89,4 +74,42 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
                 });
         }
     };
+
+    function generateOrganizationPostData(resource) {
+        let resourcePost = _.omit(resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions']);
+
+        let logo = null;
+        let background = null;
+        if (resource.documentLogoImage instanceof Blob) {
+            resourcePost.documentLogoImage = null;
+            logo = resource.documentLogoImage;
+        }
+        if (resource.documentBackgroundImage instanceof Blob) {
+            resourcePost.documentBackgroundImage = null;
+            background = resource.documentBackgroundImage;
+        }
+        resourcePost = fileConversion.processForUpload(angular.copy(resourcePost));
+        return {data: Upload.json(resourcePost), logo, background};
+    }
+
+    function generateAdvertPostData(resource) {
+        let resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions']);
+        resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
+
+        let logo = null;
+        let background = null;
+        if (resource.organizationImplementationOwner) {
+            const owner = resource.organizationImplementationOwner;
+            if (owner.documentLogoImage instanceof Blob) {
+                resourcePost.documentLogoImage = null;
+                logo = owner.documentLogoImage;
+            }
+        }
+        if (resource.documentBackgroundImage instanceof Blob) {
+            resourcePost.documentBackgroundImage = null;
+            background = resource.documentBackgroundImage;
+        }
+        resourcePost = fileConversion.processForUpload(angular.copy(resourcePost));
+        return {data: Upload.json(resourcePost), logo, background};
+    }
 };
