@@ -5,7 +5,7 @@ export class ActivityService {
     }
 
     getActivity(accessCode) {
-        return this.Restangular.one('public').one('user').one('activities', accessCode).get();
+        return this.Restangular.one('public').one('userActivities', accessCode).get();
     }
 
     loadOrganizations() {

@@ -163,7 +163,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             resolve: {
                 /** @ngInject */
                 activities(Restangular) {
-                    return Restangular.one('user', 'activities').get({state: 'PENDING'});
+                    return Restangular.one('userActivities').get({state: 'PENDING'});
                 },
                 $title: _.wrap('Activities')
             }

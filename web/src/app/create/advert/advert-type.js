@@ -2,26 +2,32 @@ class AdvertTypeController {
     /** @ngInject */
     constructor(definitions) {
         this.definitions = definitions;
+
+        this.refreshPublicationCloseConstraints = function () {
+            this.minPublicationClose = this.advert.timestampPublicationStart && new Date(
+                    this.advert.timestampPublicationStart.getFullYear(),
+                    this.advert.timestampPublicationStart.getMonth(),
+                    this.advert.timestampPublicationStart.getDate() + 1);
+            this.maxPublicationClose = this.advert.timestampPublicationStart && new Date(
+                this.advert.timestampPublicationStart.getFullYear(),
+                this.advert.timestampPublicationStart.getMonth() + 3,
+                this.advert.timestampPublicationStart.getDate());
+        };
     }
 
     $onInit() {
-        this.advert.positionContract = this.advert.positionContract || 'PERMANENT';
         this.patternValues = this.definitions.positionWorkPattern;
+        this.advert.positionContract = this.advert.positionContract || 'PERMANENT';
         this.advert.positionWorkPatterns = this.advert.positionWorkPatterns || [{positionWorkPattern: 'FULL_TIME'}];
 
-        this.promotionClosingDateEnable = false;
+        this.showPublicationClose = Boolean(this.advert.timestampPublicationClose);
 
-        this.promotionDate = new Date();
-        this.promotionClosingDate = this.promotionDate; // TODO add 1 month
-        this.minPromotionDate = new Date(
-            this.promotionDate.getFullYear(),
-            this.promotionDate.getMonth(),
-            this.promotionDate.getDate()
-        );
-        this.maxPromotionDate = new Date(
-            this.promotionDate.getFullYear(),
-            this.promotionDate.getMonth() + 3,
-            this.promotionDate.getDate());
+        this.minPublicationStart = new Date();
+        this.maxPublicationStart = new Date(
+            this.minPublicationStart.getFullYear(),
+            this.minPublicationStart.getMonth() + 3,
+            this.minPublicationStart.getDate());
+        this.refreshPublicationCloseConstraints();
     }
 
     togglePattern(pattern) {
@@ -54,6 +60,19 @@ class AdvertTypeController {
         }
     }
 
+    publicationStartChanged() {
+        this.refreshPublicationCloseConstraints();
+    }
+
+    showPublicationCloseChanged(show) {
+        if (show) {
+            this.advert.timestampPublicationClose = new Date(
+                this.advert.timestampPublicationStart.getFullYear(),
+                this.advert.timestampPublicationStart.getMonth() + 1,
+                this.advert.timestampPublicationStart.getDate());
+        }
+        this.refreshPublicationCloseConstraints();
+    }
 }
 
 export const AdvertType = {

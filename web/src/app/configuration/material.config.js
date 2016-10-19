@@ -1,5 +1,5 @@
 /** @ngInject */
-export const materialConfig = function ($mdThemingProvider) {
+export const materialConfig = function ($mdThemingProvider, $provide) {
     $mdThemingProvider.definePalette('prismblue', {
         50: '#d9edf5',
         100: '#9dd2e4',
@@ -63,6 +63,33 @@ export const materialConfig = function ($mdThemingProvider) {
         .warnPalette('prismred')
         .backgroundPalette('grey');
     $mdThemingProvider.setDefaultTheme('prism');
+
+    $provide.decorator('mdDatepickerDirective', function ($delegate) {
+        const mdDatepicker = $delegate[0];
+        const originalLink = mdDatepicker.link;
+
+        mdDatepicker.compile = function () {
+            return function fixMdDatepickerLink(scope, element, attr, controllers) {
+                originalLink.apply(this, arguments);
+
+                const mdDatePickerCtrl = controllers[1];
+
+                // https://github.com/angular/material/issues/5938
+                mdDatePickerCtrl.$scope.$watch(() => mdDatePickerCtrl.minDate, () => {
+                    if (mdDatePickerCtrl.dateUtil.isValidDate(mdDatePickerCtrl.date)) {
+                        mdDatePickerCtrl.updateErrorState();
+                    }
+                });
+
+                // https://github.com/angular/material/issues/6086
+                mdDatePickerCtrl.$scope.$watch(() => mdDatePickerCtrl.date, () => {
+                    mdDatePickerCtrl.updateErrorState();
+                });
+            };
+        };
+
+        return $delegate;
+    });
 };
 
 // TODO moment integration for date format
