@@ -1,10 +1,12 @@
-<div class="page-wrap step-page child">
-    <div class="preview employer position">
+<div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.advert.accessCode}">
+    <div class="preview {{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.advert.accessCode">
         <label>Preview</label>
         <advert-preview-box advert="$ctrl.advert"></advert-preview-box>
+        <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
+        </wizard-navigation>
     </div>
     <form novalidate name="advertForm" ng-submit="$ctrl.next(advertForm)">
-        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" class="wizard-holder-padding">
             <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="step-wizard">
                     <div ui-view class="fade-animation"></div>

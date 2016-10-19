@@ -20,6 +20,11 @@
     .position-summary {
       column-count: 1;
       column-gap: 0;
+      .availability {
+        span {
+          margin-right:4px;
+        }
+      }
     }
     .position-actions {
       margin-bottom: -4px;
@@ -32,7 +37,7 @@
 .position-description-box {
   padding-right:20px;
 }
-.position {
+.position, .advert {
   .position-item {
     width: 100%;
   }
@@ -69,6 +74,15 @@
         font-size:10px;
         margin-right:4px;
         margin-left:2px;
+      }
+    }
+    .availability {
+      span {
+        &:nth-child(2), &:nth-child(3){
+          &:before {
+            content: '/';
+          }
+        }
       }
     }
   }

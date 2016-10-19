@@ -96,6 +96,11 @@
       "FULL_TIME": "Full-Time",
       "PART_TIME": "Part-Time",
       "FLEXIBLE": "Flexible"
+    },
+    "positionWorkCategory": {
+      "JOB": "Job",
+      "EMPLOYMENT": "Employment",
+      "PLACEMENT": "Placement"
     }
   }
 }

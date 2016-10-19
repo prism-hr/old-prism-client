@@ -1,27 +1,29 @@
-<div class="background-box"></div>
+{{$ctrl.advert}}
+<div class="background-box" ng-if="$ctrl.advert.organizationImplementation.documentBackgroundImage" ngf-background="$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
+<div class="background-box" ng-if="!$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
 <div class="position-box" layout="row" layout-align="center end">
     <md-card class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
         <div class="logo-image">
             <div class="logo-flex company-logo">
                 <div class="logo">
-                    <img ngf-src="$ctrl.advert.documentLogoImage || '/img/prism-logo-default.png'" />
+                    <img ngf-src="$ctrl.advert.organizationImplementation.organization.documentLogoImage || '/img/prism-logo-default.png'" />
                 </div>
             </div>
         </div>
         <div class="position-item">
             <div class="position-header" layout="row" layout-align="start center">
-                <h2>Graduate Software and Electronics Engineers</h2>
+                <h2>{{$ctrl.advert.name}}</h2>
                 <span flex></span>
-                <label class="badge">Employment</label>
+                <label class="badge">{{'definitions.positionWorkCategory.'+$ctrl.advert.category | translate}}</label>
             </div>
             <div class="position-subheader" layout="row" layout-align="start center">
-                <h4>Juan Mingo ltd</h4>
+                <h4>{{$ctrl.advert.organizationImplementation.organization.name}}</h4>
             </div>
             <div class="position-summary">
-                <div class="availability">Available: Permanent - Full Time</div>
+                <div class="availability">Available: {{$ctrl.advert.positionContract | capitalize:'first'}} - <span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">{{'definitions.positionWorkPattern.'+contract.positionWorkPattern | translate}}</span></div>
                 <div class="salary">Competitive Salary</div>
-                <div class="closing-date">Closing Date: 1 Oct 2016</div>
-                <div class="location">Madrid, Spain</div>
+                <div class="closing-date">Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
+                <div class="location"><span ng-repeat="location in $ctrl.advert.locations">{{location.location.name}}</span></div>
             </div>
             <div class="position-features">
                 <div class="posted"><i class="icon-calendar"></i> Posted 5 days ago</div>
