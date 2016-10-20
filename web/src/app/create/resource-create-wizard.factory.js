@@ -160,8 +160,10 @@ export class ResourceCreateWizardFactory {
             save() {
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
-                        welcomeService.updateWizardCompleteness(savedResource);
-                        return savedResource;
+                        const changedStatus = welcomeService.updateWizardCompleteness(savedResource);
+                        if (changedStatus) {
+                            return $state.go(changedStatus.welcomeType + 'Welcome');
+                        }
                     });
             }
 
@@ -189,18 +191,20 @@ export class ResourceCreateWizardFactory {
             getDisplayData() {
                 const step = _.find(this._steps, {id: this._currentStep});
                 const resource = this.getResource();
+                const stepBeforePreviewState = resource.stateComplete && resource.stateComplete[this.getStepBeforePreview()];
+                const stepBeforePreviewComplete = stepBeforePreviewState === 'complete' || stepBeforePreviewState === 'skipped';
                 const stepIdx = step.index;
                 const nextStep = this.getNextStep();
                 const prevStep = this.getPrevStep();
                 const optional = step.data.optional;
-                const showNavigation = resource.state === 'ACCEPTED' || step.data.preview;
+                const showNavigation = resource.state === 'ACCEPTED' || stepBeforePreviewComplete;
                 const isDraft = !resource.state || resource.state === 'DRAFT';
                 return {stepIdx, nextStep, prevStep, optional, showNavigation, isDraft};
             }
 
             getStepBeforePreview() {
                 const previewIdx = this._steps.findIndex(step => step.data.preview);
-                return this._steps[previewIdx - 1];
+                return this._steps[previewIdx - 1].id;
             }
 
             getSteps() {
