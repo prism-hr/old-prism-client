@@ -97,6 +97,18 @@
       "PART_TIME": "Part-Time",
       "FLEXIBLE": "Flexible"
     },
+    "positionSalary": {
+      "RANGE": "Salary Range",
+      "COMPETITIVE": "Competitive Salary",
+      "NONE": "No Salary"
+    },
+    "positionInterval": {
+      "HOUR" : "Hour",
+      "DAY" : "Day",
+      "WEEK" : "Week",
+      "MONTH" : "Month",
+      "YEAR" : "Year"
+    },
     "positionWorkCategory": {
       "JOB": "Job",
       "EMPLOYMENT": "Employment",

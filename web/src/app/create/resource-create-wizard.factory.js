@@ -198,6 +198,11 @@ export class ResourceCreateWizardFactory {
                 return {stepIdx, nextStep, prevStep, optional, showNavigation, isDraft};
             }
 
+            getStepBeforePreview() {
+                const previewIdx = this._steps.findIndex(step => step.data.preview);
+                return this._steps[previewIdx - 1];
+            }
+
             getSteps() {
                 return this._steps;
             }

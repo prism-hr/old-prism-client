@@ -1,33 +1,29 @@
 <div layout-padding>
     <h3>Provide Promotion Salary</h3>
     <label class="standalone-label">Salary options</label>
-    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.salary" class="horizontal-form medium">
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.positionSalary"
+                    class="horizontal-form medium">
         <div class="radio-box-alined">
-            <md-radio-button value="RANGE" class="md-primary" checked="checked" ng-checked="true">
-                Salary Range
-            </md-radio-button>
-            <md-radio-button value="COMPETITIVE" class="md-primary">
-                Competitive Salary
-            </md-radio-button>
-            <md-radio-button value="NO-SALARY" class="md-primary">
-                No Salary
+            <md-radio-button ng-repeat="salary in $ctrl.definitions.positionSalary" ng-value="salary"
+                             class="md-primary"
+                             aria-label="{{'definitions.positionSalary.' + salary | translate}}">
+                {{'definitions.positionSalary.' + salary | translate}}
             </md-radio-button>
         </div>
     </md-radio-group>
-    <div class="payment-range" ng-if="$ctrl.advert.salary === 'RANGE'">
+    <div class="payment-range" ng-if="$ctrl.advert.positionSalary === 'RANGE'">
         <label class="standalone-label">Salary Range</label>
         <div layout="row">
             <md-input-container>
                 <label>Min</label>
-                <input required type="number" name="salaryMin" ng-model="$ctrl.advert.salaryMin" min="1"
-                       max="999999"/>
+                <input required type="number" name="salaryMin" ng-model="$ctrl.advert.positionSalaryMinimum" min="1" max="999999"/>
                 <div ng-messages="$ctrl.form.salaryMin.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </md-input-container>
             <md-input-container>
                 <label>Max</label>
-                <input type="number" name="salaryMax" ng-model="$ctrl.advert.salaryMax" min="2"
+                <input type="number" name="salaryMax" ng-model="$ctrl.advert.positionSalaryMaximum" min="{{$ctrl.advert.positionSalaryMinimum}}"
                        max="999999"/>
                 <div ng-messages="$ctrl.form.salaryMax.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
@@ -35,19 +31,18 @@
             </md-input-container>
             <md-input-container>
                 <label>Currency</label>
-                <md-select ng-model="$ctrl.advert.currency" required>
-                    <md-option value="GBP"> £ - GBP</md-option>
-                    <md-option value="EURO"> € - Euro</md-option>
-                    <md-option value="DOLLAR"> $ - Dollar</md-option>
+                <md-select ng-model="$ctrl.advert.positionSalaryCurrency" required>
+                    <md-option value="GBP">£ - GBP</md-option>
+                    <md-option value="EURO">€ - Euro</md-option>
+                    <md-option value="DOLLAR">$ - Dollar</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>
                 <label>Interval</label>
-                <md-select ng-model="$ctrl.advert.interval" required>
-                    <md-option value="HOUR">Hour</md-option>
-                    <md-option value="DAY">Day</md-option>
-                    <md-option value="MONTH">Month</md-option>
-                    <md-option value="YEAR">Year</md-option>
+                <md-select ng-model="$ctrl.advert.positionSalaryInterval" required>
+                    <md-option ng-repeat="interval in $ctrl.definitions.positionInterval" ng-value="interval">
+                        {{'definitions.positionInterval.' + interval | translate}}
+                    </md-option>
                 </md-select>
             </md-input-container>
         </div>
