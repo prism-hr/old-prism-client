@@ -13,8 +13,11 @@ export class WelcomeService {
     updateWizardCompleteness(resource) {
         const completeStatuses = this.authService.getUserData('welcome') || [];
         const status = completeStatuses.find(s => s.resource.accessCode === resource.accessCode);
-        status.resource = WelcomeService.pickResourceFields(resource);
-        this.authService.setUserData('welcome', completeStatuses);
+        if (status) {
+            status.resource = WelcomeService.pickResourceFields(resource);
+            this.authService.setUserData('welcome', completeStatuses);
+        }
+        return status;
     }
 
     getWelcomeStatuses(welcomeType) {
