@@ -1,10 +1,14 @@
 class AdvertSalaryController {
+    /** @ngInject */
+    constructor(definitions) {
+        this.definitions = definitions;
+    }
+
     $onInit() {
         // TODO fetch currency from location, interval based on type options
-        this.advert.salary = 'RANGE';
-        this.advert.currency = 'GBP';
-        this.advert.interval = 'YEAR';
-        this.selectedOption = '';
+        this.advert.positionSalary = this.advert.positionSalary || 'RANGE';
+        this.advert.positionSalaryCurrency = this.advert.positionSalaryCurrency || 'GBP';
+        this.advert.positionSalaryInterval = this.advert.positionSalaryInterval || 'YEAR';
         this.searchText = '';
         this.selectedBenefits = {
             types: []
