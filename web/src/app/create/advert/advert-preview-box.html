@@ -1,4 +1,3 @@
-{{$ctrl.advert}}
 <div class="background-box" ng-if="$ctrl.advert.organizationImplementation.documentBackgroundImage" ngf-background="$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
 <div class="background-box" ng-if="!$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
 <div class="position-box" layout="row" layout-align="center end">
@@ -20,7 +19,7 @@
                 <h4>{{$ctrl.advert.organizationImplementation.organization.name}}</h4>
             </div>
             <div class="position-summary">
-                <div class="availability">Available: {{$ctrl.advert.positionContract | capitalize:'first'}} - <span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">{{'definitions.positionWorkPattern.'+contract.positionWorkPattern | translate}}</span></div>
+                <div class="availability">Available: {{'definitions.positionContract.' + $ctrl.advert.positionContract | translate}} - <span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">{{'definitions.positionWorkPattern.'+contract.positionWorkPattern | translate}}</span></div>
                 <div class="salary">Competitive Salary</div>
                 <div class="closing-date">Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
                 <div class="location"><span ng-repeat="location in $ctrl.advert.locations">{{location.location.name}}</span></div>

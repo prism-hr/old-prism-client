@@ -93,7 +93,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
     }
 
     function generateAdvertPostData(resource) {
-        let resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions']);
+        let resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'organizationImplementationDisplay']);
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
 
         let logo = null;

@@ -91,15 +91,3 @@ export const materialConfig = function ($mdThemingProvider, $provide) {
         return $delegate;
     });
 };
-
-// TODO moment integration for date format
-// function dateFormatProvider($mdDateLocaleProvider, moment) {
-//     $mdDateLocaleProvider.formatDate = function (date) {
-//         return moment(date).format('DD/MM/YYYY');
-//     };
-//
-//     $mdDateLocaleProvider.parseDate = function (dateString) {
-//         var m = moment(dateString, 'DD/MM/YYYY', true);
-//         return m.isValid() ? m.toDate() : new Date(NaN);
-//     };
-// }

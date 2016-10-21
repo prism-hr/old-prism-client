@@ -38,12 +38,14 @@
     <label class="standalone-label">Advert available from</label>
     <md-datepicker ng-model="$ctrl.advert.timestampPublicationStart" name="timestampPublicationStart"
                    ng-change="$ctrl.publicationStartChanged($ctrl.advert.timestampPublicationStart)"
+                   ng-model-options="{ timezone: 'utc' }"
                    md-placeholder="Available from"
                    md-min-date="$ctrl.minPublicationStart"
                    md-max-date="$ctrl.maxPublicationStart"
                    md-open-on-focus></md-datepicker>
-    <md-switch ng-model="$ctrl.showPublicationClose" ng-change="showPublicationCloseChanged($ctrl.showPublicationClose)" class="md-primary" aria-label="Closing Date">
-       Select Closing Date
+    <md-switch ng-model="$ctrl.showPublicationClose" ng-change="showPublicationCloseChanged($ctrl.showPublicationClose)"
+               class="md-primary" aria-label="Closing Date">
+        Select Closing Date
     </md-switch>
     <div ng-if="$ctrl.showPublicationClose">
         <label class="standalone-label">Advert Closing Date</label>
