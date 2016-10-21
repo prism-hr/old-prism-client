@@ -9,9 +9,9 @@ class AdvertTypeController {
                     this.advert.timestampPublicationStart.getMonth(),
                     this.advert.timestampPublicationStart.getDate() + 1);
             this.maxPublicationClose = this.advert.timestampPublicationStart && new Date(
-                this.advert.timestampPublicationStart.getFullYear(),
-                this.advert.timestampPublicationStart.getMonth() + 3,
-                this.advert.timestampPublicationStart.getDate());
+                    this.advert.timestampPublicationStart.getFullYear(),
+                    this.advert.timestampPublicationStart.getMonth() + 3,
+                    this.advert.timestampPublicationStart.getDate());
             this.advert.timestampPublicationClose = this.maxPublicationClose;
         };
     }

@@ -77,10 +77,12 @@
       }
     }
     .availability {
-      span {
-        &:nth-child(2), &:nth-child(3){
-          &:before {
-            content: '/';
+      .position-patterns {
+        span {
+          &:nth-child(2), &:nth-child(3){
+            &:before {
+              content: '/';
+            }
           }
         }
       }

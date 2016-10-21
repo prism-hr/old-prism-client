@@ -19,8 +19,23 @@
                 <h4>{{$ctrl.advert.organizationImplementation.organization.name}}</h4>
             </div>
             <div class="position-summary">
-                <div class="availability">Available: {{'definitions.positionContract.' + $ctrl.advert.positionContract | translate}} - <span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">{{'definitions.positionWorkPattern.'+contract.positionWorkPattern | translate}}</span></div>
-                <div class="salary">Competitive Salary</div>
+                <div class="availability">{{'definitions.positionContract.'+$ctrl.advert.positionContract | translate}} <span ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'"> - {{$ctrl.advert.positionDurationMinimum}} Months Min</span>
+                    -  <span class="position-patterns"><span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">{{'definitions.positionWorkPattern.'+contract.positionWorkPattern | translate}}</span></span></div>
+                <div class="salary">
+                    <span ng-if="$ctrl.advert.positionSalary === 'RANGE'">
+                        <span ng-if="$ctrl.advert.positionSalaryMinimum">From {{$ctrl.advert.positionSalaryMinimum}}</span>
+                        <span ng-if="$ctrl.advert.positionSalaryMaximum">to {{$ctrl.advert.positionSalaryMaximum}}</span>
+                        <span ng-if="$ctrl.advert.positionSalaryCurrency">{{$ctrl.advert.positionSalaryCurrency}}</span>
+                        <span ng-if="$ctrl.advert.positionSalaryInterval">a {{'definitions.positionInterval.'+$ctrl.advert.positionSalaryInterval | translate}}</span>
+                    </span>
+                    <span ng-if="$ctrl.advert.positionSalary === 'COMPETITIVE'">
+                        Competitive Salary
+                    </span>
+                    <span ng-if="$ctrl.advert.positionSalary === 'NONE'">
+                        No Salary
+                    </span>
+                    <span ng-if="$ctrl.advert.positionBenefits.length > 0">+ Benefits</span>
+                </div>
                 <div class="closing-date">Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
                 <div class="location"><span ng-repeat="location in $ctrl.advert.locations">{{location.location.name}}</span></div>
             </div>

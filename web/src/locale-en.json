@@ -90,7 +90,7 @@
     },
     "positionContract": {
       "PERMANENT": "Permanent",
-      "FIXED_TERM": "Fixed-Term / Contract"
+      "FIXED_TERM": "Fixed-Term/Contract"
     },
     "positionWorkPattern": {
       "FULL_TIME": "Full-Time",
