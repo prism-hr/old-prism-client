@@ -93,7 +93,7 @@
     .custom-icon {
       display: block;
       width: 100%;
-      max-width: 200px;
+      max-width: 300px;
       margin: auto;
     }
   }
@@ -102,41 +102,6 @@
   }
   .preview-text {
     margin-top:-18px;
-  }
-}
-.custom-icon {
-  &.employer{
-    svg {
-      line, path, polygon, polyline, g ,circle{
-        stroke: $uclred;
-      }
-      g path {
-        fill: $uclred;
-        stroke: transparent;
-      }
-    }
-  }
-  &.university {
-    svg {
-      line, path, polygon, polyline, g {
-        stroke: $uclgreen;
-      }
-      g path, g rect {
-        fill: $uclgreen;
-        stroke: transparent;
-      }
-    }
-  }
-  &.student {
-    svg {
-      line, path, polygon, polyline, g, rect, circle {
-        stroke: $uclblue;
-      }
-      g path, g circle, g rect {
-        fill: $uclblue;
-        stroke: transparent;
-      }
-    }
   }
 }
 .secondary-actions {
