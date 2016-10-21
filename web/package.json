@@ -16,6 +16,7 @@
     "angular-ui-router": "1.0.0-beta.3",
     "font-awesome": "4.6.3",
     "lodash": "4.14.2",
+    "moment": "2.15.1",
     "ng-file-upload": "12.2.12",
     "ng-img-crop-full-extended": "cburger/ngImgCropFullExtended",
     "restangular": "1.5.2",
@@ -95,6 +96,7 @@
       "angular": false,
       "_": false,
       "Rx": false,
+      "moment": false,
       "ENVIRONMENT": true
     },
     "root": true,
