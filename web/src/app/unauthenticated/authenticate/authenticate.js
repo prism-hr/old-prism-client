@@ -11,7 +11,8 @@ class AuthenticateController {
 
     setView(view) {
         this.view = view;
-        this.user = view === 'FORGOT_PASSWORD' ? {} : angular.copy(_.get(this.activity, 'activity.userRole.user')) || {};
+        const user = _.get(this.activity.activity, 'userRole.user') || this.activity.activity.user;
+        this.user = view === 'FORGOT_PASSWORD' ? {} : angular.copy(user) || {};
     }
 
     login(form) {
@@ -47,7 +48,7 @@ class AuthenticateController {
         }
         this.loading = true;
         this.authService.resetPassword(this.user)
-            .then(function () {
+            .then(() => {
                 this.passwordReset = true;
             })
             .finally(this.resetLoading);
