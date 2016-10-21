@@ -93,7 +93,7 @@
     .custom-icon {
       display: block;
       width: 100%;
-      max-width: 300px;
+      max-width: 200px;
       margin: auto;
     }
   }
@@ -148,6 +148,32 @@
         font-weight: 900;
         color: white;
       }
+    }
+    .icon {
+      margin-right: 10px;
+      width: 76px;
+      height: 46px;
+      padding: 0;
+      background: white;
+      margin-bottom: 3px;
+      margin-top: 2px;
+      position: relative;
+      overflow: hidden;
+      border:1px solid #ececec;
+      .logo-image {
+        background: white;
+        margin: 0;
+        transform: scale(0.38);
+        transform-origin: top left;
+      }
+    }
+    .item-title {
+      font-weight: bold;
+      line-height: 24px;
+    }
+    .item-location {
+      padding-left: 6px;
+      line-height: 24px;
     }
   }
 }
