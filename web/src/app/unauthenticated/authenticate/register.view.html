@@ -10,47 +10,37 @@
 <form novalidate name="registerForm" ng-submit="$ctrl.register(registerForm)">
     <div class="index-padding">
         <md-input-container class="md-block">
-            <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email">
+            <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email" autocomplete="off">
             <div ng-messages="registerForm.username.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
-            <input placeholder="Name" name="firstName" ng-model="$ctrl.user.firstName" required>
+            <input placeholder="Name" name="firstName" ng-model="$ctrl.user.firstName" required autocomplete="off">
             <div ng-messages="registerForm.firstName.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
-            <input placeholder="Surname" name="lastName" ng-model="$ctrl.user.lastName" required>
+            <input placeholder="Surname" name="lastName" ng-model="$ctrl.user.lastName" required autocomplete="off">
             <div ng-messages="registerForm.lastName.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
             <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required minlength="8"
-                   md-maxlength="15" type="password">
+                   md-maxlength="15" type="password" autocomplete="off">
             <div ng-messages="registerForm.password.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
     </div>
-    <div>
-        By registering, you agree to BigFoot's User Agreement, Privacy Policy, and Cookie Policy.
+    <div class="info-box" layout-padding>
+        <div class="info-badge blue" layout="row" layout-aling="start center">
+            <i class="icon-exclamation"></i>
+            <span>By registering, you agree to BigFoot's User Agreement, Privacy Policy, and Cookie Policy.</span>
+        </div>
     </div>
-    <!--<div>-->
-    <!--<md-input-container>-->
-    <!--<label>Captcha</label>-->
-    <!--<div vc-recaptcha name="captcha"-->
-    <!--ng-model="$ctrl.user.captchaResponse"-->
-    <!--key="'6LeUOSITAAAAAIO5MI65cRKwwk7NKIroHuIrbRlS'"-->
-    <!--aa-val-msg required></div>-->
-    <!--<div ng-messages="registerForm.captcha.$error" role="alert">-->
-    <!--<div ng-message="required">You need to prove you're not a robot</div>-->
-    <!--</div>-->
-    <!--</md-input-container>-->
-    <!--</div>-->
-
     <div layout="column" layout-align="space-between stretch">
         <md-button type="submit" class="md-warn md-raised">Submit</md-button>
     </div>
