@@ -6,7 +6,7 @@ class InvitedController {
     }
 
     $onInit() {
-        const user = _.get(this.activity.activity, 'userRole.user') || this.activity.activity.user;
+        const user = _.get(this.activity, 'activity.userRole.user') || _.get(this.activity, 'activity.user');
         const userState = user.state;
 
         let template;

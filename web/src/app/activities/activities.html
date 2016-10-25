@@ -6,6 +6,11 @@
             </div>
             <div class="activities-stream">
                 <ul>
+                    <li ng-repeat="activity in $ctrl.activities">
+                        <div class="activity-left" flex="10" layout="column" layout-align="center center">
+                            Category: {{activity.activity.category}}
+                        </div>
+                    </li>
                     <li class="event new" layout="row">
                         <div class="activity-left" flex="10" layout="column" layout-align="center center">
                             <div class="icon">
