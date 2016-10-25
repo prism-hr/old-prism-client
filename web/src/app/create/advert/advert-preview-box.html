@@ -19,7 +19,7 @@
                 <h4>{{$ctrl.advert.organizationImplementation.organization.name}}</h4>
             </div>
             <div class="position-summary">
-                <div class="availability">{{'definitions.positionContract.'+$ctrl.advert.positionContract | translate}} <span ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'"> - {{$ctrl.advert.positionDurationMinimum}} Months Min</span>
+                <div class="availability"> {{'definitions.positionContract.'+$ctrl.advert.positionContract | translate}} <span ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'"> - {{$ctrl.advert.positionDurationMinimum}} Months Min</span>
                     -  <span class="position-patterns"><span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">{{'definitions.positionWorkPattern.'+contract.positionWorkPattern | translate}}</span></span></div>
                 <div class="salary">
                     <span ng-if="$ctrl.advert.positionSalary === 'RANGE'">
@@ -36,12 +36,12 @@
                     </span>
                     <span ng-if="$ctrl.advert.positionBenefits.length > 0">+ Benefits</span>
                 </div>
-                <div class="closing-date">Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
-                <div class="location"><span ng-repeat="location in $ctrl.advert.locations">{{location.location.name}}</span></div>
+                <div class="closing-date"> Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
+                <div class="location"> <span ng-repeat="location in $ctrl.advert.locations">{{location.location.name}}</span></div>
             </div>
             <div class="position-features">
-                <div class="posted"><i class="icon-calendar"></i> Posted 5 days ago</div>
-                <div class="views"><i class="icon-people"></i> 0 views</div>
+                <div class="posted"> <i class="icon-calendar"></i> Posted 5 days ago</div>
+                <div class="views"> <i class="icon-people"></i> 0 views</div>
             </div>
             <div class="position-actions" layout="row" layout-align="start center">
                 <md-button type="submit" class="md-primary md-raised apply ">

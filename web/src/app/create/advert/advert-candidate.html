@@ -30,34 +30,16 @@
                 <md-switch ng-model="$ctrl.studentsUndergraduateAll" class="md-primary" aria-label="All Undergraduate Students">
                     All Undergraduate Students
                 </md-switch>
-                <md-input-container ng-if="!$ctrl.studentsUndergraduateAll">
-                    <label>Undergraduate students</label>
-                    <md-select ng-model="undergraduateStudents" multiple >
-                        <md-option ng-value="studentType.name" ng-repeat="studentType in $ctrl.studiesTypes | filter: {category: 'Undergraduate Students' }">{{studentType.name}}</md-option>
-                    </md-select>
-                </md-input-container>
             </div>
             <div layout="row">
                 <md-switch ng-model="$ctrl.studentsMastersAll" class="md-primary" aria-label="All Masters Students">
                     All Masters Students
                 </md-switch>
-                <md-input-container ng-if="!$ctrl.studentsMastersAll">
-                    <label>Masters students</label>
-                    <md-select ng-model="mastersStudents" multiple>
-                        <md-option ng-value="studentType.name" ng-repeat="studentType in $ctrl.studiesTypes | filter: {category: 'Masters Students' }">{{studentType.name}}</md-option>
-                    </md-select>
-                </md-input-container>
             </div>
             <div layout="row">
                 <md-switch ng-model="$ctrl.studentsResearchAll" class="md-primary" aria-label="All Research Students">
                     All Research Students
                 </md-switch>
-                <md-input-container ng-if="!$ctrl.studentsResearchAll">
-                    <label>Research students</label>
-                    <md-select ng-model="researchStudents" multiple>
-                        <md-option ng-value="studentType.name" ng-repeat="studentType in $ctrl.studiesTypes | filter: {category: 'Research Students' }">{{studentType.name}}</md-option>
-                    </md-select>
-                </md-input-container>
             </div>
         </div>
     </div>

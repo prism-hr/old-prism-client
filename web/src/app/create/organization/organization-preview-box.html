@@ -11,12 +11,12 @@
         </div>
         <div class="company-details">
             <div layout="row" layout-align="center center">
-                <h2 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">{{$ctrl.organization.organization.name}}</h2>
-                <h2 ng-if="$ctrl.organization.name === $ctrl.organization.organization.name">{{$ctrl.organization.name}}</h2>
+                <h2 class="orgorg" ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">{{$ctrl.organization.name}}</h2>
+                <h2 class="org" ng-if="$ctrl.organization.name === $ctrl.organization.organization.name">{{$ctrl.organization.organization.name}}</h2>
                 <span flex></span>
                 <a ng-href="{{$ctrl.organization.website}}" target="_blank" ng-if="$ctrl.organization.website" class="website"><i class="icon-globe"></i> Web</a>
             </div>
-            <h4 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">{{$ctrl.organization.name}}</h4>
+            <h4 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">at {{$ctrl.organization.organization.name}}</h4>
             <p class="summary">{{$ctrl.organization.summary}}</p>
             <p class="address">
                 <span ng-repeat="location in $ctrl.organization.locations">{{location.location.name}} </span>
