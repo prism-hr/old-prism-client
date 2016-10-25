@@ -54,6 +54,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/department/welcome',
             component: 'departmentWelcome',
             data: {auth: true},
+            params: {
+                showRegistration: false
+            },
             resolve: {
                 $title: _.wrap('Welcome University')
             }
@@ -131,6 +134,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/student/welcome',
             component: 'studentWelcome',
             data: {auth: true},
+            params: {
+                showRegistration: false
+            },
             resolve: {
                 $title: _.wrap('Student')
             }

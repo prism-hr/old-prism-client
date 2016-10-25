@@ -11,7 +11,7 @@ class AuthenticateController {
 
     setView(view) {
         this.view = view;
-        const user = _.get(this.activity.activity, 'userRole.user') || this.activity.activity.user;
+        const user = _.get(this.activity, 'activity.userRole.user') || _.get(this.activity, 'activity.user');
         this.user = view === 'FORGOT_PASSWORD' ? {} : angular.copy(user) || {};
     }
 
