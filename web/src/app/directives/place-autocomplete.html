@@ -7,10 +7,11 @@
             md-search-text="searchText"
             md-items="place in getPlaces(searchText)"
             md-item-text="place.description"
+            md-menu-class="autocomplete-paces"
             placeholder="{{placeholder}}">
         <span md-highlight-text="searchText">{{place.description}}</span>
     </md-autocomplete>
-    <md-chip-template>
+    <md-chip-template min-with>
         {{$chip.name}}
     </md-chip-template>
 </md-chips>

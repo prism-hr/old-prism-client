@@ -422,7 +422,9 @@ md-input-container.md-prism-theme.md-input-invalid .md-input {
   color: $error;
   border-color: $error;
 }
-
+place-autocomplete md-autocomplete {
+  min-width: 300px !important;
+}
 // Responsive
 @media (max-width: $layout-breakpoint-xs - 1) {
   #place-autocomplete > md-autocomplete md-input-container {
