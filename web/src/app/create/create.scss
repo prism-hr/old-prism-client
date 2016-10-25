@@ -134,15 +134,18 @@
   }
   min-height: 150px;
 }
+.autocomplete-paces {
+  min-width: 250px;
+}
 .autocomplete-custom-template {
   li {
     height: auto;
     &:first-child {
       font-size: 16px;
       color: white;
-      background: lighten($uclred, 15%);
+      background: lighten($uclblue, 15%);
       &:hover, &.selected {
-        background: lighten($uclred, 5%) !important;
+        background: lighten($uclblue, 5%) !important;
       }
       .highlight {
         font-weight: 900;
@@ -151,8 +154,8 @@
     }
     .icon {
       margin-right: 10px;
-      width: 76px;
-      height: 46px;
+      width: 72px;
+      height: 41px;
       padding: 0;
       background: white;
       margin-bottom: 3px;
@@ -163,7 +166,7 @@
       .logo-image {
         background: white;
         margin: 0;
-        transform: scale(0.38);
+        transform: scale(0.34);
         transform-origin: top left;
       }
     }

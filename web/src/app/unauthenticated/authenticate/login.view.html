@@ -32,10 +32,8 @@
     <div layout="column" layout-align="space-between stretch">
         <md-button type="submit" class="md-warn md-raised">Submit</md-button>
     </div>
-    <div layout-gt-xs="row" layout-align="end center">
-        <md-button class="md-warn" ng-click="$ctrl.setView('FORGOT_PASSWORD')">Forgot password?</md-button>
-    </div>
-    <div ng-if="$ctrl.initialView === 'REGISTER'" layout-gt-xs="row" layout-align="end center">
-        <md-button class="md-warn" ng-click="$ctrl.setView('REGISTER')">Register</md-button>
+    <div layout="row" layout-align="space-between center" flex="100">
+            <md-button class="md-warn" ng-click="$ctrl.setView('FORGOT_PASSWORD')">Forgot password?</md-button>
+            <md-button class="md-warn" ng-click="$ctrl.setView('REGISTER')">Register</md-button>
     </div>
 </form>
