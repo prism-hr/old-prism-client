@@ -24,15 +24,14 @@
                         <div class="logo-image">
                             <div class="logo-flex company-logo">
                                 <div class="logo">
-                                    <img ng-src="{{$root.documentsUrl + organization.documentLogoImage.accessCode}}"/>
+                                    <img ng-src="{{$root.documentsUrl+organization.documentLogoImage.accessCode}}" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <span md-highlight-text="searchText" class="item-title"> {{organization.accessCode ? organization.name : 'Create ' + organization.name}} </span>
-                        <span class="item-location"
-                              ng-if="organization.locationList"> {{organization.locationList}}</span>
+                        <span class="item-location" ng-if="organization.locationList"> {{organization.locationList}}</span>
                     </div>
                 </div>
             </md-item-template>
@@ -81,15 +80,21 @@
                             md-require-match
                             required>
                         <md-item-template>
-                            <div class="icon">
-                                <div class="logo" ng-if="implementation.documentLogoImageAccessCode">
-                                    <img ng-src="{{$root.documentsUrl + implementation.documentLogoImageAccessCode}}">
+                            <div layout="row">
+                                <div class="icon" ng-if="implementation.documentLogoImage">
+                                    <div class="logo-image">
+                                        <div class="logo-flex company-logo">
+                                            <div class="logo">
+                                                <img ng-src="{{$root.documentsUrl+implementation.documentLogoImage.accessCode}}" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <span md-highlight-text="searchText" class="item-title"> {{implementation.accessCode ? implementation.name : 'Create ' + implementation.name}} </span>
-                                <span class="item-location"
-                                      ng-if="implementation.location"> {{implementation.location}}</span>
+                                <div>
+                                    <span md-highlight-text="searchText" class="item-title"> {{implementation.accessCode ? implementation.name : 'Create ' + implementation.name}} </span>
+                                    <span class="item-location"
+                                          ng-if="implementation.locationList"> {{implementation.locationList}}</span>
+                                </div>
                             </div>
                         </md-item-template>
                     </md-autocomplete>
@@ -104,11 +109,26 @@
             </div>
         </div>
         <div ng-if="$ctrl.selectedOrganization">
+            <div class="locations" layout="row">
+                <md-input-container class="md-block" flex>
+                    <label class="md-no-float">Locations</label>
+                    <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
+                                        placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                        required>
+                    </place-autocomplete>
+                    <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </md-input-container>
+            </div>
             <div layout="row" layout-align="start center">
                 <div flex="100" flex-gt-xs="65">
                     <md-input-container class="md-block">
                         <label class="md-no-float">Summary</label>
-                        <textarea ng-model="$ctrl.organization.summary" md-maxlength="140" rows="4" required></textarea>
+                        <textarea ng-model="$ctrl.organization.summary" md-maxlength="250" name="summary" rows="4" required></textarea>
+                        <div ng-messages="$ctrl.form.summary.$error" role="alert">
+                            <div ng-messages-include="general-messages"></div>
+                        </div>
                     </md-input-container>
                 </div>
                 <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
@@ -137,17 +157,21 @@
                     </div>
                 </div>
             </div>
-            <div class="locations" layout="row">
-                <md-input-container class="md-block" flex>
-                    <label class="md-no-float">Locations</label>
-                    <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
-                                        placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
-                                        required>
-                    </place-autocomplete>
-                    <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
-                        <div ng-messages-include="general-messages"></div>
-                    </div>
-                </md-input-container>
+            <div class="text-editor">
+                <md-card>
+                    <md-card-title>
+                        <h3> Description <small>(optional)</small></h3>
+                    </md-card-title>
+                    <md-card-content>
+                        <text-angular-toolbar
+                                name="organizationDescriptionToolbar"
+                                ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol', 'insertLink'],['redo', 'undo']]">
+                        </text-angular-toolbar>
+                        <md-input-container class="md-block">
+                            <text-angular ng-model="$ctrl.organization.description" rows="4" ta-target-toolbars="organizationDescriptionToolbar" class="form-control md-input" aria-label="Description"></text-angular>
+                        </md-input-container>
+                    </md-card-content>
+                </md-card>
             </div>
         </div>
     </div>

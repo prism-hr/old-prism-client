@@ -1,5 +1,6 @@
 <div layout-padding>
-    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and sizes </h3>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and
+        sizes </h3>
 
     <md-input-container class="md-block industries-holder">
         <label class="md-no-float">Areas of Expertise</label>
@@ -24,22 +25,49 @@
         </label>
         <input type="url" name="website" ng-model="$ctrl.organization.website">
     </md-input-container>
-    <div layout="row">
+    <div layout="row" class="select-box">
         <md-input-container class="md-block" flex>
             <label class="md-no-float">Number Staff</label>
-            <md-select ng-model="$ctrl.organization.numberStaff" required>
-                <md-option placeholder="Number Staff" ng-repeat="number in $ctrl.definitions.numberStaff" value="{{number}}">
+            <md-select name="numberStaff" ng-model="$ctrl.organization.numberStaff" required>
+                <md-option placeholder="Number Staff" ng-repeat="number in $ctrl.definitions.numberStaff"
+                           value="{{number}}">
                     {{'definitions.numberStaff.' + number | translate}}
                 </md-option>
             </md-select>
+            <div ng-messages="$ctrl.form.numberStaff.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
         </md-input-container>
-        <md-input-container class="md-block" ng-if="$ctrl.wizardType === 'DEPARTMENT'" flex>
+
+        <md-input-container class="md-block" flex ng-if="$ctrl.wizardType === 'DEPARTMENT'">
             <label class="md-no-float">Number of Students</label>
-            <md-select ng-model="$ctrl.organization.numberStudent" required>
+            <md-select name="numberStudent" ng-model="$ctrl.organization.numberStudent" required>
                 <md-option ng-repeat="number in $ctrl.definitions.numberStudent" value="{{number}}">
                     {{'definitions.numberStaff.' + number | translate}}
                 </md-option>
             </md-select>
+            <div ng-messages="$ctrl.form.numberStudent.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
         </md-input-container>
+    </div>
+
+    <div layout="row" ng-if="$ctrl.wizardType === 'DEPARTMENT'">
+        <div>
+            <label class="standalone-label">Study Levels</label>
+            <md-checkbox name="undergraduate" md-no-ink aria-label="Undergraduate" ng-model="$ctrl.organization.studyLevel.undergraduate"
+                         class="md-primary">
+                Undergraduate
+            </md-checkbox>
+            <md-checkbox name="master" md-no-ink aria-label="Masters" ng-model="$ctrl.organization.studyLevel.master"
+                         class="md-primary">
+                Masters
+            </md-checkbox>
+            <md-checkbox name="research" md-no-ink aria-label="Research" ng-model="$ctrl.organization.studyLevel.research"
+                         class="md-primary">
+                Research
+            </md-checkbox>
+
+        </div>
     </div>
 </div>
