@@ -1,6 +1,14 @@
 <div layout-padding>
     <h3>Choose the type of advert and your role on it </h3>
 
+    <md-input-container class="md-block">
+        <label class="md-no-float">Title</label>
+        <input name="advertName" ng-model="$ctrl.advert.name" required>
+        <div ng-messages="$ctrl.form.advertName.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
+    </md-input-container>
+
     <div ng-if="false">
         <label class="standalone-label">Type of Advert</label>
         <md-radio-group name="type" ng-required="true" ng-model="$ctrl.promotionType" class="horizontal-form medium">
@@ -26,14 +34,6 @@
             </md-radio-button>
         </div>
     </md-radio-group>
-
-    <md-input-container class="md-block">
-        <label class="md-no-float">Title</label>
-        <input name="advertName" ng-model="$ctrl.advert.name" required>
-        <div ng-messages="$ctrl.form.advertName.$error" role="alert">
-            <div ng-messages-include="general-messages"></div>
-        </div>
-    </md-input-container>
 
     <label class="standalone-label">Advertise</label>
     <md-radio-group name="isRecruiter" ng-model="$ctrl.isRecruiter"  ng-change="$ctrl.isRecruiterChanged($ctrl.isRecruiter)"

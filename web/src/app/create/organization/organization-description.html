@@ -1,5 +1,3 @@
-<div layout-padding>
-    <h3>Background Image and Description</h3>
     <div class="image-uploader background"
          ngf-pattern="'image/*'"
          ngf-accept="'image/png, image/jpeg, image/gif'"
@@ -28,18 +26,3 @@
     <div ng-messages="$ctrl.form.background.$error" role="alert">
         <div ng-messages-include="general-messages"></div>
     </div>
-</div>
-<md-card class="text-editor">
-    <md-card-title>
-        <h3>Description <small>(optional)</small></h3>
-    </md-card-title>
-    <md-card-content>
-        <text-angular-toolbar
-                name="organizationDescriptionToolbar"
-                ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol', 'insertLink'],['redo', 'undo']]">
-        </text-angular-toolbar>
-        <md-input-container class="md-block">
-                    <text-angular ng-model="$ctrl.organization.description" rows="4" ta-target-toolbars="organizationDescriptionToolbar" class="form-control md-input" aria-label="Description"></text-angular>
-        </md-input-container>
-    </md-card-content>
-</md-card>

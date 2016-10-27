@@ -7,12 +7,9 @@ export class ResourceCreateWizardFactory {
             resource.description = null;
         }
 
-        const organizationSteps = [{id: 'summary', component: 'organizationSummary', title: 'Summary'},
+        const organizationSteps = [
+            {id: 'summary', component: 'organizationSummary', title: 'Summary'},
             {id: 'details', component: 'organizationDetails', title: 'Details'},
-            {
-                id: 'description', component: 'organizationDescription', title: 'Description', data: {optional: true},
-                clear: clearAssets
-            },
             {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}];
 
         this.steps = {
