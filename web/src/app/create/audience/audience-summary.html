@@ -1,5 +1,24 @@
 <div layout-padding>
-    <h3>Set up you Audience</h3>
+    <h3>Set up your Audience</h3>
+    <div class="audience">
+        <label class="standalone-label">Audience</label>
+        <div class="checkboxes-group">
+            <div ng-repeat="pattern in $ctrl.patternValues">
+                <md-checkbox class="md-primary" ng-checked="$ctrl.isPatternChecked(pattern, $ctrl.selected)"
+                             ng-click="$ctrl.togglePattern(pattern, $ctrl.selected)">
+                    {{'definitions.studentPattern.' + pattern | translate}}
+                </md-checkbox>
+            </div>
+            <md-checkbox aria-label="Select All"
+                         class="md-primary"
+                         ng-checked="$ctrl.allPatternsChecked()"
+                         md-indeterminate="$ctrl.anyPatternChecked()"
+                         ng-click="$ctrl.toggleAllPatterns()">
+                <span ng-show="$ctrl.allPatternsChecked()">Deselect All</span>
+                <span ng-show="!$ctrl.allPatternsChecked()">Select All</span>
+            </md-checkbox>
+        </div>
+    </div>
     <div class="industries-holder">
         <md-input-container class="md-block">
             <label class="md-no-float">Areas of Expertise</label>
@@ -16,29 +35,25 @@
                     {{$chip.tag.name}}
                 </md-chip-template>
             </md-chips>
-
         </md-input-container>
     </div>
-    <div class="audience">
-        <label class="standalone-label">Audience</label>
-        <md-switch ng-model="$ctrl.studentsTypeAll" class="md-primary" aria-label="All Students">
-            All Students
-        </md-switch>
-        <div class="sub-audience" ng-if="!$ctrl.studentsTypeAll">
-            <div layout="row">
-                <md-switch ng-model="$ctrl.studentsUndergraduateAll" class="md-primary" aria-label="All Undergraduate Students">
-                    All Undergraduate Students
-                </md-switch>
-            </div>
-            <div layout="row">
-                <md-switch ng-model="$ctrl.studentsMastersAll" class="md-primary" aria-label="All Masters Students">
-                    All Masters Students
-                </md-switch>
-            </div>
-            <div layout="row">
-                <md-switch ng-model="$ctrl.studentsResearchAll" class="md-primary" aria-label="All Research Students">
-                    All Research Students
-                </md-switch>
+    <label class="standalone-label">University department list</label>
+    <div class="department-list" layout="row" layout-wrap layout-fill layout-align="start start">
+        <div class="department-item " flex="100" flex-gt-xs="50" flex-gt-sm="33">
+            <div class="md-whiteframe-1dp" ui-sref="position-view">
+                <div class="department-header" layout="column" layout-align="start start">
+                    <h2>Biochemical Engineering</h2>
+                    <h4>at UCL</h4>
+                </div>
+                <div class="department-summary">
+                    <div class="locations">London, UK</div>
+                    <div class="students-number">Students: 300 - 500</div>
+                    <div class="students-type">Undergraduates, Master, Research</div>
+                </div>
+                <div class="department-actions">
+                    <button>Connect</button>
+                    <button>View</button>
+                </div>
             </div>
         </div>
     </div>

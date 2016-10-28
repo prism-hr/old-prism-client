@@ -97,6 +97,11 @@
       "PART_TIME": "Part-Time",
       "FLEXIBLE": "Flexible"
     },
+    "studentPattern": {
+      "UNDERGRADUATE": "Undergraduate",
+      "MASTER": "Master",
+      "RESEARCH": "Research"
+    },
     "positionSalary": {
       "RANGE": "Salary Range",
       "COMPETITIVE": "Competitive Salary",

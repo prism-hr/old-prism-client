@@ -87,6 +87,11 @@
         }
       }
     }
+    .location {
+      span {
+        margin-right: 6px;
+      }
+    }
   }
   .position-features {
     padding:8px 0 4px;
@@ -128,6 +133,7 @@
 }
 .background-box {
   height: 320px;
+  background-size: cover;
 }
 .promoter, .employer {
   .background-box {
