@@ -1,60 +1,20 @@
-<div layout-padding>
-    <md-switch ng-model="$ctrl.showBackground" class="md-primary" aria-label="All Research Students">
-        Use another Background
-    </md-switch>
-    <div ng-if="$ctrl.showBackground">
-        <div class="image-uploader background"
-             ngf-pattern="'image/*'"
-             ngf-accept="'image/*'"
-             ngf-max-size="10MB"
-             ngf-select
-             ngf-drop
-             name="background"
-             layout="row" layout-align="center center" ng-model="$ctrl.advert.documentBackgroundImageOriginal"
-             ng-hide="$ctrl.advert.documentBackgroundImageOriginal">
-            <span class="drop-box" ng-if="!$ctrl.advert.documentBackgroundImageOriginal">Drop your Background</span>
-        </div>
-        <div class="cropArea" ng-if="$ctrl.advert.documentBackgroundImageOriginal">
-            <img-crop image="$ctrl.advert.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1"
-                      result-image="$ctrl.advert.documentBackgroundImage" result-image-size='{w: 1280,h: 320}'
-                      init-max-area="true"></img-crop>
-
-        </div>
-        <div layout="row" layout-align="center center">
-            <small>Minimum Image size 1280 x 320</small>
-            <span class="flex"></span>
-            <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()"
-                       ng-if="$ctrl.advert.documentBackgroundImageOriginal">Clear Image
-            </md-button>
-        </div>
-        <div ng-messages="$ctrl.form.background.$error" role="alert">
-            <div ng-messages-include="general-messages"></div>
-        </div>
-    </div>
+<div class="text-editor">
+    <md-card>
+        <md-card-title>
+            <h3>Description</h3>
+        </md-card-title>
+        <md-card-content>
+            <text-angular-toolbar
+                    name="advertDescriptionToolbar"
+                    ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol'],['redo', 'undo']]">
+            </text-angular-toolbar>
+            <md-input-container class="md-block">
+                <text-angular ng-model="$ctrl.advert.description" rows="4" ta-target-toolbars="advertDescriptionToolbar"
+                              class="form-control md-input" aria-label="Description"></text-angular>
+            </md-input-container>
+        </md-card-content>
+    </md-card>
 </div>
-<md-card class="text-editor">
-    <md-card-title>
-        <h3>Description</h3>
-    </md-card-title>
-    <md-card-content>
-        <text-angular-toolbar
-                name="advertDescriptionToolbar"
-                ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol'],['redo', 'undo']]">
-        </text-angular-toolbar>
-        <md-input-container class="md-block">
-            <text-angular ng-model="$ctrl.advert.description" rows="4" ta-target-toolbars="advertDescriptionToolbar"
-                          class="form-control md-input" aria-label="Description"></text-angular>
-        </md-input-container>
-        <div class="documents" layout="row" layout-align="start center">
-            <md-button name="fileSupport" ngf-accept="'application/pdf'" ngf-select="addSupportDocument($file)" class="md-warn md-raised small">
-                Document Support (PDF)
-            </md-button>
-            <md-chips>
-                <md-chip>Support file.pdf</md-chip>
-            </md-chips>
-        </div>
-    </md-card-content>
-</md-card>
 <div layout-padding>
     <md-switch ng-model="$ctrl.advertOutsideLink" class="md-primary" aria-label="All Research Students">
         Use my own recruitment mechanism

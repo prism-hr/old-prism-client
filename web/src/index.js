@@ -74,6 +74,7 @@ import {AdvertCandidate} from './app/create/advert/advert-candidate';
 import {AdvertPreview} from './app/create/advert/advert-preview';
 import {Audience} from './app/create/audience/audience';
 import {AudienceSummary} from './app/create/audience/audience-summary';
+import {AudienceConnection} from './app/create/audience/audience-connection';
 import {AudiencePreview} from './app/create/audience/audience-preview';
 import {EmployerView} from './app/view/employer/employer-view';
 import {PositionView} from './app/view/position/position-view';
@@ -158,6 +159,7 @@ angular
     .component('advertPreview', AdvertPreview)
     .component('audience', Audience)
     .component('audienceSummary', AudienceSummary)
+    .component('audienceConnection', AudienceConnection)
     .component('audiencePreview', AudiencePreview)
     .component('employerView', EmployerView)
     .component('positionView', PositionView)

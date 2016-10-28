@@ -24,6 +24,7 @@ export class ResourceCreateWizardFactory {
                 {id: 'audience', component: 'advertCandidate', title: 'Candidate'},
                 {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}],
             AUDIENCE: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
+                {id: 'connection', component: 'audienceConnection', title: 'Connections'},
                 {id: 'preview', component: 'audiencePreview', title: 'Preview', data: {preview: true}}],
             STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
                 {id: 'studies', component: 'studentStudies', title: 'Studies'},

@@ -17,6 +17,11 @@
     <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
                class="md-primary md-raised big"
                ng-disabled="$ctrl.loading || $ctrl.form.$invalid">
+        Save
+    </md-button>
+    <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
+               class="md-primary md-raised big"
+               ng-disabled="$ctrl.loading || $ctrl.form.$invalid">
         Save and exit
     </md-button>
 </md-card-actions>
