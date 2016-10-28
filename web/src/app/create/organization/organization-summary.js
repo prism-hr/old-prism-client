@@ -30,6 +30,7 @@ class OrganizationSummaryController {
     getOrganizations(searchText) {
         return this.Restangular.all('organizations').getList({searchTerm: searchText})
             .then(organizations => {
+                organizations = organizations.plain();
                 const nameTaken = _.find(organizations, {name: searchText});
                 if (searchText.length >= 2 && !nameTaken) {
                     organizations.unshift({name: searchText});
@@ -39,7 +40,7 @@ class OrganizationSummaryController {
     }
 
     organizationSelected(organization) {
-        if (organization.organizationImplementationId) {
+        if (organization.organizationImplementation) {
             this.requestOrganization = organization;
             this.setView('request');
         } else {

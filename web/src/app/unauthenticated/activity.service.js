@@ -10,6 +10,11 @@ export class ActivityService {
 
     loadOrganizations() {
         return this.Restangular.all('organizationImplementations').getList({context: 'PROMOTER'})
-            .then(activities => activities.plain());
+            .then(organizations => organizations.plain());
+    }
+
+    loadPromotions() {
+        return this.Restangular.all('promotions').getList({category: 'EMPLOYMENT'})
+            .then(promotions => promotions.plain());
     }
 }
