@@ -61,9 +61,8 @@ export class AuthService {
                         }
                         throw Error('Couldn\'t load user');
                     })
-                    .then(() => {
-                        return this.activityService.loadOrganizations();
-                    });
+                    .then(() => this.activityService.loadOrganizations())
+                    .then(() => this.activityService.loadPromotions());
         }
         return this.userPromise;
     }

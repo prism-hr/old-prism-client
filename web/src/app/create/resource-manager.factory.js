@@ -76,7 +76,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
     };
 
     function generateOrganizationPostData(resource) {
-        let resourcePost = _.omit(resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions']);
+        let resourcePost = _.omit(resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions', 'proximity', 'proximityScore', 'relevanceScore', 'groupMatchTag', 'countMatchTag', 'countMatchUser', 'documentLogoImageDisplay']);
 
         let logo = null;
         let background = null;
