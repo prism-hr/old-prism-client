@@ -3,6 +3,13 @@
     <h3 class="text-aline-center hide-xs hide-sm">
         {{'unauthenticated.authenticate.title.' + $ctrl.view | translate}}
     </h3>
+    <div ng-if="$ctrl.responseError" role="alert">
+        <div layout-padding>
+            <div class="info-badge red">
+                <i class="icon-info"></i> {{'responseError.' + $ctrl.responseError | translate}}
+            </div>
+        </div>
+    </div>
     <div ng-if="$ctrl.view === 'LOGIN'" ng-include="'login.view.html'"></div>
     <div ng-if="$ctrl.view === 'REGISTER'" ng-include="'register.view.html'"></div>
     <div ng-if="$ctrl.view === 'FORGOT_PASSWORD'" ng-include="'forgot-password.view.html'"></div>
