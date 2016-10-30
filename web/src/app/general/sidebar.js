@@ -1,13 +1,24 @@
 class SidebarController {
     /** @ngInject */
-    constructor($state, $mdSidenav, authService) {
+    constructor($state, $mdSidenav, authService, activityService) {
         this.$state = $state;
         this.$mdSidenav = $mdSidenav;
         this.authService = authService;
+        this.activityService = activityService;
+
+        this._onActivitiesChange = function (activities) {
+            if (activities.organizations) {
+                this.organizations = activities.organizations;
+            }
+            if (activities.promotions) {
+                this.promotions = activities.promotions;
+            }
+        };
     }
 
     $onInit() {
         this.hideSidebar = this.$state.current.data && this.$state.current.data.hideSidebar;
+        this.stepSubscription = this.activityService.subscribeToActivities(this._onActivitiesChange.bind(this));
     }
 
     close() {
@@ -30,6 +41,7 @@ class SidebarController {
             ele.addClass('active');
         }
     }
+
 }
 
 export const Sidebar = {

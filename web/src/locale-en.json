@@ -119,5 +119,9 @@
       "EMPLOYMENT": "Employment",
       "PLACEMENT": "Placement"
     }
+  },
+  "responseError": {
+    "USER_INVALID": "Incorrect username or password",
+    "USER_USERNAME_TAKEN": "Username is already taken"
   }
 }
