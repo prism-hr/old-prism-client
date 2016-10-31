@@ -36,6 +36,7 @@ class AuthenticateController {
         this.loading = true;
         this.authService.register(this.user)
             .then(this.$mdDialog.hide)
+            .catch(r => this.handleError(r))
             .finally(() => this.resetLoading());
     }
 
@@ -44,6 +45,7 @@ class AuthenticateController {
         this.loading = true;
         this.authService.authenticate(provider)
             .then(this.$mdDialog.hide)
+            .catch(r => this.handleError(r))
             .finally(() => this.resetLoading());
     }
 
@@ -57,6 +59,7 @@ class AuthenticateController {
             .then(() => {
                 this.passwordReset = true;
             })
+            .catch(r => this.handleError(r))
             .finally(() => this.resetLoading());
     }
 
