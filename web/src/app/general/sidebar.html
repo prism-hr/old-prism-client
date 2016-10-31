@@ -76,9 +76,19 @@
                 <span class="badge" ng-bind="$ctrl.promotions.length"></span>
             </md-list-item>
             <div flex class="submenu submenu-adverts">
-                <md-list-item ng-repeat="promotion in $ctrl.promotions" ui-sref="advert.summary({id: promotion.accessCode})" ui-sref-active="active" aria-label="{{promotion.name}}">
+                <md-list-item ng-repeat="promotion in $ctrl.promotions" ng-click="" ui-sref="advert.summary({id: promotion.accessCode})" ui-sref-active="active" aria-label="{{promotion.name}}">
                     <i class="icon-briefcase"></i>
                     <p ng-bind="promotion.name"></p>
+                    <md-menu md-position-mode="target-right target">
+                        <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                            <md-icon class="icon-options-vertical"></md-icon>
+                        </md-button>
+                        <md-menu-content width="2" class="small">
+                            <md-menu-item>
+                                <md-button ng-click="ctrl.new($index)" ui-sref="audience.summary({id:promotion.accessCode})"><i class="icon-people"></i>Audience</md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
                 </md-list-item>
             </div>
             <md-list-item ng-click="navigateTo('departments', $event)">
