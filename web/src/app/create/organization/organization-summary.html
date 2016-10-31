@@ -125,7 +125,7 @@
                 <div flex="100" flex-gt-xs="65">
                     <md-input-container class="md-block">
                         <label class="md-no-float">Summary</label>
-                        <textarea ng-model="$ctrl.organization.summary" md-maxlength="250" name="summary" rows="4" required></textarea>
+                        <textarea ng-model="$ctrl.organization.summary" md-maxlength="250" name="summary" rows="4" required aria-label="Summary"></textarea>
                         <div ng-messages="$ctrl.form.summary.$error" role="alert">
                             <div ng-messages-include="general-messages"></div>
                         </div>

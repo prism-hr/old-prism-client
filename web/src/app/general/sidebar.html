@@ -6,7 +6,7 @@
             </a>
         </div>
         <span flex=""></span>
-        <md-button class="md-icon-button" ng-click="close()" aria-label="Cancel" hide-gt-md>
+        <md-button class="md-icon-button" ng-click="$ctrl.close()" aria-label="Cancel" hide-gt-md>
             <i class="icon-close"></i>
         </md-button>
     </md-toolbar>
@@ -76,8 +76,8 @@
                 <span class="badge" ng-bind="$ctrl.promotions.length"></span>
             </md-list-item>
             <div flex class="submenu submenu-adverts">
-                <md-list-item ng-repeat="promotion in $ctrl.promotions" ui-sref="advert.summary({id: promotion.accessCode})">
-                    <i class="icon-home"></i>
+                <md-list-item ng-repeat="promotion in $ctrl.promotions" ui-sref="advert.summary({id: promotion.accessCode})" ui-sref-active="active" aria-label="{{promotion.name}}">
+                    <i class="icon-briefcase"></i>
                     <p ng-bind="promotion.name"></p>
                 </md-list-item>
             </div>
@@ -91,7 +91,7 @@
                 <span class="badge" ng-bind="$ctrl.organizations.length"></span>
             </md-list-item>
             <div flex class="submenu submenu-organizations">
-                <md-list-item ng-repeat="organization in $ctrl.organizations" ui-sref="promoter.summary({id: organization.accessCode})">
+                <md-list-item ng-repeat="organization in $ctrl.organizations" ng-click="" ui-sref="promoter.summary({id: organization.accessCode})" ui-sref-active="active" aria-label="{{organization.name}}">
                     <i class="icon-home"></i>
                     <p ng-bind="organization.name"></p>
                     <md-menu md-position-mode="target-right target">
