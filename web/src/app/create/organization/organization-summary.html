@@ -182,7 +182,7 @@
                 <div class="logo-image">
                     <div class="logo-flex company-logo">
                         <div class="logo">
-                            <img ng-src="{{$root.documentsUrl + $ctrl.requestOrganization.documentLogoImageAccessCode}}">
+                            <img ng-src="{{$root.documentsUrl + $ctrl.requestOrganization.documentLogoImage.accessCode}}">
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                     <!--TODO: fetch creator and address-->
                     <h2>{{$ctrl.requestOrganization.name}}</h2>
                     <h4>Created by <span>Juan Mingo</span> TODO</h4>
-                    <p>{{$ctrl.requestOrganization.location.description}} TODO Location</p>
+                    <p>{{$ctrl.requestOrganization.locationList}}</p>
                 </div>
             </div>
             <div class="part-of">
