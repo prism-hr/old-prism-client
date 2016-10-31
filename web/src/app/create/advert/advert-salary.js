@@ -1,6 +1,7 @@
 class AdvertSalaryController {
     /** @ngInject */
-    constructor(definitions) {
+    constructor(Restangular, definitions) {
+        this.Restangular = Restangular;
         this.definitions = definitions;
     }
 
@@ -9,43 +10,21 @@ class AdvertSalaryController {
         this.advert.positionSalary = this.advert.positionSalary || 'RANGE';
         this.advert.positionSalaryCurrency = this.advert.positionSalaryCurrency || 'GBP';
         this.advert.positionSalaryInterval = this.advert.positionSalaryInterval || 'YEAR';
-        this.searchText = '';
-        this.selectedBenefits = {
-            types: []
-        };
-
-        this.launchBenefits = [
-            {value: 'ANNUAL-BONUS', name: 'Annual Bonus'},
-            {value: 'TARGET-EARNINGS', name: 'On Target Earnings'},
-            {value: 'SHARE-OPTIONS', name: 'Share options'},
-            {value: 'PRIVATE-HEALTH', name: 'Private Health Insurance'},
-            {value: 'PENSION', name: 'Pension Scheme / Contribution'}
-        ];
+        if (this.advert.positionBenefits.length > 0 || this.advert.positionBenefitDescription) {
+            this.showBenefits = true;
+        }
     }
 
-    transformChip(chip) {
+    lookupBenefits(text) {
+        return this.Restangular.all('positionBenefits').getList({searchTerm: text})
+            .then(tags => tags.plain());
+    }
+
+    transformBenefit(chip) {
         if (angular.isObject(chip)) {
-            return chip;
+            return {positionBenefit: _.pick(chip, ['id', 'name'])};
         }
-        return {
-            value: chip.toUpperCase().replace(/\s/g, '-'),
-            name: chip
-        };
-    }
-
-    querySearch(query) {
-        let finalResults = [];
-        if (this.selectedBenefits.types.length > 0) {
-            const arrayValue = this.selectedBenefits.types.map(obj => obj.value);
-            angular.forEach(query, result => {
-                if (arrayValue.indexOf(result.value) < 0) {
-                    finalResults.push(result);
-                }
-            });
-        } else {
-            finalResults = query;
-        }
-        return finalResults;
+        return {positionBenefit: {name: chip}};
     }
 }
 

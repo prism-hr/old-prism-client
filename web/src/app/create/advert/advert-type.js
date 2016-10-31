@@ -1,18 +1,23 @@
+import moment from 'moment';
+
 class AdvertTypeController {
     /** @ngInject */
     constructor(definitions) {
         this.definitions = definitions;
 
         this.refreshPublicationCloseConstraints = function () {
-            this.minPublicationClose = this.advert.timestampPublicationStart && new Date(
-                    this.advert.timestampPublicationStart.getFullYear(),
-                    this.advert.timestampPublicationStart.getMonth(),
-                    this.advert.timestampPublicationStart.getDate() + 1);
-            this.maxPublicationClose = this.advert.timestampPublicationStart && new Date(
-                    this.advert.timestampPublicationStart.getFullYear(),
-                    this.advert.timestampPublicationStart.getMonth() + 3,
-                    this.advert.timestampPublicationStart.getDate());
-            this.advert.timestampPublicationClose = this.maxPublicationClose;
+            this.minPublicationClose = this.timestampPublicationStart && new Date(
+                    this.timestampPublicationStart.getFullYear(),
+                    this.timestampPublicationStart.getMonth(),
+                    this.timestampPublicationStart.getDate() + 1);
+            this.maxPublicationClose = this.timestampPublicationStart && new Date(
+                    this.timestampPublicationStart.getFullYear(),
+                    this.timestampPublicationStart.getMonth() + 3,
+                    this.timestampPublicationStart.getDate());
+            if (moment(this.timestampPublicationClose).startOf('day').isBefore(moment(this.maxPublicationClose))) {
+                this.timestampPublicationClose = this.maxPublicationClose;
+                this.publicationCloseChanged();
+            }
         };
     }
 
@@ -23,7 +28,9 @@ class AdvertTypeController {
 
         this.showPublicationClose = Boolean(this.advert.timestampPublicationClose);
 
-        this.advert.timestampPublicationStart = this.advert.timestampPublicationStart || new Date();
+        this.timestampPublicationStart = this.advert.timestampPublicationStart ? new Date(this.advert.timestampPublicationStart) : new Date();
+        this.timestampPublicationClose = this.advert.timestampPublicationClose && new Date(this.advert.timestampPublicationClose);
+
         this.minPublicationStart = new Date();
         this.maxPublicationStart = new Date(
             this.minPublicationStart.getFullYear(),
@@ -63,7 +70,12 @@ class AdvertTypeController {
     }
 
     publicationStartChanged() {
+        this.advert.timestampPublicationStart = this.timestampPublicationStart.toISOString();
         this.refreshPublicationCloseConstraints();
+    }
+
+    publicationCloseChanged() {
+        this.advert.timestampPublicationClose = this.timestampPublicationClose.toISOString();
     }
 
     showPublicationCloseChanged(show) {

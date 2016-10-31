@@ -1,3 +1,4 @@
+import moment from 'moment';
 import angular from 'angular';
 import 'angular-animate';
 import 'angular-aria';
@@ -88,6 +89,9 @@ import {StudentPreview} from './app/welcome/student/student-preview';
 import {Student} from './app/welcome/student/student';
 import './index.scss';
 import environment from './env.json';
+
+const locale = window.navigator.userLanguage || window.navigator.language;
+moment.locale(locale);
 
 angular
     .module('prismWeb', [
