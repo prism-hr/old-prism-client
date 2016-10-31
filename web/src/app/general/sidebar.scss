@@ -82,7 +82,7 @@ sidebar {
       .md-list-item-inner {
         p i.icon-arrow-down {
           float: right;
-          margin-right:0;
+          margin-right:6px;
           margin-top: 12px;
           transition-property: all;
           transition-duration: 0.5s;
@@ -102,6 +102,12 @@ sidebar {
         transition-property: all;
         transition-duration: 2s;
         transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+      }
+      md-list-item {
+        &.active {
+          background: $uclblue;
+          color: white;
+        }
       }
     }
     .md-button {
