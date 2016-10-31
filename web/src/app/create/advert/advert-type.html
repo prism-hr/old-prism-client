@@ -36,20 +36,24 @@
         </md-checkbox>
     </div>
     <label class="standalone-label">Advert available from</label>
-    <md-datepicker ng-model="$ctrl.advert.timestampPublicationStart" name="timestampPublicationStart"
+    <md-datepicker ng-model="$ctrl.timestampPublicationStart" name="timestampPublicationStart"
                    ng-change="$ctrl.publicationStartChanged($ctrl.advert.timestampPublicationStart)"
                    ng-model-options="{ timezone: 'utc' }"
                    md-placeholder="Available from"
                    md-min-date="$ctrl.minPublicationStart"
                    md-max-date="$ctrl.maxPublicationStart"
                    md-open-on-focus></md-datepicker>
+    <div ng-messages="$ctrl.form.timestampPublicationStart.$error" role="alert">
+        <div ng-messages-include="general-messages"></div>
+        <div ng-message="mindate" class="error">The start date cannot be in the past</div>
+    </div>
     <md-switch ng-model="$ctrl.showPublicationClose" ng-change="showPublicationCloseChanged($ctrl.showPublicationClose)"
                class="md-primary" aria-label="Closing Date">
         Select Closing Date
     </md-switch>
     <div ng-if="$ctrl.showPublicationClose">
         <label class="standalone-label">Advert Closing Date</label>
-        <md-datepicker ng-model="$ctrl.advert.timestampPublicationClose" name="timestampPublicationClose"
+        <md-datepicker ng-model="$ctrl.timestampPublicationClose" name="timestampPublicationClose"
                        md-placeholder="Closing date"
                        md-min-date="$ctrl.minPublicationClose"
                        md-max-date="$ctrl.maxPublicationClose"

@@ -1,5 +1,7 @@
+import moment from 'moment';
+
 /** @ngInject */
-export const materialConfig = function ($mdThemingProvider, $provide) {
+export const materialConfig = function ($mdThemingProvider, $mdDateLocaleProvider, $provide) {
     $mdThemingProvider.definePalette('prismblue', {
         50: '#d9edf5',
         100: '#9dd2e4',
@@ -63,6 +65,16 @@ export const materialConfig = function ($mdThemingProvider, $provide) {
         .warnPalette('prismred')
         .backgroundPalette('grey');
     $mdThemingProvider.setDefaultTheme('prism');
+
+    $mdDateLocaleProvider.parseDate = function (dateString) {
+        const m = moment(dateString, 'L', true);
+        return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+
+    $mdDateLocaleProvider.formatDate = function (date) {
+        const m = moment(date);
+        return m.isValid() ? m.format('L') : '';
+    };
 
     $provide.decorator('mdDatepickerDirective', function ($delegate) {
         const mdDatepicker = $delegate[0];

@@ -55,26 +55,23 @@
         <md-input-container class="md-block">
             <label class="md-no-float">Benefits</label>
             <md-chips
-                    ng-model="$ctrl.selectedBenefits.types"
-                    md-transform-chip="$ctrl.transformChip($chip)">
+                    ng-model="$ctrl.advert.positionBenefits"
+                    md-transform-chip="$ctrl.transformBenefit($chip)">
                 <md-autocomplete
-                        md-selected-item="$ctrl.selectedOption"
-                        md-search-text="$ctrl.searchText"
-                        md-items="benefit in $ctrl.querySearch($ctrl.launchBenefits)"
+                        md-search-text="searchText"
+                        md-items="benefit in $ctrl.lookupBenefits(searchText)"
                         md-item-text="benefit.name"
-                        md-min-length="0"
-                        md-no-cache="true"
                         placeholder="Search or type Benefit">
-                    <span md-highlight-text="$ctrl.searchText">{{benefit.name}}</span>
+                    <span md-highlight-text="searchText">{{benefit.name}}</span>
                 </md-autocomplete>
                 <md-chip-template>
-                    <span>{{$chip.name}}</span>
+                    <span>{{$chip.positionBenefit.name}}</span>
                 </md-chip-template>
             </md-chips>
         </md-input-container>
         <md-input-container class="md-block benefits-description">
             <label class="md-no-float">Benefits description</label>
-            <textarea ng-model="$ctrl.advert.benefitDescription" md-maxlength="250" rows="2"></textarea>
+            <textarea ng-model="$ctrl.advert.positionBenefitDescription" md-maxlength="250" rows="2"></textarea>
         </md-input-container>
     </div>
 </div>
