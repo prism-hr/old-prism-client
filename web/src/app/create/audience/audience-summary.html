@@ -42,7 +42,7 @@
 </div>
 <div class="department-list" layout="row" layout-wrap layout-fill layout-align="start none">
     <div class="department-item " flex="100" flex-gt-xs="50">
-        <md-card layout="column" layout-aling="space-between none" class="active">
+        <md-card layout="column" layout-aling="space-between none" ng-class="{'active': data.select1}">
             <md-card-content flex>
                 <md-card-title class="department-header" layout="row" layout-align="start start" >
                     <div class="logo-icon">
@@ -60,7 +60,7 @@
                         <h4>London, UK</h4>
                     </div>
                     <div class="connection-display">
-                        <i class="icon-check"></i>
+                        <i class="icon-check" ng-if="data.select1"></i>
                     </div>
                 </md-card-title>
                 <div class="department-summary" layout="row">
@@ -84,13 +84,14 @@
                 </div>
             </md-card-content>
             <md-card-actions class="department-actions" layout="row" layout-align="space-between none">
-                <md-button class="md-default md-raised">View</md-button>
-                <md-button class="md-default md-raised">Deselect</md-button>
+                <md-button class="md-default md-raised small">View</md-button>
+                <md-checkbox class="md-primary" ng-model="data.select1" aria-label="Select">
+                </md-checkbox>
             </md-card-actions>
         </md-card>
     </div>
     <div class="department-item " flex="100" flex-gt-xs="50">
-        <md-card layout="column" layout-aling="space-between none">
+        <md-card layout="column" layout-aling="space-between none" ng-class="{'active': data.select2}">
             <md-card-content flex>
                 <md-card-title class="department-header" layout="row" layout-align="start start">
                     <div class="logo-icon">
@@ -108,7 +109,7 @@
                         <h4>London, UK</h4>
                     </div>
                     <div class="connection-display">
-
+                        <i class="icon-check" ng-if="data.select2"></i>
                     </div>
                 </md-card-title>
                 <div class="department-summary" layout="row">
@@ -129,9 +130,13 @@
                 </div>
             </md-card-content>
             <md-card-actions class="department-actions" layout="row" layout-align="space-between none">
-                <md-button class="md-default md-raised">View</md-button>
-                <md-button class="md-warn md-raised">Select</md-button>
+                <md-button class="md-default md-raised small">View</md-button>
+                <md-checkbox class="md-primary" ng-model="data.select2" aria-label="Select">
+                </md-checkbox>
             </md-card-actions>
         </md-card>
     </div>
 </div>
+<md-card-actions layout-align="end start" layout="row">
+    <md-button class="md-warn md-raised">Select all Departments</md-button>
+</md-card-actions>
