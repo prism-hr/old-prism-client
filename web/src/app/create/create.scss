@@ -142,6 +142,24 @@
 .autocomplete-paces {
   min-width: 250px;
 }
+.logo-icon {
+  margin-right: 10px;
+  width: 72px;
+  height: 41px;
+  padding: 0;
+  background: white;
+  margin-bottom: 3px;
+  margin-top: 2px;
+  position: relative;
+  overflow: hidden;
+  border:1px solid #ececec;
+  .logo-image {
+    background: white;
+    margin: 0;
+    transform: scale(0.34);
+    transform-origin: top left;
+  }
+}
 .autocomplete-custom-template {
   li {
     height: auto;
@@ -155,24 +173,6 @@
       .highlight {
         font-weight: 900;
         color: white;
-      }
-    }
-    .icon {
-      margin-right: 10px;
-      width: 72px;
-      height: 41px;
-      padding: 0;
-      background: white;
-      margin-bottom: 3px;
-      margin-top: 2px;
-      position: relative;
-      overflow: hidden;
-      border:1px solid #ececec;
-      .logo-image {
-        background: white;
-        margin: 0;
-        transform: scale(0.34);
-        transform-origin: top left;
       }
     }
     .item-title {
@@ -287,6 +287,100 @@ md-autocomplete input:not(.md-input), md-input-container  {
     }
   }
 }
+
+.department-list {
+  md-card {
+    min-height: 94%;
+    md-card-content {
+      padding: 8px 8px 0;
+    }
+    md-card-title {
+      padding:0;
+    }
+    &.active {
+      box-shadow: 0px 1px 8px 0px rgba($uclgreen, 0.6), 0px 3px 4px 0px rgba($uclgreen, 0.5), 0px 3px 3px -2px rgba($uclgreen, 0.4);
+
+    }
+  }
+  .department-item {
+    .connection-display {
+      i {
+        font-size: 40px;
+        &.icon-check {
+          color: $uclgreen;
+        }
+        &.icon-close {
+          color: $uclred;
+        }
+      }
+    }
+    .connection-display {
+      margin-top:5px;
+      margin-right:5px;
+    }
+    .students-number {
+      margin-top:5px;
+      margin-bottom:5px;
+      i {
+        font-size:22px;
+        color: $uclred;
+      }
+      span {
+        display: block;
+        padding: 4px;
+        font-size:13px;
+        font-weight:600;
+      }
+    }
+    .department-tags {
+      .md-chips {
+        border-top: solid 1px rgba(0,0,0,0.12) ;
+      }
+      .md-chips {
+        box-shadow: none;
+      }
+    }
+    .department-actions {
+      padding-top: 8px;
+      border-top: solid 1px rgba(0,0,0,0.12) ;
+    }
+    .department-tags, .students-type {
+      md-chip.active {
+        background: $uclblue;
+        color: white;
+      }
+    }
+    .students-type {
+      margin-top: 4px;
+      padding-left: 10px;
+      .md-chips {
+        box-shadow: none;
+      }
+    }
+    .department-header {
+      h2 {
+        font-size:16px;
+      }
+      h3 {
+        font-size:15px;
+        margin:0;
+      }
+      h4 {
+        font-size:14px;
+      }
+      .logo-icon {
+        width: 79px;
+        height: 50px;
+        .logo-image {
+          transform: scale(0.36);
+          margin-top: 2px;
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}
+
 
 .background-uploader-box {
   position: absolute;
