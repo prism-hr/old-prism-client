@@ -37,25 +37,101 @@
             </md-chips>
         </md-input-container>
     </div>
-    <label class="standalone-label">University department list</label>
-    <div class="department-list" layout="row" layout-wrap layout-fill layout-align="start start">
-        <div class="department-item " flex="100" flex-gt-xs="50" flex-gt-sm="33">
-            <div class="md-whiteframe-1dp" ui-sref="position-view">
-                <div class="department-header" layout="column" layout-align="start start">
-                    <logo></logo>
-                    <h2>Biochemical Engineering</h2>
-                    <h4>at UCL</h4>
+    <h4 class="standalone-label">University department list</h4>
+    <p>Select the departments you want to promote your advert</p>
+</div>
+<div class="department-list" layout="row" layout-wrap layout-fill layout-align="start none">
+    <div class="department-item " flex="100" flex-gt-xs="50">
+        <md-card layout="column" layout-aling="space-between none" class="active">
+            <md-card-content flex>
+                <md-card-title class="department-header" layout="row" layout-align="start start" >
+                    <div class="logo-icon">
+                        <div class="logo-image">
+                            <div class="logo-flex company-logo">
+                                <div class="logo">
+                                    <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div flex>
+                        <h2>Biochemical Engineering</h2>
+                        <h3>at UCL</h3>
+                        <h4>London, UK</h4>
+                    </div>
+                    <div class="connection-display">
+                        <i class="icon-check"></i>
+                    </div>
+                </md-card-title>
+                <div class="department-summary" layout="row">
+                    <div class="students-number" layout="column" layout-align="center center">
+                        <i class="icon-people"></i>
+                        <span>300 - 500</span>
+                    </div>
+                    <md-chips class="small students-type">
+                        <md-chip>Undergraduates</md-chip><md-chip class="active">Master</md-chip><md-chip>Research</md-chip>
+                    </md-chips>
                 </div>
-                <div class="department-summary">
-                    <div class="locations">London, UK</div>
-                    <div class="students-number">Students: 300 - 500</div>
-                    <div class="students-type">Undergraduates, Master, Research</div>
+                <div class="department-tags">
+                    <md-chips class="small">
+                        <md-chip class="active">Biotechnology</md-chip>
+                        <md-chip>Alternative Medicine</md-chip>
+                        <md-chip class="active">Pharmaceuticals</md-chip>
+                        <md-chip>Food & Beverages</md-chip>
+                        <md-chip>Renewables & Environment</md-chip>
+                        <md-chip>Research</md-chip>
+                    </md-chips>
                 </div>
-                <div class="department-actions">
-                    <button>Connect</button>
-                    <button>View</button>
+            </md-card-content>
+            <md-card-actions class="department-actions" layout="row" layout-align="space-between none">
+                <md-button class="md-default md-raised">View</md-button>
+                <md-button class="md-default md-raised">Deselect</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div class="department-item " flex="100" flex-gt-xs="50">
+        <md-card layout="column" layout-aling="space-between none">
+            <md-card-content flex>
+                <md-card-title class="department-header" layout="row" layout-align="start start">
+                    <div class="logo-icon">
+                        <div class="logo-image">
+                            <div class="logo-flex company-logo">
+                                <div class="logo">
+                                    <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div flex>
+                        <h2>Computer Science</h2>
+                        <h3>at UCL</h3>
+                        <h4>London, UK</h4>
+                    </div>
+                    <div class="connection-display">
+
+                    </div>
+                </md-card-title>
+                <div class="department-summary" layout="row">
+                    <div class="students-number" layout="column" layout-align="center center">
+                        <i class="icon-people"></i>
+                        <span>1000+</span>
+                    </div>
+                    <md-chips class="small students-type">
+                        <md-chip>Undergraduates</md-chip><md-chip class="active">Master</md-chip><md-chip>Research</md-chip>
+                    </md-chips>
                 </div>
-            </div>
-        </div>
+                <div class="department-tags">
+                    <md-chips class="small">
+                        <md-chip class="active">Technology</md-chip>
+                        <md-chip>Servers</md-chip>
+                        <md-chip class="active">Nanotechnology</md-chip>
+                    </md-chips>
+                </div>
+            </md-card-content>
+            <md-card-actions class="department-actions" layout="row" layout-align="space-between none">
+                <md-button class="md-default md-raised">View</md-button>
+                <md-button class="md-warn md-raised">Select</md-button>
+            </md-card-actions>
+        </md-card>
     </div>
 </div>
