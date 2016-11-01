@@ -24,6 +24,9 @@
             <small>(http://yourweb.com)</small>
         </label>
         <input type="url" name="website" ng-model="$ctrl.organization.website">
+        <div ng-messages="$ctrl.form.website.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
     </md-input-container>
     <div layout="row" class="select-box">
         <md-input-container class="md-block" flex>

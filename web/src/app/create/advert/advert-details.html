@@ -21,11 +21,11 @@
     </md-switch>
     <div class="outside-link" ng-if="$ctrl.advertOutsideLink">
         <md-input-container class="md-block">
-            <label class="md-no-float">advert URL
+            <label class="md-no-float">Advert URL
                 <small>(http://youradvert.com)</small>
             </label>
             <input type="url" name="websiteApply" ng-model="$ctrl.advert.websiteApply">
-            <div ng-messages="advertForm.advert.url.$error" role="alert">
+            <div ng-messages="$ctrl.form.websiteApply.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
