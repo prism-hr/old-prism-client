@@ -61,6 +61,10 @@ sidebar {
         line-height:24px;
       }
     }
+    md-list {
+      padding-top:0;
+      padding-bottom: 0;
+    }
     md-list-item i {
       margin-right: 12px;
     }
@@ -149,7 +153,6 @@ sidebar {
 }
 .user-block {
   padding-right: 6px;
-  min-width: 320px;
   &.employer {
     background: $uclblue2;
   }

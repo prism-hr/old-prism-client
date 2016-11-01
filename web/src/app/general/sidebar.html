@@ -1,4 +1,4 @@
-<div flex>
+<div>
     <md-toolbar class="md-toolbar-tools header">
         <div>
             <a class="prism-logo" ui-sref="welcome">
@@ -33,99 +33,99 @@
             <label>3</label>
         </md-button>
     </div>
-    <md-content class="main-menu">
-        <md-list flex >
-            <md-subheader class="md-no-sticky">
-                Menu
+</div>
+<md-content class="main-menu" flex>
+    <md-list flex >
+        <md-subheader class="md-no-sticky">
+            Menu
+            <md-menu md-position-mode="target-right target">
+                <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                    <md-icon class="icon-options-vertical"></md-icon>
+                </md-button>
+                <md-menu-content width="2" class="small">
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.new($index)"><i class="icon-home"></i> New Company</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.new($index)"><i class="icon-notebook"></i> New Contact</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-subheader>
+        <md-list-item ng-click="navigateTo('candidates', $event)">
+            <i class="icon-people"></i>
+            <p>Candidates</p>
+        </md-list-item>
+        <md-list-item ng-click="navigateTo('contacts', $event)">
+            <i class="icon-notebook"></i>
+            <p>Contacts</p>
+        </md-list-item>
+        <md-list-item ng-click="navigateTo('applications', $event)">
+            <i class="icon-paper-plane"></i>
+            <p>Applications</p>
+            <span class="badge">2</span>
+        </md-list-item>
+        <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)">
+            <i class="icon-briefcase"></i>
+            <p>Adverts <i class="icon-arrow-down"></i></p>
+            <span class="badge" ng-bind="$ctrl.promotions.length"></span>
+        </md-list-item>
+        <div flex class="submenu submenu-adverts">
+            <md-list-item ng-repeat="promotion in $ctrl.promotions" ng-click="" ui-sref="advert.summary({id: promotion.accessCode})" ui-sref-active="active" aria-label="{{promotion.name}}">
+                <i class="icon-briefcase"></i>
+                <p ng-bind="promotion.name"></p>
                 <md-menu md-position-mode="target-right target">
                     <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
                         <md-icon class="icon-options-vertical"></md-icon>
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)"><i class="icon-home"></i> New Company</md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position</md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department</md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)"><i class="icon-notebook"></i> New Contact</md-button>
+                            <md-button ng-click="ctrl.new($index)" ui-sref="audience.summary({id:promotion.accessCode})"><i class="icon-people"></i>Audience</md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
-            </md-subheader>
-            <md-list-item ng-click="navigateTo('candidates', $event)">
-                <i class="icon-people"></i>
-                <p>Candidates</p>
             </md-list-item>
-            <md-list-item ng-click="navigateTo('contacts', $event)">
-                <i class="icon-notebook"></i>
-                <p>Contacts</p>
-            </md-list-item>
-            <md-list-item ng-click="navigateTo('applications', $event)">
-                <i class="icon-paper-plane"></i>
-                <p>Applications</p>
-                <span class="badge">2</span>
-            </md-list-item>
-            <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)">
-                <i class="icon-briefcase"></i>
-                <p>Adverts <i class="icon-arrow-down"></i></p>
-                <span class="badge" ng-bind="$ctrl.promotions.length"></span>
-            </md-list-item>
-            <div flex class="submenu submenu-adverts">
-                <md-list-item ng-repeat="promotion in $ctrl.promotions" ng-click="" ui-sref="advert.summary({id: promotion.accessCode})" ui-sref-active="active" aria-label="{{promotion.name}}">
-                    <i class="icon-briefcase"></i>
-                    <p ng-bind="promotion.name"></p>
-                    <md-menu md-position-mode="target-right target">
-                        <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
-                            <md-icon class="icon-options-vertical"></md-icon>
-                        </md-button>
-                        <md-menu-content width="2" class="small">
-                            <md-menu-item>
-                                <md-button ng-click="ctrl.new($index)" ui-sref="audience.summary({id:promotion.accessCode})"><i class="icon-people"></i>Audience</md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </md-list-item>
-            </div>
-            <md-list-item ng-click="navigateTo('departments', $event)">
-                <i class="icon-organization"></i>
-                <p>Departments</p>
-            </md-list-item>
-            <md-list-item ng-click="$ctrl.toggleSubmenu('organizations', $event)">
+        </div>
+        <md-list-item ng-click="navigateTo('departments', $event)">
+            <i class="icon-organization"></i>
+            <p>Departments</p>
+        </md-list-item>
+        <md-list-item ng-click="$ctrl.toggleSubmenu('organizations', $event)">
+            <i class="icon-home"></i>
+            <p>Companies <i class="icon-arrow-down"></i></p>
+            <span class="badge" ng-bind="$ctrl.organizations.length"></span>
+        </md-list-item>
+        <div flex class="submenu submenu-organizations">
+            <md-list-item ng-repeat="organization in $ctrl.organizations" ng-click="" ui-sref="promoter.summary({id: organization.accessCode})" ui-sref-active="active" aria-label="{{organization.name}}">
                 <i class="icon-home"></i>
-                <p>Companies <i class="icon-arrow-down"></i></p>
-                <span class="badge" ng-bind="$ctrl.organizations.length"></span>
+                <p ng-bind="organization.name"></p>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i>New Position</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i>New Department</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </md-list-item>
-            <div flex class="submenu submenu-organizations">
-                <md-list-item ng-repeat="organization in $ctrl.organizations" ng-click="" ui-sref="promoter.summary({id: organization.accessCode})" ui-sref-active="active" aria-label="{{organization.name}}">
-                    <i class="icon-home"></i>
-                    <p ng-bind="organization.name"></p>
-                    <md-menu md-position-mode="target-right target">
-                        <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
-                            <md-icon class="icon-options-vertical"></md-icon>
-                        </md-button>
-                        <md-menu-content width="2" class="small">
-                            <md-menu-item>
-                                <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i>New Position</md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i>New Department</md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </md-list-item>
-            </div>
-            <md-list-item ng-click="navigateTo('system', $event)">
-                <i class="icon-wrench"></i>
-                <p>System</p>
-            </md-list-item>
-        </md-list>
-    </md-content>
-</div>
+        </div>
+        <md-list-item ng-click="navigateTo('system', $event)">
+            <i class="icon-wrench"></i>
+            <p>System</p>
+        </md-list-item>
+    </md-list>
+</md-content>
 <md-toolbar class="md-toolbar-tools ucl-footer">
     <md-list flex>
         <md-list-item ng-click="$ctrl.logout()" aria-label="Log out">
