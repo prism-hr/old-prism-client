@@ -41,8 +41,7 @@ class OrganizationSummaryController {
 
     organizationSelected(organization) {
         if (organization.organizationImplementation) {
-            this.requestOrganization = organization;
-            this.setView('request');
+            this.setRequestView(organization.organizationImplementation);
         } else {
             this.organization.organization = _.pick(organization, ['accessCode', 'name']);
             this.organization.name = organization.name;
@@ -79,12 +78,23 @@ class OrganizationSummaryController {
 
     organizationImplementationSelected(implementation) {
         if (implementation.accessCode) {
-            this.requestOrganization = implementation;
-            implementation.isImplementation = true;
-            this.setView('request');
+            this.setRequestView(implementation, {isImplementation: true});
         } else {
             this.organization.name = implementation.name;
         }
+    }
+
+    setRequestView(organization, params) {
+        params = params || {};
+        this.Restangular.one('organizationImplementations', organization.accessCode).get()
+            .then(o => {
+                this.requestOrganization = o.plain();
+                this.requestOrganization.isImplementation = params.isImplementation;
+                if (this.requestOrganization.actions.includes('edit')) {
+                    this.requestOrganization.editRef = this.$state.href(this.wizardType.toLowerCase() + '.summary', {id: this.requestOrganization.accessCode, welcomeType: null});
+                }
+                this.setView('request');
+            });
     }
 
     // Rx.createObservableFunction(this, 'implementationNameChanged')

@@ -182,7 +182,7 @@
                 <div class="logo-image">
                     <div class="logo-flex company-logo">
                         <div class="logo">
-                            <img ng-src="{{$root.documentsUrl + $ctrl.requestOrganization.documentLogoImage.accessCode}}">
+                            <img ngf-src="$ctrl.requestOrganization.documentLogoImage || '/img/prism-logo-default.png'" />
                         </div>
                     </div>
                 </div>
@@ -196,9 +196,15 @@
             <div class="part-of">
                 <h4>Request access to {{$ctrl.requestOrganization.name}}</h4>
                 <div class="clearfix button-group">
-                    <md-button class="pull-left md-primary md-raised small"
+                    <md-button ng-if="!$ctrl.requestOrganization.editRef"
+                               class="pull-left md-primary md-raised small"
                                ng-click="$ctrl.requestAccess($ctrl.requestOrganization)">
                         <i class="icon-user"></i> Request
+                    </md-button>
+                    <md-button ng-if="$ctrl.requestOrganization.editRef"
+                               class="pull-left md-primary md-raised small"
+                               ng-href="{{$ctrl.requestOrganization.editRef}}">
+                        <i class="icon-user"></i> Edit
                     </md-button>
                     <md-button ng-if="!$ctrl.requestOrganization.isImplementation"
                                class="pull-left md-primary md-raised small"
