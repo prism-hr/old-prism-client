@@ -9,8 +9,7 @@ export class ResourceCreateWizardFactory {
 
         const organizationSteps = [
             {id: 'summary', component: 'organizationSummary', title: 'Summary'},
-            {id: 'details', component: 'organizationDetails', title: 'Details'},
-            {id: 'preview', component: 'organizationPreview', title: 'Preview', data: {preview: true}}];
+            {id: 'details', component: 'organizationDetails', title: 'Details'}];
 
         this.steps = {
             PROMOTER: organizationSteps,
@@ -21,23 +20,23 @@ export class ResourceCreateWizardFactory {
                 {id: 'header', component: 'advertHeader', title: 'Header'},
                 {id: 'salary', component: 'advertSalary', title: 'Salary'},
                 {id: 'details', component: 'advertDetails', title: 'Details'},
-                {id: 'audience', component: 'advertCandidate', title: 'Candidate'},
-                {id: 'preview', component: 'advertPreview', title: 'Preview', data: {preview: true}}],
+                {id: 'audience', component: 'advertCandidate', title: 'Candidate'}],
             AUDIENCE: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
-                {id: 'connection', component: 'audienceConnection', title: 'Connections'},
-                {id: 'preview', component: 'audiencePreview', title: 'Preview', data: {preview: true}}],
+                {id: 'connection', component: 'audienceConnection', title: 'Connections'}],
             STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
                 {id: 'studies', component: 'studentStudies', title: 'Studies'},
                 {id: 'contact', component: 'studentContact', title: 'Contact'},
                 {id: 'skills', component: 'studentSkills', title: 'Skills'},
-                {id: 'about', component: 'studentAbout', title: 'About you'},
-                {id: 'preview', component: 'studentPreview', title: 'Preview', data: {preview: true}}]
+                {id: 'about', component: 'studentAbout', title: 'About you'}]
         };
         _.forEach(this.steps, subSteps => {
-            _.forEach(subSteps, (step, index) => {
+            _.forEach(subSteps, (step, index, array) => {
                 step.index = index;
                 step.data = step.data || {};
                 step.data.wizardStep = true;
+                if (index === array.length - 1) {
+                    step.data.lastStep = true;
+                }
             });
         });
     }
@@ -129,21 +128,30 @@ export class ResourceCreateWizardFactory {
                 return index >= 0 && this._steps[index];
             }
 
+            static _afterSave(savedResource) {
+                const changedStatus = welcomeService.updateWizardCompleteness(savedResource);
+                if (changedStatus) {
+                    return $state.go(changedStatus.welcomeType + 'Welcome');
+                }
+                return $state.go('activities');
+            }
+
             next() {
                 const currentStep = this.getStepForName(this._currentStep);
                 const resource = this.getResource();
                 const wasResourceSaved = Boolean(resource.accessCode);
 
-                if (currentStep.data.preview) {
+                if (currentStep.data.lastStep) {
                     return this._resourceManager.commitResource()
                         .then(savedResource => {
-                            welcomeService.updateWizardCompleteness(savedResource);
-                            $state.go(this._welcomeType + 'Welcome');
+                            ResourceCreateWizard._afterSave(savedResource);
                         });
                 }
 
                 resource.stateComplete = resource.stateComplete || {};
                 resource.stateComplete[this._currentStep] = 'complete';
+                const nextStep = this.getNextStep();
+                nextStep.available = true; // to make navigation tab enabled before we switch
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
                         if (wasResourceSaved) {
@@ -151,17 +159,14 @@ export class ResourceCreateWizardFactory {
                         } else {
                             welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, savedResource);
                         }
-                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode});
+                        return $state.go(this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode});
                     });
             }
 
             save() {
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
-                        const changedStatus = welcomeService.updateWizardCompleteness(savedResource);
-                        if (changedStatus) {
-                            return $state.go(changedStatus.welcomeType + 'Welcome');
-                        }
+                        ResourceCreateWizard._afterSave(savedResource);
                     });
             }
 
@@ -189,20 +194,13 @@ export class ResourceCreateWizardFactory {
             getDisplayData() {
                 const step = _.find(this._steps, {id: this._currentStep});
                 const resource = this.getResource();
-                const stepBeforePreviewState = resource.stateComplete && resource.stateComplete[this.getStepBeforePreview()];
-                const stepBeforePreviewComplete = stepBeforePreviewState === 'complete' || stepBeforePreviewState === 'skipped';
                 const stepIdx = step.index;
                 const nextStep = this.getNextStep();
                 const prevStep = this.getPrevStep();
                 const optional = step.data.optional;
-                const showNavigation = resource.state === 'ACCEPTED' || stepBeforePreviewComplete;
+                const showNavigation = Boolean(resource.accessCode);
                 const isDraft = !resource.state || resource.state === 'DRAFT';
                 return {stepIdx, nextStep, prevStep, optional, showNavigation, isDraft};
-            }
-
-            getStepBeforePreview() {
-                const previewIdx = this._steps.findIndex(step => step.data.preview);
-                return this._steps[previewIdx - 1].id;
             }
 
             getSteps() {
