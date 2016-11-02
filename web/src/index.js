@@ -62,7 +62,6 @@ import {OrganizationPreviewBox} from './app/create/organization/organization-pre
 import {OrganizationSummary} from './app/create/organization/organization-summary';
 import {OrganizationDetails} from './app/create/organization/organization-details';
 import {OrganizationDescription} from './app/create/organization/organization-description';
-import {OrganizationPreview} from './app/create/organization/organization-preview';
 import {Advert} from './app/create/advert/advert';
 import {AdvertPreviewBox} from './app/create/advert/advert-preview-box';
 import {AdvertSummary} from './app/create/advert/advert-summary';
@@ -72,11 +71,9 @@ import {AdvertSalary} from './app/create/advert/advert-salary';
 import {AdvertRecruiter} from './app/create/advert/advert-recruiter';
 import {AdvertDetails} from './app/create/advert/advert-details';
 import {AdvertCandidate} from './app/create/advert/advert-candidate';
-import {AdvertPreview} from './app/create/advert/advert-preview';
 import {Audience} from './app/create/audience/audience';
 import {AudienceSummary} from './app/create/audience/audience-summary';
 import {AudienceConnection} from './app/create/audience/audience-connection';
-import {AudiencePreview} from './app/create/audience/audience-preview';
 import {EmployerView} from './app/view/employer/employer-view';
 import {PositionView} from './app/view/position/position-view';
 import {StudentWelcome} from './app/welcome/student/student-welcome';
@@ -85,7 +82,6 @@ import {StudentStudies} from './app/welcome/student/student-studies';
 import {StudentContact} from './app/welcome/student/student-contact';
 import {StudentSkills} from './app/welcome/student/student-skills';
 import {StudentAbout} from './app/welcome/student/student-about';
-import {StudentPreview} from './app/welcome/student/student-preview';
 import {Student} from './app/welcome/student/student';
 import './index.scss';
 import environment from './env.json';
@@ -150,7 +146,6 @@ angular
     .component('organizationSummary', OrganizationSummary)
     .component('organizationDetails', OrganizationDetails)
     .component('organizationDescription', OrganizationDescription)
-    .component('organizationPreview', OrganizationPreview)
     .component('advert', Advert)
     .component('advertPreviewBox', AdvertPreviewBox)
     .component('advertSummary', AdvertSummary)
@@ -160,11 +155,9 @@ angular
     .component('advertSalary', AdvertSalary)
     .component('advertDetails', AdvertDetails)
     .component('advertCandidate', AdvertCandidate)
-    .component('advertPreview', AdvertPreview)
     .component('audience', Audience)
     .component('audienceSummary', AudienceSummary)
     .component('audienceConnection', AudienceConnection)
-    .component('audiencePreview', AudiencePreview)
     .component('employerView', EmployerView)
     .component('positionView', PositionView)
     .component('studentWelcome', StudentWelcome)
@@ -174,7 +167,6 @@ angular
     .component('studentContact', StudentContact)
     .component('studentSkills', StudentSkills)
     .component('studentAbout', StudentAbout)
-    .component('studentPreview', StudentPreview)
     .component('activities', Activities)
     .component('invited', Invited);
 

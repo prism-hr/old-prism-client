@@ -1,6 +1,5 @@
 class StudentController {
     $onInit() {
-        this.student = this.wizard.getResource();
         this.createSteps = this.wizard.getSteps();
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
         this._onStepChange(this.wizard.getCurrentStep());
@@ -8,13 +7,8 @@ class StudentController {
 
     _onStepChange(currentStep) {
         if (currentStep) {
-            if (currentStep.data.preview) {
-                this.showNavigation = true;
-            }
-            this.stepIdx = currentStep.index;
-            this.nextStep = this.wizard.getNextStep();
-            this.prevStep = this.wizard.getPrevStep();
-            this.optional = currentStep.data.optional;
+            this.student = this.wizard.getResource();
+            this.display = this.wizard.getDisplayData();
         }
     }
 
