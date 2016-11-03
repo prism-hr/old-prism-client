@@ -71,16 +71,12 @@ class AdvertTypeController {
     }
 
     publicationCloseChanged() {
-        this.advert.timestampPublicationClose = this.timestampPublicationClose.toISOString();
+        this.advert.timestampPublicationClose = this.timestampPublicationClose ? this.timestampPublicationClose.toISOString() : null;
     }
 
     showPublicationCloseChanged(show) {
-        if (show) {
-            this.advert.timestampPublicationClose = new Date(
-                this.advert.timestampPublicationStart.getFullYear(),
-                this.advert.timestampPublicationStart.getMonth() + 1,
-                this.advert.timestampPublicationStart.getDate());
-        }
+        this.timestampPublicationClose = show ? moment(this.timestampPublicationStart).add(1, 'months').toDate() : null;
+        this.publicationCloseChanged();
         this.refreshPublicationCloseConstraints();
     }
 }

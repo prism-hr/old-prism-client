@@ -1,4 +1,5 @@
-<div class="background-box" ng-if="$ctrl.advert.organizationImplementation.documentBackgroundImage" ngf-background="$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
+<div class="background-box" ng-if="$ctrl.advert.organizationImplementation.documentBackgroundImage"
+     ngf-background="$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
 <div class="background-box" ng-if="!$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
 <div class="background-uploader-box">
     <button class="background-uploader"
@@ -17,7 +18,7 @@
         <div class="logo-image">
             <div class="logo-flex company-logo">
                 <div class="logo">
-                    <img ngf-src="$ctrl.advert.organizationImplementation.organization.documentLogoImage || '/img/prism-logo-default.png'" />
+                    <img ngf-src="$ctrl.advert.organizationImplementation.organization.documentLogoImage || '/img/prism-logo-default.png'"/>
                 </div>
             </div>
         </div>
@@ -31,14 +32,22 @@
                 <h4>{{$ctrl.advert.organizationImplementation.organization.name}}</h4>
             </div>
             <div class="position-summary">
-                <div class="availability"> {{'definitions.positionContract.'+$ctrl.advert.positionContract | translate}} <span ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'"> - {{$ctrl.advert.positionDurationMinimum}} Months Min</span>
-                    -  <span class="position-patterns"><span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">{{'definitions.positionWorkPattern.'+contract.positionWorkPattern | translate}}</span></span></div>
+                <div class="availability">
+                    {{'definitions.positionContract.' + $ctrl.advert.positionContract | translate}}
+                    <span ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'"> - {{$ctrl.advert.positionDurationMinimum}} Months Min</span>
+                    -
+                    <span class="position-patterns">
+                        <span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">
+                            {{'definitions.positionWorkPattern.' + contract.positionWorkPattern | translate}}
+                        </span>
+                    </span>
+                </div>
                 <div class="salary">
                     <span ng-if="$ctrl.advert.positionSalary === 'RANGE'">
                         <span ng-if="$ctrl.advert.positionSalaryMinimum">From {{$ctrl.advert.positionSalaryMinimum}}</span>
                         <span ng-if="$ctrl.advert.positionSalaryMaximum">to {{$ctrl.advert.positionSalaryMaximum}}</span>
                         <span ng-if="$ctrl.advert.positionSalaryCurrency">{{$ctrl.advert.positionSalaryCurrency}}</span>
-                        <span ng-if="$ctrl.advert.positionSalaryInterval">a {{'definitions.positionInterval.'+$ctrl.advert.positionSalaryInterval | translate}}</span>
+                        <span ng-if="$ctrl.advert.positionSalaryInterval">a {{'definitions.positionInterval.' + $ctrl.advert.positionSalaryInterval | translate}}</span>
                     </span>
                     <span ng-if="$ctrl.advert.positionSalary === 'COMPETITIVE'">
                         Competitive Salary
@@ -48,13 +57,19 @@
                     </span>
                     <span ng-if="$ctrl.advert.positionBenefits.length > 0">+ Benefits</span>
                 </div>
-                <div class="closing-date" ng-if="$ctrl.advert.timestampPublicationClose"> Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
+                <div class="closing-date" ng-if="$ctrl.advert.timestampPublicationClose"> Closing Date:
+                    {{$ctrl.advert.timestampPublicationClose}}
+                </div>
                 <div class="closing-date" ng-if="!$ctrl.advert.timestampPublicationClose"> No Closing Date</div>
-                <div class="location"> <span ng-repeat="location in $ctrl.advert.locations">{{location.location.name}}</span></div>
+                <div class="location">
+                    <span ng-repeat="location in $ctrl.advert.locations">
+                    {{location.location.name}}
+                    </span>
+                </div>
             </div>
             <div class="position-features">
-                <div class="posted"> <i class="icon-calendar"></i> Posted 5 days ago</div>
-                <div class="views"> <i class="icon-people"></i> 0 views</div>
+                <div class="posted"><i class="icon-calendar"></i> Posted 5 days ago</div>
+                <div class="views"><i class="icon-people"></i> 0 views</div>
             </div>
             <div class="position-actions" layout="row" layout-align="start center">
                 <md-button type="submit" class="md-primary md-raised apply ">
