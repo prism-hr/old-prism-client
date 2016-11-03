@@ -183,11 +183,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             const component = _.kebabCase(step.component);
             let template;
             if (resourceType === 'ADVERT') {
-                template = '<' + component + ' wizard-type="{{wizardType}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
+                template = '<' + component + ' welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
             } else if (resourceType === 'STUDENT') {
-                template = '<' + component + ' wizard-type="{{wizardType}}" form="studentForm" student="resource" wizard="wizard"></' + component + '>';
+                template = '<' + component + ' welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="studentForm" student="resource" wizard="wizard"></' + component + '>';
             } else {
-                template = '<' + component + ' wizard-type="{{wizardType}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
+                template = '<' + component + ' welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
             }
             $stateProvider
                 .state(resourceType.toLowerCase() + '.' + step.id, {
@@ -198,13 +198,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                         resource(wizard) {
                             return wizard.getResource();
                         },
-                        $title(resource) {
-                            const prefix = resource.state === 'DRAFT' ? 'Step ' + (index + 1) + ': ' : '';
-                            return prefix + step.title;
+                        $title() {
+                            return step.title;
                         }
                     },
                     /** @ngInject */
-                    controller: function ($scope, wizardType, resource, wizard) {
+                    controller: function ($scope, $stateParams, wizardType, resource, wizard) {
+                        $scope.welcomeType = $stateParams.welcomeType;
                         $scope.wizardType = wizardType;
                         $scope.resource = resource;
                         $scope.wizard = wizard;

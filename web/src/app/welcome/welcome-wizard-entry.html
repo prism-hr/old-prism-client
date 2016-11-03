@@ -8,8 +8,8 @@
     </div>
     <md-button class="md-primary md-raised big"
                ui-state="$ctrl.wizardState.name" ui-state-params="$ctrl.wizardState.params"
-               ng-disabled="!$ctrl.enabled">
-        {{$ctrl.copyText}}
+               ng-disabled="!$ctrl.enabled || $ctrl.accessRequested">
+        {{$ctrl.buttonText}}
     </md-button>
     <div class="hr-divider"></div>
 </div>

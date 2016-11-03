@@ -4,9 +4,13 @@ export class WelcomeService {
         this.authService = authService;
     }
 
-    addWizardCompleteness(welcomeType, wizardType, resource) {
+    addWizardCompleteness(resource, params) {
+        if (!params.welcomeType || !params.wizardType) {
+            throw new Error('Missing params');
+        }
         const completeStatuses = this.authService.getUserData('welcome') || [];
-        completeStatuses.push({welcomeType, wizardType, resource: WelcomeService.pickResourceFields(resource)});
+        const status = Object.assign({resource: WelcomeService.pickResourceFields(resource)}, params);
+        completeStatuses.push(status);
         this.authService.setUserData('welcome', completeStatuses);
     }
 

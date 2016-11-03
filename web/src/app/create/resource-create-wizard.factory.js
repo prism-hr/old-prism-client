@@ -157,7 +157,10 @@ export class ResourceCreateWizardFactory {
                         if (wasResourceSaved) {
                             welcomeService.updateWizardCompleteness(savedResource);
                         } else {
-                            welcomeService.addWizardCompleteness(this._welcomeType, this._wizardType, savedResource);
+                            welcomeService.addWizardCompleteness(savedResource, {
+                                welcomeType: this._welcomeType,
+                                wizardType: this._wizardType
+                            });
                         }
                         return $state.go(this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode});
                     });

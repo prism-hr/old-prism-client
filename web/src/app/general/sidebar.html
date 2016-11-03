@@ -13,8 +13,11 @@
     <div class="user-block employer" layout="row" layout-align="center center">
         <div class="user-details" layout="row" layout-align="start center">
             <div class="avatar-holder employer">
-                <img ng-src="/prism/api/public/documents/{{$ctrl.authService.user.documentImage.accessCode}}" class="md-avatar" alt="{{$ctrl.authService.user.firstName}} {{$ctrl.authService.user.lastName}}"  ng-if="$ctrl.authService.user.documentImage.accessCode">
-                <div ng-if="!$ctrl.authService.user.documentImage.accessCode" class="no-user-image" layout="row" layout-align="center center">
+                <img ng-src="/prism/api/public/documents/{{$ctrl.authService.user.documentImage.accessCode}}"
+                     class="md-avatar" alt="{{$ctrl.authService.user.firstName}} {{$ctrl.authService.user.lastName}}"
+                     ng-if="$ctrl.authService.user.documentImage.accessCode">
+                <div ng-if="!$ctrl.authService.user.documentImage.accessCode" class="no-user-image" layout="row"
+                     layout-align="center center">
                     <i class="icon-user"></i>
                 </div>
             </div>
@@ -35,7 +38,7 @@
     </div>
 </div>
 <md-content class="main-menu" flex>
-    <md-list flex >
+    <md-list flex>
         <md-subheader class="md-no-sticky">
             Menu
             <md-menu md-position-mode="target-right target">
@@ -50,7 +53,8 @@
                         <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position</md-button>
                     </md-menu-item>
                     <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department</md-button>
+                        <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department
+                        </md-button>
                     </md-menu-item>
                     <md-menu-item>
                         <md-button ng-click="ctrl.new($index)"><i class="icon-notebook"></i> New Contact</md-button>
@@ -77,7 +81,9 @@
             <span class="badge" ng-bind="$ctrl.promotions.length"></span>
         </md-list-item>
         <div flex class="submenu submenu-adverts">
-            <md-list-item ng-repeat="promotion in $ctrl.promotions" ng-click="" ui-sref="advert.summary({id: promotion.accessCode})" ui-sref-active="active" aria-label="{{promotion.name}}">
+            <md-list-item ng-repeat="promotion in $ctrl.promotions" ng-click=""
+                          ui-sref="advert.summary({id: promotion.accessCode})" ui-sref-active="active"
+                          aria-label="{{promotion.name}}">
                 <i class="icon-briefcase"></i>
                 <p ng-bind="promotion.name"></p>
                 <md-menu md-position-mode="target-right target">
@@ -86,7 +92,9 @@
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)" ui-sref="audience.summary({id:promotion.accessCode})"><i class="icon-people"></i>Audience</md-button>
+                            <md-button ng-click="ctrl.new($index)"
+                                       ui-sref="audience.summary({id:promotion.accessCode})"><i class="icon-people"></i>Audience
+                            </md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
@@ -102,7 +110,9 @@
             <span class="badge" ng-bind="$ctrl.organizations.length"></span>
         </md-list-item>
         <div flex class="submenu submenu-organizations">
-            <md-list-item ng-repeat="organization in $ctrl.organizations" ng-click="" ui-sref="promoter.summary({id: organization.accessCode})" ui-sref-active="active" aria-label="{{organization.name}}">
+            <md-list-item ng-repeat="organization in $ctrl.organizations" ng-click=""
+                          ui-sref="promoter.summary({id: organization.accessCode})" ui-sref-active="active"
+                          aria-label="{{organization.name}}">
                 <i class="icon-home"></i>
                 <p ng-bind="organization.name"></p>
                 <md-menu md-position-mode="target-right target">
@@ -111,10 +121,14 @@
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i>New Position</md-button>
+                            <md-button ui-sref="advert.summary({id: 'new', organization: organization.accessCode})">
+                                <i class="icon-briefcase"></i>New Position
+                            </md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i>New Department</md-button>
+                            <md-button ng-click="ctrl.new($index)">
+                                <i class="icon-organization"></i>New Department
+                            </md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>

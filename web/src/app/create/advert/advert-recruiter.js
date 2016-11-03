@@ -1,6 +1,5 @@
 class AdvertRecruiterController {
     $onInit() {
-        this.advert.newOrganization = this.advert.newOrganization || false;
     }
 }
 

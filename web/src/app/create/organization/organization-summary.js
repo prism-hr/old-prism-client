@@ -1,8 +1,9 @@
 class OrganizationSummaryController {
-    constructor($q, $state, Restangular) {
+    constructor($q, $state, Restangular, welcomeService) {
         this.$q = $q;
         this.$state = $state;
         this.Restangular = Restangular;
+        this.welcomeService = welcomeService;
     }
 
     $onInit() {
@@ -91,7 +92,10 @@ class OrganizationSummaryController {
                 this.requestOrganization = o.plain();
                 this.requestOrganization.isImplementation = params.isImplementation;
                 if (this.requestOrganization.actions.includes('edit')) {
-                    this.requestOrganization.editRef = this.$state.href(this.wizardType.toLowerCase() + '.summary', {id: this.requestOrganization.accessCode, welcomeType: null});
+                    this.requestOrganization.editRef = this.$state.href(this.wizardType.toLowerCase() + '.summary', {
+                        id: this.requestOrganization.accessCode,
+                        welcomeType: null
+                    });
                 }
                 this.setView('request');
             });
@@ -112,7 +116,15 @@ class OrganizationSummaryController {
         const accessCode = organization.organizationImplementationAccessCode || organization.accessCode;
         this.Restangular.one('organizationImplementations', accessCode).one('join').customPUT({})
             .then(() => {
-                this.$state.go('activities');
+                if (this.welcomeType) {
+                    this.welcomeService.addWizardCompleteness(organization, {
+                        welcomeType: this.welcomeType,
+                        wizardType: this.wizardType,
+                        accessRequested: true
+                    });
+                    return this.$state.go(this.welcomeType + 'Welcome');
+                }
+                return this.$state.go('activities');
             });
     }
 
@@ -133,6 +145,7 @@ class OrganizationSummaryController {
 export const OrganizationSummary = {
     template: require('./organization-summary.html'),
     bindings: {
+        welcomeType: '@',
         wizardType: '@',
         organization: '=',
         form: '<'

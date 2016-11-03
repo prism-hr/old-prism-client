@@ -1,6 +1,6 @@
 class AdvertSummaryController {
     $onInit() {
-        this.advert.stateComplete = this.advert.stateComplete || {};
+        this.advert.stateComplete = this.advert.stateComplete || {recruiter: 'invalid'};
         this.originalRecruiterState = this.advert.stateComplete.recruiter;
         if (this.originalRecruiterState === 'invalid') {
             this.isRecruiter = false;
