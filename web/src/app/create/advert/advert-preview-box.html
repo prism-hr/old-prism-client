@@ -48,7 +48,8 @@
                     </span>
                     <span ng-if="$ctrl.advert.positionBenefits.length > 0">+ Benefits</span>
                 </div>
-                <div class="closing-date"> Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
+                <div class="closing-date" ng-if="$ctrl.advert.timestampPublicationClose"> Closing Date: {{$ctrl.advert.timestampPublicationClose | date}}</div>
+                <div class="closing-date" ng-if="!$ctrl.advert.timestampPublicationClose"> No Closing Date</div>
                 <div class="location"> <span ng-repeat="location in $ctrl.advert.locations">{{location.location.name}}</span></div>
             </div>
             <div class="position-features">

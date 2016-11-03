@@ -81,7 +81,7 @@
                             required>
                         <md-item-template>
                             <div layout="row">
-                                <div class="icon" ng-if="implementation.documentLogoImage">
+                                <div class="logo-icon" ng-if="implementation.documentLogoImage">
                                     <div class="logo-image">
                                         <div class="logo-flex company-logo">
                                             <div class="logo">
@@ -182,7 +182,7 @@
                 <div class="logo-image">
                     <div class="logo-flex company-logo">
                         <div class="logo">
-                            <img ngf-src="$ctrl.requestOrganization.documentLogoImage || '/img/prism-logo-default.png'" />
+                            <img ng-src="{{$root.documentsUrl+$ctrl.requestOrganization.organization.documentLogoImage.accessCode}}" />
                         </div>
                     </div>
                 </div>
