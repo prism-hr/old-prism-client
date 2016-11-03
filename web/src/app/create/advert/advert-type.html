@@ -47,7 +47,7 @@
         <div ng-messages-include="general-messages"></div>
         <div ng-message="mindate" class="error">The start date cannot be in the past</div>
     </div>
-    <md-switch ng-model="$ctrl.showPublicationClose" ng-change="showPublicationCloseChanged($ctrl.showPublicationClose)"
+    <md-switch ng-model="$ctrl.showPublicationClose" ng-change="$ctrl.showPublicationCloseChanged($ctrl.showPublicationClose)"
                class="md-primary" aria-label="Closing Date">
         Select Closing Date
     </md-switch>

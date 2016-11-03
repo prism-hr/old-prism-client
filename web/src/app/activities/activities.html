@@ -1,14 +1,22 @@
 <div class="page-wrap activities">
     <div layout="row" layout-align="center center" ng-cloak>
-        <div flex="80" flex-sm="100" flex-xs="100"  class="left-side-block" layout="column" layout-align="center stretch">
+        <div flex="80" flex-sm="100" flex-xs="100" class="left-side-block" layout="column"
+             layout-align="center stretch">
             <div class="header" layout-padding>
                 <h1>Activities</h1>
             </div>
             <div class="activities-stream">
                 <ul>
                     <li ng-repeat="activity in $ctrl.activities">
-                        <div class="activity-left" flex="10" layout="column" layout-align="center center">
-                            Category: {{activity.activity.category}}
+                        <div ng-if="activity.activity.category === 'ORGANIZATION_JOIN'">
+                            {{activity.activity.userRole.user.firstName}}
+                            {{activity.activity.userRole.user.lastName}} requested access to
+                            {{activity.activity.userRole.organizationImplementation.name}}
+                            <button ng-click="$ctrl.responseToActivity(activity, 'accept')">Accept</button>
+                            <button ng-click="$ctrl.responseToActivity(activity, 'reject')">Reject</button>
+                        </div>
+                        <div ng-if="activity.activity.category !== 'ORGANIZATION_JOIN'">
+                            Unknown activity category
                         </div>
                     </li>
                     <li class="event new" layout="row">
@@ -67,7 +75,7 @@
                                 <i class="icon-briefcase"></i>
                             </div>
                         </div>
-                        <div class="activity-body" flex="90" >
+                        <div class="activity-body" flex="90">
                             <h4>Postdoctoral Research Associate</h4>
                             <div class="activity-detail" layout="row" layout-align="center">
                                 <span>by <a>Bethnal Green Ventures</a></span>

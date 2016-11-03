@@ -1,9 +1,10 @@
 class OrganizationSummaryController {
-    constructor($q, $state, Restangular, welcomeService) {
+    constructor($q, $state, Restangular, welcomeService, fileConversion) {
         this.$q = $q;
         this.$state = $state;
         this.Restangular = Restangular;
         this.welcomeService = welcomeService;
+        this.fileConversion = fileConversion;
     }
 
     $onInit() {
@@ -53,6 +54,7 @@ class OrganizationSummaryController {
     addDepartment(organization) {
         if (organization) {
             this.organization.organization = _.pick(organization, ['accessCode', 'name']);
+            this.organization.documentLogoImage = organization.documentLogoImage;
         }
         this.organization.name = null;
         this.showImplementationName = true;
@@ -89,7 +91,7 @@ class OrganizationSummaryController {
         params = params || {};
         this.Restangular.one('organizationImplementations', organization.accessCode).get()
             .then(o => {
-                this.requestOrganization = o.plain();
+                this.requestOrganization = this.fileConversion.processForDisplay(o.plain());
                 this.requestOrganization.isImplementation = params.isImplementation;
                 if (this.requestOrganization.actions.includes('edit')) {
                     this.requestOrganization.editRef = this.$state.href(this.wizardType.toLowerCase() + '.summary', {
