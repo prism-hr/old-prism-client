@@ -261,6 +261,9 @@ md-datepicker {
   font-family: "simple-line-icons";
   transform: scaleY(1) scaleX(1);
 }
+md-autocomplete {
+  min-width:200px;
+}
 md-autocomplete input:not(.md-input), md-input-container  {
   font-size:18px;
 }

@@ -189,7 +189,7 @@
                 <div>
                     <!--TODO: fetch creator and address-->
                     <h2>{{$ctrl.requestOrganization.name}}</h2>
-                    <h4>Created by <span>Juan Mingo</span> TODO</h4>
+                    <h4>Created by <span>{{$ctrl.requestOrganization.userCreate.firstName}} {{$ctrl.requestOrganization.userCreate.lastName}}</span></h4>
                     <p>{{$ctrl.requestOrganization.locationList}}</p>
                 </div>
             </div>
