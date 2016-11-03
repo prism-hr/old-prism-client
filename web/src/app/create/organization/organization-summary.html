@@ -112,11 +112,11 @@
             <div class="locations" layout="row">
                 <md-input-container class="md-block" flex>
                     <label class="md-no-float">Locations</label>
-                    <place-autocomplete ng-model="$ctrl.organization.locations" name="foundAddress"
+                    <place-autocomplete ng-model="$ctrl.organization.locations" name="locations"
                                         placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
                                         required>
                     </place-autocomplete>
-                    <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+                    <div ng-messages="$ctrl.form.locations.$error" role="alert">
                         <div ng-messages-include="general-messages"></div>
                     </div>
                 </md-input-container>
