@@ -23,7 +23,9 @@ export const restangularConfig = function (RestangularProvider) {
 };
 
 /** @ngInject */
-export const satellizerConfig = function ($authProvider, environment) {
+export const satellizerConfig = function ($authProvider, SatellizerConfig, environment) {
+    SatellizerConfig.httpInterceptor = function () {
+    };
     $authProvider.linkedin({
         clientId: environment.oauth.linkedin,
         url: 'prism/api/public/authenticate/linkedin',
@@ -45,4 +47,17 @@ export const translateConfig = function ($translateProvider) {
         suffix: '.json'
     });
     $translateProvider.preferredLanguage('en');
+};
+
+/** @ngInject */
+export const cloudinaryConfig = function (cloudinaryProvider) {
+    const uploadEndpoint = 'upload_endpoint';
+    const cloudName = 'cloud_name';
+    const uploadPreset = 'upload_preset';
+    const config = {
+        [uploadEndpoint]: 'https://api.cloudinary.com/v1_1/',
+        [cloudName]: 'bigfoot',
+        [uploadPreset]: 'unsigned'
+    };
+    cloudinaryProvider.config(config);
 };

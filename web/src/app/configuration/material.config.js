@@ -76,7 +76,7 @@ export const materialConfig = function ($mdThemingProvider, $mdDateLocaleProvide
         return m.isValid() ? m.format('L') : '';
     };
 
-    $provide.decorator('mdDatepickerDirective', function ($delegate) {
+    $provide.decorator('mdDatepickerDirective', $delegate => {
         const mdDatepicker = $delegate[0];
         const originalLink = mdDatepicker.link;
 
@@ -99,7 +99,6 @@ export const materialConfig = function ($mdThemingProvider, $mdDateLocaleProvide
                 });
             };
         };
-
         return $delegate;
     });
 };

@@ -1,47 +1,39 @@
-<div class="background-box" ng-if="$ctrl.organization.documentBackgroundImage" ngf-background="$ctrl.organization.documentBackgroundImage"></div>
-<div class="background-box" ng-if="!$ctrl.organization.documentBackgroundImage"></div>
-<div class="background-uploader-box">
-    <button class="background-uploader"
-         ngf-select
-         ng-model="$ctrl.organization.documentBackgroundImage"
-         name="file"
-         ngf-pattern="'image/*'"
-         ngf-accept="'image/png, image/jpeg, image/gif'"
-         ngf-max-size="10MB">
-        <i class="icon-camera"></i>
-    </button>
-    <small ng-if="!$ctrl.organization.documentBackgroundImage">Minimum size 1280 x 320</small>
+<!--<div class="background-box" ng-if="$ctrl.organization.documentBackgroundImage" ngf-background="$ctrl.organization.documentBackgroundImage"></div>-->
+<!--<div class="background-box" ng-if="!$ctrl.organization.documentBackgroundImage"></div>-->
+<!--<div class="background-uploader-box">-->
+<!--<button class="background-uploader"-->
+<!--ngf-select-->
+<!--ng-model="$ctrl.organization.documentBackgroundImage"-->
+<!--name="file"-->
+<!--ngf-pattern="'image/*'"-->
+<!--ngf-accept="'image/png, image/jpeg, image/gif'"-->
+<!--ngf-max-size="10MB">-->
+<!--<i class="icon-camera"></i>-->
+<!--</button>-->
+<!--<small ng-if="!$ctrl.organization.documentBackgroundImage">Minimum size 1280 x 320</small>-->
+<!--</div>-->
+<div class="background-box">
+    <background-uploader ng-model="$ctrl.organization.documentBackgroundImage"></background-uploader>
 </div>
 <md class="company-box" layout="row" layout-align="center end">
     <md-card class="company-header" layout="row" flex-gt-sm="75">
-        <div class="logo-image">
-            <div class="logo-flex company-logo">
-                <div class="logo">
-                    <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'" />
-                </div>
-            </div>
-            <div class="logo-uploader-box">
-                <button class="logo-uploader"
-                        ngf-select
-                        ng-model="$ctrl.organization.documentLogoImage"
-                        ngf-pattern="'image/*'"
-                        ngf-accept="'image/png, image/jpeg, image/gif'"
-                        ngf-max-size="10MB"
-                        ngf-resize="{width: 400, height: 250}"
-                        ngf-select
-                        name="logo">
-                    <i class="icon-camera"></i>
-                </button>
-            </div>
-        </div>
+        <logo-uploader ng-model="$ctrl.organization.documentLogoImage"></logo-uploader>
         <div class="company-details">
             <div layout="row" layout-align="center center">
-                <h2 class="orgorg" ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">{{$ctrl.organization.name}}</h2>
-                <h2 class="org" ng-if="$ctrl.organization.name === $ctrl.organization.organization.name">{{$ctrl.organization.organization.name}}</h2>
+                <h2 class="orgorg" ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">
+                    {{$ctrl.organization.name}}
+                </h2>
+                <h2 class="org" ng-if="$ctrl.organization.name === $ctrl.organization.organization.name">
+                    {{$ctrl.organization.organization.name}}
+                </h2>
                 <span flex></span>
-                <a ng-href="{{$ctrl.organization.website}}" target="_blank" ng-if="$ctrl.organization.website" class="website"><i class="icon-globe"></i> Web</a>
+                <a ng-href="{{$ctrl.organization.website}}" target="_blank" ng-if="$ctrl.organization.website"
+                   class="website">
+                    <i class="icon-globe"></i> Web
+                </a>
             </div>
-            <h4 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">at {{$ctrl.organization.organization.name}}</h4>
+            <h4 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">at
+                {{$ctrl.organization.organization.name}}</h4>
             <p class="summary">{{$ctrl.organization.summary}}</p>
             <p class="address">
                 <span ng-repeat="location in $ctrl.organization.locations">{{location.location.name}} </span>
