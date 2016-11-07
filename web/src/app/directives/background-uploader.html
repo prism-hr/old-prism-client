@@ -12,7 +12,10 @@
         <small>Minimum size 1280 x 320</small>
     </div>
     <div ng-if="srcPublicId">
-        <ng-croppie ng-model="croppedUrl" src-public-id="{{srcPublicId}}"></ng-croppie>
+        <ng-croppie ng-model="data.croppedUrl" src-public-id="{{srcPublicId}}"></ng-croppie>
+        <button ng-click="cancel()">Cancel</button>
+        <button ng-click="confirm()">Ok</button>
+        {{imageUrl}}
     </div>
 </div>
 
