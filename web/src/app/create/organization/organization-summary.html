@@ -136,23 +136,7 @@
                     </md-input-container>
                 </div>
                 <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
-                    <div class="image-uploader logo"
-                         ngf-pattern="'image/*'"
-                         ngf-accept="'image/png, image/jpeg, image/gif'"
-                         ngf-max-size="10MB"
-                         ngf-resize="{width: 400, height: 250}"
-                         ngf-select
-                         ngf-drop
-                         name="logo"
-                         layout="row" layout-align="center center" ng-model="$ctrl.organization.documentLogoImage">
-                            <span class="drop-box"
-                                  ng-if="!$ctrl.organization.documentLogoImage">Drop your Logo here</span>
-                        <div class="logo-flex">
-                            <div class="logo" ng-if="$ctrl.organization.documentLogoImage">
-                                <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'"/>
-                            </div>
-                        </div>
-                    </div>
+                    <logo-uploader ng-model="$ctrl.organization.documentLogoImage" drop-area="true"></logo-uploader>
                     <small>Image size 400 x 250 / 10MB max</small>
                     <div ng-messages="$ctrl.form.logo.$error" role="alert">
                         <div ng-messages-include="general-messages"></div>

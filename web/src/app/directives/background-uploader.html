@@ -1,0 +1,18 @@
+<div class="background-uploader-box">
+    <div ng-if="!srcPublicId">
+        <button class="background-uploader"
+                ng-model="chosenFile"
+                ngf-pattern="'image/*'"
+                ngf-accept="'image/png, image/jpeg, image/gif'"
+                ngf-max-size="5MB"
+                ngf-change="fileChanged($file)"
+                ngf-select>
+            <i class="icon-camera"></i>
+        </button>
+        <small>Minimum size 1280 x 320</small>
+    </div>
+    <div ng-if="srcPublicId">
+        <ng-croppie ng-model="croppedUrl" src-public-id="{{srcPublicId}}"></ng-croppie>
+    </div>
+</div>
+

@@ -2,11 +2,6 @@
 export class ResourceCreateWizardFactory {
 
     constructor() {
-        function clearAssets(resource) {
-            resource.documentBackgroundImage = null;
-            resource.description = null;
-        }
-
         const organizationSteps = [
             {id: 'summary', component: 'organizationSummary', title: 'Summary'},
             {id: 'details', component: 'organizationDetails', title: 'Details'}];

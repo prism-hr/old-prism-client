@@ -16,7 +16,12 @@ export class AuthService {
     }
 
     refreshTokenHeader() {
-        this.$http.defaults.headers.common['X-Auth-Token'] = this.getUserData('token');
+        this.tokenHeader = this.getUserData('token');
+        // this.$http.defaults.headers.common['X-Auth-Token'] = this.getUserData('token');
+    }
+
+    getTokenHeader() {
+        return this.tokenHeader;
     }
 
     register(registerDetails) {

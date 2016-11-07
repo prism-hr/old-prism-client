@@ -2,6 +2,14 @@
 export const serverInterceptorConfig = function ($provide, $httpProvider) {
     $provide.factory('serverInterceptor', ($q, $injector) => {
         return {
+            request(config) {
+                const authService = $injector.get('authService');
+                const host = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
+                if (config.url.startsWith(host)) {
+                    config.headers['X-Auth-Token'] = authService.getTokenHeader();
+                }
+                return config;
+            },
             responseError(rejection) {
                 const status = rejection.status;
                 if (status) {

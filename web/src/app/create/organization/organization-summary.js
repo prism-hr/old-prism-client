@@ -1,8 +1,9 @@
 class OrganizationSummaryController {
-    constructor($q, $state, Restangular, welcomeService, fileConversion) {
+    constructor($q, $state, Restangular, cloudinary, welcomeService, fileConversion) {
         this.$q = $q;
         this.$state = $state;
         this.Restangular = Restangular;
+        this.cloudinary = cloudinary;
         this.welcomeService = welcomeService;
         this.fileConversion = fileConversion;
     }
@@ -142,6 +143,7 @@ class OrganizationSummaryController {
     onOrganizationNameChanged(name) {
         this.organization.name = name;
     }
+
 }
 
 export const OrganizationSummary = {

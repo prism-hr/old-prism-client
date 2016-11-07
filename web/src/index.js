@@ -21,13 +21,15 @@ import 'satellizer';
 import 'rx-angular';
 import 'textangular/dist/textAngular-sanitize.min';
 import 'ng-img-crop-full-extended/compile/minified/ng-img-crop';
+import 'angular-cloudinary';
 import routes from './routes';
 import {
     translateConfig,
     templateCacheConfig,
     satellizerConfig,
     restangularConfig,
-    generalRun
+    generalRun,
+    cloudinaryConfig
 } from './app/configuration/general.config';
 import {materialConfig} from './app/configuration/material.config';
 import {serverInterceptorConfig} from './app/configuration/server-interceptor.config';
@@ -42,6 +44,9 @@ import {WelcomeService} from './app/welcome/welcome.service';
 import {ResourceCreateWizardFactory} from './app/create/resource-create-wizard.factory';
 import {resourceCreateWizardStepHook} from './app/create/resource-create-wizard-step.hook';
 import {ApplicationLoader} from './app/directives/application-loader';
+import {NgCroppie} from './app/directives/ng-croppie';
+import {BackgroundUploader} from './app/directives/background-uploader';
+import {LogoUploader} from './app/directives/logo-uploader';
 import {PlaceAutocomplete} from './app/directives/place-autocomplete';
 import {Dialog} from './app/general/dialog/dialog';
 import {browserTitleHook} from './app/general/browser-title.hook';
@@ -106,13 +111,15 @@ angular
         'textAngular',
         'pascalprecht.translate',
         'uiGmapgoogle-maps',
-        'rx'
+        'rx',
+        'angular-cloudinary'
     ])
     .constant('environment', environment[ENVIRONMENT])
     .config(routes)
     .config(restangularConfig)
     .config(satellizerConfig)
     .config(translateConfig)
+    .config(cloudinaryConfig)
     .config(materialConfig)
     .config(serverInterceptorConfig)
     .service('activityService', ActivityService)
@@ -129,6 +136,9 @@ angular
     .run(generalRun)
     .run(templateCacheConfig)
     .directive('applicationLoader', ApplicationLoader)
+    .directive('ngCroppie', NgCroppie)
+    .directive('backgroundUploader', BackgroundUploader)
+    .directive('logoUploader', LogoUploader)
     .directive('placeAutocomplete', PlaceAutocomplete)
     .component('prismDialog', Dialog)
     .component('welcome', Welcome)
