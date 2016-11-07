@@ -390,8 +390,15 @@ md-autocomplete input:not(.md-input), md-input-container  {
 
 .background-uploader-box {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 0px;
+  left: 0px;
+  .upload-button {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  .croppie-container .cr-viewport {
+    border: none;
+  }
   .background-uploader {
     border: none;
     display: block;
