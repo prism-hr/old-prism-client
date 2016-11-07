@@ -13,7 +13,11 @@ export class NgCroppie {
 
     link(scope, element, attrs, ngModel) {
         const self = this;
-        const croppie = new Croppie(element[0]);
+        const containerWidth = angular.element(document.body.querySelectorAll('.background-box'))[0].clientWidth;
+        const croppie = new Croppie(element[0], {
+            viewport: {width: containerWidth, height: 320},
+            boundary: {width: containerWidth, height: 320}
+        });
 
         scope.$watch('srcPublicId', function (src) {
             if (src) {
