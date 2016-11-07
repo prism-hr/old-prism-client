@@ -10,7 +10,9 @@ export class BackgroundUploader {
 
     link(scope, element, attrs, ngModel) {
         const self = this;
+        scope.data = {};
         const CLOUDINARY_REGEX = /^.+\.cloudinary\.com\/(?:[^\/]+\/)(?:(image|video)\/)?(?:(upload|fetch)\/)?(?:(?:[^_/]+_[^,/]+,?)*\/)?(?:v(\d+|\w{1,2})\/)?([^\.^\s]+)(?:\.(.+))?$/;
+        scope.srcPublicId = 'local/jst7pa4karrnpzw0hd89';
 
         scope.fileChanged = function (file) {
             if (!file) {
@@ -30,6 +32,14 @@ export class BackgroundUploader {
 
         ngModel.$render = function () {
             scope.publicId = ngModel.$modelValue && getPublicId(ngModel.$modelValue);
+        };
+        scope.cancel = function () {
+            scope.srcPublicId = null;
+            scope.croppedUrl = null;
+        };
+
+        scope.confirm = function () {
+            scope.imageUrl = scope.data.croppedUrl;
         };
 
         function getPublicId(url) {
