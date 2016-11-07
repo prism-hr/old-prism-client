@@ -1,44 +1,7 @@
 <div layout-padding>
-    <h3>Set up your Audience</h3>
-    <div class="audience">
-        <label class="standalone-label">Audience</label>
-        <div class="checkboxes-group">
-            <div ng-repeat="pattern in $ctrl.patternValues">
-                <md-checkbox class="md-primary" ng-checked="$ctrl.isPatternChecked(pattern, $ctrl.selected)"
-                             ng-click="$ctrl.togglePattern(pattern, $ctrl.selected)">
-                    {{'definitions.studentPattern.' + pattern | translate}}
-                </md-checkbox>
-            </div>
-            <md-checkbox aria-label="Select All"
-                         class="md-primary"
-                         ng-checked="$ctrl.allPatternsChecked()"
-                         md-indeterminate="$ctrl.anyPatternChecked()"
-                         ng-click="$ctrl.toggleAllPatterns()">
-                <span ng-show="$ctrl.allPatternsChecked()">Deselect All</span>
-                <span ng-show="!$ctrl.allPatternsChecked()">Select All</span>
-            </md-checkbox>
-        </div>
-    </div>
-    <div class="industries-holder">
-        <md-input-container class="md-block">
-            <label class="md-no-float">Areas of Expertise</label>
-            <md-chips ng-model="$ctrl.advert.tags"
-                      md-transform-chip="$ctrl.transformTag($chip)">
-                <md-autocomplete
-                        md-search-text="searchText"
-                        md-items="item in $ctrl.lookupTags(searchText)"
-                        md-item-text="item.name"
-                        placeholder="Find a tag or add a new one">
-                    <span md-highlight-text="searchText">{{item.name}}</span>
-                </md-autocomplete>
-                <md-chip-template>
-                    {{$chip.tag.name}}
-                </md-chip-template>
-            </md-chips>
-        </md-input-container>
-    </div>
-    <h4 class="standalone-label">University department list</h4>
-    <p>Select the departments you want to promote your advert</p>
+    <h3>Targeted University department</h3>
+    <p>According to your interest areas, candidates selection and locations those are the targeted de the departments you want to promote your advert</p>
+    <h4>Top targeted Departments</h4>
 </div>
 <div class="department-list" layout="row" layout-wrap layout-fill layout-align="start none">
     <div class="department-item " flex="100" flex-gt-xs="50">
@@ -83,7 +46,7 @@
                     </md-chips>
                 </div>
             </md-card-content>
-            <md-card-actions class="department-actions" layout="row" layout-align="space-between none">
+            <md-card-actions class="department-actions hidden" layout="row" layout-align="space-between none" style="display: none">
                 <md-button class="md-default md-raised small">View</md-button>
                 <md-checkbox class="md-primary" ng-model="data.select1" aria-label="Select">
                 </md-checkbox>
@@ -129,7 +92,7 @@
                     </md-chips>
                 </div>
             </md-card-content>
-            <md-card-actions class="department-actions" layout="row" layout-align="space-between none">
+            <md-card-actions class="department-actions" layout="row" layout-align="space-between none" style="display: none">
                 <md-button class="md-default md-raised small">View</md-button>
                 <md-checkbox class="md-primary" ng-model="data.select2" aria-label="Select">
                 </md-checkbox>
@@ -137,6 +100,42 @@
         </md-card>
     </div>
 </div>
-<md-card-actions layout-align="end start" layout="row">
-    <md-button class="md-warn md-raised">Select all Departments</md-button>
-</md-card-actions>
+<div layout-padding>
+    <h4>Others targeted Departments</h4>
+    <md-list class="department-small">
+        <md-list-item class="department-item-small">
+            <span class="department-title">Computer Science</span>
+            <span class="department-university">at UCL</span>
+            <span class="department-location" flex>London, UK</span>
+            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item class="department-item-small">
+            <span class="department-title">Computer Science</span>
+            <span class="department-university">at UCL</span>
+            <span class="department-location" flex>London, UK</span>
+            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item class="department-item-small">
+            <span class="department-title">Computer Science</span>
+            <span class="department-university">at UCL</span>
+            <span class="department-location" flex>London, UK</span>
+            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item class="department-item-small">
+            <span class="department-title">Computer Science</span>
+            <span class="department-university">at UCL</span>
+            <span class="department-location" flex>London, UK</span>
+            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item class="department-item-small">
+            <span class="department-title">Computer Science</span>
+            <span class="department-university">at UCL</span>
+            <span class="department-location" flex>London, UK</span>
+            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
+        </md-list-item>
+    </md-list>
+</div>

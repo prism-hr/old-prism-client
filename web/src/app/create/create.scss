@@ -290,8 +290,38 @@ md-autocomplete input:not(.md-input), md-input-container  {
     }
   }
 }
-
+.department-small {
+  margin-top:10px;
+  .department-item-small {
+    background: lighten( $uclfooter, 46%);
+    &:hover {
+      background: lighten( $uclfooter, 42%);
+    }
+  }
+  .department-title {
+    font-weight:bold;
+    color: $uclred;
+  }
+  .department-university, .department-title, .department-location {
+    padding-right: 10px;
+  }
+  .department-location {
+    color: $uclfooter;
+    font-weight:900;
+  }
+  .students-number {
+    i {
+      color: $uclred;
+    }
+    span {
+      padding-left:4px;
+      font-size:13px;
+      font-weight:600;
+    }
+  }
+}
 .department-list {
+  margin-bottom:20px;
   md-card {
     min-height: 94%;
     md-card-content {
@@ -385,6 +415,9 @@ md-autocomplete input:not(.md-input), md-input-container  {
       }
     }
   }
+}
+.progress-box{
+
 }
 
 

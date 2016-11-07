@@ -136,10 +136,12 @@
                     </md-input-container>
                 </div>
                 <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
-                    <logo-uploader ng-model="$ctrl.organization.documentLogoImage" drop-area="true"></logo-uploader>
-                    <small>Image size 400 x 250 / 10MB max</small>
-                    <div ng-messages="$ctrl.form.logo.$error" role="alert">
-                        <div ng-messages-include="general-messages"></div>
+                    <div class="image-uploader">
+                        <logo-uploader ng-model="$ctrl.organization.documentLogoImage" drop-area="true"></logo-uploader>
+                        <small>Image size 400 x 250 / 10MB max</small>
+                        <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                            <div ng-messages-include="general-messages"></div>
+                        </div>
                     </div>
                 </div>
             </div>
