@@ -6,33 +6,33 @@ export class NgCroppie {
         this.require = 'ngModel';
         this.restrict = 'E';
         this.scope = {
-            srcPublicId: '@'
+            srcUrl: '@',
+            mimeType: '@'
         };
         this.cloudinary = cloudinary;
     }
 
     link(scope, element, attrs, ngModel) {
         const self = this;
+        let croppie = null;
         const containerWidth = angular.element(document.body.querySelectorAll('.background-box'))[0].clientWidth;
         const options = {
             viewport: {width: containerWidth, height: 320},
             boundary: {width: containerWidth, height: 320}
         };
 
-        options.update = function (result, b, c) {
-            const cropPoints = result.points;
-            const x = cropPoints[0];
-            const y = cropPoints[1];
-            const width = cropPoints[2] - x;
-            const height = cropPoints[3] - y;
-            const crop = 'crop';
-            ngModel.$setViewValue(self.cloudinary.url(scope.srcPublicId, {x, y, width, height, crop}));
+        options.update = function () {
+            const format = scope.mimeType.replace('image/', '');
+            croppie.result({type: 'blob', format: format})
+                .then(result => {
+                    ngModel.$setViewValue(result);
+                });
         };
-        const croppie = new Croppie(element[0], options);
+        croppie = new Croppie(element[0], options);
 
-        scope.$watch('srcPublicId', function (src) {
+        scope.$watch('srcUrl', function (src) {
             if (src) {
-                croppie.bind(self.cloudinary.url(src));
+                croppie.bind(src);
             }
         });
     }
