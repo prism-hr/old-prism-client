@@ -9,6 +9,7 @@
                 ngf-select>
             <i class="icon-camera"></i>
         </button>
+        <button ng-if="imageUrl" ng-click="edit()">Edit</button>
         <img ng-if="imageUrl" ng-src="{{imageUrl}}"/>
         <small>Minimum size 1280 x 320</small>
     </div>
