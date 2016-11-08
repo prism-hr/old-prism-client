@@ -1,23 +1,29 @@
-<div class="background-uploader-box">
-    <div ng-if="!publicIdToCrop" class="upload-button">
-        <button class="background-uploader"
-                ng-model="chosenFile"
-                ngf-pattern="'image/*'"
-                ngf-accept="'image/png, image/jpeg, image/gif'"
-                ngf-max-size="5MB"
-                ngf-change="fileChanged($file)"
-                ngf-select>
-            <i class="icon-camera"></i>
-        </button>
-        <button ng-if="imageUrl" ng-click="edit()">Edit</button>
-        <img ng-if="imageUrl" ng-src="{{imageUrl}}"/>
-        <small>Minimum size 1280 x 320</small>
+<div class="background-box" ngf-background="imageUrl">
+    <div class="background-uploader-box">
+        <div ng-if="!publicIdToCrop" class="upload-button-group">
+            <div>
+                <button class="background-uploader-button"
+                        ng-model="chosenFile"
+                        ngf-pattern="'image/*'"
+                        ngf-accept="'image/png, image/jpeg, image/gif'"
+                        ngf-max-size="5MB"
+                        ngf-change="fileChanged($file)"
+                        ngf-select>
+                    <i class="icon-camera"></i>
+                </button>
+                <button ng-if="imageUrl" ng-click="edit()" aria-label="edit" class="background-edit-button">
+                    <i class="icon-pencil"></i>
+                </button>
+            </div>
+            <small>Minimum size 1280 x 320</small>
+        </div>
+        <div ng-if="publicIdToCrop">
+            <ng-croppie ng-model="data.croppedUrl" public-id="{{publicIdToCrop}}"></ng-croppie>
+            <div class="btn-group">
+                <md-button class="md-raised md-primary" ng-click="confirm()">Confirm Image</md-button>
+                <md-button class="md-raised md-warn small" ng-click="cancel()">Clear Image </md-button>
+            </div>
+        </div>
     </div>
-    <div ng-if="publicIdToCrop">
-        <ng-croppie ng-model="data.croppedUrl" public-id="{{publicIdToCrop}}"></ng-croppie>
-        <button ng-click="cancel()">Cancel</button>
-        <button ng-click="confirm()">Ok</button>
-        {{progressPercentage}}
-    </div>
+    <md-progress-circular ng-if="progressPercentage" class="md-warn" md-mode="determinate" value="{{progressPercentage}}"></md-progress-circular>
 </div>
-

@@ -133,7 +133,14 @@
 }
 .background-box {
   height: 320px;
+  overflow: hidden;
   background-size: cover;
+  &.ngf-hide {
+    display: block !important;
+  }
+  md-progress-circular {
+    margin: 80px auto 0;
+  }
 }
 .promoter, .employer {
   .background-box {
