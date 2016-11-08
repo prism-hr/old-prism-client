@@ -1,26 +1,22 @@
 <div class="background-uploader-box">
-    <div ng-if="!srcUrl" class="upload-button">
+    <div ng-if="!publicIdToCrop" class="upload-button">
         <button class="background-uploader"
-                ng-model="data.chosenFile"
+                ng-model="chosenFile"
                 ngf-pattern="'image/*'"
                 ngf-accept="'image/png, image/jpeg, image/gif'"
                 ngf-max-size="5MB"
-                ngf-change="fileChanged(data.chosenFile)"
+                ngf-change="fileChanged($file)"
                 ngf-select>
             <i class="icon-camera"></i>
         </button>
+        <img ng-if="imageUrl" ng-src="{{imageUrl}}"/>
         <small>Minimum size 1280 x 320</small>
     </div>
-    <div ng-if="srcUrl">
-        <ng-croppie ng-model="data.croppedImage" src-url="{{srcUrl}}" mime-type="{{mimeType}}"></ng-croppie>
+    <div ng-if="publicIdToCrop">
+        <ng-croppie ng-model="data.croppedUrl" public-id="{{publicIdToCrop}}"></ng-croppie>
         <button ng-click="cancel()">Cancel</button>
         <button ng-click="confirm()">Ok</button>
+        {{progressPercentage}}
     </div>
-    <div ng-if="publicId && !srcUrl">
-        <cl-image ng-if="publicId" public-id="{{publicId}}">
-            <cl-transformation width="1280" height="320" crop="fill"></cl-transformation>
-        </cl-image>
-    </div>
-    {{progressPercentage}}
 </div>
 
