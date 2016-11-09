@@ -17,7 +17,7 @@ export class ResourceCreateWizardFactory {
                 {id: 'details', component: 'advertDetails', title: 'Details'},
                 {id: 'audience', component: 'advertCandidate', title: 'Candidate'}],
             AUDIENCE: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
-                {id: 'connection', component: 'audienceConnection', title: 'Connections'}],
+                {id: 'social', component: 'audienceSocial', title: 'Social Promotion'}],
             STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
                 {id: 'studies', component: 'studentStudies', title: 'Studies'},
                 {id: 'contact', component: 'studentContact', title: 'Contact'},

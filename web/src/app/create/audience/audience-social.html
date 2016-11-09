@@ -1,0 +1,96 @@
+<div layout-padding >
+    <div class="general-tabs">
+        <h3>Target your advert in Social Networks</h3>
+        <div class="tab-container" flex layout="row">
+            <div class="overview active" ng-click="$ctrl.changeTab(0, $event)" flex="25">
+                <div layout-padding="">
+                    <h4 class="facebook"><i class="icon-social-facebook"></i> Facebook</h4>
+                    <p class="status-connected"><i class="icon-check"></i> Done</p>
+                </div>
+            </div>
+            <div class="positions" ng-click="$ctrl.changeTab(1, $event)" flex="25">
+                <div layout-padding="">
+                    <h4 class="twitter"><i class="icon-social-twitter"></i> Twitter</h4>
+                    <p class="status-connected"><i class="icon-exclamation"></i> Pending</p>
+                </div>
+            </div>
+            <div class="positions" ng-click="$ctrl.changeTab(2, $event)" flex="25">
+                <div layout-padding="">
+                    <h4 class="linkedin"><i class="icon-social-linkedin"></i> Linkedin</h4>
+                    <p class="status-connected"><i class="icon-exclamation"></i> Pending</p>
+                </div>
+            </div>
+            <div class="positions" ng-click="$ctrl.changeTab(3, $event)" flex="25">
+                <div layout-padding="">
+                    <h4 class="email"><i class="icon-envelope"></i> Email</h4>
+                    <p class="status-connected"><i class="icon-exclamation"></i> Pending</p>
+                </div>
+            </div>
+        </div>
+        <md-tabs md-dynamic-height md-selected="$ctrl.selectedIndex">
+            <md-tab label="Facebook">
+                <md-content>
+                    <div class="connection-box">
+                        <h3>Share your advert with Facebook</h3>
+                        <md-input-container class="md-block">
+                            <textarea name="advertSummary" ng-model="$ctrl.advert.socialShareText" md-maxlength="140" rows="2" required></textarea>
+                        </md-input-container>
+                        <md-button socialshare
+                                   socialshare-provider="facebook"
+                                   socialshare-type="sharer"
+                                   socialshare-text="{{$ctrl.dummyShare.text}}"
+                                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                                   socialshare-url="{{$ctrl.dummyShare.url}}"
+                                   aria-label="Share with Facebook"
+                                   class="md-raised facebook">
+                            <i class="icon-social-facebook"></i> Share with Facebook
+                        </md-button>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="Twitter">
+                <md-content>
+                    <div class="connection-box">
+                        <h3>Share your advert with Twitter</h3>
+                        <md-input-container class="md-block">
+                            <textarea name="advertSummary" ng-model="$ctrl.advert.socialShareText" md-maxlength="140" rows="2" required></textarea>
+                        </md-input-container>
+                        <md-button socialshare
+                                   socialshare-provider="twitter"
+                                   socialshare-text="{{$ctrl.dummyShare.text}}"
+                                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                                   socialshare-url="{{$ctrl.dummyShare.url}}"
+                                   aria-label="Share with Twitter"
+                                   class="md-raised twitter">
+                            <i class="icon-social-twitter"></i> Share with Twitter
+                        </md-button>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="Linkedin">
+                <md-content>
+                    <div class="connection-box">
+                        <h3>Connect with Linkedin to share your advert</h3>
+                        <md-input-container class="md-block">
+                            <textarea name="advertSummary" ng-model="$ctrl.advert.socialShareText" md-maxlength="140" rows="2" required></textarea>
+                        </md-input-container>
+                        <md-button socialshare
+                                   socialshare-provider="linkedin"
+                                   socialshare-text="{{$ctrl.dummyShare.text}}"
+                                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                                   socialshare-url="{{$ctrl.dummyShare.url}}"
+                                   socialshare-source="{{$ctrl.dummyShare.title}}"
+                                   class="md-raised linkedin" aria-label="Share with Linkedin">
+                            <i class="icon-social-linkedin"></i> Share with Linkedin
+                        </md-button>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="Email">
+                <md-content>
+                    <h3>Send your advert by email to your contacts</h3>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </div>
+</div>
