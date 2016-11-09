@@ -1,4 +1,4 @@
-employer-view, position-view {
+employer-view, position-view, .general-tabs {
   md-tabs-canvas {
     display: none;
   }
@@ -79,7 +79,38 @@ employer-view, position-view {
     }
   }
 }
-
+.general-tabs {
+  .tab-container {
+    margin-top:0;
+  }
+  h4 {
+    &.facebook {
+      color: $facebook-color;
+    }
+    &.twitter {
+      color: $twitter-color;
+    }
+    &.linkedin {
+      color: $linkedin-color;
+    }
+  }
+  i {
+    &.icon-check {
+      color: $uclgreen;
+    }
+    &.icon-close {
+      color: $uclred;
+    }
+    &.icon-exclamation, &.fa-asterisk  {
+      color: $employmentColor;
+    }
+  }
+  .connection-box {
+    h3 {
+      margin-bottom:16px;
+    }
+  }
+}
 .map-container {
   .angular-google-map-container {
     height: 400px;

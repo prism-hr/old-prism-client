@@ -138,4 +138,18 @@
             <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
         </md-list-item>
     </md-list>
+    <div class="connection-decision">
+        <label class="standalone-label"><strong>Do you want us to promote your advert to the above departments?</strong></label>
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.promotionType" class="horizontal-form medium">
+            <div class="radio-box-alined">
+                <md-radio-button value="true" class="md-primary" checked="checked" ng-checked="true">
+                    Yes
+                </md-radio-button>
+                <md-radio-button value="false" class="md-primary">
+                    No
+                </md-radio-button>
+            </div>
+        </md-radio-group>
+        <small>The advert will be promoted to future departments with the same criteria</small>
+    </div>
 </div>

@@ -4,36 +4,16 @@ class AudienceSummaryController {
     }
     $onInit() {
         this.patternValues = this.definitions.studentPattern;
+        this.selectedIndex = 0;
     }
-    // togglePattern(pattern) {
-    //     const idx = this.audience.studentPattern.findIndex(p => p.positionWorkPattern === pattern);
-    //     if (idx > -1) {
-    //         this.audience.studentPattern.splice(idx, 1);
-    //     } else {
-    //         this.audience.studentPattern.push({positionWorkPattern: pattern});
-    //     }
-    // }
-    //
-    // isPatternChecked(pattern) {
-    //     return this.audience.studentPattern.find(p => p.positionWorkPattern === pattern);
-    // }
-    //
-    // anyPatternChecked() {
-    //     return (this.audience.studentPattern.length !== 0 &&
-    //     this.audience.studentPattern.length !== this.patternValues.length);
-    // }
-    //
-    // allPatternsChecked() {
-    //     return this.audience.studentPattern.length === this.patternValues.length;
-    // }
-    //
-    // toggleAllPatterns() {
-    //     if (this.audience.studentPattern.length === this.patternValues.length) {
-    //         this.audience.studentPattern = [];
-    //     } else if (this.audience.studentPattern.length === 0 || this.audience.studentPattern.length > 0) {
-    //         this.audience.studentPattern = this.patternValues.map(p => ({positionWorkPattern: p}));
-    //     }
-    // }
+
+    changeTab(number, $event) {
+        const selectedTab = angular.element($event.currentTarget);
+        const lastTab = angular.element($event.currentTarget.parentElement.querySelector('.active'));
+        lastTab.removeClass('active');
+        selectedTab.addClass('active');
+        this.selectedIndex = number;
+    }
 }
 
 export const AudienceSummary = {
