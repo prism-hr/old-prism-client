@@ -92,6 +92,8 @@
   .company-header {
     width: 96%;
     background: white;
+    position: relative;
+    z-index: 7;
   }
   .website {
     margin-right:10px;
