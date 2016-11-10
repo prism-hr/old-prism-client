@@ -1,12 +1,17 @@
 <div class="page-wrap step-page child">
+    <div class="{{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.advert.accessCode">
+        <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
+        </wizard-navigation>
+    </div>
     <form novalidate name="audienceForm" ng-submit="$ctrl.next(audienceForm)">
-        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" class="wizard-holder-padding">
             <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
                 <div class="step-wizard">
                     <div ui-view class="fade-animation"></div>
                 </div>
                 <wizard-buttons wizard="$ctrl.wizard" form="audienceForm" loading="$ctrl.loading"
                                 display="$ctrl.display"></wizard-buttons>
+            </md-card>
         </div>
     </form>
 </div>

@@ -92,18 +92,18 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('audience', {
-            url: '/advert/{id}/audience?welcomeType',
+            url: '/audience/{id}?welcomeType',
             abstract: true,
-            component: 'advert',
+            component: 'audience',
             data: {auth: true},
             resolve: {
-                wizardType: _.wrap('ADVERT'),
+                wizardType: _.wrap('AUDIENCE'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     const source = $stateParams.id;
-                    return resourceManagerFactory.getManager(source, wizardType)
+                    return resourceManagerFactory.getManager(source, 'ADVERT')
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
-                $title: _.wrap('Advert')
+                $title: _.wrap('Audience')
             }
         })
         .state('employer-view', {
@@ -181,14 +181,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             const data = angular.copy(step.data) || {};
             data.stepIdx = index;
             const component = _.kebabCase(step.component);
-            let template;
-            if (resourceType === 'ADVERT') {
-                template = '<' + component + ' welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="advertForm" advert="resource" wizard="wizard"></' + component + '>';
-            } else if (resourceType === 'STUDENT') {
-                template = '<' + component + ' welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="studentForm" student="resource" wizard="wizard"></' + component + '>';
-            } else {
-                template = '<' + component + ' welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="organizationForm" organization="resource" wizard="wizard"></' + component + '>';
+            let resourceTypeLower = resourceType.toLowerCase();
+            if (resourceTypeLower === 'promoter' || resourceTypeLower === 'department') {
+                resourceTypeLower = 'organization';
             }
+            const template = `<${component} welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="${resourceTypeLower}Form" ${resourceTypeLower}="resource" wizard="wizard"></${component}>`;
             $stateProvider
                 .state(resourceType.toLowerCase() + '.' + step.id, {
                     url: '/' + step.id,
