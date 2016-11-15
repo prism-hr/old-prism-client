@@ -4,7 +4,7 @@ export class ResourceCreateWizardFactory {
     constructor() {
         const organizationSteps = [
             {id: 'summary', component: 'organizationSummary', title: 'Summary'},
-            {id: 'details', component: 'organizationDetails', title: 'Details'}];
+            {id: 'details', component: 'organizationDetails', title: 'Details', data: {hasTags: true}}];
 
         this.steps = {
             PROMOTER: organizationSteps,
@@ -15,7 +15,7 @@ export class ResourceCreateWizardFactory {
                 {id: 'header', component: 'advertHeader', title: 'Header'},
                 {id: 'salary', component: 'advertSalary', title: 'Salary'},
                 {id: 'details', component: 'advertDetails', title: 'Details'},
-                {id: 'audience', component: 'advertCandidate', title: 'Candidate'}],
+                {id: 'candidate', component: 'advertCandidate', title: 'Candidate', data: {hasTags: true}}],
             AUDIENCE: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
                 {id: 'social', component: 'audienceSocial', title: 'Social Promotion'}],
             STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
@@ -29,9 +29,6 @@ export class ResourceCreateWizardFactory {
                 step.index = index;
                 step.data = step.data || {};
                 step.data.wizardStep = true;
-                if (index === array.length - 1) {
-                    step.data.lastStep = true;
-                }
             });
         });
     }
@@ -136,26 +133,32 @@ export class ResourceCreateWizardFactory {
                 const resource = this.getResource();
                 const wasResourceSaved = Boolean(resource.accessCode);
 
-                if (currentStep.data.lastStep) {
-                    return this._resourceManager.commitResource()
-                        .then(savedResource => {
-                            ResourceCreateWizard._afterSave(savedResource);
-                        });
-                }
-
                 resource.stateComplete = resource.stateComplete || {};
                 resource.stateComplete[this._currentStep] = 'complete';
                 const nextStep = this.getNextStep();
-                nextStep.available = true; // to make navigation tab enabled before we switch
+                if (nextStep) {
+                    nextStep.available = true; // to make navigation tab enabled before we switch
+                }
+                if (_.get(nextStep, 'data.hasTags')) {
+                    resource.addSuggestedTags = true;
+                }
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
-                        if (wasResourceSaved) {
-                            welcomeService.updateWizardCompleteness(savedResource);
-                        } else {
-                            welcomeService.addWizardCompleteness(savedResource, {
-                                welcomeType: this._welcomeType,
-                                wizardType: this._wizardType
-                            });
+                        if (this._welcomeType) {
+                            if (wasResourceSaved) {
+                                welcomeService.updateWizardCompleteness(savedResource);
+                            } else {
+                                welcomeService.addWizardCompleteness(savedResource, {
+                                    welcomeType: this._welcomeType,
+                                    wizardType: this._wizardType
+                                });
+                            }
+                        }
+                        if (!nextStep) {
+                            return this._resourceManager.commitResource()
+                                .then(savedResource => {
+                                    ResourceCreateWizard._afterSave(savedResource);
+                                });
                         }
                         return $state.go(this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode});
                     });

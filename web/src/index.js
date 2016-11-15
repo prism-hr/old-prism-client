@@ -38,7 +38,6 @@ import {definitionsLoadHook} from './app/general/definitions-load.hook';
 import {ActivityService} from './app/unauthenticated/activity.service';
 import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
-import {FileConversionService} from './app/general/file-conversion.service';
 import {resourceManagerFactory} from './app/create/resource-manager.factory';
 import {WelcomeService} from './app/welcome/welcome.service';
 import {ResourceCreateWizardFactory} from './app/create/resource-create-wizard.factory';
@@ -127,7 +126,6 @@ angular
     .service('resourceManagerFactory', resourceManagerFactory)
     .service('welcomeService', WelcomeService)
     .service('definitions', DefinitionsService)
-    .service('fileConversion', FileConversionService)
     .provider('resourceCreateWizardFactory', ResourceCreateWizardFactory)
     .run(authenticationHook)
     .run(browserTitleHook)

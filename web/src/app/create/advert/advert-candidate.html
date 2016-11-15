@@ -5,7 +5,8 @@
         <md-input-container class="md-block">
             <label class="md-no-float">Areas of Expertise</label>
             <md-chips ng-model="$ctrl.advert.tags"
-                      md-transform-chip="$ctrl.transformTag($chip)">
+                      md-transform-chip="$ctrl.transformTag($chip)"
+                      md-max-chips="2">
                 <md-autocomplete
                         md-search-text="searchText"
                         md-items="item in $ctrl.lookupTags(searchText)"
@@ -27,7 +28,8 @@
         </md-switch>
         <div class="sub-audience" ng-if="!$ctrl.studentsTypeAll">
             <div layout="row">
-                <md-switch ng-model="$ctrl.studentsUndergraduateAll" class="md-primary" aria-label="All Undergraduate Students">
+                <md-switch ng-model="$ctrl.studentsUndergraduateAll" class="md-primary"
+                           aria-label="All Undergraduate Students">
                     All Undergraduate Students
                 </md-switch>
             </div>

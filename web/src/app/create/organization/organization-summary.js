@@ -1,11 +1,10 @@
 class OrganizationSummaryController {
-    constructor($q, $state, Restangular, cloudinary, welcomeService, fileConversion) {
+    constructor($q, $state, Restangular, cloudinary, welcomeService) {
         this.$q = $q;
         this.$state = $state;
         this.Restangular = Restangular;
         this.cloudinary = cloudinary;
         this.welcomeService = welcomeService;
-        this.fileConversion = fileConversion;
     }
 
     $onInit() {
@@ -92,7 +91,7 @@ class OrganizationSummaryController {
         params = params || {};
         this.Restangular.one('organizationImplementations', organization.accessCode).get()
             .then(o => {
-                this.requestOrganization = this.fileConversion.processForDisplay(o.plain());
+                this.requestOrganization = o.plain();
                 this.requestOrganization.isImplementation = params.isImplementation;
                 if (this.requestOrganization.actions.includes('edit')) {
                     this.requestOrganization.editRef = this.$state.href(this.wizardType.toLowerCase() + '.summary', {

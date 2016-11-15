@@ -1,27 +1,7 @@
-<div class="background-box" ng-if="$ctrl.advert.organizationImplementation.documentBackgroundImage"
-     ngf-background="$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
-<div class="background-box" ng-if="!$ctrl.advert.organizationImplementation.documentBackgroundImage"></div>
-<div class="background-uploader-box">
-    <button class="background-uploader"
-            ngf-select
-            ng-model="$ctrl.advert.organizationImplementation.documentBackgroundImage"
-            name="file"
-            ngf-pattern="'image/*'"
-            ngf-accept="'image/png, image/jpeg, image/gif'"
-            ngf-max-size="10MB">
-        <i class="icon-camera"></i>
-    </button>
-    <small ng-if="!$ctrl.advert.organizationImplementation.documentBackgroundImage">Minimum size 1280 x 320</small>
-</div>
+<background-uploader ng-model="$ctrl.advert.documentBackgroundImage"></background-uploader>
 <div class="position-box" layout="row" layout-align="center end">
     <md-card class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
-        <div class="logo-image">
-            <div class="logo-flex company-logo">
-                <div class="logo">
-                    <img ngf-src="$ctrl.advert.organizationImplementation.organization.documentLogoImage || '/img/prism-logo-default.png'"/>
-                </div>
-            </div>
-        </div>
+        <logo-uploader ng-model="$ctrl.organization.documentLogoImage"></logo-uploader>
         <div class="position-item">
             <div class="position-header" layout="row" layout-align="start center">
                 <h2>{{$ctrl.advert.name}}</h2>

@@ -1,5 +1,5 @@
 /** @ngInject */
-export const resourceManagerFactory = function ($q, Restangular, Upload, fileConversion) {
+export const resourceManagerFactory = function ($q, Restangular, Upload) {
     const typeDefinitions = {
         PROMOTER: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
         DEPARTMENT: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
@@ -35,7 +35,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
                     context: this._type
                 })
             }).then(response => {
-                const savedResource = fileConversion.processForDisplay(response.data);
+                const savedResource = response.data;
                 savedResource.stateComplete = JSON.parse(savedResource.stateComplete);
                 this._resource = savedResource;
                 return this._resource;
@@ -45,7 +45,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
         commitResource() {
             return Restangular.one(typeDefinitions[this._type].apiCollection, this._resource.accessCode).one('commit').customPUT({})
                 .then(response => {
-                    this._resource = fileConversion.processForDisplay(response.plain());
+                    this._resource = response.plain();
                     this._resource.stateComplete = JSON.parse(this._resource.stateComplete);
                     return this._resource;
                 });
@@ -67,8 +67,7 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
 
             return Restangular.one(typeDefinitions[type].apiCollection, source).get()
                 .then(resource => {
-                    let r = resource.plain();
-                    r = fileConversion.processForDisplay(r);
+                    const r = resource.plain();
                     r.stateComplete = JSON.parse(r.stateComplete);
                     return new ResourceManager(type, r);
                 });
@@ -76,40 +75,13 @@ export const resourceManagerFactory = function ($q, Restangular, Upload, fileCon
     };
 
     function generateOrganizationPostData(resource) {
-        let resourcePost = _.omit(resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions', 'proximity', 'proximityScore', 'relevanceScore', 'groupMatchTag', 'countMatchTag', 'countMatchUser', 'documentLogoImageDisplay']);
-
-        let logo = null;
-        let background = null;
-        if (resource.documentLogoImage instanceof Blob) {
-            resourcePost.documentLogoImage = null;
-            logo = resource.documentLogoImage;
-        }
-        if (resource.documentBackgroundImage instanceof Blob) {
-            resourcePost.documentBackgroundImage = null;
-            background = resource.documentBackgroundImage;
-        }
-        resourcePost = fileConversion.processForUpload(angular.copy(resourcePost));
-        return {data: Upload.json(resourcePost), logo, background};
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions', 'proximity', 'proximityScore', 'relevanceScore', 'groupMatchTag', 'countMatchTag', 'countMatchUser', 'documentLogoImageDisplay']);
+        return {data: Upload.json(resourcePost)};
     }
 
     function generateAdvertPostData(resource) {
-        let resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'countReferral', 'timestampLatestReferral', 'timestampLatestView', 'countView', 'countResponse', 'timestampLatestResponse', 'organizationImplementationDisplay', 'documentBackgroundImageDisplay']);
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'countReferral', 'timestampLatestReferral', 'timestampLatestView', 'countView', 'countResponse', 'timestampLatestResponse', 'organizationImplementationDisplay', 'documentBackgroundImageDisplay']);
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
-
-        let logo = null;
-        let background = null;
-        if (resource.organizationImplementationOwner) {
-            const owner = resource.organizationImplementationOwner;
-            if (owner.documentLogoImage instanceof Blob) {
-                resourcePost.documentLogoImage = null;
-                logo = owner.documentLogoImage;
-            }
-        }
-        if (resource.documentBackgroundImage instanceof Blob) {
-            resourcePost.documentBackgroundImage = null;
-            background = resource.documentBackgroundImage;
-        }
-        resourcePost = fileConversion.processForUpload(angular.copy(resourcePost));
-        return {data: Upload.json(resourcePost), logo, background};
+        return {data: Upload.json(resourcePost)};
     }
 };
