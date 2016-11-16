@@ -7,9 +7,9 @@ class PromoterWelcomeController {
     $onInit() {
         const welcomeType = 'promoter';
         this.statuses = this.welcomeService.getWelcomeStatuses('promoter');
-        const promoter = _.get(this.statuses, 'PROMOTER.resource');
-        const promoterAccessRequested = _.get(this.statuses, 'PROMOTER.resource.accessRequested');
-        const advert = _.get(this.statuses, 'ADVERT.resource');
+        const promoter = _.get(this.statuses, 'promoter.resource');
+        const promoterAccessRequested = _.get(this.statuses, 'promoter.resource.accessRequested');
+        const advert = _.get(this.statuses, 'advert.resource');
         this.advertEnabled = _.get(promoter, 'state') === 'ACCEPTED' || promoterAccessRequested;
         this.audienceEnabled = _.get(advert, 'state') === 'ACCEPTED';
         this.promoterWizardState = {

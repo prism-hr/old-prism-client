@@ -10,7 +10,7 @@ export class ActivityService {
     }
 
     loadOrganizations() {
-        return this.Restangular.all('organizationImplementations').getList({context: 'PROMOTER'})
+        return this.Restangular.all('organizationImplementations').getList({context: 'promoter'})
             .then(organizations => {
                 this.organizations = organizations.plain();
                 this._activitiesSubject.onNext({organizations: this.organizations});

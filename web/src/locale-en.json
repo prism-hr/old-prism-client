@@ -2,55 +2,55 @@
   "create": {
     "organization": {
       "lc-type": {
-        "PROMOTER": "company",
-        "DEPARTMENT": "department"
+        "promoter": "company",
+        "department": "department"
       },
       "organization-lookup": {
         "organization-placeholder": {
-          "PROMOTER": "Look up or create company",
-          "DEPARTMENT": "Look up or create university"
+          "promoter": "Look up or create company",
+          "department": "Look up or create university"
         },
         "implementation-placeholder": {
-          "PROMOTER": "Look up or create division",
-          "DEPARTMENT": "Look up or create department"
+          "promoter": "Look up or create division",
+          "department": "Look up or create department"
         },
         "lookup-button": {
-          "PROMOTER": "Look up Company",
-          "DEPARTMENT": "Look up University"
+          "promoter": "Look up Company",
+          "department": "Look up University"
         },
         "lookup-title": {
-          "PROMOTER": "Find or create your company",
-          "DEPARTMENT": "Find or create your department"
+          "promoter": "Find or create your company",
+          "department": "Find or create your department"
         },
         "lookup-subtitle": {
-          "PROMOTER": "Create your company",
-          "DEPARTMENT": "Create your department"
+          "promoter": "Create your company",
+          "department": "Create your department"
         },
         "organization-label": {
-          "PROMOTER": "Company Name",
-          "DEPARTMENT": "University Name"
+          "promoter": "Company Name",
+          "department": "University Name"
         },
         "implementation-label": {
-          "PROMOTER": "Division Name",
-          "DEPARTMENT": "Department Name"
+          "promoter": "Division Name",
+          "department": "Department Name"
         },
         "add-department": {
-          "PROMOTER": "Add division",
-          "DEPARTMENT": "Add department"
+          "promoter": "Add division",
+          "department": "Add department"
         },
         "cancel-department": {
-          "PROMOTER": "Cancel division",
-          "DEPARTMENT": "Cancel department"
+          "promoter": "Cancel division",
+          "department": "Cancel department"
         }
       },
       "address-lookup": {
         "autocomplete-placeholder": {
-          "PROMOTER": "Look up your Locations",
-          "DEPARTMENT": "Look up your Locations"
+          "promoter": "Look up your Locations",
+          "department": "Look up your Locations"
         },
         "lookup-button": {
-          "PROMOTER": "Look up Locations",
-          "DEPARTMENT": "Look up Locations"
+          "promoter": "Look up Locations",
+          "department": "Look up Locations"
         }
       }
     },

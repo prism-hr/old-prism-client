@@ -42,7 +42,7 @@
             <!--</div>-->
         <!--</md-input-container>-->
 
-        <!--<md-input-container class="md-block" flex ng-if="$ctrl.wizardType === 'DEPARTMENT'">-->
+        <!--<md-input-container class="md-block" flex ng-if="$ctrl.wizardType === 'department'">-->
             <!--<label class="md-no-float">Number of Students</label>-->
             <!--<md-select name="numberStudent" ng-model="$ctrl.organization.numberStudent" required>-->
                 <!--<md-option ng-repeat="number in $ctrl.definitions.numberStudent" value="{{number}}">-->
@@ -55,7 +55,7 @@
         <!--</md-input-container>-->
     <!--</div>-->
 
-    <div layout="row" ng-if="$ctrl.wizardType === 'DEPARTMENT'">
+    <div layout="row" ng-if="$ctrl.wizardType === 'department'">
         <div>
             <label class="standalone-label">Study Levels</label>
             <md-checkbox name="undergraduate" md-no-ink aria-label="Undergraduate" ng-model="$ctrl.organization.studyLevel.undergraduate"

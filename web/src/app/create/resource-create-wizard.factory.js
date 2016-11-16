@@ -7,18 +7,18 @@ export class ResourceCreateWizardFactory {
             {id: 'details', component: 'organizationDetails', title: 'Details', data: {hasTags: true}}];
 
         this.steps = {
-            PROMOTER: organizationSteps,
-            DEPARTMENT: organizationSteps,
-            ADVERT: [{id: 'summary', component: 'advertSummary', title: 'Summary'},
+            promoter: organizationSteps,
+            department: organizationSteps,
+            advert: [{id: 'summary', component: 'advertSummary', title: 'Summary'},
                 {id: 'recruiter', component: 'advertRecruiter', title: 'Recruiter'},
                 {id: 'type', component: 'advertType', title: 'Type'},
                 {id: 'header', component: 'advertHeader', title: 'Header'},
                 {id: 'salary', component: 'advertSalary', title: 'Salary'},
                 {id: 'details', component: 'advertDetails', title: 'Details'},
                 {id: 'candidate', component: 'advertCandidate', title: 'Candidate', data: {hasTags: true}}],
-            AUDIENCE: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
+            audience: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
                 {id: 'social', component: 'audienceSocial', title: 'Social Promotion'}],
-            STUDENT: [{id: 'header', component: 'studentHeader', title: 'Header'},
+            student: [{id: 'header', component: 'studentHeader', title: 'Header'},
                 {id: 'studies', component: 'studentStudies', title: 'Studies'},
                 {id: 'contact', component: 'studentContact', title: 'Contact'},
                 {id: 'skills', component: 'studentSkills', title: 'Skills'},
