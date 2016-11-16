@@ -30,8 +30,13 @@ export class BackgroundUploader {
         };
 
         ngModel.$render = function () {
-            scope.imageUrl = ngModel.$modelValue.cloudinaryUrl;
-            scope.publicId = ngModel.$modelValue.cloudinaryId;
+            if (ngModel.$modelValue) {
+                scope.imageUrl = ngModel.$modelValue.cloudinaryUrl;
+                scope.publicId = ngModel.$modelValue.cloudinaryId;
+            } else {
+                scope.imageUrl = null;
+                scope.publicId = null;
+            }
         };
 
         scope.edit = function () {
