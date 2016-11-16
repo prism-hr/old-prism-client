@@ -85,7 +85,12 @@ export const resourceManagerFactory = function ($q, Restangular) {
         const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'countReferral', 'timestampLatestReferral', 'timestampLatestView', 'countView', 'countActivity', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay', 'documentBackgroundImageDisplay']);
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
         if (resourcePost.positionBenefits) {
-            resourcePost.positionBenefits.forEach(t => {
+            resourcePost.positionBenefits.forEach(b => {
+                b.positionBenefit = _.pick(b.positionBenefit, ['accessCode', 'name']);
+            });
+        }
+        if (resourcePost.tags) {
+            resourcePost.tags.forEach(t => {
                 t.tag = _.pick(t.tag, ['accessCode', 'name']);
             });
         }
