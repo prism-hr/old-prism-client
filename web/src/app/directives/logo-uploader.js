@@ -14,7 +14,6 @@ export class LogoUploader {
     link(scope, element, attrs, ctrl) {
         const self = this;
         const ngModel = ctrl[0];
-        const CLOUDINARY_REGEX = /^.+\.cloudinary\.com\/(?:[^\/]+\/)(?:(image|video)\/)?(?:(upload|fetch)\/)?(?:(?:[^_/]+_[^,/]+,?)*\/)?(?:v(\d+|\w{1,2})\/)?([^\.^\s]+)(?:\.(.+))?$/;
 
         scope.fileChanged = function (file) {
             if (!file) {
@@ -23,8 +22,9 @@ export class LogoUploader {
             self.cloudinary.upload(file, {folder: self.environment.cloudinaryFolder})
                 .then(response => {
                     scope.progressPercentage = null;
-                    ngModel.$setViewValue(response.data.url);
-                    scope.publicId = getPublicId(response.data.url);
+                    const model = {cloudinaryId: response.data.public_id, cloudinaryUrl: response.data.url};
+                    ngModel.$setViewValue(model);
+                    scope.publicId = response.data.public_id;
                 }, response => {
                     scope.progressPercentage = null;
                     scope.error = response.status;
@@ -34,12 +34,7 @@ export class LogoUploader {
         };
 
         ngModel.$render = function () {
-            scope.publicId = ngModel.$modelValue && getPublicId(ngModel.$modelValue);
+            scope.publicId = ngModel.$modelValue && ngModel.$modelValue.cloudinaryId;
         };
-
-        function getPublicId(url) {
-            const matches = CLOUDINARY_REGEX.exec(url);
-            return matches[4];
-        }
     }
 }

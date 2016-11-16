@@ -1,5 +1,5 @@
 /** @ngInject */
-export const resourceManagerFactory = function ($q, Restangular, Upload) {
+export const resourceManagerFactory = function ($q, Restangular) {
     const typeDefinitions = {
         PROMOTER: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
         DEPARTMENT: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
@@ -19,23 +19,20 @@ export const resourceManagerFactory = function ($q, Restangular, Upload) {
 
         saveResource() {
             const collectionName = typeDefinitions[this._type].apiCollection;
-            let url;
-            if (this._resource.accessCode) {
-                url = Restangular.one(collectionName, this._resource.accessCode).getRestangularUrl();
-            } else {
-                url = Restangular.all(collectionName).getRestangularUrl();
-            }
 
             const data = typeDefinitions[this._type].generatePostData(this._resource);
-
-            return Upload.upload({
-                url,
-                data: _.assign({}, data, {
-                    stateComplete: Upload.json(this._resource.stateComplete),
+            let promise;
+            if (this._resource.accessCode) {
+                promise = Restangular.one(collectionName, this._resource.accessCode)
+                    .customPUT(data, null, {stateComplete: this._resource.stateComplete});
+            } else {
+                promise = Restangular.all(collectionName).post(data, {
+                    stateComplete: this._resource.stateComplete,
                     context: this._type
-                })
-            }).then(response => {
-                const savedResource = response.data;
+                });
+            }
+
+            return promise.then(savedResource => {
                 savedResource.stateComplete = JSON.parse(savedResource.stateComplete);
                 this._resource = savedResource;
                 return this._resource;
@@ -75,13 +72,16 @@ export const resourceManagerFactory = function ($q, Restangular, Upload) {
     };
 
     function generateOrganizationPostData(resource) {
-        const resourcePost = _.omit(resource, ['state', 'userCreate', 'roles', 'stateComplete', 'context', 'actions', 'proximity', 'proximityScore', 'relevanceScore', 'groupMatchTag', 'countMatchTag', 'countMatchUser', 'documentLogoImageDisplay']);
-        return {data: Upload.json(resourcePost)};
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'context', 'actions']);
+        resourcePost.tags.forEach(t => {
+            t.tag = _.pick(t.tag, ['accessCode', 'name']);
+        });
+        return resourcePost;
     }
 
     function generateAdvertPostData(resource) {
-        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'countReferral', 'timestampLatestReferral', 'timestampLatestView', 'countView', 'countResponse', 'timestampLatestResponse', 'organizationImplementationDisplay', 'documentBackgroundImageDisplay']);
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'countReferral', 'timestampLatestReferral', 'timestampLatestView', 'countView', 'countActivity', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay', 'documentBackgroundImageDisplay']);
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
-        return {data: Upload.json(resourcePost)};
+        return resourcePost;
     }
 };

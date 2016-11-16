@@ -11,7 +11,6 @@ export class BackgroundUploader {
     link(scope, element, attrs, ngModel) {
         const self = this;
         scope.data = {};
-        const CLOUDINARY_REGEX = /^.+\.cloudinary\.com\/(?:[^\/]+\/)(?:(image|video)\/)?(?:(upload|fetch)\/)?(?:(?:[^_/]+_[^,/]+,?)*\/)?(?:v(\d+|\w{1,2})\/)?([^\.^\s]+)(?:\.(.+))?$/;
         scope.publicId = 'local/jst7pa4karrnpzw0hd89';
 
         scope.fileChanged = function (file) {
@@ -21,7 +20,7 @@ export class BackgroundUploader {
             self.cloudinary.upload(file, {folder: self.environment.cloudinaryFolder})
                 .then(response => {
                     scope.progressPercentage = null;
-                    scope.publicIdToCrop = getPublicId(response.data.url);
+                    scope.publicIdToCrop = response.data.public_id;
                 }, response => {
                     scope.progressPercentage = null;
                     scope.error = response.status;
@@ -31,11 +30,12 @@ export class BackgroundUploader {
         };
 
         ngModel.$render = function () {
-            scope.imageUrl = ngModel.$modelValue;
+            scope.imageUrl = ngModel.$modelValue.cloudinaryUrl;
+            scope.publicId = ngModel.$modelValue.cloudinaryId;
         };
 
         scope.edit = function () {
-            scope.publicIdToCrop = ngModel.$modelValue && getPublicId(ngModel.$modelValue);
+            scope.publicIdToCrop = ngModel.$modelValue.cloudinaryId;
         };
 
         scope.cancel = function () {
@@ -45,14 +45,9 @@ export class BackgroundUploader {
 
         scope.confirm = function () {
             scope.imageUrl = scope.data.croppedUrl;
-            ngModel.$setViewValue(scope.imageUrl);
+            ngModel.$setViewValue({cloudinaryId: scope.publicIdToCrop, cloudinaryUrl: scope.imageUrl});
             scope.publicIdToCrop = null;
             scope.data.croppedUrl = null;
         };
-
-        function getPublicId(url) {
-            const matches = CLOUDINARY_REGEX.exec(url);
-            return matches[4];
-        }
     }
 }
