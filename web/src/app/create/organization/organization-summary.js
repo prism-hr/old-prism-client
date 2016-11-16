@@ -8,7 +8,7 @@ class OrganizationSummaryController {
     }
 
     $onInit() {
-        this.showImplementationName = this.wizardType === 'DEPARTMENT';
+        this.showImplementationName = this.wizardType === 'department';
         this.editingOrganization = Boolean(this.organization.accessCode);
 
         this.setView('details');
@@ -135,7 +135,7 @@ class OrganizationSummaryController {
         this.selectedOrganization = null;
         this.selectedOrganizationImplementation = null;
         this.organization.organization = this.organization.name = null;
-        this.showImplementationName = this.wizardType === 'DEPARTMENT';
+        this.showImplementationName = this.wizardType === 'department';
         this.setView('details');
     }
 

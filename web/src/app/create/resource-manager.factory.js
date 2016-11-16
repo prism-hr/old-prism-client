@@ -1,10 +1,10 @@
 /** @ngInject */
 export const resourceManagerFactory = function ($q, Restangular) {
     const typeDefinitions = {
-        PROMOTER: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
-        DEPARTMENT: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
-        ADVERT: {apiCollection: 'promotions', generatePostData: generateAdvertPostData},
-        STUDENT: {apiCollection: 'students'}
+        promoter: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
+        department: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
+        advert: {apiCollection: 'promotions', generatePostData: generateAdvertPostData},
+        student: {apiCollection: 'students'}
     };
 
     class ResourceManager {

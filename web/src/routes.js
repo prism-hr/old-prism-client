@@ -41,7 +41,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'organization',
             data: {auth: true},
             resolve: {
-                wizardType: _.wrap('PROMOTER'),
+                wizardType: _.wrap('promoter'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     const source = $stateParams.id === 'new' ? {} : $stateParams.id;
                     return resourceManagerFactory.getManager(source, wizardType)
@@ -67,7 +67,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'organization',
             data: {auth: true},
             resolve: {
-                wizardType: _.wrap('DEPARTMENT'),
+                wizardType: _.wrap('department'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     const source = $stateParams.id === 'new' ? {} : $stateParams.id;
                     return resourceManagerFactory.getManager(source, wizardType)
@@ -82,7 +82,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'advert',
             data: {auth: true},
             resolve: {
-                wizardType: _.wrap('ADVERT'),
+                wizardType: _.wrap('advert'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     const source = $stateParams.id === 'new' ? {organizationImplementation: {accessCode: $stateParams.organization}} : $stateParams.id;
                     return resourceManagerFactory.getManager(source, wizardType)
@@ -97,10 +97,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'audience',
             data: {auth: true},
             resolve: {
-                wizardType: _.wrap('AUDIENCE'),
+                wizardType: _.wrap('audience'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     const source = $stateParams.id;
-                    return resourceManagerFactory.getManager(source, 'ADVERT')
+                    return resourceManagerFactory.getManager(source, 'advert')
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('Audience')
@@ -147,7 +147,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'student',
             data: {auth: true},
             resolve: {
-                wizardType: _.wrap('STUDENT'),
+                wizardType: _.wrap('student'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     return resourceManagerFactory.getManager($stateParams.id, wizardType)
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));

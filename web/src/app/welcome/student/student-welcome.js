@@ -6,7 +6,7 @@ class StudentWelcomeController {
 
     $onInit() {
         this.statuses = this.welcomeService.getWelcomeStatuses('student');
-        this.profileEnabled = _.get(this.statuses.STUDENT, 'resource.statusComplete.completed');
+        this.profileEnabled = _.get(this.statuses.student, 'resource.statusComplete.completed');
     }
 }
 
