@@ -24,7 +24,7 @@
             <label class="md-no-float">Advert URL
                 <small>(http://youradvert.com)</small>
             </label>
-            <input type="url" name="websiteApply" ng-model="$ctrl.advert.websiteApply">
+            <input type="url" name="websiteApply" ng-model="$ctrl.advert.websiteApply" required>
             <div ng-messages="$ctrl.form.websiteApply.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>

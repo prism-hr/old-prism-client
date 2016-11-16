@@ -73,15 +73,22 @@ export const resourceManagerFactory = function ($q, Restangular) {
 
     function generateOrganizationPostData(resource) {
         const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'context', 'actions']);
-        resourcePost.tags.forEach(t => {
-            t.tag = _.pick(t.tag, ['accessCode', 'name']);
-        });
+        if (resourcePost.tags) {
+            resourcePost.tags.forEach(t => {
+                t.tag = _.pick(t.tag, ['accessCode', 'name']);
+            });
+        }
         return resourcePost;
     }
 
     function generateAdvertPostData(resource) {
         const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'countReferral', 'timestampLatestReferral', 'timestampLatestView', 'countView', 'countActivity', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay', 'documentBackgroundImageDisplay']);
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
+        if (resourcePost.positionBenefits) {
+            resourcePost.positionBenefits.forEach(t => {
+                t.tag = _.pick(t.tag, ['accessCode', 'name']);
+            });
+        }
         return resourcePost;
     }
 };
