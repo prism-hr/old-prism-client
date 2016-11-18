@@ -145,7 +145,10 @@
                     </div>
                 </div>
             </div>
-            <div class="text-editor">
+            <md-switch ng-model="$ctrl.showDescription" class="md-primary" aria-label="Description">
+                Long Description
+            </md-switch>
+            <div class="text-editor" ng-if="$ctrl.showDescription">
                 <md-card>
                     <md-card-title>
                         <h3> Description

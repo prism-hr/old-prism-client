@@ -417,8 +417,15 @@ md-autocomplete input:not(.md-input), md-input-container  {
     }
   }
 }
-.progress-box{
-
+logo-uploader {
+  position: relative;
+  .progress-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    margin-top:-25px;
+  }
 }
 .background-uploader-box {
   position: absolute;

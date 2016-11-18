@@ -40,27 +40,39 @@
 <md-content class="main-menu" flex>
     <md-list flex>
         <md-subheader class="md-no-sticky">
-            Menu
-            <md-menu md-position-mode="target-right target">
-                <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
-                    <md-icon class="icon-options-vertical"></md-icon>
+            <div layout="row" layout-align="start center">
+                <sapn>Menu</sapn>
+                <div class="search-holder fade-animation" ng-if="$ctrl.searchBox">
+                    <md-input class="small">
+                        <input>
+                    </md-input>
+                </div>
+                <span class="flex"></span>
+                <md-button class="md-icon-button" aria-label="Search" ng-click="$ctrl.searchBoxToggle()">
+                    <md-icon class="icon-magnifier" ng-if="!$ctrl.searchBox"></md-icon>
+                    <md-icon class="icon-close" ng-if="$ctrl.searchBox"></md-icon>
                 </md-button>
-                <md-menu-content width="2" class="small">
-                    <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)"><i class="icon-home"></i> New Company</md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position</md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department
-                        </md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)"><i class="icon-notebook"></i> New Contact</md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-home"></i> New Company</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-notebook"></i> New Contact</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
         </md-subheader>
         <md-list-item ng-click="navigateTo('candidates', $event)">
             <i class="icon-people"></i>

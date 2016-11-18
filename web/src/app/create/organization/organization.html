@@ -1,6 +1,10 @@
 <div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.organization.organization.accessCode}">
     <div class="preview {{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.organization.accessCode">
-        <label>Preview</label>
+        <div class="label-holder">
+            <label>Preview</label>
+            <label class="published">Published</label>
+            <label class="unpublished">Unpublished</label>
+        </div>
         <organization-preview-box organization="$ctrl.organization"></organization-preview-box>
         <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
         </wizard-navigation>

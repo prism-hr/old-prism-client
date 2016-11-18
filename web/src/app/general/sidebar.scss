@@ -49,9 +49,13 @@ sidebar {
   }
   .main-menu {
     .md-subheader-inner {
-      .md-icon-button {
-        float: right;
-        margin-top: -12px;
+      padding: 4px 16px;
+      .icon-magnifier, .icon-close {
+        font-size: 20px;
+        margin-top: 2px;
+      }
+      .search-holder {
+        margin-left:10px;
       }
     }
     .md-icon-button {
@@ -206,6 +210,9 @@ sidebar {
     font-size: 1.3rem;
     margin-top: 2px;
   }
+}
+md-menu-item > a.md-button {
+  padding-top:0;
 }
 md-menu-content.small {
   md-menu-item {

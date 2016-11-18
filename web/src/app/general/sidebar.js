@@ -19,6 +19,7 @@ class SidebarController {
     $onInit() {
         this.hideSidebar = this.$state.current.data && this.$state.current.data.hideSidebar;
         this.stepSubscription = this.activityService.subscribeToActivities(this._onActivitiesChange.bind(this));
+        this.searchBox = false;
     }
 
     close() {
@@ -29,7 +30,13 @@ class SidebarController {
         this.authService.logout();
         this.$state.go('welcome');
     }
-
+    searchBoxToggle() {
+        if (this.searchBox === false) {
+            this.searchBox = true;
+        } else {
+            this.searchBox = false;
+        }
+    }
     toggleSubmenu(name, $event) {
         const menu = angular.element(document.body.querySelector('.submenu-' + name));
         const ele = angular.element($event.target.parentElement.parentElement);
