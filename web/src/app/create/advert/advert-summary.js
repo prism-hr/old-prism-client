@@ -1,24 +1,26 @@
 class AdvertSummaryController {
     $onInit() {
-        this.advert.stateComplete = this.advert.stateComplete || {recruiter: 'invalid'};
-        this.originalRecruiterState = this.advert.stateComplete.recruiter;
+        const stepComplete = this.advert.stateComplete[this.wizardType].steps;
+        stepComplete.recruiter = stepComplete.recruiter || 'invalid';
+        this.originalRecruiterState = stepComplete.recruiter;
         if (this.originalRecruiterState === 'invalid') {
             this.isRecruiter = false;
-        } else if (this.advert.stateComplete.summary) { // this is already step editing
+        } else if (stepComplete.summary) { // this is already step editing
             this.isRecruiter = true;
         }
         this.advert.category = this.advert.category || 'EMPLOYMENT';
     }
 
     isRecruiterChanged(isRecruiter) {
+        const stepComplete = this.advert.stateComplete[this.wizardType].steps;
         if (isRecruiter) {
             if (this.originalRecruiterState && this.originalRecruiterState !== 'invalid') {
-                this.advert.stateComplete.recruiter = this.originalRecruiterState;
+                stepComplete.recruiter = this.originalRecruiterState;
             } else {
-                delete this.advert.stateComplete.recruiter;
+                delete stepComplete.recruiter;
             }
         } else {
-            this.advert.stateComplete.recruiter = 'invalid';
+            stepComplete.recruiter = 'invalid';
         }
     }
 }
@@ -26,6 +28,7 @@ class AdvertSummaryController {
 export const AdvertSummary = {
     template: require('./advert-summary.html'),
     bindings: {
+        wizardType: '@',
         advert: '=',
         form: '<'
     },

@@ -9,7 +9,7 @@ class DepartmentWelcomeController {
         this.statuses = this.welcomeService.getWelcomeStatuses('department');
         const department = _.get(this.statuses, 'department.resource');
         const departmentAccessRequested = _.get(this.statuses, 'department.resource.accessRequested');
-        this.studentsEnabled = _.get(department, 'state') === 'ACCEPTED' || departmentAccessRequested;
+        this.studentsEnabled = _.get(this.statuses, 'department.wizardComplete.state') === 'ACCEPTED' || departmentAccessRequested;
         this.departmentWizardState = {
             name: 'department.summary',
             params: {id: _.get(department, 'accessCode') || 'new', welcomeType}
