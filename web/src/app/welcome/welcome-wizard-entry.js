@@ -1,12 +1,12 @@
 class WelcomeWizardEntryController {
     $onInit() {
         this.buttonText = this.enabled ? 'Start' : 'Wait';
-        if (this.resource) {
+        if (this.wizardStatus) {
             this.statusClass = 'icon-exclamation';
             this.buttonText = 'Continue';
-            if (this.accessRequested) {
+            if (this.wizardStatus.accessRequested) {
                 this.buttonText = 'Access requested';
-            } else if (this.resource.state === 'ACCEPTED') {
+            } else if (this.wizardStatus.wizardComplete.state === 'COMPLETE') {
                 this.statusClass = 'icon-check';
                 this.buttonText = 'Edit';
             }
@@ -20,8 +20,7 @@ export const WelcomeWizardEntry = {
         title: '@',
         description: '@',
         wizardState: '<',
-        resource: '<',
-        accessRequested: '<',
+        wizardStatus: '<',
         enabled: '<'
     },
     controller: WelcomeWizardEntryController

@@ -8,14 +8,13 @@
             <welcome-wizard-entry title="Company Information"
                                   description="Initial basic information about your company"
                                   wizard-state="$ctrl.promoterWizardState"
-                                  resource="$ctrl.statuses.promoter.resource"
-                                  access-requested="$ctrl.statuses.promoter.accessRequested"
+                                  wizard-status="$ctrl.statuses.promoter"
                                   enabled="true">
             </welcome-wizard-entry>
             <welcome-wizard-entry title="Advert"
                                   description="Create your first advert"
                                   wizard-state="$ctrl.advertWizardState"
-                                  resource="$ctrl.statuses.advert.resource"
+                                  wizard-status="$ctrl.statuses.advert"
                                   enabled="$ctrl.advertEnabled">
             </welcome-wizard-entry>
             <welcome-wizard-entry title="Audience"
