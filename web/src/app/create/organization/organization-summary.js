@@ -23,6 +23,9 @@ class OrganizationSummaryController {
                 this.editableName = 'IMPLEMENTATION';
             }
         }
+        if (this.organization.description) {
+            this.showDescription = true;
+        }
     }
 
     setView(view) {

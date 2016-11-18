@@ -160,13 +160,21 @@
 }
 .preview {
   position: relative;
-  > label {
+  .label-holder {
     position: absolute;
     right: 0;
     top: 25px;
     right: 25px;
-    background: grey;
-    padding: 2px 4px;
-    color: white;
+    label {
+      background: grey;
+      padding: 2px 4px;
+      color: white;
+      &.published {
+        background: $uclgreen;
+      }
+      &.unpublished {
+        background: $employmentColor;
+      }
+    }
   }
 }

@@ -50,6 +50,17 @@
       background: $uclgreen;
     }
   }
+  .organization_join, .request {
+    &.new {
+      background:lighten($uclgreen , 34% );
+    }
+    &:hover {
+      background:lighten($uclgreen , 30% );
+    }
+    .icon {
+      background: $uclgreen;
+    }
+  }
   .position {
     &.new {
       background:lighten($uclblue , 34% );

@@ -7,14 +7,35 @@
             </div>
             <div class="activities-stream">
                 <ul>
-                    <li ng-repeat="activity in $ctrl.activities">
+                    <li ng-repeat="activity in $ctrl.activities" class="{{activity.activity.category | lowercase}} new">
                         <div ng-switch="activity.activity.category">
-                            <div ng-switch-when="ORGANIZATION_JOIN">
-                                {{activity.activity.userRole.user.firstName}}
-                                {{activity.activity.userRole.user.lastName}} requested access to
-                                {{activity.activity.userRole.organizationImplementation.name}}
-                                <button ng-click="$ctrl.responseToActivity(activity, 'accept')">Accept</button>
-                                <button ng-click="$ctrl.responseToActivity(activity, 'reject')">Reject</button>
+                            <div ng-switch-when="ORGANIZATION_JOIN" layout="row">
+                                <div class="activity-left" flex="10" layout="column" layout-align="center center">
+                                    <div class="icon">
+                                        <i class="icon-user"></i>
+                                    </div>
+                                </div>
+                                <div class="activity-body" flex="90">
+                                    <div layout="row" layout-align="center center">
+                                        <h4>Request Access to {{activity.activity.userRole.organizationImplementation.name}}</h4>
+                                        <span class="flex"></span>
+                                        <span class="badge">NEW</span>
+                                    </div>
+                                    <div class="activity-detail" layout="row" layout-align="center">
+                                        <span>by <a>{{activity.activity.userRole.user.firstName}} {{activity.activity.userRole.user.lastName}}</a></span>
+                                        <span flex></span>
+                                        <span class="when">24 Aug 2016 TODO</span>
+                                    </div>
+                                    <div class="activity-actions" layout="row" layout-align="center">
+                                        <div>
+                                            <md-button class="md-accent md-raised md-hue-2 small-xs" ng-click="$ctrl.responseToActivity(activity, 'accept')">Accept</md-button>
+                                            <md-button class="md-warn md-raised small-xs" ng-click="$ctrl.responseToActivity(activity, 'reject')">Reject</md-button>
+                                        </div>
+                                        <span flex></span>
+                                        <md-button class="md-primary md-raised small-xs">View Event</md-button>
+
+                                    </div>
+                                </div>
                             </div>
                             <div ng-switch-when="PROMOTION_CREATE">
                                 {{activity.activity.userCreate.firstName}}
