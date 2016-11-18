@@ -39,4 +39,6 @@
         </button>
     </div>
 </div>
-<div class="progress-box" ng-if="progressPercentage"><md-progress-circular md-mode="indeterminate"></md-progress-circular> {{progressPercentage}}</div>
+<div class="progress-box" ng-if="progressPercentage">
+    <md-progress-circular ng-if="progressPercentage" class="md-warn" md-mode="determinate" value="{{progressPercentage}}"></md-progress-circular>
+</div>

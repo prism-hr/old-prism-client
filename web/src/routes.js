@@ -122,6 +122,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Graduate Software and Electronics Engineers')
             }
         })
+        .state('student-view', {
+            url: '/student-view',
+            component: 'studentView',
+            data: {auth: true},
+            resolve: {
+                $title: _.wrap('Student View Demo')
+            }
+        })
         .state('universityOrganization', {
             url: '/university/organization',
             component: 'universityOrganization',

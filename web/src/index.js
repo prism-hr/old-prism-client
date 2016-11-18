@@ -80,6 +80,7 @@ import {AudienceSummary} from './app/create/audience/audience-summary';
 import {AudienceSocial} from './app/create/audience/audience-social';
 import {EmployerView} from './app/view/employer/employer-view';
 import {PositionView} from './app/view/position/position-view';
+import {StudentView} from './app/view/student/student-view';
 import {StudentWelcome} from './app/welcome/student/student-welcome';
 import {StudentHeader} from './app/welcome/student/student-header';
 import {StudentStudies} from './app/welcome/student/student-studies';
@@ -168,6 +169,7 @@ angular
     .component('audienceSocial', AudienceSocial)
     .component('employerView', EmployerView)
     .component('positionView', PositionView)
+    .component('studentView', StudentView)
     .component('studentWelcome', StudentWelcome)
     .component('student', Student)
     .component('studentHeader', StudentHeader)
