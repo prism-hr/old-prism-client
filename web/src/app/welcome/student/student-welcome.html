@@ -8,16 +8,14 @@
 
             <welcome-wizard-entry title="Basic Information"
                                   description="Just the basics to start showing you positions and events"
-                                  initial-state="student.dupa"
-                                  welcome-type="student"
-                                  welcome-status="$ctrl.statuses.student"
+                                  wizard-state="$ctrl.studentWizardState"
+                                  wizard-status="$ctrl.statuses.student"
                                   enabled="true">
             </welcome-wizard-entry>
             <welcome-wizard-entry title="Profile"
                                   description="It needs to be completed to apply any position"
-                                  initial-state="profiole.dupa"
-                                  welcome-type="student"
-                                  welcome-status="$ctrl.statuses.profile"
+                                  wizard-state="$ctrl.profileWizardState"
+                                  wizard-status="$ctrl.statuses.profile"
                                   enabled="$ctrl.profileEnabled">
             </welcome-wizard-entry>
         </div>

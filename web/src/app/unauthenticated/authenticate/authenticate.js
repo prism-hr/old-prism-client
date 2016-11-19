@@ -12,7 +12,7 @@ class AuthenticateController {
     setView(view) {
         this.view = view;
         this.responseError = null;
-        const user = _.get(this.activity, 'activity.userRole.user') || _.get(this.activity, 'activity.user');
+        const user = this.referral.contact;
         this.user = view === 'FORGOT_PASSWORD' ? {} : angular.copy(user) || {};
     }
 
@@ -75,7 +75,7 @@ class AuthenticateController {
 export const Authenticate = {
     template: require('./authenticate.html'),
     bindings: {
-        activity: '<',
+        referral: '<',
         initialView: '@'
     },
     controller: AuthenticateController

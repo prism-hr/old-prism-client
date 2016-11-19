@@ -59,6 +59,7 @@ import {Welcome} from './app/welcome/welcome';
 import {WelcomeWizardEntry} from './app/welcome/welcome-wizard-entry';
 import {DepartmentWelcome} from './app/welcome/department/department-welcome';
 import {PromoterWelcome} from './app/welcome/promoter/promoter-welcome';
+import {StudentWelcome} from './app/welcome/student/student-welcome';
 import {WizardNavigation} from './app/create/wizard-navigation';
 import {WizardButtons} from './app/create/wizard-buttons';
 import {Organization} from './app/create/organization/organization';
@@ -78,16 +79,15 @@ import {AdvertCandidate} from './app/create/advert/advert-candidate';
 import {Audience} from './app/create/audience/audience';
 import {AudienceSummary} from './app/create/audience/audience-summary';
 import {AudienceSocial} from './app/create/audience/audience-social';
+import {Student} from './app/create/student/student';
+import {StudentHeader} from './app/create/student/student-header';
+import {StudentStudies} from './app/create/student/student-studies';
+import {StudentContact} from './app/create/student/student-contact';
+import {StudentSkills} from './app/create/student/student-skills';
+import {StudentAbout} from './app/create/student/student-about';
 import {EmployerView} from './app/view/employer/employer-view';
 import {PositionView} from './app/view/position/position-view';
 import {StudentView} from './app/view/student/student-view';
-import {StudentWelcome} from './app/welcome/student/student-welcome';
-import {StudentHeader} from './app/welcome/student/student-header';
-import {StudentStudies} from './app/welcome/student/student-studies';
-import {StudentContact} from './app/welcome/student/student-contact';
-import {StudentSkills} from './app/welcome/student/student-skills';
-import {StudentAbout} from './app/welcome/student/student-about';
-import {Student} from './app/welcome/student/student';
 import './index.scss';
 import environment from './env.json';
 
@@ -148,6 +148,7 @@ angular
     .component('welcomeWizardEntry', WelcomeWizardEntry)
     .component('departmentWelcome', DepartmentWelcome)
     .component('promoterWelcome', PromoterWelcome)
+    .component('studentWelcome', StudentWelcome)
     .component('wizardNavigation', WizardNavigation)
     .component('wizardButtons', WizardButtons)
     .component('organization', Organization)
@@ -167,16 +168,15 @@ angular
     .component('audience', Audience)
     .component('audienceSummary', AudienceSummary)
     .component('audienceSocial', AudienceSocial)
-    .component('employerView', EmployerView)
-    .component('positionView', PositionView)
-    .component('studentView', StudentView)
-    .component('studentWelcome', StudentWelcome)
     .component('student', Student)
     .component('studentHeader', StudentHeader)
     .component('studentStudies', StudentStudies)
     .component('studentContact', StudentContact)
     .component('studentSkills', StudentSkills)
     .component('studentAbout', StudentAbout)
+    .component('employerView', EmployerView)
+    .component('positionView', PositionView)
+    .component('studentView', StudentView)
     .component('activities', Activities)
     .component('invited', Invited);
 

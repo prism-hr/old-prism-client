@@ -18,8 +18,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'invited',
             resolve: {
                 /** @ngInject */
-                activity($stateParams, activityService) {
-                    return $stateParams.accessCode && activityService.getActivity($stateParams.accessCode, $stateParams.action);
+                referral($stateParams, Restangular) {
+                    return Restangular.one('public').one('activityReferrals', $stateParams.accessCode).get()
+                        .then(referrral => referrral.plain());
                 },
                 $title: _.wrap('Invited')
             }
@@ -106,6 +107,21 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Audience')
             }
         })
+        .state('student', {
+            url: '/student/{id}?welcomeType',
+            abstract: true,
+            component: 'student',
+            data: {auth: true},
+            resolve: {
+                wizardType: _.wrap('student'),
+                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
+                    const source = $stateParams.id === 'new' ? {} : $stateParams.id;
+                    return resourceManagerFactory.getManager(source, 'student')
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
+                },
+                $title: _.wrap('Student')
+            }
+        })
         .state('employer-view', {
             url: '/employer-view',
             component: 'employerView',
@@ -146,20 +162,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 showRegistration: false
             },
             resolve: {
-                $title: _.wrap('Student')
-            }
-        })
-        .state('student', {
-            url: '/student/{id}?welcomeType',
-            abstract: true,
-            component: 'student',
-            data: {auth: true},
-            resolve: {
-                wizardType: _.wrap('student'),
-                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
-                    return resourceManagerFactory.getManager($stateParams.id, wizardType)
-                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
-                },
                 $title: _.wrap('Student')
             }
         })

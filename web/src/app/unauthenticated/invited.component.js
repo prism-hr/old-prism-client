@@ -6,21 +6,20 @@ class InvitedController {
     }
 
     $onInit() {
-        const user = _.get(this.activity, 'activity.userRole.user') || _.get(this.activity, 'activity.user');
-        const userState = user.state;
+        const user = this.referral.contact;
 
         let template;
-        if (userState === 'UNIDENTIFIED' || userState === 'IDENTIFIED') {
-            template = '<authenticate initial-view="LOGIN" activity="activity"></authenticate>';
+        if (user.enabled) {
+            template = '<authenticate initial-view="LOGIN" referral="referral"></authenticate>';
         } else {
-            template = '<authenticate initial-view="REGISTER" activity="activity"></authenticate>';
+            template = '<authenticate initial-view="REGISTER" referral="referral"></authenticate>';
         }
 
-        const activity = this.activity;
+        const referral = this.referral;
         this.$mdDialog.show({
             template,
             controller($scope) {
-                $scope.activity = activity;
+                $scope.referral = referral;
             },
             parent: angular.element(document.body),
             fullscreen: true
@@ -33,7 +32,7 @@ class InvitedController {
 export const Invited = {
     template: '<div></div>',
     bindings: {
-        activity: '<'
+        referral: '<'
     },
     controller: InvitedController
 };
