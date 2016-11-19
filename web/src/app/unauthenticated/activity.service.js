@@ -1,12 +1,9 @@
 /** @ngInject */
 export class ActivityService {
+    // TODO it probably won't be ActivitiesService but maybe ResourceService
     constructor(Restangular) {
         this.Restangular = Restangular;
         this._activitiesSubject = new Rx.Subject();
-    }
-
-    getActivity(accessCode) {
-        return this.Restangular.one('public').one('userActivities', accessCode).get();
     }
 
     loadOrganizations() {
