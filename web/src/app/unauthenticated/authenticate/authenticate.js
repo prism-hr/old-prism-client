@@ -12,8 +12,9 @@ class AuthenticateController {
     setView(view) {
         this.view = view;
         this.responseError = null;
-        const user = this.referral.contact;
-        this.user = view === 'FORGOT_PASSWORD' ? {} : angular.copy(user) || {};
+        const contact = this.referral.contact;
+        const user = {username: contact.email, firstName: contact.firstName, lastName: contact.lastName};
+        this.user = view === 'FORGOT_PASSWORD' ? {} : user || {};
     }
 
     login(form) {

@@ -46,7 +46,7 @@ export class PlaceAutocomplete {
                 return;
             }
             const deferred = self.$q.defer();
-            autocomplete.getPlacePredictions({input, types: ['geocode']}, places => {
+            autocomplete.getPlacePredictions({input, types: ['(regions)']}, places => {
                 deferred.resolve(places || {});
             });
             return deferred.promise;
