@@ -1,25 +1,24 @@
 class SidebarController {
     /** @ngInject */
-    constructor($state, $mdSidenav, authService, activityService) {
+    constructor($state, $mdSidenav, authService, userSessionService) {
         this.$state = $state;
         this.$mdSidenav = $mdSidenav;
         this.authService = authService;
-        this.activityService = activityService;
+        this.userSessionService = userSessionService;
 
-        this._onActivitiesChange = function (activities) {
-            if (activities.organizations) {
-                this.organizations = activities.organizations;
-            }
-            if (activities.promotions) {
-                this.promotions = activities.promotions;
-            }
+        this._onUserSessionChange = function (userSession) {
+            this.session = userSession;
         };
     }
 
     $onInit() {
         this.hideSidebar = this.$state.current.data && this.$state.current.data.hideSidebar;
-        this.stepSubscription = this.activityService.subscribeToActivities(this._onActivitiesChange.bind(this));
+        this.userSessionSubscription = this.userSessionService.subscribeToUserSession(this._onUserSessionChange.bind(this));
         this.searchBox = false;
+    }
+
+    $onDestroy() {
+        this.userSessionSubscription.dispose();
     }
 
     close() {
@@ -31,11 +30,7 @@ class SidebarController {
         this.$state.go('welcome');
     }
     searchBoxToggle() {
-        if (this.searchBox === false) {
-            this.searchBox = true;
-        } else {
-            this.searchBox = false;
-        }
+        this.searchBox = !this.searchBox;
     }
     toggleSubmenu(name, $event) {
         const menu = angular.element(document.body.querySelector('.submenu-' + name));
