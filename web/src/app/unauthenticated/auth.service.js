@@ -1,11 +1,11 @@
 export class AuthService {
     /** @ngInject */
-    constructor($http, $q, $auth, Restangular, activityService) {
+    constructor($http, $q, $auth, Restangular, userSessionService) {
         this.$http = $http;
         this.$q = $q;
         this.$auth = $auth;
         this.Restangular = Restangular;
-        this.activityService = activityService;
+        this.userSessionService = userSessionService;
     }
 
     applyAuthentication(response) {
@@ -66,8 +66,7 @@ export class AuthService {
                         }
                         throw Error('Couldn\'t load user');
                     })
-                    .then(() => this.activityService.loadOrganizations())
-                    .then(() => this.activityService.loadPromotions())
+                    .then(() => this.userSessionService.loadUserSession())
                     .then(() => {
                         return this.user;
                     });

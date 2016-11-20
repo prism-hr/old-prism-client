@@ -35,7 +35,7 @@ import {materialConfig} from './app/configuration/material.config';
 import {serverInterceptorConfig} from './app/configuration/server-interceptor.config';
 import {authenticationHook} from './app/unauthenticated/authentication.hook';
 import {definitionsLoadHook} from './app/general/definitions-load.hook';
-import {ActivityService} from './app/unauthenticated/activity.service';
+import {UserSessionService} from './app/unauthenticated/user-session.service';
 import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
 import {resourceManagerFactory} from './app/create/resource-manager.factory';
@@ -122,7 +122,7 @@ angular
     .config(cloudinaryConfig)
     .config(materialConfig)
     .config(serverInterceptorConfig)
-    .service('activityService', ActivityService)
+    .service('userSessionService', UserSessionService)
     .service('authService', AuthService)
     .service('resourceManagerFactory', resourceManagerFactory)
     .service('welcomeService', WelcomeService)
