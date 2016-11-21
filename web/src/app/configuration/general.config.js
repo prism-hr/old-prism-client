@@ -5,7 +5,6 @@ export const generalRun = function ($rootScope, $transitions, $state, Restangula
     });
     $rootScope.$state = $state;
     $rootScope.authService = authService;
-    $rootScope.documentsUrl = Restangular.one('public').all('documents').getRestangularUrl() + '/';
 };
 
 /** @ngInject */
