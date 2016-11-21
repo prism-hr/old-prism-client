@@ -11,7 +11,7 @@ export class WelcomeService {
         if (status) {
             status.resource = WelcomeService.pickResourceFields(resource);
             status.wizardComplete = wizardComplete;
-        } else {
+        } else if (welcomeType) {
             const status = Object.assign({resource: WelcomeService.pickResourceFields(resource)}, {
                 wizardType,
                 welcomeType,

@@ -45,6 +45,7 @@ import {resourceCreateWizardStepHook} from './app/create/resource-create-wizard-
 import {ApplicationLoader} from './app/directives/application-loader';
 import {NgCroppie} from './app/directives/ng-croppie';
 import {BackgroundUploader} from './app/directives/background-uploader';
+import {HttpPrefix} from './app/directives/http-prefix';
 import {LogoUploader} from './app/directives/logo-uploader';
 import {PlaceAutocomplete} from './app/directives/place-autocomplete';
 import {Dialog} from './app/general/dialog/dialog';
@@ -137,6 +138,7 @@ angular
     .directive('applicationLoader', ApplicationLoader)
     .directive('ngCroppie', NgCroppie)
     .directive('backgroundUploader', BackgroundUploader)
+    .directive('httpPrefix', HttpPrefix)
     .directive('logoUploader', LogoUploader)
     .directive('placeAutocomplete', PlaceAutocomplete)
     .component('prismDialog', Dialog)
