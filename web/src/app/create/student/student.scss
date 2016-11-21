@@ -1,0 +1,44 @@
+.student-box {
+  margin-top:-137px;
+  .student-header {
+    width: 96%;
+    background: white;
+    position: relative;
+    z-index: 7;
+    h2 {
+      margin-top:10px;
+      margin-bottom:2px;
+    }
+    h4 {
+      margin-bottom:6px;
+    }
+  }
+  .avatar-holder {
+    margin: 10px 20px 10px 10px;
+    width: 100px;
+    height: 100px;
+    &.employer {
+      border: 2px solid $uclred;
+    }
+    &.university {
+      border: 2px solid $uclgreen;
+    }
+    &.student {
+      border: 2px solid $uclblue;
+    }
+    float: left;
+    .no-user-image {
+      background: $uclblue;
+      border-radius: 50%;
+      color: white;
+      width: 96px;
+      height: 96px;
+      margin: 2px;
+      text-align: center;
+      i {
+        font-size:48px;
+      }
+    }
+  }
+}
+

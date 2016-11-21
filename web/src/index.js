@@ -81,6 +81,7 @@ import {Audience} from './app/create/audience/audience';
 import {AudienceSummary} from './app/create/audience/audience-summary';
 import {AudienceSocial} from './app/create/audience/audience-social';
 import {Student} from './app/create/student/student';
+import {StudentPreviewBox} from './app/create/student/student-preview-box';
 import {StudentHeader} from './app/create/student/student-header';
 import {StudentStudies} from './app/create/student/student-studies';
 import {StudentContact} from './app/create/student/student-contact';
@@ -171,6 +172,7 @@ angular
     .component('audienceSummary', AudienceSummary)
     .component('audienceSocial', AudienceSocial)
     .component('student', Student)
+    .component('studentPreviewBox', StudentPreviewBox)
     .component('studentHeader', StudentHeader)
     .component('studentStudies', StudentStudies)
     .component('studentContact', StudentContact)
