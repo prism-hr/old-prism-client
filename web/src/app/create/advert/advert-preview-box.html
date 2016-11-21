@@ -1,7 +1,13 @@
 <background-uploader ng-model="$ctrl.advert.documentBackgroundImage"></background-uploader>
 <div class="position-box" layout="row" layout-align="center end">
     <md-card class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
-        <logo-uploader ng-model="$ctrl.advert.documentLogoImage"></logo-uploader>
+        <div class="logo-image">
+            <div class="logo-flex company-logo">
+                <div class="logo">
+                    <img ng-src="{{$ctrl.advert.organizationImplementation.documentLogoImage.cloudinaryUrl || '/img/prism-logo-default.png'}}"/>
+                </div>
+            </div>
+        </div>
         <div class="position-item">
             <div class="position-header" layout="row" layout-align="start center">
                 <h2>{{$ctrl.advert.name}}</h2>
