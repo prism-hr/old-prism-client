@@ -43,7 +43,7 @@
             <div layout="row" layout-align="start center">
                 <sapn>Menu</sapn>
                 <div class="search-holder fade-animation" ng-if="$ctrl.searchBox">
-                    <md-input class="small" >
+                    <md-input class="small">
                         <input placeholder="Search">
                     </md-input>
                 </div>
@@ -61,7 +61,8 @@
                             <md-button ng-click="ctrl.new($index)"><i class="icon-home"></i> New Company</md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position</md-button>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position
+                            </md-button>
                         </md-menu-item>
                         <md-menu-item>
                             <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department
@@ -98,6 +99,7 @@
                           aria-label="{{employment.name}}">
                 <i class="icon-briefcase"></i>
                 <p ng-bind="employment.name"></p>
+                <img ng-src="{{employment.organizationImplementation.documentLogoImage.cloudinaryUrl}}"/>
                 <md-menu md-position-mode="target-right target">
                     <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
                         <md-icon class="icon-options-vertical"></md-icon>
@@ -124,6 +126,7 @@
                           aria-label="{{department.name}}">
                 <i class="icon-home"></i>
                 <p ng-bind="department.name"></p>
+                <img ng-src="{{department.documentLogoImage.cloudinaryUrl}}"/>
             </md-list-item>
         </div>
         <md-list-item ng-click="$ctrl.toggleSubmenu('promoters', $event)">
@@ -137,6 +140,8 @@
                           aria-label="{{promoter.name}}">
                 <i class="icon-home"></i>
                 <p ng-bind="promoter.name"></p>
+                <img ng-src="{{promoter.documentLogoImage.cloudinaryUrl}}"/>
+
                 <md-menu md-position-mode="target-right target">
                     <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
                         <md-icon class="icon-options-vertical"></md-icon>
