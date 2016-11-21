@@ -220,6 +220,11 @@
     border-bottom:none !important;
   }
 }
+audience {
+  .background-uploader-box {
+    display: none;
+  }
+}
 .audience {
   margin-top:20px;
   .sub-audience {

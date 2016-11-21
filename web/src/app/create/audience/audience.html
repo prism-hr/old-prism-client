@@ -1,5 +1,11 @@
-<div class="page-wrap step-page child">
-    <div class="{{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.advert.accessCode">
+<div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.advert.accessCode}">
+    <div class="preview {{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.advert.accessCode">
+        <div class="label-holder">
+            <label>Preview</label>
+            <label class="published">Published</label>
+            <label class="unpublished">Unpublished</label>
+        </div>
+        <advert-preview-box advert="$ctrl.advert"></advert-preview-box>
         <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
         </wizard-navigation>
     </div>
