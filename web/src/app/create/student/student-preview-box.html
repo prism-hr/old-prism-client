@@ -1,0 +1,27 @@
+<div class="background-box"></div>
+<div class="student-box" layout="row" layout-align="center end">
+    <md-card class="student-header" layout="row" flex-gt-sm="75">
+        <div class="avatar-holder student">
+            <img ng-src="{{$ctrl.authService.user.documentImage.cloudinaryUrl}}"
+                 class="md-avatar" alt="{{$ctrl.authService.user.firstName}} {{$ctrl.authService.user.lastName}}"
+                 ng-if="$ctrl.authService.user.documentImage">
+            <div ng-if="!$ctrl.authService.user.documentImage" class="no-user-image" layout="row"
+                 layout-align="center center">
+                <i class="icon-user"></i>
+            </div>
+        </div>
+        <div class="student-details">
+            <div layout="row" layout-align="center center">
+                <h2 class="name" >
+                    Juan Pablo Mingo
+                </h2>
+                <span flex></span>
+            </div>
+            <h4>Biochemical Engineering at UCL</h4>
+            <p class="summary">{{$ctrl.organization.summary}}</p>
+            <p class="address">
+                <span ng-repeat="location in $ctrl.organization.locations">{{location.location.name}} </span>
+            </p>
+        </div>
+    </md-card>
+</div>

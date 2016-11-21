@@ -1,7 +1,6 @@
 <div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.student.accessCode}">
-    <div class="preview {{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.student.accessCode">
-        <label>Preview</label>
-        <student-preview-box advert="$ctrl.student"></student-preview-box>
+    <div class="preview {{$ctrl.wizardType | lowercase}}" >
+        <student-preview-box student="$ctrl.student"></student-preview-box>
         <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
         </wizard-navigation>
     </div>
