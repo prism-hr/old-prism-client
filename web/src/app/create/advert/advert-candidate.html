@@ -6,7 +6,7 @@
             <label class="md-no-float">Areas of Expertise</label>
             <md-chips ng-model="$ctrl.advert.tags"
                       md-transform-chip="$ctrl.transformTag($chip)"
-                      md-max-chips="2">
+                      md-max-chips="20">
                 <md-autocomplete
                         md-search-text="searchText"
                         md-items="item in $ctrl.lookupTags(searchText)"

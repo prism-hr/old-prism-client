@@ -37,7 +37,7 @@
 .position-description-box {
   padding-right:20px;
 }
-.position, .advert {
+.position, .advert, audience {
   .position-item {
     width: 100%;
   }
@@ -164,6 +164,9 @@
   margin-top:-137px;
   .position-box-header {
     width: 96%;
+    background: white;
+    position: relative;
+    z-index: 7;
   }
 }
 @media (max-width: $layout-breakpoint-xs - 1) {
