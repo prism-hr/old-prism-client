@@ -7,16 +7,40 @@
     z-index: 7;
     h2 {
       margin-top:10px;
-      margin-bottom:2px;
+      margin-bottom:4px;
     }
     h4 {
+      margin-bottom:4px;
+      span {
+        font-weight:400;
+      }
+    }
+    h5 {
+      font-size:15px;
+      color: $uclblue;
+      span {
+        font-size: 13px;
+        color: $uclfooter;
+      }
       margin-bottom:6px;
+    }
+    .summary {
+      margin-top:0;
+      margin-bottom:10px;
+      padding-right: 20px;
+    }
+    .student-details {
+      padding-right: 10px;
     }
   }
   .avatar-holder {
     margin: 10px 20px 10px 10px;
     width: 100px;
+    min-width: 100px;
     height: 100px;
+    .logo-uploader-box {
+      right: 37px;
+    }
     &.employer {
       border: 2px solid $uclred;
     }

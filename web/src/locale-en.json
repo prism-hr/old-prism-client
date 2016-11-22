@@ -8,11 +8,13 @@
       "organization-lookup": {
         "organization-placeholder": {
           "promoter": "Look up or create company",
-          "department": "Look up or create university"
+          "department": "Look up or create university",
+          "student": "Look up or create university"
         },
         "implementation-placeholder": {
           "promoter": "Look up or create division",
-          "department": "Look up or create department"
+          "department": "Look up or create department",
+          "student": "Look up or create department"
         },
         "lookup-button": {
           "promoter": "Look up Company",

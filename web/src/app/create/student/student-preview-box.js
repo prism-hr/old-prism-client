@@ -1,6 +1,8 @@
 class StudentPreviewBoxController {
-    constructor($mdDialog) {
-        this.$mdDialog = $mdDialog;
+    /** @ngInject */
+    constructor(authService, userSessionService) {
+        this.authService = authService;
+        this.userSessionService = userSessionService;
     }
 }
 
