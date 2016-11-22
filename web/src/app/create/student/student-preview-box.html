@@ -9,16 +9,32 @@
                  layout-align="center center">
                 <i class="icon-user"></i>
             </div>
+            <div class="logo-uploader-box">
+                <button class="logo-uploader"
+                        ngf-select
+                        ng-model="chosenFile"
+                        ngf-pattern="'image/*'"
+                        ngf-accept="'image/png, image/jpeg, image/gif'"
+                        ngf-max-size="5MB"
+                        ngf-change="fileChanged($file)"
+                        ngf-select>
+                    <i class="icon-camera"></i>
+                </button>
+            </div>
         </div>
         <div class="student-details">
             <div layout="row" layout-align="center center">
                 <h2 class="name" >
-                    Juan Pablo Mingo
+                    {{$ctrl.authService.user.firstName}}
+                    {{$ctrl.authService.user.lastName}}
                 </h2>
                 <span flex></span>
+                <label class="badge">Master</label>
             </div>
-            <h4>Biochemical Engineering at UCL</h4>
-            <p class="summary">{{$ctrl.organization.summary}}</p>
+            <h4>Biochemical Engineering <span>at</span> UCL</h4>
+            <h5><strong class="badge info">2.1</strong> Starch and starchy materials production from corn with relevance to food industry <span>10/2007 - 6/2013</span></h5>
+            <p class="summary">
+                Graduated in MEng Chemical Engineering from the University of Santiago de Compostela (Spain) in 2013. As a postgraduate student in MSc Biological and Bioprocess Engineering at The University of Sheffield, where I graduated with distinction in 2015.</p>
             <p class="address">
                 <span ng-repeat="location in $ctrl.organization.locations">{{location.location.name}} </span>
             </p>

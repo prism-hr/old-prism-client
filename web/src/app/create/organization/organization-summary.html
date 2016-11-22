@@ -111,7 +111,7 @@
                 </md-input-container>
             </div>
         </div>
-        <div ng-if="$ctrl.selectedOrganization">
+        <div ng-if="$ctrl.selectedOrganization && $ctrl.wizardType === 'promoter' || $ctrl.selectedOrganizationImplementation && $ctrl.wizardType === 'department'">
             <div class="locations" layout="row">
                 <md-input-container class="md-block" flex>
                     <label class="md-no-float">Locations</label>

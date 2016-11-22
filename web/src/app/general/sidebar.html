@@ -139,12 +139,12 @@
                 </md-button>
                 <md-menu-content width="2" class="small">
                     <md-menu-item>
-                        <md-button>
+                        <md-button ng-click="ctrl.new($index)">
                             <i class="icon-people"></i>Promote to Candidates
                         </md-button>
                     </md-menu-item>
                     <md-menu-item>
-                        <md-button>
+                        <md-button ng-click="ctrl.new($index)">
                             <i class="icon-home"></i>Invite Company
                         </md-button>
                     </md-menu-item>
@@ -169,7 +169,7 @@
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button ui-sref="advert.summary({id: 'new', organization: promoter.accessCode})">
+                            <md-button ng-click="ctrl.new($index)" ui-sref="advert.summary({id: 'new', organization: promoter.accessCode})">
                                 <i class="icon-briefcase"></i>New Position
                             </md-button>
                         </md-menu-item>
