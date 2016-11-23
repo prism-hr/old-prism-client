@@ -1,113 +1,15 @@
 <div layout-padding>
     <h3>Candidate Basic information</h3>
-    <md-autocomplete ng-if="!$ctrl.selectedOrganization"
-                     md-input-name="selectedOrganization"
-                     md-no-cache="true"
-                     md-selected-item="$ctrl.selectedOrganization"
-                     md-selected-item-change="$ctrl.organizationSelected(organization)"
-                     ng-model-options="{debounce: 600}"
-                     md-search-text="organizationSearchText"
-                     md-items="organization in $ctrl.getOrganizations(organizationSearchText)"
-                     md-item-text="organization.name"
-                     md-min-length="1"
-                     placeholder="{{'create.organization.organization-lookup.organization-placeholder.' + $ctrl.wizardType | translate}}"
-                     md-menu-class="autocomplete-custom-template"
-                     md-require-match
-                     required>
-        <md-item-template>
-            <div layout="row">
-                <div class="logo-icon" ng-if="organization.documentLogoImage">
-                    <div class="logo-image">
-                        <div class="logo-flex company-logo">
-                            <div class="logo">
-                                <img ng-src="{{organization.documentLogoImage.cloudinaryUrl}}"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <span md-highlight-text="searchText" class="item-title"> {{organization.accessCode ? organization.name : 'Create ' + organization.name}} </span>
-                    <span class="item-location" ng-if="organization.locationList">
-                            {{organization.locationList}}
-                        </span>
-                </div>
-            </div>
-        </md-item-template>
-    </md-autocomplete>
-
-    <div ng-if="$ctrl.selectedOrganization" layout="row" layout-align="start center" class="company-lookup">
-        <md-input-container class="md-block" flex>
-            <label class="md-no-float">
-                {{'create.organization.organization-lookup.organization-label.' + $ctrl.wizardType | translate}}
-            </label>
-            <input name="organizationName" ng-model="$ctrl.organization.organization.name"
-                   ng-change="$ctrl.onOrganizationNameChanged($ctrl.organization.organization.name)"
-                   ng-disabled="$ctrl.editableName !== 'ORGANIZATION'">
-        </md-input-container>
-        <md-button ng-if="!$ctrl.editingOrganization"
-                   class="pull-left md-warn md-raised small"
-                   ng-click="$ctrl.startOver()">
-            <i class="icon-close"></i>
-            Start Over
-        </md-button>
-    </div>
-    <div ng-if="$ctrl.selectedOrganization" layout="row" layout-align="start start">
-        <div class="department-lookup" ng-if="!$ctrl.editingOrganization && !$ctrl.showImplementationName">
-            <md-button class="pull-left md-primary md-raised small"
-                       ng-click="$ctrl.addDepartment()">
-                <i class="icon-plus"></i>
-                {{'create.organization.organization-lookup.add-department.' + $ctrl.wizardType | translate}}
-            </md-button>
-        </div>
-        <div ng-if="$ctrl.showImplementationName" flex class="department-lookup">
-            <div ng-if="!$ctrl.selectedOrganizationImplementation" class="division-controls md-block">
-                <md-autocomplete
-                        class="md-block" flex="grow"
-                        md-input-name="selectedOrganizationImplementation"
-                        md-no-cache="true"
-                        md-selected-item="$ctrl.selectedOrganizationImplementation"
-                        md-selected-item-change="$ctrl.organizationImplementationSelected(implementation)"
-                        ng-model-options="{debounce: 600}"
-                        md-search-text="implementationSearchText"
-                        md-items="implementation in $ctrl.getOrganizationImplementations(implementationSearchText)"
-                        md-item-text="implementation.name"
-                        md-min-length="1"
-                        placeholder="{{'create.organization.organization-lookup.implementation-placeholder.' + $ctrl.wizardType | translate}}"
-                        md-menu-class="autocomplete-custom-template"
-                        md-require-match
-                        required>
-                    <md-item-template>
-                        <div layout="row">
-                            <div class="logo-icon" ng-if="implementation.documentLogoImage">
-                                <div class="logo-image">
-                                    <div class="logo-flex company-logo">
-                                        <div class="logo">
-                                            <img ng-src="{{implementation.documentLogoImage.cloudinaryUrl}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <span md-highlight-text="searchText" class="item-title"> {{implementation.accessCode ? implementation.name : 'Create ' + implementation.name}} </span>
-                                <span class="item-location"
-                                      ng-if="implementation.locationList">{{implementation.locationList}}</span>
-                            </div>
-                        </div>
-                    </md-item-template>
-                </md-autocomplete>
-            </div>
-            <md-input-container ng-if="$ctrl.selectedOrganizationImplementation" class="md-block">
-                <label class="md-no-float">
-                    {{'create.organization.organization-lookup.implementation-label.' + $ctrl.wizardType |
-                    translate}}
-                </label>
-                <input name="implementationName" ng-model="$ctrl.organization.name"
-                       ng-disabled="$ctrl.editableName !== 'IMPLEMENTATION'">
-            </md-input-container>
-        </div>
-    </div>
-    <!--<div ng-if="$ctrl.selectedOrganizationImplementation">-->
     <div class="fields-group">
+        <md-input-container class="md-block">
+            <label class="md-no-float">University</label>
+            <input ng-model="$ctrl.student.university" md-maxlength="100" name="university"
+                   required aria-label="University"/>
+            <div ng-messages="$ctrl.form.university.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+
         <label class="standalone-label">Study Level</label>
         <md-radio-group name="type" ng-required="true" ng-model="$ctrl.student.studyLevel"
                         class="horizontal-form medium">

@@ -155,7 +155,7 @@ export class ResourceCreateWizardFactory {
                                     return $state.go('activities');
                                 });
                         }
-                        return $state.go(this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode});
+                        return $state.go(this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode || 'new'}); // FIXME drop alternative 'new'
                     });
             }
 
