@@ -107,21 +107,22 @@
         </div>
     </div>
     <!--<div ng-if="$ctrl.selectedOrganizationImplementation">-->
-    <label class="standalone-label">Study Level</label>
-    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.student.studyLevel"
-                    class="horizontal-form medium">
-        <div class="radio-box-alined">
-            <md-radio-button class="md-primary" value="undergraduate" aria-label="Undergraduate">
-                Undergraduate
-            </md-radio-button>
-            <md-radio-button class="md-primary" value="master" aria-label="Master">
-                Master
-            </md-radio-button>
-            <md-radio-button class="md-primary" value="research" aria-label="Research">
-                Research
-            </md-radio-button>
-        </div>
-    </md-radio-group>
+    <div class="fields-group">
+        <label class="standalone-label">Study Level</label>
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.student.studyLevel"
+                        class="horizontal-form medium">
+            <div class="radio-box-alined">
+                <md-radio-button class="md-primary" value="undergraduate" aria-label="Undergraduate">
+                    Undergraduate
+                </md-radio-button>
+                <md-radio-button class="md-primary" value="master" aria-label="Master">
+                    Master
+                </md-radio-button>
+                <md-radio-button class="md-primary" value="research" aria-label="Research">
+                    Research
+                </md-radio-button>
+            </div>
+        </md-radio-group>
         <md-input-container class="md-block">
             <label class="md-no-float">Personal Statement</label>
             <textarea ng-model="$ctrl.student.summary" md-maxlength="250" name="summary" rows="3"
@@ -130,5 +131,22 @@
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
+        <div layout="row" layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label class="md-no-float">Prefer Email</label>
+                <input ng-model="$ctrl.student.email" required>
+                <div ng-messages="$ctrl.form.summary.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label class="md-no-float">Prefer Telephone</label>
+                <input ng-model="$ctrl.student.telephone" required>
+                <div ng-messages="$ctrl.form.summary.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
+    </div>
     <!--</div>-->
 </div>
