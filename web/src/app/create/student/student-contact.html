@@ -1,0 +1,34 @@
+<div layout-padding>
+    <h3>Contact Information</h3>
+    <div class="locations" layout="row">
+        <md-input-container class="md-block" flex>
+            <label class="md-no-float">Location</label>
+            <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
+                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                required>
+            </place-autocomplete>
+            <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="row" layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label class="md-no-float">Prefer Email</label>
+            <input ng-model="$ctrl.student.email" name="email" required>
+            <div ng-messages="$ctrl.form.email.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label class="md-no-float">Prefer Phone</label>
+            <input ng-model="$ctrl.student.telephone" name="telephone" required>
+            <div ng-messages="$ctrl.form.telephone.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div>
+        <label class="standalone-label">Languages</label>
+    </div>
+</div>
