@@ -18,6 +18,10 @@ export const resourceManagerFactory = function ($q, Restangular) {
         }
 
         saveResource() {
+            if (this._type === 'student') { // TODO drop these lines when position is ready
+                return $q.when(this._resource);
+            }
+
             const collectionName = typeDefinitions[this._type].apiCollection;
 
             const data = typeDefinitions[this._type].generatePostData(this._resource);
