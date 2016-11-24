@@ -1,6 +1,6 @@
 <div layout-padding>
     <h3>Contact Information</h3>
-    <div class="locations" layout="row">
+    <div class="locations">
         <md-input-container class="md-block" flex>
             <label class="md-no-float">Location</label>
             <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
@@ -12,6 +12,22 @@
             </div>
         </md-input-container>
     </div>
+    <div layout="row" class="traveling-block">
+        <md-input-container class="md-block" flex="50">
+            <label class="md-no-float">Traveling Distance</label>
+            <md-select name="type" ng-model="$ctrl.student.travelingDistance" required>
+                <md-option value="web" selected="">Any</md-option>
+                <md-option value="app">2 Miles</md-option>
+                <md-option value="web">5 Miles</md-option>
+                <md-option value="web">10 Miles</md-option>
+                <md-option value="web">20 Miles</md-option>
+            </md-select>
+            <div ng-messages="$ctrl.form.telephone.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
     <div layout="row" layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>
             <label class="md-no-float">Prefer Email</label>
@@ -28,7 +44,47 @@
             </div>
         </md-input-container>
     </div>
-    <div>
-        <label class="standalone-label">Languages</label>
+    <div class="languages">
+        <div class="language-item" layout="row">
+            <md-input-container flex="33">
+                <label class="md-no-float">Language</label>
+                <input ng-model="$ctrl.student.language_0" name="language" required>
+            </md-input-container>
+            <md-input-container flex="33">
+                <label class="md-no-float">Proficiency</label>
+                <md-select name="type" ng-model="$ctrl.student.languageProficency_0" required>
+                    <md-option value="elementary">Elementary</md-option>
+                    <md-option value="limited_working">Limited working</md-option>
+                    <md-option value="professional_working">Professional working</md-option>
+                    <md-option value="full_professional" selected="true">Full professional</md-option>
+                    <md-option value="native_or_bilingual">Native or bilingual</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-fab md-mini md-primary " aria-label="More">
+                <md-icon class="icon-plus"></md-icon>
+            </md-button>
+        </div>
+        <div class="language-item" layout="row">
+            <md-input-container flex="33">
+                <label class="md-no-float">Language</label>
+                <input ng-model="$ctrl.student.language_1" name="language">
+            </md-input-container>
+            <md-input-container flex="33">
+                <label class="md-no-float">Proficiency</label>
+                <md-select name="type" ng-model="$ctrl.student.languageProficency_1">
+                    <md-option value="elementary">Elementary</md-option>
+                    <md-option value="limited_working">Limited working</md-option>
+                    <md-option value="professional_working">Professional working</md-option>
+                    <md-option value="full_professional" selected="true">Full professional</md-option>
+                    <md-option value="native_or_bilingual">Native or bilingual</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-fab md-mini md-warn" aria-label="More">
+                <md-icon class="icon-close"></md-icon>
+            </md-button>
+            <md-button class="md-fab md-mini md-primary " aria-label="More">
+                <md-icon class="icon-plus"></md-icon>
+            </md-button>
+        </div>
     </div>
 </div>
