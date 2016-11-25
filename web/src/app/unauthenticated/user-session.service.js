@@ -15,12 +15,14 @@ export class UserSessionService {
     }
 
     reloadUserSession() {
-        // this.sessionPromise = this.Restangular.one('user', 'session').get({deferred: true})
-        //     .then(userSession => {
-        //         this.userSession = userSession.plain();
-        //         this._userSessionSubject.onNext(this.userSession);
-        //         this.reloadUserSession();
-        //     });
+        this.sessionPromise = this.Restangular.one('user', 'session').get({deferred: true}) // 304
+            .then(userSession => {
+                if (userSession.userActivities) {
+                    this.userSession = userSession.plain();
+                    this._userSessionSubject.onNext(this.userSession);
+                }
+                this.reloadUserSession();
+            });
     }
 
     subscribeToUserSession(observer) {
