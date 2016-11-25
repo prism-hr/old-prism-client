@@ -11,7 +11,7 @@
           "department": "Look up or create university",
           "student": "Look up or create university"
         },
-        "implementation-placeholder": {
+        "department-placeholder": {
           "promoter": "Look up or create division",
           "department": "Look up or create department",
           "student": "Look up or create department"
@@ -32,13 +32,9 @@
           "promoter": "Company Name",
           "department": "University Name"
         },
-        "implementation-label": {
+        "department-label": {
           "promoter": "Division Name",
           "department": "Department Name"
-        },
-        "add-department": {
-          "promoter": "Add division",
-          "department": "Add department"
         },
         "cancel-department": {
           "promoter": "Cancel division",

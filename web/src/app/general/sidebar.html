@@ -88,12 +88,12 @@
             <p>Applications</p>
             <span class="badge">2</span>
         </md-list-item>
-        <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)" ng-if="$ctrl.session.employments > 0">
+        <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)" ng-if="$ctrl.session.employments.length > 0">
             <i class="icon-briefcase"></i>
             <p>Adverts <i class="icon-arrow-down"></i></p>
             <span class="badge" ng-bind="$ctrl.session.employments.length"></span>
         </md-list-item>
-        <div flex class="submenu submenu-adverts" ng-if="$ctrl.session.employments > 0">
+        <div flex class="submenu submenu-adverts" ng-if="$ctrl.session.employments.length > 1">
             <md-list-item ng-repeat="employment in $ctrl.session.employments" ng-click=""
                           ui-sref="advert.summary({id: employment.accessCode})" ui-sref-active="active"
                           aria-label="{{employment.name}}">

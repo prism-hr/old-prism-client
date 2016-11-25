@@ -10,7 +10,17 @@ export class UserSessionService {
             .then(userSession => {
                 this.userSession = userSession.plain();
                 this._userSessionSubject.onNext(this.userSession);
+                this.reloadUserSession();
             });
+    }
+
+    reloadUserSession() {
+        // this.sessionPromise = this.Restangular.one('user', 'session').get({deferred: true})
+        //     .then(userSession => {
+        //         this.userSession = userSession.plain();
+        //         this._userSessionSubject.onNext(this.userSession);
+        //         this.reloadUserSession();
+        //     });
     }
 
     subscribeToUserSession(observer) {

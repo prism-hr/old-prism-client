@@ -4,7 +4,7 @@ export class WelcomeService {
         this.authService = authService;
     }
 
-    updateWizardCompleteness(resource, wizardType, welcomeType) {
+    updateWizardCompleteness(resource, wizardType, welcomeType, params) {
         const wizardComplete = resource.stateComplete[wizardType];
         const completeStatuses = this.authService.getUserData('welcome') || [];
         const status = completeStatuses.find(s => s.resource.accessCode === resource.accessCode && s.wizardType === wizardType);
@@ -17,6 +17,7 @@ export class WelcomeService {
                 welcomeType,
                 wizardComplete
             });
+            _.assign(status, params);
             completeStatuses.push(status);
         }
         this.authService.setUserData('welcome', completeStatuses);

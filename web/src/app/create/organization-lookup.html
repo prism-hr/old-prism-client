@@ -1,0 +1,115 @@
+<div ng-if="!$ctrl.editingMode">
+    <md-autocomplete
+            md-input-name="selectedOrganization"
+            md-no-cache="true"
+            md-selected-item="$ctrl.selectedOrganization"
+            md-selected-item-change="$ctrl.organizationSelected(organization)"
+            ng-model-options="{debounce: 600}"
+            md-search-text="organizationSearchText"
+            md-items="organization in $ctrl.getOrganizations(organizationSearchText)"
+            md-item-text="organization.name"
+            md-min-length="1"
+            placeholder="{{'create.organization.organization-lookup.organization-placeholder.' + $ctrl.wizardType | translate}}"
+            md-menu-class="autocomplete-custom-template"
+            md-require-match
+            required>
+        <md-item-template>
+            <div layout="row">
+                <div class="logo-icon" ng-if="organization.documentLogoImage">
+                    <div class="logo-image">
+                        <div class="logo-flex company-logo">
+                            <div class="logo">
+                                <img ng-src="{{organization.documentLogoImage.cloudinaryUrl}}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span md-highlight-text="searchText" class="item-title"> {{organization.accessCode ? organization.name : 'Create ' + organization.name}} </span>
+                    <span class="item-location" ng-if="organization.locationList">
+                            {{organization.locationList}}
+                        </span>
+                </div>
+            </div>
+        </md-item-template>
+    </md-autocomplete>
+</div>
+
+<div ng-if="$ctrl.editingMode" layout="row" layout-align="start center" class="company-lookup">
+    <md-input-container class="md-block" flex>
+        <label class="md-no-float">
+            {{'create.organization.organization-lookup.organization-label.' + $ctrl.wizardType | translate}}
+        </label>
+        <input name="organizationName" ng-model="$ctrl.organization.organization.name"
+               ng-change="$ctrl.onOrganizationNameChanged($ctrl.organization.organization.name)"
+               ng-disabled="$ctrl.editableName !== 'ORGANIZATION'">
+    </md-input-container>
+</div>
+
+<div ng-if="$ctrl.selectedOrganization" layout="row" layout-align="start start">
+    <div class="department-lookup" ng-if="!$ctrl.editingMode">
+        <label class="standalone-label"><strong>Would you like to specify a division?</strong></label>
+        <md-radio-group name="showDepartment" ng-required="true" ng-model="$ctrl.showDepartment"
+                        ng-change="$ctrl.showDepartmentChanged()" class="horizontal-form medium">
+            <div class="radio-box-aligned">
+                <md-radio-button ng-value="false" class="md-primary">
+                    No
+                </md-radio-button>
+                <md-radio-button ng-value="true" class="md-primary">
+                    Yes
+                </md-radio-button>
+            </div>
+        </md-radio-group>
+    </div>
+    <div ng-if="$ctrl.showDepartment" flex class="department-lookup">
+        <div ng-if="!$ctrl.editingMode" class="division-controls md-block">
+            <md-autocomplete
+                    class="md-block" flex="grow"
+                    md-input-name="selectedDepartment"
+                    md-no-cache="true"
+                    md-selected-item="$ctrl.selectedDepartment"
+                    md-selected-item-change="$ctrl.departmentSelected(department)"
+                    ng-model-options="{debounce: 600}"
+                    md-search-text="departmentSearchText"
+                    md-items="department in $ctrl.getDepartments(departmentSearchText)"
+                    md-item-text="department.name"
+                    md-min-length="1"
+                    placeholder="{{'create.organization.organization-lookup.department-placeholder.' + $ctrl.wizardType | translate}}"
+                    md-menu-class="autocomplete-custom-template"
+                    md-require-match
+                    required>
+                <md-item-template>
+                    <div layout="row">
+                        <div class="logo-icon" ng-if="department.documentLogoImage">
+                            <div class="logo-image">
+                                <div class="logo-flex company-logo">
+                                    <div class="logo">
+                                        <img ng-src="{{department.documentLogoImage.cloudinaryUrl}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span md-highlight-text="searchText" class="item-title"> {{department.accessCode ? department.name : 'Create ' + department.name}} </span>
+                            <span class="item-location"
+                                  ng-if="department.locationList">{{department.locationList}}</span>
+                        </div>
+                    </div>
+                </md-item-template>
+            </md-autocomplete>
+        </div>
+        <div ng-if="$ctrl.editingMode">
+            <md-input-container class="md-block">
+                <label class="md-no-float">
+                    {{'create.organization.organization-lookup.department-label.' + $ctrl.wizardType|translate}}
+                </label>
+                <input name="departmentName" ng-model="$ctrl.selectedDepartment.name"
+                       ng-change="$ctrl.updateOrganizationDepartment()"
+                       ng-disabled="$ctrl.editableName !== 'IMPLEMENTATION'">
+            </md-input-container>
+
+        </div>
+    </div>
+</div>
+
+
