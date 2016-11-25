@@ -3,7 +3,7 @@
     <label class="standalone-label">Salary options</label>
     <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.positionSalary"
                     class="horizontal-form medium">
-        <div class="radio-box-alined">
+        <div class="radio-box-aligned">
             <md-radio-button ng-repeat="salary in $ctrl.definitions.positionSalary" ng-value="salary"
                              class="md-primary"
                              aria-label="{{'definitions.positionSalary.' + salary | translate}}">

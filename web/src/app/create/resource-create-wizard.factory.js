@@ -129,7 +129,15 @@ export class ResourceCreateWizardFactory {
                 return index >= 0 && this._steps[index];
             }
 
+            registerCustomNextHandler(handler) {
+                this.customNextHandler = handler;
+            }
+
             next() {
+                if (this.customNextHandler) {
+                    this.customNextHandler();
+                    return;
+                }
                 const resource = this.getResource();
 
                 const wizardComplete = this.getWizardComplete();

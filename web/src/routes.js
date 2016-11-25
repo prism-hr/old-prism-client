@@ -20,7 +20,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 /** @ngInject */
                 referral($stateParams, Restangular) {
                     return Restangular.one('public').one('activityReferrals', $stateParams.accessCode).get()
-                        .then(referrral => referrral.plain());
+                        .then(referral => referral.plain());
                 },
                 $title: _.wrap('Invited')
             }
@@ -42,6 +42,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'organization',
             data: {auth: true},
             resolve: {
+                welcomeType: function ($stateParams) {
+                    return $stateParams.welcomeType;
+                },
                 wizardType: _.wrap('promoter'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     const source = $stateParams.id === 'new' ? {} : $stateParams.id;
@@ -68,6 +71,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             component: 'organization',
             data: {auth: true},
             resolve: {
+                welcomeType: function ($stateParams) {
+                    return $stateParams.welcomeType;
+                },
                 wizardType: _.wrap('department'),
                 wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
                     const source = $stateParams.id === 'new' ? {} : $stateParams.id;
