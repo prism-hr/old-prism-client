@@ -135,8 +135,9 @@ export class ResourceCreateWizardFactory {
 
             next() {
                 if (this.customNextHandler) {
-                    this.customNextHandler();
-                    return;
+                    if (this.customNextHandler() === 'handled') {
+                        return;
+                    }
                 }
                 const resource = this.getResource();
 

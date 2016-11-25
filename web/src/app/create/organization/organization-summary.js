@@ -11,6 +11,7 @@ class OrganizationSummaryController {
         if (this.organization.description) {
             this.showDescription = true;
         }
+        this.editingMode = Boolean(this.organization.accessCode);
         this.wizard.registerCustomNextHandler(this._onNext.bind(this));
     }
 
@@ -19,18 +20,21 @@ class OrganizationSummaryController {
     }
 
     _onNext() {
-        if (this.requestAccess) {
-            const accessCode = this.organization.organizationImplementationAccessCode || this.organization.accessCode;
-            this.Restangular.one('organizationImplementations', accessCode).one('join').customPUT({})
-                .then(() => {
-                    if (this.welcomeType) {
-                        this.welcomeService.updateWizardCompleteness(this.organization, this.wizardType, this.welcomeType, {accessRequested: true});
-                        return this.$state.go(this.welcomeType + 'Welcome');
-                    }
-                    return this.$state.go('activities');
-                });
-        } else {
-            this.$state.reload();
+        if (!this.editingMode && this.organization.accessCode) {
+            if (this.requestAccess) {
+                const accessCode = this.organization.organizationImplementationAccessCode || this.organization.accessCode;
+                this.Restangular.one('organizationImplementations', accessCode).one('join').customPUT({})
+                    .then(() => {
+                        if (this.welcomeType) {
+                            this.welcomeService.updateWizardCompleteness(this.organization, this.wizardType, this.welcomeType, {accessRequested: true});
+                            return this.$state.go(this.welcomeType + 'Welcome');
+                        }
+                        return this.$state.go('activities');
+                    });
+            } else {
+                this.$state.reload();
+            }
+            return 'handled';
         }
     }
 
