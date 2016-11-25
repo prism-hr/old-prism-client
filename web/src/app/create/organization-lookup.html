@@ -47,7 +47,7 @@
 </div>
 
 <div ng-if="$ctrl.selectedOrganization" layout="row" layout-align="start start">
-    <div class="department-lookup" ng-if="!$ctrl.editingMode">
+    <div class="department-lookup" ng-if="!$ctrl.editingMode && $ctrl.wizardType === 'promoter'">
         <label class="standalone-label"><strong>Would you like to specify a division?</strong></label>
         <md-radio-group name="showDepartment" ng-required="true" ng-model="$ctrl.showDepartment"
                         ng-change="$ctrl.showDepartmentChanged()" class="horizontal-form medium">

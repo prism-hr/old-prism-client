@@ -5,7 +5,7 @@ class OrganizationLookupController {
     }
 
     $onInit() {
-        this.showDepartment = this.wizardType === 'department' || undefined;
+        this.showDepartment = this.wizardType !== 'promoter' || undefined;
         this.editingMode = Boolean(this.organization.accessCode);
 
         if (this.organization.accessCode) {
@@ -23,7 +23,7 @@ class OrganizationLookupController {
     }
 
     organizationSelected() {
-        this.showDepartment = this.wizardType === 'department' || undefined;
+        this.showDepartment = this.wizardType !== 'promoter' || undefined;
         this.updateOrganizationDepartment();
     }
 
