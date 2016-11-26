@@ -25,6 +25,17 @@ export class UserSessionService {
             });
     }
 
+    searchUserSession(searchText) {
+        return this.Restangular.one('user', 'session').get({searchText: searchText})
+            .then(userSession => {
+                return userSession.plain();
+            });
+    }
+
+    getUserSession() {
+        return this.userSession;
+    }
+
     subscribeToUserSession(observer) {
         return this._userSessionSubject.subscribe(observer);
     }

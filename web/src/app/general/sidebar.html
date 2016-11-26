@@ -42,15 +42,19 @@
         <md-subheader>
             <div layout="row" layout-align="start center">
                 <sapn>Menu</sapn>
-                <div class="search-holder fade-animation" ng-if="$ctrl.searchBox">
+                <div class="search-holder fade-animation" ng-if="$ctrl.showSearchBox">
                     <md-input class="small">
-                        <input placeholder="Search">
+                        <input placeholder="Search" ng-model="$ctrl.searchText" ng-change="$ctrl.searchTextChanged($ctrl.searchText)">
                     </md-input>
                 </div>
                 <span class="flex"></span>
-                <md-button class="md-icon-button" aria-label="Search" ng-click="$ctrl.searchBoxToggle()">
-                    <md-icon class="icon-magnifier" ng-if="!$ctrl.searchBox"></md-icon>
-                    <md-icon class="icon-close" ng-if="$ctrl.searchBox"></md-icon>
+                <md-button ng-if="!$ctrl.showSearchBox" ng-click="$ctrl.openSearchBox()"
+                           class="md-icon-button" aria-label="Search">
+                    <md-icon class="icon-magnifier"></md-icon>
+                </md-button>
+                <md-button ng-if="$ctrl.showSearchBox" ng-click="$ctrl.hideSearchBox()"
+                           class="md-icon-button" aria-label="Close search">
+                    <md-icon class="icon-close"></md-icon>
                 </md-button>
                 <md-menu md-position-mode="target-right target">
                     <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
@@ -114,7 +118,8 @@
                 </md-menu>
             </md-list-item>
         </div>
-        <md-list-item ng-click="$ctrl.toggleSubmenu('departments', $event)" ng-if="$ctrl.session.departments.length > 1">
+        <md-list-item ng-click="$ctrl.toggleSubmenu('departments', $event)"
+                      ng-if="$ctrl.session.departments.length > 1">
             <i class="icon-organization"></i>
             <p>Departments <i class="icon-arrow-down"></i></p>
             <span class="badge" ng-bind="$ctrl.session.departments.length"></span>
@@ -169,7 +174,8 @@
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button ng-click="ctrl.new($index)" ui-sref="advert.summary({id: 'new', organization: promoter.accessCode})">
+                            <md-button ng-click="ctrl.new($index)"
+                                       ui-sref="advert.summary({id: 'new', organization: promoter.accessCode})">
                                 <i class="icon-briefcase"></i>New Position
                             </md-button>
                         </md-menu-item>
