@@ -1,4 +1,4 @@
-<div ng-if="!$ctrl.editingMode">
+<div>
     <md-autocomplete
             md-input-name="selectedOrganization"
             md-no-cache="true"
@@ -35,19 +35,8 @@
     </md-autocomplete>
 </div>
 
-<div ng-if="$ctrl.editingMode" layout="row" layout-align="start center" class="company-lookup">
-    <md-input-container class="md-block" flex>
-        <label class="md-no-float">
-            {{'create.organization.organization-lookup.organization-label.' + $ctrl.wizardType | translate}}
-        </label>
-        <input name="organizationName" ng-model="$ctrl.organization.organization.name"
-               ng-change="$ctrl.onOrganizationNameChanged($ctrl.organization.organization.name)"
-               ng-disabled="$ctrl.editableName !== 'ORGANIZATION'">
-    </md-input-container>
-</div>
-
 <div ng-if="$ctrl.selectedOrganization" layout="row" layout-align="start start">
-    <div class="department-lookup" ng-if="!$ctrl.editingMode && $ctrl.wizardType === 'promoter'">
+    <div class="department-lookup" ng-if="$ctrl.wizardType === 'promoter'">
         <label class="standalone-label"><strong>Would you like to specify a division?</strong></label>
         <md-radio-group name="showDepartment" ng-required="true" ng-model="$ctrl.showDepartment"
                         ng-change="$ctrl.showDepartmentChanged()" class="horizontal-form medium">
@@ -62,7 +51,7 @@
         </md-radio-group>
     </div>
     <div ng-if="$ctrl.showDepartment" flex class="department-lookup">
-        <div ng-if="!$ctrl.editingMode" class="division-controls md-block">
+        <div class="division-controls md-block">
             <md-autocomplete
                     class="md-block" flex="grow"
                     md-input-name="selectedDepartment"
@@ -97,17 +86,6 @@
                     </div>
                 </md-item-template>
             </md-autocomplete>
-        </div>
-        <div ng-if="$ctrl.editingMode">
-            <md-input-container class="md-block">
-                <label class="md-no-float">
-                    {{'create.organization.organization-lookup.department-label.' + $ctrl.wizardType|translate}}
-                </label>
-                <input name="departmentName" ng-model="$ctrl.selectedDepartment.name"
-                       ng-change="$ctrl.updateOrganizationDepartment()"
-                       ng-disabled="$ctrl.editableName !== 'IMPLEMENTATION'">
-            </md-input-container>
-
         </div>
     </div>
 </div>

@@ -11,7 +11,16 @@ class OrganizationSummaryController {
         if (this.organization.description) {
             this.showDescription = true;
         }
-        this.editingMode = Boolean(this.organization.accessCode);
+        if (this.organization.accessCode) {
+            this.editingMode = true;
+            this.showSummary = true;
+            if (this.organization.name === this.organization.organization.name) {
+                this.editableName = 'ORGANIZATION';
+            } else {
+                this.showDepartment = true;
+                this.editableName = 'IMPLEMENTATION';
+            }
+        }
         this.wizard.registerCustomNextHandler(this._onNext.bind(this));
     }
 
@@ -40,8 +49,12 @@ class OrganizationSummaryController {
 
     organizationChanged(complete) {
         this.requestAccess = null;
-        this.showRequestAccess = complete && !this.editingMode && this.organization.accessCode;
+        this.showRequestAccess = complete && this.organization.accessCode;
         this.showSummary = complete && !this.showRequestAccess;
+    }
+
+    onOrganizationNameChanged(name) {
+        this.organization.name = name;
     }
 }
 
