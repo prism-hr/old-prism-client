@@ -11,6 +11,7 @@ class OrganizationLookupController {
         if (this.organization.accessCode) {
             if (this.organization.name === this.organization.organization.name) {
                 this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name']);
+                this.showDepartment = false;
                 this.editableName = 'ORGANIZATION';
             } else {
                 this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name']);
@@ -44,7 +45,7 @@ class OrganizationLookupController {
             this.organization.accessCode = this.selectedDepartment.accessCode;
         }
         const organizationValid = _.get(this.selectedOrganization, 'name.length');
-        const departmentValid = this.showDepartment !== undefined && (!this.showDepartment || _.get(this.selectedDepartment, 'name.length'));
+        const departmentValid = this.showDepartment === false || (this.showDepartment && _.get(this.selectedDepartment, 'name.length'));
         const complete = organizationValid && departmentValid;
         this.changed({complete});
     }
