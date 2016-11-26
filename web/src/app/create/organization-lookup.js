@@ -6,17 +6,15 @@ class OrganizationLookupController {
 
     $onInit() {
         this.showDepartment = this.wizardType !== 'promoter' || undefined;
-        this.editingMode = Boolean(this.organization.accessCode);
 
         if (this.organization.accessCode) {
             if (this.organization.name === this.organization.organization.name) {
                 this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name']);
-                this.editableName = 'ORGANIZATION';
+                this.showDepartment = false;
             } else {
                 this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name']);
                 this.selectedDepartment = _.pick(this.organization, ['accessCode', 'name']);
                 this.showDepartment = true;
-                this.editableName = 'IMPLEMENTATION';
             }
         }
         this.updateOrganizationDepartment();
@@ -44,7 +42,7 @@ class OrganizationLookupController {
             this.organization.accessCode = this.selectedDepartment.accessCode;
         }
         const organizationValid = _.get(this.selectedOrganization, 'name.length');
-        const departmentValid = this.showDepartment !== undefined && (!this.showDepartment || _.get(this.selectedDepartment, 'name.length'));
+        const departmentValid = this.showDepartment === false || (this.showDepartment && _.get(this.selectedDepartment, 'name.length'));
         const complete = organizationValid && departmentValid;
         this.changed({complete});
     }
@@ -82,10 +80,6 @@ class OrganizationLookupController {
             }
             return implementations;
         });
-    }
-
-    onOrganizationNameChanged(name) {
-        this.organization.name = name;
     }
 
 }

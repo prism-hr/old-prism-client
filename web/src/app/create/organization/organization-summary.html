@@ -1,9 +1,32 @@
 <div layout-padding>
     <h3>{{'create.organization.organization-lookup.lookup-subtitle.' + $ctrl.wizardType | translate}}</h3>
 
-    <organization-lookup organization="$ctrl.organization" wizard-type="{{$ctrl.wizardType}}"
-                         form="$ctrl.form" changed="$ctrl.organizationChanged(complete)">
-    </organization-lookup>
+    <div ng-if="!$ctrl.editingMode">
+        <organization-lookup organization="$ctrl.organization" wizard-type="{{$ctrl.wizardType}}"
+                             form="$ctrl.form" changed="$ctrl.organizationChanged(complete)">
+        </organization-lookup>
+    </div>
+
+    <div ng-if="$ctrl.editingMode">
+        <div layout="row" layout-align="start center" class="company-lookup">
+            <md-input-container class="md-block" flex>
+                <label class="md-no-float">
+                    {{'create.organization.organization-lookup.organization-label.' + $ctrl.wizardType | translate}}
+                </label>
+                <input name="organizationName" ng-model="$ctrl.organization.organization.name"
+                       ng-change="$ctrl.onOrganizationNameChanged($ctrl.organization.organization.name)"
+                       ng-disabled="$ctrl.editableName !== 'ORGANIZATION'">
+            </md-input-container>
+        </div>
+
+        <md-input-container ng-if="$ctrl.showDepartment" class="md-block">
+            <label class="md-no-float">
+                {{'create.organization.organization-lookup.department-label.' + $ctrl.wizardType|translate}}
+            </label>
+            <input name="departmentName" ng-model="$ctrl.organization.name"
+                   ng-disabled="$ctrl.editableName !== 'IMPLEMENTATION'">
+        </md-input-container>
+    </div>
 
     <div ng-if="$ctrl.showRequestAccess">
         <label class="standalone-label">
