@@ -1,6 +1,7 @@
 class SidebarController {
     /** @ngInject */
-    constructor($state, $mdSidenav, authService, userSessionService) {
+    constructor(rx, $state, $mdSidenav, authService, userSessionService) {
+        this.rx = rx;
         this.$state = $state;
         this.$mdSidenav = $mdSidenav;
         this.authService = authService;
@@ -9,6 +10,16 @@ class SidebarController {
         this._onUserSessionChange = function (userSession) {
             this.session = userSession;
         };
+
+        this.rx.createObservableFunction(this, 'searchTextChanged')
+            .debounce(250)
+            .distinctUntilChanged()
+            .flatMapLatest(searchText => {
+                return this.userSessionService.searchUserSession(searchText);
+            })
+            .subscribe(session => {
+                this.session = session;
+            });
     }
 
     $onInit() {
@@ -29,9 +40,16 @@ class SidebarController {
         this.authService.logout();
         this.$state.go('welcome');
     }
-    searchBoxToggle() {
-        this.searchBox = !this.searchBox;
+
+    openSearchBox() {
+        this.showSearchBox = true;
     }
+
+    hideSearchBox() {
+        this.showSearchBox = false;
+        this.session = this.userSessionService.getUserSession();
+    }
+
     toggleSubmenu(name, $event) {
         const menu = angular.element(document.body.querySelector('.submenu-' + name));
         const ele = angular.element($event.target.parentElement.parentElement);

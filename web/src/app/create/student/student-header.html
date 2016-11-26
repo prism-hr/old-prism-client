@@ -1,14 +1,9 @@
 <div layout-padding>
     <h3>Candidate Basic information</h3>
     <div class="fields-group">
-        <md-input-container class="md-block">
-            <label class="md-no-float">University</label>
-            <input ng-model="$ctrl.student.university" md-maxlength="100" name="university"
-                   required aria-label="University"/>
-            <div ng-messages="$ctrl.form.university.$error" role="alert">
-                <div ng-messages-include="general-messages"></div>
-            </div>
-        </md-input-container>
+        <organization-lookup organization="$ctrl.student.organization" wizard-type="{{$ctrl.wizardType}}"
+                             form="$ctrl.form">
+        </organization-lookup>
 
         <label class="standalone-label">Study Level</label>
         <md-radio-group name="type" ng-required="true" ng-model="$ctrl.student.studyLevel"

@@ -84,17 +84,6 @@ class OrganizationLookupController {
         });
     }
 
-    // Rx.createObservableFunction(this, 'implementationNameChanged')
-    //     .flatMapLatest(function (name) {
-    //         return Restangular.one('organizations', this.organization.organization.accessCode).all('organizationImplementations').getList({searchTerm: name})
-    //             .then(function (implementations) {
-    //                 return implementations.plain();
-    //             });
-    //     })
-    //     .subscribe(function (results) {
-    //         console.log(results);
-    //     });
-
     onOrganizationNameChanged(name) {
         this.organization.name = name;
     }
