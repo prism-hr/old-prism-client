@@ -15,7 +15,7 @@ export class UserSessionService {
     }
 
     reloadUserSession() {
-        this.sessionPromise = this.Restangular.one('user', 'session').get({deferred: true}) // 304
+        this.sessionPromise = this.Restangular.one('user', 'session').withHttpConfig({ignoreLoadingBar: true}).get({deferred: true}) // 304
             .then(userSession => {
                 if (userSession.userActivities) {
                     this.userSession = userSession.plain();
