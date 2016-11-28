@@ -33,14 +33,16 @@
                     <div class="connection-box">
                         <h3>Share your advert with Facebook</h3>
                         <md-input-container class="md-block">
-                            <textarea name="advertSummary" ng-model="$ctrl.advert.socialShareText" md-maxlength="140" rows="2" required></textarea>
+                            <textarea name="advertSummary" ng-model="$ctrl.facebookText" md-maxlength="140" rows="2" required></textarea>
                         </md-input-container>
                         <md-button socialshare
+                                   socialshare-via="{{$ctrl.facebookAppId}}"
                                    socialshare-provider="facebook"
-                                   socialshare-type="sharer"
-                                   socialshare-text="{{$ctrl.dummyShare.text}}"
-                                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
-                                   socialshare-url="{{$ctrl.dummyShare.url}}"
+                                   socialshare-type="feed"
+                                   socialshare-description="{{$ctrl.facebookText}}"
+                                   socialshare-text="Name"
+                                   socialshare-hashtags="{{$ctrl.facebookHashtags}}"
+                                   socialshare-url="http://local.prism.ucl.ac.uk:9000"
                                    aria-label="Share with Facebook"
                                    class="md-raised facebook">
                             <i class="icon-social-facebook"></i> Share with Facebook
@@ -53,7 +55,7 @@
                     <div class="connection-box">
                         <h3>Share your advert with Twitter</h3>
                         <md-input-container class="md-block">
-                            <textarea name="advertSummary" ng-model="$ctrl.advert.socialShareText" md-maxlength="140" rows="2" required></textarea>
+                            <textarea name="advertSummary" ng-model="$ctrl.audience.socialShareText" md-maxlength="140" rows="2" required></textarea>
                         </md-input-container>
                         <md-button socialshare
                                    socialshare-provider="twitter"
@@ -72,7 +74,7 @@
                     <div class="connection-box">
                         <h3>Connect with Linkedin to share your advert</h3>
                         <md-input-container class="md-block">
-                            <textarea name="advertSummary" ng-model="$ctrl.advert.socialShareText" md-maxlength="140" rows="2" required></textarea>
+                            <textarea name="advertSummary" ng-model="$ctrl.audience.socialShareText" md-maxlength="140" rows="2" required></textarea>
                         </md-input-container>
                         <md-button socialshare
                                    socialshare-provider="linkedin"
