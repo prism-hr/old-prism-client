@@ -8,14 +8,22 @@
     </div>
 
     <div ng-if="$ctrl.editingMode">
+        <script type="text/ng-template" id="organization-summary-name-messages">
+            <div ng-message="nameTaken" class="error">This name is not available.</div>
+        </script>
+
         <div layout="row" layout-align="start center" class="company-lookup">
             <md-input-container class="md-block" flex>
                 <label class="md-no-float">
                     {{'create.organization.organization-lookup.organization-label.' + $ctrl.wizardType | translate}}
                 </label>
                 <input name="organizationName" ng-model="$ctrl.organization.organization.name"
-                       ng-change="$ctrl.onOrganizationNameChanged($ctrl.organization.organization.name)"
+                       ng-change="$ctrl.organizationNameChanged($ctrl.organization.organization.name, 'organizationName')"
                        ng-disabled="$ctrl.editableName !== 'ORGANIZATION'">
+                <span ng-if="$ctrl.form.$error.organizationNameCheck">Loading...</span>
+                <div ng-messages="$ctrl.form.organizationName.$error" role="alert">
+                    <div ng-messages-include="organization-summary-name-messages"></div>
+                </div>
             </md-input-container>
         </div>
 
@@ -24,7 +32,12 @@
                 {{'create.organization.organization-lookup.department-label.' + $ctrl.wizardType|translate}}
             </label>
             <input name="departmentName" ng-model="$ctrl.organization.name"
+                   ng-change="$ctrl.organizationNameChanged($ctrl.organization.name, 'departmentName')"
                    ng-disabled="$ctrl.editableName !== 'IMPLEMENTATION'">
+            <span ng-if="$ctrl.form.$error.organizationNameCheck">Loading...</span>
+            <div ng-messages="$ctrl.form.departmentName.$error" role="alert">
+                <div ng-messages-include="organization-summary-name-messages"></div>
+            </div>
         </md-input-container>
     </div>
 

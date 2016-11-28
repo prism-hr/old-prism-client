@@ -1,7 +1,8 @@
 class OrganizationSummaryController {
-    constructor($q, $state, Restangular, cloudinary, welcomeService) {
+    constructor($q, $state, rx, Restangular, cloudinary, welcomeService) {
         this.$q = $q;
         this.$state = $state;
+        this.rx = rx;
         this.Restangular = Restangular;
         this.cloudinary = cloudinary;
         this.welcomeService = welcomeService;
@@ -22,6 +23,27 @@ class OrganizationSummaryController {
             }
         }
         this.wizard.registerCustomNextHandler(this._onNext.bind(this));
+
+        this.rx.createObservableFunction(this, 'organizationNameChanged')
+            .debounce(250)
+            .distinctUntilChanged(args => args[0])
+            .flatMapLatest(args => {
+                this.form.$setValidity('organizationNameCheck', false);
+                return this.Restangular.all('organizationImplementations').getList({
+                    context: this.wizardType,
+                    searchTerm: args[0]
+                })
+                    .then(organizations => {
+                        this.form.$setValidity('organizationNameCheck', true);
+                        return [args[0], args[1], organizations.plain()];
+                    });
+            })
+            .subscribe(args => {
+                const name = args[0];
+                const organization = args[2].find(o => o.name === name);
+                const nameTaken = !organization || organization.accessCode === this.organization.accessCode;
+                this.form[args[1]].$setValidity('nameTaken', nameTaken);
+            });
     }
 
     $onDestroy() {
@@ -53,7 +75,7 @@ class OrganizationSummaryController {
         this.showSummary = complete && !this.showRequestAccess;
     }
 
-    onOrganizationNameChanged(name) {
+    onOrganizationNameChanged(name, fieldName) {
         this.organization.name = name;
     }
 }
