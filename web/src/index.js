@@ -20,7 +20,6 @@ import 'angular-recaptcha';
 import 'satellizer';
 import 'rx-angular';
 import 'textangular/dist/textAngular-sanitize.min';
-import 'ng-img-crop-full-extended/compile/minified/ng-img-crop';
 import 'angular-cloudinary';
 import routes from './routes';
 import {
