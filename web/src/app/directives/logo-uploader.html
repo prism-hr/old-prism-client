@@ -11,17 +11,16 @@
     <div ng-if="publicId" class="logo-flex">
         <div class="logo">
             <cl-image ng-if="publicId" public-id="{{publicId}}">
-                <cl-transformation height="150" width="150" crop="fill"></cl-transformation>
+                <cl-transformation height="250" width="400" crop="fill"></cl-transformation>
             </cl-image>
         </div>
     </div>
 </div>
-
 <div ng-if="!dropArea" class="logo-image">
     <div class="logo-flex company-logo">
         <div class="logo">
             <cl-image ng-if="publicId" public-id="{{publicId}}">
-                <cl-transformation height="150" width="150" crop="fill"></cl-transformation>
+                <cl-transformation height="250" width="400" crop="fill"></cl-transformation>
             </cl-image>
             <img ng-if="!publicId" ng-src="/img/prism-logo-default.png"/>
         </div>
