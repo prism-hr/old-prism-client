@@ -105,7 +105,6 @@ angular
         'restangular',
         'vcRecaptcha',
         'ngFileUpload',
-        'ngImgCrop',
         'satellizer',
         '720kb.socialshare',
         'angular-loading-bar',
