@@ -95,10 +95,10 @@
       "PART_TIME": "Part-Time",
       "FLEXIBLE": "Flexible"
     },
-    "studentPattern": {
+    "qualificationCategory": {
       "UNDERGRADUATE": "Undergraduate",
       "MASTER": "Master",
-      "RESEARCH": "Research"
+      "DOCTORATE": "Doctorate"
     },
     "positionSalary": {
       "RANGE": "Salary Range",

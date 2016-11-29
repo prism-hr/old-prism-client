@@ -19,6 +19,8 @@
         </md-chips>
     </md-input-container>
 
+    {{$ctrl.organization.tagsSuggested}}
+
     <md-input-container class="md-block">
         <label class="md-no-float">Homepage URL
             <small>(http://yourweb.com)</small>
@@ -59,17 +61,13 @@
     <div layout="row" ng-if="$ctrl.wizardType === 'department'">
         <div>
             <label class="standalone-label">Study Levels</label>
-            <md-checkbox name="undergraduate" md-no-ink aria-label="Undergraduate" ng-model="$ctrl.organization.studyLevel.undergraduate"
+
+            <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
+                         md-no-ink aria-label="Undergraduate"
+                             ng-checked="$ctrl.isQualificationCategorySelected(category)"
+                         ng-click="$ctrl.toggleQualificationCategory(category)"
                          class="md-primary">
-                Undergraduate
-            </md-checkbox>
-            <md-checkbox name="master" md-no-ink aria-label="Masters" ng-model="$ctrl.organization.studyLevel.master"
-                         class="md-primary">
-                Masters
-            </md-checkbox>
-            <md-checkbox name="research" md-no-ink aria-label="Research" ng-model="$ctrl.organization.studyLevel.research"
-                         class="md-primary">
-                Research
+                {{'definitions.qualificationCategory.' + category | translate}}
             </md-checkbox>
         </div>
     </div>

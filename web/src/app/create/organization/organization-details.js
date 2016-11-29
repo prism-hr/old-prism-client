@@ -16,6 +16,20 @@ class OrganizationDetailsController {
         }
         return {tag: {name: chip}};
     }
+
+    isQualificationCategorySelected(category) {
+        return this.organization.qualificationCategories.findIndex(c => c.qualificationCategory === category) > -1;
+    }
+
+    toggleQualificationCategory(category) {
+        const array = this.organization.qualificationCategories;
+        const idx = array.findIndex(c => c.qualificationCategory === category);
+        if (idx > -1) {
+            array.splice(idx, 1);
+        } else {
+            array.push({qualificationCategory: category});
+        }
+    }
 }
 
 export const OrganizationDetails = {

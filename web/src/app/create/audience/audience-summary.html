@@ -140,12 +140,12 @@
     </md-list>
     <div class="connection-decision">
         <label class="standalone-label"><strong>Do you want us to promote your advert to the above departments?</strong></label>
-        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.promotionAllowAccess" class="horizontal-form medium">
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.audience.exclusive" class="horizontal-form medium">
             <div class="radio-box-aligned">
-                <md-radio-button value="true" class="md-primary" checked="checked" ng-checked="true">
+                <md-radio-button ng-value="false" class="md-primary">
                     Yes
                 </md-radio-button>
-                <md-radio-button value="false" class="md-primary">
+                <md-radio-button ng-value="true" class="md-primary">
                     No
                 </md-radio-button>
             </div>
