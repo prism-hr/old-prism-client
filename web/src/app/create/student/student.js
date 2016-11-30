@@ -12,25 +12,6 @@ class StudentController {
         }
     }
 
-    next(form) {
-        if (!form.$valid) {
-            return;
-        }
-
-        form.$setPristine();
-        this.wizard.next();
-    }
-
-    prev(form) {
-        form.$setPristine();
-        this.wizard.prev();
-    }
-
-    skip(form) {
-        form.$setPristine();
-        this.wizard.skip();
-    }
-
     $onDestroy() {
         this.stepSubscription.dispose();
     }

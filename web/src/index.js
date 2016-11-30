@@ -37,7 +37,8 @@ import {definitionsLoadHook} from './app/general/definitions-load.hook';
 import {UserSessionService} from './app/unauthenticated/user-session.service';
 import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
-import {resourceManagerFactory} from './app/create/resource-manager.factory';
+import {ResourceManagerFactory} from './app/create/resource-manager.factory';
+import {UserManagerFactory} from './app/create/user-manager.factory';
 import {WelcomeService} from './app/welcome/welcome.service';
 import {ResourceCreateWizardFactory} from './app/create/resource-create-wizard.factory';
 import {resourceCreateWizardStepHook} from './app/create/resource-create-wizard-step.hook';
@@ -126,7 +127,8 @@ angular
     .config(serverInterceptorConfig)
     .service('userSessionService', UserSessionService)
     .service('authService', AuthService)
-    .service('resourceManagerFactory', resourceManagerFactory)
+    .service('resourceManagerFactory', ResourceManagerFactory)
+    .service('userManagerFactory', UserManagerFactory)
     .service('welcomeService', WelcomeService)
     .service('definitions', DefinitionsService)
     .provider('resourceCreateWizardFactory', ResourceCreateWizardFactory)
