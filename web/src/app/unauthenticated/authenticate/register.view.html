@@ -7,7 +7,7 @@
     </md-button>
 </div>
 <div class="divider-or"><span>OR</span></div>
-<form novalidate name="registerForm" ng-submit="$ctrl.register(registerForm)">
+<form novalidate name="registerForm" autocomplete="off" ng-submit="$ctrl.register(registerForm)">
     <div class="index-padding">
         <md-input-container class="md-block">
             <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email" autocomplete="off">
@@ -29,7 +29,7 @@
         </md-input-container>
         <md-input-container class="md-block">
             <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required minlength="8"
-                   md-maxlength="15" type="password" autocomplete="off">
+                   md-maxlength="15" type="password">
             <div ng-messages="registerForm.password.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>

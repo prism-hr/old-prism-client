@@ -19,8 +19,19 @@
                 </md-chip-template>
             </md-chips>
         </md-input-container>
-
         {{$ctrl.advert.tagsSuggested}}
+    </div>
+    <div class="tag-list">
+        <label class="standalone-label small">Suggested Tags</label>
+        <md-chips class="small">
+            <md-chip class="active">Biotechnology</md-chip>
+            <md-chip>Alternative Medicine</md-chip>
+            <md-chip class="active">Pharmaceuticals</md-chip>
+            <md-chip>Food & Beverages</md-chip>
+            <md-chip>Renewables & Environment</md-chip>
+            <md-chip>Research</md-chip>
+        </md-chips>
+        <span class="info">Select tags to add them to your list</span>
     </div>
     <div class="audience">
         <label class="standalone-label">Audience</label>

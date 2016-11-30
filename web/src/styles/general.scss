@@ -294,6 +294,11 @@ md-input-container.md-prism-theme label, md-input-container.md-prism-theme .md-p
   font-size:18px;
   padding-bottom:6px;
   display: block;
+  &.small {
+    font-size:12px;
+    padding-bottom:0;
+    font-weight:bold;
+  }
 }
 // Textangular
 text-angular.form-control {

@@ -386,12 +386,6 @@ md-autocomplete input:not(.md-input), md-input-container  {
         margin-bottom:0;
       }
     }
-    .department-tags, .students-type {
-      md-chip.active {
-        background: $uclblue;
-        color: white;
-      }
-    }
     .students-type {
       margin-top: 4px;
       padding-left: 10px;
@@ -420,6 +414,16 @@ md-autocomplete input:not(.md-input), md-input-container  {
         }
       }
     }
+  }
+}
+.tag-list {
+  margin-top:-20px;
+  margin-bottom:20px;
+  .info {
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    color: grey;
   }
 }
 logo-uploader {
@@ -508,6 +512,7 @@ logo-uploader {
   }
   margin-bottom:10px;
 }
+
 // MediaQ
 @media (max-width: $layout-breakpoint-xs - 1) {
   .step-page {
