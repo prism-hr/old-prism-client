@@ -18,6 +18,18 @@
             </md-chip-template>
         </md-chips>
     </md-input-container>
+    <div class="tag-list">
+        <label class="standalone-label small">Suggested Tags</label>
+        <md-chips class="small">
+            <md-chip class="active">Biotechnology</md-chip>
+            <md-chip>Alternative Medicine</md-chip>
+            <md-chip class="active">Pharmaceuticals</md-chip>
+            <md-chip>Food & Beverages</md-chip>
+            <md-chip>Renewables & Environment</md-chip>
+            <md-chip>Research</md-chip>
+        </md-chips>
+        <span class="info">Select tags to add them to your list</span>
+    </div>
 
     {{$ctrl.organization.tagsSuggested}}
 
@@ -30,7 +42,6 @@
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>
-    <h3>Company Size and Number of students</h3>
     <div layout="row" class="select-box">
         <md-input-container class="md-block" flex>
             <label class="md-no-float">Number Staff</label>

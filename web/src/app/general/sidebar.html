@@ -39,7 +39,7 @@
 </div>
 <md-content class="main-menu" flex>
     <md-list flex>
-        <md-subheader>
+        <md-subheader class="main-subheader">
             <div layout="row" layout-align="start center">
                 <sapn>Menu</sapn>
                 <div class="search-holder fade-animation" ng-if="$ctrl.showSearchBox">
@@ -97,7 +97,7 @@
             <p>Adverts <i class="icon-arrow-down"></i></p>
             <span class="badge" ng-bind="$ctrl.session.employments.length"></span>
         </md-list-item>
-        <div flex class="submenu submenu-adverts" ng-if="$ctrl.session.employments.length > 1">
+        <div flex class="submenu submenu-adverts">
             <md-list-item ng-repeat="employment in $ctrl.session.employments" ng-click=""
                           ui-sref="advert.summary({id: employment.accessCode})" ui-sref-active="active"
                           aria-label="{{employment.name}}">
@@ -132,30 +132,39 @@
                 <p ng-bind="department.name"></p>
             </md-list-item>
         </div>
-        <md-list-item ng-repeat="department in $ctrl.session.departments"
-                      ui-sref="department.summary({id: department.accessCode})"
-                      ui-sref-active="active"
-                      ng-if="$ctrl.session.departments.length === 1">
-            <i class="icon-organization"></i>
-            <p ng-bind="department.name"></p>
-            <md-menu md-position-mode="target-right target">
-                <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
-                    <md-icon class="icon-options-vertical"></md-icon>
-                </md-button>
-                <md-menu-content width="2" class="small">
-                    <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)">
-                            <i class="icon-people"></i>Promote to Candidates
-                        </md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)">
-                            <i class="icon-home"></i>Invite Company
-                        </md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
-        </md-list-item>
+        <div ng-if="$ctrl.session.departments.length === 1">
+            <md-subheader>
+                <div layout="row" layout-align="start center">
+                    <sapn>Department</sapn>
+                    <span class="flex"></span>
+                    <md-icon><i class="icon-plus"></i></md-icon>
+                </div>
+            </md-subheader>
+            <md-list-item ng-repeat="department in $ctrl.session.departments"
+                          ui-sref="department.summary({id: department.accessCode})"
+                          ui-sref-active="active">
+                <i class="icon-organization"></i>
+                <p ng-bind="department.name"></p>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)">
+                                <i class="icon-people"></i>Promote to Candidates
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)">
+                                <i class="icon-home"></i>Invite Company
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-list-item>
+        </div>
+
         <md-list-item ng-click="$ctrl.toggleSubmenu('promoters', $event)" ng-if="$ctrl.session.promoters.length > 1">
             <i class="icon-home"></i>
             <p>Companies <i class="icon-arrow-down"></i></p>
@@ -188,32 +197,42 @@
                 </md-menu>
             </md-list-item>
         </div>
-        <md-list-item
-                ng-repeat="promoter in $ctrl.session.promoters"
-                ui-sref="promoter.summary({id: promoter.accessCode})"
-                ui-sref-active="active"
-                aria-label="{{promoter.name}}"
-                ng-if="$ctrl.session.promoters.length === 1">
-            <i class="icon-home"></i>
-            <p ng-bind="promoter.name"></p>
-            <md-menu md-position-mode="target-right target">
-                <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
-                    <md-icon class="icon-options-vertical"></md-icon>
-                </md-button>
-                <md-menu-content width="2" class="small">
-                    <md-menu-item>
-                        <md-button ui-sref="advert.summary({id: 'new', organization: promoter.accessCode})">
-                            <i class="icon-briefcase"></i>New Position
-                        </md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-click="ctrl.new($index)">
-                            <i class="icon-organization"></i>New Department
-                        </md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
-        </md-list-item>
+        <div ng-if="$ctrl.session.promoters.length === 1">
+            <md-subheader class="small">
+                <div layout="row" layout-align="start center">
+                    <sapn>Company</sapn>
+                    <span class="flex"></span>
+                    <md-icon class="icon-plus"></md-icon>
+                </div>
+            </md-subheader>
+            <md-list-item
+                    ng-repeat="promoter in $ctrl.session.promoters"
+                    ui-sref="promoter.summary({id: promoter.accessCode})"
+                    ui-sref-active="active"
+                    aria-label="{{promoter.name}}">
+                <span class="color-icon">
+                    <span class="color-icon-inner"></span>
+                </span>
+                <p ng-bind="promoter.name"></p>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ui-sref="advert.summary({id: 'new', organization: promoter.accessCode})">
+                                <i class="icon-briefcase"></i>New Position
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)">
+                                <i class="icon-organization"></i>New Department
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-list-item>
+        </div>
         <md-list-item ng-click="navigateTo('system', $event)">
             <i class="icon-wrench"></i>
             <p>System</p>

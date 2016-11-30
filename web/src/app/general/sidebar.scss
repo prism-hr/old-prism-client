@@ -48,14 +48,30 @@ sidebar {
     }
   }
   .main-menu {
-    .md-subheader-inner {
-      padding: 4px 16px;
-      .icon-magnifier, .icon-close {
-        font-size: 20px;
-        margin-top: 2px;
+    .small {
+      i {
+        margin-right:12px;
       }
-      .search-holder {
-        margin-left:10px;
+      md-icon {
+        font-size: 16px;
+        text-align: right;
+        margin-top: 0px;
+        padding-top: 3px;
+      }
+    }
+    .md-subheader-inner {
+      padding: 8px 16px;
+    }
+    .main-subheader {
+      .md-subheader-inner {
+        padding: 4px 16px;
+        .icon-magnifier, .icon-close {
+          font-size: 20px;
+          margin-top: 2px;
+        }
+        .search-holder {
+          margin-left:10px;
+        }
       }
     }
     .md-icon-button {
@@ -78,6 +94,23 @@ sidebar {
     }
     md-list-item {
       border-bottom:1px solid $fadeGrey;
+      .color-icon {
+        margin-right: 9px;
+        margin-left: -1px;
+        display: block;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        border: 2px solid $uclgreen;
+        .color-icon-inner {
+          background: $uclblue;
+          margin: 1px;
+          display: block;
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+        }
+      }
       &.active {
         background: $blueback;
         .md-list-item-inner {
