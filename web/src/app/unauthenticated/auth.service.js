@@ -59,6 +59,7 @@ export class AuthService {
                 this.Restangular.one('user').get()
                     .then(user => {
                         this.user = user.plain();
+                        this.user.stateComplete = JSON.parse(this.user.stateComplete);
                         return this.user;
                     }, response => {
                         if (response.status === 401) {

@@ -1,5 +1,5 @@
 /** @ngInject */
-export const resourceManagerFactory = function ($q, Restangular) {
+export const ResourceManagerFactory = function ($q, Restangular) {
     const typeDefinitions = {
         promoter: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},
         department: {apiCollection: 'organizationImplementations', generatePostData: generateOrganizationPostData},

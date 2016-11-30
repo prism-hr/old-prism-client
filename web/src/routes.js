@@ -142,9 +142,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             data: {auth: true},
             resolve: {
                 wizardType: _.wrap('student'),
-                wizard($stateParams, resourceManagerFactory, resourceCreateWizardFactory, wizardType) {
-                    const source = $stateParams.id === 'new' ? {} : $stateParams.id;
-                    return resourceManagerFactory.getManager(source, 'student')
+                wizard($stateParams, userManagerFactory, resourceCreateWizardFactory, wizardType) {
+                    return userManagerFactory.getManager()
                         .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
                 },
                 $title: _.wrap('Student')

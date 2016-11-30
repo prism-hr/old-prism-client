@@ -6,7 +6,7 @@
         </organization-lookup>
 
         <label class="standalone-label">Study Level</label>
-        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.student.studyLevel"
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.temp.studyLevel"
                         class="horizontal-form medium">
             <div class="radio-box-aligned">
                 <md-radio-button class="md-primary" value="undergraduate" aria-label="Undergraduate">
@@ -23,8 +23,8 @@
         <md-input-container class="md-block">
             <label class="md-no-float">Personal Statement</label>
             <textarea ng-model="$ctrl.student.summary" md-maxlength="250" name="summary" rows="3"
-                      required aria-label="Summary"></textarea>
-            <div ng-messages="$ctrl.form.summary.$error" role="alert">
+                      required aria-label="Personal Statement"></textarea>
+            <div ng-messages="$ctrl.form.description.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>

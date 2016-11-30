@@ -7,6 +7,7 @@ class OrganizationLookupController {
     $onInit() {
         this.showDepartment = this.wizardType !== 'promoter' || undefined;
 
+        this.organization = this.organization || {};
         if (this.organization.accessCode) {
             if (this.organization.name === this.organization.organization.name) {
                 this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name']);
