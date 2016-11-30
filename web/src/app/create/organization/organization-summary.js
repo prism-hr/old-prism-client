@@ -57,8 +57,7 @@ class OrganizationSummaryController {
                 this.Restangular.one('organizationImplementations', accessCode).one('join').customPUT({})
                     .then(() => {
                         if (this.welcomeType) {
-                            this.welcomeService.updateWizardCompleteness(this.organization, this.wizardType, this.welcomeType, {accessRequested: true});
-                            return this.$state.go('welcome' + this.welcomeType);
+                            return this.$state.go('view.' + this.wizardType, {accessCode: accessCode});
                         }
                         return this.$state.go('activities');
                     });
