@@ -44,8 +44,7 @@
                 <sapn>Menu</sapn>
                 <div class="search-holder fade-animation" ng-if="$ctrl.showSearchBox">
                     <md-input class="small">
-                        <input placeholder="Search" ng-model="$ctrl.searchText"
-                               ng-change="$ctrl.searchTextChanged($ctrl.searchText)">
+                        <input placeholder="Search" ng-model="$ctrl.searchText" ng-change="$ctrl.searchTextChanged($ctrl.searchText)">
                     </md-input>
                 </div>
                 <span class="flex"></span>
@@ -63,18 +62,18 @@
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button><i class="icon-home"></i> New Company</md-button>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-home"></i> New Company</md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button><i class="icon-briefcase"></i> New Position
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-briefcase"></i> New Position
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button><i class="icon-organization"></i> New Department
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-organization"></i> New Department
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button><i class="icon-notebook"></i> New Contact</md-button>
+                            <md-button ng-click="ctrl.new($index)"><i class="icon-notebook"></i> New Contact</md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
@@ -93,21 +92,16 @@
             <p>Applications</p>
             <span class="badge">2</span>
         </md-list-item>
-        <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)"
-                      ng-if="$ctrl.session.employments.length > 0"
-                      ng-class="{'always-active': $ctrl.session.employments.length ===1}">
+        <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)" ng-if="$ctrl.session.employments.length > 0">
             <i class="icon-briefcase"></i>
             <p>Adverts <i class="icon-arrow-down"></i></p>
             <span class="badge" ng-bind="$ctrl.session.employments.length"></span>
         </md-list-item>
-        <div flex class="submenu submenu-adverts" ng-class="{'force-open': $ctrl.session.employments.length ===1}">
-            <md-list-item ng-repeat="employment in $ctrl.session.employments"
-                          ng-click=""
+        <div flex class="submenu submenu-adverts">
+            <md-list-item ng-repeat="employment in $ctrl.session.employments" ng-click=""
                           ui-sref="manage.advert.summary({id: employment.accessCode})" ui-sref-active="active"
                           aria-label="{{employment.name}}">
-                <span class="color-icon">
-                    <span class="color-icon-inner"></span>
-                </span>
+                <i class="icon-briefcase"></i>
                 <p ng-bind="employment.name"></p>
                 <md-menu md-position-mode="target-right target">
                     <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
@@ -115,13 +109,9 @@
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button ui-sref="manage.audience.summary({id: employment.accessCode})">
+                            <md-button ng-click="ctrl.new($index)"
+                                       ui-sref="manage.audience.summary({id: employment.accessCode})">
                                 <i class="icon-people"></i>Audience
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ui-sref="view.advert({accessCode: employment.accessCode})">
-                                <i class="icon-share-alt"></i>View Advert
                             </md-button>
                         </md-menu-item>
                     </md-menu-content>
@@ -129,20 +119,31 @@
             </md-list-item>
         </div>
         <md-list-item ng-click="$ctrl.toggleSubmenu('departments', $event)"
-                      ng-if="$ctrl.session.departments.length > 0"
-                      ng-class="{'always-active': $ctrl.session.departments.length ===1}">
+                      ng-if="$ctrl.session.departments.length > 1">
             <i class="icon-organization"></i>
             <p>Departments <i class="icon-arrow-down"></i></p>
             <span class="badge" ng-bind="$ctrl.session.departments.length"></span>
         </md-list-item>
-        <div flex class="submenu submenu-departments" ng-if="$ctrl.session.departments.length > 1"
-             ng-class="{'force-open': $ctrl.session.departments.length ===1}">
+        <div flex class="submenu submenu-departments" ng-if="$ctrl.session.departments.length > 1">
             <md-list-item ng-repeat="department in $ctrl.session.departments" ng-click=""
                           ui-sref="manage.department.summary({id: department.accessCode})" ui-sref-active="active"
                           aria-label="{{department.name}}">
-                <span class="color-icon">
-                    <span class="color-icon-inner"></span>
-                </span>
+                <i class="icon-organization"></i>
+                <p ng-bind="department.name"></p>
+            </md-list-item>
+        </div>
+        <div ng-if="$ctrl.session.departments.length === 1">
+            <md-subheader>
+                <div layout="row" layout-align="start center">
+                    <sapn>Department</sapn>
+                    <span class="flex"></span>
+                    <md-icon><i class="icon-plus"></i></md-icon>
+                </div>
+            </md-subheader>
+            <md-list-item ng-repeat="department in $ctrl.session.departments"
+                          ui-sref="manage.department.summary({id: department.accessCode})"
+                          ui-sref-active="active">
+                <i class="icon-organization"></i>
                 <p ng-bind="department.name"></p>
                 <md-menu md-position-mode="target-right target">
                     <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
@@ -150,33 +151,65 @@
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
-                            <md-button
-                                    ui-sref="manage.advert.summary({id: 'new', organization: department.accessCode})">
-                                <i class="icon-briefcase"></i>New Advert
+                            <md-button ng-click="ctrl.new($index)">
+                                <i class="icon-people"></i>Promote to Candidates
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button ui-sref="view.department({accessCode: department.accessCode})">
-                                <i class="icon-share-alt"></i>View Department
+                            <md-button ng-click="ctrl.new($index)">
+                                <i class="icon-home"></i>Invite Company
                             </md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
             </md-list-item>
         </div>
-        <md-list-item ng-click="$ctrl.toggleSubmenu('promoters', $event)"
-                      ng-if="$ctrl.session.promoters.length > 0"
-                      ng-class="{'always-active': $ctrl.session.promoters.length ===1}">
+
+        <md-list-item ng-click="$ctrl.toggleSubmenu('promoters', $event)" ng-if="$ctrl.session.promoters.length > 1">
             <i class="icon-home"></i>
             <p>Companies <i class="icon-arrow-down"></i></p>
             <span class="badge" ng-bind="$ctrl.session.promoters.length"></span>
         </md-list-item>
-        <div flex class="submenu submenu-promoters" ng-if="$ctrl.session.promoters.length > 0"
-             ng-class="{'force-open': $ctrl.session.promoters.length ===1}">
-            <md-list-item ng-repeat="promoter in $ctrl.session.promoters" ng-click=""
+        <div flex class="submenu submenu-promoters" ng-if="$ctrl.session.promoters.length > 1">
+            <md-list-item ng-repeat="promoter in $ctrl.session.promoters"
                           ui-sref="manage.promoter.summary({id: promoter.accessCode})"
                           ui-sref-active="active"
                           aria-label="{{promoter.name}}">
+                <i class="icon-home"></i>
+                <p ng-bind="promoter.name"></p>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)"
+                                       ui-sref="manage.advert.summary({id: 'new', organization: promoter.accessCode})">
+                                <i class="icon-briefcase"></i>New Position
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="ctrl.new($index)">
+                                <i class="icon-organization"></i>New Department
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-list-item>
+        </div>
+        <div ng-if="$ctrl.session.promoters.length === 1">
+            <md-subheader class="small">
+                <div layout="row" layout-align="start center">
+                    <sapn>Company</sapn>
+                    <span class="flex"></span>
+                    <md-icon class="icon-plus"></md-icon>
+                </div>
+            </md-subheader>
+            <md-list-item
+                    ng-repeat="promoter in $ctrl.session.promoters"
+                    ui-sref="manage.promoter.summary({id: promoter.accessCode})"
+                    ui-sref-active="active"
+                    aria-label="{{promoter.name}}">
                 <span class="color-icon">
                     <span class="color-icon-inner"></span>
                 </span>
@@ -188,17 +221,12 @@
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
                             <md-button ui-sref="manage.advert.summary({id: 'new', organization: promoter.accessCode})">
-                                <i class="icon-briefcase"></i>New Advert
+                                <i class="icon-briefcase"></i>New Position
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button>
+                            <md-button ng-click="ctrl.new($index)">
                                 <i class="icon-organization"></i>New Department
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ui-sref="view.promoter({accessCode: promoter.accessCode})">
-                                <i class="icon-share-alt"></i>View Company
                             </md-button>
                         </md-menu-item>
                     </md-menu-content>

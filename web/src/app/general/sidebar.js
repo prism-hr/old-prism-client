@@ -38,7 +38,7 @@ class SidebarController {
 
     logout() {
         this.authService.logout();
-        this.$state.go('welcome');
+        this.$state.go('mainWelcome');
     }
 
     openSearchBox() {

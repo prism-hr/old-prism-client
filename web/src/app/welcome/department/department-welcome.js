@@ -11,7 +11,7 @@ class DepartmentWelcomeController {
         const departmentAccessRequested = _.get(this.statuses, 'department.accessRequested');
         this.studentsEnabled = _.get(this.statuses, 'department.wizardComplete.state') === 'ACCEPTED' || departmentAccessRequested;
         this.departmentWizardState = {
-            name: 'department.summary',
+            name: 'manage.department.summary',
             params: {id: _.get(department, 'accessCode') || 'new', welcomeType}
         };
     }

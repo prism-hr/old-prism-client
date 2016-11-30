@@ -30,7 +30,7 @@ export const authenticationHook = function ($transitions, $mdDialog) {
         }, data => {
             if (data.status === 401) {
                 authService.logout();
-                $state.go('welcome');
+                $state.go('mainWelcome');
             }
         });
     });

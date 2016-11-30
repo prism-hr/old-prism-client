@@ -6,13 +6,13 @@
                 <i class="icon-menu" ng-if="!$ctrl.hideSidebar"></i>
                 <label>5</label>
             </md-button>
-            <a class="prism-icon hide-gt-xs" ui-sref="welcome">
+            <a class="prism-icon hide-gt-xs" ui-sref="mainWelcome">
                 <img src="/img/bfj-ico-white.svg">
             </a>
-            <a class="prism-logo hide-xs" ui-sref="welcome" ng-if="!$ctrl.authService.user">
+            <a class="prism-logo hide-xs" ui-sref="mainWelcome" ng-if="!$ctrl.authService.user">
                 <img src="/img/logo-nico.svg" alt="PRiSM">
             </a>
-            <a class="prism-logo hide-xs" ui-sref="welcome" hide-gt-md ng-if="$ctrl.authService.user">
+            <a class="prism-logo hide-xs" ui-sref="mainWelcome" hide-gt-md ng-if="$ctrl.authService.user">
                 <img src="/img/logo-nico.svg" alt="PRiSM">
             </a>
         </div>

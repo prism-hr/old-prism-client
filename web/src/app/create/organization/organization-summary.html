@@ -43,7 +43,7 @@
 
     <div ng-if="$ctrl.showRequestAccess">
         <label class="standalone-label">
-            <strong>Would you like to request an access to {{$ctrl.organization.name}}?</strong>
+            <strong>{{$ctrl.organization.name}} exists already, would you like to join as a staff member?</strong>
         </label>
         <md-radio-group name="requestAccess" ng-required="true" ng-model="$ctrl.requestAccess"
                         class="horizontal-form medium">

@@ -1,5 +1,5 @@
 <div class="background-box" ngf-background="imageUrl">
-    <div class="background-uploader-box">
+    <div ng-if="!readOnly" class="background-uploader-box">
         <div ng-if="!publicIdToCrop" class="upload-button-group">
             <div>
                 <button class="background-uploader-button"

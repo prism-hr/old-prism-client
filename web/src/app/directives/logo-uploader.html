@@ -25,7 +25,7 @@
             <img ng-if="!publicId" ng-src="/img/prism-logo-default.png"/>
         </div>
     </div>
-    <div class="logo-uploader-box">
+    <div ng-if="!readOnly" class="logo-uploader-box">
         <button class="logo-uploader"
                 ngf-select
                 ng-model="chosenFile"

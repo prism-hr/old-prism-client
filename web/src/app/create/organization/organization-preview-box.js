@@ -2,6 +2,7 @@ class OrganizationPreviewBoxController {
     constructor($mdDialog) {
         this.$mdDialog = $mdDialog;
     }
+
     showBackgroundDialog(ev) {
         this.$mdDialog.show({
             template: '<background-dialog></background-dialog>',
@@ -16,7 +17,8 @@ class OrganizationPreviewBoxController {
 export const OrganizationPreviewBox = {
     template: require('./organization-preview-box.html'),
     bindings: {
-        organization: '<'
+        organization: '<',
+        readOnly: '@'
     },
     controller: OrganizationPreviewBoxController
 };
