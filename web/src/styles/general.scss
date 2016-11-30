@@ -255,13 +255,16 @@ md-radio-group {
 }
 .badge {
   display: inline-block;
-  background: $uclred;
+  background: $activeGrey;
   color: #FFF;
   border-radius: 2px;
   padding: 1px 5px 3px;
   font-size:0.8rem;
   &.info {
     background-color: $uclblue;
+  }
+  &.warn {
+    background-color: $uclred;
   }
 }
 .error {

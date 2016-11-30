@@ -130,6 +130,12 @@ sidebar {
           transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
         }
       }
+      &.always-active {
+        background: $fadeGrey;
+        p i.icon-arrow-down {
+          display: none;
+        }
+      }
     }
     .submenu {
       background: $fadeGrey;
@@ -138,7 +144,7 @@ sidebar {
       transition-property: all;
       transition-duration: 0.5s;
       transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-      &.active {
+      &.active, &.force-open {
         max-height:245px;
         transition-property: all;
         transition-duration: 1s;
