@@ -25,18 +25,50 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Invited')
             }
         })
-        .state('promoterWelcome', {
-            url: '/promoter/welcome',
-            component: 'promoterWelcome',
+        .state('mainWelcome', {
+            url: '/',
+            component: 'welcome',
+            resolve: {
+                $title: _.wrap('Welcome')
+            }
+        })
+        .state('welcome', {
+            url: '/welcome',
+            abstract: true,
+            template: '<ui-view></ui-view>',
             data: {auth: true},
             params: {
                 showRegistration: false
-            },
+            }
+        })
+        .state('welcome.promoter', {
+            url: '/promoter',
+            component: 'promoterWelcome',
             resolve: {
                 $title: _.wrap('Welcome Advertiser')
             }
         })
-        .state('promoter', {
+        .state('welcome.department', {
+            url: '/department',
+            component: 'departmentWelcome',
+            resolve: {
+                $title: _.wrap('Welcome University')
+            }
+        })
+        .state('welcome.student', {
+            url: '/student',
+            component: 'studentWelcome',
+            resolve: {
+                $title: _.wrap('Student')
+            }
+        })
+        .state('manage', {
+            url: '/manage',
+            abstract: true,
+            template: '<ui-view></ui-view>',
+            data: {auth: true}
+        })
+        .state('manage.promoter', {
             url: '/promoter/{id}?welcomeType',
             abstract: true,
             component: 'organization',
@@ -54,18 +86,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Company Information')
             }
         })
-        .state('departmentWelcome', {
-            url: '/department/welcome',
-            component: 'departmentWelcome',
-            data: {auth: true},
-            params: {
-                showRegistration: false
-            },
-            resolve: {
-                $title: _.wrap('Welcome University')
-            }
-        })
-        .state('department', {
+
+        .state('manage.department', {
             url: '/department/{id}?welcomeType',
             abstract: true,
             component: 'organization',
@@ -83,7 +105,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('University Information')
             }
         })
-        .state('advert', {
+        .state('manage.advert', {
             url: '/advert/{id}?welcomeType&organization',
             abstract: true,
             component: 'advert',
@@ -98,7 +120,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Advert')
             }
         })
-        .state('audience', {
+        .state('manage.audience', {
             url: '/audience/{id}?welcomeType',
             abstract: true,
             component: 'audience',
@@ -113,7 +135,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Audience')
             }
         })
-        .state('student', {
+        .state('manage.student', {
             url: '/student/{id}?welcomeType',
             abstract: true,
             component: 'student',
@@ -128,54 +150,46 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Student')
             }
         })
-        .state('employer-view', {
-            url: '/employer-view',
-            component: 'employerView',
-            data: {auth: true},
+        .state('view', {
+            abstract: true,
+            template: '<ui-view></ui-view>'
+        })
+        .state('view.promoter', {
+            url: '/promoter/{accessCode}',
+            component: 'promoterView',
             resolve: {
-                $title: _.wrap('Employer View Demo')
+                promoter($stateParams, Restangular) {
+                    return Restangular.one('organizationImplementations', $stateParams.accessCode).get();
+                },
+                $title: _.wrap('Employer')
             }
         })
-        .state('position-view', {
-            url: '/position-view',
-            component: 'positionView',
-            data: {auth: true},
+        .state('view.department', {
+            url: '/department/{accessCode}',
+            component: 'departmentView',
             resolve: {
+                department($stateParams, Restangular) {
+                    return Restangular.one('organizationImplementations', $stateParams.accessCode).get();
+                },
+                $title: _.wrap('Department')
+            }
+        })
+        .state('view.advert', {
+            url: '/advert/{accessCode}',
+            component: 'advertView',
+            resolve: {
+                advert($stateParams, Restangular) {
+                    return Restangular.one('promotions', $stateParams.accessCode).get();
+                },
                 $title: _.wrap('Graduate Software and Electronics Engineers')
             }
         })
-        .state('student-view', {
-            url: '/student-view',
+        .state('view.student', {
+            url: '/student/{accessCode}',
             component: 'studentView',
             data: {auth: true},
             resolve: {
-                $title: _.wrap('Student View Demo')
-            }
-        })
-        .state('universityOrganization', {
-            url: '/university/organization',
-            component: 'universityOrganization',
-            data: {auth: true},
-            resolve: {
-                $title: _.wrap('Create University')
-            }
-        })
-        .state('studentWelcome', {
-            url: '/student/welcome',
-            component: 'studentWelcome',
-            data: {auth: true},
-            params: {
-                showRegistration: false
-            },
-            resolve: {
                 $title: _.wrap('Student')
-            }
-        })
-        .state('welcome', {
-            url: '/',
-            component: 'welcome',
-            resolve: {
-                $title: _.wrap('Welcome')
             }
         })
         .state('activities', {
@@ -189,7 +203,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 },
                 $title: _.wrap('Activities')
             }
-
         });
 
     _.each(resourceCreateWizardFactoryProvider.getStepDefinitions(), (definitions, resourceType) => {
@@ -203,7 +216,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
             const template = `<${component} welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="${resourceTypeLower}Form" ${resourceTypeLower}="resource" wizard="wizard"></${component}>`;
             $stateProvider
-                .state(resourceType.toLowerCase() + '.' + step.id, {
+                .state('manage.' + resourceType.toLowerCase() + '.' + step.id, {
                     url: '/' + step.id,
                     template,
                     data,

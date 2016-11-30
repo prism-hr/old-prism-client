@@ -5,6 +5,7 @@ export class LogoUploader {
         this.require = ['ngModel', '?^form'];
         this.restrict = 'E';
         this.scope = {
+            readOnly: '@',
             dropArea: '@'
         };
         this.cloudinary = cloudinary;

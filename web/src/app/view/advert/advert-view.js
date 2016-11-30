@@ -1,4 +1,4 @@
-class PositionViewController {
+class AdvertViewController {
     $onInit() {
         this.selectedIndex = 0;
         this.map = {center: {latitude: 45, longitude: -73}, zoom: 8};
@@ -19,7 +19,10 @@ class PositionViewController {
     }
 }
 
-export const PositionView = {
-    template: require('./position-view.html'),
-    controller: PositionViewController
+export const AdvertView = {
+    template: require('./advert-view.html'),
+    bindings: {
+        advert: '<'
+    },
+    controller: AdvertViewController
 };

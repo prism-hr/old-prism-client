@@ -58,7 +58,7 @@ class OrganizationSummaryController {
                     .then(() => {
                         if (this.welcomeType) {
                             this.welcomeService.updateWizardCompleteness(this.organization, this.wizardType, this.welcomeType, {accessRequested: true});
-                            return this.$state.go(this.welcomeType + 'Welcome');
+                            return this.$state.go('welcome' + this.welcomeType);
                         }
                         return this.$state.go('activities');
                     });
@@ -73,10 +73,6 @@ class OrganizationSummaryController {
         this.requestAccess = null;
         this.showRequestAccess = complete && this.organization.accessCode;
         this.showSummary = complete && !this.showRequestAccess;
-    }
-
-    onOrganizationNameChanged(name, fieldName) {
-        this.organization.name = name;
     }
 }
 

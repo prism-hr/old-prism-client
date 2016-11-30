@@ -12,8 +12,8 @@ class AuthenticateController {
     setView(view) {
         this.view = view;
         this.responseError = null;
-        const contact = this.referral.contact;
-        const user = {username: contact.email, firstName: contact.firstName, lastName: contact.lastName};
+        const contact = _.get(this.referral, 'contact');
+        const user = contact ? {username: contact.email, firstName: contact.firstName, lastName: contact.lastName} : {};
         this.user = view === 'FORGOT_PASSWORD' ? {} : user || {};
     }
 

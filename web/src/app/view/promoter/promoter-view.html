@@ -1,62 +1,22 @@
 <div class="page-wrap">
-    <div class="view employer">
-        <div class="background-box"></div>
-        <div class="company-box" layout="row" layout-align="center end">
-            <md-card class="company-header" layout="row" flex-gt-sm="75">
-                <div class="logo-image">
-                    <div class="logo-flex company-logo">
-                        <div class="logo">
-                            <img ngf-src="$ctrl.organization.documentLogoImage || '/img/prism-logo-default.png'" />
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h2>Juan Mingo Limited</h2>
-                    <p class="summary">Nam luctus, sapien ut tincidunt varius, ex est aliquet nunc, et lobortis eros ante id quam. Donec varius auctor lectus et efficitur posuere.</p>
-                    <div class="address" layout="row" layout-align="start start">
-                        <p>Calle General Ricardos 10 4.2, 28019, Madrid</p>
-                        <span class="flex"></span>
-                        <div class="lock-size">
-                            <md-fab-speed-dial md-direction="down" class="md-scale" md-open="$ctrl.isOpen">
-                                <md-fab-trigger>
-                                    <md-button aria-label="Share" class="md-fab md-warn md-mini"><i class="icon-share"></i></md-button>
-                                </md-fab-trigger>
-                                <md-fab-actions>
-                                    <md-button aria-label="Share with Facebook" class="md-fab md-raised md-mini facebook">
-                                        <i class="icon-social-facebook"></i>
-                                    </md-button>
-                                    <md-button aria-label="Share with Twitter" class="md-fab md-raised md-mini twitter">
-                                        <i class="icon-social-twitter"></i>
-                                    </md-button>
-                                    <md-button aria-label="Share with Linkedin" class="md-fab md-raised md-mini linkedin">
-                                        <i class="icon-social-linkedin"></i>
-                                    </md-button>
-                                </md-fab-actions>
-                            </md-fab-speed-dial>
-                        </div>
-                    </div>
-
-                </div>
-            </md-card>
-        </div>
-    </div>
+    <organization-preview-box organization="$ctrl.promoter" read-only="true"></organization-preview-box>
     <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
         <div flex="100" flex-gt-sm="75" class="single-full-block" layout="column" layout-align="center stretch">
             <div class="tab-container" flex layout="row">
-                <div class="positions active" ng-click="$ctrl.changeTab(0, $event)" flex="50" flex-gt-sm="33">
+                <div class="positions active" ng-click="$ctrl.selectedIndex = 0" flex="50" flex-gt-sm="33">
                     <div layout-padding="">
                         <h3>Positions</h3>
                         <p><i class="icon-briefcase"></i>  2 positions match your skills</p>
                     </div>
                 </div>
-                <div class="overview" ng-click="$ctrl.changeTab(1, $event)" flex="50" flex-gt-sm="33">
+                <div class="overview" ng-click="$ctrl.selectedIndex = 1" flex="50" flex-gt-sm="33">
                     <div layout-padding="">
                         <h3>Overview</h3>
                         <p>Find out more abut us</p>
                     </div>
                 </div>
             </div>
-            <md-tabs md-dynamic-height md-selected="$ctrl.selectedIndex">
+            <md-tabs md-dynamic-height md-selected  ="$ctrl.selectedIndex">
                 <md-tab label="positions">
                     <md-content>
                         <h2 layout-padding="8">Positions</h2>

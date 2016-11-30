@@ -4,6 +4,9 @@ export class BackgroundUploader {
         this.template = require('./background-uploader.html');
         this.require = 'ngModel';
         this.restrict = 'E';
+        this.scope = {
+            readOnly: '@'
+        };
         this.cloudinary = cloudinary;
         this.environment = environment;
     }

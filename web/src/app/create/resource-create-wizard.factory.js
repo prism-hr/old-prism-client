@@ -159,12 +159,12 @@ export class ResourceCreateWizardFactory {
                             return this._resourceManager.commitResource()
                                 .then(() => {
                                     if (wizardStatus) {
-                                        return $state.go(wizardStatus.welcomeType + 'Welcome');
+                                        return $state.go('welcome.' + wizardStatus.welcomeType);
                                     }
                                     return $state.go('activities');
                                 });
                         }
-                        return $state.go(this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode || 'new'}); // FIXME drop alternative 'new'
+                        return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode || 'new'}); // FIXME drop alternative 'new'
                     });
             }
 
@@ -173,7 +173,7 @@ export class ResourceCreateWizardFactory {
                     .then(savedResource => {
                         const wizardStatus = welcomeService.updateWizardCompleteness(savedResource, this._wizardType, this._welcomeType);
                         if (wizardStatus) {
-                            return $state.go(wizardStatus.welcomeType + 'Welcome');
+                            return $state.go('welcome.' + wizardStatus.welcomeType);
                         }
                         return $state.go('activities');
                     });
@@ -182,9 +182,9 @@ export class ResourceCreateWizardFactory {
             prev() {
                 const prevStep = this.getPrevStep();
                 if (prevStep) {
-                    return $state.go(this._wizardType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
+                    return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
                 }
-                return $state.go(this._welcomeType.toLowerCase() + 'Welcome');
+                return $state.go('welcome.' + this._welcomeType.toLowerCase());
             }
 
             skip() {
@@ -197,7 +197,7 @@ export class ResourceCreateWizardFactory {
 
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
-                        return $state.go(this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode});
+                        return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode});
                     });
             }
 

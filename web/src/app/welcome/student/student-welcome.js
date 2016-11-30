@@ -10,11 +10,11 @@ class StudentWelcomeController {
         const student = _.get(this.statuses, 'student.resource');
         this.profileEnabled = _.get(this.statuses.student, 'resource.statusComplete.completed');
         this.studentWizardState = {
-            name: 'student.header',
+            name: 'manage.student.header',
             params: {id: _.get(student, 'accessCode') || 'new', welcomeType}
         };
         this.profileWizardState = {
-            name: 'profile.dupa',
+            name: 'manage.profile.dupa',
             params: {id: _.get(student, 'accessCode') || 'new', welcomeType}
         };
     }

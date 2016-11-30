@@ -87,8 +87,9 @@ import {StudentStudies} from './app/create/student/student-studies';
 import {StudentContact} from './app/create/student/student-contact';
 import {StudentSkills} from './app/create/student/student-skills';
 import {StudentAbout} from './app/create/student/student-about';
-import {EmployerView} from './app/view/employer/employer-view';
-import {PositionView} from './app/view/position/position-view';
+import {PromoterView} from './app/view/promoter/promoter-view';
+import {DepartmentView} from './app/view/department/department-view';
+import {AdvertView} from './app/view/advert/advert-view';
 import {StudentView} from './app/view/student/student-view';
 import './index.scss';
 import environment from './env.json';
@@ -178,8 +179,9 @@ angular
     .component('studentContact', StudentContact)
     .component('studentSkills', StudentSkills)
     .component('studentAbout', StudentAbout)
-    .component('employerView', EmployerView)
-    .component('positionView', PositionView)
+    .component('promoterView', PromoterView)
+    .component('departmentView', DepartmentView)
+    .component('advertView', AdvertView)
     .component('studentView', StudentView)
     .component('activities', Activities)
     .component('invited', Invited);

@@ -13,15 +13,15 @@ class PromoterWelcomeController {
         this.advertEnabled = _.get(this.statuses, 'promoter.wizardComplete.state') === 'COMPLETE' || promoterAccessRequested;
         this.audienceEnabled = _.get(this.statuses, 'advert.wizardComplete.state') === 'COMPLETE';
         this.promoterWizardState = {
-            name: 'promoter.summary',
+            name: 'manage.promoter.summary',
             params: {id: _.get(promoter, 'accessCode') || 'new', welcomeType}
         };
         this.advertWizardState = {
-            name: 'advert.summary',
+            name: 'manage.advert.summary',
             params: {id: _.get(advert, 'accessCode') || 'new', welcomeType, organization: _.get(promoter, 'accessCode')}
         };
         this.audienceWizardState = {
-            name: 'audience.summary',
+            name: 'manage.audience.summary',
             params: {id: _.get(advert, 'accessCode'), welcomeType}
         };
     }
