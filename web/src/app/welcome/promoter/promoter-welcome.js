@@ -8,9 +8,8 @@ class PromoterWelcomeController {
         const welcomeType = 'promoter';
         this.statuses = this.welcomeService.getWelcomeStatuses('promoter');
         const promoter = _.get(this.statuses, 'promoter.resource');
-        const promoterAccessRequested = _.get(this.statuses, 'promoter.accessRequested');
         const advert = _.get(this.statuses, 'advert.resource');
-        this.advertEnabled = _.get(this.statuses, 'promoter.wizardComplete.state') === 'COMPLETE' || promoterAccessRequested;
+        this.advertEnabled = _.get(this.statuses, 'promoter.wizardComplete.state') === 'COMPLETE';
         this.audienceEnabled = _.get(this.statuses, 'advert.wizardComplete.state') === 'COMPLETE';
         this.promoterWizardState = {
             name: 'manage.promoter.summary',
