@@ -3,13 +3,13 @@
     <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start">
         <div flex="100" flex-gt-sm="75" class="single-full-block" layout="column" layout-align="center stretch">
             <div class="tab-container" flex layout="row">
-                <div class="positions active" ng-click="$ctrl.selectedIndex = 0" flex="50" flex-gt-sm="33">
+                <div class="positions active" ng-click="$ctrl.changeTab(0, $event)" flex="50" flex-gt-sm="33">
                     <div layout-padding="">
                         <h3>Positions</h3>
                         <p><i class="icon-briefcase"></i>  2 positions match your skills</p>
                     </div>
                 </div>
-                <div class="overview" ng-click="$ctrl.selectedIndex = 1" flex="50" flex-gt-sm="33">
+                <div class="overview" ng-click="$ctrl.changeTab(1, $event)" flex="50" flex-gt-sm="33">
                     <div layout-padding="">
                         <h3>Overview</h3>
                         <p>Find out more abut us</p>

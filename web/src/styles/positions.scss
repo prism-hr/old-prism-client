@@ -37,7 +37,7 @@
 .position-description-box {
   padding-right:20px;
 }
-.position, .advert, audience {
+.position, .advert, audience, advert-view {
   .position-item {
     width: 100%;
   }
@@ -142,7 +142,7 @@
     margin: 80px auto 0;
   }
 }
-.promoter, .employer {
+.promoter, .employer, .advert {
   .background-box {
     background: url(/img/emp-back.png) center top no-repeat;
     background-size: cover;
