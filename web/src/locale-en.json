@@ -44,7 +44,8 @@
       "address-lookup": {
         "autocomplete-placeholder": {
           "promoter": "Look up your Locations",
-          "department": "Look up your Locations"
+          "department": "Look up your Locations",
+          "student": "Look up your Locations"
         },
         "lookup-button": {
           "promoter": "Look up Locations",
