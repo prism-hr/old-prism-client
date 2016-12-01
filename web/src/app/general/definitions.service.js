@@ -5,14 +5,25 @@ export class DefinitionsService {
     }
 
     loadDefinitions() {
-        if (!this.loadPromise) {
-            this.loadPromise = this.Restangular.one('public', 'definitions').get()
+        if (!this.definitionsPromise) {
+            this.definitionsPromise = this.Restangular.one('public', 'definitions').get()
                 .then(definitions => {
                     _.assign(this, definitions.plain());
                     return definitions.plain();
                 });
         }
-        return this.loadPromise;
+        return this.definitionsPromise;
+    }
+
+    loadLanguages() {
+        if (!this.languagesPromise) {
+            this.languagesPromise = this.Restangular.all('languages').getList()
+                .then(languages => {
+                    this.languages = languages.plain();
+                    return this.languages;
+                });
+        }
+        return this.languagesPromise;
     }
 }
 

@@ -1,8 +1,8 @@
 class OrganizationDetailsController {
     /** @ngInject */
     constructor(Restangular, definitions) {
-        this.definitions = definitions;
         this.Restangular = Restangular;
+        this.definitions = definitions;
     }
 
     lookupTags(text) {
