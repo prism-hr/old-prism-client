@@ -18,8 +18,8 @@ export class ResourceCreateWizardFactory {
             audience: [{id: 'summary', component: 'audienceSummary', title: 'Summary'},
                 {id: 'social', component: 'audienceSocial', title: 'Social Promotion'}],
             student: [{id: 'header', component: 'studentHeader', title: 'Header'},
-                {id: 'contact', component: 'studentContact', title: 'Contact'},
                 {id: 'studies', component: 'studentStudies', title: 'Studies'},
+                {id: 'contact', component: 'studentContact', title: 'Contact'},
                 {id: 'skills', component: 'studentSkills', title: 'Skills'},
                 {id: 'about', component: 'studentAbout', title: 'About you'}]
         };

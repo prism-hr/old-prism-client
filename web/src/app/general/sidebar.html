@@ -135,7 +135,7 @@
             <p>Departments <i class="icon-arrow-down"></i></p>
             <span class="badge" ng-bind="$ctrl.session.departments.length"></span>
         </md-list-item>
-        <div flex class="submenu submenu-departments" ng-if="$ctrl.session.departments.length > 1"
+        <div flex class="submenu submenu-departments" ng-if="$ctrl.session.departments.length > 0"
              ng-class="{'force-open': $ctrl.session.departments.length ===1}">
             <md-list-item ng-repeat="department in $ctrl.session.departments" ng-click=""
                           ui-sref="manage.department.summary({id: department.accessCode})" ui-sref-active="active"
