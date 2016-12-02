@@ -74,7 +74,7 @@
             <label class="standalone-label">Study Levels</label>
 
             <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
-                         md-no-ink aria-label="Undergraduate"
+                         md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
                              ng-checked="$ctrl.isQualificationCategorySelected(category)"
                          ng-click="$ctrl.toggleQualificationCategory(category)"
                          class="md-primary">

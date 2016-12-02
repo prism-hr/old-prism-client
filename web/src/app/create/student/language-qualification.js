@@ -7,7 +7,7 @@ class LanguageQualificationController {
     }
 
     $onInit() {
-        this.$element.find('input').on('keydown', function (ev) {
+        this.$element.find('input').on('keydown', ev => {
             ev.stopPropagation();
         });
     }
