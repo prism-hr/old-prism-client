@@ -59,6 +59,7 @@
                     md-transform-chip="$ctrl.transformBenefit($chip)">
                 <md-autocomplete
                         md-search-text="searchText"
+                        md-autoselect="true"
                         md-items="benefit in $ctrl.lookupBenefits(searchText)"
                         md-item-text="benefit.name"
                         placeholder="Search or type Benefit">

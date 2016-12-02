@@ -65,10 +65,8 @@
     }
   }
 }
-.study-form {
-  .project-input {
-    margin-top:40px;
-  }
+.program-input {
+  margin-top:40px;
 }
 .studies-list {
   md-card.study-item {
@@ -118,6 +116,9 @@
 .languages {
   md-icon {
     font-size:23px;
+  }
+  .language-item {
+    margin-bottom:6px;
   }
 }
 .fields-group {

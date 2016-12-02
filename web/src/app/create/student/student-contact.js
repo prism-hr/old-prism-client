@@ -1,13 +1,16 @@
 class StudentContactController {
     /** @ngInject */
-    constructor(definitions) {
+    constructor(definitions, authService) {
         this.definitions = definitions;
+        this.authService = authService;
     }
 
     $onInit() {
         if (this.student.languages.length < 1) {
             this.student.languages.push({language: {}});
         }
+        this.student.proximity = this.student.proximity || 'TO_200';
+        this.student.email = this.student.email || this.authService.user.username;
     }
 
     addLanguage(language) {

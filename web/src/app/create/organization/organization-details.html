@@ -8,6 +8,7 @@
                   md-transform-chip="$ctrl.transformTag($chip)">
             <md-autocomplete
                     md-search-text="searchText"
+                    md-autoselect="true"
                     md-items="item in $ctrl.lookupTags(searchText)"
                     md-item-text="item.name"
                     placeholder="Find a tag or add a new one">
