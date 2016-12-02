@@ -1,8 +1,7 @@
 <div layout-padding>
-    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and
-        sizes </h3>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and sizes </h3>
 
-    <md-input-container class="md-block industries-holder">
+    <md-input-container class="md-block industries-holder" layout="row">
         <label class="md-no-float">Areas of Expertise</label>
         <md-chips ng-model="$ctrl.organization.tags"
                   md-transform-chip="$ctrl.transformTag($chip)">
