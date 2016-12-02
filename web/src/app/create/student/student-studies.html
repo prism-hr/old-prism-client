@@ -1,7 +1,7 @@
 <div layout-padding xmlns="http://www.w3.org/1999/html">
     <h3>Studies</h3>
 </div>
-<div class="studies-list" layout="column" layout-gt-sm="row" ng-if="$ctrl.studyList">
+<div class="studies-list" layout="column" layout-gt-sm="row" layout-wrap ng-if="$ctrl.studyList">
     <md-card flex="100" flex-gt-sm="45" class="study-item">
         <md-card-title>
             <div class="logo-icon">
@@ -32,6 +32,38 @@
             <md-button class="small md-raised" disabled="disabled">Main Study</md-button>
             <span class="flex"></span>
             <md-button class="md-raised small md-warn" disabled="disabled">Delete</md-button>
+        </md-card-actions>
+    </md-card>
+    <md-card flex="100" flex-gt-sm="45" class="study-item">
+        <md-card-title>
+            <div class="logo-icon">
+                <div class="logo-image">
+                    <div class="logo-flex company-logo">
+                        <div class="logo">
+                            <img public-id="local/wihwiw9b8abd9myeftnm" src="http://res.cloudinary.com/bigfoot/image/upload/w_400,h_250,c_mfit/local/wihwiw9b8abd9myeftnm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-card-title-text>
+                <span class="md-headline" layout="row" layout-align="start center">Biochemical Engineering<span flex></span> <strong class="badge warn">Master</strong> </span>
+                <span class="md-subhead">at UCL</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <div class="dates-location" layout="row" layout-align="start center">
+                <strong class="badge info">2.1</strong>
+                <span> 10/2007 - 6/2013 </span>
+                <span class="flex"></span>
+                <span>London - UK</span>
+            </div>
+            <p>Developing a novel pipeline to determine monoclonal antibody solution structures and stabilities in bioprocessing conditions</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="start center">
+            <md-button class="md-primary small md-raised">Edit</md-button>
+            <md-button class="small md-raised">Main Study</md-button>
+            <span class="flex"></span>
+            <md-button class="md-raised small md-warn">Delete</md-button>
         </md-card-actions>
     </md-card>
     <md-card flex="100" flex-gt-sm="45" class="study-item">
