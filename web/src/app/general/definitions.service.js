@@ -19,7 +19,7 @@ export class DefinitionsService {
         if (!this.languagesPromise) {
             this.languagesPromise = this.Restangular.all('languages').getList()
                 .then(languages => {
-                    this.languages = languages.plain();
+                    this.languages = languages.plain().map(l => ({accessCode: l.accessCode, name: l.name}));
                     return this.languages;
                 });
         }

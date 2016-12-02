@@ -1,28 +1,20 @@
-<md-input-container flex="50">
-    <label class="md-no-float">Language</label>
-    <md-select ng-model="language.language" name="language_{{$index}}">
-        <md-select-header>
-            <md-input-container md-no-float class="md-block">
-                <input ng-model="searchTerm"
-                       placeholder="Search for a language..."
-                       class="md-text language-search-term">
-            </md-input-container>
-        </md-select-header>
-        <md-optgroup label="languages">
-            <md-option ng-value="lang"
-                       ng-repeat="lang in $ctrl.definitions.languages | filter:searchTerm">
-                {{lang.name}}
-            </md-option>
-        </md-optgroup>
-    </md-select>
-</md-input-container>
+<md-autocomplete flex md-input-name="language" md-input-minlength="2" md-selected-item="$ctrl.language.language"
+                 md-search-text="$ctrl.searchText"
+                 md-items="language in $ctrl.searchLanguages($ctrl.searchText)"
+                 md-item-text="language.name" md-require-match md-floating-label="Language">
+    <md-item-template>
+        <span md-highlight-text="$ctrl.searchText">{{language.name}}</span>
+    </md-item-template>
+    <div ng-messages="$ctrl.form.language.$error" role="alert">
+        <div ng-messages-include="general-messages"></div>
+    </div>
+</md-autocomplete>
+
 <md-input-container flex="50">
     <label class="md-no-float">Proficiency</label>
-    <md-select name="type" ng-model="$ctrl.language.proficiency">
-        <md-option value="elementary">Elementary</md-option>
-        <md-option value="limited_working">Limited working</md-option>
-        <md-option value="professional_working">Professional working</md-option>
-        <md-option value="full_professional" selected="true">Full professional</md-option>
-        <md-option value="native_or_bilingual">Native or bilingual</md-option>
+    <md-select name="proficiency" ng-model="$ctrl.language.proficiency">
+        <md-option ng-repeat="proficiency in $ctrl.definitions.languageProficiency" value="{{proficiency}}">
+            {{'definitions.languageProficiency.' + proficiency | translate}}
+        </md-option>
     </md-select>
 </md-input-container>

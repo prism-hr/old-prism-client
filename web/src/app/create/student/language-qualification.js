@@ -11,12 +11,20 @@ class LanguageQualificationController {
             ev.stopPropagation();
         });
     }
+
+    searchLanguages(searchText) {
+        searchText = searchText.toLowerCase();
+        return this.definitions.languages.filter(d => {
+            return d.name.toLowerCase().includes(searchText);
+        });
+    }
 }
 
 export const LanguageQualification = {
     template: require('./language-qualification.html'),
     bindings: {
-        language: '='
+        language: '=',
+        form: '<'
     },
     controller: LanguageQualificationController
 };
