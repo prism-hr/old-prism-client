@@ -107,16 +107,23 @@
       "NONE": "No Salary"
     },
     "positionInterval": {
-      "HOUR" : "Hour",
-      "DAY" : "Day",
-      "WEEK" : "Week",
-      "MONTH" : "Month",
-      "YEAR" : "Year"
+      "HOUR": "Hour",
+      "DAY": "Day",
+      "WEEK": "Week",
+      "MONTH": "Month",
+      "YEAR": "Year"
     },
     "positionWorkCategory": {
       "JOB": "Job",
       "EMPLOYMENT": "Employment",
       "PLACEMENT": "Placement"
+    },
+    "proximity": {
+      "TO_10": "Less than 10km",
+      "TO_25": "10km to 24km",
+      "TO_50": "25km to 99km",
+      "TO_100": "100km to 199km",
+      "TO_200": "More than 199"
     }
   },
   "responseError": {

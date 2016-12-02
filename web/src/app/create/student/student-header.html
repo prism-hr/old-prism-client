@@ -1,22 +1,19 @@
 <div layout-padding>
     <h3>Candidate Basic information</h3>
     <div class="fields-group">
-        <organization-lookup organization="$ctrl.student.organization" wizard-type="{{$ctrl.wizardType}}"
+        <organization-lookup organization="$ctrl.currentQualification.organizationImplementation"
+                             wizard-type="{{$ctrl.wizardType}}"
                              form="$ctrl.form">
         </organization-lookup>
 
         <label class="standalone-label">Study Level</label>
-        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.temp.studyLevel"
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.currentQualification.category"
                         class="horizontal-form medium">
             <div class="radio-box-aligned">
-                <md-radio-button class="md-primary" value="undergraduate" aria-label="Undergraduate">
-                    Undergraduate
-                </md-radio-button>
-                <md-radio-button class="md-primary" value="master" aria-label="Master">
-                    Master
-                </md-radio-button>
-                <md-radio-button class="md-primary" value="research" aria-label="Research">
-                    Research
+                <md-radio-button ng-repeat="category in $ctrl.definitions.qualificationCategory"
+                                 class="md-primary" value="{{category}}"
+                                 aria-label="{{'definitions.qualificationCategory.' + category | translate}}">
+                    {{'definitions.qualificationCategory.' + category | translate}}
                 </md-radio-button>
             </div>
         </md-radio-group>
@@ -29,5 +26,4 @@
             </div>
         </md-input-container>
     </div>
-    <!--</div>-->
 </div>
