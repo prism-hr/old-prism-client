@@ -1,4 +1,5 @@
-<background-uploader ng-model="$ctrl.advert.documentBackgroundImage" read-only="{{$ctrl.readOnly}}"></background-uploader>
+<background-uploader ng-model="$ctrl.advert.documentBackgroundImage"
+                     read-only="{{$ctrl.readOnly}}"></background-uploader>
 <div class="position-box" layout="row" layout-align="center end">
     <md-card class="position-box-header" layout="column" layout-gt-xs="row" flex-gt-sm="75">
         <div class="logo-image">
@@ -12,7 +13,9 @@
             <div class="position-header" layout="row" layout-align="start center">
                 <h2>{{$ctrl.advert.name}}</h2>
                 <span flex></span>
-                <label class="badge warn">{{'definitions.positionWorkCategory.'+$ctrl.advert.category | translate}}</label>
+                <label class="badge warn">
+                    {{'definitions.promotionCategory.' + $ctrl.advert.category | translate}}
+                </label>
             </div>
             <div class="position-subheader" layout="row" layout-align="start center">
                 <h4>{{$ctrl.advert.organizationImplementation.organization.name}}</h4>
@@ -25,7 +28,9 @@
                     <span ng-if="$ctrl.advert.positionContract">
                         {{'definitions.positionContract.' + $ctrl.advert.positionContract | translate}}
                     </span>
-                    <span ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'"> - {{$ctrl.advert.positionDurationMinimum}} Months Min</span>
+                    <span ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'">
+                        - {{$ctrl.advert.positionDurationMinimum}} Months Min
+                    </span>
                     -
                     <span class="position-patterns">
                         <span ng-repeat="contract in $ctrl.advert.positionWorkPatterns">
@@ -39,7 +44,9 @@
                         <span ng-if="$ctrl.advert.positionSalaryMinimum">From {{$ctrl.advert.positionSalaryMinimum}}</span>
                         <span ng-if="$ctrl.advert.positionSalaryMaximum">to {{$ctrl.advert.positionSalaryMaximum}}</span>
                         <span ng-if="$ctrl.advert.positionSalaryCurrency">{{$ctrl.advert.positionSalaryCurrency}}</span>
-                        <span ng-if="$ctrl.advert.positionSalaryInterval">a {{'definitions.positionInterval.' + $ctrl.advert.positionSalaryInterval | translate}}</span>
+                        <span ng-if="$ctrl.advert.positionSalaryInterval">
+                            a {{'definitions.positionInterval.' + $ctrl.advert.positionSalaryInterval | translate}}
+                        </span>
                     </span>
                     <span ng-if="$ctrl.advert.positionSalary === 'COMPETITIVE'">
                         Competitive Salary

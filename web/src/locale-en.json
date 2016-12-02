@@ -69,6 +69,19 @@
     }
   },
   "definitions": {
+    "gender": {
+      "FEMALE": "Female",
+      "MALE": "Male",
+      "UNDISCLOSED": "Undisclosed"
+    },
+    "languageProficiency": {
+      "NO": "No",
+      "ELEMENTARY": "Elementary",
+      "LIMITED_WORKING": "Limited Working",
+      "PROFESSIONAL_WORKING": "Professional Working",
+      "FULL_PROFESSIONAL": "Full Professional",
+      "NATIVE_BILINGUAL": "Native Bilingual"
+    },
     "numberStaff": {
       "FROM_1_TO_10": "1 to 10",
       "FROM_11_TO_50": "11 to 50",
@@ -91,21 +104,6 @@
       "PERMANENT": "Permanent",
       "FIXED_TERM": "Fixed-Term/Contract"
     },
-    "positionWorkPattern": {
-      "FULL_TIME": "Full-Time",
-      "PART_TIME": "Part-Time",
-      "FLEXIBLE": "Flexible"
-    },
-    "qualificationCategory": {
-      "UNDERGRADUATE": "Undergraduate",
-      "MASTER": "Master",
-      "DOCTORATE": "Doctorate"
-    },
-    "positionSalary": {
-      "RANGE": "Salary Range",
-      "COMPETITIVE": "Competitive Salary",
-      "NONE": "No Salary"
-    },
     "positionInterval": {
       "HOUR": "Hour",
       "DAY": "Day",
@@ -113,7 +111,17 @@
       "MONTH": "Month",
       "YEAR": "Year"
     },
-    "positionWorkCategory": {
+    "positionSalary": {
+      "RANGE": "Salary Range",
+      "COMPETITIVE": "Competitive Salary",
+      "NONE": "No Salary"
+    },
+    "positionWorkPattern": {
+      "FULL_TIME": "Full-Time",
+      "PART_TIME": "Part-Time",
+      "FLEXIBLE": "Flexible"
+    },
+    "promotionCategory": {
       "JOB": "Job",
       "EMPLOYMENT": "Employment",
       "PLACEMENT": "Placement"
@@ -124,6 +132,11 @@
       "TO_50": "25km to 99km",
       "TO_100": "100km to 199km",
       "TO_200": "More than 199"
+    },
+    "qualificationCategory": {
+      "UNDERGRADUATE": "Undergraduate",
+      "MASTER": "Master",
+      "DOCTORATE": "Doctorate"
     }
   },
   "responseError": {

@@ -7,7 +7,7 @@ class StudentContactController {
 
     $onInit() {
         if (this.student.languages.length < 1) {
-            this.student.languages.push({language: {}});
+            this.student.languages.push({language: undefined});
         }
         this.student.proximity = this.student.proximity || 'TO_200';
         this.student.email = this.student.email || this.authService.user.username;
@@ -15,7 +15,7 @@ class StudentContactController {
 
     addLanguage(language) {
         const idx = this.student.languages.indexOf(language);
-        this.student.languages.splice(idx, 0, {language: {}});
+        this.student.languages.splice(idx + 1, 0, {language: undefined});
     }
 
     removeLanguage(language) {
