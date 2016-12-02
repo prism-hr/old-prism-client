@@ -6,6 +6,11 @@
                              form="$ctrl.form">
         </organization-lookup>
 
+        <md-input-container class="md-block" flex>
+            <label class="md-no-float">Program name</label>
+            <input ng-model="$ctrl.currentQualification.name">
+        </md-input-container>
+
         <label class="standalone-label">Study Level</label>
         <md-radio-group name="type" ng-required="true" ng-model="$ctrl.currentQualification.category"
                         class="horizontal-form medium">
@@ -17,6 +22,7 @@
                 </md-radio-button>
             </div>
         </md-radio-group>
+
         <md-input-container class="md-block">
             <label class="md-no-float">Personal Statement</label>
             <textarea ng-model="$ctrl.student.summary" md-maxlength="250" name="summary" rows="3"
