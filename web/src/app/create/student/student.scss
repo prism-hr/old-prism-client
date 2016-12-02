@@ -65,6 +65,56 @@
     }
   }
 }
+.study-form {
+  .project-input {
+    margin-top:40px;
+  }
+}
+.studies-list {
+  md-card.study-item {
+    md-card-title {
+      flex: 0 1 auto;
+      padding: 8px 10px;
+      .md-headline {
+        color: $uclred;
+        font-size:18px;
+        line-height: 22px;
+      }
+      .md-subhead {
+        font-size:16px;
+        line-height: 18px;
+      }
+    }
+    md-card-content {
+      padding: 0 10px 4px;
+      .dates-location {
+        span {
+          font-size: 15px;
+          color: $uclfooter;
+        }
+        .badge {
+          margin-right:4px;
+        }
+      }
+      p {
+        color: $uclblue;
+        margin-top:4px;
+      }
+    }
+    md-card-actions {
+      border-top:1px solid $inactiveGrey;
+      padding-top:10px;
+    }
+  }
+  md-card.add-study {
+    .md-fab {
+      font-size:40px;
+    }
+  }
+}
+.action-buttons {
+  margin-left: -8px;
+}
 .languages {
   md-icon {
     font-size:23px;
