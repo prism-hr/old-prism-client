@@ -85,7 +85,7 @@ import {LanguageQualification} from './app/create/student/language-qualification
 import {Student} from './app/create/student/student';
 import {StudentPreviewBox} from './app/create/student/student-preview-box';
 import {StudentHeader} from './app/create/student/student-header';
-import {StudentStudies} from './app/create/student/student-studies';
+import {StudentQualifications} from './app/create/student/student-qualifications';
 import {StudentContact} from './app/create/student/student-contact';
 import {StudentSkills} from './app/create/student/student-skills';
 import {StudentAbout} from './app/create/student/student-about';
@@ -179,7 +179,7 @@ angular
     .component('student', Student)
     .component('studentPreviewBox', StudentPreviewBox)
     .component('studentHeader', StudentHeader)
-    .component('studentStudies', StudentStudies)
+    .component('studentQualifications', StudentQualifications)
     .component('studentContact', StudentContact)
     .component('studentSkills', StudentSkills)
     .component('studentAbout', StudentAbout)

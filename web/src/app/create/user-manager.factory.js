@@ -14,8 +14,10 @@ export const UserManagerFactory = function ($q, Restangular, authService) {
 
             return Restangular.one('user', 'profile')
                 .customPUT(data, null, {stateComplete: this._user.stateComplete})
-                .then(() => {
-                    return this._user;
+                .then(() => authService.getUser())
+                .then(user => {
+                    this._user = user;
+                    return user;
                 });
         }
 
@@ -26,7 +28,7 @@ export const UserManagerFactory = function ($q, Restangular, authService) {
 
     return {
         getManager() {
-            return authService.loadUser()
+            return authService.getUser()
                 .then(user => {
                     return new UserManager(user);
                 });

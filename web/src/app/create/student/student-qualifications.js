@@ -1,4 +1,4 @@
-class StudentStudiesController {
+class StudentQualificationsController {
     /** @ngInject */
     constructor(definitions) {
         this.definitions = definitions;
@@ -18,11 +18,11 @@ class StudentStudiesController {
     }
 }
 
-export const StudentStudies = {
-    template: require('./student-studies.html'),
+export const StudentQualifications = {
+    template: require('./student-qualifications.html'),
     bindings: {
         student: '=',
         form: '<'
     },
-    controller: StudentStudiesController
+    controller: StudentQualificationsController
 };
