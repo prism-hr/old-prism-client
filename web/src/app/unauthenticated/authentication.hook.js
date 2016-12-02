@@ -7,7 +7,7 @@ export const authenticationHook = function ($transitions, $mdDialog) {
             authService.logout();
             return true;
         }
-        return authService.loadUser().then(user => {
+        return authService.preloadUser().then(user => {
             if (user) {
                 return true;
             }

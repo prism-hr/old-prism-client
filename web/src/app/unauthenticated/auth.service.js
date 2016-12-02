@@ -6,13 +6,27 @@ export class AuthService {
         this.$auth = $auth;
         this.Restangular = Restangular;
         this.userSessionService = userSessionService;
+
+        this.loadUser = function () {
+            return this.Restangular.one('user').get()
+                .then(user => {
+                    this.user = user.plain();
+                    this.user.stateComplete = JSON.parse(this.user.stateComplete);
+                    return this.user;
+                }, response => {
+                    if (response.status === 401) {
+                        return false;
+                    }
+                    throw Error('Couldn\'t load user');
+                });
+        };
     }
 
     applyAuthentication(response) {
-        this.userPromise = null;
+        this.preloadUserPromise = null;
         this.setUserData('token', response.token);
         this.refreshTokenHeader();
-        return this.loadUser();
+        return this.preloadUser();
     }
 
     refreshTokenHeader() {
@@ -43,7 +57,7 @@ export class AuthService {
     logout() {
         this.user = null;
         localStorage.removeItem('userData');
-        this.userPromise = null;
+        this.preloadUserPromise = null;
         this.refreshTokenHeader();
     }
 
@@ -51,28 +65,25 @@ export class AuthService {
         return this.Restangular.one('public').one('passwordTemporary').customPUT(user);
     }
 
-    loadUser() {
+    preloadUser() {
         this.refreshTokenHeader();
-        if (!this.userPromise) {
+        if (!this.preloadUserPromise) {
             const noToken = !this.getUserData('token');
-            this.userPromise = noToken ? this.$q.when(null) :
-                this.Restangular.one('user').get()
-                    .then(user => {
-                        this.user = user.plain();
-                        this.user.stateComplete = JSON.parse(this.user.stateComplete);
-                        return this.user;
-                    }, response => {
-                        if (response.status === 401) {
-                            return false;
-                        }
-                        throw Error('Couldn\'t load user');
-                    })
+            this.preloadUserPromise = noToken ? this.$q.when(null) :
+                this.loadUser()
                     .then(() => this.userSessionService.loadUserSession())
                     .then(() => {
                         return this.user;
                     });
         }
-        return this.userPromise;
+        return this.preloadUserPromise;
+    }
+
+    getUser() {
+        if (!this.preloadUserPromise) {
+            console.error('preloadUserPromise is not present yet.');
+        }
+        return this.preloadUserPromise.then(() => this.loadUser());
     }
 
     getUserData(property) {
