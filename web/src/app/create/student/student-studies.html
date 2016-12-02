@@ -1,8 +1,8 @@
 <div layout-padding xmlns="http://www.w3.org/1999/html">
     <h3>Studies</h3>
 </div>
-<div class="studies-list" layout="row">
-    <md-card flex-gt-sm="50" class="study-item">
+<div class="studies-list" layout="column" layout-gt-sm="row" ng-if="$ctrl.studyList">
+    <md-card flex="100" flex-gt-sm="45" class="study-item">
         <md-card-title>
             <div class="logo-icon">
                 <div class="logo-image">
@@ -34,7 +34,7 @@
             <md-button class="md-raised small md-warn" disabled="disabled">Delete</md-button>
         </md-card-actions>
     </md-card>
-    <md-card flex-gt-sm="50" class="study-item">
+    <md-card flex="100" flex-gt-sm="45" class="study-item">
         <md-card-title>
             <div class="logo-icon">
                 <div class="logo-image">
@@ -66,9 +66,14 @@
             <md-button class="md-raised small md-warn">Delete</md-button>
         </md-card-actions>
     </md-card>
+    <md-card flex="100" flex-gt-sm="10" class="add-study" layout="row" layout-align="center center" ng-click="$ctrl.fakeMore()">
+            <md-button class="md-fab md-primary" aria-label="Add Study" ng-click="$ctrl.fakeMore" layout="row" layout-align="center center">
+                <i class="icon-plus"></i>
+            </md-button>
+    </md-card>
 </div>
 <div layout-padding>
-    <div class="study-form">
+    <div class="study-form" ng-if="$ctrl.studyForm">
         <label class="standalone-label">Current Studies</label>
         <organization-lookup organization="$ctrl.student.organization" wizard-type="{{$ctrl.wizardType}}"
                              form="$ctrl.form">
@@ -118,6 +123,9 @@
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </md-input-container>
+        </div>
+        <div class="action-buttons">
+            <md-button class="md-primary big md-raised" ng-click="$ctrl.fakeSave()">Save Study</md-button>
         </div>
     </div>
 </div>
