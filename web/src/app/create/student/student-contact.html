@@ -1,6 +1,6 @@
 <div layout-padding>
     <h3>Contact Information</h3>
-    <div class="locations">
+    <div class="locations" layout="row">
         <md-input-container class="md-block" flex>
             <label class="md-no-float">Location</label>
             <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
@@ -44,16 +44,18 @@
         </md-input-container>
     </div>
     <div class="languages">
-        <div ng-repeat="language in $ctrl.student.languages" class="language-item" layout="row">
-            <language-qualification language="language"></language-qualification>
-            <md-button ng-click="$ctrl.removeLanguage(language)"
-                       ng-if="$ctrl.student.languages.length > 1"
-                       class="md-fab md-mini md-warn" aria-label="More">
-                <md-icon class="icon-close"></md-icon>
-            </md-button>
-            <md-button ng-click="$ctrl.addLanguage(language)" class="md-fab md-mini md-primary " aria-label="More">
-                <md-icon class="icon-plus"></md-icon>
-            </md-button>
+        <div ng-repeat="language in $ctrl.student.languages" class="language-item"  layout="row">
+            <language-qualification language="language" layout="row" flex="75"></language-qualification>
+            <div flex="25">
+                <md-button ng-click="$ctrl.removeLanguage(language)"
+                           ng-if="$ctrl.student.languages.length > 1"
+                           class="md-fab md-mini md-warn" aria-label="More">
+                    <md-icon class="icon-close"></md-icon>
+                </md-button>
+                <md-button ng-click="$ctrl.addLanguage(language)" class="md-fab md-mini md-primary " aria-label="More">
+                    <md-icon class="icon-plus"></md-icon>
+                </md-button>
+            </div>
         </div>
     </div>
 </div>

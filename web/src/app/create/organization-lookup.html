@@ -9,6 +9,7 @@
             md-items="organization in $ctrl.getOrganizations(organizationSearchText)"
             md-item-text="organization.name"
             md-min-length="1"
+            md-autoselect="true"
             placeholder="{{'create.organization.organization-lookup.organization-placeholder.' + $ctrl.wizardType | translate}}"
             md-menu-class="autocomplete-custom-template"
             md-require-match
@@ -56,6 +57,7 @@
                     class="md-block" flex="grow"
                     md-input-name="selectedDepartment"
                     md-no-cache="true"
+                    md-autoselect="true"
                     md-selected-item="$ctrl.selectedDepartment"
                     md-selected-item-change="$ctrl.departmentSelected(department)"
                     ng-model-options="{debounce: 600}"

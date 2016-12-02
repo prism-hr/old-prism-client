@@ -4,6 +4,7 @@
           md-on-add="placeAdded($chip)">
     <md-autocomplete
             md-selected-item="selectedPlace"
+            md-autoselect="true"
             md-search-text="searchText"
             md-items="place in getPlaces(searchText)"
             md-item-text="place.description"

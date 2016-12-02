@@ -1,10 +1,12 @@
-<md-input-container flex="33">
+<md-input-container flex="50">
     <label class="md-no-float">Language</label>
     <md-select ng-model="language.language" name="language_{{$index}}">
         <md-select-header>
-            <input ng-model="searchTerm"
-                   placeholder="Search for a language..."
-                   class="md-text language-search-term">
+            <md-input-container md-no-float class="md-block">
+                <input ng-model="searchTerm"
+                       placeholder="Search for a language..."
+                       class="md-text language-search-term">
+            </md-input-container>
         </md-select-header>
         <md-optgroup label="languages">
             <md-option ng-value="lang"
@@ -14,7 +16,7 @@
         </md-optgroup>
     </md-select>
 </md-input-container>
-<md-input-container flex="33">
+<md-input-container flex="50">
     <label class="md-no-float">Proficiency</label>
     <md-select name="type" ng-model="$ctrl.language.proficiency">
         <md-option value="elementary">Elementary</md-option>
