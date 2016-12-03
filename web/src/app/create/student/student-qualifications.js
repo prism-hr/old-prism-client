@@ -1,15 +1,33 @@
+import moment from 'moment';
+
 class StudentQualificationsController {
     /** @ngInject */
     constructor(definitions) {
         this.definitions = definitions;
+
+        this.refreshDateAwardConstraints = function () {
+            this.minDateAward = this.dateStart && new Date(
+                    this.dateStart.getFullYear(),
+                    this.dateStart.getMonth(),
+                    this.dateStart.getDate() + 1);
+        };
+
+        this.initializeQualification = function () {
+            this.dateStart = this.editedQualification.dateStart && new Date(this.editedQualification.dateStart);
+            this.dateAward = this.editedQualification.dateAward && new Date(this.editedQualification.dateAward);
+
+            this.refreshDateAwardConstraints();
+        };
     }
 
     editQualification(qualification) {
         this.editedQualification = angular.copy(qualification);
+        this.initializeQualification();
     }
 
     addQualification() {
         this.editedQualification = {};
+        this.initializeQualification();
     }
 
     saveQualification() {
@@ -25,6 +43,15 @@ class StudentQualificationsController {
 
     cancelQualification() {
         this.editedQualification = null;
+    }
+
+    dateStartChanged() {
+        this.editedQualification.dateStart = moment(this.dateStart).format('YYYY-MM-DD');
+        this.refreshDateAwardConstraints();
+    }
+
+    dateAwardChanged() {
+        this.editedQualification.dateAward = moment(this.dateAward).format('YYYY-MM-DD');
     }
 }
 

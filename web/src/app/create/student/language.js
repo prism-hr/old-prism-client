@@ -1,4 +1,4 @@
-class LanguageQualificationController {
+class LanguageController {
     /** @ngInject */
     constructor(definitions, $element) {
         this.definitions = definitions;
@@ -20,11 +20,11 @@ class LanguageQualificationController {
     }
 }
 
-export const LanguageQualification = {
-    template: require('./language-qualification.html'),
+export const Language = {
+    template: require('./language.html'),
     bindings: {
         language: '=',
         form: '<'
     },
-    controller: LanguageQualificationController
+    controller: LanguageController
 };
