@@ -63,6 +63,7 @@ import {PromoterWelcome} from './app/welcome/promoter/promoter-welcome';
 import {StudentWelcome} from './app/welcome/student/student-welcome';
 import {WizardNavigation} from './app/create/wizard-navigation';
 import {WizardButtons} from './app/create/wizard-buttons';
+import {WizardHeader} from './app/create/wizard-header';
 import {OrganizationLookup} from './app/create/organization-lookup';
 import {Organization} from './app/create/organization/organization';
 import {OrganizationPreviewBox} from './app/create/organization/organization-preview-box';
@@ -158,6 +159,7 @@ angular
     .component('studentWelcome', StudentWelcome)
     .component('wizardNavigation', WizardNavigation)
     .component('wizardButtons', WizardButtons)
+    .component('wizardHeader', WizardHeader)
     .component('organizationLookup', OrganizationLookup)
     .component('organization', Organization)
     .component('organizationPreviewBox', OrganizationPreviewBox)
@@ -191,4 +193,3 @@ angular
     .component('studentView', StudentView)
     .component('activities', Activities)
     .component('invited', Invited);
-

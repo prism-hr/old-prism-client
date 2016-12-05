@@ -97,7 +97,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/promoter/{id}?welcomeType',
             abstract: true,
             views: {
-                header: 'wizardButtons',
+                header: 'wizardHeader',
                 content: 'organization'
             },
             data: {auth: true},
@@ -119,7 +119,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/department/{id}?welcomeType',
             abstract: true,
             views: {
-                header: 'wizardButtons',
+                header: 'wizardHeader',
                 content: 'organization'
             },
             data: {auth: true},
@@ -140,7 +140,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/advert/{id}?welcomeType&organization',
             abstract: true,
             views: {
-                header: 'wizardButtons',
+                header: 'wizardHeader',
                 content: 'advert'
             },
             data: {auth: true},
@@ -158,7 +158,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/audience/{id}?welcomeType',
             abstract: true,
             views: {
-                header: 'wizardButtons',
+                header: 'wizardHeader',
                 content: 'audience'
             },
             data: {auth: true},
@@ -176,7 +176,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/student/{id}?welcomeType',
             abstract: true,
             views: {
-                header: 'wizardButtons',
+                header: 'wizardHeader',
                 content: 'student'
             },
             data: {auth: true},
