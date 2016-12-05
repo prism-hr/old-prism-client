@@ -92,6 +92,7 @@ import {StudentAbout} from './app/create/student/student-about';
 import {PromoterView} from './app/view/promoter/promoter-view';
 import {DepartmentView} from './app/view/department/department-view';
 import {AdvertView} from './app/view/advert/advert-view';
+import {AdvertViewHeader} from './app/view/advert/advert-view-header';
 import {StudentView} from './app/view/student/student-view';
 import './index.scss';
 import environment from './env.json';
@@ -186,6 +187,7 @@ angular
     .component('promoterView', PromoterView)
     .component('departmentView', DepartmentView)
     .component('advertView', AdvertView)
+    .component('advertViewHeader', AdvertViewHeader)
     .component('studentView', StudentView)
     .component('activities', Activities)
     .component('invited', Invited);

@@ -38,45 +38,51 @@
         div.application-loader {
             position: relative;
         }
+
         div.application-loader div.animated-container {
-            background-color: #e75223 ;
-            bottom: 0px ;
-            left: 0px ;
-            opacity: 1.0 ;
-            position: fixed ;
-            right: 0px ;
-            top: 0px ;
-            z-index: 999999 ;
+            background-color: #e75223;
+            bottom: 0px;
+            left: 0px;
+            opacity: 1.0;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            z-index: 999999;
         }
+
         /* Used to initialize the ng-leave animation state. */
         div.application-loader div.animated-container.ng-leave {
-            opacity: 1.0 ;
-            transition: all linear 200ms ;
-            -webkit-transition: all linear 200ms ;
+            opacity: 1.0;
+            transition: all linear 200ms;
+            -webkit-transition: all linear 200ms;
         }
+
         /* Used to set the end properties of the ng-leave animation state. */
         div.application-loader div.animated-container.ng-leave-active {
-            opacity: 0 ;
+            opacity: 0;
         }
+
         div.application-loader div.messaging {
-            color: #FFFFFF ;
-            font-family: monospace ;
-            left: 0px ;
-            margin-top: -100px ;
-            position: absolute ;
-            right: 0px ;
-            text-align: center ;
-            top: 50% ;
+            color: #FFFFFF;
+            font-family: monospace;
+            left: 0px;
+            margin-top: -100px;
+            position: absolute;
+            right: 0px;
+            text-align: center;
+            top: 50%;
         }
+
         div.application-loader h1 {
             width: 150px;
-            line-height: 35px ;
-            margin: 0px auto 20px ;
+            line-height: 35px;
+            margin: 0px auto 20px;
         }
+
         div.application-loader p {
-            font-size: 18px ;
-            line-height: 14px ;
-            margin: 0px 0px 0px 0px ;
+            font-size: 18px;
+            line-height: 14px;
+            margin: 0px 0px 0px 0px;
         }
     </style>
     <div class="animated-container">
@@ -91,14 +97,18 @@
     </div>
 </div>
 <div layout="row" layout-fill>
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="authService.user">
-        <sidebar  layout="column" layout-align="space-between none" flex></sidebar>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-md')" ng-if="authService.user">
+        <sidebar layout="column" layout-align="space-between none" flex></sidebar>
     </md-sidenav>
     <div flex layout="column">
         <prism-header ng-if="!$state.current.data.hideHeaderFooter"></prism-header>
         <md-content flex layout="column" md-scroll-y>
-            <ui-view ng-class="{'centered': $state.current.data.hideHeaderFooter}" class="fade-animation" autoscroll="true" flex="noshrink"></ui-view>
-            <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!authService.user" ng-include="'footer.html'" flex="noshrink"></md-toolbar>
+            <ui-view name="content"
+                     ng-class="{'centered': $state.current.data.hideHeaderFooter}"
+                     class="fade-animation" autoscroll="true" flex="noshrink"></ui-view>
+            <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!authService.user" ng-include="'footer.html'"
+                        flex="noshrink"></md-toolbar>
         </md-content>
     </div>
 </div>

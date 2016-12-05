@@ -1,8 +1,17 @@
 class AdvertController {
+    /** @ngInject */
+    constructor($scope) {
+        this.$scope = $scope;
+    }
+
     $onInit() {
         this.createSteps = this.wizard.getSteps();
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
         this._onStepChange(this.wizard.getCurrentStep());
+
+        this.$scope.$watch('$ctrl.advertForm', form => {
+            this.wizard.setForm(form);
+        });
     }
 
     _onStepChange(currentStep) {

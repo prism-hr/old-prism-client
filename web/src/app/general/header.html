@@ -1,4 +1,5 @@
-<md-toolbar layout="column" layout-align="center center" md-whiteframe="2" ng-class="{'hide-gt-md' : $ctrl.authService.user}">
+<md-toolbar layout="column" layout-align="center center" md-whiteframe="2"
+            ng-class="{'hide-gt-md' : $ctrl.authService.user}">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
         <div layout="row" layout-align="start center">
             <md-button ng-click="$ctrl.toggleActivities()" class="md-icon-button notifications" hide-gt-md
@@ -16,7 +17,7 @@
                 <img src="/img/logo-nico.svg" alt="PRiSM">
             </a>
         </div>
-        <span flex ></span>
+        <span flex></span>
         <span class="nav-container">
             <div ng-if="!$ctrl.authService.user">
                 <md-button aria-label="Post Ad" class="md-raised md-warn" ng-click="$ctrl.advertise($event)">
@@ -32,7 +33,7 @@
 </md-toolbar>
 <div class="toolbar-title md-whiteframe-1dp" ng-if="$root.$breadcrumbs && $ctrl.authService.user">
     <div layout="row" class="md-toolbar-tools" layout-align="center center">
-        <span class="titles" flex >
+        <span class="titles" flex>
             <h2>
                 <span ng-repeat="crumb in $root.$breadcrumbs">
                     <span ng-if="!$last"> {{crumb.title}} > </span>
@@ -40,8 +41,6 @@
                 </span>
             </h2>
         </span>
-        <md-button type="submit" class="md-primary md-raised apply" ng-if="$root.$state.includes('position-view')">
-            <i class="icon-paper-plane"></i> Apply Now
-        </md-button>
+        <span ui-view name="header"></span>
     </div>
 </div>

@@ -109,6 +109,10 @@ export class ResourceCreateWizardFactory {
                 return this._stepSubject.subscribe(observer);
             }
 
+            setForm(form) {
+                this.form = form;
+            }
+
             getNextStep() {
                 const wizardComplete = this.getWizardComplete();
                 const currentStep = this.getStepForName(this._currentStep);
@@ -134,6 +138,12 @@ export class ResourceCreateWizardFactory {
             }
 
             next() {
+                if (!this.form.$valid) {
+                    return;
+                }
+
+                this.form.$setPristine();
+
                 if (this.customNextHandler) {
                     if (this.customNextHandler() === 'handled') {
                         return;
@@ -169,6 +179,12 @@ export class ResourceCreateWizardFactory {
             }
 
             save() {
+                if (!this.form.$valid) {
+                    return;
+                }
+
+                this.form.$setPristine();
+
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
                         const wizardStatus = welcomeService.updateWizardCompleteness(savedResource, this._wizardType, this._welcomeType);
@@ -180,6 +196,8 @@ export class ResourceCreateWizardFactory {
             }
 
             prev() {
+                this.form.$setPristine();
+
                 const prevStep = this.getPrevStep();
                 if (prevStep) {
                     return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
@@ -188,6 +206,8 @@ export class ResourceCreateWizardFactory {
             }
 
             skip() {
+                this.form.$setPristine();
+
                 const wizardComplete = this.getWizardComplete();
                 const currentStep = this.getStepForName(this._currentStep);
                 const clear = currentStep.clear || _.noop;

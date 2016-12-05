@@ -1,4 +1,5 @@
 class OrganizationSummaryController {
+    /** @ngInject */
     constructor($q, $state, rx, Restangular, cloudinary, welcomeService) {
         this.$q = $q;
         this.$state = $state;
