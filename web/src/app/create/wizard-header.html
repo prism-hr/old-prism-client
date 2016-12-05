@@ -1,0 +1,67 @@
+<div class="header-actions" layout="row" layout-align="center end">
+    <div class="secondary-group">
+        <md-button class="md-raised md-button"
+                   aria-label="View"
+                   ng-click="$ctrl.view()">
+            View <i class="icon-share-alt"></i>
+        </md-button>
+        <md-menu md-position-mode="target-right target" >
+            <md-button aria-label="Open demo menu" class="md-raised md-button" ng-click="$mdOpenMenu($event)">
+                New <i class="icon-arrow-down"></i>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button>
+                        <i class="icon-briefcase"></i> Advert
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <i class="icon-organization"></i> Department
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <md-button class="md-raised md-button"
+                   ng-click="$ctrl.next()"
+                   ng-disabled="$ctrl.loading"
+                   aria-label="Next">
+            <i class="icon-arrow-left"></i>
+        </md-button>
+        <md-button class="md-raised md-button"
+                   ng-click="$ctrl.next()"
+                   ng-disabled="$ctrl.loading"
+                   aria-label="Next">
+            <i class="icon-arrow-right"></i>
+        </md-button>
+    </div>
+    <div class="primary-group">
+        <md-button class="md-raised md-button md-ink-ripple"
+                   ng-click="$ctrl.prev()"
+                   ng-disabled="$ctrl.loading"
+                   ng-if="$ctrl.display.isDraft">
+            Back
+        </md-button>
+        <md-button ng-if="$ctrl.display.optional" class=" md-raised" ng-click="$ctrl.skip()"
+                   ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid" ng-if="$ctrl.display.isDraft">
+            Skip
+        </md-button>
+        <md-button type="submit" class="md-primary md-raised" ng-click="$ctrl.next()"
+                   ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid" ng-if="$ctrl.display.isDraft">
+            {{$ctrl.display.nextStep ? 'Continue' : 'Finish'}}
+        </md-button>
+
+        <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
+                   class="md-primary md-raised"
+                   ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid">
+            Save
+        </md-button>
+        <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
+                   class="md-primary md-raised"
+                   ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid">
+            Save and exit
+        </md-button>
+    </div>
+</div>
+
+

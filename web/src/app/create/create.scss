@@ -295,7 +295,20 @@ md-autocomplete input:not(.md-input), md-input-container  {
     }
   }
 }
-
+.header-actions {
+  .md-button {
+    min-width: 36px;
+    margin: 0px 2px 2px;
+    padding: 0 10px;
+  }
+  .secondary-group {
+    border-right: 1px solid $uclblue;
+    padding-right: 10px;
+  }
+  .primary-group {
+    padding-left:10px;
+  }
+}
 .department-small {
   margin-top:10px;
   .department-item-small {
