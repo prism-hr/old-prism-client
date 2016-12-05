@@ -1,7 +1,7 @@
 <md-autocomplete flex md-input-name="language" md-input-minlength="2" md-selected-item="$ctrl.language.language"
                  md-search-text="$ctrl.searchText"
                  md-items="language in $ctrl.searchLanguages($ctrl.searchText)"
-                 md-item-text="language.name" md-require-match md-floating-label="Language">
+                 md-item-text="language.name" md-require-match md-no-float md-floating-label="Language">
     <md-item-template>
         <span md-highlight-text="$ctrl.searchText">{{language.name}}</span>
     </md-item-template>
