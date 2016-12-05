@@ -46,8 +46,8 @@
 
     <div class="languages">
         <div ng-repeat="language in $ctrl.student.languages" class="language-item" layout="row">
-            <language-qualification language="language" form="$ctrl.form"
-                                    layout="row" flex="75"></language-qualification>
+            <language language="language" form="$ctrl.form"
+                                    layout="row" flex="75"></language>
             <div flex="25">
                 <md-button ng-click="$ctrl.removeLanguage(language)"
                            ng-if="$ctrl.student.languages.length > 1"
