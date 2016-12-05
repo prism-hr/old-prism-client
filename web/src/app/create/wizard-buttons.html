@@ -6,22 +6,22 @@
         Back
     </md-button>
     <md-button ng-if="$ctrl.display.optional" class=" md-raised big" ng-click="$ctrl.skip()"
-               ng-disabled="$ctrl.loading || $ctrl.form.$invalid" ng-if="$ctrl.display.isDraft">
+               ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid" ng-if="$ctrl.display.isDraft">
         Skip
     </md-button>
     <md-button type="submit" class="md-primary md-raised big" ng-click="$ctrl.next()"
-               ng-disabled="$ctrl.loading || $ctrl.form.$invalid" ng-if="$ctrl.display.isDraft">
+               ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid" ng-if="$ctrl.display.isDraft">
         {{$ctrl.display.nextStep ? 'Continue' : 'Finish'}}
     </md-button>
 
     <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
                class="md-primary md-raised big"
-               ng-disabled="$ctrl.loading || $ctrl.form.$invalid">
+               ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid">
         Save
     </md-button>
     <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
                class="md-primary md-raised big"
-               ng-disabled="$ctrl.loading || $ctrl.form.$invalid">
+               ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid">
         Save and exit
     </md-button>
 </md-card-actions>

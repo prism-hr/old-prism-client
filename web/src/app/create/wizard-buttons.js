@@ -1,29 +1,28 @@
 class WizardButtonsController {
-    next() {
-        if (!this.form.$valid) {
-            return;
-        }
+    $onInit() {
+        this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
+        this._onStepChange(this.wizard.getCurrentStep());
+    }
 
-        this.form.$setPristine();
+    _onStepChange(currentStep) {
+        if (currentStep) {
+            this.display = this.wizard.getDisplayData();
+        }
+    }
+
+    next() {
         this.wizard.next();
     }
 
     save() {
-        if (!this.form.$valid) {
-            return;
-        }
-
-        this.form.$setPristine();
         this.wizard.save();
     }
 
     prev() {
-        this.form.$setPristine();
         this.wizard.prev();
     }
 
     skip() {
-        this.form.$setPristine();
         this.wizard.skip();
     }
 }
@@ -31,10 +30,7 @@ class WizardButtonsController {
 export const WizardButtons = {
     template: require('./wizard-buttons.html'),
     bindings: {
-        wizard: '<',
-        form: '<',
-        loading: '<',
-        display: '<'
+        wizard: '<'
     },
     controller: WizardButtonsController
 };
