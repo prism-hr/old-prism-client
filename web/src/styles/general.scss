@@ -99,6 +99,9 @@ h1.md-toolbar-tools {
 md-input-container {
   margin: 20px 0 0;
 }
+md-dialog {
+  max-height: 100%;
+}
 md-dialog .md-dialog-content {
   padding: 10px;
 }
