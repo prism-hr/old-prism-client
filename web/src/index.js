@@ -55,7 +55,6 @@ import {Authenticate} from './app/unauthenticated/authenticate/authenticate';
 import {Header} from './app/general/header';
 import {Sidebar} from './app/general/sidebar';
 import {Activities} from './app/activities/activities';
-import {Invited} from './app/unauthenticated/invited.component';
 import {Welcome} from './app/welcome/welcome';
 import {WelcomeWizardEntry} from './app/welcome/welcome-wizard-entry';
 import {DepartmentWelcome} from './app/welcome/department/department-welcome';
