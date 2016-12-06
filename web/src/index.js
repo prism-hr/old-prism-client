@@ -190,5 +190,4 @@ angular
     .component('advertView', AdvertView)
     .component('advertViewHeader', AdvertViewHeader)
     .component('studentView', StudentView)
-    .component('activities', Activities)
-    .component('invited', Invited);
+    .component('activities', Activities);
