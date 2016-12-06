@@ -17,26 +17,17 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('404')
             }
         })
-        .state('invited', {
-            url: '/invited?accessCode&action',
-            views: {
-                content: 'invited'
-            },
-            resolve: {
-                /** @ngInject */
-                referral($stateParams, Restangular) {
-                    return Restangular.one('public').one('activityReferrals', $stateParams.accessCode).get()
-                        .then(referral => referral.plain());
-                },
-                $title: _.wrap('Invited')
-            }
-        })
         .state('mainWelcome', {
-            url: '/',
+            url: '/?accessCode&action',
             views: {
                 content: 'welcome'
             },
             resolve: {
+                /** @ngInject */
+                referral($stateParams, Restangular) {
+                    return $stateParams.accessCode && Restangular.one('public').one('activityReferrals', $stateParams.accessCode).get()
+                            .then(referral => referral.plain());
+                },
                 $title: _.wrap('Welcome')
             }
         })

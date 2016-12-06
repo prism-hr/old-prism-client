@@ -14,6 +14,10 @@ class AuthenticateController {
         this.responseError = null;
         const contact = _.get(this.referral, 'contact');
         const user = contact ? {username: contact.email, firstName: contact.firstName, lastName: contact.lastName} : {};
+        const refererralAccessCode = _.get(this.referral, 'activity.activityReferral.accessCode');
+        if (refererralAccessCode) {
+            user.activityReferral = {accessCode: refererralAccessCode};
+        }
         this.user = view === 'FORGOT_PASSWORD' ? {} : user || {};
     }
 
