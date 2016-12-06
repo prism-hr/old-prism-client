@@ -27,7 +27,7 @@ class AuthenticateController {
         }
         this.responseError = null;
         this.loading = true;
-        this.authService.login(_.pick(this.user, ['username', 'password']))
+        this.authService.login(_.pick(this.user, ['username', 'password', 'activityReferral']))
             .then(this.$mdDialog.hide)
             .catch(r => this.handleError(r))
             .finally(() => this.resetLoading());
