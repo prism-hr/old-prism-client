@@ -10,16 +10,6 @@ class SidebarController {
         this._onUserSessionChange = function (userSession) {
             this.session = userSession;
         };
-
-        this.rx.createObservableFunction(this, 'searchTextChanged')
-            .debounce(250)
-            .distinctUntilChanged()
-            .flatMapLatest(searchText => {
-                return this.userSessionService.searchUserSession(searchText);
-            })
-            .subscribe(session => {
-                this.session = session;
-            });
     }
 
     $onInit() {
