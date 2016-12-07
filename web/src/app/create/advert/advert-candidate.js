@@ -1,7 +1,8 @@
 class AdvertCandidateController {
     /** @ngInject */
-    constructor(Restangular) {
+    constructor(Restangular, $mdConstant) {
         this.Restangular = Restangular;
+        this.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
     }
 
     $onInit() {

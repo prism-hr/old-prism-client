@@ -1,4 +1,9 @@
 class StudentSkillsController {
+    /** @ngInject */
+    constructor($mdConstant) {
+        this.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+    }
+
     lookupTags(text) {
         return this.Restangular.all('tags').getList({searchTerm: text})
             .then(tags => tags.plain());
