@@ -31,6 +31,11 @@ class SidebarController {
         this.$state.go('mainWelcome');
     }
 
+    getColor(str) {
+        const color1 = str.substr(2, 7);
+        return color1;
+    }
+
     toggleSubmenu(name, $event) {
         const menu = angular.element(document.body.querySelector('.submenu-' + name));
         const ele = angular.element($event.target.parentElement.parentElement);
