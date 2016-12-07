@@ -201,8 +201,10 @@ export class ResourceCreateWizardFactory {
                 const prevStep = this.getPrevStep();
                 if (prevStep) {
                     return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
+                } else if (this._welcomeType) {
+                    return $state.go('welcome.' + this._welcomeType.toLowerCase());
                 }
-                return $state.go('welcome.' + this._welcomeType.toLowerCase());
+                return $state.go('activities');
             }
 
             skip() {

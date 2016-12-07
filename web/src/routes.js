@@ -28,7 +28,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         .state('welcome', {
             url: '/welcome',
             abstract: true,
-            component: '<ui-view></ui-view>',
+            template: '<ui-view></ui-view>',
             data: {auth: true},
             params: {
                 showRegistration: false
