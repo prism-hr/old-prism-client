@@ -6,8 +6,7 @@
             <label class="md-no-float">Areas of Expertise</label>
             <md-chips ng-model="$ctrl.advert.tags"
                       md-transform-chip="$ctrl.transformTag($chip)"
-                      md-max-chips="20"
-                      md-separator-keys="$ctrl.separatorKeys">
+                      md-max-chips="20">
                 <md-autocomplete
                         md-search-text="searchText"
                         md-autoselect="true"
@@ -21,7 +20,7 @@
                 </md-chip-template>
             </md-chips>
         </md-input-container>
-        {{$ctrl.advert.tagSuggestedList}}
+        {{$ctrl.advert.tagsSuggested}}
     </div>
     <div class="tag-list">
         <label class="standalone-label small">Suggested Tags</label>

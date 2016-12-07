@@ -8,14 +8,20 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
     $stateProvider
         .state('404', {
             url: '/404',
-            template: require('./app/404.html'),
+            views: {
+                content: {
+                    template: require('./app/404.html')
+                }
+            },
             resolve: {
                 $title: _.wrap('404')
             }
         })
         .state('mainWelcome', {
             url: '/?accessCode&action',
-            component: 'welcome',
+            views: {
+                content: 'welcome'
+            },
             resolve: {
                 /** @ngInject */
                 referral($stateParams, Restangular) {
@@ -28,7 +34,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         .state('welcome', {
             url: '/welcome',
             abstract: true,
-            component: '<ui-view></ui-view>',
+            views: {
+                content: {
+                    template: '<ui-view name="content"></ui-view>'
+                }
+            },
             data: {auth: true},
             params: {
                 showRegistration: false
@@ -36,21 +46,27 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         })
         .state('welcome.promoter', {
             url: '/promoter',
-            component: 'promoterWelcome',
+            views: {
+                content: 'promoterWelcome'
+            },
             resolve: {
                 $title: _.wrap('Welcome Advertiser')
             }
         })
         .state('welcome.department', {
             url: '/department',
-            component: 'departmentWelcome',
+            views: {
+                content: 'departmentWelcome'
+            },
             resolve: {
                 $title: _.wrap('Welcome University')
             }
         })
         .state('welcome.student', {
             url: '/student',
-            component: 'studentWelcome',
+            views: {
+                content: 'studentWelcome'
+            },
             resolve: {
                 $title: _.wrap('Student')
             }
@@ -58,14 +74,22 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         .state('manage', {
             url: '/manage',
             abstract: true,
+            views: {
+                header: {
+                    template: '<ui-view name="header"></ui-view>'
+                },
+                content: {
+                    template: '<ui-view name="content"></ui-view>'
+                }
+            },
             data: {auth: true}
         })
         .state('manage.promoter', {
             url: '/promoter/{id}?welcomeType',
             abstract: true,
             views: {
-                '!header': 'wizardHeader',
-                '!$default': 'organization'
+                header: 'wizardHeader',
+                content: 'organization'
             },
             data: {auth: true},
             resolve: {
@@ -86,8 +110,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/department/{id}?welcomeType',
             abstract: true,
             views: {
-                '!header': 'wizardHeader',
-                '!$default': 'organization'
+                header: 'wizardHeader',
+                content: 'organization'
             },
             data: {auth: true},
             resolve: {
@@ -107,8 +131,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/advert/{id}?welcomeType&organization',
             abstract: true,
             views: {
-                '!header': 'wizardHeader',
-                '!$default': 'advert'
+                header: 'wizardHeader',
+                content: 'advert'
             },
             data: {auth: true},
             resolve: {
@@ -125,8 +149,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/audience/{id}?welcomeType',
             abstract: true,
             views: {
-                '!header': 'wizardHeader',
-                '!$default': 'audience'
+                header: 'wizardHeader',
+                content: 'audience'
             },
             data: {auth: true},
             resolve: {
@@ -143,8 +167,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/student/{id}?welcomeType',
             abstract: true,
             views: {
-                '!header': 'wizardHeader',
-                '!$default': 'student'
+                header: 'wizardHeader',
+                content: 'student'
             },
             data: {auth: true},
             resolve: {
@@ -157,12 +181,20 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('view', {
-            abstract: true
+            abstract: true,
+            views: {
+                header: {
+                    template: '<ui-view name="header"></ui-view>'
+                },
+                content: {
+                    template: '<ui-view name="content"></ui-view>'
+                }
+            }
         })
         .state('view.promoter', {
             url: '/promoter/{accessCode}',
             views: {
-                '!$default': 'promoterView'
+                content: 'promoterView'
             },
             resolve: {
                 promoter($stateParams, Restangular) {
@@ -174,7 +206,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         .state('view.department', {
             url: '/department/{accessCode}',
             views: {
-                '!$default': 'departmentView'
+                content: 'departmentView'
             },
             resolve: {
                 department($stateParams, Restangular) {
@@ -186,8 +218,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         .state('view.advert', {
             url: '/advert/{accessCode}',
             views: {
-                '!header': 'advertViewHeader',
-                '!$default': 'advertView'
+                header: 'advertViewHeader',
+                content: 'advertView'
             },
             resolve: {
                 advert($stateParams, Restangular) {
@@ -199,7 +231,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         .state('view.student', {
             url: '/student/{accessCode}',
             views: {
-                '!$default': 'studentView'
+                content: 'studentView'
             },
             data: {auth: true},
             resolve: {
@@ -208,7 +240,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         })
         .state('activities', {
             url: '/activities',
-            component: 'activities',
+            views: {
+                content: 'activities'
+            },
             data: {auth: true},
             resolve: {
                 /** @ngInject */
