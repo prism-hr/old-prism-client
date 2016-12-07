@@ -1,8 +1,9 @@
 class AdvertSalaryController {
     /** @ngInject */
-    constructor(Restangular, definitions) {
+    constructor(Restangular, $mdConstant, definitions) {
         this.Restangular = Restangular;
         this.definitions = definitions;
+        this.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
     }
 
     $onInit() {

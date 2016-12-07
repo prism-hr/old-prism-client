@@ -56,7 +56,8 @@
             <label class="md-no-float">Benefits</label>
             <md-chips
                     ng-model="$ctrl.advert.positionBenefits"
-                    md-transform-chip="$ctrl.transformBenefit($chip)">
+                    md-transform-chip="$ctrl.transformBenefit($chip)"
+                    md-separator-keys="$ctrl.separatorKeys">
                 <md-autocomplete
                         md-search-text="searchText"
                         md-autoselect="true"

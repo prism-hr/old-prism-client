@@ -76,7 +76,7 @@ export const ResourceManagerFactory = function ($q, Restangular) {
     };
 
     function generateOrganizationPostData(resource) {
-        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'context', 'actions', 'tagsSuggested']);
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'context', 'actions']);
         if (resourcePost.tags) {
             resourcePost.tags.forEach(t => {
                 t.tag = _.pick(t.tag, ['accessCode', 'name']);
@@ -86,7 +86,7 @@ export const ResourceManagerFactory = function ($q, Restangular) {
     }
 
     function generateAdvertPostData(resource) {
-        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'timestampLatestReferral', 'timestampLatestView', 'countActivity', 'countReferral', 'countView', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'tagsSuggested', 'organizationImplementationDisplay']);
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'timestampLatestReferral', 'timestampLatestView', 'countActivity', 'countReferral', 'countView', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay']);
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
         if (resourcePost.positionBenefits) {
             resourcePost.positionBenefits.forEach(b => {
