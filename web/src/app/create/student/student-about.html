@@ -1,0 +1,48 @@
+<div layout-padding>
+    <h3>Contact Information</h3>
+    <div ng-if="!$ctrl.editedQualification" class="studies-list" layout="column" layout-gt-sm="row" layout-wrap>
+        <md-card ng-repeat="qualification in $ctrl.student.userQualifications" flex="100" flex-gt-sm="45"
+                 class="study-item">
+            <md-card-title>
+                <div class="logo-icon">
+                    <div class="logo-image">
+                        <div class="logo-flex company-logo">
+                            <div class="logo">
+                                <img ng-src="{{qualification.organizationImplementation.documentLogoImage.cloudinaryUrl || '/img/prism-logo-default.png'}}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <md-card-title-text>
+                <span class="md-headline" layout="row" layout-align="start center">{{qualification.name}}
+                    <span flex></span>
+                    <strong class="badge warn">{{'definitions.qualificationCategory.' + qualification.category | translate}}</strong>
+                </span>
+                    <span class="md-subhead">at {{qualification.organizationImplementation.name}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content flex>
+                <div class="dates-location" layout="row" layout-align="start center">
+                    <strong class="badge info">{{qualification.grade}}</strong>
+                    <span>{{qualification.dateStart | date}} - {{qualification.dateAward | date}}</span>
+                    <span class="flex"></span>
+                    <span>London - UK</span>
+                </div>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="start center">
+                <md-button ng-click="$ctrl.editQualification(qualification)" class="md-primary small md-raised">
+                    Edit
+                </md-button>
+                <md-button class="small md-raised" ng-disabled="qualification.current">Main Study</md-button>
+                <span class="flex"></span>
+                <md-button class="md-raised small md-warn" ng-disabled="qualification.current">Delete</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card flex="100" flex-gt-sm="10" class="add-study" layout="row" layout-align="center center"
+                 ng-click="$ctrl.addQualification()">
+            <md-button class="md-fab md-primary" aria-label="Add Qualification" layout="row" layout-align="center center">
+                <i class="icon-plus"></i>
+            </md-button>
+        </md-card>
+    </div>
+</div>

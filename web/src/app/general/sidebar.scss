@@ -65,19 +65,12 @@ sidebar {
     .main-subheader {
       .md-subheader-inner {
         padding: 4px 16px;
-        .icon-magnifier, .icon-close {
-          font-size: 20px;
-          margin-top: 2px;
-        }
-        .search-holder {
-          margin-left:10px;
-        }
       }
     }
     .md-icon-button {
       font-size: 18px;
       margin-right: -12px !important;
-      .icon-options-vertical:before {
+      .icon-plus:before {
         line-height:24px;
       }
     }

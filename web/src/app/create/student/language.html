@@ -1,7 +1,8 @@
 <md-autocomplete flex md-input-name="language" md-input-minlength="2" md-selected-item="$ctrl.language.language"
                  md-search-text="$ctrl.searchText"
+                 md-autoselect="true"
                  md-items="language in $ctrl.searchLanguages($ctrl.searchText)"
-                 md-item-text="language.name" md-require-match md-no-float md-floating-label="Language">
+                 md-item-text="language.name" md-require-match md-floating-label="Language">
     <md-item-template>
         <span md-highlight-text="$ctrl.searchText">{{language.name}}</span>
     </md-item-template>
@@ -12,7 +13,7 @@
 
 <md-input-container flex="50">
     <label class="md-no-float">Proficiency</label>
-    <md-select name="proficiency" ng-model="$ctrl.language.proficiency">
+    <md-select name="proficiency" ng-model="$ctrl.language.proficiency" md-autoselect="true">
         <md-option ng-repeat="proficiency in $ctrl.definitions.languageProficiency" value="{{proficiency}}">
             {{'definitions.languageProficiency.' + proficiency | translate}}
         </md-option>

@@ -10,6 +10,10 @@ class StudentQualificationsController {
                     this.dateStart.getFullYear(),
                     this.dateStart.getMonth(),
                     this.dateStart.getDate() + 1);
+            this.maxDateStart = this.dateStart && new Date(
+                this.dateStart.getFullYear(),
+                this.dateStart.getMonth(),
+                this.dateStart.getDate());
         };
 
         this.initializeQualification = function () {

@@ -31,10 +31,6 @@
             <i class="icon-bell"></i>
             <label>5</label>
         </md-button>
-        <md-button class="md-icon-button md-raised notifications">
-            <i class="icon-envelope"></i>
-            <label>3</label>
-        </md-button>
     </div>
 </div>
 <md-content class="main-menu" flex>
@@ -42,24 +38,14 @@
         <md-subheader class="main-subheader">
             <div layout="row" layout-align="start center">
                 <sapn>Menu</sapn>
-                <div class="search-holder fade-animation" ng-if="$ctrl.showSearchBox">
-                    <md-input class="small">
-                        <input placeholder="Search" ng-model="$ctrl.searchText"
-                               ng-change="$ctrl.searchTextChanged($ctrl.searchText)">
-                    </md-input>
-                </div>
                 <span class="flex"></span>
-                <md-button ng-if="!$ctrl.showSearchBox" ng-click="$ctrl.openSearchBox()"
-                           class="md-icon-button" aria-label="Search">
-                    <md-icon class="icon-magnifier"></md-icon>
-                </md-button>
                 <md-button ng-if="$ctrl.showSearchBox" ng-click="$ctrl.hideSearchBox()"
                            class="md-icon-button" aria-label="Close search">
                     <md-icon class="icon-close"></md-icon>
                 </md-button>
                 <md-menu md-position-mode="target-right target">
                     <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
-                        <md-icon class="icon-options-vertical"></md-icon>
+                        <md-icon class="icon-plus"></md-icon>
                     </md-button>
                     <md-menu-content width="2" class="small">
                         <md-menu-item>
@@ -73,25 +59,22 @@
                             <md-button><i class="icon-organization"></i> New Department
                             </md-button>
                         </md-menu-item>
-                        <md-menu-item>
-                            <md-button><i class="icon-notebook"></i> New Contact</md-button>
-                        </md-menu-item>
                     </md-menu-content>
                 </md-menu>
             </div>
         </md-subheader>
-        <md-list-item ng-click="navigateTo('candidates', $event)">
+        <md-list-item ng-click="navigateTo('candidates', $event)" class="hidden">
             <i class="icon-people"></i>
             <p>Candidates</p>
         </md-list-item>
-        <md-list-item ng-click="navigateTo('contacts', $event)">
+        <md-list-item ng-click="navigateTo('contacts', $event)" class="hidden">
             <i class="icon-notebook"></i>
             <p>Contacts</p>
         </md-list-item>
-        <md-list-item ng-click="navigateTo('applications', $event)">
+        <md-list-item ng-click="navigateTo('applications', $event)" class="disabled">
             <i class="icon-paper-plane"></i>
             <p>Applications</p>
-            <span class="badge">2</span>
+            <!--<span class="badge">2</span>-->
         </md-list-item>
         <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)"
                       ng-if="$ctrl.session.employments.length > 0"
@@ -205,7 +188,7 @@
                 </md-menu>
             </md-list-item>
         </div>
-        <md-list-item ng-click="navigateTo('system', $event)">
+        <md-list-item ng-click="navigateTo('system', $event)" class="hidden">
             <i class="icon-wrench"></i>
             <p>System</p>
         </md-list-item>
