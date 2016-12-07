@@ -12,6 +12,9 @@ ul, li {
   vertical-align: baseline;
   list-style: none;
 }
+.hidden {
+  display: none;
+}
 .md-toolbar-tools {
   h1, h2, h3, h4, h5, h6 {
     color: white;

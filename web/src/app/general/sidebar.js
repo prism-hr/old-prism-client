@@ -41,15 +41,6 @@ class SidebarController {
         this.$state.go('mainWelcome');
     }
 
-    openSearchBox() {
-        this.showSearchBox = true;
-    }
-
-    hideSearchBox() {
-        this.showSearchBox = false;
-        this.session = this.userSessionService.getUserSession();
-    }
-
     toggleSubmenu(name, $event) {
         const menu = angular.element(document.body.querySelector('.submenu-' + name));
         const ele = angular.element($event.target.parentElement.parentElement);

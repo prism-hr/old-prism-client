@@ -72,6 +72,10 @@
                 </md-radio-button>
             </div>
         </md-radio-group>
+        <md-input-container class="md-block" flex>
+            <label class="md-no-float">Project name</label>
+            <input ng-model="$ctrl.currentQualification.nameProject">
+        </md-input-container>
 
         <div layout="row">
             <md-input-container class="date" flex-gt-sm="33">
@@ -80,6 +84,7 @@
                         name="dateStart"
                         ng-model="$ctrl.dateStart"
                         ng-change="$ctrl.dateStartChanged()"
+                        md-max-date="$ctrl.maxDateStart"
                         required></md-datepicker>
                 <div ng-messages="$ctrl.form.dateStart.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
