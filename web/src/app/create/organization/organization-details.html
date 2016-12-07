@@ -1,12 +1,10 @@
 <div layout-padding>
-    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and
-        sizes</h3>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and sizes </h3>
 
     <md-input-container class="md-block industries-holder" layout="row">
         <label class="md-no-float">Areas of Expertise</label>
         <md-chips ng-model="$ctrl.organization.tags"
-                  md-transform-chip="$ctrl.transformTag($chip)"
-                  md-separator-keys="$ctrl.separatorKeys">
+                  md-transform-chip="$ctrl.transformTag($chip)">
             <md-autocomplete
                     md-search-text="searchText"
                     md-autoselect="true"
@@ -33,7 +31,7 @@
         <span class="info">Select tags to add them to your list</span>
     </div>
 
-    {{$ctrl.organization.tagSuggestedList}}
+    {{$ctrl.organization.tagsSuggested}}
 
     <md-input-container class="md-block">
         <label class="md-no-float">Homepage URL
@@ -77,7 +75,7 @@
 
             <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
                          md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
-                         ng-checked="$ctrl.isQualificationCategorySelected(category)"
+                             ng-checked="$ctrl.isQualificationCategorySelected(category)"
                          ng-click="$ctrl.toggleQualificationCategory(category)"
                          class="md-primary">
                 {{'definitions.qualificationCategory.' + category | translate}}

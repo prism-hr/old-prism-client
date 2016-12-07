@@ -1,9 +1,8 @@
 class OrganizationDetailsController {
     /** @ngInject */
-    constructor(Restangular, $mdConstant, definitions) {
+    constructor(Restangular, definitions) {
         this.Restangular = Restangular;
         this.definitions = definitions;
-        this.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
     }
 
     lookupTags(text) {

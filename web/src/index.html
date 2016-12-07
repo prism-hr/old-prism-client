@@ -104,7 +104,8 @@
     <div flex layout="column">
         <prism-header ng-if="!$state.current.data.hideHeaderFooter"></prism-header>
         <md-content flex layout="column" md-scroll-y>
-            <ui-view ng-class="{'centered': $state.current.data.hideHeaderFooter}"
+            <ui-view name="content"
+                     ng-class="{'centered': $state.current.data.hideHeaderFooter}"
                      class="fade-animation" autoscroll="true" flex="noshrink"></ui-view>
             <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!authService.user" ng-include="'footer.html'"
                         flex="noshrink"></md-toolbar>
