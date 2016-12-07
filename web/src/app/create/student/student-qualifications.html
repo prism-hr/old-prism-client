@@ -1,8 +1,8 @@
-<div layout-padding xmlns="http://www.w3.org/1999/html">
+<div layout-padding>
     <h3>Studies</h3>
 </div>
 
-<div ng-if="!$ctrl.editedQualification" class="studies-list" layout="column" layout-gt-sm="row" layout-wrap>
+<div class="studies-list" layout="column" layout-gt-sm="row" layout-wrap>
     <md-card ng-repeat="qualification in $ctrl.student.userQualifications" flex="100" flex-gt-sm="45"
              class="study-item">
         <md-card-title>
@@ -16,11 +16,11 @@
                 </div>
             </div>
             <md-card-title-text>
-                <span class="md-headline" layout="row" layout-align="start center">{{qualification.name}}
+                <span class="md-headline" layout="row" layout-align="start center">{{qualification.organizationImplementationQualification.name}}
                     <span flex></span>
-                    <strong class="badge warn">{{'definitions.qualificationCategory.' + qualification.category | translate}}</strong>
+                    <strong class="badge warn">{{'definitions.qualificationCategory.' + qualification.organizationImplementationQualification.category | translate}}</strong>
                 </span>
-                <span class="md-subhead">at {{qualification.organizationImplementation.name}}</span>
+                <span class="md-subhead">at {{qualification.organizationImplementationQualification.organizationImplementation.name}}</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content flex>
@@ -32,7 +32,7 @@
             </div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="start center">
-            <md-button ng-click="$ctrl.editQualification(qualification)" class="md-primary small md-raised">
+            <md-button ng-href="{{$ctrl.getQualificationHref(qualification)}}" class="md-primary small md-raised">
                 Edit
             </md-button>
             <md-button class="small md-raised" ng-disabled="qualification.current">Main Study</md-button>
@@ -47,78 +47,3 @@
         </md-button>
     </md-card>
 </div>
-
-<div ng-if="$ctrl.editedQualification" layout-padding>
-    <div class="study-form">
-        <label class="standalone-label">University / Department</label>
-        <organization-lookup organization="$ctrl.editedQualification.organizationImplementation"
-                             wizard-type="{{$ctrl.wizardType}}"
-                             form="$ctrl.form">
-        </organization-lookup>
-
-        <md-input-container class="md-block program-input" flex>
-            <label class="md-no-float">Program name</label>
-            <input ng-model="$ctrl.editedQualification.name">
-        </md-input-container>
-
-        <label class="standalone-label">Study Level</label>
-        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.editedQualification.category"
-                        class="horizontal-form medium">
-            <div class="radio-box-aligned">
-                <md-radio-button ng-repeat="category in $ctrl.definitions.qualificationCategory"
-                                 class="md-primary" value="{{category}}"
-                                 aria-label="{{'definitions.qualificationCategory.' + category | translate}}">
-                    {{'definitions.qualificationCategory.' + category | translate}}
-                </md-radio-button>
-            </div>
-        </md-radio-group>
-        <md-input-container class="md-block" flex>
-            <label class="md-no-float">Project name</label>
-            <input ng-model="$ctrl.currentQualification.nameProject">
-        </md-input-container>
-
-        <div layout="row">
-            <md-input-container class="date" flex-gt-sm="33">
-                <label class="md-no-float">Start date</label>
-                <md-datepicker
-                        name="dateStart"
-                        ng-model="$ctrl.dateStart"
-                        ng-change="$ctrl.dateStartChanged()"
-                        md-max-date="$ctrl.maxDateStart"
-                        required></md-datepicker>
-                <div ng-messages="$ctrl.form.dateStart.$error" role="alert">
-                    <div ng-messages-include="general-messages"></div>
-                </div>
-            </md-input-container>
-
-            <md-input-container class="date" flex-gt-sm="33">
-                <label class="md-no-float">Expected or End Date</label>
-                <md-datepicker
-                        name="dateAward"
-                        ng-model="$ctrl.dateAward"
-                        ng-change="$ctrl.dateAwardChanged()"
-                        md-min-date="$ctrl.minDateAward"></md-datepicker>
-                <div ng-messages="$ctrl.form.dateAward.$error" role="alert">
-                    <div ng-messages-include="general-messages"></div>
-                    <div ng-message="mindate" class="error">The award date has to be after start date.</div>
-                </div>
-            </md-input-container>
-
-            <md-input-container class="date" flex-gt-sm="33">
-                <label class="md-no-float">Grade (expected)</label>
-                <input ng-model="$ctrl.editedQualification.grade" name="grade">
-                <div ng-messages="$ctrl.form.grade.$error" role="alert" placeholder="eg. 2.1">
-                    <div ng-messages-include="general-messages"></div>
-                </div>
-            </md-input-container>
-        </div>
-
-        <div class="action-buttons">
-            <md-button class="md-primary big md-raised" ng-click="$ctrl.saveQualification()">Save Study</md-button>
-            <md-button class="md-primary big md-raised" ng-click="$ctrl.cancelQualification()">Cancel</md-button>
-        </div>
-    </div>
-</div>
-
-
-
