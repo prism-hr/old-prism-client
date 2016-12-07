@@ -140,7 +140,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             }
         })
         .state('manage.student', {
-            url: '/student/{id}?welcomeType',
+            url: '/student?welcomeType',
             abstract: true,
             views: {
                 '!header': 'wizardHeader',
