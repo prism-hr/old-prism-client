@@ -59,6 +59,7 @@ import {Welcome} from './app/welcome/welcome';
 import {WelcomeWizardEntry} from './app/welcome/welcome-wizard-entry';
 import {DepartmentWelcome} from './app/welcome/department/department-welcome';
 import {PromoterWelcome} from './app/welcome/promoter/promoter-welcome';
+import {PromoterNew} from './app/new/promoter/promoter-new';
 import {StudentWelcome} from './app/welcome/student/student-welcome';
 import {WizardNavigation} from './app/create/wizard-navigation';
 import {WizardButtons} from './app/create/wizard-buttons';
@@ -155,6 +156,7 @@ angular
     .component('welcomeWizardEntry', WelcomeWizardEntry)
     .component('departmentWelcome', DepartmentWelcome)
     .component('promoterWelcome', PromoterWelcome)
+    .component('promoterNew', PromoterNew)
     .component('studentWelcome', StudentWelcome)
     .component('wizardNavigation', WizardNavigation)
     .component('wizardButtons', WizardButtons)
