@@ -1,35 +1,38 @@
 <div layout-padding>
     <h3>Candidate Basic information</h3>
     <div class="fields-group">
-        <organization-lookup organization="$ctrl.currentQualification.organizationImplementation"
+        <organization-lookup organization="$ctrl.currentQualification.organizationImplementationQualification.organizationImplementation"
                              wizard-type="{{$ctrl.wizardType}}"
-                             form="$ctrl.form">
+                             form="$ctrl.form"
+                             changed="$ctrl.organizationChanged(complete)">
         </organization-lookup>
 
-        <md-input-container class="md-block program-input" flex>
-            <label class="md-no-float">Program name</label>
-            <input ng-model="$ctrl.currentQualification.name">
-        </md-input-container>
+        <div ng-if="$ctrl.showSummary">
+            <md-input-container class="md-block program-input" flex>
+                <label class="md-no-float">Program name</label>
+                <input ng-model="$ctrl.currentQualification.organizationImplementationQualification.name">
+            </md-input-container>
 
-        <label class="standalone-label">Study Level</label>
-        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.currentQualification.category"
-                        class="horizontal-form medium">
-            <div class="radio-box-aligned">
-                <md-radio-button ng-repeat="category in $ctrl.definitions.qualificationCategory"
-                                 class="md-primary" value="{{category}}"
-                                 aria-label="{{'definitions.qualificationCategory.' + category | translate}}">
-                    {{'definitions.qualificationCategory.' + category | translate}}
-                </md-radio-button>
-            </div>
-        </md-radio-group>
+            <label class="standalone-label">Study Level</label>
+            <md-radio-group name="type" ng-required="true" ng-model="$ctrl.currentQualification.organizationImplementationQualification.category"
+                            class="horizontal-form medium">
+                <div class="radio-box-aligned">
+                    <md-radio-button ng-repeat="category in $ctrl.definitions.qualificationCategory"
+                                     class="md-primary" value="{{category}}"
+                                     aria-label="{{'definitions.qualificationCategory.' + category | translate}}">
+                        {{'definitions.qualificationCategory.' + category | translate}}
+                    </md-radio-button>
+                </div>
+            </md-radio-group>
 
-        <md-input-container class="md-block">
-            <label class="md-no-float">Personal Statement</label>
-            <textarea ng-model="$ctrl.student.summary" md-maxlength="500" name="summary" rows="3"
-                      required aria-label="Personal Statement"></textarea>
-            <div ng-messages="$ctrl.form.description.$error" role="alert">
-                <div ng-messages-include="general-messages"></div>
-            </div>
-        </md-input-container>
+            <md-input-container class="md-block">
+                <label class="md-no-float">Personal Statement</label>
+                <textarea ng-model="$ctrl.student.summary" md-maxlength="500" name="summary" rows="3"
+                          required aria-label="Personal Statement"></textarea>
+                <div ng-messages="$ctrl.form.description.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
     </div>
 </div>

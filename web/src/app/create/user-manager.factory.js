@@ -36,8 +36,9 @@ export const UserManagerFactory = function ($q, Restangular, authService) {
     };
 
     function generateUserPostData(user) {
-        const userPost = _.omit(user, ['accessCode', 'state', 'stateComplete', 'userRoles', 'email', 'organization', 'travelingDistance']);
-        userPost.userQualifications.forEach(q => {
+        const userPost = _.omit(user, ['accessCode', 'state', 'stateComplete', 'userRoles', 'email', 'organization', 'travelingDistance', 'oauthProvider', 'tagsSuggested']);
+        userPost.userQualifications.forEach(uq => {
+            const q = uq.organizationImplementationQualification;
             q.organizationImplementation = _.pick(q.organizationImplementation, ['accessCode', 'name', 'organization']);
             q.organizationImplementation.organization = _.pick(q.organizationImplementation.organization, ['accessCode', 'name']);
         });

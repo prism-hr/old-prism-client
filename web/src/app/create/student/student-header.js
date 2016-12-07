@@ -10,6 +10,13 @@ class StudentHeaderController {
             qualifications.push({current: true});
         }
         this.currentQualification = qualifications.find(q => q.current);
+        if (this.currentQualification.organizationImplementationQualification) {
+            this.showSummary = true;
+        }
+    }
+
+    organizationChanged(complete) {
+        this.showSummary = complete;
     }
 }
 
