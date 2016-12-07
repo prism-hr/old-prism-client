@@ -41,6 +41,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 $title: _.wrap('Welcome Advertiser')
             }
         })
+        .state('promoterNew', {
+            url: '/promoter-new',
+            component: 'promoterNew',
+            resolve: {
+                $title: _.wrap('Advertise')
+            }
+        })
         .state('welcome.department', {
             url: '/department',
             component: 'departmentWelcome',
@@ -52,7 +59,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
             url: '/student',
             component: 'studentWelcome',
             resolve: {
-                $title: _.wrap('Student')
+                $title: _.wrap('Welcome Student')
             }
         })
         .state('manage', {

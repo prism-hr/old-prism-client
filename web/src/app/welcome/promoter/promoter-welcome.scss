@@ -16,7 +16,7 @@
     padding: 0;
   }
   .address {
-    margin-top:0;
+    margin-top: 0;
   }
   &.registered, &.family-registered {
     background: lighten($uclblue, 30%);;
@@ -60,13 +60,10 @@
     .btn-info {
       margin-left: 10px;
     }
-    h4{
-
-    }
   }
   h3 {
     margin-top: 0;
-    margin-bottom:5px;
+    margin-bottom: 5px;
     a {
       max-width: 84%;
       float: left;
@@ -82,6 +79,7 @@
     margin: 10px -8px -6px;
   }
 }
+
 .logo-image {
   margin: 10px;
   min-width: 200px;
@@ -89,7 +87,7 @@
 }
 
 .company-box {
-  margin-top:-137px;
+  margin-top: -137px;
   .company-header {
     width: 96%;
     background: white;
@@ -97,59 +95,61 @@
     z-index: 7;
   }
   .website {
-    margin-right:10px;
+    margin-right: 10px;
   }
 }
+
 .company-header {
   h2 {
-    margin-top:10px;
-    margin-bottom:2px;
+    margin-top: 10px;
+    margin-bottom: 2px;
   }
   h4 {
-    margin-bottom:6px;
+    margin-bottom: 6px;
   }
   .company-details {
     display: block;
     width: 100%;
   }
   .address {
-    font-size:0.8rem;
-    margin-bottom:0;
+    font-size: 0.8rem;
+    margin-bottom: 0;
     p {
       margin: 0;
     }
     .lock-size {
-      margin-top:-18px;
+      margin-top: -18px;
     }
     span {
-      padding-right:3px;
+      padding-right: 3px;
       &:before {
         content: '\00B7';
-        padding-right:3px;
-        font-size:18px;
+        padding-right: 3px;
+        font-size: 18px;
       }
     }
   }
   .summary {
-    margin-top:0;
-    margin-bottom:10px;
+    margin-top: 0;
+    margin-bottom: 10px;
     padding-right: 20px;
   }
 }
+
 .preview-navigation {
   width: 96%;
   overflow: hidden;
   background: white;
-  border:1px solid #ececec;
-  border-top:none;
-  md-pagination-wrapper, md-tabs-canvas  {
+  border: 1px solid #ececec;
+  border-top: none;
+  md-pagination-wrapper, md-tabs-canvas {
     height: 38px;
   }
   md-tabs.md-prism-theme .md-tab {
     line-height: 20px;
     padding: 8px 10px;
     color: $uclfooter;
-    font-weight:700;
+    font-weight: 700;
     &.md-active {
       color: $uclred;
     }
@@ -159,11 +159,11 @@
   }
 
 }
+
 .preview {
   position: relative;
   .label-holder {
     position: absolute;
-    right: 0;
     top: 25px;
     right: 25px;
     label {
@@ -177,5 +177,16 @@
         background: $employmentColor;
       }
     }
+  }
+}
+
+.select-create {
+  .or {
+    padding: 0 8px;
+    font-size:18px;
+    color: $activeGrey;
+  }
+  md-input-container {
+    margin-top:0;
   }
 }
