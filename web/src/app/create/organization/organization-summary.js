@@ -72,6 +72,7 @@ class OrganizationSummaryController {
     organizationChanged(complete) {
         this.requestAccess = null;
         this.showRequestAccess = complete && this.organization.accessCode;
+        this.organization.documentLogoImage = this.organization.documentLogoImage || this.organization.organization.documentLogoImage;
         this.showSummary = complete && !this.showRequestAccess;
     }
 }

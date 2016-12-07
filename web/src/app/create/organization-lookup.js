@@ -10,11 +10,11 @@ class OrganizationLookupController {
         this.organization = this.organization || {};
         if (this.organization.accessCode) {
             if (this.organization.name === this.organization.organization.name) {
-                this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name']);
+                this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name', 'documentLogoImage']);
                 this.showDepartment = false;
             } else {
-                this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name']);
-                this.selectedDepartment = _.pick(this.organization, ['accessCode', 'name']);
+                this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name', 'documentLogoImage']);
+                this.selectedDepartment = _.pick(this.organization, ['accessCode', 'name', 'documentLogoImage']);
                 this.showDepartment = true;
             }
         }
@@ -32,14 +32,16 @@ class OrganizationLookupController {
 
     updateOrganizationDepartment() {
         if (this.selectedOrganization) {
-            this.organization.organization = _.pick(this.selectedOrganization, ['accessCode', 'name']);
+            this.organization.organization = _.pick(this.selectedOrganization, ['accessCode', 'name', 'documentLogoImage']);
             this.organization.name = this.selectedOrganization.name;
+            this.organization.documentLogoImage = this.selectedOrganization.documentLogoImage;
             if (this.selectedOrganization.organizationImplementation) {
                 this.organization.accessCode = this.selectedOrganization.organizationImplementation.accessCode;
             }
         }
         if (this.selectedDepartment) {
             this.organization.name = this.selectedDepartment.name;
+            this.organization.documentLogoImage = this.selectedDepartment.documentLogoImage;
             this.organization.accessCode = this.selectedDepartment.accessCode;
         }
         const organizationValid = _.get(this.selectedOrganization, 'name.length');
