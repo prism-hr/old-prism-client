@@ -246,7 +246,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                             return wizard.getResource();
                         },
                         $title() {
-                            return step.title;
+                            return _.wrap(step.title);
                         }
                     },
                     /** @ngInject */
@@ -259,6 +259,27 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                 });
         });
     });
+
+    $stateProvider
+        .state('manage.student.qualifications.edit', {
+            url: '/edit/{qualificationAccessCode}',
+            views: {
+                '!$default.$default': {
+                    bindings: {wizardType: 'wizardType', wizard: 'wizard'},
+                    component: 'studentEditQualification'
+                },
+                '!header': {
+                    bindings: {wizardType: 'wizardType', wizard: 'wizard'},
+                    component: 'studentEditQualificationButtons'
+                }
+            },
+            resolve: {
+                pristineQualification($stateParams, resource) {
+                    return resource.userQualifications.find(q => q.accessCode === $stateParams.qualificationAccessCode);
+                },
+                $title: _.wrap('Qualification')
+            }
+        });
 
     // function returnTo($transition$) {
     //     var redirectedFrom = $transition$.redirectedFrom();
