@@ -246,7 +246,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
                             return wizard.getResource();
                         },
                         $title() {
-                            return _.wrap(step.title);
+                            return step.title;
                         }
                     },
                     /** @ngInject */
