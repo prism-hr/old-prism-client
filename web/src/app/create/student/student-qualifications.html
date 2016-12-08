@@ -35,9 +35,12 @@
             <md-button ng-href="{{$ctrl.getQualificationHref(qualification)}}" class="md-primary small md-raised">
                 Edit
             </md-button>
-            <md-button class="small md-raised" ng-disabled="qualification.current">Main Study</md-button>
+            <md-button class="small md-raised" ng-disabled="qualification.current"
+                       ng-click="$ctrl.makeCurrent(qualification)">Main Study
+            </md-button>
             <span class="flex"></span>
-            <md-button class="md-raised small md-warn" ng-disabled="qualification.current">Delete</md-button>
+            <md-button class="md-raised small md-warn" ng-disabled="qualification.current"
+            ng-click="$ctrl.deleteQualification(qualification)">Delete</md-button>
         </md-card-actions>
     </md-card>
     <md-card flex="100" flex-gt-sm="10" class="add-study" layout="row" layout-align="center center">

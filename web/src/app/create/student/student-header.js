@@ -1,9 +1,4 @@
 class StudentHeaderController {
-    /** @ngInject */
-    constructor(definitions) {
-        this.definitions = definitions;
-    }
-
     $onInit() {
         const qualifications = this.student.userQualifications;
         if (qualifications.length === 0) {

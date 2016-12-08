@@ -87,6 +87,7 @@ import {Student} from './app/create/student/student';
 import {StudentPreviewBox} from './app/create/student/student-preview-box';
 import {StudentHeader} from './app/create/student/student-header';
 import {StudentQualifications} from './app/create/student/student-qualifications';
+import {OrganizationQualificationDetails} from './app/create/student/qualification/organization-qualification-details';
 import {StudentEditQualificationService} from './app/create/student/qualification/student-edit-qualification-service';
 import {StudentEditQualification} from './app/create/student/qualification/student-edit-qualification';
 import {StudentEditQualificationButtons} from './app/create/student/qualification/student-edit-qualification-buttons';
@@ -187,6 +188,7 @@ angular
     .component('studentPreviewBox', StudentPreviewBox)
     .component('studentHeader', StudentHeader)
     .component('studentQualifications', StudentQualifications)
+    .component('organizationQualificationDetails', OrganizationQualificationDetails)
     .service('studentEditQualificationService', StudentEditQualificationService)
     .component('studentEditQualification', StudentEditQualification)
     .component('studentEditQualificationButtons', StudentEditQualificationButtons)

@@ -8,14 +8,8 @@ class StudentEditQualificationController {
         this.definitions = definitions;
 
         this.refreshDateAwardConstraints = function () {
-            this.minDateAward = this.dateStart && new Date(
-                    this.dateStart.getFullYear(),
-                    this.dateStart.getMonth(),
-                    this.dateStart.getDate() + 1);
-            this.maxDateStart = this.dateStart && new Date(
-                    this.dateStart.getFullYear(),
-                    this.dateStart.getMonth(),
-                    this.dateStart.getDate());
+            this.minDateAward = this.dateStart && moment(this.dateStart).add(1, 'days').toDate();
+            this.maxDateStart = moment().add(1, 'days').toDate();
         };
     }
 
@@ -23,8 +17,15 @@ class StudentEditQualificationController {
         this.qualification = this.qualificationService.getQualification();
         this.dateStart = this.qualification.dateStart && new Date(this.qualification.dateStart);
         this.dateAward = this.qualification.dateAward && new Date(this.qualification.dateAward);
+        if (this.qualification.organizationImplementationQualification) {
+            this.showSummary = true;
+        }
 
         this.refreshDateAwardConstraints();
+    }
+
+    organizationChanged(complete) {
+        this.showSummary = complete;
     }
 
     dateStartChanged() {
