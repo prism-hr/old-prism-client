@@ -156,8 +156,7 @@
   .logo-image {
     background: white;
     margin: 0;
-    transform: scale(0.34);
-    transform-origin: top left;
+    height: 100%;
   }
 }
 .autocomplete-custom-template {
@@ -441,6 +440,7 @@ md-autocomplete input:not(.md-input), md-input-container  {
 }
 logo-uploader {
   position: relative;
+  margin: 10px;
   .progress-box{
     position: absolute;
     top: 50%;
