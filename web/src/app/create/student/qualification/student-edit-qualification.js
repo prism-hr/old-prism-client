@@ -20,31 +20,11 @@ class StudentEditQualificationController {
     }
 
     $onInit() {
-        this.student = this.wizard.getResource();
-        this.qualification = angular.copy(this.pristineQualification);
+        this.qualification = this.qualificationService.getQualification();
         this.dateStart = this.qualification.dateStart && new Date(this.qualification.dateStart);
         this.dateAward = this.qualification.dateAward && new Date(this.qualification.dateAward);
 
         this.refreshDateAwardConstraints();
-    }
-
-    saveQualification() {
-        const qualifications = this.student.userQualifications;
-        const idx = qualifications.findIndex(q => q.accessCode === this.qualification.accessCode);
-        if (idx > -1) {
-            qualifications.splice(idx, 1, this.qualification);
-        } else {
-            qualifications.push(this.qualification);
-        }
-        this.goBack();
-    }
-
-    cancelQualification() {
-        this.goBack();
-    }
-
-    goBack() {
-        this.$state.go(this.$state.current.name.replace(/.edit$/, ''), _.omit(this.$stateParams, ['qualificationAccessCode']));
     }
 
     dateStartChanged() {
@@ -60,8 +40,7 @@ class StudentEditQualificationController {
 export const StudentEditQualification = {
     template: require('./student-edit-qualification.html'),
     bindings: {
-        pristineQualification: '=',
-        wizard: '<',
+        qualificationService: '<',
         wizardType: '<'
     },
     controller: StudentEditQualificationController

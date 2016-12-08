@@ -40,9 +40,9 @@
             <md-button class="md-raised small md-warn" ng-disabled="qualification.current">Delete</md-button>
         </md-card-actions>
     </md-card>
-    <md-card flex="100" flex-gt-sm="10" class="add-study" layout="row" layout-align="center center"
-             ng-click="$ctrl.addQualification()">
-        <md-button class="md-fab md-primary" aria-label="Add Qualification" layout="row" layout-align="center center">
+    <md-card flex="100" flex-gt-sm="10" class="add-study" layout="row" layout-align="center center">
+        <md-button class="md-fab md-primary" aria-label="Add Qualification" layout="row" layout-align="center center"
+                   ng-href="{{$ctrl.getQualificationHref(null)}}">
             <i class="icon-plus"></i>
         </md-button>
     </md-card>

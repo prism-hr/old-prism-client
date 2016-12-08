@@ -1,5 +1,5 @@
 <div class="page-wrap step-page child with-preview">
-    <div class="preview {{$ctrl.wizardType | lowercase}}" >
+    <div class="preview {{$ctrl.wizardType | lowercase}}">
         <student-preview-box student="$ctrl.student"></student-preview-box>
         <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
         </wizard-navigation>
@@ -10,8 +10,7 @@
                 <div class="step-wizard">
                     <div ui-view class="fade-animation"></div>
                 </div>
-                <wizard-buttons wizard="$ctrl.wizard" form="$ctrl.studentForm" loading="$ctrl.loading"
-                                display="$ctrl.display"></wizard-buttons>
+                <div ui-view="buttons"></div>
             </md-card>
         </div>
     </form>

@@ -230,31 +230,33 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
         _.each(definitions, (step, index) => {
             const data = angular.copy(step.data) || {};
             data.stepIdx = index;
-            const component = _.kebabCase(step.component);
             let resourceTypeLower = resourceType.toLowerCase();
             if (resourceTypeLower === 'promoter' || resourceTypeLower === 'department') {
                 resourceTypeLower = 'organization';
             }
-            const template = `<${component} welcome-type="{{welcomeType}}" wizard-type="{{wizardType}}" form="${resourceTypeLower}Form" ${resourceTypeLower}="resource" wizard="wizard"></${component}>`;
             $stateProvider
                 .state('manage.' + resourceType.toLowerCase() + '.' + step.id, {
                     url: '/' + step.id,
-                    template,
+                    views: {
+                        $default: {
+                            component: step.component,
+                            bindings: {
+                                [resourceTypeLower]: 'resource'
+                            }
+                        },
+                        buttons: 'wizardButtons'
+                    },
                     data,
                     resolve: {
+                        form(wizard) {
+                            return wizard.form;
+                        },
                         resource(wizard) {
                             return wizard.getResource();
                         },
                         $title() {
                             return step.title;
                         }
-                    },
-                    /** @ngInject */
-                    controller: function ($scope, $stateParams, wizardType, resource, wizard) {
-                        $scope.welcomeType = $stateParams.welcomeType;
-                        $scope.wizardType = wizardType;
-                        $scope.resource = resource;
-                        $scope.wizard = wizard;
                     }
                 });
         });
@@ -262,20 +264,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, res
 
     $stateProvider
         .state('manage.student.qualifications.edit', {
-            url: '/edit/{qualificationAccessCode}',
+            url: '/{qualificationAccessCode}',
             views: {
-                '!$default.$default': {
-                    bindings: {wizardType: 'wizardType', wizard: 'wizard'},
-                    component: 'studentEditQualification'
-                },
-                '!header': {
-                    bindings: {wizardType: 'wizardType', wizard: 'wizard'},
-                    component: 'studentEditQualificationButtons'
-                }
+                '!$default.$default': 'studentEditQualification',
+                '!header': 'studentEditQualificationButtons',
+                '^.^.buttons': 'studentEditQualificationButtons'
             },
             resolve: {
-                pristineQualification($stateParams, resource) {
-                    return resource.userQualifications.find(q => q.accessCode === $stateParams.qualificationAccessCode);
+                qualificationService(studentEditQualificationService, resource, $stateParams) {
+                    const accessCode = $stateParams.qualificationAccessCode === 'new' ? null : $stateParams.qualificationAccessCode;
+                    return studentEditQualificationService.create(resource, accessCode);
                 },
                 $title: _.wrap('Qualification')
             }

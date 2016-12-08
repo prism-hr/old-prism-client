@@ -5,7 +5,7 @@ class StudentQualificationsController {
     }
 
     getQualificationHref(qualification) {
-        return this.$state.href(this.$state.current.name + '.edit', {qualificationAccessCode: qualification.accessCode});
+        return this.$state.href(this.$state.current.name + '.edit', {qualificationAccessCode: qualification ? qualification.accessCode : 'new'});
     }
 }
 
