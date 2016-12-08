@@ -17,7 +17,6 @@ class AudienceController {
     _onStepChange(currentStep) {
         if (currentStep) {
             this.advert = this.wizard.getResource();
-            this.display = this.wizard.getDisplayData();
         }
     }
 

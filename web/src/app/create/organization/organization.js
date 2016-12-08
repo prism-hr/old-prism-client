@@ -20,7 +20,6 @@ class OrganizationController {
     _onStepChange(currentStep) {
         if (currentStep) {
             this.organization = this.wizard.getResource();
-            this.display = this.wizard.getDisplayData();
         }
     }
 

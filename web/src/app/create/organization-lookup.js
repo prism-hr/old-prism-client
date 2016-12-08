@@ -2,6 +2,10 @@ class OrganizationLookupController {
     constructor($q, Restangular) {
         this.$q = $q;
         this.Restangular = Restangular;
+
+        this.pickOrganizationFields = function (organization) {
+            return _.pick(organization, ['accessCode', 'name', 'documentLogoImage']);
+        };
     }
 
     $onInit() {
@@ -10,11 +14,11 @@ class OrganizationLookupController {
         this.organization = this.organization || {};
         if (this.organization.accessCode) {
             if (this.organization.name === this.organization.organization.name) {
-                this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name', 'documentLogoImage']);
+                this.selectedOrganization = this.pickOrganizationFields(this.organization.organization);
                 this.showDepartment = false;
             } else {
-                this.selectedOrganization = _.pick(this.organization.organization, ['accessCode', 'name', 'documentLogoImage']);
-                this.selectedDepartment = _.pick(this.organization, ['accessCode', 'name', 'documentLogoImage']);
+                this.selectedOrganization = this.pickOrganizationFields(this.organization.organization);
+                this.selectedDepartment = this.pickOrganizationFields(this.organization);
                 this.showDepartment = true;
             }
         }
@@ -32,7 +36,7 @@ class OrganizationLookupController {
 
     updateOrganizationDepartment() {
         if (this.selectedOrganization) {
-            this.organization.organization = _.pick(this.selectedOrganization, ['accessCode', 'name', 'documentLogoImage']);
+            this.organization.organization = this.pickOrganizationFields(this.selectedOrganization);
             this.organization.name = this.selectedOrganization.name;
             this.organization.documentLogoImage = this.selectedOrganization.documentLogoImage;
             if (this.selectedOrganization.organizationImplementation) {
