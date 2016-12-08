@@ -93,16 +93,13 @@ sidebar {
         display: block;
         height: 15px;
         width: 15px;
-        border-radius: 50%;
-        border: 2px solid $uclgreen;
-        .color-icon-inner {
-          background: $uclblue;
-          margin: 1px;
-          display: block;
-          width: 13px;
-          height: 13px;
-          border-radius: 50%;
-        }
+
+        position: relative;
+          img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+          }
       }
       &.active {
         background: $blueback;
