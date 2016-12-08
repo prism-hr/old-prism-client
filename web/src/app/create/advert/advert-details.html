@@ -1,12 +1,14 @@
 <div layout-padding>
     <h3>Provide Locations and the description of your advert </h3>
-    <md-input-container class="md-block">
-        <label class="md-no-float">Strapline</label>
-        <textarea name="advertSummary" ng-model="$ctrl.advert.summary" md-maxlength="140" rows="2" required></textarea>
-        <div ng-messages="$ctrl.form.advertSummary.$error" role="alert">
-            <div ng-messages-include="general-messages"></div>
-        </div>
-    </md-input-container>
+    <div layout="row">
+        <md-input-container flex="100">
+            <label class="md-no-float">Strapline</label>
+            <textarea name="advertSummary" ng-model="$ctrl.advert.summary" md-maxlength="500" rows="3" required></textarea>
+            <div ng-messages="$ctrl.form.advertSummary.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
 </div>
 <div class="text-editor">
     <md-card>
@@ -27,7 +29,7 @@
 </div>
 <div layout-padding>
     <div class="locations" layout="row">
-        <md-input-container class="md-block">
+        <md-input-container flex="100">
             <label class="md-no-float">Locations</label>
             <place-autocomplete ng-model="$ctrl.advert.locations" name="foundAddress"
                                 placeholder="{{'create.advert.address-lookup.autocomplete-placeholder' | translate}}" required>
