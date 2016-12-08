@@ -2,8 +2,8 @@
     <h3>Provide Type, Title and Strapline of the advert</h3>
 
     <md-input-container class="md-block">
-        <label class="md-no-float">Strapline</label>
-        <textarea name="advertSummary" ng-model="$ctrl.advert.summary" md-maxlength="140" rows="2" required></textarea>
+        <label class="md-no-float">Summary</label>
+        <textarea name="advertSummary" ng-model="$ctrl.advert.summary" md-maxlength="500" rows="2" required></textarea>
         <div ng-messages="$ctrl.form.advertSummary.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
