@@ -167,6 +167,9 @@
     background: white;
     position: relative;
     z-index: 7;
+    .logo-image {
+      margin: 10px;
+    }
   }
 }
 @media (max-width: $layout-breakpoint-xs - 1) {

@@ -17,12 +17,8 @@
         <md-item-template>
             <div layout="row">
                 <div class="logo-icon" ng-if="organization.documentLogoImage">
-                    <div class="logo-image">
-                        <div class="logo-flex company-logo">
-                            <div class="logo">
-                                <img ng-src="{{organization.documentLogoImage.cloudinaryUrl}}"/>
-                            </div>
-                        </div>
+                    <div class="logo-image" layout="column" layout-align="center center">
+                        <img ng-src="http://res.cloudinary.com/bigfoot/image/upload/w_72,h_41,c_fit/{{organization.documentLogoImage.cloudinaryId}}">
                     </div>
                 </div>
                 <div>
@@ -72,12 +68,8 @@
                 <md-item-template>
                     <div layout="row">
                         <div class="logo-icon" ng-if="department.documentLogoImage">
-                            <div class="logo-image">
-                                <div class="logo-flex company-logo">
-                                    <div class="logo">
-                                        <img ng-src="{{department.documentLogoImage.cloudinaryUrl}}"/>
-                                    </div>
-                                </div>
+                            <div class="logo-image" layout="column" layout-align="center center">
+                                <img ng-src="http://res.cloudinary.com/bigfoot/image/upload/w_72,h_41,c_fit/{{department.documentLogoImage.cloudinaryId}}">
                             </div>
                         </div>
                         <div>
