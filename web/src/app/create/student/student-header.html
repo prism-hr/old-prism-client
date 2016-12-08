@@ -8,22 +8,9 @@
         </organization-lookup>
 
         <div ng-if="$ctrl.showSummary">
-            <md-input-container class="md-block program-input" flex>
-                <label class="md-no-float">Program name</label>
-                <input ng-model="$ctrl.currentQualification.organizationImplementationQualification.name">
-            </md-input-container>
 
-            <label class="standalone-label">Study Level</label>
-            <md-radio-group name="type" ng-required="true" ng-model="$ctrl.currentQualification.organizationImplementationQualification.category"
-                            class="horizontal-form medium">
-                <div class="radio-box-aligned">
-                    <md-radio-button ng-repeat="category in $ctrl.definitions.qualificationCategory"
-                                     class="md-primary" value="{{category}}"
-                                     aria-label="{{'definitions.qualificationCategory.' + category | translate}}">
-                        {{'definitions.qualificationCategory.' + category | translate}}
-                    </md-radio-button>
-                </div>
-            </md-radio-group>
+            <organization-qualification-details qualification="$ctrl.currentQualification.organizationImplementationQualification">
+            </organization-qualification-details>
 
             <md-input-container class="md-block">
                 <label class="md-no-float">Personal Statement</label>

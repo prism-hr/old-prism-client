@@ -5,66 +5,58 @@
 <div layout-padding>
     <div class="study-form">
         <label class="standalone-label">University / Department</label>
-        <organization-lookup organization="$ctrl.qualification.organizationImplementationQualification.organizationImplementation"
-                             wizard-type="{{$ctrl.wizardType}}"
-                             form="$ctrl.form">
+        <organization-lookup
+                organization="$ctrl.qualification.organizationImplementationQualification.organizationImplementation"
+                wizard-type="{{$ctrl.wizardType}}"
+                form="$ctrl.form"
+                changed="$ctrl.organizationChanged(complete)">
         </organization-lookup>
 
-        <md-input-container class="md-block program-input" flex>
-            <label class="md-no-float">Program name</label>
-            <input ng-model="$ctrl.qualification.organizationImplementationQualification.name">
-        </md-input-container>
+        <div ng-if="$ctrl.showSummary">
+            <organization-qualification-details qualification="$ctrl.qualification.organizationImplementationQualification">
+            </organization-qualification-details>
 
-        <label class="standalone-label">Study Level</label>
-        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.qualification.organizationImplementationQualification.category"
-                        class="horizontal-form medium">
-            <div class="radio-box-aligned">
-                <md-radio-button ng-repeat="category in $ctrl.definitions.qualificationCategory"
-                                 class="md-primary" value="{{category}}"
-                                 aria-label="{{'definitions.qualificationCategory.' + category | translate}}">
-                    {{'definitions.qualificationCategory.' + category | translate}}
-                </md-radio-button>
+            <md-input-container class="md-block" flex>
+                <label class="md-no-float">Project name</label>
+                <input ng-model="$ctrl.qualification.nameProject">
+            </md-input-container>
+
+            <div layout="row">
+                <md-input-container class="date" flex-gt-sm="33">
+                    <label class="md-no-float">Start date</label>
+                    <md-datepicker
+                            name="dateStart"
+                            ng-model="$ctrl.dateStart"
+                            ng-change="$ctrl.dateStartChanged()"
+                            md-max-date="$ctrl.maxDateStart"
+                            required></md-datepicker>
+                    <div ng-messages="$ctrl.form.dateStart.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="date" flex-gt-sm="33">
+                    <label class="md-no-float">Expected or End Date</label>
+                    <md-datepicker
+                            name="dateAward"
+                            ng-model="$ctrl.dateAward"
+                            ng-change="$ctrl.dateAwardChanged()"
+                            md-min-date="$ctrl.minDateAward"
+                            ng-disabled="!$ctrl.dateStart"></md-datepicker>
+                    <div ng-messages="$ctrl.form.dateAward.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                        <div ng-message="mindate" class="error">The award date has to be after start date.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="date" flex-gt-sm="33">
+                    <label class="md-no-float">Grade (expected)</label>
+                    <input ng-model="$ctrl.qualification.grade" name="grade">
+                    <div ng-messages="$ctrl.form.grade.$error" role="alert" placeholder="eg. 2.1">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </md-input-container>
             </div>
-        </md-radio-group>
-        <md-input-container class="md-block" flex>
-            <label class="md-no-float">Project name</label>
-            <input ng-model="$ctrl.currentQualification.nameProject">
-        </md-input-container>
-
-        <div layout="row">
-            <md-input-container class="date" flex-gt-sm="33">
-                <label class="md-no-float">Start date</label>
-                <md-datepicker
-                        name="dateStart"
-                        ng-model="$ctrl.dateStart"
-                        ng-change="$ctrl.dateStartChanged()"
-                        md-max-date="$ctrl.maxDateStart"
-                        required></md-datepicker>
-                <div ng-messages="$ctrl.form.dateStart.$error" role="alert">
-                    <div ng-messages-include="general-messages"></div>
-                </div>
-            </md-input-container>
-
-            <md-input-container class="date" flex-gt-sm="33">
-                <label class="md-no-float">Expected or End Date</label>
-                <md-datepicker
-                        name="dateAward"
-                        ng-model="$ctrl.dateAward"
-                        ng-change="$ctrl.dateAwardChanged()"
-                        md-min-date="$ctrl.minDateAward"></md-datepicker>
-                <div ng-messages="$ctrl.form.dateAward.$error" role="alert">
-                    <div ng-messages-include="general-messages"></div>
-                    <div ng-message="mindate" class="error">The award date has to be after start date.</div>
-                </div>
-            </md-input-container>
-
-            <md-input-container class="date" flex-gt-sm="33">
-                <label class="md-no-float">Grade (expected)</label>
-                <input ng-model="$ctrl.qualification.grade" name="grade">
-                <div ng-messages="$ctrl.form.grade.$error" role="alert" placeholder="eg. 2.1">
-                    <div ng-messages-include="general-messages"></div>
-                </div>
-            </md-input-container>
         </div>
     </div>
 </div>
