@@ -10,8 +10,8 @@ class WizardButtonsController {
         }
     }
 
-    next() {
-        this.wizard.next();
+    continue() {
+        this.wizard.continue();
     }
 
     save() {

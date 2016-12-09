@@ -10,8 +10,8 @@ class WizardHeaderController {
         }
     }
 
-    next() {
-        this.wizard.next();
+    continue() {
+        this.wizard.continue();
     }
 
     save() {
@@ -20,6 +20,10 @@ class WizardHeaderController {
 
     prev() {
         this.wizard.prev();
+    }
+
+    next() {
+        this.wizard.next();
     }
 
     skip() {

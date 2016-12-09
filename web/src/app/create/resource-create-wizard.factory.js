@@ -141,7 +141,7 @@ export class ResourceCreateWizardFactory {
                 this.customNextHandler = handler;
             }
 
-            next() {
+            continue() {
                 if (!this.form.$valid) {
                     return;
                 }
@@ -178,7 +178,7 @@ export class ResourceCreateWizardFactory {
                                     return $state.go('activities');
                                 });
                         }
-                        return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode || 'new'}); // FIXME drop alternative 'new'
+                        return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode});
                     });
             }
 
@@ -205,6 +205,18 @@ export class ResourceCreateWizardFactory {
                 const prevStep = this.getPrevStep();
                 if (prevStep) {
                     return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
+                } else if (this._welcomeType) {
+                    return $state.go('welcome.' + this._welcomeType.toLowerCase());
+                }
+                return $state.go('activities');
+            }
+
+            next() {
+                this.form.$setPristine();
+
+                const nextStep = this.getNextStep();
+                if (nextStep) {
+                    return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + nextStep.id, {id: this.getResource().accessCode});
                 } else if (this._welcomeType) {
                     return $state.go('welcome.' + this._welcomeType.toLowerCase());
                 }
