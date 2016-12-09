@@ -35,28 +35,23 @@
         </md-chips>
         <span class="info">Select tags to add them to your list</span>
     </div>
-    <div class="audience">
+    <div layout="row">
         <label class="standalone-label">Audience</label>
-        <md-switch ng-model="$ctrl.studentsTypeAll" class="md-primary" aria-label="All Students">
-            All Students
-        </md-switch>
-        <div class="sub-audience" ng-if="!$ctrl.studentsTypeAll">
-            <div layout="row">
-                <md-switch ng-model="$ctrl.studentsUndergraduateAll" class="md-primary"
-                           aria-label="All Undergraduate Students">
-                    All Undergraduate Students
-                </md-switch>
-            </div>
-            <div layout="row">
-                <md-switch ng-model="$ctrl.studentsMastersAll" class="md-primary" aria-label="All Masters Students">
-                    All Masters Students
-                </md-switch>
-            </div>
-            <div layout="row">
-                <md-switch ng-model="$ctrl.studentsResearchAll" class="md-primary" aria-label="All Research Students">
-                    All Research Students
-                </md-switch>
-            </div>
-        </div>
+
+        <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
+                     md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
+                     ng-checked="$ctrl.categoriesHelper.isChecked(category)"
+                     ng-click="$ctrl.categoriesHelper.toggle(category)"
+                     class="md-primary">
+            {{'definitions.qualificationCategory.' + category | translate}}
+        </md-checkbox>
+        <md-checkbox aria-label="Select All"
+                     class="md-primary"
+                     ng-checked="$ctrl.categoriesHelper.allChecked()"
+                     md-indeterminate="$ctrl.categoriesHelper.anyChecked()"
+                     ng-click="$ctrl.categoriesHelper.toggleAll()">
+            <span ng-show="$ctrl.categoriesHelper.allChecked()">Deselect All</span>
+            <span ng-show="!$ctrl.categoriesHelper.allChecked()">Select All</span>
+        </md-checkbox>
     </div>
 </div>

@@ -2,7 +2,8 @@ import moment from 'moment';
 
 class AdvertTypeController {
     /** @ngInject */
-    constructor(definitions) {
+    constructor(checkboxesHelper, definitions) {
+        this.checkboxesHelper = checkboxesHelper;
         this.definitions = definitions;
 
         this.refreshPublicationCloseConstraints = function () {
@@ -29,36 +30,7 @@ class AdvertTypeController {
             this.minPublicationStart.getMonth() + 3,
             this.minPublicationStart.getDate());
         this.refreshPublicationCloseConstraints();
-    }
-
-    togglePattern(pattern) {
-        const idx = this.advert.positionWorkPatterns.findIndex(p => p.positionWorkPattern === pattern);
-        if (idx > -1) {
-            this.advert.positionWorkPatterns.splice(idx, 1);
-        } else {
-            this.advert.positionWorkPatterns.push({positionWorkPattern: pattern});
-        }
-    }
-
-    isPatternChecked(pattern) {
-        return this.advert.positionWorkPatterns.find(p => p.positionWorkPattern === pattern);
-    }
-
-    anyPatternChecked() {
-        return (this.advert.positionWorkPatterns.length !== 0 &&
-        this.advert.positionWorkPatterns.length !== this.patternValues.length);
-    }
-
-    allPatternsChecked() {
-        return this.advert.positionWorkPatterns.length === this.patternValues.length;
-    }
-
-    toggleAllPatterns() {
-        if (this.advert.positionWorkPatterns.length === this.patternValues.length) {
-            this.advert.positionWorkPatterns = [];
-        } else if (this.advert.positionWorkPatterns.length === 0 || this.advert.positionWorkPatterns.length > 0) {
-            this.advert.positionWorkPatterns = this.patternValues.map(p => ({positionWorkPattern: p}));
-        }
+        this.patternsHelper = this.checkboxesHelper.create(this.definitions.positionWorkPattern, this.advert.positionWorkPatterns, 'positionWorkPattern');
     }
 
     publicationStartChanged() {
