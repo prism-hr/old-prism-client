@@ -76,7 +76,7 @@ export const ResourceManagerFactory = function ($q, Restangular) {
     };
 
     function generateOrganizationPostData(resource) {
-        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'context', 'actions', 'userUpdate', 'relevanceHard', 'relevanceSoft']);
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'context', 'actions', 'userUpdate']);
         if (resourcePost.tags) {
             resourcePost.tags.forEach(t => {
                 t.tag = _.pick(t.tag, ['accessCode', 'name']);

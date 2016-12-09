@@ -11,7 +11,8 @@ class StudentEditQualificationButtonsController {
 export const StudentEditQualificationButtons = {
     template: require('./student-edit-qualification-buttons.html'),
     bindings: {
-        qualificationService: '<'
+        qualificationService: '<',
+        wizard: '<'
     },
     controller: StudentEditQualificationButtonsController
 };

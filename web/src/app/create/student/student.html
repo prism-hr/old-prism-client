@@ -1,7 +1,7 @@
 <div class="page-wrap step-page child with-preview">
     <div class="preview {{$ctrl.wizardType | lowercase}}">
         <student-preview-box student="$ctrl.student"></student-preview-box>
-        <wizard-navigation wizard-type="$ctrl.wizardType" create-steps="$ctrl.createSteps" display="$ctrl.display">
+        <wizard-navigation wizard="$ctrl.wizard">
         </wizard-navigation>
     </div>
     <form novalidate name="$ctrl.studentForm">
