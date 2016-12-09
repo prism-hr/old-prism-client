@@ -1,6 +1,6 @@
 class AdvertDetailsController {
     $onInit() {
-        this.advert.advertOutsideLink = this.advert.advertOutsideLink || 'false';
+        this.advert.advertOutsideLink = this.advert.advertOutsideLink || false;
     }
 }
 
