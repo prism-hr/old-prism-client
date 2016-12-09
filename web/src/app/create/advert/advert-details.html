@@ -39,9 +39,17 @@
             </div>
         </md-input-container>
     </div>
-    <md-switch ng-model="$ctrl.advertOutsideLink" class="md-primary" aria-label="All Research Students">
-        Use my own recruitment mechanism
-    </md-switch>
+    <label class="standalone-label"><strong>Recruitment mechanism</strong></label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advertOutsideLink" class="medium">
+        <div class="radio-box-column">
+            <md-radio-button ng-value="false" class="md-primary" checked="checked" ng-checked="true">
+                Receive applications in BigFoot
+            </md-radio-button>
+            <md-radio-button ng-value="true" class="md-primary">
+                Direct applicants to my own recruitment page
+            </md-radio-button>
+        </div>
+    </md-radio-group>
     <div class="outside-link" ng-if="$ctrl.advertOutsideLink">
         <md-input-container class="md-block">
             <label class="md-no-float">Advert URL
