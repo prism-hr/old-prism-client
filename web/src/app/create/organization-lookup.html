@@ -22,10 +22,12 @@
                     </div>
                 </div>
                 <div>
-                    <span md-highlight-text="searchText" class="item-title"> {{organization.accessCode ? organization.name : 'Create ' + organization.name}} </span>
+                    <span md-highlight-text="searchText" class="item-title">
+                        {{organization.accessCode ? organization.name : 'Create ' + organization.name}}
+                    </span>
                     <span class="item-location" ng-if="organization.locationList">
                             {{organization.locationList}}
-                        </span>
+                    </span>
                 </div>
             </div>
         </md-item-template>
@@ -73,7 +75,9 @@
                             </div>
                         </div>
                         <div>
-                            <span md-highlight-text="searchText" class="item-title"> {{department.accessCode ? department.name : 'Create ' + department.name}} </span>
+                            <span md-highlight-text="searchText" class="item-title">
+                                {{department.accessCode ? department.name : 'Create ' + department.name}}
+                            </span>
                             <span class="item-location"
                                   ng-if="department.locationList">{{department.locationList}}</span>
                         </div>

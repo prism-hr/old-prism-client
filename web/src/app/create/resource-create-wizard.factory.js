@@ -54,6 +54,10 @@ export class ResourceCreateWizardFactory {
                 return this._resourceManager.getResource();
             }
 
+            getWizardType() {
+                return this._wizardType;
+            }
+
             getCurrentStep() {
                 return this.getStepForName(this._currentStep);
             }
