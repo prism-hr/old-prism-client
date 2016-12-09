@@ -30,10 +30,10 @@ export const CheckboxesHelper = function () {
         }
 
         toggleAll() {
-            if (this.selectedItems.length === this.possibleItems.length) {
-                this.selectedItems = [];
-            } else if (this.selectedItems.length === 0 || this.selectedItems.length > 0) {
-                this.selectedItems = this.possibleItems.map(p => ({[this.propertyName]: p}));
+            const selectedCount = this.selectedItems.length;
+            this.selectedItems.length = 0;
+            if (selectedCount !== this.possibleItems.length) {
+                this.selectedItems.push(...this.possibleItems.map(p => ({[this.propertyName]: p})));
             }
         }
     }
