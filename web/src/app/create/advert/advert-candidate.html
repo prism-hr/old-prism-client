@@ -35,9 +35,8 @@
         </md-chips>
         <span class="info">Select tags to add them to your list</span>
     </div>
+    <label class="standalone-label">Audience</label>
     <div layout="row">
-        <label class="standalone-label">Audience</label>
-
         <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
                      md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
                      ng-checked="$ctrl.categoriesHelper.isChecked(category)"
