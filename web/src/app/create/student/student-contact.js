@@ -11,6 +11,7 @@ class StudentContactController {
         }
         this.student.proximity = this.student.proximity || 'TO_200';
         this.student.email = this.student.email || this.authService.user.username;
+        this.preferLocation = this.preferLocation || 'ANY';
     }
 
     addLanguage(language) {

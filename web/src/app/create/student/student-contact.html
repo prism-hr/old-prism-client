@@ -1,8 +1,22 @@
 <div layout-padding>
     <h3>Contact Information</h3>
-    <div class="locations" layout="row">
+    <label class="standalone-label">Preferred work location</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.preferLocation" class="horizontal-form medium">
+        <div class="radio-box-aligned">
+            <md-radio-button ng-value="'ANY'" class="md-primary">
+                Any
+            </md-radio-button>
+            <md-radio-button ng-value="'COUNTRY'" class="md-primary">
+                Countries
+            </md-radio-button>
+            <md-radio-button ng-value="'CITIES'" class="md-primary">
+                Cities
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+    <div class="locations country" layout="row" ng-if="$ctrl.preferLocation === 'COUNTRY'">
         <md-input-container class="md-block" flex>
-            <label class="md-no-float">Location</label>
+            <label class="md-no-float">Countries</label>
             <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
                                 placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
                                 required>
@@ -12,7 +26,19 @@
             </div>
         </md-input-container>
     </div>
-    <div layout="row" class="traveling-block">
+    <div class="locations cities" layout="row" ng-if="$ctrl.preferLocation === 'CITIES'">
+        <md-input-container class="md-block" flex="">
+            <label class="md-no-float">Cities</label>
+            <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
+                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                required>
+            </place-autocomplete>
+            <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="row" class="traveling-block" ng-if="$ctrl.preferLocation === 'CITIES'">
         <md-input-container class="md-block" flex="50">
             <label class="md-no-float">Travelling Distance</label>
             <md-select name="proximity" ng-model="$ctrl.student.proximity" required>
@@ -26,7 +52,6 @@
             </div>
         </md-input-container>
     </div>
-
     <div layout="row" layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>
             <label class="md-no-float">Preferred Email</label>
@@ -47,7 +72,7 @@
     <div class="languages">
         <div ng-repeat="language in $ctrl.student.languages" class="language-item" layout="row">
             <language language="language" form="$ctrl.form"
-                                    layout="row" flex="75"></language>
+                      layout="row" flex="75"></language>
             <div flex="25">
                 <md-button ng-click="$ctrl.removeLanguage(language)"
                            ng-if="$ctrl.student.languages.length > 1"
