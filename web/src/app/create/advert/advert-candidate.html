@@ -21,8 +21,14 @@
                 </md-chip-template>
             </md-chips>
         </md-input-container>
-        {{$ctrl.advert.tagSuggestedList}}
     </div>
+
+    <md-button ng-repeat="tag in $ctrl.advert.tagsSuggested"
+               ng-class="{selected: $ctrl.isTagSelected(tag)}"
+               ng-click="$ctrl.selectTag(tag)">
+        {{tag}}
+    </md-button>
+
     <div class="tag-list">
         <label class="standalone-label small">Suggested Tags</label>
         <md-chips class="small">

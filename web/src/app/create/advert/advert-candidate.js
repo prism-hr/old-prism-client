@@ -13,7 +13,8 @@ class AdvertCandidateController {
     }
 
     lookupTags(text) {
-        return this.Restangular.all('tags').getList({searchTerm: text})
+        const exclusions = this.advert.tags.map(t => t.tag.name);
+        return this.Restangular.all('tags').getList({searchTerm: text, exclusions})
             .then(tags => tags.plain());
     }
 
@@ -22,6 +23,20 @@ class AdvertCandidateController {
             return {tag: _.pick(chip, ['accessCode', 'name'])};
         }
         return {tag: {name: chip}};
+    }
+
+    isTagSelected(tag) {
+        return Boolean(this.advert.tags.find(t => t.tag.name === tag));
+    }
+
+    selectTag(tag) {
+        const idx = this.advert.tags.findIndex(t => t.tag.name === tag);
+        if (idx > -1) {
+            this.advert.tags.splice(idx, 1);
+        } else {
+            this.advert.tags.push({tag: {name: tag}});
+        }
+        console.log(tag);
     }
 }
 
