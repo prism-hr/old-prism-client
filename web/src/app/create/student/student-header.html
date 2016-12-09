@@ -1,0 +1,25 @@
+<div layout-padding>
+    <h3>Candidate Basic information</h3>
+    <div class="fields-group">
+        <organization-lookup organization="$ctrl.currentQualification.organizationImplementationQualification.organizationImplementation"
+                             wizard-type="{{$ctrl.wizardType}}"
+                             form="$ctrl.form"
+                             changed="$ctrl.organizationChanged(complete)">
+        </organization-lookup>
+
+        <div ng-if="$ctrl.showSummary">
+
+            <organization-qualification-details qualification="$ctrl.currentQualification.organizationImplementationQualification">
+            </organization-qualification-details>
+
+            <md-input-container class="md-block">
+                <label class="md-no-float">Personal Statement</label>
+                <textarea ng-model="$ctrl.student.summary" md-maxlength="500" name="summary" rows="3"
+                          required aria-label="Personal Statement"></textarea>
+                <div ng-messages="$ctrl.form.description.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
+    </div>
+</div>

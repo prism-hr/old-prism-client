@@ -1,0 +1,56 @@
+<div layout-padding>
+    <h3>Provide a Candidate Specification</h3>
+
+    <div class="industries-holder">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Areas of Expertise</label>
+            <md-chips ng-model="$ctrl.advert.tags"
+                      md-transform-chip="$ctrl.transformTag($chip)"
+                      md-max-chips="20"
+                      md-separator-keys="$ctrl.separatorKeys">
+                <md-autocomplete
+                        md-search-text="searchText"
+                        md-autoselect="true"
+                        md-items="item in $ctrl.lookupTags(searchText)"
+                        md-item-text="item.name"
+                        placeholder="Find a tag or add a new one">
+                    <span md-highlight-text="searchText">{{item.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    {{$chip.tag.name}}
+                </md-chip-template>
+            </md-chips>
+        </md-input-container>
+        {{$ctrl.advert.tagSuggestedList}}
+    </div>
+    <div class="tag-list">
+        <label class="standalone-label small">Suggested Tags</label>
+        <md-chips class="small">
+            <md-chip class="active">Biotechnology</md-chip>
+            <md-chip>Alternative Medicine</md-chip>
+            <md-chip class="active">Pharmaceuticals</md-chip>
+            <md-chip>Food & Beverages</md-chip>
+            <md-chip>Renewables & Environment</md-chip>
+            <md-chip>Research</md-chip>
+        </md-chips>
+        <span class="info">Select tags to add them to your list</span>
+    </div>
+    <label class="standalone-label">Audience</label>
+    <div layout="row">
+        <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
+                     md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
+                     ng-checked="$ctrl.categoriesHelper.isChecked(category)"
+                     ng-click="$ctrl.categoriesHelper.toggle(category)"
+                     class="md-primary">
+            {{'definitions.qualificationCategory.' + category | translate}}
+        </md-checkbox>
+        <md-checkbox aria-label="Select All"
+                     class="md-primary"
+                     ng-checked="$ctrl.categoriesHelper.allChecked()"
+                     md-indeterminate="$ctrl.categoriesHelper.anyChecked()"
+                     ng-click="$ctrl.categoriesHelper.toggleAll()">
+            <span ng-show="$ctrl.categoriesHelper.allChecked()">Deselect All</span>
+            <span ng-show="!$ctrl.categoriesHelper.allChecked()">Select All</span>
+        </md-checkbox>
+    </div>
+</div>

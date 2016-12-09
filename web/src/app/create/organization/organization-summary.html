@@ -1,0 +1,120 @@
+<div layout-padding>
+    <h3>{{'create.organization.organization-lookup.lookup-subtitle.' + $ctrl.wizardType | translate}}</h3>
+
+    <div ng-if="!$ctrl.editingMode">
+        <organization-lookup organization="$ctrl.organization" wizard-type="{{$ctrl.wizardType}}"
+                             form="$ctrl.form" changed="$ctrl.organizationChanged(complete)">
+        </organization-lookup>
+    </div>
+
+    <div ng-if="$ctrl.editingMode">
+        <script type="text/ng-template" id="organization-summary-name-messages">
+            <div ng-message="nameTaken" class="error">This name is not available.</div>
+        </script>
+
+        <div layout="row" layout-align="start center" class="company-lookup">
+            <md-input-container class="md-block" flex>
+                <label class="md-no-float">
+                    {{'create.organization.organization-lookup.organization-label.' + $ctrl.wizardType | translate}}
+                </label>
+                <input name="organizationName" ng-model="$ctrl.organization.organization.name"
+                       ng-change="$ctrl.organizationNameChanged($ctrl.organization.organization.name, 'organizationName')"
+                       ng-disabled="$ctrl.editableName !== 'ORGANIZATION'">
+                <span ng-if="$ctrl.form.$error.organizationNameCheck">Loading...</span>
+                <div ng-messages="$ctrl.form.organizationName.$error" role="alert">
+                    <div ng-messages-include="organization-summary-name-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <md-input-container ng-if="$ctrl.showDepartment" class="md-block">
+            <label class="md-no-float">
+                {{'create.organization.organization-lookup.department-label.' + $ctrl.wizardType|translate}}
+            </label>
+            <input name="departmentName" ng-model="$ctrl.organization.name"
+                   ng-change="$ctrl.organizationNameChanged($ctrl.organization.name, 'departmentName')"
+                   ng-disabled="$ctrl.editableName !== 'IMPLEMENTATION'">
+            <span ng-if="$ctrl.form.$error.organizationNameCheck">Loading...</span>
+            <div ng-messages="$ctrl.form.departmentName.$error" role="alert">
+                <div ng-messages-include="organization-summary-name-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div ng-if="$ctrl.showRequestAccess">
+        <label class="standalone-label">
+            <strong>{{$ctrl.organization.name}} exists already, would you like to join as a staff member?</strong>
+        </label>
+        <md-radio-group name="requestAccess" ng-required="true" ng-model="$ctrl.requestAccess"
+                        class="horizontal-form medium">
+            <div class="radio-box-aligned">
+                <md-radio-button ng-value="false" class="md-primary">
+                    No
+                </md-radio-button>
+                <md-radio-button ng-value="true" class="md-primary">
+                    Yes
+                </md-radio-button>
+            </div>
+        </md-radio-group>
+    </div>
+
+    <div ng-if="$ctrl.showSummary">
+        <div class="locations" layout="row">
+            <md-input-container class="md-block" flex>
+                <label class="md-no-float">Locations</label>
+                <place-autocomplete ng-model="$ctrl.organization.locations" name="locations"
+                                    placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                    required>
+                </place-autocomplete>
+                <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row" layout-align="start center">
+            <div flex="100" flex-gt-xs="65">
+                <md-input-container class="md-block">
+                    <label class="md-no-float">Summary</label>
+                    <textarea ng-model="$ctrl.organization.summary" md-maxlength="500" name="summary" rows="4"
+                              required aria-label="Summary"></textarea>
+                    <div ng-messages="$ctrl.form.summary.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div flex-gt-xs="35" flex="100" layout="row" layout-align="end">
+                <div class="image-uploader">
+                    <logo-uploader ng-model="$ctrl.organization.documentLogoImage" drop-area="true"></logo-uploader>
+                    <small>Image size 400 x 250 / 10MB max</small>
+                    <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <md-switch ng-model="$ctrl.showDescription" class="md-primary" aria-label="Description">
+            Long Description
+        </md-switch>
+        <div class="text-editor" ng-if="$ctrl.showDescription">
+            <md-card>
+                <md-card-title>
+                    <h3> Description
+                        <small>(optional)</small>
+                    </h3>
+                </md-card-title>
+                <md-card-content>
+                    <text-angular-toolbar
+                            name="organizationDescriptionToolbar"
+                            ta-toolbar="[['h1','p'],['bold','italics','underline','clear'],['ul','ol', 'insertLink'],['redo', 'undo']]">
+                    </text-angular-toolbar>
+                    <md-input-container class="md-block">
+                        <text-angular ng-model="$ctrl.organization.description" rows="4"
+                                      ta-target-toolbars="organizationDescriptionToolbar"
+                                      class="form-control md-input" aria-label="Description"></text-angular>
+                    </md-input-container>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+
+</div>

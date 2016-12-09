@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900');
+@import "styles/variables";
+@import "../node_modules/angular-material/angular-material";
+
+$simple-line-font-path: "../node_modules/simple-line-icons/fonts/";
+@import "../node_modules/simple-line-icons/scss/simple-line-icons";
+
+$fa-font-path: "../node_modules/font-awesome/fonts/";
+@import "../node_modules/font-awesome/scss/font-awesome";
+
+@import "../node_modules/croppie/croppie.css";
+
+@import "styles/general";
+@import "styles/loading-bar";
+@import "styles/positions";
+@import "styles/components";
+
+@import "app/general/dialog/dialog";
+@import "app/general/header";
+@import "app/general/footer";
+@import "app/general/sidebar";
+
+@import "app/activities/activities";
+@import "app/welcome/welcome";
+@import "app/unauthenticated/authenticate/authenticate";
+@import "app/create/create";
+@import "app/create/student/student";
+@import "app/welcome/promoter/promoter-welcome";
+@import "app/welcome/department/department-welcome";
+@import "app/welcome/student/student-welcome";
+
+@import "app/view/view";

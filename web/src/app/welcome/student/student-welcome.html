@@ -1,0 +1,36 @@
+<div class="page-wrap step-page">
+    <div layout="row" layout-align="center center" ng-cloak>
+        <div flex="60" flex-xs="100" class="left-side-block" layout="column" layout-align="center stretch">
+            <div class="header" layout-padding>
+                <h1>Welcome Student</h1>
+                <h3>Register to get jobs, placements or work experience.</h3>
+            </div>
+
+            <welcome-wizard-entry title="Basic Information"
+                                  description="Just the basics to start showing you positions and events"
+                                  wizard-state="$ctrl.studentWizardState"
+                                  wizard-status="$ctrl.statuses.student"
+                                  enabled="true">
+            </welcome-wizard-entry>
+            <welcome-wizard-entry title="Profile"
+                                  description="It needs to be completed to apply any position"
+                                  wizard-state="$ctrl.profileWizardState"
+                                  wizard-status="$ctrl.statuses.profile"
+                                  enabled="$ctrl.profileEnabled">
+            </welcome-wizard-entry>
+        </div>
+        <div flex="40" class="right-side-block hide-xs">
+            <!--<h2>PRiSM for Students</h2>-->
+            <!--<p>Get notifications about jobs, events and more</p>-->
+            <!--<div class="badges-box">-->
+                <!--<div class="google-play">-->
+                    <!--<a><img src="/img/google-play-badge.png"></a>-->
+                <!--</div>-->
+                <!--<div class="app-store">-->
+                    <!--<a><img src="/img/app-store-badge.png"></a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="custom-icon student" ng-include="'img/student-logo.html'"></div>
+        </div>
+    </div>
+</div>

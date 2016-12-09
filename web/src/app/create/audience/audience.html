@@ -1,0 +1,20 @@
+<div class="page-wrap step-page child" ng-class="{'with-preview' : $ctrl.advert.accessCode}">
+    <div class="preview {{$ctrl.wizardType | lowercase}}" ng-if="$ctrl.advert.accessCode">
+        <div class="label-holder">
+            <label>Preview</label>
+            <label class="published">Published</label>
+            <label class="unpublished">Unpublished</label>
+        </div>
+        <advert-preview-box advert="$ctrl.advert"></advert-preview-box>
+    </div>
+    <form novalidate name="$ctrl.audienceForm">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" class="wizard-holder-padding">
+            <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
+                <div class="step-wizard">
+                    <div ui-view class="fade-animation"></div>
+                </div>
+                <wizard-buttons wizard="$ctrl.wizard"></wizard-buttons>
+            </md-card>
+        </div>
+    </form>
+</div>

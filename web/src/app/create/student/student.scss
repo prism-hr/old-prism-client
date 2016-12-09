@@ -1,0 +1,129 @@
+.student-box {
+  margin-top:-137px;
+  .student-header {
+    width: 96%;
+    background: white;
+    position: relative;
+    z-index: 7;
+    h2 {
+      margin-top:10px;
+      margin-bottom:4px;
+    }
+    h4 {
+      margin-bottom:4px;
+      span {
+        font-weight:400;
+      }
+    }
+    h5 {
+      font-size:15px;
+      color: $uclblue;
+      span {
+        font-size: 13px;
+        color: $uclfooter;
+      }
+      margin-bottom:6px;
+    }
+    .summary {
+      margin-top:0;
+      margin-bottom:10px;
+      padding-right: 20px;
+    }
+    .student-details {
+      padding-right: 10px;
+    }
+  }
+  .avatar-holder {
+    margin: 10px 20px 10px 10px;
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    .logo-uploader-box {
+      right: 37px;
+    }
+    &.employer {
+      border: 2px solid $uclred;
+    }
+    &.university {
+      border: 2px solid $uclgreen;
+    }
+    &.student {
+      border: 2px solid $uclblue;
+    }
+    float: left;
+    .no-user-image {
+      background: $uclblue;
+      border-radius: 50%;
+      color: white;
+      width: 96px;
+      height: 96px;
+      margin: 2px;
+      text-align: center;
+      i {
+        font-size:48px;
+      }
+    }
+  }
+}
+.program-input {
+  margin-top:40px;
+}
+.studies-list {
+  md-card.study-item {
+    md-card-title {
+      flex: 0 1 auto;
+      padding: 8px 10px;
+      .md-headline {
+        color: $uclred;
+        font-size:18px;
+        line-height: 22px;
+      }
+      .md-subhead {
+        font-size:16px;
+        line-height: 18px;
+      }
+    }
+    md-card-content {
+      padding: 0 10px 4px;
+      .dates-location {
+        span {
+          font-size: 15px;
+          color: $uclfooter;
+        }
+        .badge {
+          margin-right:4px;
+        }
+      }
+      p {
+        color: $uclblue;
+        margin-top:4px;
+      }
+    }
+    md-card-actions {
+      border-top:1px solid $inactiveGrey;
+      padding-top:10px;
+    }
+  }
+  md-card.add-study {
+    .md-fab {
+      font-size:40px;
+    }
+  }
+}
+.action-buttons {
+  margin-left: -8px;
+}
+.languages {
+  md-icon {
+    font-size:23px;
+  }
+  .language-item {
+    margin-bottom:6px;
+  }
+}
+.fields-group {
+  margin-top:30px;
+}
+.traveling-block {
+  margin-bottom:30px;
+}

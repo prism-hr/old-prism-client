@@ -1,0 +1,79 @@
+<div layout-padding>
+    <h3>Provide Promotion Salary</h3>
+    <label class="standalone-label">Salary options</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.positionSalary"
+                    class="horizontal-form medium">
+        <div class="radio-box-aligned">
+            <md-radio-button ng-repeat="salary in $ctrl.definitions.positionSalary" ng-value="salary"
+                             class="md-primary"
+                             aria-label="{{'definitions.positionSalary.' + salary | translate}}">
+                {{'definitions.positionSalary.' + salary | translate}}
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+    <div class="payment-range" ng-if="$ctrl.advert.positionSalary === 'RANGE'">
+        <label class="standalone-label">Salary Range</label>
+        <div layout="row">
+            <md-input-container>
+                <label>Min</label>
+                <input required type="number" name="salaryMin" ng-model="$ctrl.advert.positionSalaryMinimum" min="1" max="999999"/>
+                <div ng-messages="$ctrl.form.salaryMin.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Max</label>
+                <input type="number" name="salaryMax" ng-model="$ctrl.advert.positionSalaryMaximum" min="{{$ctrl.advert.positionSalaryMinimum}}"
+                       max="999999"/>
+                <div ng-messages="$ctrl.form.salaryMax.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Currency</label>
+                <md-select ng-model="$ctrl.advert.positionSalaryCurrency" required>
+                    <md-option value="GBP">£ - GBP</md-option>
+                    <md-option value="EURO">€ - Euro</md-option>
+                    <md-option value="DOLLAR">$ - Dollar</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Interval</label>
+                <md-select ng-model="$ctrl.advert.positionSalaryInterval" required>
+                    <md-option ng-repeat="interval in $ctrl.definitions.positionInterval" ng-value="interval">
+                        {{'definitions.positionInterval.' + interval | translate}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+
+    <md-switch ng-model="$ctrl.showBenefits" class="md-primary" aria-label="Benefits">
+        Benefits
+    </md-switch>
+    <div ng-if="$ctrl.showBenefits" class="benefits">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Benefits</label>
+            <md-chips
+                    ng-model="$ctrl.advert.positionBenefits"
+                    md-transform-chip="$ctrl.transformBenefit($chip)"
+                    md-separator-keys="$ctrl.separatorKeys">
+                <md-autocomplete
+                        md-search-text="searchText"
+                        md-autoselect="true"
+                        md-items="benefit in $ctrl.lookupBenefits(searchText)"
+                        md-item-text="benefit.name"
+                        placeholder="Search or type Benefit">
+                    <span md-highlight-text="searchText">{{benefit.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>{{$chip.positionBenefit.name}}</span>
+                </md-chip-template>
+            </md-chips>
+        </md-input-container>
+        <md-input-container class="md-block benefits-description">
+            <label class="md-no-float">Benefits description</label>
+            <textarea ng-model="$ctrl.advert.positionBenefitDescription" md-maxlength="400" rows="3"></textarea>
+        </md-input-container>
+    </div>
+</div>

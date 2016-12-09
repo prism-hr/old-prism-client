@@ -1,0 +1,10 @@
+<div ng-if="$ctrl.display.showNavigation" layout="row" layout-align="center end">
+    <div class="preview-navigation" flex-gt-sm="75">
+        <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.display.stepIdx">
+            <md-tab ng-repeat="step in $ctrl.steps" label="{{step.title}}"
+                    ui-sref="manage.{{$ctrl.wizardType | lowercase}}.{{step.id}}"
+                    ng-disabled="!step.available">
+            </md-tab>
+        </md-tabs>
+    </div>
+</div>

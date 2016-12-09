@@ -1,0 +1,17 @@
+<div class="page-wrap step-page child with-preview">
+    <div class="preview {{$ctrl.wizardType | lowercase}}">
+        <student-preview-box student="$ctrl.student"></student-preview-box>
+        <wizard-navigation wizard="$ctrl.wizard">
+        </wizard-navigation>
+    </div>
+    <form novalidate name="$ctrl.studentForm">
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center start" class="wizard-holder-padding">
+            <md-card flex="100" flex-gt-sm="75" class="single-block" layout="column" layout-align="center stretch">
+                <div class="step-wizard">
+                    <div ui-view class="fade-animation"></div>
+                </div>
+                <div ui-view="buttons"></div>
+            </md-card>
+        </div>
+    </form>
+</div>

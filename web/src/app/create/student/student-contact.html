@@ -1,0 +1,88 @@
+<div layout-padding>
+    <h3>Contact Information</h3>
+    <label class="standalone-label">Preferred work location</label>
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.preferLocation" class="horizontal-form medium">
+        <div class="radio-box-aligned">
+            <md-radio-button ng-value="'ANY'" class="md-primary">
+                Any
+            </md-radio-button>
+            <md-radio-button ng-value="'COUNTRY'" class="md-primary">
+                Countries
+            </md-radio-button>
+            <md-radio-button ng-value="'CITIES'" class="md-primary">
+                Cities
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+    <div class="locations country" layout="row" ng-if="$ctrl.preferLocation === 'COUNTRY'">
+        <md-input-container class="md-block" flex>
+            <label class="md-no-float">Countries</label>
+            <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
+                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                required>
+            </place-autocomplete>
+            <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div class="locations cities" layout="row" ng-if="$ctrl.preferLocation === 'CITIES'">
+        <md-input-container class="md-block" flex="">
+            <label class="md-no-float">Cities</label>
+            <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
+                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                required>
+            </place-autocomplete>
+            <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="row" class="traveling-block" ng-if="$ctrl.preferLocation === 'CITIES'">
+        <md-input-container class="md-block" flex="50">
+            <label class="md-no-float">Travelling Distance</label>
+            <md-select name="proximity" ng-model="$ctrl.student.proximity" required>
+                <md-option placeholder="Travelling Distance" ng-repeat="number in $ctrl.definitions.proximity"
+                           value="{{number}}">
+                    {{'definitions.proximity.' + number | translate}}
+                </md-option>
+            </md-select>
+            <div ng-messages="$ctrl.form.proximity.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="row" layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label class="md-no-float">Preferred Email</label>
+            <input ng-model="$ctrl.student.email" name="email" required>
+            <div ng-messages="$ctrl.form.email.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label class="md-no-float">Preferred Phone</label>
+            <input ng-model="$ctrl.student.mobile" name="mobile" required>
+            <div ng-messages="$ctrl.form.mobile.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div class="languages">
+        <div ng-repeat="language in $ctrl.student.languages" class="language-item" layout="row">
+            <language language="language" form="$ctrl.form"
+                      layout="row" flex="75"></language>
+            <div flex="25">
+                <md-button ng-click="$ctrl.removeLanguage(language)"
+                           ng-if="$ctrl.student.languages.length > 1"
+                           class="md-fab md-mini md-warn" aria-label="More">
+                    <md-icon class="icon-close"></md-icon>
+                </md-button>
+                <md-button ng-click="$ctrl.addLanguage(language)" class="md-fab md-mini md-primary " aria-label="More">
+                    <md-icon class="icon-plus"></md-icon>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

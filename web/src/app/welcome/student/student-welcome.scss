@@ -1,0 +1,22 @@
+student {
+  .step-page {
+    .left-side-block, .right-side-block {
+      h1, h2 {
+        color: $uclblue;
+      }
+    }
+  }
+}
+.badges-box {
+  margin-bottom:30px;
+  div {
+    display: inline-block;
+    height: 40px;
+    &.google-play {
+      margin-right:15px;
+    }
+    img {
+      height: 100%;
+    }
+  }
+}

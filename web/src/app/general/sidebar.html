@@ -1,0 +1,200 @@
+<div>
+    <md-toolbar class="md-toolbar-tools header">
+        <div>
+            <a class="prism-logo" ui-sref="activities">
+                <img src="/img/logo-nico.svg" alt="BigFoot">
+            </a>
+        </div>
+        <span flex=""></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.close()" aria-label="Cancel" hide-gt-md>
+            <i class="icon-close"></i>
+        </md-button>
+    </md-toolbar>
+    <div class="user-block employer" layout="row" layout-align="center center">
+        <div class="user-details" layout="row" layout-align="start center">
+            <div class="avatar-holder employer">
+                <img ng-src="{{$ctrl.authService.user.documentImage.cloudinaryUrl}}"
+                     class="md-avatar" alt="{{$ctrl.authService.user.firstName}} {{$ctrl.authService.user.lastName}}"
+                     ng-if="$ctrl.authService.user.documentImage">
+                <div ng-if="!$ctrl.authService.user.documentImage" class="no-user-image" layout="row"
+                     layout-align="center center">
+                    <i class="icon-user"></i>
+                </div>
+            </div>
+            <div class="contact-container" layout="column">
+                <a ui-sref="manage.student.header">{{$ctrl.authService.user.firstName}} {{$ctrl.authService.user.lastName}}</a>
+                <span>{{$ctrl.authService.user.role}} TODO user Role</span>
+            </div>
+        </div>
+        <span flex></span>
+        <md-button class="md-icon-button md-raised notifications" ui-sref="activities">
+            <i class="icon-bell"></i>
+            <label ng-bind="$ctrl.session.userActivityUnviewedCount"></label>
+        </md-button>
+    </div>
+</div>
+<md-content class="main-menu" flex>
+    <md-list flex>
+        <md-subheader class="main-subheader">
+            <div layout="row" layout-align="start center">
+                <sapn>Menu</sapn>
+                <span class="flex"></span>
+                <md-button ng-if="$ctrl.showSearchBox" ng-click="$ctrl.hideSearchBox()"
+                           class="md-icon-button" aria-label="Close search">
+                    <md-icon class="icon-close"></md-icon>
+                </md-button>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-plus"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item  ui-sref="promoterNew">
+                            <md-button><i class="icon-briefcase"></i> New Advert
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button><i class="icon-organization"></i> New Department
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-subheader>
+        <md-list-item ng-click="navigateTo('candidates', $event)" class="hidden">
+            <i class="icon-people"></i>
+            <p>Candidates</p>
+        </md-list-item>
+        <md-list-item ng-click="navigateTo('contacts', $event)" class="hidden">
+            <i class="icon-notebook"></i>
+            <p>Contacts</p>
+        </md-list-item>
+        <md-list-item ng-click="navigateTo('applications', $event)" class="disabled">
+            <i class="icon-paper-plane"></i>
+            <p>Applications</p>
+            <!--<span class="badge">2</span>-->
+        </md-list-item>
+        <md-list-item ng-click="$ctrl.toggleSubmenu('adverts', $event)"
+                      ng-if="$ctrl.session.employments.length > 0"
+                      ng-class="{'always-active': $ctrl.session.employments.length ===1}">
+            <i class="icon-briefcase"></i>
+            <p>Adverts <i class="icon-arrow-down"></i></p>
+            <span class="badge" ng-bind="$ctrl.session.employments.length"></span>
+        </md-list-item>
+        <div flex class="submenu submenu-adverts" ng-class="{'force-open': $ctrl.session.employments.length ===1}">
+            <md-list-item ng-repeat="employment in $ctrl.session.employments"
+                          ng-click=""
+                          ui-sref="manage.advert.summary({id: employment.accessCode})" ui-sref-active="active"
+                          aria-label="{{employment.name}}">
+                <span class="color-icon">
+                    <img ng-src="http://res.cloudinary.com/bigfoot/image/upload/w_17,h_17,c_thumb,r_max,g_auto:15/{{employment.organizationImplementationDisplay.documentLogoImage.cloudinaryId}}">
+                </span>
+                <p ng-bind="employment.name"></p>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ui-sref="manage.audience.summary({id: employment.accessCode})">
+                                <i class="icon-people"></i>Audience
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="view.advert({accessCode: employment.accessCode})">
+                                <i class="icon-share-alt"></i>View Advert
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-list-item>
+        </div>
+        <md-list-item ng-click="$ctrl.toggleSubmenu('departments', $event)"
+                      ng-if="$ctrl.session.departments.length > 0"
+                      ng-class="{'always-active': $ctrl.session.departments.length ===1}">
+            <i class="icon-organization"></i>
+            <p>Departments <i class="icon-arrow-down"></i></p>
+            <span class="badge" ng-bind="$ctrl.session.departments.length"></span>
+        </md-list-item>
+        <div flex class="submenu submenu-departments" ng-if="$ctrl.session.departments.length > 0"
+             ng-class="{'force-open': $ctrl.session.departments.length ===1}">
+            <md-list-item ng-repeat="department in $ctrl.session.departments" ng-click=""
+                          ui-sref="manage.department.summary({id: department.accessCode})" ui-sref-active="active"
+                          aria-label="{{department.name}}">
+                <span class="color-icon">
+                    <img ng-src="http://res.cloudinary.com/bigfoot/image/upload/w_17,h_17,c_thumb,r_max,g_auto:15/{{department.documentLogoImage.cloudinaryId}}">
+                </span>
+                <p ng-bind="department.name"></p>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button
+                                    ui-sref="manage.advert.summary({id: 'new', organization: department.accessCode})">
+                                <i class="icon-briefcase"></i>New Advert
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="view.department({accessCode: department.accessCode})">
+                                <i class="icon-share-alt"></i>View Department
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-list-item>
+        </div>
+        <md-list-item ng-click="$ctrl.toggleSubmenu('promoters', $event)"
+                      ng-if="$ctrl.session.promoters.length > 0"
+                      ng-class="{'always-active': $ctrl.session.promoters.length ===1}">
+            <i class="icon-home"></i>
+            <p>Companies <i class="icon-arrow-down"></i></p>
+            <span class="badge" ng-bind="$ctrl.session.promoters.length"></span>
+        </md-list-item>
+        <div flex class="submenu submenu-promoters" ng-if="$ctrl.session.promoters.length > 0"
+             ng-class="{'force-open': $ctrl.session.promoters.length ===1}">
+            <md-list-item ng-repeat="promoter in $ctrl.session.promoters" ng-click=""
+                          ui-sref="manage.promoter.summary({id: promoter.accessCode})"
+                          ui-sref-active="active"
+                          aria-label="{{promoter.name}}">
+                <span class="color-icon">
+                    <img ng-src="http://res.cloudinary.com/bigfoot/image/upload/w_17,h_17,c_thumb,r_max,g_auto:15/{{promoter.documentLogoImage.cloudinaryId}}">
+                </span>
+                <p ng-bind="promoter.name"></p>
+                <md-menu md-position-mode="target-right target">
+                    <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                        <md-icon class="icon-options-vertical"></md-icon>
+                    </md-button>
+                    <md-menu-content width="2" class="small">
+                        <md-menu-item>
+                            <md-button ui-sref="manage.advert.summary({id: 'new', organization: promoter.accessCode})">
+                                <i class="icon-briefcase"></i>New Advert
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>
+                                <i class="icon-organization"></i>New Department
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="view.promoter({accessCode: promoter.accessCode})">
+                                <i class="icon-share-alt"></i>View Company
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-list-item>
+        </div>
+        <md-list-item ng-click="navigateTo('system', $event)" class="hidden">
+            <i class="icon-wrench"></i>
+            <p>System</p>
+        </md-list-item>
+    </md-list>
+</md-content>
+<md-toolbar class="md-toolbar-tools ucl-footer">
+    <md-list flex>
+        <md-list-item ng-click="$ctrl.logout()" aria-label="Log out">
+            <i class="icon-logout"></i> Log out
+        </md-list-item>
+    </md-list>
+</md-toolbar>

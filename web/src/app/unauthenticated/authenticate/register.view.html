@@ -1,0 +1,51 @@
+<div class="social-login  md-button-group" layout="row" layout-align="center">
+    <md-button ng-click="$ctrl.oauth('linkedin')" class="md-raised linkedin">
+        <i class="icon-social-linkedin"></i> linkedin
+    </md-button>
+    <md-button ng-click="$ctrl.oauth('facebook')" class="md-raised facebook">
+        <i class="icon-social-facebook"></i> facebook
+    </md-button>
+</div>
+<div class="divider-or"><span>OR</span></div>
+<form novalidate name="registerForm" autocomplete="off" ng-submit="$ctrl.register(registerForm)">
+    <div class="index-padding">
+        <md-input-container class="md-block">
+            <input placeholder="Email" name="username" ng-model="$ctrl.user.username" required type="email" autocomplete="off">
+            <div ng-messages="registerForm.username.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <input placeholder="Name" name="firstName" ng-model="$ctrl.user.firstName" required autocomplete="off">
+            <div ng-messages="registerForm.firstName.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <input placeholder="Surname" name="lastName" ng-model="$ctrl.user.lastName" required autocomplete="off">
+            <div ng-messages="registerForm.lastName.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <input placeholder="Password" name="password" ng-model="$ctrl.user.password" required minlength="8"
+                   md-maxlength="15" type="password" md-no-float>
+            <div ng-messages="registerForm.password.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+    <div class="info-box" layout-padding>
+        <div class="info-badge blue" layout="row" layout-aling="start center">
+            <i class="icon-exclamation"></i>
+            <span>By registering, you agree to BigFoot's User Agreement, Privacy Policy, and Cookie Policy.</span>
+        </div>
+    </div>
+    <div layout="column" layout-align="space-between stretch">
+        <md-button type="submit" class="md-warn md-raised">Submit</md-button>
+    </div>
+    <div ng-if="!$ctrl.activity" layout-gt-xs="row" layout-align="end center">
+        <md-button class="md-warn" ng-click="$ctrl.setView('LOGIN')">Already registered?</md-button>
+    </div>
+
+</form>

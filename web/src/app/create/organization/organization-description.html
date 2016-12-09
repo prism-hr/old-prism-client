@@ -1,0 +1,28 @@
+    <div class="image-uploader background"
+         ngf-pattern="'image/*'"
+         ngf-accept="'image/png, image/jpeg, image/gif'"
+         ngf-max-size="10MB"
+         ngf-select
+         ngf-drop
+         name="background"
+         layout="row" layout-align="center center" ng-model="$ctrl.documentBackgroundImageOriginal"
+         ng-hide="$ctrl.documentBackgroundImageOriginal">
+        <span class="drop-box" ng-if="!$ctrl.documentBackgroundImageOriginal">Drop your Background</span>
+    </div>
+    <div class="cropArea" ng-if="$ctrl.documentBackgroundImageOriginal">
+        <img-crop image="$ctrl.documentBackgroundImageOriginal" area-type="rectangle" aspect-ratio="4.1"
+                  result-blob="$ctrl.organization.documentBackgroundImage" result-image="$ctrl.resultImage"
+                  result-image-size='{w: 1280,h: 320}'
+                  init-max-area="true"></img-crop>
+
+    </div>
+    <div layout="row" layout-align="center center">
+        <small>Minimum Image size 1280 x 320</small>
+        <span class="flex"></span>
+        <md-button class="md-warn md-raised small" ng-click="$ctrl.clearImage()"
+                   ng-if="$ctrl.documentBackgroundImageOriginal">Clear Image
+        </md-button>
+    </div>
+    <div ng-messages="$ctrl.form.background.$error" role="alert">
+        <div ng-messages-include="general-messages"></div>
+    </div>

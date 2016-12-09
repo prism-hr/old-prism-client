@@ -1,0 +1,18 @@
+<md-chips ng-model="places"
+          md-transform-chip="transformChip($chip)"
+          md-require-match="true"
+          md-on-add="placeAdded($chip)">
+    <md-autocomplete
+            md-selected-item="selectedPlace"
+            md-autoselect="true"
+            md-search-text="searchText"
+            md-items="place in getPlaces(searchText)"
+            md-item-text="place.description"
+            md-menu-class="autocomplete-paces"
+            placeholder="{{placeholder}}">
+        <span md-highlight-text="searchText">{{place.description}}</span>
+    </md-autocomplete>
+    <md-chip-template min-with>
+        {{$chip.name}}
+    </md-chip-template>
+</md-chips>

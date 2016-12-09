@@ -1,0 +1,122 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+
+
+$positive: #57ACD5 !default;
+$balanced: #35C2A3;
+$assertive: #EA6651;
+$uclblue: #57ACD5;
+$uclblue1: #5779D5;
+$uclgreen: #35C2A3;
+$uclred: #ea6651;
+$facebook-color: #3b5998;
+$linkedin-color: #4875B4;
+$dark:                            #444 !default;
+$input-color-placeholder:         lighten($dark, 20%) !default;
+
+
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "../www/lib/ionic/scss/ionic";
+
+// colours
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato' !important;
+  color: $uclred !important;
+  &.white {
+    color: white !important;
+  }
+
+}
+.fb-btn {
+  background: $facebook-color !important;
+}
+
+.ld-btn {
+  background: $linkedin-color !important;
+}
+
+.border-top {
+  border-top: 3px solid;
+  &.opportunity {
+    border-color: $uclred;
+  }
+
+  &.event {
+    border-color: $uclblue;
+  }
+
+  &.message {
+    border-color: $uclgreen;
+  }
+
+  &.profile {
+    border-color: $uclblue1;
+  }
+
+}
+.button.ng-hide{
+  display:none;
+}
+.grid-content {
+  margin: 0 -10px;
+  &.btn-content {
+    margin: -10px;
+  }
+}
+// square avatar
+.item-avatar, .item-avatar-left, .item {
+  &.square {
+    padding: 10px;
+    padding-left: 60px;
+    min-height: 60px;
+    > img:first-child,
+    .item-image,
+    .item-content {
+      border-radius: 0;
+      top: 5px;
+      left: 5px;
+      max-width: 50px;
+      max-height: 50px;
+      > img:first-child,
+      .item-image {
+        border-radius: 0;
+        top: 5px;
+        left: 5px;
+        max-width: 50px;
+        max-height: 50px;
+      }
+    }
+  }
+}
+.list {
+  &.search {
+    margin-bottom:5px;
+  }
+}
+// modal fix
+.ionic-select-modal {
+  .list > .item {
+    padding: 0;
+  }
+}
+@import "pages/intro";
