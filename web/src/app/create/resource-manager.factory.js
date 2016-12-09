@@ -86,7 +86,7 @@ export const ResourceManagerFactory = function ($q, Restangular) {
     }
 
     function generateAdvertPostData(resource) {
-        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'timestampLatestReferral', 'timestampLatestView', 'countActivity', 'countReferral', 'countView', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay']);
+        const resourcePost = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'timestampLatestReferral', 'timestampLatestView', 'countActivity', 'countReferral', 'countView', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay', 'userUpdate', 'context']);
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
         if (resourcePost.positionBenefits) {
             resourcePost.positionBenefits.forEach(b => {
