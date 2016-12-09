@@ -72,16 +72,22 @@
     </div>
 
     <div layout="row" ng-if="$ctrl.wizardType === 'department'">
-        <div>
-            <label class="standalone-label">Study Levels</label>
+        <label class="standalone-label">Study Levels</label>
 
-            <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
-                         md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
-                         ng-checked="$ctrl.isQualificationCategorySelected(category)"
-                         ng-click="$ctrl.toggleQualificationCategory(category)"
-                         class="md-primary">
-                {{'definitions.qualificationCategory.' + category | translate}}
-            </md-checkbox>
-        </div>
+        <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
+                     md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
+                     ng-checked="$ctrl.categoriesHelper.isChecked(category)"
+                     ng-click="$ctrl.categoriesHelper.toggle(category)"
+                     class="md-primary">
+            {{'definitions.qualificationCategory.' + category | translate}}
+        </md-checkbox>
+        <md-checkbox aria-label="Select All"
+                     class="md-primary"
+                     ng-checked="$ctrl.categoriesHelper.allChecked()"
+                     md-indeterminate="$ctrl.categoriesHelper.anyChecked()"
+                     ng-click="$ctrl.categoriesHelper.toggleAll()">
+            <span ng-show="$ctrl.categoriesHelper.allChecked()">Deselect All</span>
+            <span ng-show="!$ctrl.categoriesHelper.allChecked()">Select All</span>
+        </md-checkbox>
     </div>
 </div>

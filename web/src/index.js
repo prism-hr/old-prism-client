@@ -37,6 +37,7 @@ import {definitionsLoadHook} from './app/general/definitions-load.hook';
 import {UserSessionService} from './app/unauthenticated/user-session.service';
 import {AuthService} from './app/unauthenticated/auth.service';
 import {DefinitionsService} from './app/general/definitions.service';
+import {CheckboxesHelper} from './app/general/checkboxes.helper';
 import {ResourceManagerFactory} from './app/create/resource-manager.factory';
 import {UserManagerFactory} from './app/create/user-manager.factory';
 import {WelcomeService} from './app/welcome/welcome.service';
@@ -138,6 +139,7 @@ angular
     .service('userManagerFactory', UserManagerFactory)
     .service('welcomeService', WelcomeService)
     .service('definitions', DefinitionsService)
+    .service('checkboxesHelper', CheckboxesHelper)
     .provider('resourceCreateWizardFactory', ResourceCreateWizardFactory)
     .run(authenticationHook)
     .run(browserTitleHook)

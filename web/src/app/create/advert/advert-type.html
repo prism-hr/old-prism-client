@@ -22,18 +22,18 @@
     </div>
     <div class="checkboxes-group">
         <div ng-repeat="pattern in $ctrl.patternValues">
-            <md-checkbox class="md-primary" ng-checked="$ctrl.isPatternChecked(pattern, $ctrl.selected)"
-                         ng-click="$ctrl.togglePattern(pattern, $ctrl.selected)">
+            <md-checkbox class="md-primary" ng-checked="$ctrl.patternsHelper.isChecked(pattern)"
+                         ng-click="$ctrl.patternsHelper.toggle(pattern)">
                 {{'definitions.positionWorkPattern.' + pattern | translate}}
             </md-checkbox>
         </div>
         <md-checkbox aria-label="Select All"
                      class="md-primary"
-                     ng-checked="$ctrl.allPatternsChecked()"
-                     md-indeterminate="$ctrl.anyPatternChecked()"
-                     ng-click="$ctrl.toggleAllPatterns()">
-            <span ng-show="$ctrl.allPatternsChecked()">Deselect All</span>
-            <span ng-show="!$ctrl.allPatternsChecked()">Select All</span>
+                     ng-checked="$ctrl.patternsHelper.allChecked()"
+                     md-indeterminate="$ctrl.patternsHelper.anyChecked()"
+                     ng-click="$ctrl.patternsHelper.toggleAll()">
+            <span ng-show="$ctrl.patternsHelper.allChecked()">Deselect All</span>
+            <span ng-show="!$ctrl.patternsHelper.allChecked()">Select All</span>
         </md-checkbox>
     </div>
     <label class="standalone-label">Advert available from</label>
