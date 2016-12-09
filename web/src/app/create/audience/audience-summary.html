@@ -1,137 +1,8 @@
 <div layout-padding>
-    <h3>Targeted University department</h3>
-    <p>According to your interest areas, candidates selection and locations those are the targeted de the departments you want to promote your advert</p>
-    <h4>Top targeted Departments</h4>
-</div>
-<div class="department-list" layout="row" layout-wrap layout-fill layout-align="start none">
-    <div class="department-item " flex="100" flex-gt-xs="50">
-        <md-card layout="column" layout-aling="space-between none" ng-class="{'active': data.select1}">
-            <md-card-content flex>
-                <md-card-title class="department-header" layout="row" layout-align="start start" >
-                    <div class="logo-icon">
-                        <div class="logo-image" layout="column" layout-align="center center">
-                            <img ng-src="/img/prism-logo-default.png">
-                        </div>
-                    </div>
-                    <div flex>
-                        <h2>Biochemical Engineering</h2>
-                        <h3>at UCL</h3>
-                        <h4>London, UK</h4>
-                    </div>
-                    <div class="connection-display">
-                        <i class="icon-check" ng-if="data.select1"></i>
-                    </div>
-                </md-card-title>
-                <div class="department-summary" layout="row">
-                    <div class="students-number" layout="column" layout-align="center center">
-                        <i class="icon-people"></i>
-                        <span>300 - 500</span>
-                    </div>
-                    <md-chips class="small students-type">
-                        <md-chip>Undergraduates</md-chip><md-chip class="active">Master</md-chip><md-chip>Research</md-chip>
-                    </md-chips>
-                </div>
-                <div class="department-tags">
-                    <md-chips class="small">
-                        <md-chip class="active">Biotechnology</md-chip>
-                        <md-chip>Alternative Medicine</md-chip>
-                        <md-chip class="active">Pharmaceuticals</md-chip>
-                        <md-chip>Food & Beverages</md-chip>
-                        <md-chip>Renewables & Environment</md-chip>
-                        <md-chip>Research</md-chip>
-                    </md-chips>
-                </div>
-            </md-card-content>
-            <md-card-actions class="department-actions hidden" layout="row" layout-align="space-between none" style="display: none">
-                <md-button class="md-default md-raised small">View</md-button>
-                <md-checkbox class="md-primary" ng-model="data.select1" aria-label="Select">
-                </md-checkbox>
-            </md-card-actions>
-        </md-card>
-    </div>
-    <div class="department-item " flex="100" flex-gt-xs="50">
-        <md-card layout="column" layout-aling="space-between none" ng-class="{'active': data.select2}">
-            <md-card-content flex>
-                <md-card-title class="department-header" layout="row" layout-align="start start">
-                    <div class="logo-icon">
-                        <div class="logo-image" layout="column" layout-align="center center">
-                            <img ng-src="/img/prism-logo-default.png">
-                        </div>
-                    </div>
-                    <div flex>
-                        <h2>Computer Science</h2>
-                        <h3>at UCL</h3>
-                        <h4>London, UK</h4>
-                    </div>
-                    <div class="connection-display">
-                        <i class="icon-check" ng-if="data.select2"></i>
-                    </div>
-                </md-card-title>
-                <div class="department-summary" layout="row">
-                    <div class="students-number" layout="column" layout-align="center center">
-                        <i class="icon-people"></i>
-                        <span>1000+</span>
-                    </div>
-                    <md-chips class="small students-type">
-                        <md-chip>Undergraduates</md-chip><md-chip class="active">Master</md-chip><md-chip>Research</md-chip>
-                    </md-chips>
-                </div>
-                <div class="department-tags">
-                    <md-chips class="small">
-                        <md-chip class="active">Technology</md-chip>
-                        <md-chip>Servers</md-chip>
-                        <md-chip class="active">Nanotechnology</md-chip>
-                    </md-chips>
-                </div>
-            </md-card-content>
-            <md-card-actions class="department-actions" layout="row" layout-align="space-between none" style="display: none">
-                <md-button class="md-default md-raised small">View</md-button>
-                <md-checkbox class="md-primary" ng-model="data.select2" aria-label="Select">
-                </md-checkbox>
-            </md-card-actions>
-        </md-card>
-    </div>
-</div>
-<div layout-padding>
-    <h4>Others targeted Departments</h4>
-    <md-list class="department-small">
-        <md-list-item class="department-item-small">
-            <span class="department-title">Computer Science</span>
-            <span class="department-university">at UCL</span>
-            <span class="department-location" flex>London, UK</span>
-            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item class="department-item-small">
-            <span class="department-title">Computer Science</span>
-            <span class="department-university">at UCL</span>
-            <span class="department-location" flex>London, UK</span>
-            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item class="department-item-small">
-            <span class="department-title">Computer Science</span>
-            <span class="department-university">at UCL</span>
-            <span class="department-location" flex>London, UK</span>
-            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item class="department-item-small">
-            <span class="department-title">Computer Science</span>
-            <span class="department-university">at UCL</span>
-            <span class="department-location" flex>London, UK</span>
-            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item class="department-item-small">
-            <span class="department-title">Computer Science</span>
-            <span class="department-university">at UCL</span>
-            <span class="department-location" flex>London, UK</span>
-            <span class="students-number"><i class="icon-people"></i><span>1000+</span></span>
-        </md-list-item>
-    </md-list>
+    <h3>Tartgeting and Social Sharing</h3>
     <div class="connection-decision">
-        <label class="standalone-label"><strong>Do you want us to promote your advert to the above departments?</strong></label>
+        <label class="standalone-label"><strong>Do you want us to promote your advert to the departments?</strong></label>
+        <small>The advert will be promoted to departments with the same criteria</small>
         <md-radio-group name="type" ng-required="true" ng-model="$ctrl.audience.exclusive" class="horizontal-form medium">
             <div class="radio-box-aligned">
                 <md-radio-button ng-value="false" class="md-primary">
@@ -142,6 +13,49 @@
                 </md-radio-button>
             </div>
         </md-radio-group>
-        <small>The advert will be promoted to future departments with the same criteria</small>
+
+    </div>
+    <h3>Social Targeting</h3>
+    <md-input-container class="md-block">
+        <textarea name="advertSummary" ng-model="$ctrl.facebookText" md-maxlength="250" rows="3" required></textarea>
+    </md-input-container>
+    <div layout="row">
+        <md-button socialshare
+                   socialshare-via="{{$ctrl.facebookAppId}}"
+                   socialshare-provider="facebook"
+                   socialshare-type="feed"
+                   socialshare-description="{{$ctrl.facebookText}}"
+                   socialshare-text="TODO here title of advert"
+                   socialshare-hashtags="{{$ctrl.facebookHashtags}}"
+                   socialshare-url="http://local.prism.ucl.ac.uk:9000"
+                   aria-label="Share with Facebook"
+                   class="md-raised facebook">
+            <i class="icon-social-facebook"></i> Facebook
+        </md-button>
+        <md-button socialshare
+                   socialshare-provider="twitter"
+                   socialshare-text="{{$ctrl.dummyShare.text}}"
+                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                   socialshare-url="{{$ctrl.dummyShare.url}}"
+                   aria-label="Share with Twitter"
+                   class="md-raised twitter">
+            <i class="icon-social-twitter"></i> Twitter
+        </md-button>
+        <md-button socialshare
+                   socialshare-provider="linkedin"
+                   socialshare-text="{{$ctrl.dummyShare.text}}"
+                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
+                   socialshare-url="{{$ctrl.dummyShare.url}}"
+                   socialshare-source="{{$ctrl.dummyShare.title}}"
+                   class="md-raised linkedin" aria-label="Share with Linkedin">
+            <i class="icon-social-linkedin"></i> Linkedin
+        </md-button>
+        <md-button socialshare
+                   socialshare-provider="email"
+                   socialshare-subject="{{$ctrl.dummyShare.title}}"
+                   socialshare-body="{{$ctrl.dummyShare.text}}"
+                   class="md-raised email" aria-label="Share with Email">
+            <i class="icon-envelope"></i> Email
+        </md-button>
     </div>
 </div>

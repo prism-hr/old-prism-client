@@ -1,6 +1,8 @@
 class AudienceSummaryController {
-    constructor(definitions) {
+    constructor(definitions, environment) {
+        this.environment = environment;
         this.definitions = definitions;
+        this.facebookAppId = environment.oauth.facebook;
     }
 
     $onInit() {
