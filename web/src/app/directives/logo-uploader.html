@@ -1,0 +1,43 @@
+<div ng-if="dropArea" class="image-uploader logo"
+     ng-model="chosenFile"
+     ngf-pattern="'image/*'"
+     ngf-accept="'image/png, image/jpeg, image/gif'"
+     ngf-max-size="5MB"
+     ngf-change="fileChanged($file)"
+     ngf-select
+     ngf-drop
+     layout="row" layout-align="center center">
+    <span ng-if="!publicId" class="drop-box">Drop your Logo here</span>
+    <div ng-if="publicId" class="logo-flex">
+        <div class="logo">
+            <cl-image ng-if="publicId" public-id="{{publicId}}">
+                <cl-transformation height="250" width="400" crop="mfit"></cl-transformation>
+            </cl-image>
+        </div>
+    </div>
+</div>
+<div ng-if="!dropArea" class="logo-image">
+    <div class="logo-flex company-logo">
+        <div class="logo">
+            <cl-image ng-if="publicId" public-id="{{publicId}}">
+                <cl-transformation height="250" width="400" crop="mfit"></cl-transformation>
+            </cl-image>
+            <img ng-if="!publicId" ng-src="/img/prism-logo-default.png"/>
+        </div>
+    </div>
+    <div ng-if="!readOnly" class="logo-uploader-box">
+        <button class="logo-uploader"
+                ngf-select
+                ng-model="chosenFile"
+                ngf-pattern="'image/*'"
+                ngf-accept="'image/png, image/jpeg, image/gif'"
+                ngf-max-size="5MB"
+                ngf-change="fileChanged($file)"
+                ngf-select>
+            <i class="icon-camera"></i>
+        </button>
+    </div>
+</div>
+<div class="progress-box" ng-if="progressPercentage">
+    <md-progress-circular ng-if="progressPercentage" class="md-warn" md-mode="determinate" value="{{progressPercentage}}"></md-progress-circular>
+</div>

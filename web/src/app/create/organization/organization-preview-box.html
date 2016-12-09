@@ -1,0 +1,48 @@
+<background-uploader ng-model="$ctrl.organization.documentBackgroundImage" read-only="{{$ctrl.readOnly}}"></background-uploader>
+<div class="company-box" layout="row" layout-align="center end">
+    <md-card class="company-header" layout="row" flex-gt-sm="75">
+        <logo-uploader ng-model="$ctrl.organization.documentLogoImage" read-only="{{$ctrl.readOnly}}"></logo-uploader>
+        <div class="company-details">
+            <div layout="row" layout-align="center center">
+                <h2 class="orgorg" ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">
+                    {{$ctrl.organization.name}}
+                </h2>
+                <h2 class="org" ng-if="$ctrl.organization.name === $ctrl.organization.organization.name">
+                    {{$ctrl.organization.organization.name}}
+                </h2>
+                <span flex></span>
+                <a ng-href="{{$ctrl.organization.website}}" target="_blank" ng-if="$ctrl.organization.website"
+                   class="website">
+                    <i class="icon-globe"></i> Web
+                </a>
+            </div>
+            <h4 ng-if="$ctrl.organization.name !== $ctrl.organization.organization.name">at
+                {{$ctrl.organization.organization.name}}</h4>
+            <p class="summary">{{$ctrl.organization.summary}}</p>
+            <div class="address" layout="row" layout-align="start start">
+                <p>
+                    <span ng-repeat="location in $ctrl.organization.locations">{{location.location.name}} </span>
+                </p>
+                <span class="flex"></span>
+                <div class="lock-size">
+                    <md-fab-speed-dial md-direction="down" class="md-scale" md-open="$ctrl.isOpen">
+                        <md-fab-trigger>
+                            <md-button aria-label="Share" class="md-fab md-warn md-mini"><i class="icon-share"></i></md-button>
+                        </md-fab-trigger>
+                        <md-fab-actions>
+                            <md-button aria-label="Share with Facebook" class="md-fab md-raised md-mini facebook">
+                                <i class="icon-social-facebook"></i>
+                            </md-button>
+                            <md-button aria-label="Share with Twitter" class="md-fab md-raised md-mini twitter">
+                                <i class="icon-social-twitter"></i>
+                            </md-button>
+                            <md-button aria-label="Share with Linkedin" class="md-fab md-raised md-mini linkedin">
+                                <i class="icon-social-linkedin"></i>
+                            </md-button>
+                        </md-fab-actions>
+                    </md-fab-speed-dial>
+                </div>
+            </div>
+        </div>
+    </md-card>
+</div>

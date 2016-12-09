@@ -1,0 +1,46 @@
+<md-toolbar layout="column" layout-align="center center" md-whiteframe="2"
+            ng-class="{'hide-gt-md' : $ctrl.authService.user}">
+    <div layout="row" class="md-toolbar-tools" layout-align="center center">
+        <div layout="row" layout-align="start center">
+            <md-button ng-click="$ctrl.toggleActivities()" class="md-icon-button notifications" hide-gt-md
+                       ng-if="$ctrl.authService.user">
+                <i class="icon-menu" ng-if="!$ctrl.hideSidebar"></i>
+                <label>5</label>
+            </md-button>
+            <a class="prism-icon hide-gt-xs" ui-sref="mainWelcome">
+                <img src="/img/bfj-ico-white.svg">
+            </a>
+            <a class="prism-logo hide-xs" ui-sref="mainWelcome" ng-if="!$ctrl.authService.user">
+                <img src="/img/logo-nico.svg" alt="PRiSM">
+            </a>
+            <a class="prism-logo hide-xs" ui-sref="mainWelcome" hide-gt-md ng-if="$ctrl.authService.user">
+                <img src="/img/logo-nico.svg" alt="PRiSM">
+            </a>
+        </div>
+        <span flex></span>
+        <span class="nav-container">
+            <div ng-if="!$ctrl.authService.user">
+                <md-button aria-label="Post Ad" class="md-raised md-warn" ui-sref="welcome.promoter">
+                    Advertise
+                </md-button>
+                <md-button aria-label="Sign up" ng-click="$ctrl.showRegister($event)">Sign up</md-button>
+                <md-button aria-label="Log in" ng-click="$ctrl.showLogin($event)">
+                    <i class="icon-lock"></i> Log in
+                </md-button>
+            </div>
+        </span>
+    </div>
+</md-toolbar>
+<div class="toolbar-title md-whiteframe-1dp" ng-if="$root.$breadcrumbs && $ctrl.authService.user">
+    <div layout="row" class="md-toolbar-tools" layout-align="center center">
+        <span class="titles" flex>
+            <h2>
+                <span ng-repeat="crumb in $root.$breadcrumbs">
+                    <span ng-if="!$last"> {{crumb.title}} > </span>
+                    <span ng-if="$last">{{crumb.title}}</span>
+                </span>
+            </h2>
+        </span>
+        <span ui-view name="header"></span>
+    </div>
+</div>

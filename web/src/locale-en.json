@@ -1,0 +1,146 @@
+{
+  "create": {
+    "organization": {
+      "lc-type": {
+        "promoter": "company",
+        "department": "department"
+      },
+      "organization-lookup": {
+        "organization-placeholder": {
+          "promoter": "Look up or create company",
+          "department": "Look up or create university",
+          "student": "Look up or create university"
+        },
+        "department-placeholder": {
+          "promoter": "Look up or create division",
+          "department": "Look up or create department",
+          "student": "Look up or create department"
+        },
+        "lookup-button": {
+          "promoter": "Look up Company",
+          "department": "Look up University"
+        },
+        "lookup-title": {
+          "promoter": "Find or create your company",
+          "department": "Find or create your department"
+        },
+        "lookup-subtitle": {
+          "promoter": "Create your company",
+          "department": "Create your department"
+        },
+        "organization-label": {
+          "promoter": "Company Name",
+          "department": "University Name"
+        },
+        "department-label": {
+          "promoter": "Division Name",
+          "department": "Department Name"
+        },
+        "cancel-department": {
+          "promoter": "Cancel division",
+          "department": "Cancel department"
+        }
+      },
+      "address-lookup": {
+        "autocomplete-placeholder": {
+          "promoter": "Look up your Locations",
+          "department": "Look up your Locations",
+          "student": "Look up your Locations"
+        },
+        "lookup-button": {
+          "promoter": "Look up Locations",
+          "department": "Look up Locations"
+        }
+      }
+    },
+    "advert": {
+      "address-lookup": {
+        "autocomplete-placeholder": "Look up your Locations"
+      }
+    }
+  },
+  "unauthenticated": {
+    "authenticate": {
+      "title": {
+        "LOGIN": "Log In",
+        "REGISTER": "Sign Up",
+        "FORGOT_PASSWORD": "Recover Password"
+      }
+    }
+  },
+  "definitions": {
+    "gender": {
+      "FEMALE": "Female",
+      "MALE": "Male",
+      "UNDISCLOSED": "Undisclosed"
+    },
+    "languageProficiency": {
+      "NO": "No",
+      "ELEMENTARY": "Elementary",
+      "LIMITED_WORKING": "Limited Working",
+      "PROFESSIONAL_WORKING": "Professional Working",
+      "FULL_PROFESSIONAL": "Full Professional",
+      "NATIVE_BILINGUAL": "Native Bilingual"
+    },
+    "numberStaff": {
+      "FROM_1_TO_10": "1 to 10",
+      "FROM_11_TO_50": "11 to 50",
+      "FROM_51_TO_200": "51 to 200",
+      "FROM_201_TO_500": "201 to 500",
+      "FROM_501_TO_1000": "501 to 1000",
+      "FROM_1001_TO_5000": "1001 to 5000",
+      "FROM_5001_TO_10000": "5001 to 10000",
+      "FROM_10001_TO_ANY": "10000+"
+    },
+    "numberStudent": {
+      "FROM_1_TO_10": "1 to 10",
+      "FROM_11_TO_50": "11 to 50",
+      "FROM_51_TO_200": "51 to 200",
+      "FROM_201_TO_500": "201 to 500",
+      "FROM_501_TO_1000": "501 to 1000",
+      "FROM_1001_TO_ANY": "1000+"
+    },
+    "positionContract": {
+      "PERMANENT": "Permanent",
+      "FIXED_TERM": "Fixed-Term/Contract"
+    },
+    "positionInterval": {
+      "HOUR": "Hour",
+      "DAY": "Day",
+      "WEEK": "Week",
+      "MONTH": "Month",
+      "YEAR": "Year"
+    },
+    "positionSalary": {
+      "RANGE": "Salary Range",
+      "COMPETITIVE": "Competitive Salary",
+      "NONE": "No Salary"
+    },
+    "positionWorkPattern": {
+      "FULL_TIME": "Full-Time",
+      "PART_TIME": "Part-Time",
+      "FLEXIBLE": "Flexible"
+    },
+    "promotionCategory": {
+      "JOB": "Job",
+      "EMPLOYMENT": "Employment",
+      "PLACEMENT": "Placement"
+    },
+    "proximity": {
+      "TO_10": "Less than 10km",
+      "TO_25": "10km to 24km",
+      "TO_50": "25km to 99km",
+      "TO_100": "100km to 199km",
+      "TO_200": "More than 199"
+    },
+    "qualificationCategory": {
+      "UNDERGRADUATE": "Undergraduate",
+      "MASTER": "Master",
+      "DOCTORATE": "Doctorate"
+    }
+  },
+  "responseError": {
+    "USER_INVALID": "Incorrect username or password",
+    "USER_USERNAME_TAKEN": "Username is already taken"
+  }
+}

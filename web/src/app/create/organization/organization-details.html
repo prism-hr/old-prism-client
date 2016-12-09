@@ -1,0 +1,87 @@
+<div layout-padding>
+    <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and
+        sizes</h3>
+
+    <md-input-container class="md-block industries-holder" layout="row">
+        <label class="md-no-float">Areas of Expertise</label>
+        <md-chips ng-model="$ctrl.organization.tags"
+                  md-transform-chip="$ctrl.transformTag($chip)"
+                  md-separator-keys="$ctrl.separatorKeys">
+            <md-autocomplete
+                    md-search-text="searchText"
+                    md-autoselect="true"
+                    md-items="item in $ctrl.lookupTags(searchText)"
+                    md-item-text="item.name"
+                    placeholder="Find a tag or add a new one">
+                <span md-highlight-text="searchText">{{item.name}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                {{$chip.tag.name}}
+            </md-chip-template>
+        </md-chips>
+    </md-input-container>
+    <div class="tag-list">
+        <label class="standalone-label small">Suggested Tags</label>
+        <md-chips class="small">
+            <md-chip class="active">Biotechnology</md-chip>
+            <md-chip>Alternative Medicine</md-chip>
+            <md-chip class="active">Pharmaceuticals</md-chip>
+            <md-chip>Food & Beverages</md-chip>
+            <md-chip>Renewables & Environment</md-chip>
+            <md-chip>Research</md-chip>
+        </md-chips>
+        <span class="info">Select tags to add them to your list</span>
+    </div>
+
+    {{$ctrl.organization.tagSuggestedList}}
+
+    <md-input-container class="md-block">
+        <label class="md-no-float">Homepage URL
+            <small>(http://yourweb.com)</small>
+        </label>
+        <input type="url" http-prefix name="website" ng-model="$ctrl.organization.website">
+        <div ng-messages="$ctrl.form.website.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
+    </md-input-container>
+    <div layout="row" class="select-box">
+        <md-input-container class="md-block" flex>
+            <label class="md-no-float">Number Staff</label>
+            <md-select name="numberStaff" ng-model="$ctrl.organization.numberStaff" required>
+                <md-option placeholder="Number Staff" ng-repeat="number in $ctrl.definitions.numberStaff"
+                           value="{{number}}">
+                    {{'definitions.numberStaff.' + number | translate}}
+                </md-option>
+            </md-select>
+            <div ng-messages="$ctrl.form.numberStaff.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex ng-if="$ctrl.wizardType === 'department'">
+            <label class="md-no-float">Number of Students</label>
+            <md-select name="numberStudent" ng-model="$ctrl.organization.numberStudent" required>
+                <md-option ng-repeat="number in $ctrl.definitions.numberStudent" value="{{number}}">
+                    {{'definitions.numberStaff.' + number | translate}}
+                </md-option>
+            </md-select>
+            <div ng-messages="$ctrl.form.numberStudent.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div layout="row" ng-if="$ctrl.wizardType === 'department'">
+        <div>
+            <label class="standalone-label">Study Levels</label>
+
+            <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
+                         md-no-ink aria-label="{{'definitions.qualificationCategory.' + category | translate}}"
+                         ng-checked="$ctrl.isQualificationCategorySelected(category)"
+                         ng-click="$ctrl.toggleQualificationCategory(category)"
+                         class="md-primary">
+                {{'definitions.qualificationCategory.' + category | translate}}
+            </md-checkbox>
+        </div>
+    </div>
+</div>

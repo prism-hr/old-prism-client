@@ -1,0 +1,545 @@
+// Intro
+.step-page {
+  &.child {
+    background: transparent;
+    .single-block {
+      .header{
+        margin-bottom:0;
+        margin-top:15px;
+      }
+    }
+  }
+  &.with-preview {
+    .wizard-holder-padding {
+      padding-top:0px;
+    }
+  }
+  .wizard-holder-padding {
+    padding-top:60px;
+  }
+  h4 {
+    color: $uclfooter;
+    font-weight:900;
+  }
+  h3 {
+    margin-top:4px;
+    color: rgba(0,0,0,0.87);
+  }
+  .step-wizard {
+    h3 {
+      margin-bottom:20px;
+      font-size:24px;
+    }
+    .text-editor {
+      margin-top: 15px;
+      padding-left: 7px;
+      padding-right:7px;
+      margin-left: -13px;
+      margin-right:-13px;
+      h3 {
+        margin-bottom:6px;
+      }
+      .btn-group {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+  .left-side-block {
+    padding: 60px 40px;
+    .header {
+      margin-bottom:40px;
+    }
+  }
+  .step {
+    h2, h3, h4, h5, h6 {
+      padding-bottom:0;
+      padding-top:8px;
+    }
+    h4 {
+      color: $uclfooter;
+      font-weight:900;
+    }
+    h3 {
+      color: $uclfooter;
+    }
+    p {
+      margin-top: 4px;
+      margin-bottom:10px;
+    }
+    > div {
+      position: relative;
+      .icon-holder {
+        position: absolute;
+        right: 35px;
+        top: 15px;
+        i {
+          font-size: 50px;
+          &.icon-check {
+            color: $uclgreen;
+          }
+          &.icon-close {
+            color: $uclred;
+          }
+          &.icon-exclamation, &.fa-asterisk  {
+            color: $employmentColor;
+          }
+        }
+      }
+    }
+    .disabled {
+      i {
+        color: $activeGrey !important;
+      }
+    }
+  }
+  .right-side-block {
+    .custom-icon {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: auto;
+    }
+  }
+  .action-block{
+    padding: 10px 0;
+  }
+  .preview-text {
+    margin-top:-18px;
+  }
+}
+.secondary-actions {
+  margin-bottom:-10px;
+}
+.division-controls {
+  .secondary-actions {
+    .md-warn {
+      margin-right: 3px;
+    }
+  }
+  .md-primary {
+    margin-left: 0;
+    margin-top:24px;
+  }
+}
+.organization-contact {
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid #f3f3f3;
+  >label {
+    font-weight:bold;
+    margin-bottom:10px;
+  }
+}
+.profile-box {
+  .profile-holder {
+    background: white;
+    margin-top:20px;
+  }
+  min-height: 150px;
+}
+.autocomplete-paces {
+  min-width: 250px;
+}
+.logo-icon {
+  margin-right: 10px;
+  width: 72px;
+  height: 41px;
+  padding: 0;
+  background: white;
+  margin-bottom: 3px;
+  margin-top: 2px;
+  position: relative;
+  overflow: hidden;
+  border:1px solid #ececec;
+  .logo-image {
+    background: white;
+    margin: 0;
+    height: 100%;
+  }
+}
+.autocomplete-custom-template {
+  li {
+    height: auto;
+    &:first-child {
+      font-size: 16px;
+      color: white;
+      background: lighten($uclblue, 15%);
+      &:hover, &.selected {
+        background: lighten($uclblue, 5%) !important;
+      }
+      .highlight {
+        font-weight: 900;
+        color: white;
+      }
+    }
+    .item-title {
+      font-weight: bold;
+      line-height: 24px;
+    }
+    .item-location {
+      padding-left: 6px;
+      line-height: 24px;
+    }
+  }
+}
+.checkboxes-group {
+ > div {
+   display: inline-block;
+   margin-right:33px;
+ }
+  md-checkbox {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+.type-duration {
+  min-height: 65px;
+}
+.fixed-term-duration {
+  margin-top:-13px;
+  width: 112px;
+}
+.locations {
+  margin-bottom:30px;
+}
+.benefits-description {
+  margin-top:34px;
+}
+.industries-holder {
+  margin:40px 0;
+}
+.select-box {
+  margin-bottom:20px;
+}
+.horizontal-form {
+  md-radio-button {
+    display: inline-block;
+    border-bottom:none !important;
+  }
+}
+audience {
+  .background-uploader-box {
+    display: none;
+  }
+}
+.audience {
+  margin-top:20px;
+  .sub-audience {
+    md-switch {
+      min-width: 260px;
+    }
+    md-input-container {
+      margin-top: 12px;
+      min-width: 260px;
+    }
+  }
+}
+.radio-box-aligned {
+  margin-top:10px;
+}
+.radio-box-column {
+  margin-top:10px;
+  small {
+    display: block;
+    margin-top:6px;
+    font-weight:400;
+  }
+}
+.medium {
+  .md-label {
+    font-size:18px;
+    margin-left:30px;
+    font-weight:700;
+  }
+}
+md-datepicker {
+  margin-left: -16px;
+  .md-datepicker-input{
+    font-size:18px;
+  }
+}
+.md-select-value .md-select-icon:after {
+  content: '\E604';
+  font-family: "simple-line-icons";
+  transform: scaleY(1) scaleX(1);
+}
+md-autocomplete {
+  min-width:200px;
+}
+md-autocomplete input:not(.md-input), md-input-container  {
+  font-size:18px;
+}
+.logo-image, .avatar-holder {
+  position: relative;
+  .logo-uploader-box {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    .logo-uploader {
+      border: none;
+      display: block;
+      background: rgba(250,250,250,0.6);
+      padding: 2px 5px;
+      border-radius: 2px;
+      i {
+        cursor: pointer;
+        font-size:15px;
+        color: $uclred;
+      }
+      &:hover {
+        background: rgba(250,250,250,1);
+      }
+    }
+  }
+}
+.header-actions {
+  .md-button {
+    min-width: 36px;
+    margin: 0px 2px 2px;
+    padding: 0 10px;
+  }
+  .secondary-group {
+    border-right: 1px solid $uclblue;
+    padding-right: 10px;
+  }
+  .primary-group {
+    padding-left:10px;
+  }
+}
+.department-small {
+  margin-top:10px;
+  .department-item-small {
+    background: lighten( $uclfooter, 46%);
+    &:hover {
+      background: lighten( $uclfooter, 42%);
+    }
+  }
+  .department-title {
+    font-weight:bold;
+    color: $uclred;
+  }
+  .department-university, .department-title, .department-location {
+    padding-right: 10px;
+  }
+  .department-location {
+    color: $uclfooter;
+    font-weight:900;
+  }
+  .students-number {
+    i {
+      color: $uclred;
+    }
+    span {
+      padding-left:4px;
+      font-size:13px;
+      font-weight:600;
+    }
+  }
+}
+.department-list {
+  margin-bottom:20px;
+  md-card {
+    min-height: 94%;
+    md-card-content {
+      padding: 8px 8px 0;
+    }
+    md-card-title {
+      padding:0;
+    }
+    &.active {
+      box-shadow: 0px 1px 8px 0px rgba($uclgreen, 0.6), 0px 3px 4px 0px rgba($uclgreen, 0.5), 0px 3px 3px -2px rgba($uclgreen, 0.4);
+
+    }
+  }
+  .department-item {
+    .connection-display {
+      i {
+        font-size: 40px;
+        &.icon-check {
+          color: $uclgreen;
+        }
+        &.icon-close {
+          color: $uclred;
+        }
+      }
+    }
+    .connection-display {
+      margin-top:5px;
+      margin-right:5px;
+    }
+    .students-number {
+      margin-top:5px;
+      margin-bottom:5px;
+      i {
+        font-size:22px;
+        color: $uclred;
+      }
+      span {
+        display: block;
+        padding: 4px;
+        font-size:13px;
+        font-weight:600;
+      }
+    }
+    .department-tags {
+      .md-chips {
+        border-top: solid 1px rgba(0,0,0,0.12) ;
+      }
+      .md-chips {
+        box-shadow: none;
+      }
+    }
+    .department-actions {
+      padding-top: 8px;
+      border-top: solid 1px rgba(0,0,0,0.12) ;
+      md-checkbox {
+        margin-bottom:0;
+      }
+    }
+    .students-type {
+      margin-top: 4px;
+      padding-left: 10px;
+      .md-chips {
+        box-shadow: none;
+      }
+    }
+    .department-header {
+      h2 {
+        font-size:16px;
+      }
+      h3 {
+        font-size:15px;
+        margin:0;
+      }
+      h4 {
+        font-size:14px;
+      }
+      .logo-icon {
+        width: 79px;
+        height: 50px;
+        .logo-image {
+          transform: scale(0.36);
+          margin-top: 2px;
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}
+.tag-list {
+  margin-top:-20px;
+  margin-bottom:20px;
+  .info {
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    color: grey;
+  }
+}
+logo-uploader {
+  position: relative;
+  margin: 10px;
+  .progress-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    margin-top:-25px;
+  }
+}
+.background-uploader-box {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  .croppie-container .cr-slider-wrap {
+    margin: -300px auto 0 !important;
+    position: relative;
+    z-index: 6;
+    .cr-slider {
+     background: white;
+      padding: 1px;
+    }
+  }
+  .btn-group {
+    position: relative;
+    z-index: 7;
+    display: inline-block;
+    top: -35px;
+  }
+  .upload-button-group {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  .croppie-container .cr-viewport {
+    border: none;
+  }
+  .background-uploader-button, .background-edit-button {
+    border: none;
+    display: inline-block;
+    float: left;
+    background: rgba(250,250,250,0.8);
+    padding: 2px 5px;
+    border-radius: 2px;
+    width: 40px;
+    height: 35px;
+    margin-right: 6px;
+    i {
+      cursor: pointer;
+      font-size:25px;
+      color: $uclred;
+    }
+    &:hover {
+      background: rgba(250,250,250,1);
+    }
+  }
+  small {
+    display: block;
+    padding-top:5px;
+    clear: both;
+    font-size: 13px;
+    color: white;
+  }
+}
+.organization-lookup {
+  margin-bottom:15px;
+}
+.connection-decision{
+  margin-top:25px;
+}
+.company-lookup {
+  button {
+    margin-right:0px;
+    margin-top:0;
+  }
+}
+.department-lookup-question {
+  margin-top:20px;
+}
+
+.department-lookup {
+  margin-top:10px;
+  button.md-primary {
+    margin-left:0px;
+    margin-top:0;
+  }
+  margin-bottom:10px;
+}
+
+// MediaQ
+@media (max-width: $layout-breakpoint-xs - 1) {
+  .step-page {
+    .left-side-block, .action-block{
+      padding: 20px 0;
+    }
+    &.child {
+      .left-side-block, .right-side-block {
+        padding: 20px;
+      }
+    }
+    .wizard-holder-padding {
+      padding-top:0px;
+    }
+  }
+}

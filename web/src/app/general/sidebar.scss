@@ -1,0 +1,260 @@
+sidebar {
+  .header {
+    margin-bottom:0;
+  }
+  .user-details {
+    padding: 12px;
+  }
+  .user-block {
+    .avatar-holder {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  .nav-header {
+    position: relative;
+    background:$uclblue;
+    .prism-icon {
+      height:80px;
+      width: auto;
+      img {
+        height: 100%;
+      }
+    }
+    .md-icon-button.close {
+      position: absolute;
+      .icon-close {
+        font-size:25px;
+      }
+    }
+  }
+  .icon-logout {
+    font-size: 1.25rem;
+  }
+  .logout-button {
+    width: 100%;
+    text-align: left;
+  }
+  .ucl-footer {
+    md-list {
+      margin-left: -8px;
+      margin-right: -8px;
+      .md-list-item-inner {
+        font-size:16px;
+        i {
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+  .main-menu {
+    .small {
+      i {
+        margin-right:12px;
+      }
+      md-icon {
+        font-size: 16px;
+        text-align: right;
+        margin-top: 0px;
+        padding-top: 3px;
+      }
+    }
+    .md-subheader-inner {
+      padding: 8px 16px;
+    }
+    .main-subheader {
+      .md-subheader-inner {
+        padding: 4px 16px;
+      }
+    }
+    .md-icon-button {
+      font-size: 18px;
+      margin-right: -12px !important;
+      .icon-plus:before {
+        line-height:24px;
+      }
+    }
+    md-list {
+      padding-top:0;
+      padding-bottom: 0;
+    }
+    md-list-item i {
+      margin-right: 12px;
+    }
+    .badge {
+      height: 20px;
+      line-height:20px;
+    }
+    md-list-item {
+      border-bottom:1px solid $fadeGrey;
+      .color-icon {
+        margin-right: 11px;
+        margin-left: -1px;
+        display: block;
+        height: 17px;
+        width: 17px;
+        overflow: hidden;
+        border-radius: 50%;
+        position: relative;
+          img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+          }
+      }
+      &.active {
+        background: $blueback;
+        .md-list-item-inner {
+         p i.icon-arrow-down {
+            transform: rotate(180deg);
+
+          }
+        }
+      }
+      .md-list-item-inner {
+        p i.icon-arrow-down {
+          float: right;
+          margin-right:6px;
+          margin-top: 12px;
+          transition-property: all;
+          transition-duration: 0.5s;
+          transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+        }
+      }
+      &.always-active {
+        background: $fadeGrey;
+        p i.icon-arrow-down {
+          display: none;
+        }
+      }
+    }
+    .submenu {
+      background: $fadeGrey;
+      overflow: hidden;
+      max-height: 0;
+      transition-property: all;
+      transition-duration: 0.5s;
+      transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+      &.active, &.force-open {
+        max-height:245px;
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+      }
+      md-list-item {
+        &.active {
+          background: $uclblue;
+          color: white;
+        }
+      }
+    }
+    .md-button {
+      .md-list-item-inner {
+        button {
+          width: 40px;
+          min-width: 40px;
+          min-height: 24px;
+          line-height: 24px;
+          margin-right: 0;
+          box-shadow:none !important;
+        }
+      }
+    }
+  }
+  .notifications {
+    position: relative;
+    overflow: visible;
+    box-shadow:none !important;
+    label{
+      position: absolute;
+      left: -3px;
+      top: 25px;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      font-size: 10px;
+      background: $uclred;
+      color: white;
+      border-radius: 2px;
+      z-index: 4;
+    }
+    .icon-bell, .icon-envelope {
+      font-size: 18px;
+      line-height:24px;
+    }
+  }
+}
+.user-block {
+  padding-right: 6px;
+  &.employer {
+    background: $uclblue2;
+  }
+  .avatar-holder {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px 0 0;
+    &.employer {
+      border: 2px solid $uclred;
+      .no-user-image {
+        background: $uclred;
+      }
+    }
+    &.university {
+      border: 2px solid $uclgreen;
+      .no-user-image {
+        background: $uclgreen;
+      }
+    }
+    &.student {
+      border: 2px solid $uclblue;
+      .no-user-image {
+        background: $uclblue;
+      }
+    }
+    .no-user-image {
+      border-radius: 50%;
+      color: white;
+      width: 52px;
+      height: 52px;
+      margin: 2px;
+      text-align: center;
+      i {
+        font-size:28px;
+      }
+    }
+  }
+  .contact-container {
+    font-size:0.9rem;
+    a {
+      display: inline-block;
+      color: $uclfooter;
+      font-weight:700;
+    }
+    span {
+      font-size:0.8rem;
+      font-weight:500;
+    }
+  }
+  .icon-settings {
+    font-size: 1.3rem;
+    margin-top: 2px;
+  }
+}
+md-menu-item > a.md-button {
+  padding-top:0;
+}
+md-menu-content.small {
+  md-menu-item {
+    min-height: 35px;
+    height: 35px;
+    > .md-button {
+      padding-left: 10px;
+      padding-right:10px;
+      font-size:13px;
+      i{
+        margin-right:5px;
+      }
+    }
+  }
+}

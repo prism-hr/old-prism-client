@@ -1,0 +1,63 @@
+<div layout-padding>
+    <h3>Advert options and duration</h3>
+    <label class="standalone-label">Promotion options</label>
+    <div layout="row" class="type-duration">
+        <md-radio-group name="type" ng-required="true" ng-model="$ctrl.advert.positionContract"
+                        class="horizontal-form medium">
+            <div class="radio-box-aligned">
+                <md-radio-button ng-repeat="contract in $ctrl.definitions.positionContract" ng-value="contract"
+                                 class="md-primary"
+                                 aria-label="{{'definitions.positionContract.' + contract | translate}}">
+                    {{'definitions.positionContract.' + contract | translate}}
+                </md-radio-button>
+            </div>
+        </md-radio-group>
+        <div class="fixed-term-duration" ng-if="$ctrl.advert.positionContract === 'FIXED_TERM'">
+            <md-input-container>
+                <label>Months Min</label>
+                <input required type="number" name="duration-min" ng-model="$ctrl.advert.positionDurationMinimum" min="1"
+                       max="23"/>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="checkboxes-group">
+        <div ng-repeat="pattern in $ctrl.patternValues">
+            <md-checkbox class="md-primary" ng-checked="$ctrl.isPatternChecked(pattern, $ctrl.selected)"
+                         ng-click="$ctrl.togglePattern(pattern, $ctrl.selected)">
+                {{'definitions.positionWorkPattern.' + pattern | translate}}
+            </md-checkbox>
+        </div>
+        <md-checkbox aria-label="Select All"
+                     class="md-primary"
+                     ng-checked="$ctrl.allPatternsChecked()"
+                     md-indeterminate="$ctrl.anyPatternChecked()"
+                     ng-click="$ctrl.toggleAllPatterns()">
+            <span ng-show="$ctrl.allPatternsChecked()">Deselect All</span>
+            <span ng-show="!$ctrl.allPatternsChecked()">Select All</span>
+        </md-checkbox>
+    </div>
+    <label class="standalone-label">Advert available from</label>
+    <md-datepicker ng-model="$ctrl.timestampPublicationStart" name="timestampPublicationStart"
+                   ng-change="$ctrl.publicationStartChanged()"
+                   ng-model-options="{ timezone: 'utc' }"
+                   md-placeholder="Available from"
+                   md-min-date="$ctrl.minPublicationStart"
+                   md-max-date="$ctrl.maxPublicationStart"
+                   md-open-on-focus></md-datepicker>
+    <div ng-messages="$ctrl.form.timestampPublicationStart.$error" role="alert">
+        <div ng-messages-include="general-messages"></div>
+        <div ng-message="mindate" class="error">The start date cannot be in the past</div>
+    </div>
+    <md-switch ng-model="$ctrl.showPublicationClose" ng-change="$ctrl.showPublicationCloseChanged($ctrl.showPublicationClose)"
+               class="md-primary" aria-label="Closing Date">
+        Select Closing Date
+    </md-switch>
+    <div ng-if="$ctrl.showPublicationClose">
+        <label class="standalone-label">Advert Closing Date</label>
+        <md-datepicker ng-model="$ctrl.timestampPublicationClose" name="timestampPublicationClose"
+                       ng-change="$ctrl.publicationCloseChanged()"
+                       md-placeholder="Closing date"
+                       md-min-date="$ctrl.minPublicationClose"
+                       md-open-on-focus></md-datepicker>
+    </div>
+</div>

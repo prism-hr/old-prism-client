@@ -1,0 +1,62 @@
+<div layout-padding>
+    <h3>Provide a Candidate Specification</h3>
+
+    <div class="industries-holder">
+        <md-input-container class="md-block">
+            <label class="md-no-float">Areas of Expertise</label>
+            <md-chips ng-model="$ctrl.advert.tags"
+                      md-transform-chip="$ctrl.transformTag($chip)"
+                      md-max-chips="20"
+                      md-separator-keys="$ctrl.separatorKeys">
+                <md-autocomplete
+                        md-search-text="searchText"
+                        md-autoselect="true"
+                        md-items="item in $ctrl.lookupTags(searchText)"
+                        md-item-text="item.name"
+                        placeholder="Find a tag or add a new one">
+                    <span md-highlight-text="searchText">{{item.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    {{$chip.tag.name}}
+                </md-chip-template>
+            </md-chips>
+        </md-input-container>
+        {{$ctrl.advert.tagSuggestedList}}
+    </div>
+    <div class="tag-list">
+        <label class="standalone-label small">Suggested Tags</label>
+        <md-chips class="small">
+            <md-chip class="active">Biotechnology</md-chip>
+            <md-chip>Alternative Medicine</md-chip>
+            <md-chip class="active">Pharmaceuticals</md-chip>
+            <md-chip>Food & Beverages</md-chip>
+            <md-chip>Renewables & Environment</md-chip>
+            <md-chip>Research</md-chip>
+        </md-chips>
+        <span class="info">Select tags to add them to your list</span>
+    </div>
+    <div class="audience">
+        <label class="standalone-label">Audience</label>
+        <md-switch ng-model="$ctrl.studentsTypeAll" class="md-primary" aria-label="All Students">
+            All Students
+        </md-switch>
+        <div class="sub-audience" ng-if="!$ctrl.studentsTypeAll">
+            <div layout="row">
+                <md-switch ng-model="$ctrl.studentsUndergraduateAll" class="md-primary"
+                           aria-label="All Undergraduate Students">
+                    All Undergraduate Students
+                </md-switch>
+            </div>
+            <div layout="row">
+                <md-switch ng-model="$ctrl.studentsMastersAll" class="md-primary" aria-label="All Masters Students">
+                    All Masters Students
+                </md-switch>
+            </div>
+            <div layout="row">
+                <md-switch ng-model="$ctrl.studentsResearchAll" class="md-primary" aria-label="All Research Students">
+                    All Research Students
+                </md-switch>
+            </div>
+        </div>
+    </div>
+</div>

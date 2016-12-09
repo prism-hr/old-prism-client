@@ -1,0 +1,128 @@
+<!doctype html>
+<html ng-app="prismWeb">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title ng-bind="$title + ' - Prism.hr'">Prism.hr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+
+    <meta name="description" content="The Opportunity Portal">
+    <meta itemprop="name" content="CareerJet">
+    <meta itemprop="description" content="The Opportunity Portal">
+    <meta itemprop="image" content="https://www.prism.hr/images/fbimg.gif">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@CareerJet">
+    <meta name="twitter:title" content="CareerJet">
+    <meta name="twitter:description" content="The Opportunity Portal">
+    <meta name="twitter:creator" content="@CareerJet">
+    <meta name="twitter:image" content="https://www.prism.hr/images/fbimg.gif">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CareerJet">
+    <meta property="og:title" content="CareerJet">
+    <meta property="og:description" content="The Opportunity Portal">
+    <meta property="og:image" content="https://www.prism.hr/images/fbimg.gif">
+    <meta property="og:url" content="https://www.prism.hr">
+    <meta property="fb:app_id" content="172294119620634">
+
+    <meta name="keywords"
+          content="opportunities application recruitment graduates postgraduates phd scholarships internships jobs courses degrees"/>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaG0kokK45WdXcwZ_J0KcJ6N8EeXF2nFU&libraries=places"></script>
+</head>
+
+<body>
+<div class="application-loader" ng-animate-children>
+    <style type="text/css">
+        div.application-loader {
+            position: relative;
+        }
+
+        div.application-loader div.animated-container {
+            background-color: #e75223;
+            bottom: 0px;
+            left: 0px;
+            opacity: 1.0;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            z-index: 999999;
+        }
+
+        /* Used to initialize the ng-leave animation state. */
+        div.application-loader div.animated-container.ng-leave {
+            opacity: 1.0;
+            transition: all linear 200ms;
+            -webkit-transition: all linear 200ms;
+        }
+
+        /* Used to set the end properties of the ng-leave animation state. */
+        div.application-loader div.animated-container.ng-leave-active {
+            opacity: 0;
+        }
+
+        div.application-loader div.messaging {
+            color: #FFFFFF;
+            font-family: monospace;
+            left: 0px;
+            margin-top: -100px;
+            position: absolute;
+            right: 0px;
+            text-align: center;
+            top: 50%;
+        }
+
+        div.application-loader h1 {
+            width: 150px;
+            line-height: 35px;
+            margin: 0px auto 20px;
+        }
+
+        div.application-loader p {
+            font-size: 18px;
+            line-height: 14px;
+            margin: 0px 0px 0px 0px;
+        }
+    </style>
+    <div class="animated-container">
+        <div class="messaging">
+            <h1>
+                <img src="img/bfj-ico-white.svg" alt="PRiSM">
+            </h1>
+            <p>
+                Loading...
+            </p>
+        </div>
+    </div>
+</div>
+<div layout="row" layout-fill>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-md')" ng-if="authService.user">
+        <sidebar layout="column" layout-align="space-between none" flex></sidebar>
+    </md-sidenav>
+    <div flex layout="column">
+        <prism-header ng-if="!$state.current.data.hideHeaderFooter"></prism-header>
+        <md-content flex layout="column" md-scroll-y>
+            <ui-view ng-class="{'centered': $state.current.data.hideHeaderFooter}"
+                     class="fade-animation" autoscroll="true" flex="noshrink"></ui-view>
+            <md-toolbar class="md-toolbar-tools ucl-footer" ng-if="!authService.user" ng-include="'footer.html'"
+                        flex="noshrink"></md-toolbar>
+        </md-content>
+    </div>
+</div>
+</body>
+
+<script type="text/ng-template" id="general-messages">
+    <div ng-message="required" class="error">This field is required</div>
+    <div ng-message="minlength" class="error">This field is too short</div>
+    <div ng-message="email" class="error">Your email must look like an e-mail address</div>
+    <div ng-message="url" class="error">This field must be a valid URL</div>
+    <div ng-message="maxSize" class="error">The max size is 10MB</div>
+    <div ng-message="pattern" class="error">You can upload jpg, gif or png images only</div>
+    <div ng-message="md-require-match">Please select an existing value.</div>
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+
+</html>
