@@ -11,7 +11,7 @@ export class ResourceCreateWizardFactory {
             department: organizationSteps,
             advert: [{id: 'summary', component: 'advertSummary', title: 'Summary'},
                 {id: 'recruiter', component: 'advertRecruiter', title: 'Recruiter'},
-                {id: 'type', component: 'advertType', title: 'Type'},
+                {id: 'type', component: 'advertType', title: 'Options'},
                 {id: 'salary', component: 'advertSalary', title: 'Salary'},
                 {id: 'details', component: 'advertDetails', title: 'Description'},
                 {id: 'candidate', component: 'advertCandidate', title: 'Candidates', data: {hasTags: true}}],
