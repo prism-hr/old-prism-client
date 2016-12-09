@@ -50,7 +50,7 @@ export const OrganizationQualificationDetails = {
                 required>
             <md-item-template>
                 <div layout="row">
-                    <span md-highlight-text="searchText" class="item-title">
+                    <span md-highlight-text="searchText">
                         {{qualification.accessCode ? qualification.name : 'Create ' + qualification.name}}
                     </span>
                 </div>

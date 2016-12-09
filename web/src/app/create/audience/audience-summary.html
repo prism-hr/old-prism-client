@@ -17,43 +17,44 @@
     </div>
     <h3>Social Targeting</h3>
     <md-input-container class="md-block">
-        <textarea name="advertSummary" ng-model="$ctrl.facebookText" md-maxlength="250" rows="3" required></textarea>
+        <textarea name="advertSummary" ng-model="$ctrl.generalShareText" md-maxlength="250" rows="3" required></textarea>
     </md-input-container>
     <div layout="row">
         <md-button socialshare
                    socialshare-via="{{$ctrl.facebookAppId}}"
                    socialshare-provider="facebook"
                    socialshare-type="feed"
-                   socialshare-description="{{$ctrl.facebookText}}"
-                   socialshare-text="TODO here title of advert"
-                   socialshare-hashtags="{{$ctrl.facebookHashtags}}"
-                   socialshare-url="http://local.prism.ucl.ac.uk:9000"
+                   socialshare-description="{{$ctrl.generalShareText}}"
+                   socialshare-text="{{$ctrl.generalShareTitle}}"
+                   socialshare-hashtags="{{$ctrl.generalShareTags}}"
+                   socialshare-url="{{$ctrl.generalShareURL}}"
                    aria-label="Share with Facebook"
                    class="md-raised facebook">
             <i class="icon-social-facebook"></i> Facebook
         </md-button>
         <md-button socialshare
                    socialshare-provider="twitter"
-                   socialshare-text="{{$ctrl.dummyShare.text}}"
-                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
-                   socialshare-url="{{$ctrl.dummyShare.url}}"
+                   socialshare-text="{{$ctrl.generalShareTitle}}"
+                   socialshare-hashtags="{{$ctrl.generalShareTags}}"
+                   socialshare-url="{{$ctrl.generalShareURL}}"
+                   socialshare-via="{{$ctrl.generalShareSource}}"
                    aria-label="Share with Twitter"
                    class="md-raised twitter">
             <i class="icon-social-twitter"></i> Twitter
         </md-button>
         <md-button socialshare
                    socialshare-provider="linkedin"
-                   socialshare-text="{{$ctrl.dummyShare.text}}"
-                   socialshare-hashtags="{{$ctrl.dummyShare.hashtags}}"
-                   socialshare-url="{{$ctrl.dummyShare.url}}"
-                   socialshare-source="{{$ctrl.dummyShare.title}}"
+                   socialshare-text="{{$ctrl.generalShareTitle}}"
+                   socialshare-source="{{$ctrl.generalShareSource}}"
+                   socialshare-description="{{$ctrl.generalShareText}}"
+                   socialshare-url="{{$ctrl.generalShareURL}}"
                    class="md-raised linkedin" aria-label="Share with Linkedin">
             <i class="icon-social-linkedin"></i> Linkedin
         </md-button>
         <md-button socialshare
                    socialshare-provider="email"
-                   socialshare-subject="{{$ctrl.dummyShare.title}}"
-                   socialshare-body="{{$ctrl.dummyShare.text}}"
+                   socialshare-subject="{{$ctrl.generalShareTitle}}"
+                   socialshare-body="{{$ctrl.generalShareText}} / {{$ctrl.generalShareURL}}"
                    class="md-raised email" aria-label="Share with Email">
             <i class="icon-envelope"></i> Email
         </md-button>
