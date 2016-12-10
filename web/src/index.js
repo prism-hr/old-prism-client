@@ -1,4 +1,3 @@
-import moment from 'moment';
 import angular from 'angular';
 import 'angular-animate';
 import 'angular-aria';
@@ -12,6 +11,7 @@ import 'angular-socialshare';
 import 'angular-translate';
 import 'angular-translate-loader-static-files';
 import 'lodash';
+import 'moment';
 import 'ng-file-upload';
 import 'restangular';
 import 'textAngular';

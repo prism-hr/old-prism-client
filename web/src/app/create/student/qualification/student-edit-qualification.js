@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 class StudentEditQualificationController {
     /** @ngInject */
     constructor($state, $stateParams, definitions) {
