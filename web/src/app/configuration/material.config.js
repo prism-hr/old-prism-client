@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 /** @ngInject */
 export const materialConfig = function ($mdThemingProvider, $mdDateLocaleProvider, $provide) {
     $mdThemingProvider.definePalette('prismblue', {

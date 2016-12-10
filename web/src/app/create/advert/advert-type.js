@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 class AdvertTypeController {
     /** @ngInject */
     constructor(checkboxesHelper, definitions) {
