@@ -16,9 +16,9 @@ module.exports = {
                 ]
             },
             {
-                test: /.js$/,
+                test: /.ts$/,
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
+                loader: 'tslint-loader',
                 enforce: 'pre'
             },
             {
@@ -31,11 +31,11 @@ module.exports = {
                 ]
             },
             {
-                test: /\.js$/,
+                test: /\.ts$/,
                 exclude: /node_modules/,
                 loaders: [
                     'ng-annotate-loader',
-                    'babel-loader'
+                    'ts-loader'
                 ]
             },
             {
@@ -51,12 +51,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            ENVIRONMENT: JSON.stringify('DEV')
+        }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.NoErrorsPlugin(),
         FailPlugin,
-        new webpack.DefinePlugin({
-            ENVIRONMENT: JSON.stringify('dev')
-        }),
         new webpack.ProvidePlugin({
             _: 'lodash',
             moment: 'moment'
@@ -66,7 +66,14 @@ module.exports = {
         }),
         new webpack.LoaderOptionsPlugin({
             options: {
-                postcss: () => [autoprefixer]
+                postcss: () => [autoprefixer],
+                resolve: {},
+                ts: {
+                    configFileName: 'tsconfig.json'
+                },
+                tslint: {
+                    configuration: require('../tslint.json')
+                }
             },
             debug: true
         })
@@ -74,7 +81,15 @@ module.exports = {
     devtool: 'cheap-source-map',
     output: {
         path: path.join(process.cwd(), conf.paths.tmp),
-        filename: 'index.js'
+        filename: 'index.js',
+    },
+    resolve: {
+        extensions: [
+            '.webpack.js',
+            '.web.js',
+            '.js',
+            '.ts'
+        ]
     },
     entry: `./${conf.path.src('index')}`
 };
