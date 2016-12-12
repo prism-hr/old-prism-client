@@ -42,10 +42,10 @@ export class PlaceAutocomplete {
         };
 
         scope.placeAdded = function (place: any) {
-            placeService.getDetails({placeId: place.googleId}, placeDetails => {
+            placeService.getDetails({placeId: place.googleId}, (placeDetails: any) => {
                 scope.$apply(() => {
                     applyLocationFields(place, placeDetails);
-                    const places = _.map(scope.places, place => ({location: place}));
+                    const places = _.map(scope.places, (place: any) => ({location: place}));
                     ngModel.$setViewValue(places.length && places);
                 });
             });
@@ -56,7 +56,7 @@ export class PlaceAutocomplete {
                 return;
             }
             const deferred = self.$q.defer();
-            autocomplete.getPlacePredictions({input, types: ['(regions)']}, places => {
+            autocomplete.getPlacePredictions({input, types: ['(regions)']}, (places: any) => {
                 deferred.resolve(places || {});
             });
             return deferred.promise;

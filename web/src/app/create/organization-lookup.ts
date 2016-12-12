@@ -83,7 +83,7 @@ class OrganizationLookupController {
             searchPromise = this.$q.when([]);
         }
 
-        return searchPromise.then(implementations => {
+        return searchPromise.then((implementations: Restangular.ICollection) => {
             const nameTaken = _.find(implementations, {name: searchText});
             if (searchText.length >= 2 && !nameTaken) {
                 implementations.unshift({name: searchText});

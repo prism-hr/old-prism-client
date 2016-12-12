@@ -8,7 +8,7 @@ export const StudentEditQualificationService = function ($state: StateService, $
         private _qualification: any;
 
         constructor(private _resource: any, qualificationAccessCode: string) {
-            const originalQualification = this._resource.userQualifications.find(q => q.accessCode === qualificationAccessCode);
+            const originalQualification = this._resource.userQualifications.find((q: any) => q.accessCode === qualificationAccessCode);
             this._qualification = angular.copy(originalQualification) || {};
         }
 
@@ -18,7 +18,7 @@ export const StudentEditQualificationService = function ($state: StateService, $
 
         saveQualification() {
             const qualifications = this._resource.userQualifications;
-            const idx = qualifications.findIndex(q => q.accessCode === this._qualification.accessCode);
+            const idx = qualifications.findIndex((q: any) => q.accessCode === this._qualification.accessCode);
             if (idx > -1) {
                 qualifications.splice(idx, 1, this._qualification);
             } else {

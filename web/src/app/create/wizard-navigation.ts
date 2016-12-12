@@ -13,7 +13,7 @@ class WizardNavigationController {
         this._onStepChange(this.wizard.getCurrentStep());
     }
 
-    _onStepChange(currentStep) {
+    _onStepChange(currentStep: string) {
         if (currentStep) {
             this.display = this.wizard.getDisplayData();
         }

@@ -26,13 +26,13 @@ export class BackgroundUploader implements ng.IDirective {
                 return;
             }
             self.cloudinary.upload(file, {folder: self.environment.cloudinaryFolder})
-                .then(response => {
+                .then((response: any) => {
                     scope.progressPercentage = null;
                     scope.publicIdToCrop = response.data.public_id;
-                }, response => {
+                }, (response: any) => {
                     scope.progressPercentage = null;
                     scope.error = response.status;
-                }, event => {
+                }, (event: any) => {
                     scope.progressPercentage = Math.round(100.0 * event.loaded / event.total);
                 });
         };

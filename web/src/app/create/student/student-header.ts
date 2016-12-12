@@ -8,7 +8,7 @@ class StudentHeaderController {
         if (qualifications.length === 0) {
             qualifications.push({current: true});
         }
-        this.currentQualification = qualifications.find(q => q.current);
+        this.currentQualification = qualifications.find((q: any) => q.current);
         if (this.currentQualification.organizationImplementationQualification) {
             this.showSummary = true;
         }
