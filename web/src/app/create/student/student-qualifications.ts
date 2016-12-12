@@ -11,7 +11,7 @@ class StudentQualificationsController {
     }
 
     makeCurrent(qualification: any) {
-        this.student.userQualifications.forEach(q => {
+        this.student.userQualifications.forEach((q: any) => {
             q.current = false;
         });
         qualification.current = true;

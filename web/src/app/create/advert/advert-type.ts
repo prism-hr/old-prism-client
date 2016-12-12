@@ -8,6 +8,8 @@ class AdvertTypeController {
     private minPublicationStart: Date;
     private maxPublicationStart: Date;
     private patternsHelper: any;
+    private minPublicationClose: Date;
+
     /** @ngInject */
     constructor(private checkboxesHelper: any, private definitions: any) {
     }
@@ -46,7 +48,7 @@ class AdvertTypeController {
         this.refreshPublicationCloseConstraints();
     }
 
-    private refreshPublicationCloseConstraints = function () {
+    private refreshPublicationCloseConstraints() {
         this.minPublicationClose = this.timestampPublicationStart && new Date(
                 this.timestampPublicationStart.getFullYear(),
                 this.timestampPublicationStart.getMonth(),

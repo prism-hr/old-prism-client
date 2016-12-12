@@ -5,14 +5,14 @@ class LanguageController {
     }
 
     $onInit() {
-        this.$element.find('input').on('keydown', ev => {
+        this.$element.find('input').on('keydown', (ev: any) => {
             ev.stopPropagation();
         });
     }
 
     searchLanguages(searchText: string) {
         searchText = searchText.toLowerCase();
-        return this.definitions.languages.filter(d => {
+        return this.definitions.languages.filter((d: any) => {
             return d.name.toLowerCase().includes(searchText);
         });
     }

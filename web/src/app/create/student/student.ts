@@ -1,7 +1,9 @@
+import {Subscription} from 'rxjs';
+
 class StudentController {
     private wizard: any;
     private createSteps: any;
-    private stepSubscription: any;
+    private stepSubscription: Subscription;
     private student: any;
 
     /** @ngInject */
@@ -13,7 +15,7 @@ class StudentController {
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
         this._onStepChange(this.wizard.getCurrentStep());
 
-        this.$scope.$watch('$ctrl.studentForm', form => {
+        this.$scope.$watch('$ctrl.studentForm', (form: ng.IFormController) => {
             this.wizard.setForm(form);
         });
     }
@@ -25,7 +27,7 @@ class StudentController {
     }
 
     $onDestroy() {
-        this.stepSubscription.dispose();
+        this.stepSubscription.unsubscribe();
     }
 }
 

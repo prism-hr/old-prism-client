@@ -26,15 +26,15 @@ export class LogoUploader implements ng.IDirective {
                 return;
             }
             self.cloudinary.upload(file, {folder: self.environment.cloudinaryFolder})
-                .then(response => {
+                .then((response: any) => {
                     scope.progressPercentage = null;
                     const model = {cloudinaryId: response.data.public_id, cloudinaryUrl: response.data.url};
                     ngModel.$setViewValue(model);
                     scope.publicId = response.data.public_id;
-                }, response => {
+                }, (response: any) => {
                     scope.progressPercentage = null;
                     scope.error = response.status;
-                }, event => {
+                }, (event: any) => {
                     scope.progressPercentage = Math.round(100.0 * event.loaded / event.total);
                 });
         };

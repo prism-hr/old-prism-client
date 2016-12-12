@@ -1,7 +1,9 @@
+import {Subscription} from 'rxjs';
+
 class AudienceController {
     private createSteps: any;
     private wizard: any;
-    private stepSubscription: any;
+    private stepSubscription: Subscription;
     private advert: any;
     /** @ngInject */
     constructor(private $scope: any) {
@@ -12,7 +14,7 @@ class AudienceController {
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
         this._onStepChange(this.wizard.getCurrentStep());
 
-        this.$scope.$watch('$ctrl.audienceForm', form => {
+        this.$scope.$watch('$ctrl.audienceForm', (form: ng.IFormController) => {
             this.wizard.setForm(form);
         });
     }
@@ -24,7 +26,7 @@ class AudienceController {
     }
 
     $onDestroy() {
-        this.stepSubscription.dispose();
+        this.stepSubscription.unsubscribe();
     }
 }
 

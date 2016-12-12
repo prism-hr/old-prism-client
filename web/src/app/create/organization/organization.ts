@@ -1,13 +1,13 @@
-import {WelcomeService} from '../../welcome/welcome.service';
+import {Subscription} from 'rxjs';
 
 class OrganizationController {
     wizard: any;
     createSteps: any;
-    stepSubscription: any;
+    stepSubscription: Subscription;
     organization: any;
 
     /** @ngInject */
-    constructor(private $scope: any, welcomeService: WelcomeService) {
+    constructor(private $scope: any) {
     }
 
     $onInit() {
@@ -15,7 +15,7 @@ class OrganizationController {
         this.stepSubscription = this.wizard.stepSubscribe(this._onStepChange.bind(this));
         this._onStepChange(this.wizard.getCurrentStep());
 
-        this.$scope.$watch('$ctrl.organizationForm', form => {
+        this.$scope.$watch('$ctrl.organizationForm', (form: ng.IFormController) => {
             this.wizard.setForm(form);
         });
     }
@@ -27,7 +27,7 @@ class OrganizationController {
     }
 
     $onDestroy() {
-        this.stepSubscription.dispose();
+        this.stepSubscription.unsubscribe();
     }
 }
 

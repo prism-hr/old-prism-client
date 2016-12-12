@@ -38,7 +38,7 @@ export class NgCroppie implements ng.IDirective {
         };
         const croppie = new Croppie(element[0], options);
 
-        scope.$watch('publicId', src => {
+        scope.$watch('publicId', (src: string) => {
             if (src) {
                 croppie.bind(self.cloudinary.url(src));
             }

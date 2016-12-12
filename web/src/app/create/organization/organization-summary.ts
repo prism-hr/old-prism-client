@@ -82,7 +82,7 @@ class OrganizationSummaryController {
         }
     }
 
-    organizationNameChanged(name) {
+    organizationNameChanged(name: string) {
         this.observer.next(name);
     }
 

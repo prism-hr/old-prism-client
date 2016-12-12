@@ -1,10 +1,10 @@
-import {Subject} from '@reactivex/rxjs';
+import {Subject} from 'rxjs';
 
 /** @ngInject */
 export class UserSessionService {
     _userSessionSubject: Subject<any>;
-    userSession: any;
-    sessionPromise: any;
+    userSession: ng.IPromise<any>;
+    sessionPromise: ng.IPromise<any>;
 
     constructor(public Restangular: Restangular.IService) {
         this._userSessionSubject = new Subject();
@@ -12,7 +12,7 @@ export class UserSessionService {
 
     loadUserSession() {
         return this.Restangular.one('user', 'session').get()
-            .then(userSession => {
+            .then((userSession: any) => {
                 this.userSession = userSession.plain();
                 this._userSessionSubject.next(this.userSession);
                 this.reloadUserSession();
@@ -26,7 +26,7 @@ export class UserSessionService {
 
         let httpConfig: ICustomHttpConfig = {ignoreLoadingBar: true};
         this.sessionPromise = this.Restangular.one('user', 'session').withHttpConfig(httpConfig).get({deferred: true}) // 304
-            .then(userSession => {
+            .then((userSession: any) => {
                 if (userSession.userActivities) {
                     this.userSession = userSession.plain();
                     this._userSessionSubject.next(this.userSession);
@@ -37,7 +37,7 @@ export class UserSessionService {
 
     searchUserSession(searchText: string) {
         return this.Restangular.one('user', 'session').get({searchText: searchText})
-            .then(userSession => {
+            .then((userSession: any) => {
                 return userSession.plain();
             });
     }

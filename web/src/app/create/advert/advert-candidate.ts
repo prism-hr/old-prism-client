@@ -17,7 +17,7 @@ class AdvertCandidateController {
     }
 
     lookupTags(text: string) {
-        const exclusions = this.advert.tags.map(t => t.tag.name);
+        const exclusions = this.advert.tags.map((t: any) => t.tag.name);
         return this.Restangular.all('tags').getList({searchTerm: text, exclusions})
             .then((tags: Restangular.ICollection) => tags.plain());
     }
@@ -30,11 +30,11 @@ class AdvertCandidateController {
     }
 
     isTagSelected(tag: string) {
-        return Boolean(this.advert.tags.find(t => t.tag.name === tag));
+        return Boolean(this.advert.tags.find((t: any) => t.tag.name === tag));
     }
 
     selectTag(tag: string) {
-        const idx = this.advert.tags.findIndex(t => t.tag.name === tag);
+        const idx = this.advert.tags.findIndex((t: any) => t.tag.name === tag);
         if (idx > -1) {
             this.advert.tags.splice(idx, 1);
         } else {

@@ -1,6 +1,4 @@
 class AdvertRecruiterController {
-    $onInit() {
-    }
 }
 
 export const AdvertRecruiter = {

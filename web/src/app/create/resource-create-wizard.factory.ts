@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
-import {Subject} from '@reactivex/rxjs';
+import {Subject, Subscription} from 'rxjs';
 
 /** @ngInject */
 export class ResourceCreateWizardFactory {
@@ -111,7 +111,7 @@ export class ResourceCreateWizardFactory {
                 return lastNotCompleteStep;
             }
 
-            stepSubscribe(observer: any) {
+            stepSubscribe(observer: any): Subscription {
                 return this._stepSubject.subscribe(observer);
             }
 

@@ -1,9 +1,10 @@
+import {Subscription} from 'rxjs';
 import * as angular from 'angular';
 
 class SidebarController {
     _onUserSessionChange: any;
     hideSidebar: boolean;
-    userSessionSubscription: any;
+    userSessionSubscription: Subscription;
 
     /** @ngInject */
     constructor(private $state: any, private $mdSidenav: any, private authService: any, private userSessionService: any) {
@@ -18,7 +19,7 @@ class SidebarController {
     }
 
     $onDestroy() {
-        this.userSessionSubscription.dispose();
+        this.userSessionSubscription.unsubscribe();
     }
 
     close() {

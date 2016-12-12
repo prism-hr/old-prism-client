@@ -9,7 +9,7 @@ export const browserTitleHook = function ($rootScope: any, $state: StateService,
 
         function getBreadcrumb(pathNode: PathNode) {
             const titleResolvable = pathNode.resolvables
-                .find(r => r.token === '$title');
+                .find((r: any) => r.token === '$title');
 
             if (titleResolvable) {
                 return {
