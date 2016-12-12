@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+
 class AdvertTypeController {
     private patternValues: any;
     private advert: any;
@@ -18,10 +19,11 @@ class AdvertTypeController {
         this.patternValues = this.definitions.positionWorkPattern;
         this.advert.positionContract = this.advert.positionContract || 'PERMANENT';
         this.advert.positionWorkPatterns = this.advert.positionWorkPatterns || [{positionWorkPattern: 'FULL_TIME'}];
+        this.advert.timestampPublicationStart = this.advert.timestampPublicationStart || moment().utc().startOf('day').toISOString();
 
         this.showPublicationClose = Boolean(this.advert.timestampPublicationClose);
 
-        this.timestampPublicationStart = this.advert.timestampPublicationStart ? new Date(this.advert.timestampPublicationStart) : new Date();
+        this.timestampPublicationStart = this.advert.timestampPublicationStart && new Date(this.advert.timestampPublicationStart);
         this.timestampPublicationClose = this.advert.timestampPublicationClose && new Date(this.advert.timestampPublicationClose);
 
         this.minPublicationStart = new Date();
@@ -34,12 +36,12 @@ class AdvertTypeController {
     }
 
     publicationStartChanged() {
-        this.advert.timestampPublicationStart = this.timestampPublicationStart.toISOString();
+        this.advert.timestampPublicationStart = moment(this.timestampPublicationStart).utc().startOf('day').toISOString();
         this.refreshPublicationCloseConstraints();
     }
 
     publicationCloseChanged() {
-        this.advert.timestampPublicationClose = this.timestampPublicationClose ? this.timestampPublicationClose.toISOString() : null;
+        this.advert.timestampPublicationClose = this.timestampPublicationClose ? moment(this.timestampPublicationClose).utc().startOf('day').toISOString() : null;
     }
 
     showPublicationCloseChanged(show: boolean) {
