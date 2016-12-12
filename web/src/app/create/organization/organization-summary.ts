@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import {Observable} from '@reactivex/rxjs';
 import {WelcomeService} from '../../welcome/welcome.service';
 
 class OrganizationSummaryController {
@@ -18,7 +17,7 @@ class OrganizationSummaryController {
     private observer: any;
 
     /** @ngInject */
-    constructor(private $q: ng.IQService, private $state: any, private rx: any, private Restangular: Restangular.IService, private cloudinary: any, private welcomeService: WelcomeService) {
+    constructor(private $q: ng.IQService, private $state: any, private Restangular: Restangular.IService, private cloudinary: any, private welcomeService: WelcomeService) {
     }
 
     $onInit() {

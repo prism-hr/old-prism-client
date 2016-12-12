@@ -38,7 +38,7 @@ export const UserManagerFactory = function ($q: ng.IQService, Restangular: Resta
 
     function generateUserPostData(user: any) {
         const userPost: any = _.omit(user, ['accessCode', 'state', 'stateComplete', 'userRoles', 'email', 'organization', 'oauthProvider', 'tagsSuggested']);
-        userPost.userQualifications.forEach(uq => {
+        userPost.userQualifications.forEach((uq: any) => {
             uq.organizationImplementationQualification = _.omit(uq.organizationImplementationQualification, ['grades', 'tagsSuggested']);
             const q = uq.organizationImplementationQualification;
             q.organizationImplementation = _.pick(q.organizationImplementation, ['accessCode', 'name', 'organization']);

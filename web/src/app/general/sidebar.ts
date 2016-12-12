@@ -6,7 +6,7 @@ class SidebarController {
     userSessionSubscription: any;
 
     /** @ngInject */
-    constructor(private rx: any, private $state: any, private $mdSidenav: any, private authService: any, private userSessionService: any) {
+    constructor(private $state: any, private $mdSidenav: any, private authService: any, private userSessionService: any) {
         this._onUserSessionChange = function (userSession: any) {
             this.session = userSession;
         };
