@@ -13,7 +13,8 @@ module.exports = function (config) {
             'PhantomJS'
         ],
         frameworks: [
-            'jasmine'
+            'jasmine',
+            'es6-shim'
         ],
         files: [
             'node_modules/es6-shim/es6-shim.js',
@@ -47,7 +48,8 @@ module.exports = function (config) {
             require('karma-phantomjs-launcher'),
             require('karma-phantomjs-shim'),
             require('karma-ng-html2js-preprocessor'),
-            require('karma-webpack')
+            require('karma-webpack'),
+            require('karma-es6-shim')
         ]
     };
 

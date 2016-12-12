@@ -18,9 +18,9 @@ module.exports = {
                 ]
             },
             {
-                test: /.js$/,
+                test: /.ts$/,
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
+                loader: 'tslint-loader',
                 enforce: 'pre'
             },
             {
@@ -31,11 +31,11 @@ module.exports = {
                 })
             },
             {
-                test: /\.js$/,
+                test: /\.ts$/,
                 exclude: /node_modules/,
                 loaders: [
                     'ng-annotate-loader',
-                    'babel-loader'
+                    'ts-loader'
                 ]
             },
             {
@@ -67,13 +67,28 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
         new webpack.LoaderOptionsPlugin({
             options: {
-                postcss: () => [autoprefixer]
+                postcss: () => [autoprefixer],
+                resolve: {},
+                ts: {
+                    configFileName: 'tsconfig.json'
+                },
+                tslint: {
+                    configuration: require('../tslint.json')
+                }
             }
         })
     ],
     output: {
         path: path.join(process.cwd(), conf.paths.dist),
         filename: '[name]-[hash].js'
+    },
+    resolve: {
+        extensions: [
+            '.webpack.js',
+            '.web.js',
+            '.js',
+            '.ts'
+        ]
     },
     entry: {
         app: `./${conf.path.src('index')}`,
