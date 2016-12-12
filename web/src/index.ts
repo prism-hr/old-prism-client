@@ -22,6 +22,7 @@ import 'angular-recaptcha';
 import 'satellizer';
 import 'textangular/dist/textAngular-sanitize.min';
 import 'angular-cloudinary';
+import 'rx-angular';
 import routes from './routes';
 import {
     translateConfig,
@@ -123,7 +124,8 @@ angular
         'textAngular',
         'pascalprecht.translate',
         'uiGmapgoogle-maps',
-        'angular-cloudinary'
+        'angular-cloudinary',
+        'rx'
     ])
     .constant('environment', configuration[ENVIRONMENT])
     .config(routes)

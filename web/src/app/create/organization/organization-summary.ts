@@ -14,10 +14,9 @@ class OrganizationSummaryController {
     private wizardType: string;
     private requestAccess: boolean;
     private showRequestAccess: boolean;
-    private observer: any;
 
     /** @ngInject */
-    constructor(private $q: ng.IQService, private $state: any, private Restangular: Restangular.IService, private cloudinary: any, private welcomeService: WelcomeService) {
+    constructor(private $q: ng.IQService, private $state: any, private Restangular: Restangular.IService, private rx: any, private cloudinary: any, private welcomeService: WelcomeService) {
     }
 
     $onInit() {
@@ -36,28 +35,26 @@ class OrganizationSummaryController {
         }
         this.wizard.registerCustomNextHandler(this._onNext.bind(this));
 
-        // Observable.create((observer: any) => {
-        //     this.observer = observer;
-        // })
-        //     .debounce(250)
-        //     .distinctUntilChanged(args => args[0])
-        //     .flatMapLatest(args => {
-        //         this.form.$setValidity('organizationNameCheck', false, null);
-        //         return this.Restangular.all('organizationImplementations').getList({
-        //             context: this.wizardType,
-        //             searchTerm: args[0]
-        //         })
-        //             .then((organizations: Restangular.ICollection) => {
-        //                 this.form.$setValidity('organizationNameCheck', true, null);
-        //                 return [args[0], args[1], organizations.plain()];
-        //             });
-        //     })
-        //     .subscribe(args => {
-        //         const name = args[0];
-        //         const organization = args[2].find(o => o.name === name);
-        //         const nameTaken = !organization || organization.accessCode === this.organization.accessCode;
-        //         this.form[args[1]].$setValidity('nameTaken', nameTaken);
-        //     });
+        this.rx.createObservableFunction(this, 'organizationNameChanged')
+            .debounce(250)
+            .distinctUntilChanged(args => args[0])
+            .flatMapLatest(args => {
+                this.wizard.form.$setValidity('organizationNameCheck', false, null);
+                return this.Restangular.all('organizationImplementations').getList({
+                    context: this.wizardType,
+                    searchTerm: args[0]
+                })
+                    .then((organizations: Restangular.ICollection) => {
+                        this.wizard.form.$setValidity('organizationNameCheck', true, null);
+                        return [args[0], args[1], organizations.plain()];
+                    });
+            })
+            .subscribe(args => {
+                const name = args[0];
+                const organization = args[2].find(o => o.name === name);
+                const nameTaken = !organization || organization.accessCode === this.organization.accessCode;
+                this.wizard.form[args[1]].$setValidity('nameTaken', nameTaken);
+            });
     }
 
     $onDestroy() {
@@ -80,10 +77,6 @@ class OrganizationSummaryController {
             }
             return 'handled';
         }
-    }
-
-    organizationNameChanged(name: string) {
-        this.observer.next(name);
     }
 
     organizationChanged(complete: boolean) {
