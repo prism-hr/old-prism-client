@@ -13,7 +13,9 @@
       "node",
       "jasmine",
       "es6-shim",
-      "restangular"
+      "restangular",
+      "angular-material",
+      "ng-file-upload"
     ]
   },
   "compileOnSave": false,

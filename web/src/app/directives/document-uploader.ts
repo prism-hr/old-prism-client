@@ -1,17 +1,27 @@
 import {IEnvironmentConfiguration} from '../../env';
 
-export class LogoUploader implements ng.IDirective {
-    template = require('./logo-uploader.html');
+export class DocumentUploader implements ng.IDirective {
+    template = `
+        <div ng-model="chosenFile"
+             ngf-pattern="'application/pdf'"
+             ngf-accept="'application/pdf'"
+             ngf-max-size="5MB"
+             ngf-change="fileChanged($file)"
+             ngf-select
+             ngf-drop
+             layout="row" layout-align="center center">
+            <span class="drop-box">Upload</span>
+        </div>
+        <a ng-if="publicId" href="http://res.cloudinary.com/bitfoot/image/upload/{{publicId}}" target="_blank">
+            Uploaded: {{publicId}}
+        </a>
+    `;
     require = ['ngModel', '?^form'];
     restrict = 'E';
-    scope = {
-        readOnly: '@',
-        dropArea: '@'
-    };
 
     static factory(): ng.IDirectiveFactory {
         const directive: ng.IDirectiveFactory =
-            (cloudinary: any, environment: IEnvironmentConfiguration) => new LogoUploader(cloudinary, environment);
+            (cloudinary: any, environment: IEnvironmentConfiguration) => new DocumentUploader(cloudinary, environment);
         directive.$inject = ['cloudinary', 'environment'];
         return directive;
     }

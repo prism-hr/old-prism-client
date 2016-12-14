@@ -1,3 +1,4 @@
+import {IEnvironmentConfiguration} from '../../../env';
 class AudienceSummaryController {
     private facebookAppId: string;
     private generalShareTags: string;
@@ -6,9 +7,7 @@ class AudienceSummaryController {
     private generalShareTitle: string;
     private generalShareText: string;
 
-    constructor(private definitions: any, private environment: any) {
-        this.environment = environment;
-        this.definitions = definitions;
+    constructor(private environment: IEnvironmentConfiguration) {
         this.facebookAppId = environment.oauth.facebook;
     }
 

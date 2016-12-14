@@ -20,12 +20,12 @@
     </md-input-container>
     <md-input-container class="md-block industries-holder" layout="row">
         <label class="md-no-float">Personal Interests</label>
-        <md-chips ng-model="$ctrl.student.tags"
-                  md-transform-chip="$ctrl.transformTag($chip)">
+        <md-chips ng-model="$ctrl.student.interests"
+                  md-transform-chip="$ctrl.transformInterest($chip)">
             <md-autocomplete
                     md-search-text="searchText"
                     md-autoselect="true"
-                    md-items="item in $ctrl.lookupTags(searchText)"
+                    md-items="item in $ctrl.lookupInterests(searchText)"
                     md-item-text="item.name"
                     placeholder="Find a tag or add a new one">
                 <span md-highlight-text="searchText">{{item.name}}</span>
@@ -37,11 +37,6 @@
     </md-input-container>
     <label class="standalone-label">Upload your CV <small>(PDF only)</small></label>
     <div class="documents" layout="row" layout-align="start center">
-        <md-button name="fileSupport" ngf-accept="'application/pdf'" ngf-select="upload($file)" class="md-warn md-raised small">
-            Upload Cv
-        </md-button>
-        <md-chips>
-            <md-chip>Your Cv.pdf</md-chip>
-        </md-chips>
+        <document-uploader ng-model="$ctrl.student.documentResume"></document-uploader>
     </div>
 </div>

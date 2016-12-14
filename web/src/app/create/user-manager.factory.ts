@@ -44,6 +44,9 @@ export const UserManagerFactory = function ($q: ng.IQService, Restangular: Resta
             q.organizationImplementation = _.pick(q.organizationImplementation, ['accessCode', 'name', 'organization']);
             q.organizationImplementation.organization = _.pick(q.organizationImplementation.organization, ['accessCode', 'name']);
         });
+        userPost.languages.forEach((l: any) => {
+            l.language = _.pick(l.language, ['accessCode']);
+        });
         return userPost;
     }
 };

@@ -10,7 +10,6 @@ class OrganizationSummaryController {
     private showSummary: boolean;
     private editableName: string;
     private showDepartment: boolean;
-    private form: ng.IFormController;
     private wizardType: string;
     private requestAccess: boolean;
     private showRequestAccess: boolean;
