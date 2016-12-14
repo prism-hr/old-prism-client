@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as angular from 'angular';
 
 class StudentSkillsController {
-    private separatorKeys: any;
+    private separatorKeys: Array<string>;
 
     /** @ngInject */
     constructor(private Restangular: Restangular.IService, private $mdConstant: any) {
@@ -19,6 +19,18 @@ class StudentSkillsController {
             return {tag: _.pick(chip, ['id', 'name'])};
         }
         return {tag: {name: chip}};
+    }
+
+    lookupInterests(text: string) {
+        return this.Restangular.all('interests').getList({searchTerm: text})
+            .then((tags: Restangular.ICollection) => tags.plain());
+    }
+
+    transformInterest(chip: any) {
+        if (angular.isObject(chip)) {
+            return {interest: _.pick(chip, ['id', 'name'])};
+        }
+        return {interest: {name: chip}};
     }
 }
 

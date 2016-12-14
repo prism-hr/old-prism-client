@@ -1,3 +1,4 @@
+import {IEnvironmentConfiguration} from '../../env';
 export class BackgroundUploader implements ng.IDirective {
     template = require('./background-uploader.html');
     require = 'ngModel';
@@ -8,12 +9,12 @@ export class BackgroundUploader implements ng.IDirective {
 
     static factory(): ng.IDirectiveFactory {
         const directive: ng.IDirectiveFactory =
-            (cloudinary: any, environment: any) => new BackgroundUploader(cloudinary, environment);
+            (cloudinary: any, environment: IEnvironmentConfiguration) => new BackgroundUploader(cloudinary, environment);
         directive.$inject = ['cloudinary', 'environment'];
         return directive;
     }
 
-    constructor(private cloudinary: any, private environment: any) {
+    constructor(private cloudinary: any, private environment: IEnvironmentConfiguration) {
     }
 
     link(scope: any, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ngModel: ng.INgModelController) {
@@ -32,7 +33,7 @@ export class BackgroundUploader implements ng.IDirective {
                 }, (response: any) => {
                     scope.progressPercentage = null;
                     scope.error = response.status;
-                }, (event: any) => {
+                }, (event: ng.angularFileUpload.IFileProgressEvent) => {
                     scope.progressPercentage = Math.round(100.0 * event.loaded / event.total);
                 });
         };

@@ -7,7 +7,7 @@ export class PlaceAutocomplete {
     require = 'ngModel';
     restrict = 'E';
     scope = {
-        types: '<',
+        type: '@',
         placeholder: '@'
     };
 
@@ -56,9 +56,16 @@ export class PlaceAutocomplete {
                 return;
             }
             const deferred = self.$q.defer();
-            autocomplete.getPlacePredictions({input, types: ['(regions)']}, (places: any) => {
-                deferred.resolve(places || {});
-            });
+            if (scope.type === 'country') {
+                autocomplete.getPlacePredictions({input, types: ['(regions)']}, (places: Array<any>) => {
+                    places = places.filter(p => p.types.includes('country'));
+                    deferred.resolve(places);
+                });
+            } else {
+                autocomplete.getPlacePredictions({input, types: ['(cities)']}, (places: Array<any>) => {
+                    deferred.resolve(places);
+                });
+            }
             return deferred.promise;
         };
 
@@ -79,6 +86,7 @@ export class PlaceAutocomplete {
             place.domicile = domicile;
             place.latitude = geolocation.lat();
             place.longitude = geolocation.lng();
+            place.category = scope.type === 'country' ? 'COUNTRY' : 'CITY';
         }
     }
 }

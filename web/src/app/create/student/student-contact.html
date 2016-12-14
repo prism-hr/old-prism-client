@@ -1,7 +1,8 @@
 <div layout-padding>
     <h3>Contact Information</h3>
     <label class="standalone-label">Preferred work location</label>
-    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.preferLocation" class="horizontal-form medium">
+    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.locationType"
+                    ng-change="$ctrl.locationTypeChanged($ctrl.locationType)" class="horizontal-form medium">
         <div class="radio-box-aligned">
             <md-radio-button ng-value="'ANY'" class="md-primary">
                 Any
@@ -9,15 +10,15 @@
             <md-radio-button ng-value="'COUNTRY'" class="md-primary">
                 Countries
             </md-radio-button>
-            <md-radio-button ng-value="'CITIES'" class="md-primary">
+            <md-radio-button ng-value="'CITY'" class="md-primary">
                 Cities
             </md-radio-button>
         </div>
     </md-radio-group>
-    <div class="locations country" layout="row" ng-if="$ctrl.preferLocation === 'COUNTRY'">
+    <div class="locations country" layout="row" ng-if="$ctrl.locationType === 'COUNTRY'">
         <md-input-container class="md-block" flex>
             <label class="md-no-float">Countries</label>
-            <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
+            <place-autocomplete ng-model="$ctrl.student.locations" name="locations" type="country"
                                 placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
                                 required>
             </place-autocomplete>
@@ -26,7 +27,7 @@
             </div>
         </md-input-container>
     </div>
-    <div class="locations cities" layout="row" ng-if="$ctrl.preferLocation === 'CITIES'">
+    <div class="locations cities" layout="row" ng-if="$ctrl.locationType === 'CITY'">
         <md-input-container class="md-block" flex="">
             <label class="md-no-float">Cities</label>
             <place-autocomplete ng-model="$ctrl.student.locations" name="locations"

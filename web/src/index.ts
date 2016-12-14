@@ -47,9 +47,10 @@ import {ResourceCreateWizardFactory} from './app/create/resource-create-wizard.f
 import {resourceCreateWizardStepHook} from './app/create/resource-create-wizard-step.hook';
 import {ApplicationLoader} from './app/directives/application-loader';
 import {NgCroppie} from './app/directives/ng-croppie';
-import {BackgroundUploader} from './app/directives/background-uploader';
 import {HttpPrefix} from './app/directives/http-prefix';
+import {BackgroundUploader} from './app/directives/background-uploader';
 import {LogoUploader} from './app/directives/logo-uploader';
+import {DocumentUploader} from './app/directives/document-uploader';
 import {PlaceAutocomplete} from './app/directives/place-autocomplete';
 import {Dialog} from './app/general/dialog/dialog';
 import {browserTitleHook} from './app/general/browser-title.hook';
@@ -151,9 +152,10 @@ angular
     .run(templateCacheConfig)
     .directive('applicationLoader', ApplicationLoader.factory())
     .directive('ngCroppie', NgCroppie.factory())
-    .directive('backgroundUploader', BackgroundUploader.factory())
     .directive('httpPrefix', HttpPrefix.factory())
+    .directive('backgroundUploader', BackgroundUploader.factory())
     .directive('logoUploader', LogoUploader.factory())
+    .directive('documentUploader', DocumentUploader.factory())
     .directive('placeAutocomplete', PlaceAutocomplete.factory())
     .component('prismDialog', Dialog)
     .component('welcome', Welcome)

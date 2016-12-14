@@ -21,16 +21,21 @@ class OrganizationQualificationDetailsController {
 
     getQualifications(searchText: string) {
         const organizationAccessCode = this.qualification.organizationImplementation.accessCode;
-        return this.Restangular.one('organizationImplementations', organizationAccessCode)
-            .all('qualifications').getList({searchTerm: searchText})
-            .then((qualifications: Restangular.ICollection) => {
-                qualifications = qualifications.plain();
-                const nameTaken = _.find(qualifications, {name: searchText});
-                if (searchText.length >= 2 && !nameTaken) {
-                    qualifications.unshift({name: searchText});
-                }
-                return qualifications;
-            });
+        if (organizationAccessCode) {
+            return this.Restangular.one('organizationImplementations', organizationAccessCode)
+                .all('qualifications').getList({searchTerm: searchText})
+                .then((qualifications: Restangular.ICollection) => {
+                    qualifications = qualifications.plain();
+                    const nameTaken = _.find(qualifications, {name: searchText});
+                    if (searchText.length >= 2 && !nameTaken) {
+                        qualifications.unshift({name: searchText});
+                    }
+                    return qualifications;
+                });
+        }
+        if (searchText.length >= 2) {
+            return [{name: searchText}];
+        }
     }
 }
 

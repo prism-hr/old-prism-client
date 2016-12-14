@@ -1,3 +1,4 @@
+import {IEnvironmentConfiguration} from '../../env';
 /** @ngInject */
 export const generalRun = function ($rootScope: any, $transitions: any, $state: any, Restangular: Restangular.IService, authService: any) {
     $transitions.onError(null, () => {
@@ -22,7 +23,7 @@ export const restangularConfig = function (RestangularProvider: Restangular.IPro
 };
 
 /** @ngInject */
-export const satellizerConfig = function ($authProvider: any, SatellizerConfig: any, environment: any) {
+export const satellizerConfig = function ($authProvider: any, SatellizerConfig: any, environment: IEnvironmentConfiguration) {
     $authProvider.linkedin({
         clientId: environment.oauth.linkedin,
         url: 'prism/api/public/authenticate/linkedin',
@@ -53,7 +54,7 @@ export const cloudinaryConfig = function (cloudinaryProvider: any) {
     const uploadPreset = 'upload_preset';
     const config = {
         [uploadEndpoint]: 'https://api.cloudinary.com/v1_1/',
-        [cloudName]: 'bigfoot',
+        [cloudName]: 'bitfoot',
         [uploadPreset]: 'unsigned'
     };
     cloudinaryProvider.config(config);
