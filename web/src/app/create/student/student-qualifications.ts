@@ -1,23 +1,25 @@
 import {StateService} from 'angular-ui-router';
+import UserRepresentation = bigfoot.UserRepresentation;
+import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
 class StudentQualificationsController {
-    private student: any;
+    private student: UserRepresentation;
     /** @ngInject */
     constructor(private $state: StateService) {
     }
 
-    getQualificationHref(qualification: any) {
+    getQualificationHref(qualification: UserQualificationRepresentation) {
         return this.$state.href(this.$state.current.name + '.edit', {qualificationAccessCode: qualification ? qualification.accessCode : 'new'});
     }
 
-    makeCurrent(qualification: any) {
+    makeCurrent(qualification: UserQualificationRepresentation) {
         this.student.userQualifications.forEach((q: any) => {
             q.current = false;
         });
         qualification.current = true;
     }
 
-    deleteQualification(qualification: any) {
+    deleteQualification(qualification: UserQualificationRepresentation) {
         const idx = this.student.userQualifications.indexOf(qualification);
         this.student.userQualifications.splice(idx, 1);
     }

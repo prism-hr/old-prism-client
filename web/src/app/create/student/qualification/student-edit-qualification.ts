@@ -1,9 +1,11 @@
 import * as moment from 'moment';
 import {StateService} from 'angular-ui-router';
+import {IStudentEditQualificationService} from './student-edit-qualification-service';
+import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
 class StudentEditQualificationController {
-    private qualificationService: any;
-    private qualification: any;
+    private qualificationService: IStudentEditQualificationService;
+    private qualification: UserQualificationRepresentation;
     private dateStart: Date;
     private dateAward: Date;
     private showSummary: boolean;

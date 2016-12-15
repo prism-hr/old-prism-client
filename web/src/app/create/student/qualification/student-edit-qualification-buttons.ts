@@ -1,5 +1,7 @@
+import {IStudentEditQualificationService} from './student-edit-qualification-service';
+
 class StudentEditQualificationButtonsController {
-    private qualificationService: any;
+    private qualificationService: IStudentEditQualificationService;
 
     saveQualification() {
         this.qualificationService.saveQualification();
