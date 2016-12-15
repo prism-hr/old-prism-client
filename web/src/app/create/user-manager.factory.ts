@@ -1,9 +1,12 @@
 import * as _ from 'lodash';
+import UserRepresentation = bigfoot.UserRepresentation;
+import {AuthService} from '../unauthenticated/auth.service';
+import {IResourceManager} from './resource-manager.factory';
 
 /** @ngInject */
-export const UserManagerFactory = function ($q: ng.IQService, Restangular: Restangular.IService, authService: any) {
-    class UserManager {
-        constructor(private _user: any) {
+export const UserManagerFactory = function ($q: ng.IQService, Restangular: Restangular.IService, authService: AuthService) {
+    class UserManager implements IResourceManager {
+        constructor(private _user: UserRepresentation) {
         }
 
         getResource() {
@@ -36,7 +39,7 @@ export const UserManagerFactory = function ($q: ng.IQService, Restangular: Resta
         }
     };
 
-    function generateUserPostData(user: any) {
+    function generateUserPostData(user: UserRepresentation) {
         const userPost: any = _.omit(user, ['accessCode', 'state', 'stateComplete', 'userRoles', 'email', 'organization', 'oauthProvider', 'tagsSuggested']);
         userPost.userQualifications.forEach((uq: any) => {
             uq.organizationImplementationQualification = _.omit(uq.organizationImplementationQualification, ['grades', 'tagsSuggested']);
@@ -46,6 +49,12 @@ export const UserManagerFactory = function ($q: ng.IQService, Restangular: Resta
         });
         userPost.languages.forEach((l: any) => {
             l.language = _.pick(l.language, ['accessCode']);
+        });
+        userPost.tags.forEach((t: any) => {
+            t.tag = _.pick(t.tag, ['accessCode', 'name']);
+        });
+        userPost.interests.forEach((i: any) => {
+            i.interest = _.pick(i.interest, ['accessCode', 'name']);
         });
         return userPost;
     }

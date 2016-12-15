@@ -1,10 +1,13 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
 import {Subject, Subscription} from 'rxjs';
+import {WelcomeService} from '../welcome/welcome.service';
+import {IResourceManager} from './resource-manager.factory';
+import TaggableRepresentation = bigfoot.TaggableRepresentation;
 
 /** @ngInject */
 export class ResourceCreateWizardFactory {
-    steps: any;
+    steps: WizardStepsDefinition;
 
     constructor() {
         const organizationSteps = [
@@ -41,14 +44,14 @@ export class ResourceCreateWizardFactory {
     }
 
     /** @ngInject */
-    $get($state: any, welcomeService: any) {
+    $get($state: any, $mdToast: ng.material.IToastService, welcomeService: WelcomeService) {
         class ResourceCreateWizard {
             _stepSubject: Subject<any>;
             _currentStep: string;
             form: ng.IFormController;
             customNextHandler: any;
 
-            constructor(private _resourceManager: any, private _welcomeType: string, private _wizardType: string, private _steps: any) {
+            constructor(private _resourceManager: IResourceManager, private _welcomeType: string, private _wizardType: string, private _steps: any) {
                 this._stepSubject = new Subject();
             }
 
@@ -73,7 +76,7 @@ export class ResourceCreateWizardFactory {
              */
             getWizardComplete() {
                 const resource = this.getResource();
-                const stateComplete = resource.stateComplete = resource.stateComplete || {};
+                const stateComplete = (resource as any).stateComplete = (resource as any).stateComplete || {};
                 stateComplete[this._wizardType] = stateComplete[this._wizardType] || {state: 'DRAFT', steps: {}};
                 return stateComplete[this._wizardType];
             }
@@ -166,7 +169,7 @@ export class ResourceCreateWizardFactory {
                     wizardComplete.state = 'COMPLETE';
                 }
                 if (_.get(nextStep, 'data.hasTags')) {
-                    resource.addSuggestedTags = true;
+                    (resource as TaggableRepresentation).addSuggestedTags = true;
                 }
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
@@ -185,6 +188,24 @@ export class ResourceCreateWizardFactory {
             }
 
             save() {
+                if (!this.form.$valid) {
+                    return;
+                }
+
+                this.form.$setPristine();
+
+                return this._resourceManager.saveResource()
+                    .then(savedResource => {
+                        welcomeService.updateWizardCompleteness(savedResource, this._wizardType, this._welcomeType);
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('Saved!')
+                                .hideDelay(3000)
+                        );
+                    });
+            }
+
+            saveAndExit() {
                 if (!this.form.$valid) {
                     return;
                 }
@@ -244,7 +265,7 @@ export class ResourceCreateWizardFactory {
             getDisplayData() {
                 const step: any = _.find(this._steps, {id: this._currentStep});
                 const resource = this.getResource();
-                const state = resource.stateComplete[this._wizardType].state;
+                const state = (resource as any).stateComplete[this._wizardType].state;
                 const stepIdx = step.index;
                 const nextStep = this.getNextStep();
                 const prevStep = this.getPrevStep();
@@ -260,9 +281,21 @@ export class ResourceCreateWizardFactory {
         }
 
         return {
-            getWizard: (resourceManager, welcomeType, wizardType) => {
+            getWizard: (resourceManager: IResourceManager, welcomeType: string, wizardType: string) => {
                 return new ResourceCreateWizard(resourceManager, welcomeType, wizardType, angular.copy(this.getStepDefinitions()[wizardType]));
             }
         };
     }
+}
+
+export interface WizardStepsDefinition {
+    [index: string]: Array<WizardStepDefinition>;
+}
+
+export interface WizardStepDefinition {
+    id: string;
+    component: string;
+    title: string;
+    index?: number;
+    data?: any;
 }

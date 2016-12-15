@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
 import {StateProvider, UrlRouterProvider} from 'angular-ui-router';
+import UserRepresentation = bigfoot.UserRepresentation;
 
 export default routesConfig;
 
@@ -278,7 +279,7 @@ function routesConfig($stateProvider: StateProvider,
                 '^.^.buttons': 'studentEditQualificationButtons'
             },
             resolve: {
-                qualificationService(studentEditQualificationService: any, resource: any, $stateParams: any) {
+                qualificationService(studentEditQualificationService: any, resource: UserRepresentation, $stateParams: any) {
                     const accessCode = $stateParams.qualificationAccessCode === 'new' ? null : $stateParams.qualificationAccessCode;
                     return studentEditQualificationService.create(resource, accessCode);
                 },

@@ -1,5 +1,7 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
+import EntityRepresentation = bigfoot.EntityRepresentation;
+import IPromise = angular.IPromise;
 
 /** @ngInject */
 export const ResourceManagerFactory = function ($q: ng.IQService, Restangular: Restangular.IService) {
@@ -10,7 +12,7 @@ export const ResourceManagerFactory = function ($q: ng.IQService, Restangular: R
         student: {apiCollection: 'students'}
     };
 
-    class ResourceManager {
+    class ResourceManager implements IResourceManager {
         constructor(private _type: string, private _resource: any) {
         }
 
@@ -58,7 +60,7 @@ export const ResourceManagerFactory = function ($q: ng.IQService, Restangular: R
          * @param type type of manager
          * @return {ResourceManager} created manager
          */
-        getManager(source: any, type: string) {
+            getManager(source: any, type: string) {
             if (angular.isObject(source)) {
                 return $q.when(new ResourceManager(type, source));
             }
@@ -98,3 +100,9 @@ export const ResourceManagerFactory = function ($q: ng.IQService, Restangular: R
         return resourcePost;
     }
 };
+
+export interface IResourceManager {
+    getResource(): EntityRepresentation;
+    saveResource(): IPromise<EntityRepresentation>;
+    commitResource(): IPromise<EntityRepresentation>;
+}

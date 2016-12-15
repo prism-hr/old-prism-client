@@ -30,6 +30,10 @@ class WizardHeaderController {
         this.wizard.save();
     }
 
+    saveAndExit() {
+        this.wizard.saveAndExit();
+    }
+
     prev() {
         this.wizard.prev();
     }
