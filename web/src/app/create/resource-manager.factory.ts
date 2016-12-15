@@ -85,7 +85,7 @@ export const ResourceManagerFactory = function ($q: ng.IQService, Restangular: R
     }
 
     function generateAdvertPostData(resource: any) {
-        const resourcePost: any = _.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'timestampLatestReferral', 'timestampLatestView', 'countActivity', 'countReferral', 'countView', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay', 'userUpdate', 'context', 'tagsSuggested']);
+        const resourcePost: any = angular.copy(_.omit(resource, ['state', 'userCreate', 'stateComplete', 'actions', 'organizationImplementations', 'timestampLatestReferral', 'timestampLatestView', 'countActivity', 'countReferral', 'countView', 'countResponse', 'timestampLatestResponse', 'timestampLatestActivity', 'organizationImplementationDisplay', 'userUpdate', 'context', 'tagsSuggested']));
         resourcePost.organizationImplementation = _.pick(resourcePost.organizationImplementation, ['accessCode']);
         if (resourcePost.positionBenefits) {
             resourcePost.positionBenefits.forEach(b => {
