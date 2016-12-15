@@ -4,7 +4,7 @@
     <md-radio-group name="type" ng-required="true" ng-model="$ctrl.locationType"
                     ng-change="$ctrl.locationTypeChanged($ctrl.locationType)" class="horizontal-form medium">
         <div class="radio-box-aligned">
-            <md-radio-button ng-value="'ANY'" class="md-primary">
+            <md-radio-button ng-value="'ANYWHERE'" class="md-primary">
                 Any
             </md-radio-button>
             <md-radio-button ng-value="'COUNTRY'" class="md-primary">
@@ -18,40 +18,54 @@
     <div class="locations country" layout="row" ng-if="$ctrl.locationType === 'COUNTRY'">
         <md-input-container class="md-block" flex>
             <label class="md-no-float">Countries</label>
-            <place-autocomplete ng-model="$ctrl.student.locations" name="locations" type="country"
-                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
-                                required>
-            </place-autocomplete>
+            <md-chips ng-model="$ctrl.student.locations"
+                      md-transform-chip="$ctrl.transformTag($chip)"
+                      md-separator-keys="$ctrl.separatorKeys">
+                <md-autocomplete
+                        md-search-text="searchText"
+                        md-autoselect="true"
+                        md-items="item in $ctrl.lookupCountries(searchText)"
+                        md-item-text="item.name"
+                        md-min-length="0"
+                        placeholder="Find a country">
+                    <span md-highlight-text="searchText">{{item.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    {{$chip.name}}
+                </md-chip-template>
+            </md-chips>
             <div ng-messages="$ctrl.form.locations.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
     </div>
-    <div class="locations cities" layout="row" ng-if="$ctrl.locationType === 'CITY'">
-        <md-input-container class="md-block" flex="">
-            <label class="md-no-float">Cities</label>
-            <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
-                                placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
-                                required>
-            </place-autocomplete>
-            <div ng-messages="$ctrl.form.locations.$error" role="alert">
-                <div ng-messages-include="general-messages"></div>
-            </div>
-        </md-input-container>
-    </div>
-    <div layout="row" class="traveling-block" ng-if="$ctrl.preferLocation === 'CITIES'">
-        <md-input-container class="md-block" flex="50">
-            <label class="md-no-float">Travelling Distance</label>
-            <md-select name="proximity" ng-model="$ctrl.student.proximity" required>
-                <md-option placeholder="Travelling Distance" ng-repeat="number in $ctrl.definitions.proximity"
-                           value="{{number}}">
-                    {{'definitions.proximity.' + number | translate}}
-                </md-option>
-            </md-select>
-            <div ng-messages="$ctrl.form.proximity.$error" role="alert">
-                <div ng-messages-include="general-messages"></div>
-            </div>
-        </md-input-container>
+    <div ng-if="$ctrl.locationType === 'CITY'">
+        <div class="locations cities" layout="row">
+            <md-input-container class="md-block" flex="">
+                <label class="md-no-float">Cities</label>
+                <place-autocomplete ng-model="$ctrl.student.locations" name="locations"
+                                    placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
+                                    required>
+                </place-autocomplete>
+                <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row" class="traveling-block">
+            <md-input-container class="md-block" flex="50">
+                <label class="md-no-float">Travelling Distance</label>
+                <md-select name="proximity" ng-model="$ctrl.student.proximity" required>
+                    <md-option placeholder="Travelling Distance" ng-repeat="number in $ctrl.definitions.proximity"
+                               value="{{number}}">
+                        {{'definitions.proximity.' + number | translate}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="$ctrl.form.proximity.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+        </div>
     </div>
     <div layout="row" layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>

@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as angular from 'angular';
 import UserRepresentation = bigfoot.UserRepresentation;
 import {AuthService} from '../unauthenticated/auth.service';
 import {IResourceManager} from './resource-manager.factory';
@@ -40,7 +41,7 @@ export const UserManagerFactory = function ($q: ng.IQService, Restangular: Resta
     };
 
     function generateUserPostData(user: UserRepresentation) {
-        const userPost: any = _.omit(user, ['accessCode', 'state', 'stateComplete', 'userRoles', 'email', 'organization', 'oauthProvider', 'tagsSuggested']);
+        const userPost: any = angular.copy(_.omit(user, ['accessCode', 'state', 'stateComplete', 'userRoles', 'email', 'organization', 'oauthProvider', 'tagsSuggested']));
         userPost.userQualifications.forEach((uq: any) => {
             uq.organizationImplementationQualification = _.omit(uq.organizationImplementationQualification, ['grades', 'tagsSuggested']);
             const q = uq.organizationImplementationQualification;

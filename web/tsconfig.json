@@ -5,9 +5,8 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "typeRoots": ["node_modules/@types/", "src/"],
+    "typeRoots": ["node_modules/@types/"],
     "types": [
-      "bigfoot",
       "angular",
       "angular-mocks",
       "jquery",

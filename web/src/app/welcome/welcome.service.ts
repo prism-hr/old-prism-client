@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 export class WelcomeService {
     static pickResourceFields(resource: any) {
-        return _.pick(resource, ['accessCode', 'name', 'state']);
+        return _.pick<WizardStatusResource, any>(resource, ['accessCode', 'name', 'state']);
     }
 
     /** @ngInject */
@@ -11,13 +11,13 @@ export class WelcomeService {
 
     updateWizardCompleteness(resource: any, wizardType: string, welcomeType: string, params?: any) {
         const wizardComplete = resource.stateComplete[wizardType];
-        const completeStatuses = this.authService.getUserData('welcome') || [];
+        const completeStatuses: Array<WizardStatus> = this.authService.getUserData('welcome') || [];
         const status = completeStatuses.find(s => s.resource.accessCode === resource.accessCode && s.wizardType === wizardType);
         if (status) {
             status.resource = WelcomeService.pickResourceFields(resource);
             status.wizardComplete = wizardComplete;
         } else if (welcomeType) {
-            const status = Object.assign({resource: WelcomeService.pickResourceFields(resource)}, {
+            const status: WizardStatus = Object.assign({resource: WelcomeService.pickResourceFields(resource)}, {
                 wizardType,
                 welcomeType,
                 wizardComplete
@@ -36,3 +36,22 @@ export class WelcomeService {
     }
 
 }
+
+export interface WizardComplete {
+    state?: 'COMPLETE';
+    steps: any;
+}
+
+export interface WizardStatus {
+    wizardType: string;
+    welcomeType: string;
+    resource: WizardStatusResource;
+    wizardComplete: WizardComplete;
+}
+
+interface WizardStatusResource {
+    accessCode: string;
+    name: string;
+    state: string;
+}
+

@@ -1,9 +1,11 @@
 import {AuthService} from '../../unauthenticated/auth.service';
+import {countries} from '../../../countries';
 
 class StudentContactController {
     private student: any;
     private preferLocation: string;
     private locationType: LocationType;
+    private countries = countries;
 
     /** @ngInject */
     constructor(private definitions: any, private authService: AuthService) {
@@ -15,7 +17,7 @@ class StudentContactController {
         }
         this.student.proximity = this.student.proximity || 'TO_200';
         this.student.email = this.student.email || this.authService.user.username;
-        this.preferLocation = this.preferLocation || 'ANY';
+        this.preferLocation = this.preferLocation || 'ANYWHERE';
         if (this.student.anywhere) {
             this.locationType = 'ANYWHERE';
         } else {
@@ -27,7 +29,13 @@ class StudentContactController {
         this.student.anywhere = locationType === 'ANYWHERE';
         this.student.country = !this.student.anywhere && locationType === 'COUNTRY';
         this.student.locations = [];
+        this.student.proximity = null;
     };
+
+    lookupCountries(searchText: string) {
+        searchText = searchText.toLowerCase();
+        return this.countries.filter(c => c.name.toLowerCase().startsWith(searchText));
+    }
 
     addLanguage(language: string) {
         const idx = this.student.languages.indexOf(language);
