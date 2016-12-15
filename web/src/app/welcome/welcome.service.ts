@@ -1,15 +1,15 @@
 import * as _ from 'lodash';
 
 export class WelcomeService {
-    /** @ngInject */
-    constructor(private authService: any) {
-    }
-
     static pickResourceFields(resource: any) {
         return _.pick(resource, ['accessCode', 'name', 'state']);
     }
 
-    updateWizardCompleteness(resource: any, wizardType: string, welcomeType: string, params: any) {
+    /** @ngInject */
+    constructor(private authService: any) {
+    }
+
+    updateWizardCompleteness(resource: any, wizardType: string, welcomeType: string, params?: any) {
         const wizardComplete = resource.stateComplete[wizardType];
         const completeStatuses = this.authService.getUserData('welcome') || [];
         const status = completeStatuses.find(s => s.resource.accessCode === resource.accessCode && s.wizardType === wizardType);

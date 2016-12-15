@@ -19,7 +19,7 @@
                ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid">
         Save
     </md-button>
-    <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.save()"
+    <md-button ng-if="!$ctrl.display.isDraft" ng-click="$ctrl.saveAndExit()"
                class="md-primary md-raised big"
                ng-disabled="$ctrl.loading || $ctrl.wizard.form.$invalid">
         Save and exit
