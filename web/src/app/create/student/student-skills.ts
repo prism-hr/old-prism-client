@@ -1,8 +1,10 @@
 import * as _ from 'lodash';
 import * as angular from 'angular';
+import UserRepresentation = bigfoot.UserRepresentation;
 
 class StudentSkillsController {
     private separatorKeys: Array<string>;
+    private student: UserRepresentation;
 
     /** @ngInject */
     constructor(private Restangular: Restangular.IService, private $mdConstant: any) {
@@ -10,7 +12,8 @@ class StudentSkillsController {
     }
 
     lookupTags(text: string) {
-        return this.Restangular.all('tags').getList({searchTerm: text})
+        const exclusions: Array<string> = this.student.tags.map(t => t.tag.name);
+        return this.Restangular.all('tags').getList({searchTerm: text, exclusions})
             .then((tags: Restangular.ICollection) => tags.plain());
     }
 
@@ -22,7 +25,8 @@ class StudentSkillsController {
     }
 
     lookupInterests(text: string) {
-        return this.Restangular.all('interests').getList({searchTerm: text})
+        const exclusions: Array<string> = this.student.interests.map(t => t.interest.name);
+        return this.Restangular.all('interests').getList({searchTerm: text, exclusions})
             .then((tags: Restangular.ICollection) => tags.plain());
     }
 

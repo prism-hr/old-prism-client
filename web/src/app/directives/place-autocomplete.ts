@@ -29,9 +29,9 @@ export class PlaceAutocomplete {
             throw new Error('Google Maps JS library does not have the Places module');
         }
         scope.placeholder = attrs.placeholder;
-        const autocomplete = new google.maps.places.AutocompleteService();
+        const autocomplete: google.maps.places.AutocompleteService = new google.maps.places.AutocompleteService();
         const map = new google.maps.Map(document.createElement('div'));
-        const placeService = new google.maps.places.PlacesService(map);
+        const placeService: google.maps.places.PlacesService = new google.maps.places.PlacesService(map);
 
         ngModel.$render = function () {
             scope.places = ngModel.$modelValue ? angular.copy(_.map(ngModel.$modelValue, 'location')) : [];
@@ -42,7 +42,7 @@ export class PlaceAutocomplete {
         };
 
         scope.placeAdded = function (place: any) {
-            placeService.getDetails({placeId: place.googleId}, (placeDetails: any) => {
+            placeService.getDetails({placeId: place.googleId}, placeDetails => {
                 scope.$apply(() => {
                     applyLocationFields(place, placeDetails);
                     const places = _.map(scope.places, (place: any) => ({location: place}));
@@ -57,21 +57,21 @@ export class PlaceAutocomplete {
             }
             const deferred = self.$q.defer();
             if (scope.type === 'country') {
-                autocomplete.getPlacePredictions({input, types: ['(regions)']}, (places: Array<any>) => {
-                    places = places.filter(p => p.types.includes('country'));
+                autocomplete.getPlacePredictions({input, types: ['(regions)']}, places => {
+                    places = places.filter(p => p.types.indexOf('country') > -1);
                     deferred.resolve(places);
                 });
             } else {
-                autocomplete.getPlacePredictions({input, types: ['(cities)']}, (places: Array<any>) => {
+                autocomplete.getPlacePredictions({input, types: ['(cities)']}, places => {
                     deferred.resolve(places);
                 });
             }
             return deferred.promise;
         };
 
-        function applyLocationFields(place: any, placeDetails: any) {
+        function applyLocationFields(place: any, placeDetails: google.maps.places.PlaceResult) {
             function getAddressPart(componentType: any, type: string) {
-                const component: any = _.find(placeDetails.address_components, (component: any) => _.includes(component.types, componentType));
+                const component: any = _.find(placeDetails.address_components, component => _.includes(component.types, componentType));
                 if (type === 'long') {
                     return component ? component.long_name : undefined;
                 }
