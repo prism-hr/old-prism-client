@@ -30,6 +30,7 @@ export class ResourceCreateWizardFactory {
                 {id: 'skills', component: 'studentSkills', title: 'Skills'},
                 {id: 'about', component: 'studentAbout', title: 'About you'}]
         };
+
         _.forEach(this.steps, subSteps => {
             _.forEach(subSteps, (step, index) => {
                 step.index = index;
@@ -44,7 +45,7 @@ export class ResourceCreateWizardFactory {
     }
 
     /** @ngInject */
-    $get($state: any, $mdToast: ng.material.IToastService, welcomeService: WelcomeService) {
+    $get($state: ng.ui.IStateService, $mdToast: ng.material.IToastService, welcomeService: WelcomeService) {
         class ResourceCreateWizard {
             _stepSubject: Subject<any>;
             _currentStep: string;
@@ -171,19 +172,15 @@ export class ResourceCreateWizardFactory {
                 if (_.get(nextStep, 'data.hasTags')) {
                     (resource as TaggableRepresentation).addSuggestedTags = true;
                 }
-                return this._resourceManager.saveResource()
+                return this.persist()
                     .then(savedResource => {
-                        const wizardStatus = welcomeService.updateWizardCompleteness(savedResource, this._wizardType, this._welcomeType);
                         if (!nextStep) {
                             return this._resourceManager.commitResource()
                                 .then(() => {
-                                    if (wizardStatus) {
-                                        return $state.go('welcome.' + wizardStatus.welcomeType);
-                                    }
-                                    return $state.go('activities');
+                                    this.redirectAway();
                                 });
                         }
-                        return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + nextStep.id, {id: savedResource.accessCode});
+                        return $state.go('manage.' + this._wizardType + '.' + nextStep.id, {id: savedResource.accessCode});
                     });
             }
 
@@ -194,9 +191,8 @@ export class ResourceCreateWizardFactory {
 
                 this.form.$setPristine();
 
-                return this._resourceManager.saveResource()
-                    .then(savedResource => {
-                        welcomeService.updateWizardCompleteness(savedResource, this._wizardType, this._welcomeType);
+                return this.persist()
+                    .then(() => {
                         $mdToast.show(
                             $mdToast.simple()
                                 .textContent('Saved!')
@@ -212,13 +208,9 @@ export class ResourceCreateWizardFactory {
 
                 this.form.$setPristine();
 
-                return this._resourceManager.saveResource()
-                    .then(savedResource => {
-                        const wizardStatus = welcomeService.updateWizardCompleteness(savedResource, this._wizardType, this._welcomeType);
-                        if (wizardStatus) {
-                            return $state.go('welcome.' + wizardStatus.welcomeType);
-                        }
-                        return $state.go('activities');
+                return this.persist()
+                    .then(() => {
+                        this.redirectAway();
                     });
             }
 
@@ -227,11 +219,10 @@ export class ResourceCreateWizardFactory {
 
                 const prevStep = this.getPrevStep();
                 if (prevStep) {
-                    return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + prevStep.id, {id: this.getResource().accessCode});
-                } else if (this._welcomeType) {
-                    return $state.go('welcome.' + this._welcomeType.toLowerCase());
+                    return $state.go('manage.' + this._wizardType + '.' + prevStep.id, {id: this.getResource().accessCode});
+                } else {
+                    this.redirectAway();
                 }
-                return $state.go('activities');
             }
 
             next() {
@@ -239,11 +230,10 @@ export class ResourceCreateWizardFactory {
 
                 const nextStep = this.getNextStep();
                 if (nextStep) {
-                    return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + nextStep.id, {id: this.getResource().accessCode});
-                } else if (this._welcomeType) {
-                    return $state.go('welcome.' + this._welcomeType.toLowerCase());
+                    return $state.go('manage.' + this._wizardType + '.' + nextStep.id, {id: this.getResource().accessCode});
+                } else {
+                    this.redirectAway();
                 }
-                return $state.go('activities');
             }
 
             skip() {
@@ -256,9 +246,17 @@ export class ResourceCreateWizardFactory {
                 clear(resource);
                 wizardComplete.steps[this._currentStep] = 'skipped';
 
+                return this.persist()
+                    .then(savedResource => {
+                        return $state.go('manage.' + this._wizardType + '.' + this.getNextStep().id, {id: savedResource.accessCode});
+                    });
+            }
+
+            persist() {
                 return this._resourceManager.saveResource()
                     .then(savedResource => {
-                        return $state.go('manage.' + this._wizardType.toLowerCase() + '.' + this.getNextStep().id, {id: savedResource.accessCode});
+                        welcomeService.updateWizardCompleteness(savedResource, this._wizardType, this._welcomeType);
+                        return savedResource;
                     });
             }
 
@@ -277,6 +275,13 @@ export class ResourceCreateWizardFactory {
 
             getSteps() {
                 return this._steps;
+            }
+
+            private redirectAway(): ng.IPromise<any> {
+                if (this._welcomeType) {
+                    return $state.go('welcome.' + this._welcomeType);
+                }
+                return $state.go('activities');
             }
         }
 

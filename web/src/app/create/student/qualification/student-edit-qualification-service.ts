@@ -1,17 +1,18 @@
 import * as _ from 'lodash';
 import * as angular from 'angular';
-import {StateService, TransitionPromise} from 'angular-ui-router';
 import UserRepresentation = bigfoot.UserRepresentation;
 import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
 /** @ngInject */
-export const StudentEditQualificationService = function ($state: StateService, $stateParams: any) {
+export const StudentEditQualificationService = function ($state: ng.ui.IStateService, $stateParams: any) {
     class QualificationService implements IStudentEditQualificationService {
         private _qualification: UserQualificationRepresentation;
+        private _resource: UserRepresentation;
 
-        constructor(private _resource: UserRepresentation, qualificationAccessCode: string) {
+        constructor(private _wizard: any, qualificationAccessCode: string) {
+            this._resource = this._wizard.getResource();
             const originalQualification = this._resource.userQualifications.find((q: any) => q.accessCode === qualificationAccessCode);
-            this._qualification = angular.copy(originalQualification) || <UserQualificationRepresentation>{};
+            this._qualification = angular.copy(originalQualification) || <UserQualificationRepresentation>{current: false};
         }
 
         getQualification() {
@@ -34,7 +35,10 @@ export const StudentEditQualificationService = function ($state: StateService, $
                         }
                     });
             }
-            return this.goBack();
+            return this._wizard.persist().then(savedResource => {
+                this._resource.userQualifications = savedResource.userQualifications; // keep access codes up-to-date
+                this.goBack();
+            });
         }
 
         cancelQualification() {
@@ -47,14 +51,14 @@ export const StudentEditQualificationService = function ($state: StateService, $
     }
 
     return {
-        create(resource: UserRepresentation, qualificationAccessCode: string) {
-            return new QualificationService(resource, qualificationAccessCode);
+        create(wizard: any, qualificationAccessCode: string) {
+            return new QualificationService(wizard, qualificationAccessCode);
         }
     };
 };
 
 export interface IStudentEditQualificationService {
     getQualification(): UserQualificationRepresentation;
-    saveQualification(): TransitionPromise;
-    cancelQualification(): TransitionPromise;
+    saveQualification(): ng.IPromise<any>;
+    cancelQualification(): ng.IPromise<any>;
 }

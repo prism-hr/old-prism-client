@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import {StateService} from 'angular-ui-router';
 import {IStudentEditQualificationService} from './student-edit-qualification-service';
 import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
@@ -13,7 +12,7 @@ class StudentEditQualificationController {
     private maxDateStart: Date;
 
     /** @ngInject */
-    constructor(private $state: StateService, private $stateParams: any, private definitions: any) {
+    constructor(private $state: ng.ui.IStateService, private $stateParams: any, private definitions: any) {
     }
 
     $onInit() {

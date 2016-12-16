@@ -59,7 +59,7 @@ export const OrganizationQualificationDetails = {
             <md-item-template>
                 <div layout="row">
                     <span md-highlight-text="searchText">
-                        {{qualification.accessCode ? qualification.name : 'Create ' + qualification.name}}
+                        {{qualification.tagsSuggested ? qualification.name : 'Create ' + qualification.name}}
                     </span>
                 </div>
             </md-item-template>

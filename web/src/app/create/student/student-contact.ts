@@ -1,9 +1,10 @@
 import {AuthService} from '../../unauthenticated/auth.service';
 import {countries} from '../../../countries';
+import UserRepresentation = bigfoot.UserRepresentation;
+import LanguageRelationRepresentation = bigfoot.LanguageRelationRepresentation;
 
 class StudentContactController {
-    private student: any;
-    private preferLocation: string;
+    private student: UserRepresentation;
     private locationType: LocationType;
     private countries = countries;
 
@@ -13,11 +14,9 @@ class StudentContactController {
 
     $onInit() {
         if (this.student.languages.length < 1) {
-            this.student.languages.push({language: undefined});
+            this.student.languages.push(<LanguageRelationRepresentation>{language: undefined});
         }
         this.student.proximity = this.student.proximity || 'TO_200';
-        this.student.email = this.student.email || this.authService.user.username;
-        this.preferLocation = this.preferLocation || 'ANYWHERE';
         if (this.student.anywhere) {
             this.locationType = 'ANYWHERE';
         } else {
@@ -37,12 +36,12 @@ class StudentContactController {
         return this.countries.filter(c => c.name.toLowerCase().startsWith(searchText));
     }
 
-    addLanguage(language: string) {
+    addLanguage(language: LanguageRelationRepresentation) {
         const idx = this.student.languages.indexOf(language);
-        this.student.languages.splice(idx + 1, 0, {language: undefined});
+        this.student.languages.splice(idx + 1, 0, <LanguageRelationRepresentation>{language: undefined});
     }
 
-    removeLanguage(language: string) {
+    removeLanguage(language: LanguageRelationRepresentation) {
         const idx = this.student.languages.indexOf(language);
         this.student.languages.splice(idx, 1);
     }

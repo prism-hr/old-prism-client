@@ -1,13 +1,12 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
-import {StateProvider, UrlRouterProvider} from 'angular-ui-router';
 import UserRepresentation = bigfoot.UserRepresentation;
 
 export default routesConfig;
 
 /** @ngInject */
-function routesConfig($stateProvider: StateProvider,
-                      $urlRouterProvider: UrlRouterProvider,
+function routesConfig($stateProvider: ng.ui.IStateProvider,
+                      $urlRouterProvider: ng.ui.IUrlRouterProvider,
                       $locationProvider: angular.ILocationProvider,
                       resourceCreateWizardFactoryProvider: any) {
     $locationProvider.html5Mode(true).hashPrefix('!');
@@ -246,7 +245,7 @@ function routesConfig($stateProvider: StateProvider,
                 .state('manage.' + resourceType.toLowerCase() + '.' + step.id, {
                     url: '/' + step.id,
                     views: {
-                        $default: {
+                        $default: <any>{
                             component: step.component,
                             bindings: {
                                 [resourceTypeLower]: 'resource'
@@ -279,9 +278,9 @@ function routesConfig($stateProvider: StateProvider,
                 '^.^.buttons': 'studentEditQualificationButtons'
             },
             resolve: {
-                qualificationService(studentEditQualificationService: any, resource: UserRepresentation, $stateParams: any) {
+                qualificationService(studentEditQualificationService: any, resource: UserRepresentation, wizard: any, $stateParams: any) {
                     const accessCode = $stateParams.qualificationAccessCode === 'new' ? null : $stateParams.qualificationAccessCode;
-                    return studentEditQualificationService.create(resource, accessCode);
+                    return studentEditQualificationService.create(wizard, accessCode);
                 },
                 $title: _.wrap('Qualification', _.identity)
             }

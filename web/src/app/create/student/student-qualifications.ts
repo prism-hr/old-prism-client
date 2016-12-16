@@ -1,11 +1,11 @@
-import {StateService} from 'angular-ui-router';
 import UserRepresentation = bigfoot.UserRepresentation;
 import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
 class StudentQualificationsController {
     private student: UserRepresentation;
+    private wizard: any;
     /** @ngInject */
-    constructor(private $state: StateService) {
+    constructor(private $state: ng.ui.IStateService) {
     }
 
     getQualificationHref(qualification: UserQualificationRepresentation) {
@@ -17,18 +17,20 @@ class StudentQualificationsController {
             q.current = false;
         });
         qualification.current = true;
+        this.wizard.persist();
     }
 
     deleteQualification(qualification: UserQualificationRepresentation) {
         const idx = this.student.userQualifications.indexOf(qualification);
         this.student.userQualifications.splice(idx, 1);
+        this.wizard.persist();
     }
 }
 
 export const StudentQualifications = {
     template: require('./student-qualifications.html'),
     bindings: {
-        wizardType: '@',
+        wizard: '<',
         student: '=',
         form: '<'
     },

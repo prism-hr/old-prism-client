@@ -91,10 +91,11 @@
             <div flex="25">
                 <md-button ng-click="$ctrl.removeLanguage(language)"
                            ng-if="$ctrl.student.languages.length > 1"
-                           class="md-fab md-mini md-warn" aria-label="More">
+                           class="md-fab md-mini md-warn" aria-label="Remove Language">
                     <md-icon class="icon-close"></md-icon>
                 </md-button>
-                <md-button ng-click="$ctrl.addLanguage(language)" class="md-fab md-mini md-primary " aria-label="More">
+                <md-button ng-click="$ctrl.addLanguage(language)" class="md-fab md-mini md-primary"
+                           aria-label="Add Language">
                     <md-icon class="icon-plus"></md-icon>
                 </md-button>
             </div>
