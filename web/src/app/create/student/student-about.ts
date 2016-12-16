@@ -3,7 +3,7 @@ import {countries} from '../../../countries';
 import UserRepresentation = bigfoot.UserRepresentation;
 import LanguageRelationRepresentation = bigfoot.LanguageRelationRepresentation;
 
-class StudentContactController {
+class StudentAboutController {
     private student: UserRepresentation;
     private locationType: LocationType;
     private countries = countries;
@@ -47,14 +47,14 @@ class StudentContactController {
     }
 }
 
-export const StudentContact = {
-    template: require('./student-contact.html'),
+export const StudentAbout = {
+    template: require('./student-about.html'),
     bindings: {
         wizardType: '@',
         student: '=',
         form: '<'
     },
-    controller: StudentContactController
+    controller: StudentAboutController
 };
 
 type LocationType = 'ANYWHERE' | 'COUNTRY' | 'CITY';

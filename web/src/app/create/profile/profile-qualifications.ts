@@ -1,7 +1,7 @@
 import UserRepresentation = bigfoot.UserRepresentation;
 import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
-class StudentQualificationsController {
+class ProfileQualificationsController {
     private student: UserRepresentation;
     private wizard: any;
     /** @ngInject */
@@ -27,12 +27,12 @@ class StudentQualificationsController {
     }
 }
 
-export const StudentQualifications = {
-    template: require('./student-qualifications.html'),
+export const ProfileQualifications = {
+    template: require('./profile-qualifications.html'),
     bindings: {
         wizard: '<',
         student: '=',
         form: '<'
     },
-    controller: StudentQualificationsController
+    controller: ProfileQualificationsController
 };

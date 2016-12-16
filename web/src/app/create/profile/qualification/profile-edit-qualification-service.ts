@@ -1,11 +1,10 @@
-import * as _ from 'lodash';
 import * as angular from 'angular';
 import UserRepresentation = bigfoot.UserRepresentation;
 import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
 /** @ngInject */
-export const StudentEditQualificationService = function ($state: ng.ui.IStateService, $stateParams: any) {
-    class QualificationService implements IStudentEditQualificationService {
+export const ProfileEditQualificationService = function ($state: ng.ui.IStateService, $stateParams: any) {
+    class QualificationService implements IProfileEditQualificationService {
         private _qualification: UserQualificationRepresentation;
         private _resource: UserRepresentation;
 
@@ -59,7 +58,7 @@ export const StudentEditQualificationService = function ($state: ng.ui.IStateSer
     };
 };
 
-export interface IStudentEditQualificationService {
+export interface IProfileEditQualificationService {
     getQualification(): UserQualificationRepresentation;
     saveQualification(): ng.IPromise<any>;
     cancelQualification(): ng.IPromise<any>;
