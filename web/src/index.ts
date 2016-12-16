@@ -89,13 +89,13 @@ import {Language} from './app/create/student/language';
 import {Student} from './app/create/student/student';
 import {StudentPreviewBox} from './app/create/student/student-preview-box';
 import {StudentHeader} from './app/create/student/student-header';
-import {StudentQualifications} from './app/create/student/student-qualifications';
-import {OrganizationQualificationDetails} from './app/create/student/qualification/organization-qualification-details';
-import {StudentEditQualificationService} from './app/create/student/qualification/student-edit-qualification-service';
-import {StudentEditQualification} from './app/create/student/qualification/student-edit-qualification';
-import {StudentEditQualificationButtons} from './app/create/student/qualification/student-edit-qualification-buttons';
-import {StudentContact} from './app/create/student/student-contact';
+import {StudentAbout} from './app/create/student/student-about';
 import {StudentSkills} from './app/create/student/student-skills';
+import {ProfileQualifications} from './app/create/profile/profile-qualifications';
+import {OrganizationQualificationDetails} from './app/create/profile/qualification/organization-qualification-details';
+import {ProfileEditQualificationService} from './app/create/profile/qualification/profile-edit-qualification-service';
+import {ProfileEditQualification} from './app/create/profile/qualification/profile-edit-qualification';
+import {ProfileEditQualificationButtons} from './app/create/profile/qualification/profile-edit-qualification-buttons';
 import {PromoterView} from './app/view/promoter/promoter-view';
 import {DepartmentView} from './app/view/department/department-view';
 import {AdvertView} from './app/view/advert/advert-view';
@@ -191,13 +191,13 @@ angular
     .component('student', Student)
     .component('studentPreviewBox', StudentPreviewBox)
     .component('studentHeader', StudentHeader)
-    .component('studentQualifications', StudentQualifications)
-    .component('organizationQualificationDetails', OrganizationQualificationDetails)
-    .service('studentEditQualificationService', StudentEditQualificationService)
-    .component('studentEditQualification', StudentEditQualification)
-    .component('studentEditQualificationButtons', StudentEditQualificationButtons)
-    .component('studentContact', StudentContact)
+    .component('studentAbout', StudentAbout)
     .component('studentSkills', StudentSkills)
+    .component('profileQualifications', ProfileQualifications)
+    .component('organizationQualificationDetails', OrganizationQualificationDetails)
+    .service('profileEditQualificationService', ProfileEditQualificationService)
+    .component('profileEditQualification', ProfileEditQualification)
+    .component('profileEditQualificationButtons', ProfileEditQualificationButtons)
     .component('promoterView', PromoterView)
     .component('departmentView', DepartmentView)
     .component('advertView', AdvertView)

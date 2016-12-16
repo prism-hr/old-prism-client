@@ -292,14 +292,14 @@ function routesConfig($stateProvider: ng.ui.IStateProvider,
         .state('manage.profile.qualifications.edit', {
             url: '/{qualificationAccessCode}',
             views: {
-                '!$default.$default': 'studentEditQualification',
-                '!header': 'studentEditQualificationButtons',
-                '^.^.buttons': 'studentEditQualificationButtons'
+                '!$default.$default': 'profileEditQualification',
+                '!header': 'profileEditQualificationButtons',
+                '^.^.buttons': 'profileEditQualificationButtons'
             },
             resolve: {
-                qualificationService(studentEditQualificationService: any, resource: UserRepresentation, wizard: any, $stateParams: any) {
+                qualificationService(profileEditQualificationService: any, resource: UserRepresentation, wizard: any, $stateParams: any) {
                     const accessCode = $stateParams.qualificationAccessCode === 'new' ? null : $stateParams.qualificationAccessCode;
-                    return studentEditQualificationService.create(wizard, accessCode);
+                    return profileEditQualificationService.create(wizard, accessCode);
                 },
                 $title: _.wrap('Qualification', _.identity)
             }

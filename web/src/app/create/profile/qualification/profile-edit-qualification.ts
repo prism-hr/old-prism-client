@@ -1,9 +1,9 @@
 import * as moment from 'moment';
-import {IStudentEditQualificationService} from './student-edit-qualification-service';
+import {IProfileEditQualificationService} from './profile-edit-qualification-service';
 import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
 
-class StudentEditQualificationController {
-    private qualificationService: IStudentEditQualificationService;
+class ProfileEditQualificationController {
+    private qualificationService: IProfileEditQualificationService;
     private qualification: UserQualificationRepresentation;
     private dateStart: Date;
     private dateAward: Date;
@@ -45,11 +45,11 @@ class StudentEditQualificationController {
     }
 }
 
-export const StudentEditQualification = {
-    template: require('./student-edit-qualification.html'),
+export const ProfileEditQualification = {
+    template: require('./profile-edit-qualification.html'),
     bindings: {
         qualificationService: '<',
         wizardType: '<'
     },
-    controller: StudentEditQualificationController
+    controller: ProfileEditQualificationController
 };
