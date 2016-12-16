@@ -96,7 +96,6 @@ import {StudentEditQualification} from './app/create/student/qualification/stude
 import {StudentEditQualificationButtons} from './app/create/student/qualification/student-edit-qualification-buttons';
 import {StudentContact} from './app/create/student/student-contact';
 import {StudentSkills} from './app/create/student/student-skills';
-import {StudentAbout} from './app/create/student/student-about';
 import {PromoterView} from './app/view/promoter/promoter-view';
 import {DepartmentView} from './app/view/department/department-view';
 import {AdvertView} from './app/view/advert/advert-view';
@@ -199,7 +198,6 @@ angular
     .component('studentEditQualificationButtons', StudentEditQualificationButtons)
     .component('studentContact', StudentContact)
     .component('studentSkills', StudentSkills)
-    .component('studentAbout', StudentAbout)
     .component('promoterView', PromoterView)
     .component('departmentView', DepartmentView)
     .component('advertView', AdvertView)
