@@ -1,5 +1,3 @@
-import {StateService} from 'angular-ui-router';
-
 class WizardHeaderController {
     wizard: any;
     stepSubscription: any;
@@ -7,7 +5,7 @@ class WizardHeaderController {
     display: any;
 
     /** @ngInject */
-    constructor(private $state: StateService) {
+    constructor(private $state: ng.ui.IStateService) {
     }
 
     $onInit() {

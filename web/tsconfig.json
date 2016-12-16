@@ -16,6 +16,7 @@
       "restangular",
       "angular-material",
       "ng-file-upload",
+      "angular-ui-router",
       "googlemaps"
     ]
   },
