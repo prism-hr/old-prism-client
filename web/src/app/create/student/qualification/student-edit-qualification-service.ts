@@ -36,7 +36,6 @@ export const StudentEditQualificationService = function ($state: ng.ui.IStateSer
                     });
             }
             return this._wizard.persist().then(savedResource => {
-                this._resource.userQualifications = savedResource.userQualifications; // keep access codes up-to-date
                 this.goBack();
             });
         }
@@ -46,7 +45,10 @@ export const StudentEditQualificationService = function ($state: ng.ui.IStateSer
         }
 
         private goBack() {
-            return $state.go($state.current.name.replace(/.edit$/, ''), _.omit($stateParams, ['qualificationAccessCode']));
+            return $state.go('^')
+                .then(() => {
+                    ($state as any).reload($state.current.name.replace(/.edit$/, ''));
+                });
         }
     }
 

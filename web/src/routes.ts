@@ -170,6 +170,23 @@ function routesConfig($stateProvider: ng.ui.IStateProvider,
                 $title: _.wrap('Student', _.identity)
             }
         })
+        .state('manage.profile', {
+            url: '/profile?welcomeType',
+            abstract: true,
+            views: {
+                '!header': 'wizardHeader',
+                '!$default': 'student'
+            },
+            data: {auth: true},
+            resolve: {
+                wizardType: _.wrap('profile', _.identity),
+                wizard($stateParams: any, userManagerFactory: any, resourceCreateWizardFactory: any, wizardType: string) {
+                    return userManagerFactory.getManager()
+                        .then(resourceManager => resourceCreateWizardFactory.getWizard(resourceManager, $stateParams.welcomeType, wizardType));
+                },
+                $title: _.wrap('Student', _.identity)
+            }
+        })
         .state('view', {
             abstract: true
         })
@@ -240,6 +257,8 @@ function routesConfig($stateProvider: ng.ui.IStateProvider,
             let resourceTypeLower = resourceType.toLowerCase();
             if (resourceTypeLower === 'promoter' || resourceTypeLower === 'department') {
                 resourceTypeLower = 'organization';
+            } else if (resourceTypeLower === 'profile') {
+                resourceTypeLower = 'student';
             }
             $stateProvider
                 .state('manage.' + resourceType.toLowerCase() + '.' + step.id, {
@@ -270,7 +289,7 @@ function routesConfig($stateProvider: ng.ui.IStateProvider,
     });
 
     $stateProvider
-        .state('manage.student.qualifications.edit', {
+        .state('manage.profile.qualifications.edit', {
             url: '/{qualificationAccessCode}',
             views: {
                 '!$default.$default': 'studentEditQualification',

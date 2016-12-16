@@ -14,13 +14,13 @@ class StudentWelcomeController {
         const welcomeType = 'student';
         this.statuses = this.welcomeService.getWelcomeStatuses('student');
         const student = _.get(this.statuses, 'student.resource');
-        this.profileEnabled = Boolean(_.get(this.statuses.student, 'resource.statusComplete.completed'));
+        this.profileEnabled = _.get(this.statuses, 'student.wizardComplete.state') === 'COMPLETE';
         this.studentWizardState = {
             name: 'manage.student.header',
             params: {id: _.get(student, 'accessCode') || 'new', welcomeType}
         };
         this.profileWizardState = {
-            name: 'manage.profile.dupa',
+            name: 'manage.profile.qualifications',
             params: {id: _.get(student, 'accessCode') || 'new', welcomeType}
         };
     }

@@ -57,7 +57,7 @@
                 <label class="md-no-float">Travelling Distance</label>
                 <md-select name="proximity" ng-model="$ctrl.student.proximity" required>
                     <md-option placeholder="Travelling Distance" ng-repeat="number in $ctrl.definitions.proximity"
-                               value="{{number}}">
+                               ng-value="{{number}}">
                         {{'definitions.proximity.' + number | translate}}
                     </md-option>
                 </md-select>
@@ -68,14 +68,7 @@
         </div>
     </div>
     <div layout="row" layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-            <label class="md-no-float">Preferred Email</label>
-            <input ng-model="$ctrl.student.email" name="email" required>
-            <div ng-messages="$ctrl.form.email.$error" role="alert">
-                <div ng-messages-include="general-messages"></div>
-            </div>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block" flex="50">
             <label class="md-no-float">Preferred Phone</label>
             <input ng-model="$ctrl.student.mobile" name="mobile" required>
             <div ng-messages="$ctrl.form.mobile.$error" role="alert">
