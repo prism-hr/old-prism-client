@@ -26,9 +26,8 @@ export class ResourceCreateWizardFactory {
             audience: [{id: 'summary', component: 'audienceSummary', title: 'Share your Advert'}],
             student: [{id: 'header', component: 'studentHeader', title: 'Header'},
                 {id: 'contact', component: 'studentContact', title: 'Contact'},
-                {id: 'qualifications', component: 'studentQualifications', title: 'Qualifications'},
-                {id: 'skills', component: 'studentSkills', title: 'Skills'},
-                {id: 'about', component: 'studentAbout', title: 'About you'}]
+                {id: 'skills', component: 'studentSkills', title: 'Skills'}],
+            profile: [{id: 'qualifications', component: 'studentQualifications', title: 'Qualifications'}]
         };
 
         _.forEach(this.steps, subSteps => {
