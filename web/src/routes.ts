@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
-import UserRepresentation = bigfoot.UserRepresentation;
+import UserRepresentation = bf.UserRepresentation;
 
 export default routesConfig;
 
@@ -302,6 +302,21 @@ function routesConfig($stateProvider: ng.ui.IStateProvider,
                     return profileEditQualificationService.create(wizard, accessCode);
                 },
                 $title: _.wrap('Qualification', _.identity)
+            }
+        })
+        .state('manage.profile.experiences.edit', {
+            url: '/{experienceAccessCode}',
+            views: {
+                '!$default.$default': 'profileEditExperience',
+                '!header': 'profileEditExperienceButtons',
+                '^.^.buttons': 'profileEditExperienceButtons'
+            },
+            resolve: {
+                experienceService(profileEditExperienceService: any, resource: UserRepresentation, wizard: any, $stateParams: any) {
+                    const accessCode = $stateParams.experienceAccessCode === 'new' ? null : $stateParams.experienceAccessCode;
+                    return profileEditExperienceService.create(wizard, accessCode);
+                },
+                $title: _.wrap('Experience', _.identity)
             }
         });
 

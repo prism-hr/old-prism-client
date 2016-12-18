@@ -10,7 +10,7 @@
             md-item-text="organization.name"
             md-min-length="1"
             md-autoselect="true"
-            placeholder="{{'create.organization.organization-lookup.organization-placeholder.' + $ctrl.wizardType | translate}}"
+            placeholder="{{'create.organization.organization-lookup.organization-placeholder.' + $ctrl.organizationType | translate}}"
             md-menu-class="autocomplete-custom-template"
             md-require-match
             required>
@@ -35,7 +35,7 @@
 </div>
 
 <div ng-if="$ctrl.selectedOrganization" >
-    <div class="department-lookup-question" ng-if="$ctrl.wizardType === 'promoter'">
+    <div class="department-lookup-question" ng-if="$ctrl.organizationType === 'promoter'">
         <label class="standalone-label"><strong>Would you like to specify a division?</strong></label>
         <md-radio-group name="showDepartment" ng-required="true" ng-model="$ctrl.showDepartment"
                         ng-change="$ctrl.showDepartmentChanged()" class="horizontal-form medium">
@@ -63,7 +63,7 @@
                     md-items="department in $ctrl.getDepartments(departmentSearchText)"
                     md-item-text="department.name"
                     md-min-length="1"
-                    placeholder="{{'create.organization.organization-lookup.department-placeholder.' + $ctrl.wizardType | translate}}"
+                    placeholder="{{'create.organization.organization-lookup.department-placeholder.' + $ctrl.organizationType | translate}}"
                     md-menu-class="autocomplete-custom-template"
                     md-require-match
                     required>

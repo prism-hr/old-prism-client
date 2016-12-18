@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import {IProfileEditQualificationService} from './profile-edit-qualification-service';
-import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
+import UserQualificationRepresentation = bf.UserQualificationRepresentation;
 
 class ProfileEditQualificationController {
     private qualificationService: IProfileEditQualificationService;

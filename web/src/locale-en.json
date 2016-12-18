@@ -9,20 +9,12 @@
         "organization-placeholder": {
           "promoter": "Look up or create company",
           "department": "Look up or create university",
-          "student": "Look up or create university"
+          "any": "Look up or create organization"
         },
         "department-placeholder": {
           "promoter": "Look up or create division",
           "department": "Look up or create department",
-          "student": "Look up or create department"
-        },
-        "lookup-button": {
-          "promoter": "Look up Company",
-          "department": "Look up University"
-        },
-        "lookup-title": {
-          "promoter": "Find or create your company",
-          "department": "Find or create your department"
+          "any": "Look up or create organization"
         },
         "lookup-subtitle": {
           "promoter": "Create your company",
@@ -35,10 +27,6 @@
         "department-label": {
           "promoter": "Division Name",
           "department": "Department Name"
-        },
-        "cancel-department": {
-          "promoter": "Cancel division",
-          "department": "Cancel department"
         }
       },
       "address-lookup": {

@@ -13,7 +13,14 @@ class ProfileEditQualificationButtonsController {
 }
 
 export const ProfileEditQualificationButtons = {
-    template: require('./profile-edit-qualification-buttons.html'),
+    template: `
+        <md-card-actions class="action-block" layout="row" layout-align="space-between none">
+            <md-button class="md-primary big md-raised" ng-click="$ctrl.cancelQualification()">Cancel</md-button>
+            <md-button class="md-primary big md-raised" ng-click="$ctrl.saveQualification()"
+                       ng-disabled="$ctrl.wizard.form.$invalid">Save Qualification
+            </md-button>
+        </md-card-actions>
+    `,
     bindings: {
         qualificationService: '<',
         wizard: '<'

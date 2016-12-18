@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import {Subject, Subscription} from 'rxjs';
 import {WelcomeService} from '../welcome/welcome.service';
 import {IResourceManager} from './resource-manager.factory';
-import TaggableRepresentation = bigfoot.TaggableRepresentation;
+import TaggableRepresentation = bf.TaggableRepresentation;
 
 /** @ngInject */
 export class ResourceCreateWizardFactory {
@@ -27,7 +27,8 @@ export class ResourceCreateWizardFactory {
             student: [{id: 'header', component: 'studentHeader', title: 'Header'},
                 {id: 'about', component: 'studentAbout', title: 'About you'},
                 {id: 'skills', component: 'studentSkills', title: 'Skills'}],
-            profile: [{id: 'qualifications', component: 'profileQualifications', title: 'Qualifications'}]
+            profile: [{id: 'qualifications', component: 'profileQualifications', title: 'Qualifications'},
+                {id: 'experiences', component: 'profileExperiences', title: 'Experiences'}]
         };
 
         _.forEach(this.steps, subSteps => {
