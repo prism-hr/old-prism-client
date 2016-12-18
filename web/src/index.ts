@@ -100,6 +100,10 @@ import {ProfileExperiences} from './app/create/profile/profile-experiences';
 import {ProfileEditExperienceService} from './app/create/profile/experience/profile-edit-experience-service';
 import {ProfileEditExperience} from './app/create/profile/experience/profile-edit-experience';
 import {ProfileEditExperienceButtons} from './app/create/profile/experience/profile-edit-experience-buttons';
+import {ProfileReferees} from './app/create/profile/profile-referees';
+import {ProfileEditRefereeService} from './app/create/profile/referee/profile-edit-referee-service';
+import {ProfileEditReferee} from './app/create/profile/referee/profile-edit-referee';
+import {ProfileEditRefereeButtons} from './app/create/profile/referee/profile-edit-referee-buttons';
 import {PromoterView} from './app/view/promoter/promoter-view';
 import {DepartmentView} from './app/view/department/department-view';
 import {AdvertView} from './app/view/advert/advert-view';
@@ -206,6 +210,10 @@ angular
     .service('profileEditExperienceService', ProfileEditExperienceService)
     .component('profileEditExperience', ProfileEditExperience)
     .component('profileEditExperienceButtons', ProfileEditExperienceButtons)
+    .component('profileReferees', ProfileReferees)
+    .service('profileEditRefereeService', ProfileEditRefereeService)
+    .component('profileEditReferee', ProfileEditReferee)
+    .component('profileEditRefereeButtons', ProfileEditRefereeButtons)
     .component('promoterView', PromoterView)
     .component('departmentView', DepartmentView)
     .component('advertView', AdvertView)

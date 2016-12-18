@@ -37,6 +37,15 @@
                 </md-item-template>
             </md-autocomplete>
 
+            <md-input-container class="md-block">
+                <label class="md-no-float">Description</label>
+                <textarea name="description" ng-model="$ctrl.experience.description" md-maxlength="500" rows="2"
+                          required></textarea>
+                <div ng-messages="$ctrl.form.description.$error" role="alert">
+                    <div ng-messages-include="general-messages"></div>
+                </div>
+            </md-input-container>
+
             <div layout="row">
                 <md-input-container class="date" flex-gt-sm="33">
                     <label class="md-no-float">Start date</label>
@@ -79,21 +88,21 @@
                         </div>
                     </md-input-container>
                 </div>
+            </div>
 
-                <div ng-if="$ctrl.experience.current">
-                    <label class="standalone-label"><strong>Would you like to join staff?</strong></label>
-                    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.experience.joinStaff"
-                                    class="horizontal-form medium">
-                        <div class="radio-box-aligned">
-                            <md-radio-button ng-value="true" class="md-primary">
-                                Yes
-                            </md-radio-button>
-                            <md-radio-button ng-value="false" class="md-primary">
-                                No
-                            </md-radio-button>
-                        </div>
-                    </md-radio-group>
-                </div>
+            <div ng-if="$ctrl.experience.current">
+                <label class="standalone-label"><strong>Would you like to join staff?</strong></label>
+                <md-radio-group name="type" ng-required="true" ng-model="$ctrl.experience.joinStaff"
+                                class="horizontal-form medium">
+                    <div class="radio-box-aligned">
+                        <md-radio-button ng-value="true" class="md-primary">
+                            Yes
+                        </md-radio-button>
+                        <md-radio-button ng-value="false" class="md-primary">
+                            No
+                        </md-radio-button>
+                    </div>
+                </md-radio-group>
             </div>
         </div>
     </div>

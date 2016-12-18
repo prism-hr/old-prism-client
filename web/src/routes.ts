@@ -318,6 +318,21 @@ function routesConfig($stateProvider: ng.ui.IStateProvider,
                 },
                 $title: _.wrap('Experience', _.identity)
             }
+        })
+        .state('manage.profile.referees.edit', {
+            url: '/{refereeAccessCode}',
+            views: {
+                '!$default.$default': 'profileEditReferee',
+                '!header': 'profileEditRefereeButtons',
+                '^.^.buttons': 'profileEditRefereeButtons'
+            },
+            resolve: {
+                refereeService(profileEditRefereeService: any, resource: UserRepresentation, wizard: any, $stateParams: any) {
+                    const accessCode = $stateParams.refereeAccessCode === 'new' ? null : $stateParams.refereeAccessCode;
+                    return profileEditRefereeService.create(wizard, accessCode);
+                },
+                $title: _.wrap('Referee', _.identity)
+            }
         });
 
     // function returnTo($transition$) {

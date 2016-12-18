@@ -1,0 +1,35 @@
+<div layout-padding>
+    <h3>Referee</h3>
+</div>
+
+<div layout-padding>
+    <div class="study-form">
+        <label class="standalone-label">Referee</label>
+        <organization-lookup
+                organization="$ctrl.referee.organizationImplementationReferee.organizationImplementation"
+                organization-type="promoter"
+                form="$ctrl.form"
+                changed="$ctrl.organizationChanged(complete)">
+        </organization-lookup>
+
+        <div ng-if="$ctrl.showSummary">
+            <div ng-if="$ctrl.referee.current">
+                <label class="standalone-label"><strong>Would you like to join staff?</strong></label>
+                <md-radio-group name="type" ng-required="true" ng-model="$ctrl.referee.joinStaff"
+                                class="horizontal-form medium">
+                    <div class="radio-box-aligned">
+                        <md-radio-button ng-value="true" class="md-primary">
+                            Yes
+                        </md-radio-button>
+                        <md-radio-button ng-value="false" class="md-primary">
+                            No
+                        </md-radio-button>
+                    </div>
+                </md-radio-group>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

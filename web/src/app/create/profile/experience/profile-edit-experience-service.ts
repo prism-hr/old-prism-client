@@ -3,7 +3,7 @@ import UserRepresentation = bf.UserRepresentation;
 import UserExperienceRepresentation = bf.UserExperienceRepresentation;
 
 /** @ngInject */
-export const ProfileEditExperienceService = function ($state: ng.ui.IStateService, $stateParams: any) {
+export const ProfileEditExperienceService = function ($state: ng.ui.IStateService) {
     class ExperienceService implements IProfileEditExperienceService {
         private _experience: UserExperienceRepresentation;
         private _resource: UserRepresentation;
@@ -25,14 +25,6 @@ export const ProfileEditExperienceService = function ($state: ng.ui.IStateServic
                 experiences.splice(idx, 1, this._experience);
             } else {
                 experiences.push(this._experience);
-            }
-            if (this._experience.current) {
-                this._resource.userExperiences // make sure other experiences aren't current
-                    .forEach(q => {
-                        if (q !== this._experience) {
-                            q.current = false;
-                        }
-                    });
             }
             return this._wizard.persist().then(() => {
                 this.goBack();

@@ -3,7 +3,7 @@ import UserRepresentation = bf.UserRepresentation;
 import UserQualificationRepresentation = bf.UserQualificationRepresentation;
 
 /** @ngInject */
-export const ProfileEditQualificationService = function ($state: ng.ui.IStateService, $stateParams: any) {
+export const ProfileEditQualificationService = function ($state: ng.ui.IStateService) {
     class QualificationService implements IProfileEditQualificationService {
         private _qualification: UserQualificationRepresentation;
         private _resource: UserRepresentation;
