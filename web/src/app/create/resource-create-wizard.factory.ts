@@ -28,7 +28,8 @@ export class ResourceCreateWizardFactory {
                 {id: 'about', component: 'studentAbout', title: 'About you'},
                 {id: 'skills', component: 'studentSkills', title: 'Skills'}],
             profile: [{id: 'qualifications', component: 'profileQualifications', title: 'Qualifications'},
-                {id: 'experiences', component: 'profileExperiences', title: 'Experiences'}]
+                {id: 'experiences', component: 'profileExperiences', title: 'Experiences'},
+                {id: 'referees', component: 'profileReferees', title: 'Referees'}]
         };
 
         _.forEach(this.steps, subSteps => {
