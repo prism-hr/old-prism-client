@@ -1,5 +1,5 @@
-import UserRepresentation = bigfoot.UserRepresentation;
-import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
+import UserRepresentation = bf.UserRepresentation;
+import UserQualificationRepresentation = bf.UserQualificationRepresentation;
 
 class ProfileQualificationsController {
     private student: UserRepresentation;

@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as angular from 'angular';
-import UserRepresentation = bigfoot.UserRepresentation;
+import UserRepresentation = bf.UserRepresentation;
 import {AuthService} from '../unauthenticated/auth.service';
 import {IResourceManager} from './resource-manager.factory';
 

@@ -1,4 +1,4 @@
-declare namespace bigfoot {
+declare namespace bf {
 
     interface OrganizationImplementationRepresentation extends TaggableReferrableQualifiableRepresentation, OrganizationImplementationDefinition<OrganizationImplementationRepresentation, PromotionRepresentation, UserRepresentation, DocumentRepresentation, TagRelationRepresentation, LocationRelationRepresentation, LanguageRelationRepresentation, QualificationCategoryRepresentation, PlanRepresentation, OrganizationRepresentation> {
         userCreate: UserRepresentation;

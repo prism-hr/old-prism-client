@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 import * as angular from 'angular';
 import {countries} from '../../../countries';
-import UserRepresentation = bigfoot.UserRepresentation;
-import LanguageRelationRepresentation = bigfoot.LanguageRelationRepresentation;
+import UserRepresentation = bf.UserRepresentation;
+import LanguageRelationRepresentation = bf.LanguageRelationRepresentation;
 
 class StudentSkillsController {
     private separatorKeys: Array<string>;

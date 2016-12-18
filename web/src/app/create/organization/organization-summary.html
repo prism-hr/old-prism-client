@@ -2,7 +2,7 @@
     <h3>{{'create.organization.organization-lookup.lookup-subtitle.' + $ctrl.wizardType | translate}}</h3>
 
     <div ng-if="!$ctrl.editingMode">
-        <organization-lookup organization="$ctrl.organization" wizard-type="{{$ctrl.wizardType}}"
+        <organization-lookup organization="$ctrl.organization" organization-type="{{$ctrl.wizardType}}"
                              form="$ctrl.form" changed="$ctrl.organizationChanged(complete)">
         </organization-lookup>
     </div>

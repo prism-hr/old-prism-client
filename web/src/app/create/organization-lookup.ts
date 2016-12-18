@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 class OrganizationLookupController {
-    wizardType: string;
+    organizationType: string;
     organization: any;
     showDepartment: boolean;
     selectedOrganization: any;
@@ -12,7 +12,7 @@ class OrganizationLookupController {
     }
 
     $onInit() {
-        this.showDepartment = this.wizardType !== 'promoter' || undefined;
+        this.showDepartment = this.organizationType !== 'promoter' || undefined;
 
         this.organization = this.organization || {};
         if (this.organization.accessCode) {
@@ -29,7 +29,7 @@ class OrganizationLookupController {
     }
 
     organizationSelected() {
-        this.showDepartment = this.wizardType !== 'promoter' || undefined;
+        this.showDepartment = this.organizationType !== 'promoter' || undefined;
         this.updateOrganizationDepartment();
     }
 
@@ -102,7 +102,7 @@ export const OrganizationLookup = {
     template: require('./organization-lookup.html'),
     bindings: {
         organization: '=',
-        wizardType: '@',
+        organizationType: '@',
         form: '<',
         changed: '&'
     },

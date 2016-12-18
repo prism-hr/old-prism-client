@@ -65,7 +65,7 @@ export const OrganizationQualificationDetails = {
             </md-item-template>
         </md-autocomplete>
 
-        <div ng-if="!$ctrl.qualification.accessCode">
+        <div>
             <label class="standalone-label">Study Level</label>
             <md-radio-group name="type" ng-required="true"
                             ng-model="$ctrl.qualification.category"

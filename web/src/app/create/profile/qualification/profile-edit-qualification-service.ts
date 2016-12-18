@@ -1,6 +1,6 @@
 import * as angular from 'angular';
-import UserRepresentation = bigfoot.UserRepresentation;
-import UserQualificationRepresentation = bigfoot.UserQualificationRepresentation;
+import UserRepresentation = bf.UserRepresentation;
+import UserQualificationRepresentation = bf.UserQualificationRepresentation;
 
 /** @ngInject */
 export const ProfileEditQualificationService = function ($state: ng.ui.IStateService, $stateParams: any) {

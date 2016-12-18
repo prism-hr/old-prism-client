@@ -96,6 +96,10 @@ import {OrganizationQualificationDetails} from './app/create/profile/qualificati
 import {ProfileEditQualificationService} from './app/create/profile/qualification/profile-edit-qualification-service';
 import {ProfileEditQualification} from './app/create/profile/qualification/profile-edit-qualification';
 import {ProfileEditQualificationButtons} from './app/create/profile/qualification/profile-edit-qualification-buttons';
+import {ProfileExperiences} from './app/create/profile/profile-experiences';
+import {ProfileEditExperienceService} from './app/create/profile/experience/profile-edit-experience-service';
+import {ProfileEditExperience} from './app/create/profile/experience/profile-edit-experience';
+import {ProfileEditExperienceButtons} from './app/create/profile/experience/profile-edit-experience-buttons';
 import {PromoterView} from './app/view/promoter/promoter-view';
 import {DepartmentView} from './app/view/department/department-view';
 import {AdvertView} from './app/view/advert/advert-view';
@@ -198,6 +202,10 @@ angular
     .service('profileEditQualificationService', ProfileEditQualificationService)
     .component('profileEditQualification', ProfileEditQualification)
     .component('profileEditQualificationButtons', ProfileEditQualificationButtons)
+    .component('profileExperiences', ProfileExperiences)
+    .service('profileEditExperienceService', ProfileEditExperienceService)
+    .component('profileEditExperience', ProfileEditExperience)
+    .component('profileEditExperienceButtons', ProfileEditExperienceButtons)
     .component('promoterView', PromoterView)
     .component('departmentView', DepartmentView)
     .component('advertView', AdvertView)

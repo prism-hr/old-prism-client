@@ -1,6 +1,6 @@
 import {AuthService} from '../../unauthenticated/auth.service';
-import UserRepresentation = bigfoot.UserRepresentation;
-import LanguageRelationRepresentation = bigfoot.LanguageRelationRepresentation;
+import UserRepresentation = bf.UserRepresentation;
+import LanguageRelationRepresentation = bf.LanguageRelationRepresentation;
 
 class StudentAboutController {
     private student: UserRepresentation;

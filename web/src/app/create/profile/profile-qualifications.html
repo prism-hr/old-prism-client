@@ -1,16 +1,16 @@
 <div layout-padding>
-    <h3>Studies</h3>
+    <h3>Qualifications</h3>
 </div>
 
-<div class="studies-list" layout="column" layout-gt-sm="row" layout-wrap>
+<div class="items-list" layout="column" layout-gt-sm="row" layout-wrap>
     <md-card ng-repeat="qualification in $ctrl.student.userQualifications" flex="100" flex-gt-sm="45"
-             class="study-item">
+             class="item">
         <md-card-title>
             <div class="logo-icon">
                 <div class="logo-image">
                     <div class="logo-flex company-logo">
                         <div class="logo">
-                            <img ng-src="{{qualification.organizationImplementation.documentLogoImage.cloudinaryUrl || '/img/prism-logo-default.png'}}"/>
+                            <img ng-src="{{qualification.organizationImplementationQualification.organizationImplementation.documentLogoImage.cloudinaryUrl || '/img/prism-logo-default.png'}}"/>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,103 @@
+<div layout-padding>
+    <h3>Experience</h3>
+</div>
+
+<div layout-padding>
+    <div class="study-form">
+        <label class="standalone-label">Employer</label>
+        <organization-lookup
+                organization="$ctrl.experience.organizationImplementationExperience.organizationImplementation"
+                organization-type="promoter"
+                form="$ctrl.form"
+                changed="$ctrl.organizationChanged(complete)">
+        </organization-lookup>
+
+        <div ng-if="$ctrl.showSummary">
+            <md-autocomplete
+                    md-input-name="selectedExperience"
+                    md-no-cache="true"
+                    md-selected-item="$ctrl.selectedExperience"
+                    md-selected-item-change="$ctrl.experienceSelected(experience)"
+                    ng-model-options="{debounce: 600}"
+                    md-search-text="experienceSearchText"
+                    md-items="experience in $ctrl.getExperiences(experienceSearchText)"
+                    md-item-text="experience.name"
+                    md-min-length="1"
+                    md-autoselect="true"
+                    placeholder="Lookup your position"
+                    md-menu-class="autocomplete-custom-template"
+                    md-require-match
+                    required>
+                <md-item-template>
+                    <div layout="row">
+                    <span md-highlight-text="searchText">
+                        {{experience.tagsSuggested ? experience.name : 'Create ' + experience.name}}
+                    </span>
+                    </div>
+                </md-item-template>
+            </md-autocomplete>
+
+            <div layout="row">
+                <md-input-container class="date" flex-gt-sm="33">
+                    <label class="md-no-float">Start date</label>
+                    <md-datepicker
+                            name="dateStart"
+                            ng-model="$ctrl.dateStart"
+                            ng-change="$ctrl.dateStartChanged()"
+                            md-max-date="$ctrl.maxDateStart"
+                            required></md-datepicker>
+                    <div ng-messages="$ctrl.form.dateStart.$error" role="alert">
+                        <div ng-messages-include="general-messages"></div>
+                    </div>
+                </md-input-container>
+
+                <label class="standalone-label"><strong>Is this your current experience?</strong></label>
+                <md-radio-group name="type" ng-required="true" ng-model="$ctrl.experience.current"
+                                class="horizontal-form medium">
+                    <div class="radio-box-aligned">
+                        <md-radio-button ng-value="true" class="md-primary">
+                            Yes
+                        </md-radio-button>
+                        <md-radio-button ng-value="false" class="md-primary">
+                            No
+                        </md-radio-button>
+                    </div>
+                </md-radio-group>
+
+                <div ng-if="!$ctrl.experience.current">
+                    <md-input-container class="date" flex-gt-sm="33">
+                        <label class="md-no-float">Leave Date</label>
+                        <md-datepicker
+                                name="dateLeave"
+                                ng-model="$ctrl.dateLeave"
+                                ng-change="$ctrl.dateLeaveChanged()"
+                                md-min-date="$ctrl.minDateAward"
+                                ng-disabled="!$ctrl.dateStart"></md-datepicker>
+                        <div ng-messages="$ctrl.form.dateLeave.$error" role="alert">
+                            <div ng-messages-include="general-messages"></div>
+                            <div ng-message="mindate" class="error">The award date has to be after start date.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div ng-if="$ctrl.experience.current">
+                    <label class="standalone-label"><strong>Would you like to join staff?</strong></label>
+                    <md-radio-group name="type" ng-required="true" ng-model="$ctrl.experience.joinStaff"
+                                    class="horizontal-form medium">
+                        <div class="radio-box-aligned">
+                            <md-radio-button ng-value="true" class="md-primary">
+                                Yes
+                            </md-radio-button>
+                            <md-radio-button ng-value="false" class="md-primary">
+                                No
+                            </md-radio-button>
+                        </div>
+                    </md-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

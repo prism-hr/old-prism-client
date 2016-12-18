@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import * as _ from 'lodash';
-import EntityRepresentation = bigfoot.EntityRepresentation;
+import EntityRepresentation = bf.EntityRepresentation;
 import IPromise = angular.IPromise;
 
 /** @ngInject */
