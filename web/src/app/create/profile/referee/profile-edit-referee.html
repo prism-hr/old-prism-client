@@ -14,7 +14,7 @@
 
         <div ng-if="$ctrl.showSummary">
             <label class="standalone-label">Referee's Contact Details</label>
-            <user-lookup contact="$ctrl.referee.contact"></user-lookup>
+            <user-lookup contact="$ctrl.referee.contact" form="$ctrl.wizard.form"></user-lookup>
 
             <md-autocomplete
                     md-input-name="selectedExperience"
