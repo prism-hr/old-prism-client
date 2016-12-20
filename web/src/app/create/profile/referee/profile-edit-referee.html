@@ -4,15 +4,42 @@
 
 <div layout-padding>
     <div class="study-form">
-        <label class="standalone-label">Referee</label>
+        <label class="standalone-label">Referee's Organization</label>
         <organization-lookup
-                organization="$ctrl.referee.organizationImplementationReferee.organizationImplementation"
+                organization="$ctrl.referee.organizationImplementationExperience.organizationImplementation"
                 organization-type="promoter"
                 form="$ctrl.form"
                 changed="$ctrl.organizationChanged(complete)">
         </organization-lookup>
 
         <div ng-if="$ctrl.showSummary">
+            <label class="standalone-label">Referee's Contact Details</label>
+            <user-lookup contact="$ctrl.referee.contact"></user-lookup>
+
+            <md-autocomplete
+                    md-input-name="selectedExperience"
+                    md-no-cache="true"
+                    md-selected-item="$ctrl.selectedExperience"
+                    md-selected-item-change="$ctrl.experienceSelected(experience)"
+                    ng-model-options="{debounce: 600}"
+                    md-search-text="experienceSearchText"
+                    md-items="experience in $ctrl.getExperiences(experienceSearchText)"
+                    md-item-text="experience.name"
+                    md-min-length="1"
+                    md-autoselect="true"
+                    placeholder="Lookup your position"
+                    md-menu-class="autocomplete-custom-template"
+                    md-require-match
+                    required>
+                <md-item-template>
+                    <div layout="row">
+                    <span md-highlight-text="searchText">
+                        {{experience.tagsSuggested ? experience.name : 'Create ' + experience.name}}
+                    </span>
+                    </div>
+                </md-item-template>
+            </md-autocomplete>
+
             <div ng-if="$ctrl.referee.current">
                 <label class="standalone-label"><strong>Would you like to join staff?</strong></label>
                 <md-radio-group name="type" ng-required="true" ng-model="$ctrl.referee.joinStaff"

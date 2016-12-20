@@ -8,6 +8,7 @@ class OrganizationLookupController {
     selectedDepartment: any;
     changed: Function;
 
+    /** @ngInject */
     constructor(private $q: ng.IQService, private Restangular: Restangular.IService) {
     }
 

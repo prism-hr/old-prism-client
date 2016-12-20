@@ -1,11 +1,12 @@
 import * as moment from 'moment';
-import {IProfileEditExperienceService} from './profile-edit-experience-service';
 import * as _ from 'lodash';
 import * as restangular from 'restangular';
+import {IProfileEditExperienceService} from './profile-edit-experience-service';
 
 class ProfileEditExperienceController {
     private experienceService: IProfileEditExperienceService;
     private experience: bf.UserExperienceRepresentation;
+    private selectedExperience: any;
     private dateStart: Date;
     private dateLeave: Date;
     private showSummary: boolean;
@@ -18,6 +19,7 @@ class ProfileEditExperienceController {
 
     $onInit() {
         this.experience = this.experienceService.getExperience();
+        this.selectedExperience = this.experience.organizationImplementationExperience && _.pick(this.experience.organizationImplementationExperience, ['accessCode', 'name']);
         this.dateStart = this.experience.dateStart && new Date(this.experience.dateStart);
         this.dateLeave = this.experience.dateLeave && new Date(this.experience.dateLeave);
         if (this.experience.organizationImplementationExperience) {
@@ -51,9 +53,7 @@ class ProfileEditExperienceController {
                     return experiences;
                 });
         }
-        if (searchText.length >= 2) {
-            return [{name: searchText}];
-        }
+        return searchText.length >= 2 ? [{name: searchText}] : [];
     }
 
     dateStartChanged() {
