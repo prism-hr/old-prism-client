@@ -29,6 +29,10 @@
             </div>
         </md-item-template>
     </md-autocomplete>
+    <div ng-messages="$ctrl.form.selectedContact.$error" role="alert">
+        <div ng-message="md-require-match" class="error">Please find an existing user or click on 'Cannot find user' button below.</div>
+        <div ng-messages-include="general-messages"></div>
+    </div>
 
     <md-button ng-show="!$ctrl.contact" ng-click="$ctrl.cannotFindContact()">
         Cannot find user?

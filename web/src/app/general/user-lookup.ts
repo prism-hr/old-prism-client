@@ -34,8 +34,7 @@ export const UserLookup = {
     template: require('./user-lookup.html'),
     bindings: {
         contact: '=',
-        form: '<',
-        changed: '&'
+        form: '<'
     },
     controller: UserLookupController
 };

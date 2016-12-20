@@ -52,7 +52,8 @@ export const ProfileEditReferee = {
     template: require('./profile-edit-referee.html'),
     bindings: {
         refereeService: '<',
-        wizardType: '<'
+        wizardType: '<',
+        wizard: '<'
     },
     controller: ProfileEditRefereeController
 };
