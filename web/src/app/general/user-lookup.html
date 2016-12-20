@@ -1,0 +1,62 @@
+<div ng-if="$ctrl.view === 'lookup'">
+    <md-autocomplete
+            md-input-name="selectedContact"
+            md-no-cache="true"
+            md-selected-item="$ctrl.contact"
+            md-selected-item-change="$ctrl.contactSelected(contact)"
+            ng-model-options="{debounce: 600}"
+            md-search-text="contactSearchText"
+            md-items="contact in $ctrl.getContacts(contactSearchText)"
+            md-item-text="contact.firstName + ' ' + contact.lastName + ' (' + contact.email + ')'"
+            md-min-length="1"
+            md-autoselect="true"
+            placeholder="Search by first name, last name, or email"
+            md-menu-class="autocomplete-custom-template"
+            md-require-match
+            required>
+        <md-item-template>
+            <div layout="row">
+                <div class="logo-icon" ng-if="contact.documentPortraitImage">
+                    <div class="logo-image" layout="column" layout-align="center center">
+                        <img ng-src="http://res.cloudinary.com/bitfoot/image/upload/w_72,h_41,c_fit/{{contact.documentPortraitImage.cloudinaryId}}">
+                    </div>
+                </div>
+                <div>
+                    <span md-highlight-text="searchText" class="item-title">
+                        {{contact.firstName}} {{contact.lastName}} ({{contact.email}})
+                    </span>
+                </div>
+            </div>
+        </md-item-template>
+    </md-autocomplete>
+
+    <md-button ng-show="!$ctrl.contact" ng-click="$ctrl.cannotFindContact()">
+        Cannot find user?
+    </md-button>
+</div>
+
+<div ng-if="$ctrl.view === 'details'">
+    <md-input-container class="md-block">
+        <input placeholder="Name" name="firstName" ng-model="$ctrl.contact.firstName" required autocomplete="off">
+        <div ng-messages="registerForm.firstName.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <input placeholder="Surname" name="lastName" ng-model="$ctrl.contact.lastName" required autocomplete="off">
+        <div ng-messages="registerForm.lastName.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+        <input placeholder="Email" name="email" ng-model="$ctrl.contact.email" required type="email" autocomplete="off">
+        <div ng-messages="registerForm.username.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
+    </md-input-container>
+
+    <md-button ng-click="$ctrl.returnToSearch()">
+        Return to search
+    </md-button>
+</div>
+

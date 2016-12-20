@@ -53,6 +53,7 @@ import {LogoUploader} from './app/directives/logo-uploader';
 import {DocumentUploader} from './app/directives/document-uploader';
 import {PlaceAutocomplete} from './app/directives/place-autocomplete';
 import {Dialog} from './app/general/dialog/dialog';
+import {UserLookup} from './app/general/user-lookup';
 import {browserTitleHook} from './app/general/browser-title.hook';
 import {MotivationCheck} from './app/unauthenticated/motivation-check';
 import {Authenticate} from './app/unauthenticated/authenticate/authenticate';
@@ -165,6 +166,7 @@ angular
     .directive('documentUploader', DocumentUploader.factory())
     .directive('placeAutocomplete', PlaceAutocomplete.factory())
     .component('prismDialog', Dialog)
+    .component('userLookup', UserLookup)
     .component('welcome', Welcome)
     .component('prismHeader', Header)
     .component('sidebar', Sidebar)

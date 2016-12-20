@@ -284,7 +284,7 @@ declare namespace bf {
         user: UserRepresentation;
     }
 
-    interface ContactRepresentation extends ContactDefinition {
+    interface ContactRepresentation extends ContactDefinition, Comparable<ContactRepresentation> {
     }
 
     interface DocumentRelationRepresentation extends EntityRepresentation, DocumentRelationDefinition<DocumentRepresentation, UserRepresentation> {
@@ -307,6 +307,7 @@ declare namespace bf {
     interface PromotionOrganizationImplementationRepresentation extends EntityRepresentation, PromotionOrganizationImplementationDefinition<PromotionRepresentation, OrganizationImplementationRepresentation, UserRepresentation> {
         userCreate: UserRepresentation;
         userUpdate: UserRepresentation;
+        id: number;
         promotion: PromotionRepresentation;
         organizationImplementation: OrganizationImplementationRepresentation;
     }
@@ -334,9 +335,9 @@ declare namespace bf {
     interface OrganizationImplementationDefinition<T, U, V, W, X, Y, Z, A, B, C> extends TaggableReferrableQualifiableDefinition<T, U, V, W, X, Y, Z, A, B> {
         id: number;
         state: PrismContentState;
-        website: string;
         organization: C;
         documentLogoImage: W;
+        website: string;
         numberStaff: PrismNumberStaff;
         numberStudent: PrismNumberStudent;
     }
@@ -458,14 +459,15 @@ declare namespace bf {
     interface ContactDefinition {
         enabled: boolean;
         email: string;
-        fullName: string;
         mobile: string;
         firstName: string;
         lastName: string;
+        fullName: string;
     }
 
     interface PromotionDefinition<T, U, V, W, X, Y, Z, A, B, C, D, E, F, G> extends TaggableReferrableQualifiableDefinition<T, U, V, W, X, Y, Z, A, B> {
         id: number;
+        languages: Z[];
         organizationImplementation: T;
         positionContract: PrismPositionContract;
         positionDurationMinimum: number;
@@ -482,7 +484,6 @@ declare namespace bf {
         positionWorkPatterns: E[];
         positionBenefits: F[];
         organizationImplementations: T[];
-        languages: Z[];
         exclusive: boolean;
         contact: C;
         discloseOwner: boolean;
@@ -525,8 +526,8 @@ declare namespace bf {
     interface OrganizationDefinition<T, U, V> extends EntityDefinition<V> {
         name: string;
         documentLogoImage: T;
-        organizationImplementation: U;
         locationList: string;
+        organizationImplementation: U;
     }
 
     interface TaggableReferrableQualifiableDefinition<T, U, V, W, X, Y, Z, A, B> extends TaggableReferrableDefinition<T, U, V, W, PrismContentState, X, Y, Z> {
@@ -570,13 +571,13 @@ declare namespace bf {
     }
 
     interface UserQualificationDefinition<T, U> extends EntityDefinition<U> {
+        organizationImplementationQualification: T;
         nameProject: string;
         dateStart: string;
         dateAward: string;
         grade: string;
         current: boolean;
         awardMade: boolean;
-        organizationImplementationQualification: T;
     }
 
     interface TaggableRepresentation extends EntityRepresentation, TaggableDefinition<UserRepresentation> {
@@ -587,17 +588,17 @@ declare namespace bf {
 
     interface UserExperienceDefinition<T, U> extends EntityDefinition<U> {
         description: string;
+        organizationImplementationExperience: T;
         dateStart: string;
         current: boolean;
         dateLeave: string;
         joinStaff: boolean;
-        organizationImplementationExperience: T;
     }
 
     interface UserRefereeDefinition<T, U, V> extends EntityDefinition<V> {
         contact: T;
-        joinStaff: boolean;
         organizationImplementationExperience: U;
+        joinStaff: boolean;
     }
 
     interface UserInterestDefinition<T, U> extends EntityDefinition<U> {
@@ -609,6 +610,9 @@ declare namespace bf {
         role: PrismRole;
         user: U;
         organizationImplementation: T;
+    }
+
+    interface Comparable<T> {
     }
 
     interface DocumentRelationDefinition<T, U> extends EntityDefinition<U> {
@@ -629,10 +633,10 @@ declare namespace bf {
         relevanceScore: number;
         knowledgeScore: number;
         proximityScore: number;
+        proximity: number;
+        groupQualificationCategoryMatch: string;
         promotion: T;
         groupTagMatch: string;
-        groupQualificationCategoryMatch: string;
-        proximity: number;
     }
 
     interface TagDefinition<T> extends EntityDefinition<T> {
@@ -688,38 +692,38 @@ declare namespace bf {
         tagSuggestedList: string;
     }
 
-    type PrismContentState = "DRAFT" | "ACCEPTED" | "REJECTED";
+    type PrismContentState = 'DRAFT' | 'ACCEPTED' | 'REJECTED';
 
-    type PrismNumberStaff = "FROM_1_TO_10" | "FROM_11_TO_50" | "FROM_51_TO_200" | "FROM_201_TO_500" | "FROM_501_TO_1000" | "FROM_1001_TO_5000" | "FROM_5001_TO_10000" | "FROM_10001_TO_ANY";
+    type PrismNumberStaff = 'FROM_1_TO_10' | 'FROM_11_TO_50' | 'FROM_51_TO_200' | 'FROM_201_TO_500' | 'FROM_501_TO_1000' | 'FROM_1001_TO_5000' | 'FROM_5001_TO_10000' | 'FROM_10001_TO_ANY';
 
-    type PrismNumberStudent = "FROM_1_TO_10" | "FROM_11_TO_50" | "FROM_51_TO_200" | "FROM_201_TO_500" | "FROM_501_TO_1000" | "FROM_1001_TO_ANY";
+    type PrismNumberStudent = 'FROM_1_TO_10' | 'FROM_11_TO_50' | 'FROM_51_TO_200' | 'FROM_201_TO_500' | 'FROM_501_TO_1000' | 'FROM_1001_TO_ANY';
 
-    type PrismOauthProvider = "FACEBOOK" | "LINKEDIN" | "TWITTER";
+    type PrismOauthProvider = 'FACEBOOK' | 'LINKEDIN' | 'TWITTER';
 
-    type PrismProximity = "TO_10" | "TO_25" | "TO_50" | "TO_100" | "TO_200";
+    type PrismProximity = 'TO_10' | 'TO_25' | 'TO_50' | 'TO_100' | 'TO_200';
 
-    type PrismUserState = "ACCEPTED" | "REJECTED" | "DISABLED";
+    type PrismUserState = 'ACCEPTED' | 'REJECTED' | 'DISABLED';
 
-    type PrismPromotionCategory = "EMPLOYMENT" | "PLACEMENT" | "EVENT";
+    type PrismPromotionCategory = 'EMPLOYMENT' | 'PLACEMENT' | 'EVENT';
 
-    type PrismPositionContract = "PERMANENT" | "FIXED_TERM";
+    type PrismPositionContract = 'PERMANENT' | 'FIXED_TERM';
 
-    type PrismPositionInterval = "HOUR" | "DAY" | "WEEK" | "MONTH" | "YEAR";
+    type PrismPositionInterval = 'HOUR' | 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
 
-    type PrismPositionSalary = "RANGE" | "COMPETITIVE" | "NONE";
+    type PrismPositionSalary = 'RANGE' | 'COMPETITIVE' | 'NONE';
 
-    type PrismLanguageProficiency = "ELEMENTARY" | "LIMITED_WORKING" | "PROFESSIONAL_WORKING" | "FULL_PROFESSIONAL" | "NATIVE_BILINGUAL";
+    type PrismLanguageProficiency = 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_BILINGUAL';
 
-    type PrismQualificationCategory = "UNDERGRADUATE" | "MASTER" | "DOCTORATE";
+    type PrismQualificationCategory = 'UNDERGRADUATE' | 'MASTER' | 'DOCTORATE';
 
-    type PrismRole = "DIRECTOR" | "ADMINISTRATOR" | "STAFF" | "STUDENT";
+    type PrismRole = 'DIRECTOR' | 'ADMINISTRATOR' | 'STAFF' | 'STUDENT';
 
-    type PrismUserRoleState = "ACCEPTED" | "REJECTED";
+    type PrismUserRoleState = 'ACCEPTED' | 'REJECTED';
 
-    type PrismPositionWorkPattern = "FULL_TIME" | "PART_TIME" | "FLEXIBLE";
+    type PrismPositionWorkPattern = 'FULL_TIME' | 'PART_TIME' | 'FLEXIBLE';
 
-    type PrismPromotionOrganizationImplementationState = "ACCEPTED" | "REJECTED" | "REDACTED" | "DETACHED";
+    type PrismPromotionOrganizationImplementationState = 'ACCEPTED' | 'REJECTED' | 'REDACTED' | 'DETACHED';
 
-    type PrismLocationCategory = "CITY" | "COUNTRY";
+    type PrismLocationCategory = 'CITY' | 'COUNTRY';
 
 }
