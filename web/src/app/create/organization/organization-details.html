@@ -2,32 +2,7 @@
     <h3>Provide your {{'create.organization.lc-type.' + $ctrl.wizardType | translate}} Areas of Expertise, web and
         sizes</h3>
 
-    <md-input-container class="md-block industries-holder" layout="row">
-        <label class="md-no-float">Areas of Expertise</label>
-        <md-chips ng-model="$ctrl.organization.tags"
-                  md-transform-chip="$ctrl.transformTag($chip)"
-                  md-separator-keys="$ctrl.separatorKeys">
-            <md-autocomplete
-                    md-search-text="searchText"
-                    md-autoselect="true"
-                    md-items="item in $ctrl.lookupTags(searchText)"
-                    md-item-text="item.name"
-                    placeholder="Find a tag or add a new one">
-                <span md-highlight-text="searchText">{{item.name}}</span>
-            </md-autocomplete>
-            <md-chip-template>
-                {{$chip.tag.name}}
-            </md-chip-template>
-        </md-chips>
-    </md-input-container>
-
-    {{$ctrl.organization.tagsSuggested}}
-
-    <md-button ng-repeat="tag in $ctrl.organization.tagsSuggested"
-               ng-class="{selected: $ctrl.isTagSelected(tag)}"
-               ng-click="$ctrl.selectTag(tag)">
-        {{tag}}
-    </md-button>
+    <suggested-tags resource="$ctrl.organization" form="$ctrl.wizard.form" label="Areas of Expertise"></suggested-tags>
 
     <md-input-container class="md-block">
         <label class="md-no-float">Homepage URL

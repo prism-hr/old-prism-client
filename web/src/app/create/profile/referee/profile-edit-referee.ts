@@ -1,5 +1,4 @@
 import {IProfileEditRefereeService} from './profile-edit-referee-service';
-import * as restangular from 'restangular';
 import * as _ from 'lodash';
 
 class ProfileEditRefereeController {
@@ -9,7 +8,7 @@ class ProfileEditRefereeController {
     private showSummary: boolean;
 
     /** @ngInject */
-    constructor(private Restangular: restangular.IService) {
+    constructor(private Restangular: Restangular.IService) {
     }
 
     $onInit() {

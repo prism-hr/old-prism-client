@@ -1,6 +1,5 @@
 import * as moment from 'moment';
 import * as _ from 'lodash';
-import * as restangular from 'restangular';
 import {IProfileEditExperienceService} from './profile-edit-experience-service';
 
 class ProfileEditExperienceController {
@@ -14,7 +13,7 @@ class ProfileEditExperienceController {
     private maxDateStart: Date;
 
     /** @ngInject */
-    constructor(private $state: ng.ui.IStateService, private $stateParams: any, private Restangular: restangular.IService, private definitions: any) {
+    constructor(private $state: ng.ui.IStateService, private $stateParams: any, private Restangular: Restangular.IService, private definitions: any) {
     }
 
     $onInit() {

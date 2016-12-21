@@ -1,6 +1,3 @@
-import * as _ from 'lodash';
-import * as angular from 'angular';
-
 class AdvertCandidateController {
     private separatorKeys: Array<string>;
     private advert: any;
@@ -14,33 +11,6 @@ class AdvertCandidateController {
     $onInit() {
         this.advert.tags = this.advert.tags || [];
         this.categoriesHelper = this.checkboxesHelper.create(this.definitions.qualificationCategory, this.advert.qualificationCategories, 'qualificationCategory');
-    }
-
-    lookupTags(text: string) {
-        const exclusions = this.advert.tags.map((t: any) => t.tag.name);
-        return this.Restangular.all('tags').getList({searchTerm: text, exclusions})
-            .then((tags: Restangular.ICollection) => tags.plain());
-    }
-
-    transformTag(chip: any) {
-        if (angular.isObject(chip)) {
-            return {tag: _.pick(chip, ['accessCode', 'name'])};
-        }
-        return {tag: {name: chip}};
-    }
-
-    isTagSelected(tag: string) {
-        return Boolean(this.advert.tags.find((t: any) => t.tag.name.toLowerCase() === tag.toLowerCase()));
-    }
-
-    selectTag(tag: string) {
-        const idx = this.advert.tags.findIndex((t: any) => t.tag.name.toLowerCase() === tag.toLowerCase());
-        if (idx > -1) {
-            this.advert.tags.splice(idx, 1);
-        } else {
-            this.advert.tags.push({tag: {name: tag}});
-        }
-        console.log(tag);
     }
 }
 

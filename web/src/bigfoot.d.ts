@@ -1,3 +1,5 @@
+// Generated using typescript-generator version 1.14.251 on 2016-12-21 13:16:35.
+
 declare namespace bf {
 
     interface OrganizationImplementationRepresentation extends TaggableReferrableQualifiableRepresentation, OrganizationImplementationDefinition<OrganizationImplementationRepresentation, PromotionRepresentation, UserRepresentation, DocumentRepresentation, TagRelationRepresentation, LocationRelationRepresentation, LanguageRelationRepresentation, QualificationCategoryRepresentation, PlanRepresentation, OrganizationRepresentation> {
@@ -285,6 +287,7 @@ declare namespace bf {
     }
 
     interface ContactRepresentation extends ContactDefinition, Comparable<ContactRepresentation> {
+        documentPortraitImage: DocumentRepresentation;
     }
 
     interface DocumentRelationRepresentation extends EntityRepresentation, DocumentRelationDefinition<DocumentRepresentation, UserRepresentation> {
@@ -467,7 +470,6 @@ declare namespace bf {
 
     interface PromotionDefinition<T, U, V, W, X, Y, Z, A, B, C, D, E, F, G> extends TaggableReferrableQualifiableDefinition<T, U, V, W, X, Y, Z, A, B> {
         id: number;
-        languages: Z[];
         organizationImplementation: T;
         positionContract: PrismPositionContract;
         positionDurationMinimum: number;
@@ -491,12 +493,14 @@ declare namespace bf {
         websiteApply: string;
         documentApply: W;
         documents: D[];
+        languages: Z[];
         organizationImplementationOwner: T;
         promotionOrganizationImplementations: G[];
         organizationImplementationDisplay: T;
     }
 
     interface DocumentDefinition<T> extends EntityDefinition<T> {
+        fileName: string;
         cloudinaryId: string;
         cloudinaryUrl: string;
     }
@@ -526,8 +530,8 @@ declare namespace bf {
     interface OrganizationDefinition<T, U, V> extends EntityDefinition<V> {
         name: string;
         documentLogoImage: T;
-        locationList: string;
         organizationImplementation: U;
+        locationList: string;
     }
 
     interface TaggableReferrableQualifiableDefinition<T, U, V, W, X, Y, Z, A, B> extends TaggableReferrableDefinition<T, U, V, W, PrismContentState, X, Y, Z> {
@@ -571,13 +575,13 @@ declare namespace bf {
     }
 
     interface UserQualificationDefinition<T, U> extends EntityDefinition<U> {
-        organizationImplementationQualification: T;
         nameProject: string;
         dateStart: string;
         dateAward: string;
         grade: string;
         current: boolean;
         awardMade: boolean;
+        organizationImplementationQualification: T;
     }
 
     interface TaggableRepresentation extends EntityRepresentation, TaggableDefinition<UserRepresentation> {
@@ -588,17 +592,17 @@ declare namespace bf {
 
     interface UserExperienceDefinition<T, U> extends EntityDefinition<U> {
         description: string;
-        organizationImplementationExperience: T;
         dateStart: string;
         current: boolean;
         dateLeave: string;
         joinStaff: boolean;
+        organizationImplementationExperience: T;
     }
 
     interface UserRefereeDefinition<T, U, V> extends EntityDefinition<V> {
         contact: T;
-        organizationImplementationExperience: U;
         joinStaff: boolean;
+        organizationImplementationExperience: U;
     }
 
     interface UserInterestDefinition<T, U> extends EntityDefinition<U> {
@@ -634,9 +638,9 @@ declare namespace bf {
         knowledgeScore: number;
         proximityScore: number;
         proximity: number;
-        groupQualificationCategoryMatch: string;
         promotion: T;
         groupTagMatch: string;
+        groupQualificationCategoryMatch: string;
     }
 
     interface TagDefinition<T> extends EntityDefinition<T> {
@@ -692,38 +696,38 @@ declare namespace bf {
         tagSuggestedList: string;
     }
 
-    type PrismContentState = 'DRAFT' | 'ACCEPTED' | 'REJECTED';
+    type PrismContentState = "DRAFT" | "ACCEPTED" | "REJECTED";
 
-    type PrismNumberStaff = 'FROM_1_TO_10' | 'FROM_11_TO_50' | 'FROM_51_TO_200' | 'FROM_201_TO_500' | 'FROM_501_TO_1000' | 'FROM_1001_TO_5000' | 'FROM_5001_TO_10000' | 'FROM_10001_TO_ANY';
+    type PrismNumberStaff = "FROM_1_TO_10" | "FROM_11_TO_50" | "FROM_51_TO_200" | "FROM_201_TO_500" | "FROM_501_TO_1000" | "FROM_1001_TO_5000" | "FROM_5001_TO_10000" | "FROM_10001_TO_ANY";
 
-    type PrismNumberStudent = 'FROM_1_TO_10' | 'FROM_11_TO_50' | 'FROM_51_TO_200' | 'FROM_201_TO_500' | 'FROM_501_TO_1000' | 'FROM_1001_TO_ANY';
+    type PrismNumberStudent = "FROM_1_TO_10" | "FROM_11_TO_50" | "FROM_51_TO_200" | "FROM_201_TO_500" | "FROM_501_TO_1000" | "FROM_1001_TO_ANY";
 
-    type PrismOauthProvider = 'FACEBOOK' | 'LINKEDIN' | 'TWITTER';
+    type PrismOauthProvider = "FACEBOOK" | "LINKEDIN" | "TWITTER";
 
-    type PrismProximity = 'TO_10' | 'TO_25' | 'TO_50' | 'TO_100' | 'TO_200';
+    type PrismProximity = "TO_10" | "TO_25" | "TO_50" | "TO_100" | "TO_200";
 
-    type PrismUserState = 'ACCEPTED' | 'REJECTED' | 'DISABLED';
+    type PrismUserState = "ACCEPTED" | "REJECTED" | "DISABLED";
 
-    type PrismPromotionCategory = 'EMPLOYMENT' | 'PLACEMENT' | 'EVENT';
+    type PrismPromotionCategory = "EMPLOYMENT" | "PLACEMENT" | "EVENT";
 
-    type PrismPositionContract = 'PERMANENT' | 'FIXED_TERM';
+    type PrismPositionContract = "PERMANENT" | "FIXED_TERM";
 
-    type PrismPositionInterval = 'HOUR' | 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
+    type PrismPositionInterval = "HOUR" | "DAY" | "WEEK" | "MONTH" | "YEAR";
 
-    type PrismPositionSalary = 'RANGE' | 'COMPETITIVE' | 'NONE';
+    type PrismPositionSalary = "RANGE" | "COMPETITIVE" | "NONE";
 
-    type PrismLanguageProficiency = 'ELEMENTARY' | 'LIMITED_WORKING' | 'PROFESSIONAL_WORKING' | 'FULL_PROFESSIONAL' | 'NATIVE_BILINGUAL';
+    type PrismLanguageProficiency = "ELEMENTARY" | "LIMITED_WORKING" | "PROFESSIONAL_WORKING" | "FULL_PROFESSIONAL" | "NATIVE_BILINGUAL";
 
-    type PrismQualificationCategory = 'UNDERGRADUATE' | 'MASTER' | 'DOCTORATE';
+    type PrismQualificationCategory = "UNDERGRADUATE" | "MASTER" | "DOCTORATE";
 
-    type PrismRole = 'DIRECTOR' | 'ADMINISTRATOR' | 'STAFF' | 'STUDENT';
+    type PrismRole = "DIRECTOR" | "ADMINISTRATOR" | "STAFF" | "STUDENT";
 
-    type PrismUserRoleState = 'ACCEPTED' | 'REJECTED';
+    type PrismUserRoleState = "ACCEPTED" | "REJECTED";
 
-    type PrismPositionWorkPattern = 'FULL_TIME' | 'PART_TIME' | 'FLEXIBLE';
+    type PrismPositionWorkPattern = "FULL_TIME" | "PART_TIME" | "FLEXIBLE";
 
-    type PrismPromotionOrganizationImplementationState = 'ACCEPTED' | 'REJECTED' | 'REDACTED' | 'DETACHED';
+    type PrismPromotionOrganizationImplementationState = "ACCEPTED" | "REJECTED" | "REDACTED" | "DETACHED";
 
-    type PrismLocationCategory = 'CITY' | 'COUNTRY';
+    type PrismLocationCategory = "CITY" | "COUNTRY";
 
 }

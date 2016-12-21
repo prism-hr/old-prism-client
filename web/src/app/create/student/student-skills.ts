@@ -37,19 +37,6 @@ class StudentSkillsController {
         this.student.languages.splice(idx, 1);
     }
 
-    lookupTags(text: string) {
-        const exclusions: Array<string> = this.student.tags.map(t => t.tag.name);
-        return this.Restangular.all('tags').getList({searchTerm: text, exclusions})
-            .then((tags: Restangular.ICollection) => tags.plain());
-    }
-
-    transformTag(chip: any) {
-        if (angular.isObject(chip)) {
-            return {tag: _.pick(chip, ['id', 'name'])};
-        }
-        return {tag: {name: chip}};
-    }
-
     lookupInterests(text: string) {
         const exclusions: Array<string> = this.student.interests.map(t => t.interest.name);
         return this.Restangular.all('interests').getList({searchTerm: text, exclusions})
