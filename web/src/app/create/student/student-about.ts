@@ -1,4 +1,3 @@
-import {AuthService} from '../../unauthenticated/auth.service';
 import UserRepresentation = bf.UserRepresentation;
 import LanguageRelationRepresentation = bf.LanguageRelationRepresentation;
 
@@ -10,7 +9,7 @@ export const StudentAbout = {
     template: require('./student-about.html'),
     bindings: {
         student: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: StudentAboutController
 };

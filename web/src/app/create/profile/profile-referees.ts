@@ -22,9 +22,8 @@ class ProfileRefereesController {
 export const ProfileReferees = {
     template: require('./profile-referees.html'),
     bindings: {
-        wizard: '<',
         student: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: ProfileRefereesController
 };

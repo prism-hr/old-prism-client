@@ -13,7 +13,7 @@
                                         placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
                                         required>
                     </place-autocomplete>
-                    <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+                    <div ng-messages="$ctrl.wizard.form.foundAddress.$error" role="alert">
                         <div ng-messages-include="general-messages"></div>
                     </div>
                 </md-input-container>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <small>Image size 400 x 250 / 10MB max</small>
-                <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                <div ng-messages="$ctrl.wizard.form.logo.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </div>

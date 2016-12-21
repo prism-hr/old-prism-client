@@ -20,8 +20,8 @@
                 <input name="organizationName" ng-model="$ctrl.organization.organization.name"
                        ng-change="$ctrl.organizationNameChanged($ctrl.organization.organization.name, 'organizationName')"
                        ng-disabled="$ctrl.editableName !== 'ORGANIZATION'">
-                <span ng-if="$ctrl.form.$error.organizationNameCheck">Loading...</span>
-                <div ng-messages="$ctrl.form.organizationName.$error" role="alert">
+                <span ng-if="$ctrl.wizard.form.$error.organizationNameCheck">Loading...</span>
+                <div ng-messages="$ctrl.wizard.form.organizationName.$error" role="alert">
                     <div ng-messages-include="organization-summary-name-messages"></div>
                 </div>
             </md-input-container>
@@ -34,8 +34,8 @@
             <input name="departmentName" ng-model="$ctrl.organization.name"
                    ng-change="$ctrl.organizationNameChanged($ctrl.organization.name, 'departmentName')"
                    ng-disabled="$ctrl.editableName !== 'IMPLEMENTATION'">
-            <span ng-if="$ctrl.form.$error.organizationNameCheck">Loading...</span>
-            <div ng-messages="$ctrl.form.departmentName.$error" role="alert">
+            <span ng-if="$ctrl.wizard.form.$error.organizationNameCheck">Loading...</span>
+            <div ng-messages="$ctrl.wizard.form.departmentName.$error" role="alert">
                 <div ng-messages-include="organization-summary-name-messages"></div>
             </div>
         </md-input-container>
@@ -66,7 +66,7 @@
                                     placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
                                     required>
                 </place-autocomplete>
-                <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                <div ng-messages="$ctrl.wizard.form.locations.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </md-input-container>
@@ -77,7 +77,7 @@
                     <label class="md-no-float">Summary</label>
                     <textarea ng-model="$ctrl.organization.summary" md-maxlength="500" name="summary" rows="4"
                               required aria-label="Summary"></textarea>
-                    <div ng-messages="$ctrl.form.summary.$error" role="alert">
+                    <div ng-messages="$ctrl.wizard.form.summary.$error" role="alert">
                         <div ng-messages-include="general-messages"></div>
                     </div>
                 </md-input-container>
@@ -86,7 +86,7 @@
                 <div class="image-uploader">
                     <logo-uploader ng-model="$ctrl.organization.documentLogoImage" drop-area="true"></logo-uploader>
                     <small>Image size 400 x 250 / 10MB max</small>
-                    <div ng-messages="$ctrl.form.logo.$error" role="alert">
+                    <div ng-messages="$ctrl.wizard.form.logo.$error" role="alert">
                         <div ng-messages-include="general-messages"></div>
                     </div>
                 </div>

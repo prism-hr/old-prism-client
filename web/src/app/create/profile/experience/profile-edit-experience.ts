@@ -75,7 +75,8 @@ export const ProfileEditExperience = {
     template: require('./profile-edit-experience.html'),
     bindings: {
         experienceService: '<',
-        wizardType: '<'
+        wizardType: '<',
+        wizard: '<'
     },
     controller: ProfileEditExperienceController
 };

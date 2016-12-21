@@ -74,12 +74,10 @@ import {Organization} from './app/create/organization/organization';
 import {OrganizationPreviewBox} from './app/create/organization/organization-preview-box';
 import {OrganizationSummary} from './app/create/organization/organization-summary';
 import {OrganizationDetails} from './app/create/organization/organization-details';
-import {OrganizationDescription} from './app/create/organization/organization-description';
 import {Advert} from './app/create/advert/advert';
 import {AdvertPreviewBox} from './app/create/advert/advert-preview-box';
 import {AdvertSummary} from './app/create/advert/advert-summary';
 import {AdvertType} from './app/create/advert/advert-type';
-import {AdvertHeader} from './app/create/advert/advert-header';
 import {AdvertSalary} from './app/create/advert/advert-salary';
 import {AdvertRecruiter} from './app/create/advert/advert-recruiter';
 import {AdvertDetails} from './app/create/advert/advert-details';
@@ -185,12 +183,10 @@ angular
     .component('organizationPreviewBox', OrganizationPreviewBox)
     .component('organizationSummary', OrganizationSummary)
     .component('organizationDetails', OrganizationDetails)
-    .component('organizationDescription', OrganizationDescription)
     .component('advert', Advert)
     .component('advertPreviewBox', AdvertPreviewBox)
     .component('advertSummary', AdvertSummary)
     .component('advertType', AdvertType)
-    .component('advertHeader', AdvertHeader)
     .component('advertSalary', AdvertSalary)
     .component('advertRecruiter', AdvertRecruiter)
     .component('advertDetails', AdvertDetails)

@@ -9,8 +9,8 @@ class AdvertDetailsController {
 export const AdvertDetails = {
     template: require('./advert-details.html'),
     bindings: {
-        form: '<',
-        advert: '='
+        advert: '=',
+        wizard: '<'
     },
     controller: AdvertDetailsController
 };

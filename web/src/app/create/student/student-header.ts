@@ -24,7 +24,7 @@ export const StudentHeader = {
     bindings: {
         wizardType: '@',
         student: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: StudentHeaderController
 };

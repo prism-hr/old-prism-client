@@ -64,6 +64,9 @@ export const OrganizationQualificationDetails = {
                 </div>
             </md-item-template>
         </md-autocomplete>
+        <div ng-messages="$ctrl.form.selectedQualification.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
 
         <div>
             <label class="standalone-label">Study Level</label>
@@ -81,7 +84,8 @@ export const OrganizationQualificationDetails = {
             </md-radio-group>
         </div>`,
     bindings: {
-        qualification: '='
+        qualification: '=',
+        form: '<'
     },
     controller: OrganizationQualificationDetailsController
 };

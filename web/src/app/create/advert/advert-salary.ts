@@ -36,8 +36,8 @@ class AdvertSalaryController {
 export const AdvertSalary = {
     template: require('./advert-salary.html'),
     bindings: {
-        form: '<',
-        advert: '='
+        advert: '=',
+        wizard: '<'
     },
     controller: AdvertSalaryController
 };

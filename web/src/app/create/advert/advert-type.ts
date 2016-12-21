@@ -61,8 +61,8 @@ class AdvertTypeController {
 export const AdvertType = {
     template: require('./advert-type.html'),
     bindings: {
-        form: '<',
-        advert: '='
+        advert: '=',
+        wizard: '<'
     },
     controller: AdvertTypeController
 };

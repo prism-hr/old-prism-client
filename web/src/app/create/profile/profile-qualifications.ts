@@ -30,9 +30,8 @@ class ProfileQualificationsController {
 export const ProfileQualifications = {
     template: require('./profile-qualifications.html'),
     bindings: {
-        wizard: '<',
         student: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: ProfileQualificationsController
 };

@@ -25,7 +25,7 @@ export const AudienceSummary = {
     bindings: {
         audience: '=',
         advert: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: AudienceSummaryController
 };

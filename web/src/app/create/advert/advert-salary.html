@@ -17,7 +17,7 @@
             <md-input-container>
                 <label>Min</label>
                 <input required type="number" name="salaryMin" ng-model="$ctrl.advert.positionSalaryMinimum" min="1" max="999999"/>
-                <div ng-messages="$ctrl.form.salaryMin.$error" role="alert">
+                <div ng-messages="$ctrl.wizard.form.salaryMin.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </md-input-container>
@@ -25,7 +25,7 @@
                 <label>Max</label>
                 <input type="number" name="salaryMax" ng-model="$ctrl.advert.positionSalaryMaximum" min="{{$ctrl.advert.positionSalaryMinimum}}"
                        max="999999"/>
-                <div ng-messages="$ctrl.form.salaryMax.$error" role="alert">
+                <div ng-messages="$ctrl.wizard.form.salaryMax.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </md-input-container>

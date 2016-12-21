@@ -35,7 +35,7 @@ export const AdvertSummary = {
     bindings: {
         wizardType: '@',
         advert: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: AdvertSummaryController
 };

@@ -22,9 +22,8 @@ class ProfileExperiencesController {
 export const ProfileExperiences = {
     template: require('./profile-experiences.html'),
     bindings: {
-        wizard: '<',
         student: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: ProfileExperiencesController
 };

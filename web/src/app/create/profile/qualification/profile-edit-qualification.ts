@@ -49,7 +49,8 @@ export const ProfileEditQualification = {
     template: require('./profile-edit-qualification.html'),
     bindings: {
         qualificationService: '<',
-        wizardType: '<'
+        wizardType: '<',
+        wizard: '<'
     },
     controller: ProfileEditQualificationController
 };

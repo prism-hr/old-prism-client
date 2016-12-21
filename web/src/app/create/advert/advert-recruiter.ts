@@ -5,7 +5,7 @@ export const AdvertRecruiter = {
     template: require('./advert-recruiter.html'),
     bindings: {
         advert: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: AdvertRecruiterController
 };
