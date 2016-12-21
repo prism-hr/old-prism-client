@@ -13,7 +13,7 @@ export class DocumentUploader implements ng.IDirective {
             <span class="drop-box">Upload</span>
         </div>
         <a ng-if="publicId" href="http://res.cloudinary.com/bitfoot/image/upload/{{publicId}}" target="_blank">
-            Uploaded: {{publicId}}
+            Uploaded: {{fileName}}
         </a>
     `;
     require = ['ngModel', '?^form'];
@@ -40,9 +40,14 @@ export class DocumentUploader implements ng.IDirective {
             self.cloudinary.upload(file, {folder: self.environment.cloudinaryFolder})
                 .then((response: any) => {
                     scope.progressPercentage = null;
-                    const model = {cloudinaryId: response.data.public_id, cloudinaryUrl: response.data.url};
+                    const model = {
+                        cloudinaryId: response.data.public_id,
+                        cloudinaryUrl: response.data.url,
+                        fileName: response.data.original_filename + '.' + response.data.format
+                    };
                     ngModel.$setViewValue(model);
-                    scope.publicId = response.data.public_id;
+                    scope.publicId = model.cloudinaryId;
+                    scope.fileName = model.fileName;
                 }, (response: any) => {
                     scope.progressPercentage = null;
                     scope.error = response.status;
@@ -53,6 +58,7 @@ export class DocumentUploader implements ng.IDirective {
 
         ngModel.$render = function () {
             scope.publicId = ngModel.$modelValue && ngModel.$modelValue.cloudinaryId;
+            scope.fileName = ngModel.$modelValue && ngModel.$modelValue.fileName;
         };
     }
 }
