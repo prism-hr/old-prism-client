@@ -11,7 +11,7 @@ export const ProfileEditRefereeService = function ($state: ng.ui.IStateService) 
         constructor(private _wizard: any, refereeAccessCode: string) {
             this._resource = this._wizard.getResource();
             const originalReferee = this._resource.userReferees.find((q: any) => q.accessCode === refereeAccessCode);
-            this._referee = angular.copy(originalReferee) || <UserRefereeRepresentation>{};
+            this._referee = angular.copy(originalReferee) || {};
         }
 
         getReferee() {

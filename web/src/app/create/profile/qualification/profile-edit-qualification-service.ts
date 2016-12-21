@@ -11,7 +11,7 @@ export const ProfileEditQualificationService = function ($state: ng.ui.IStateSer
         constructor(private _wizard: any, qualificationAccessCode: string) {
             this._resource = this._wizard.getResource();
             const originalQualification = this._resource.userQualifications.find((q: any) => q.accessCode === qualificationAccessCode);
-            this._qualification = angular.copy(originalQualification) || <UserQualificationRepresentation>{current: false};
+            this._qualification = angular.copy(originalQualification) || {current: false};
         }
 
         getQualification() {
