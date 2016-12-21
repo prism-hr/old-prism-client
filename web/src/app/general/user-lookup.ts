@@ -1,4 +1,5 @@
 import ContactRepresentation = bf.ContactRepresentation;
+import * as restangular from 'restangular';
 
 class UserLookupController {
     view: ViewType;
@@ -26,7 +27,8 @@ class UserLookupController {
     }
 
     getContacts(searchTerm: string) {
-        return this.Restangular.all('contacts').getList({searchTerm: searchTerm});
+        return this.Restangular.all('contacts').getList({searchTerm: searchTerm})
+            .then((contacts: restangular.ICollection) => contacts.plain());
     }
 }
 

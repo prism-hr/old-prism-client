@@ -7,8 +7,8 @@
         <label class="standalone-label">Referee's Organization</label>
         <organization-lookup
                 organization="$ctrl.referee.organizationImplementationExperience.organizationImplementation"
-                organization-type="promoter"
-                form="$ctrl.form"
+                organization-type="any"
+                form="$ctrl.wizard.form"
                 changed="$ctrl.organizationChanged(complete)">
         </organization-lookup>
 
@@ -39,6 +39,10 @@
                     </div>
                 </md-item-template>
             </md-autocomplete>
+            <div ng-messages="$ctrl.wizard.form.selectedExperience.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+
 
             <div ng-if="$ctrl.referee.current">
                 <label class="standalone-label"><strong>Would you like to join staff?</strong></label>
