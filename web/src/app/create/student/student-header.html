@@ -1,15 +1,18 @@
 <div layout-padding>
     <h3>Candidate Basic information</h3>
     <div class="fields-group">
-        <organization-lookup organization="$ctrl.currentQualification.organizationImplementationQualification.organizationImplementation"
-                             organization-type="university"
-                             form="$ctrl.form"
-                             changed="$ctrl.organizationChanged(complete)">
+        <organization-lookup
+                organization="$ctrl.currentQualification.organizationImplementationQualification.organizationImplementation"
+                organization-type="university"
+                form="$ctrl.wizard.form"
+                changed="$ctrl.organizationChanged(complete)">
         </organization-lookup>
 
         <div ng-if="$ctrl.showSummary">
 
-            <organization-qualification-details qualification="$ctrl.currentQualification.organizationImplementationQualification">
+            <organization-qualification-details
+                    qualification="$ctrl.currentQualification.organizationImplementationQualification"
+                    form="$ctrl.wizard.form">
             </organization-qualification-details>
 
         </div>

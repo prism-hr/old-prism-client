@@ -3,7 +3,7 @@
         <md-input-container class="md-block" flex="50">
             <label class="md-no-float">Preferred Phone</label>
             <input ng-model="$ctrl.student.mobile" name="mobile" required>
-            <div ng-messages="$ctrl.form.mobile.$error" role="alert">
+            <div ng-messages="$ctrl.wizard.form.mobile.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
@@ -13,7 +13,7 @@
         <label class="md-no-float">Personal Statement</label>
         <textarea ng-model="$ctrl.student.summary" md-maxlength="500" name="summary" rows="3"
                   required aria-label="Personal Statement"></textarea>
-        <div ng-messages="$ctrl.form.description.$error" role="alert">
+        <div ng-messages="$ctrl.wizard.form.summary.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>

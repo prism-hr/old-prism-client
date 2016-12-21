@@ -33,7 +33,7 @@ export const OrganizationDetails = {
     bindings: {
         wizardType: '@',
         organization: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: OrganizationDetailsController
 };

@@ -20,27 +20,21 @@
             </md-chip-template>
         </md-chips>
     </md-input-container>
-    <div class="tag-list">
-        <label class="standalone-label small">Suggested Tags</label>
-        <md-chips class="small">
-            <md-chip class="active">Biotechnology</md-chip>
-            <md-chip>Alternative Medicine</md-chip>
-            <md-chip class="active">Pharmaceuticals</md-chip>
-            <md-chip>Food & Beverages</md-chip>
-            <md-chip>Renewables & Environment</md-chip>
-            <md-chip>Research</md-chip>
-        </md-chips>
-        <span class="info">Select tags to add them to your list</span>
-    </div>
 
-    {{$ctrl.organization.tagSuggestedList}}
+    {{$ctrl.organization.tagsSuggested}}
+
+    <md-button ng-repeat="tag in $ctrl.organization.tagsSuggested"
+               ng-class="{selected: $ctrl.isTagSelected(tag)}"
+               ng-click="$ctrl.selectTag(tag)">
+        {{tag}}
+    </md-button>
 
     <md-input-container class="md-block">
         <label class="md-no-float">Homepage URL
             <small>(http://yourweb.com)</small>
         </label>
         <input type="url" http-prefix name="website" ng-model="$ctrl.organization.website">
-        <div ng-messages="$ctrl.form.website.$error" role="alert">
+        <div ng-messages="$ctrl.wizard.form.website.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>
@@ -53,7 +47,7 @@
                     {{'definitions.numberStaff.' + number | translate}}
                 </md-option>
             </md-select>
-            <div ng-messages="$ctrl.form.numberStaff.$error" role="alert">
+            <div ng-messages="$ctrl.wizard.form.numberStaff.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
@@ -65,7 +59,7 @@
                     {{'definitions.numberStaff.' + number | translate}}
                 </md-option>
             </md-select>
-            <div ng-messages="$ctrl.form.numberStudent.$error" role="alert">
+            <div ng-messages="$ctrl.wizard.form.numberStudent.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>

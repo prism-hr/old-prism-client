@@ -80,7 +80,7 @@ export const StudentSkills = {
     template: require('./student-skills.html'),
     bindings: {
         student: '=',
-        form: '<',
+        wizard: '<',
         wizardType: '@'
     },
     controller: StudentSkillsController

@@ -19,4 +19,7 @@
             {{'definitions.languageProficiency.' + proficiency | translate}}
         </md-option>
     </md-select>
+    <div ng-messages="$ctrl.form.proficiency.$error" role="alert">
+        <div ng-messages-include="general-messages"></div>
+    </div>
 </md-input-container>

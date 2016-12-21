@@ -8,12 +8,14 @@
         <organization-lookup
                 organization="$ctrl.qualification.organizationImplementationQualification.organizationImplementation"
                 organization-type="department"
-                form="$ctrl.form"
+                form="$ctrl.wizard.form"
                 changed="$ctrl.organizationChanged(complete)">
         </organization-lookup>
 
         <div ng-if="$ctrl.showSummary">
-            <organization-qualification-details qualification="$ctrl.qualification.organizationImplementationQualification">
+            <organization-qualification-details
+                    qualification="$ctrl.qualification.organizationImplementationQualification"
+                    form="$ctrl.wizard.form">
             </organization-qualification-details>
 
             <md-input-container class="md-block" flex>
@@ -59,7 +61,8 @@
             </div>
 
             <label class="standalone-label"><strong>Is this your main qualification?</strong></label>
-            <md-radio-group name="type" ng-required="true" ng-model="$ctrl.qualification.current" class="horizontal-form medium">
+            <md-radio-group name="type" ng-required="true" ng-model="$ctrl.qualification.current"
+                            class="horizontal-form medium">
                 <div class="radio-box-aligned">
                     <md-radio-button ng-value="true" class="md-primary">
                         Yes

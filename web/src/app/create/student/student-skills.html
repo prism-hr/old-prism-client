@@ -1,7 +1,7 @@
 <div layout-padding>
     <div class="languages">
         <div ng-repeat="language in $ctrl.student.languages" class="language-item" layout="row">
-            <language language="language" form="$ctrl.form"
+            <language language="language" form="$ctrl.wizard.form"
                       layout="row" flex="75"></language>
             <div flex="25">
                 <md-button ng-click="$ctrl.removeLanguage(language)"
@@ -86,7 +86,7 @@
                     {{$chip.name}}
                 </md-chip-template>
             </md-chips>
-            <div ng-messages="$ctrl.form.locations.$error" role="alert">
+            <div ng-messages="$ctrl.wizard.form.locations.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
@@ -99,7 +99,7 @@
                                     placeholder="{{'create.organization.address-lookup.autocomplete-placeholder.' + $ctrl.wizardType | translate}}"
                                     required>
                 </place-autocomplete>
-                <div ng-messages="$ctrl.form.locations.$error" role="alert">
+                <div ng-messages="$ctrl.wizard.form.locations.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </md-input-container>
@@ -113,7 +113,7 @@
                         {{'definitions.proximity.' + number | translate}}
                     </md-option>
                 </md-select>
-                <div ng-messages="$ctrl.form.proximity.$error" role="alert">
+                <div ng-messages="$ctrl.wizard.form.proximity.$error" role="alert">
                     <div ng-messages-include="general-messages"></div>
                 </div>
             </md-input-container>

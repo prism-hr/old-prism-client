@@ -92,7 +92,6 @@ export const OrganizationSummary = {
         welcomeType: '@',
         wizardType: '@',
         organization: '=',
-        form: '<',
         wizard: '<'
     },
     controller: OrganizationSummaryController

@@ -4,7 +4,7 @@
         <md-input-container flex="100">
             <label class="md-no-float">Strapline</label>
             <textarea name="advertSummary" ng-model="$ctrl.advert.summary" md-maxlength="500" rows="3" required></textarea>
-            <div ng-messages="$ctrl.form.advertSummary.$error" role="alert">
+            <div ng-messages="$ctrl.wizard.form.advertSummary.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
@@ -34,7 +34,7 @@
             <place-autocomplete ng-model="$ctrl.advert.locations" name="foundAddress"
                                 placeholder="{{'create.advert.address-lookup.autocomplete-placeholder' | translate}}" required>
             </place-autocomplete>
-            <div ng-messages="$ctrl.form.foundAddress.$error" role="alert">
+            <div ng-messages="$ctrl.wizard.form.foundAddress.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>
@@ -56,7 +56,7 @@
                 <small>(http://youradvert.com)</small>
             </label>
             <input type="url" http-prefix name="websiteApply" ng-model="$ctrl.advert.websiteApply" required>
-            <div ng-messages="$ctrl.form.websiteApply.$error" role="alert">
+            <div ng-messages="$ctrl.wizard.form.websiteApply.$error" role="alert">
                 <div ng-messages-include="general-messages"></div>
             </div>
         </md-input-container>

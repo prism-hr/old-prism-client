@@ -48,7 +48,7 @@ export const AdvertCandidate = {
     template: require('./advert-candidate.html'),
     bindings: {
         advert: '=',
-        form: '<'
+        wizard: '<'
     },
     controller: AdvertCandidateController
 };

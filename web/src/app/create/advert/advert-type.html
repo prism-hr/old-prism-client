@@ -44,7 +44,7 @@
                    md-min-date="$ctrl.minPublicationStart"
                    md-max-date="$ctrl.maxPublicationStart"
                    md-open-on-focus></md-datepicker>
-    <div ng-messages="$ctrl.form.timestampPublicationStart.$error" role="alert">
+    <div ng-messages="$ctrl.wizard.form.timestampPublicationStart.$error" role="alert">
         <div ng-messages-include="general-messages"></div>
         <div ng-message="mindate" class="error">The start date cannot be in the past</div>
     </div>
