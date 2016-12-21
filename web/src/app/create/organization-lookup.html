@@ -32,6 +32,9 @@
             </div>
         </md-item-template>
     </md-autocomplete>
+    <div ng-messages="$ctrl.form.selectedOrganization.$error" role="alert">
+        <div ng-messages-include="general-messages"></div>
+    </div>
 </div>
 
 <div ng-if="$ctrl.selectedOrganization" >
@@ -84,6 +87,9 @@
                     </div>
                 </md-item-template>
             </md-autocomplete>
+            <div ng-messages="$ctrl.form.selectedDepartment.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
         </div>
     </div>
 </div>

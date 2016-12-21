@@ -42,19 +42,19 @@
 <div ng-if="$ctrl.view === 'details'">
     <md-input-container class="md-block">
         <input placeholder="Name" name="firstName" ng-model="$ctrl.contact.firstName" required autocomplete="off">
-        <div ng-messages="registerForm.firstName.$error" role="alert">
+        <div ng-messages="$ctrl.form.firstName.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>
     <md-input-container class="md-block">
         <input placeholder="Surname" name="lastName" ng-model="$ctrl.contact.lastName" required autocomplete="off">
-        <div ng-messages="registerForm.lastName.$error" role="alert">
+        <div ng-messages="$ctrl.form.lastName.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>
     <md-input-container class="md-block">
         <input placeholder="Email" name="email" ng-model="$ctrl.contact.email" required type="email" autocomplete="off">
-        <div ng-messages="registerForm.username.$error" role="alert">
+        <div ng-messages="$ctrl.form.username.$error" role="alert">
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>
