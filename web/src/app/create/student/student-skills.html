@@ -89,12 +89,13 @@
                 </div>
             </md-input-container>
         </div>
+
         <div layout="row" class="traveling-block">
             <md-input-container class="md-block" flex="50">
                 <label class="md-no-float">Travelling Distance</label>
                 <md-select name="proximity" ng-model="$ctrl.student.proximity" required>
                     <md-option placeholder="Travelling Distance" ng-repeat="number in $ctrl.definitions.proximity"
-                               ng-value="{{number}}">
+                               ng-value="number">
                         {{'definitions.proximity.' + number | translate}}
                     </md-option>
                 </md-select>
