@@ -30,11 +30,11 @@ class AdvertCandidateController {
     }
 
     isTagSelected(tag: string) {
-        return Boolean(this.advert.tags.find((t: any) => t.tag.name === tag));
+        return Boolean(this.advert.tags.find((t: any) => t.tag.name.toLowerCase() === tag.toLowerCase()));
     }
 
     selectTag(tag: string) {
-        const idx = this.advert.tags.findIndex((t: any) => t.tag.name === tag);
+        const idx = this.advert.tags.findIndex((t: any) => t.tag.name.toLowerCase() === tag.toLowerCase());
         if (idx > -1) {
             this.advert.tags.splice(idx, 1);
         } else {
