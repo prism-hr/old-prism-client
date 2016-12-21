@@ -1,0 +1,31 @@
+<div class="industries-holder">
+    <md-input-container class="md-block">
+        <label class="md-no-float" ng-bind="::$ctrl.label"></label>
+        <md-chips ng-model="$ctrl.resource.tags"
+                  md-transform-chip="$ctrl.transformTag($chip)"
+                  md-max-chips="20"
+                  md-separator-keys="$ctrl.separatorKeys">
+            <md-autocomplete
+                    md-search-text="searchText"
+                    md-autoselect="true"
+                    md-items="item in $ctrl.lookupTags(searchText)"
+                    md-item-text="item.name"
+                    placeholder="Find a tag or add a new one">
+                <span md-highlight-text="searchText">{{item.name}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                {{$chip.tag.name}}
+            </md-chip-template>
+        </md-chips>
+    </md-input-container>
+</div>
+
+<div ng-if="$ctrl.resource.tagsSuggested.length > 0" class="tag-list">
+    <label class="standalone-label small">Suggested Tags</label>
+    <md-button ng-repeat="tag in $ctrl.resource.tagsSuggested"
+               ng-class="{selected: $ctrl.isTagSelected(tag)}"
+               ng-click="$ctrl.selectTag(tag)">
+        {{tag}}
+    </md-button>
+    <span class="info">Select tags to add them to your list</span>
+</div>

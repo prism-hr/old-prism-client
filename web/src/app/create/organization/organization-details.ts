@@ -14,18 +14,6 @@ class OrganizationDetailsController {
     $onInit() {
         this.categoriesHelper = this.checkboxesHelper.create(this.definitions.qualificationCategory, this.organization.qualificationCategories, 'qualificationCategory');
     }
-
-    lookupTags(text: string) {
-        return this.Restangular.all('tags').getList({searchTerm: text})
-            .then((tags: Restangular.ICollection) => tags.plain());
-    }
-
-    transformTag(chip: any) {
-        if (angular.isObject(chip)) {
-            return {tag: _.pick(chip, ['id', 'name'])};
-        }
-        return {tag: {name: chip}};
-    }
 }
 
 export const OrganizationDetails = {

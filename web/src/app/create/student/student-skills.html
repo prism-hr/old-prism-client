@@ -16,24 +16,9 @@
             </div>
         </div>
     </div>
-    <md-input-container class="md-block industries-holder" layout="row">
-        <label class="md-no-float">Skills</label>
-        <md-chips ng-model="$ctrl.student.tags"
-                  md-transform-chip="$ctrl.transformTag($chip)"
-                  md-separator-keys="$ctrl.separatorKeys">
-            <md-autocomplete
-                    md-search-text="searchText"
-                    md-autoselect="true"
-                    md-items="item in $ctrl.lookupTags(searchText)"
-                    md-item-text="item.name"
-                    placeholder="Find a tag or add a new one">
-                <span md-highlight-text="searchText">{{item.name}}</span>
-            </md-autocomplete>
-            <md-chip-template>
-                {{$chip.tag.name}}
-            </md-chip-template>
-        </md-chips>
-    </md-input-container>
+
+    <suggested-tags resource="$ctrl.student" form="$ctrl.wizard.form" label="Skills"></suggested-tags>
+
     <md-input-container class="md-block industries-holder" layout="row">
         <label class="md-no-float">Personal Interests</label>
         <md-chips ng-model="$ctrl.student.interests"
