@@ -2,7 +2,6 @@ import UserRepresentation = bf.UserRepresentation;
 import LanguageRelationRepresentation = bf.LanguageRelationRepresentation;
 
 class StudentAboutController {
-    private student: UserRepresentation;
 }
 
 export const StudentAbout = {
