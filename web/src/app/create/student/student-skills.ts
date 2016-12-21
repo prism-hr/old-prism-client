@@ -3,6 +3,8 @@ import * as angular from 'angular';
 import {countries} from '../../../countries';
 import UserRepresentation = bf.UserRepresentation;
 import LanguageRelationRepresentation = bf.LanguageRelationRepresentation;
+import LocationDTO = bf.LocationDTO;
+import LocationRelationDTO = bf.LocationRelationDTO;
 
 class StudentSkillsController {
     private separatorKeys: Array<string>;
@@ -60,6 +62,10 @@ class StudentSkillsController {
     lookupCountries(searchText: string) {
         searchText = searchText.toLowerCase();
         return this.countries.filter(c => c.name.toLowerCase().startsWith(searchText));
+    }
+
+    transformCountry(country: any) {
+        return {location: {name: country.name, domicile: country.code, category: 'COUNTRY'}};
     }
 }
 

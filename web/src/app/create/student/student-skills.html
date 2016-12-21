@@ -56,7 +56,7 @@
         <md-input-container class="md-block" flex>
             <label class="md-no-float">Countries</label>
             <md-chips ng-model="$ctrl.student.locations"
-                      md-transform-chip="$ctrl.transformTag($chip)"
+                      md-transform-chip="$ctrl.transformCountry($chip)"
                       md-separator-keys="$ctrl.separatorKeys">
                 <md-autocomplete
                         md-search-text="searchText"
@@ -68,7 +68,7 @@
                     <span md-highlight-text="searchText">{{item.name}}</span>
                 </md-autocomplete>
                 <md-chip-template>
-                    {{$chip.name}}
+                    {{$chip.location.name}}
                 </md-chip-template>
             </md-chips>
             <div ng-messages="$ctrl.wizard.form.locations.$error" role="alert">
