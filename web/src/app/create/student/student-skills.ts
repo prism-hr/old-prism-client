@@ -19,7 +19,7 @@ class StudentSkillsController {
 
     $onInit() {
         if (this.student.languages.length < 1) {
-            this.student.languages.push(<LanguageRelationRepresentation>{language: undefined});
+            this.student.languages.push({language: undefined});
         }
         this.student.proximity = this.student.proximity || 'TO_200';
         if (this.student.anywhere) {
@@ -31,7 +31,7 @@ class StudentSkillsController {
 
     addLanguage(language: LanguageRelationRepresentation) {
         const idx = this.student.languages.indexOf(language);
-        this.student.languages.splice(idx + 1, 0, <LanguageRelationRepresentation>{language: undefined});
+        this.student.languages.splice(idx + 1, 0, {language: undefined});
     }
 
     removeLanguage(language: LanguageRelationRepresentation) {
@@ -64,7 +64,7 @@ class StudentSkillsController {
         return this.countries.filter(c => c.name.toLowerCase().startsWith(searchText));
     }
 
-    transformCountry(country: any) {
+    transformCountry(country: any): LocationRelationDTO {
         return {location: {name: country.name, domicile: country.code, category: 'COUNTRY'}};
     }
 }

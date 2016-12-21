@@ -11,7 +11,7 @@ export const ProfileEditExperienceService = function ($state: ng.ui.IStateServic
         constructor(private _wizard: any, experienceAccessCode: string) {
             this._resource = this._wizard.getResource();
             const originalExperience = this._resource.userExperiences.find((q: any) => q.accessCode === experienceAccessCode);
-            this._experience = angular.copy(originalExperience) || <UserExperienceRepresentation>{current: false};
+            this._experience = angular.copy(originalExperience) || {current: false};
         }
 
         getExperience() {

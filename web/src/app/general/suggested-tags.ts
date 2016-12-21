@@ -39,7 +39,7 @@ class SuggestedTagsController {
         if (idx > -1) {
             this.resource.tags.splice(idx, 1);
         } else {
-            this.resource.tags.push(<TagRelationRepresentation>{tag: {name: tag}});
+            this.resource.tags.push({tag: {name: tag}});
         }
         console.log(tag);
     }
