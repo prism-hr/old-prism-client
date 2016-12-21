@@ -23,24 +23,16 @@
         </md-input-container>
     </div>
 
-    <md-button ng-repeat="tag in $ctrl.advert.tagsSuggested"
-               ng-class="{selected: $ctrl.isTagSelected(tag)}"
-               ng-click="$ctrl.selectTag(tag)">
-        {{tag}}
-    </md-button>
-
     <div class="tag-list">
         <label class="standalone-label small">Suggested Tags</label>
-        <md-chips class="small">
-            <md-chip class="active">Biotechnology</md-chip>
-            <md-chip>Alternative Medicine</md-chip>
-            <md-chip class="active">Pharmaceuticals</md-chip>
-            <md-chip>Food & Beverages</md-chip>
-            <md-chip>Renewables & Environment</md-chip>
-            <md-chip>Research</md-chip>
-        </md-chips>
+        <md-button ng-repeat="tag in $ctrl.advert.tagsSuggested"
+                   ng-class="{selected: $ctrl.isTagSelected(tag)}"
+                   ng-click="$ctrl.selectTag(tag)">
+            {{tag}}
+        </md-button>
         <span class="info">Select tags to add them to your list</span>
     </div>
+
     <label class="standalone-label">Audience</label>
     <div layout="row">
         <md-checkbox ng-repeat="category in $ctrl.definitions.qualificationCategory"
