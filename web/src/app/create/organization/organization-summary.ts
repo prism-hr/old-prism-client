@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 import {WelcomeService} from '../../welcome/welcome.service';
+import OrganizationImplementationRepresentation = bf.OrganizationImplementationRepresentation;
 
 class OrganizationSummaryController {
     private wizard: any;
@@ -37,22 +38,22 @@ class OrganizationSummaryController {
         this.rx.createObservableFunction(this, 'organizationNameChanged')
             .debounce(250)
             .distinctUntilChanged(args => args[0])
-            .flatMapLatest(args => {
+            .flatMapLatest(([searchTerm, fieldName]: [string, string]) => {
                 this.wizard.form.$setValidity('organizationNameCheck', false, null);
                 return this.Restangular.all('organizationImplementations').getList({
                     context: this.wizardType,
-                    searchTerm: args[0]
+                    searchTerm: searchTerm
                 })
                     .then((organizations: Restangular.ICollection) => {
                         this.wizard.form.$setValidity('organizationNameCheck', true, null);
-                        return [args[0], args[1], organizations.plain()];
+                        return [searchTerm, fieldName, organizations.plain()];
                     });
             })
-            .subscribe(args => {
-                const name = args[0];
-                const organization = args[2].find(o => o.name === name);
+            .subscribe(([searchTerm, fieldName, organizations]: [string, string, Array<OrganizationImplementationRepresentation>]) => {
+                const name = searchTerm;
+                const organization = organizations.find(o => o.name === name);
                 const nameTaken = !organization || organization.accessCode === this.organization.accessCode;
-                this.wizard.form[args[1]].$setValidity('nameTaken', nameTaken);
+                this.wizard.form[fieldName].$setValidity('nameTaken', nameTaken);
             });
     }
 
