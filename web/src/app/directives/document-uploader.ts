@@ -9,8 +9,8 @@ export class DocumentUploader implements ng.IDirective {
              ngf-change="fileChanged($file)"
              ngf-select
              ngf-drop
-             layout="row" layout-align="center center">
-            <span class="drop-box">Upload</span>
+             layout="row" layout-align="start start">
+            <md-button class="md-button md-raised md-warn small-xs">Upload</md-button>
         </div>
         <a ng-if="publicId" href="http://res.cloudinary.com/bitfoot/image/upload/{{publicId}}" target="_blank">
             Uploaded: {{fileName}}
