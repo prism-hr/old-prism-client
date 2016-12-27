@@ -1,5 +1,13 @@
 <div layout-padding>
+    <h3>Tell us about you</h3>
     <div layout="row" layout-gt-sm="row">
+        <md-input-container class="md-block" flex="50">
+            <label class="md-no-float">Preferred Email</label>
+            <input ng-model="$ctrl.student.email" name="email" required>
+            <div ng-messages="$ctrl.wizard.form.email.$error" role="alert">
+                <div ng-messages-include="general-messages"></div>
+            </div>
+        </md-input-container>
         <md-input-container class="md-block" flex="50">
             <label class="md-no-float">Preferred Phone</label>
             <input ng-model="$ctrl.student.mobile" name="mobile" required>
@@ -17,7 +25,13 @@
             <div ng-messages-include="general-messages"></div>
         </div>
     </md-input-container>
-
+    <md-input-container class="md-block">
+        <label class="md-no-float">Profile Link</label>
+        <input ng-model="$ctrl.student.profileLink" name="profileLink" required>
+        <div ng-messages="$ctrl.wizard.form.profileLink.$error" role="alert">
+            <div ng-messages-include="general-messages"></div>
+        </div>
+    </md-input-container>
     <label class="standalone-label">Upload your CV <small>(PDF only)</small></label>
     <div class="documents" layout="row" layout-align="start center">
         <document-uploader ng-model="$ctrl.student.documentResume"></document-uploader>

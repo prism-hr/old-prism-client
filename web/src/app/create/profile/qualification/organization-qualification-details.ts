@@ -68,7 +68,7 @@ export const OrganizationQualificationDetails = {
             <div ng-messages-include="general-messages"></div>
         </div>
 
-        <div>
+        <div class="study-input">
             <label class="standalone-label">Study Level</label>
             <md-radio-group name="type" ng-required="true"
                             ng-model="$ctrl.qualification.category"
