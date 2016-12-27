@@ -28,7 +28,7 @@ class ProfileEditExperienceController {
         this.refreshDateAwardConstraints();
     }
 
-    organizationChanged(complete: true) {
+    organizationChanged(complete: boolean) {
         this.showSummary = complete;
     }
 

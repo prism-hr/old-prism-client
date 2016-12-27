@@ -53,7 +53,7 @@ export class ResourceCreateWizardFactory {
             form: ng.IFormController;
             customNextHandler: any;
 
-            constructor(private _resourceManager: IResourceManager, private _welcomeType: string, private _wizardType: string, private _steps: any) {
+            constructor(private _resourceManager: IResourceManager, private _welcomeType: string, private _wizardType: string, private _steps: Array<WizardStepDefinition>) {
                 this._stepSubject = new Subject();
             }
 
@@ -299,9 +299,11 @@ export interface WizardStepsDefinition {
 }
 
 export interface WizardStepDefinition {
-    id: string;
-    component: string;
-    title: string;
+    readonly id: string;
+    readonly component: string;
+    readonly title: string;
     index?: number;
     data?: any;
+    available?: boolean;
+    state?: string;
 }
